@@ -35,14 +35,14 @@
                 <NuxtLink to="/">চাকরি</NuxtLink>
             </li>
             <li>
-                <NuxtLink to="/">জীবনযাপন</NuxtLink>
+                <NuxtLink to="/">জীবনযাপন {{ counter }}</NuxtLink>
             </li>
         </ul>
     </div>
 </template>
 
 <script setup>
-const {scrollDown} = defineProps(['scrollDown'])
+const {scrollDown} = defineProps(['scrollDown', 'counter'])
 </script>
 
 <style lang="scss" scoped></style>
