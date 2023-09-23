@@ -22,7 +22,7 @@
         <!-- Footer Ads Sticky -->
     </div>
     <!-- Global Popup -->
-        <PopupGlobal  />
+        <PopupGlobal   />
     <!-- Global Popup -->
 </template>
 
@@ -45,7 +45,7 @@ onMounted(() => {
     window.addEventListener("scroll", function () {
         if (document.documentElement.scrollTop >= scrollPostion.value) {
             scrollDown.value = true
-            adsBottomStatus.value = true
+    
         }
         else {
             scrollDown.value = false
@@ -53,6 +53,9 @@ onMounted(() => {
         }
     })
     // ============= Scolling =============== //
+
+
+
 
 })
 
