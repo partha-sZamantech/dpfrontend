@@ -17,8 +17,8 @@
             <NuxtLink to="/">যোগাযোগ</NuxtLink>
         </div>
         <div class="footer-copyright flex justify-center items-center text-[12px] py-3">
-            <div class="copyright text-[#595959]">স্বত্ব © ২০২৩ প্রথম আলো</div>
-            <div class="Editor text-[#595959]">সম্পাদক ও প্রকাশক: মতিউর রহমান</div>
+            <div class="copyright text-[#595959]">স্বত্ব © ২০২৩ ঢাকা প্রকাশ</div>
+            <div class="Editor text-[#595959]">সম্পাদক ও প্রকাশক: ঢাকা প্রকাশ</div>
         </div>
     </div>
 </template>

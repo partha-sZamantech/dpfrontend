@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="px-4 py-16 md:px-0">
         <h2> What is Lorem Ipsum?</h2>
 
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
