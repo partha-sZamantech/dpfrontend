@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="`${mobileMenuStatus ? 'left-0 fixed' : 'fixed -left-[415px]'} duration-200 bg-white h-screen max-w-full md:hidden right-0 top-12`">
+        :class="`${mobileMenuStatus ? 'left-0 fixed' : 'fixed -left-[415px]'} duration-200 bg-white h-screen max-w-full md:hidden right-0 top-12 `">
         <div class="px-8 py-8 flex flex-col gap-4">
             <div class="todayDate text-sm">
                 {{ todayDate }}
@@ -34,7 +34,7 @@
                 <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>
             </div>
             <div class="social_media flex flex-col gap-2 mt-10 px-8">
-                <p class=" text-center">অনুসরণ করুন</p>
+                <p class="text-xl text-center">অনুসরণ করুন</p>
                 <div class="flex gap-6 justify-between items-center">
                     <NuxtLink to="">
                         <Icon class="text-2xl cursor-pointer" name="bi:facebook" />

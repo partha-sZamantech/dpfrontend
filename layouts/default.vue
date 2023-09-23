@@ -17,8 +17,13 @@
             <FooterContent />
             
         </div>
-        <AdverstmentFooterStickyAds/>
+        <!-- Footer Ads Sticky -->
+            <AdverstmentFooterStickyAds/>
+        <!-- Footer Ads Sticky -->
     </div>
+    <!-- Global Popup -->
+        <PopupGlobal  />
+    <!-- Global Popup -->
 </template>
 
 <script setup>
@@ -28,9 +33,13 @@ useHead({
     }
 })
 
+//==== Global Ads Popup State =====//
+const globalPopupStatus = globalPopupState()
+
+
 const scrollDown = ref(false)
 const scrollPostion = ref(120)
-
+ 
 onMounted(() => {
     // ============= Scolling ===============
     window.addEventListener("scroll", function () {
@@ -43,8 +52,11 @@ onMounted(() => {
             // const adsBottomStatus = ref(false)
         }
     })
-    // ============= Scolling ===============
+    // ============= Scolling =============== //
+
 })
+
+
 
 
 </script>
