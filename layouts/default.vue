@@ -6,7 +6,7 @@
             <Meta content="500" http-equiv="refresh" />
         </Head>
 
-        <div :class="`${LogoHeaderScollUp ? '  fixed top-0 left-0 right-0' : 'fixed -top-20 left-0 right-0'} duration-300`">
+        <div :class="`${LogoHeaderScollUp ? 'fixed  top-0 left-0 right-0' : '' } logoHeader duration-300`">
             <div class="header-container max-w-[1280px] mx-auto ">
                 <!-- Top Header -->
                 <HeaderTop :scrollDown="scrollDown" :LogoHeaderScollUp="LogoHeaderScollUp" />
@@ -15,15 +15,13 @@
                 <HeaderTopMenu :scrollDown="scrollDown" :counter="counter" />
             </div>
         </div>
-
+        <MobileHeaderTop />
         <div class="main-container max-w-[1280px] mx-auto ">
 
-
-            <MobileHeaderTop />
             <slot />
-            <FooterContent />
 
         </div>
+        <FooterContent />
         <!-- Footer Ads Sticky -->
         <AdverstmentFooterStickyAds />
         <!-- Footer Ads Sticky -->
@@ -70,11 +68,15 @@ onMounted(() => {
             // Scroll Up
             scrollDown.value = false
             LogoHeaderScollUp.value = true
+         
 
         } else {
 
             // Scroll down
             LogoHeaderScollUp.value = false
+            // const classes = document.getElementsByClassName("logoHeader")[0].style.display = "none";
+            const classes = document.getElementsByClassName("logoHeader")[0]
+            classes.classList.add('fixed', '-top-[117px]', 'left-0', 'right-0')
         }
         prevScrollPosition.value = currentScrollPosition.value
 
