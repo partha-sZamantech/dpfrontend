@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxt/image',
-    'nuxt-icon'
+    'nuxt-icon',
+    '@nuxtjs/device'
   ]
 })

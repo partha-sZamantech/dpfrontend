@@ -1,5 +1,5 @@
 <template>
-    <div :class="`${scrollDown ? 'fixed top-0 right-0 left-0 shadow-lg' : ''} hidden md:block duration-300 border-t border-b py-3 bg-white`">
+    <div :class="`${scrollDown ? 'fixed top-0 right-0 left-0 shadow-lg' : ''} hidden md:block duration-300 border-t border-b-2 py-3 bg-white`">
         <ul class="flex gap-8 justify-center text-sm">
             <li>
                 <NuxtLink to="/">সর্বশেষ</NuxtLink>
@@ -35,14 +35,14 @@
                 <NuxtLink to="/">চাকরি</NuxtLink>
             </li>
             <li>
-                <NuxtLink to="/">জীবনযাপন {{ counter }}</NuxtLink>
+                <NuxtLink to="/">জীবনযাপন</NuxtLink>
             </li>
         </ul>
     </div>
 </template>
 
 <script setup>
-const {scrollDown} = defineProps(['scrollDown', 'counter'])
+const {scrollDown} = defineProps(['scrollDown'])
 </script>
 
 <style lang="scss" scoped></style>
