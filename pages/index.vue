@@ -1,6 +1,6 @@
 <template>
-    <div class="px-4 py-4 md:px-0">
-        <Headline />
+    <div class="px-4 py-2 md:px-0">
+        <Headline v-if="allHeadline?.length > 0"  />
         <h2> 1 What is Lorem Ipsum?</h2>
 
         <p>1 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
@@ -58,6 +58,13 @@
 </template>
 
 <script setup>
+const config = useRuntimeConfig()
+const allHeadline = useState(() => [])
+const {data:allhead} = await useFetch(`${config.public.apiUrl}/breaking-news`,{
+    method: 'GET'
+})
+allHeadline.value = allhead
+
 
 </script>
 
