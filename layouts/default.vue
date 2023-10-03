@@ -1,9 +1,9 @@
 <template>
     <div>
-
         <Head>
-            <Title>Dhaka Prokash</Title>
+            <Title>{{dsiteSetting.title}}</Title>
             <Meta content="500" http-equiv="refresh" />
+            
         </Head>
 
         <div :class="`logoHeader duration-300 z-50`">
@@ -36,7 +36,8 @@
 useHead({
     bodyAttrs: {
         id: "bodyWrapper"
-    }
+    },
+    
 })
 const { isDesktop } = useDevice();
 const prevScrollPosition = ref(0)
@@ -98,6 +99,14 @@ onMounted(() => {
 
 })
 
+// ==================== Title & Favicon ====================
+const DsiteConfig = useRuntimeConfig()
+const dsiteSetting = useState(() => [])
+const {data:dsiteSet} = await useFetch(`${DsiteConfig.public.apiUrl}/api/site-setting`,{
+    method: 'GET'
+})
+dsiteSetting.value = dsiteSet
+// ==================== Title & Favicon ====================
 
 
 </script>

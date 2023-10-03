@@ -88,14 +88,14 @@ const searchBoxHandler = () => {
     }
 }
 
+// ==================== Logo ====================
 const siteConfig = useRuntimeConfig()
 const siteSetting = useState(() => [])
 const {data:siteSet} = await useFetch(`${siteConfig.public.apiUrl}/api/site-setting`,{
     method: 'GET'
 })
-
 siteSetting.value = siteSet
-
+// ==================== Logo ====================
 </script>
 
 <style lang="scss" scoped></style>
