@@ -32,7 +32,7 @@
 import MarqueeText from 'vue-marquee-text-component'
 const config = useRuntimeConfig()
 const breakingNews = useState(() => [])
-const {data:Headline} = await useFetch(`${config.public.apiUrl}/breaking-news`,{
+const {data:Headline} = await useFetch(`${config.public.apiUrl}/api/breaking-news`,{
     method: 'GET'
 })
 breakingNews.value = Headline

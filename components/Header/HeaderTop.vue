@@ -32,20 +32,20 @@
             <div class="header_logo">
                 <!-- <nuxt-img class="mx-auto" src="/assets/img/logo.png" height="56" alt="Dhaka Prokash"
                 :placeholder="img('/assets/img/logo.png', { h: 56, blur: 2, q: 50 })" /> -->
-                <nuxt-img class="mx-auto" src="https://www.dhakaprokash24.com/media/common/logo1672518180.png" height="56" alt="Dhaka Prokash" />
+                <NuxtLink to="/"><nuxt-img class="mx-auto" :src="`${siteConfig.public.apiUrl}/media/common/${siteSetting.logo}`" height="56" alt="Dhaka Prokash" /></NuxtLink>
             </div>
             <div class="flex gap-4 flex-col">
                 <div class="flex gap-4 items-center place-self-end">
-                    <NuxtLink to="">
-                        <Icon class="text-2xl cursor-pointer" name="bi:facebook" />
+                    <NuxtLink to="https://www.facebook.com/dhakaprokash24" target="_blank">
+                        <Icon class="text-2xl cursor-pointer" name="bi:facebook" /> {{ siteConfig.public.SITE_URL }}
                     </NuxtLink>
-                    <NuxtLink to="">
+                    <NuxtLink to="https://twitter.com/dhakaprokash24" target="_blank">
                         <Icon class="text-2xl cursor-pointer" name="ri:twitter-x-fill" />
                     </NuxtLink>
-                    <NuxtLink to="">
+                    <NuxtLink to="https://www.instagram.com/dhakaprokash24/" target="_blank">
                         <Icon class="text-2xl cursor-pointer" name="bi:instagram" />
                     </NuxtLink>
-                    <NuxtLink to="">
+                    <NuxtLink to="https://www.youtube.com/c/DhakaProkash" target="_blank">
                         <Icon class="text-2xl cursor-pointer" name="bi:youtube" />
                     </NuxtLink>
                 </div>
@@ -88,6 +88,13 @@ const searchBoxHandler = () => {
     }
 }
 
+const siteConfig = useRuntimeConfig()
+const siteSetting = useState(() => [])
+const {data:siteSet} = await useFetch(`${siteConfig.public.apiUrl}/api/site-setting`,{
+    method: 'GET'
+})
+
+siteSetting.value = siteSet
 
 </script>
 

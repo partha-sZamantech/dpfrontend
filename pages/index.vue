@@ -60,7 +60,7 @@
 <script setup>
 const config = useRuntimeConfig()
 const allHeadline = useState(() => [])
-const {data:allhead} = await useFetch(`${config.public.apiUrl}/breaking-news`,{
+const {data:allhead} = await useFetch(`${config.public.apiUrl}/api/breaking-news`,{
     method: 'GET'
 })
 allHeadline.value = allhead
