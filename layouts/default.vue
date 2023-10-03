@@ -33,11 +33,27 @@
 </template>
 
 <script setup>
+
+// ==================== Title & Favicon ====================
+const DsiteConfig = useRuntimeConfig()
+const dsiteSetting = useState(() => [])
+const {data:dsiteSet} = await useFetch(`${DsiteConfig.public.apiUrl}/api/site-setting`,{
+    method: 'GET'
+})
+dsiteSetting.value = dsiteSet
+// ==================== Title & Favicon ====================
+
 useHead({
     bodyAttrs: {
         id: "bodyWrapper"
     },
-    
+    link: [
+        {
+            rel: 'icon',
+            type: 'image/png',
+            href: DsiteConfig.public.apiUrl+'/media/common/favicon.png'
+        }
+    ]
 })
 const { isDesktop } = useDevice();
 const prevScrollPosition = ref(0)
@@ -99,14 +115,6 @@ onMounted(() => {
 
 })
 
-// ==================== Title & Favicon ====================
-const DsiteConfig = useRuntimeConfig()
-const dsiteSetting = useState(() => [])
-const {data:dsiteSet} = await useFetch(`${DsiteConfig.public.apiUrl}/api/site-setting`,{
-    method: 'GET'
-})
-dsiteSetting.value = dsiteSet
-// ==================== Title & Favicon ====================
 
 
 </script>
