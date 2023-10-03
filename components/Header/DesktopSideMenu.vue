@@ -3,7 +3,7 @@
         :class="`${desktopMenuStatus ? '-left-0' : '-left-72'} fixed inset-0 w-64 shadow-[#ddd_4px_3px_4px_2px] flex flex-col gap-2 duration-500 bg-white h-screen z-10`">
 
         <div class="desktopLogo px-5 py-5 flex justify-between items-center">
-            <nuxt-img src="/assets/img/logo.png" class=" w-40" />
+            <nuxt-img src="https://www.dhakaprokash24.com/media/common/logo1672518180.png" class=" w-40" />
             <Icon name="material-symbols:close" @click="desktopMenuCloseHandler" class="text-3xl cursor-pointer hover:bg-[#f7f7f7]" />
         </div>
         <div class="overflow-y-auto pb-16">

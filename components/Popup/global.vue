@@ -6,7 +6,7 @@
                 class="absolute right-2 cursor-pointer bg-red-700 h-7 rounded-full bottom-0 -top-4">
                 <Icon name="material-symbols:close" class="text-3xl px-1 text-white" />
             </div>
-            <img src="/assets/img/popup.png" class="max-w-full" />
+            <img src="/assets/img/banner.jpg" class="max-w-full" />
         </div>
     </div>
 </template>

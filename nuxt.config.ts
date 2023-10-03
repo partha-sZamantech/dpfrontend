@@ -8,9 +8,15 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.API_URL
+    }
+  },
   modules: [
     '@nuxt/image',
     'nuxt-icon',
     '@nuxtjs/device'
-  ]
+  ],
+
 })

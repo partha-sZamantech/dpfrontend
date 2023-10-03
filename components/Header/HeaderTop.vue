@@ -32,7 +32,7 @@
             <div class="header_logo">
                 <!-- <nuxt-img class="mx-auto" src="/assets/img/logo.png" height="56" alt="Dhaka Prokash"
                 :placeholder="img('/assets/img/logo.png', { h: 56, blur: 2, q: 50 })" /> -->
-                <nuxt-img class="mx-auto" src="/assets/img/logo.png" height="56" alt="Dhaka Prokash" />
+                <nuxt-img class="mx-auto" src="https://www.dhakaprokash24.com/media/common/logo1672518180.png" height="56" alt="Dhaka Prokash" />
             </div>
             <div class="flex gap-4 flex-col">
                 <div class="flex gap-4 items-center place-self-end">
@@ -61,6 +61,7 @@
 </template>
 
 <script setup>
+
 const { scrollDown, counter } = defineProps(['scrollDown', 'LogoHeaderScollUp'])
 // ================ Get Bangla Date ============== //
 const getDate = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
