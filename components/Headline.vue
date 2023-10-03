@@ -2,7 +2,7 @@
     <ClientOnly>
         <div class=" border border-red-900">
 
-            <div class="flex items-center">
+            <div class="flex items-center gap-1">
                 <div class="bg-red-900 md:w-[130px] w-[100px] px-2 border border-red-900 py-1">
                     <h2 class="text-[12px] md:text-[16px] text-white">প্রধান শিরোনাম </h2>
                 </div>
