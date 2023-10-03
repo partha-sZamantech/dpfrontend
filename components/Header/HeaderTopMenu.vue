@@ -1,41 +1,8 @@
 <template>
-    <div :class="`${scrollDown ? 'fixed top-0 right-0 left-0 shadow-lg' : ''} hidden md:block duration-300 border-t border-b-2 py-3 bg-white`">
-        <ul class="flex gap-8 justify-center text-sm">
-            <li>
-                <NuxtLink to="/">সর্বশেষ</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">বিশেষ সংবাদ</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">রাজনীতি</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">বাংলাদেশ</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">অপরাধ</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">বিশ্ব</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">বাণিজ্য</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">মতামত</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">খেলা</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">বিনোদন</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">চাকরি</NuxtLink>
-            </li>
-            <li>
-                <NuxtLink to="/">জীবনযাপন</NuxtLink>
+    <div :class="`${scrollDown ? 'fixed top-0 right-0 left-0 shadow-lg' : ''} hidden md:block duration-300 border-t border-b-2 bg-white`">
+        <ul class="flex gap-1 justify-center text-sm">
+            <li v-for="category in headCategory" :key="category.cat_id">
+                <NuxtLink to="/" class="py-2 px-3 block hover:text-red-700">{{ category.cat_name_bn }}</NuxtLink>
             </li>
         </ul>
     </div>
@@ -43,6 +10,14 @@
 
 <script setup>
 const {scrollDown} = defineProps(['scrollDown'])
+
+const headCatconfig = useRuntimeConfig()
+const headCategory = useState(() => [])
+const {data:headCat} = await useFetch(`${headCatconfig.public.apiUrl}/headercat`,{
+    method: 'GET'
+})
+headCategory.value = headCat
+
 </script>
 
 <style lang="scss" scoped></style>
