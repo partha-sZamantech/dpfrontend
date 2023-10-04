@@ -6,3 +6,7 @@ export const desktopMenuState = () => {
 export const globalPopupState = () => {
     return useState(() => false)
 }
+
+export const allCategoryState = () => {
+    return useState(() => [])
+}

@@ -115,7 +115,15 @@ onMounted(() => {
 
 })
 
-
+// ==================== All Category ====================
+const catConfig = useRuntimeConfig()
+const allCategory = allCategoryState()
+const {data:cats} = await useFetch(`${catConfig.public.apiUrl}/api/allcat`,{
+    method: 'GET'
+})
+allCategory.value = cats
+console.log(allCategory.value)
+// ==================== Logo ====================
 
 </script>
 
