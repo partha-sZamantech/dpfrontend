@@ -1,7 +1,7 @@
 <template>
     <div
-        :class="`${mobileMenuStatus ? 'left-0 fixed' : 'fixed -left-[815px]'} duration-200 bg-white h-screen max-w-full md:hidden right-0 top-12 z-50`">
-        <div class="px-8 py-8 flex flex-col gap-4">
+        :class="`${mobileMenuStatus ? 'left-0 fixed' : 'fixed -left-[815px]'} duration-200 bg-white max-w-full md:hidden right-0 top-12`">
+        <div class="px-8 py-8 flex flex-col gap-4  overflow-y-scroll h-screen">
             <div class="todayDate text-sm">
                 {{ todayDate }}
             </div>
@@ -11,7 +11,7 @@
                     <Icon class="text-2xl " name="tabler:search" />
                 </div>
             </div>
-            <div class=" h-[600px] overflow-y-scroll">
+            <div class="">
                 <div class="grid grid-cols-2 gap-2 font-[400]">
                     <NuxtLink v-for="(cat, cindex) in allCats" :key="cindex" :to="`/category/${cat?.cat_slug}`"
                         class="py-2 border-b">{{ cat?.cat_name_bn }}</NuxtLink>
@@ -19,7 +19,7 @@
                     <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>
                 </div>
             </div>
-            <div class="social_media flex flex-col gap-2 mt-3 px-8">
+            <div class="social_media flex flex-col gap-2 mt-3 pb-12 px-8">
                 <p class="text-xl text-center">অনুসরণ করুন</p>
                 <div class="flex gap-6 justify-between items-center">
                     <NuxtLink to="">

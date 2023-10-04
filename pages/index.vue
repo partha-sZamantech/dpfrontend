@@ -1,5 +1,5 @@
 <template>
-    <div class="px-4 py-2 md:px-0">
+    <div class="py-2 md:px-0">
         <Headline v-if="allHeadline?.length > 0"  />
         <h2> 1 What is Lorem Ipsum?</h2>
 
