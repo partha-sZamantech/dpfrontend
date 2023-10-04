@@ -11,29 +11,15 @@
                     <Icon class="text-2xl " name="tabler:search" />
                 </div>
             </div>
-            <div class="grid grid-cols-2 gap-2 font-[400]">
-                <NuxtLink to="/" class="py-2 border-b">প্রচ্ছদ</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">সর্বশেষ সংবাদ</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">বিশেষ সংবাদ</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">করোনাভাইরাস</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">রাজনীতি</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">বাংলাদেশ</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">বিশ্ব</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">বাণিজ্য</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">মতামত</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">খেলা</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">বিনোদন</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">জীবনযাপন</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">প্রযুক্তি</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">সুস্থতা</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">শিক্ষা</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">ধর্ম</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">ছবি</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">ভিডিও</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">চাকরি</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>
+            <div class=" h-[600px] overflow-y-scroll">
+                <div class="grid grid-cols-2 gap-2 font-[400]">
+                    <NuxtLink v-for="(cat, cindex) in allCats" :key="cindex" :to="`/category/${cat?.cat_slug}`"
+                        class="py-2 border-b">{{ cat?.cat_name_bn }}</NuxtLink>
+
+                    <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>
+                </div>
             </div>
-            <div class="social_media flex flex-col gap-2 mt-10 px-8">
+            <div class="social_media flex flex-col gap-2 mt-3 px-8">
                 <p class="text-xl text-center">অনুসরণ করুন</p>
                 <div class="flex gap-6 justify-between items-center">
                     <NuxtLink to="">
@@ -51,6 +37,8 @@
 
                 </div>
             </div>
+
+
         </div>
     </div>
 </template>
@@ -61,6 +49,9 @@ const { mobileMenuStatus } = defineProps(['mobileMenuStatus'])
 const getDate = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 const todayDate = getDate.format(new Date())
 // ================ Get Bangla Date ============== //
+
+const allCats = allCategoryState()
+
 </script>
 
 <style lang="scss" scoped></style>
