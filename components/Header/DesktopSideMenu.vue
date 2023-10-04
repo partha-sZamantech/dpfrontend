@@ -8,25 +8,8 @@
         </div>
         <div class="overflow-y-auto pb-16">
             <div class="desktopSideMenus  flex flex-col  px-7 py-5 text-[1rem]">
-                <NuxtLink to="/" class="py-2 border-b">প্রচ্ছদ</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">সর্বশেষ সংবাদ</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">বিশেষ সংবাদ</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">করোনাভাইরাস</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">রাজনীতি</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">বাংলাদেশ</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">বিশ্ব</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">বাণিজ্য</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">মতামত</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">খেলা</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">বিনোদন</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">জীবনযাপন</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">প্রযুক্তি</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">সুস্থতা</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">শিক্ষা</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">ধর্ম</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">ছবি</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">ভিডিও</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">চাকরি</NuxtLink>
+                <NuxtLink v-for="(cat, cindex) in allCategory" :key="cindex" :to="`/category/${cat?.cat_slug}`" class="py-2 border-b">{{ cat?.cat_name_bn }}</NuxtLink>
+           
                 <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>
 
             </div>
@@ -100,8 +83,7 @@
 
 <script setup>
 const desktopMenuStatus = desktopMenuState()
-
-
+const allCategory = allCategoryState()
 const desktopMenuCloseHandler = () => {
     desktopMenuStatus.value = false
 }

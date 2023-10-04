@@ -122,7 +122,6 @@ const {data:cats} = await useFetch(`${catConfig.public.apiUrl}/api/allcat`,{
     method: 'GET'
 })
 allCategory.value = cats
-console.log(allCategory.value)
 // ==================== Logo ====================
 
 </script>
