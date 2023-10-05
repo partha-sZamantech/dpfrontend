@@ -182,12 +182,12 @@
 
         <!-- Start Special Content Area 4 -->
         <div class=" grid grid-cols-12 gap-2 py-4 border-b border-b-[#e2e2e2]">
-            <div class="col-span-9 border-r border-r-[#e2e2e2]">
+            <div class="col-span-9 mt-4">
                 <div class=" grid grid-cols-3 gap-4 border-b">
                     <!-- Loop Item -->
                     <div class=" h-28">
                         <NuxtLink to="/" class=" group">
-                            <div class="grid grid-cols-2 gap-2">
+                            <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
                                     <nuxt-img src="/assets/img/banner.jpg"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -210,7 +210,7 @@
                  <!-- Loop Item -->
                     <div class=" h-28">
                         <NuxtLink to="/" class=" group">
-                            <div class="grid grid-cols-2 gap-2">
+                            <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
                                     <nuxt-img src="/assets/img/banner.jpg"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -233,7 +233,7 @@
                      <!-- Loop Item -->
                      <div class=" h-28">
                         <NuxtLink to="/" class=" group">
-                            <div class="grid grid-cols-2 gap-2">
+                            <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
                                     <nuxt-img src="/assets/img/banner.jpg"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -253,11 +253,10 @@
                     </div>
                 </div>
                 <div class=" grid grid-cols-3 gap-4 pt-6">
-                    <!-- Loop Item -->
-                    <!-- Loop Item -->
+                    <!-- Start Loop Item -->
                     <div class=" h-28">
                         <NuxtLink to="/" class=" group">
-                            <div class="grid grid-cols-2 gap-2">
+                            <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
                                     <nuxt-img src="/assets/img/banner.jpg"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -276,11 +275,11 @@
                             </div>
                         </NuxtLink>
                     </div>
-                     <!-- Loop Item -->
-                     <!-- Loop Item -->
+                     <!-- End Loop Item -->
+                     <!-- Start Loop Item -->
                      <div class=" h-28">
                         <NuxtLink to="/" class=" group">
-                            <div class="grid grid-cols-2 gap-2">
+                            <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
                                     <nuxt-img src="/assets/img/banner.jpg"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -299,11 +298,11 @@
                             </div>
                         </NuxtLink>
                     </div>
-                     <!-- Loop Item -->
-                     <!-- Loop Item -->
+                     <!-- End Loop Item -->
+                     <!-- Start Loop Item -->
                      <div class=" h-28">
                         <NuxtLink to="/" class=" group">
-                            <div class="grid grid-cols-2 gap-2">
+                            <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
                                     <nuxt-img src="/assets/img/banner.jpg"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -322,7 +321,7 @@
                             </div>
                         </NuxtLink>
                     </div>
-                     <!-- Loop Item -->
+                     <!-- End Loop Item -->
                 </div>
             </div>
             <div class=" col-span-3">
