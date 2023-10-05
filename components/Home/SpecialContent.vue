@@ -61,8 +61,8 @@
         <!-- End Special Content Area 1 -->
 
         <!-- Start Special Content Area 2 -->
-        <div class=" grid grid-cols-12 py-4">
-            <div class=" col-span-3">
+        <div class=" grid grid-cols-12 gap-2 py-4">
+            <div class=" col-span-3 border-r border-r-[#e2e2e2]">
                 <div class="flex flex-col gap-2 group">
                     <NuxtLink to="/">
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700">দেশের নিট রিজার্ভ এখন ১৮
@@ -70,12 +70,11 @@
                             নিচে: জাহিদ
                             হোসেন</h2>
                         <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ
-                            কারণের
-                            সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন।</p>
+                            কারণে সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন। কারণে সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন। কারণে সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন।</p>
                     </NuxtLink>
                 </div>
             </div>
-            <div class=" col-span-3">
+            <div class=" col-span-3 border-r border-r-[#e2e2e2]">
                 <div class="flex flex-col gap-2 group">
                     <NuxtLink to="/">
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700">দেশের নিট রিজার্ভ এখন ১৮
@@ -83,12 +82,11 @@
                             নিচে: জাহিদ
                             হোসেন</h2>
                         <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ
-                            কারণের
-                            সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন।</p>
+                            কারণে সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন। কারণে সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন। কারণে সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন।</p>
                     </NuxtLink>
                 </div>
             </div>
-            <div class=" col-span-3">
+            <div class=" col-span-3 border-r border-r-[#e2e2e2]">
                 <div class="flex flex-col gap-2 group">
                     <NuxtLink to="/">
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700">দেশের নিট রিজার্ভ এখন ১৮
