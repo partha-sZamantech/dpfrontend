@@ -41,9 +41,9 @@
                                     রিজার্ভ এখন ১৮ বিলিয়ন
                                     ডলারের নিচে: জাহিদ
                                     হোসেন</h2>
-                                <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ
+                                <!-- <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ
                                     কারণের
-                                    সঙ্গে দেশীয় </p>
+                                    সঙ্গে দেশীয় </p> -->
                             </div>
                         </NuxtLink>
                         <!-- Special Content Position 2 -->
@@ -181,9 +181,9 @@
 
 
         <!-- Start Special Content Area 4 -->
-        <div class=" grid grid-cols-12 py-4 border-b border-b-[#e2e2e2]">
+        <div class=" grid grid-cols-12 gap-2 py-4 border-b border-b-[#e2e2e2]">
             <div class="col-span-9 border-r border-r-[#e2e2e2]">
-                <div class=" grid grid-cols-3 gap-4">
+                <div class=" grid grid-cols-3 gap-4 border-b">
                     <!-- Loop Item -->
                     <div class=" h-28">
                         <NuxtLink to="/" class=" group">
@@ -208,7 +208,7 @@
                     </div>
                      <!-- Loop Item -->
                  <!-- Loop Item -->
-                 <div class=" h-28">
+                    <div class=" h-28">
                         <NuxtLink to="/" class=" group">
                             <div class="grid grid-cols-2 gap-2">
                                 <div class="overflow-hidden">
@@ -251,6 +251,8 @@
                             </div>
                         </NuxtLink>
                     </div>
+                </div>
+                <div class=" grid grid-cols-3 gap-4 pt-6">
                     <!-- Loop Item -->
                     <!-- Loop Item -->
                     <div class=" h-28">
