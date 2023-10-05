@@ -7,8 +7,8 @@
                 <NuxtLink to="/" class=" group">
                     <div class="grid grid-cols-12 gap-2 pr-2">
                         <div class=" col-span-8 overflow-hidden">
-                            <nuxt-img src="/assets/img/banner.jpg" class="mx-auto w-full group-hover:scale-110 duration-300"
-                                :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                            <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                         </div>
                         <div class="col-span-4">
                             <div class="flex flex-col gap-2 px-2">
@@ -33,9 +33,8 @@
                         <NuxtLink to="/" class="group">
                             <div class="flex flex-col">
                                 <div class="w-[295px] h-[165px] overflow-hidden">
-                                    <nuxt-img src="/assets/img/banner.jpg"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                                    <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                 </div>
                                 <h2 class="text-[#121212] text-[18px] font-[600] py-2 group-hover:text-blue-700">দেশের নিট
                                     রিজার্ভ এখন ১৮ বিলিয়ন
@@ -51,7 +50,8 @@
                     <!-- Ads Home Right 1-->
                     <div>
                         <NuxtLink to="/">
-                            <nuxt-img src="/assets/img/ads.gif" class="w-full" />
+                            <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full"
+                                 />
                         </NuxtLink>
                     </div>
                     <!-- Ads Home Right 1-->
@@ -126,8 +126,8 @@
             <div class="col-span-3 px-2 border-r border-r-[#e2e2e2]">
                 <div class="flex flex-col gap-2 group overflow-hidden">
                     <NuxtLink to="/">
-                        <nuxt-img src="/assets/img/banner.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
-                            :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                        <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700 mt-2">দেশের নিট রিজার্ভ
                             এখন ১৮
                             বিলিয়ন ডলারের
@@ -139,8 +139,8 @@
             <div class="col-span-3 px-2 border-r border-r-[#e2e2e2]">
                 <div class="flex flex-col gap-2 group overflow-hidden">
                     <NuxtLink to="/">
-                        <nuxt-img src="/assets/img/banner.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
-                            :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                        <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700 mt-2">দেশের নিট রিজার্ভ
                             এখন ১৮
                             বিলিয়ন ডলারের
@@ -152,8 +152,8 @@
             <div class="col-span-3 px-2 border-r border-r-[#e2e2e2]">
                 <div class="flex flex-col gap-2 group overflow-hidden">
                     <NuxtLink to="/">
-                        <nuxt-img src="/assets/img/banner.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
-                            :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                        <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700 mt-2">দেশের নিট রিজার্ভ
                             এখন ১৮
                             বিলিয়ন ডলারের
@@ -165,8 +165,8 @@
             <div class="col-span-3 px-2">
                 <div class="flex flex-col gap-2 group overflow-hidden">
                     <NuxtLink to="/">
-                        <nuxt-img src="/assets/img/banner.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
-                            :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                        <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700 mt-2">দেশের নিট রিজার্ভ
                             এখন ১৮
                             বিলিয়ন ডলারের
@@ -189,9 +189,8 @@
                         <NuxtLink to="/" class=" group">
                             <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
-                                    <nuxt-img src="/assets/img/banner.jpg"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                                    <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                 </div>
                                 <div class="">
                                     <div class="flex flex-col gap-2 px-2">
@@ -212,9 +211,8 @@
                         <NuxtLink to="/" class=" group">
                             <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
-                                    <nuxt-img src="/assets/img/banner.jpg"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                                    <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                 </div>
                                 <div class="">
                                     <div class="flex flex-col gap-2 px-2">
@@ -235,9 +233,8 @@
                         <NuxtLink to="/" class=" group">
                             <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
-                                    <nuxt-img src="/assets/img/banner.jpg"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                                    <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                 </div>
                                 <div class="">
                                     <div class="flex flex-col gap-2 px-2">
@@ -258,9 +255,8 @@
                         <NuxtLink to="/" class=" group">
                             <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
-                                    <nuxt-img src="/assets/img/banner.jpg"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                                    <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                 </div>
                                 <div class="">
                                     <div class="flex flex-col gap-2 px-2">
@@ -281,9 +277,8 @@
                         <NuxtLink to="/" class=" group">
                             <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
-                                    <nuxt-img src="/assets/img/banner.jpg"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                                    <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                 </div>
                                 <div class="">
                                     <div class="flex flex-col gap-2 px-2">
@@ -304,9 +299,8 @@
                         <NuxtLink to="/" class=" group">
                             <div class="grid grid-cols-2 gap-2 border-r border-r-[#e2e2e2]">
                                 <div class="overflow-hidden">
-                                    <nuxt-img src="/assets/img/banner.jpg"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                                    <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                 </div>
                                 <div class="">
                                     <div class="flex flex-col gap-2 px-2">
@@ -328,7 +322,7 @@
                 <!-- Ads Home Right 1-->
                 <div>
                     <NuxtLink to="/">
-                        <nuxt-img src="/assets/img/ads.gif" class="w-full" />
+                        <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full" />
                     </NuxtLink>
                 </div>
                 <!-- Ads Home Right 1-->
