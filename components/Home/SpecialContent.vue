@@ -1,48 +1,112 @@
 <template>
-    <div class=" grid grid-cols-12 py-4 border-t border-t-[#e2e2e2] border-b border-b-[#e2e2e2]">
-        <!-- Start Special Content Area -->
-        <div class="  col-span-6 border-r border-r-[#e2e2e2]">
-            <!-- Start Special Content Top -->
-            <NuxtLink to="/" class=" group" >
-            <div class="grid grid-cols-12 gap-2 pr-2">
-                <div class=" col-span-8 overflow-hidden">
-                    <nuxt-img src="/assets/img/banner.jpg" class="mx-auto w-full group-hover:scale-110 duration-300" :placeholder="img('/assets/img/logo.png', {  height: 300 })"  />
-                </div>
-                <div class="col-span-4">
-                    <div class="flex flex-col gap-2">
-                        <h2 class="text-[#121212] text-[18px] font-[600]">দেশের নিট রিজার্ভ এখন ১৮ বিলিয়ন ডলারের নিচে: জাহিদ
-                            হোসেন</h2>
-                        <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ কারণের
-                            সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন।</p>
+    <div>
+        <!-- Start Special Content Area 1 -->
+        <div class=" grid grid-cols-12 py-4 border-t border-t-[#e2e2e2] border-b border-b-[#e2e2e2]">
+            <div class="  col-span-6 border-r border-r-[#e2e2e2]">
+                <!-- Special Content Position 1 -->
+                <NuxtLink to="/" class=" group">
+                    <div class="grid grid-cols-12 gap-2 pr-2">
+                        <div class=" col-span-8 overflow-hidden">
+                            <nuxt-img src="/assets/img/banner.jpg" class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                        </div>
+                        <div class="col-span-4">
+                            <div class="flex flex-col gap-2">
+                                <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700">দেশের নিট
+                                    রিজার্ভ এখন ১৮ বিলিয়ন ডলারের
+                                    নিচে: জাহিদ
+                                    হোসেন</h2>
+                                <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ
+                                    কারণের
+                                    সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন।</p>
+                            </div>
+                        </div>
                     </div>
+                </NuxtLink>
+                <!-- Special Content Position 1 -->
+            </div>
+
+            <div class=" col-span-6">
+                <div class="grid grid-cols-2 gap-2">
+                    <div class="px-2 border-r border-r-[#e2e2e2]">
+                        <!-- Special Content Position 2 -->
+                        <NuxtLink to="/" class="group">
+                            <div class="flex flex-col">
+                                <div class="w-[295px] h-[165px] overflow-hidden">
+                                    <nuxt-img src="/assets/img/banner.jpg"
+                                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                                        :placeholder="img('/assets/img/logo.png', { height: 300 })" />
+                                </div>
+                                <h2 class="text-[#121212] text-[18px] font-[600] pt-1 group-hover:text-blue-700">দেশের নিট
+                                    রিজার্ভ এখন ১৮ বিলিয়ন
+                                    ডলারের নিচে: জাহিদ
+                                    হোসেন</h2>
+                                <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ
+                                    কারণের
+                                    সঙ্গে দেশীয় </p>
+                            </div>
+                        </NuxtLink>
+                        <!-- Special Content Position 2 -->
+                    </div>
+                    <!-- Ads Home Right 1-->
+                    <div>
+                        <NuxtLink to="/">
+                            <nuxt-img src="/assets/img/ads.gif" class="w-full" />
+                        </NuxtLink>
+                    </div>
+                    <!-- Ads Home Right 1-->
                 </div>
             </div>
-            </NuxtLink>
-            <!-- End Special Content Top -->
         </div>
-        <!-- End Special Content Area -->
-        <div class=" col-span-6">
-            <div class="grid grid-cols-2 gap-2">
-                <div class="px-2 border-r border-r-[#e2e2e2]">
-                    <NuxtLink to="/" class="group" >
-                        <div class="flex flex-col">
-                            <div class="w-[295px] h-[165px] overflow-hidden">
-                                <nuxt-img src="/assets/img/banner.jpg" class="mx-auto w-full group-hover:scale-110 duration-300" :placeholder="img('/assets/img/logo.png', {  height: 300 })" />
-                            </div>
-                            <h2 class="text-[#121212] text-[18px] font-[600] pt-1">দেশের নিট রিজার্ভ এখন ১৮ বিলিয়ন ডলারের নিচে: জাহিদ
-                                হোসেন</h2>
-                                <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ কারণের
-                                সঙ্গে দেশীয় </p>
-                        </div>
+        <!-- End Special Content Area 1 -->
+
+        <!-- Start Special Content Area 2 -->
+        <div class=" grid grid-cols-12 py-4">
+            <div class=" col-span-3">
+                <div class="flex flex-col gap-2 group">
+                    <NuxtLink to="/">
+                        <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700">দেশের নিট রিজার্ভ এখন ১৮
+                            বিলিয়ন ডলারের
+                            নিচে: জাহিদ
+                            হোসেন</h2>
+                        <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ
+                            কারণের
+                            সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন।</p>
                     </NuxtLink>
                 </div>
-                <div>
-                    <nuxt-img src="/assets/img/ads.gif" class="w-full"  />
+            </div>
+            <div class=" col-span-3">
+                <div class="flex flex-col gap-2 group">
+                    <NuxtLink to="/">
+                        <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700">দেশের নিট রিজার্ভ এখন ১৮
+                            বিলিয়ন ডলারের
+                            নিচে: জাহিদ
+                            হোসেন</h2>
+                        <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ
+                            কারণের
+                            সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন।</p>
+                    </NuxtLink>
                 </div>
+            </div>
+            <div class=" col-span-3">
+                <div class="flex flex-col gap-2 group">
+                    <NuxtLink to="/">
+                        <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700">দেশের নিট রিজার্ভ এখন ১৮
+                            বিলিয়ন ডলারের
+                            নিচে: জাহিদ
+                            হোসেন</h2>
+                        <p class="text-[#555555] text-[16px]">দেশের সামষ্টিক অর্থনৈতিক অস্থিতিশীলতার পেছনে বহিস্থ
+                            কারণে সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন। কারণে সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন। কারণে সঙ্গে দেশীয় কারণও আছে বলে মনে করেন জাহিদ হোসেন।</p>
+                    </NuxtLink>
+                </div>
+            </div>
+            <div class=" col-span-3">
+                <NuxtLink to="/">
+                    <nuxt-img src="/assets/img/ads.gif" class="w-full" />
+                </NuxtLink>
             </div>
         </div>
     </div>
-
 </template>
 
 <script setup>
