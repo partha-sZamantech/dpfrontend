@@ -61,8 +61,8 @@
         <!-- End Special Content Area 1 -->
 
         <!-- Start Special Content Area 2 -->
-        <div class=" grid grid-cols-12 gap-2 py-4 border-b border-b-[#e2e2e2]">
-            <div class=" col-span-3 border-r border-r-[#e2e2e2] px-4">
+        <div class=" grid grid-cols-12 gap-2 py-4 md:border-b md:border-b-[#e2e2e2]">
+            <div class=" col-span-12 md:col-span-3 md:border-r md:border-r-[#e2e2e2] md:px-4">
                 <div class="flex flex-col gap-2 group">
                     <NuxtLink to="/">
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700 mb-2">দেশের নিট রিজার্ভ
@@ -76,7 +76,7 @@
                     </NuxtLink>
                 </div>
             </div>
-            <div class=" col-span-3 border-r border-r-[#e2e2e2] px-4">
+            <div class=" col-span-12 md:col-span-3 md:border-r md:border-r-[#e2e2e2] md:px-4">
                 <div class="flex flex-col gap-2 group">
                     <NuxtLink to="/">
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700 mb-2">দেশের নিট রিজার্ভ
@@ -90,7 +90,7 @@
                     </NuxtLink>
                 </div>
             </div>
-            <div class=" col-span-3 border-r border-r-[#e2e2e2] px-4">
+            <div class=" col-span-12 md:col-span-3 md:border-r md:border-r-[#e2e2e2] md:px-4">
                 <div class="flex flex-col gap-2 group">
                     <NuxtLink to="/">
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700 mb-2">দেশের নিট রিজার্ভ
@@ -104,8 +104,8 @@
                     </NuxtLink>
                 </div>
             </div>
-            <div class=" col-span-3">
-                <div class="flex flex-col gap-2 group  px-4">
+            <div class=" col-span-12 md:col-span-3">
+                <div class="flex flex-col gap-2 group md:px-4">
                     <NuxtLink to="/">
                         <h2 class="text-[#121212] text-[18px] font-[600] group-hover:text-blue-700 mb-2">দেশের নিট রিজার্ভ
                             এখন ১৮
@@ -123,7 +123,7 @@
 
         <!-- Start Special Content Area 3 -->
         <div class=" grid grid-cols-12 py-4 border-b border-b-[#e2e2e2]">
-            <div class="col-span-3 px-2 border-r border-r-[#e2e2e2]">
+            <div class="col-span-12 md:col-span-3 md:px-2 md:border-r md:border-r-[#e2e2e2]">
                 <div class="flex flex-col gap-2 group overflow-hidden">
                     <NuxtLink to="/">
                         <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
@@ -136,7 +136,7 @@
                     </NuxtLink>
                 </div>
             </div>
-            <div class="col-span-3 px-2 border-r border-r-[#e2e2e2]">
+            <div class="col-span-12 md:col-span-3 md:px-2 md:border-r md:border-r-[#e2e2e2]">
                 <div class="flex flex-col gap-2 group overflow-hidden">
                     <NuxtLink to="/">
                         <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
@@ -149,7 +149,7 @@
                     </NuxtLink>
                 </div>
             </div>
-            <div class="col-span-3 px-2 border-r border-r-[#e2e2e2]">
+            <div class="col-span-12 md:col-span-3 md:px-2 md:border-r md:border-r-[#e2e2e2]">
                 <div class="flex flex-col gap-2 group overflow-hidden">
                     <NuxtLink to="/">
                         <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
@@ -162,7 +162,7 @@
                     </NuxtLink>
                 </div>
             </div>
-            <div class="col-span-3 px-2">
+            <div class="col-span-12 md:col-span-3 md:px-2">
                 <div class="flex flex-col gap-2 group overflow-hidden">
                     <NuxtLink to="/">
                         <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg" class="mx-auto w-full group-hover:scale-105 duration-300"
@@ -182,8 +182,8 @@
 
         <!-- Start Special Content Area 4 -->
         <div class=" grid grid-cols-12 gap-2 py-4 border-b border-b-[#e2e2e2]">
-            <div class="col-span-9 mt-4">
-                <div class=" grid grid-cols-3 gap-4 border-b">
+            <div class="col-span-12 md:col-span-9 mt-4">
+                <div class=" grid md:grid-cols-3 gap-4 border-b">
                     <!-- Loop Item -->
                     <div class=" h-28">
                         <NuxtLink to="/" class=" group">
@@ -249,7 +249,7 @@
                         </NuxtLink>
                     </div>
                 </div>
-                <div class=" grid grid-cols-3 gap-4 pt-6">
+                <div class=" grid md:grid-cols-3 gap-4 pt-6">
                     <!-- Start Loop Item -->
                     <div class=" h-28">
                         <NuxtLink to="/" class=" group">
@@ -318,7 +318,7 @@
                      <!-- End Loop Item -->
                 </div>
             </div>
-            <div class=" col-span-3">
+            <div class="col-span-12 md:col-span-3">
                 <!-- Ads Home Right 1-->
                 <div>
                     <NuxtLink to="/">
