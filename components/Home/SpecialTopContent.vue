@@ -111,18 +111,6 @@
                             <h4 class="text-[18px] col-span-10 md:col-span-9 group-hover:text-[#3375af]">মা দিবসের পেছনের গল্প</h4>
                         </NuxtLink>
                    
-                        <!-- <NuxtLink to="/" class="flex gap-4 items-center group border-b py-4">
-                            <Icon name="simple-icons:youtubemusic" class="text-4xl text-[#ff0000]" />
-                            <h4 class="text-[18px] group-hover:text-[#ff0000]">মা দিবসের পেছনের গল্প</h4>
-                        </NuxtLink>
-                        <NuxtLink to="/" class="flex gap-4 items-center group border-b py-4">
-                            <Icon name="simple-icons:youtubemusic" class="text-4xl text-[#ff0000]" />
-                            <h4 class="text-[18px] group-hover:text-[#ff0000]">মা দিবসের পেছনের গল্প</h4>
-                        </NuxtLink>
-                        <NuxtLink to="/" class="flex gap-4 items-center border-b group py-4">
-                            <Icon name="simple-icons:youtubemusic" class="text-4xl text-[#ff0000]" />
-                            <h4 class="text-[18px] group-hover:text-[#ff0000]">মা দিবসের পেছনের গল্প</h4>
-                        </NuxtLink> -->
                     </div>
                 </div>
             </div>

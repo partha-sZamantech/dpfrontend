@@ -1,12 +1,16 @@
 <template>
     <div class="py-2 md:px-0">
+        <!-- Headline Component -->
         <Headline v-if="allHeadline?.length > 0"  />
-        
-        <!-- Start Special Content -->
-        <!-- <HomeSpecialContent /> -->
+        <!--/ Headline Component -->
+        <!-- Special Top Content Component -->
         <HomeSpecialTopContent />
-        <!-- Start Special Content -->
+        <!--/ Special Top Content Component -->
 
+        <!-- Special Top Content Component -->
+            <HomeSpecialBottomContent />
+        <!--/ Special Top Content Component -->
+        
 
     </div>
 </template>
