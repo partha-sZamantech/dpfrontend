@@ -1,7 +1,7 @@
 <template>
     <div class=" grid grid-cols-12 gap-4">
-        <div class=" col-span-9">
-            <div class="grid grid-cols-3 gap-5 py-4">
+        <div class="col-span-12 md:col-span-9">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-5 py-4">
                 <!-- Loop Item -->
                 <NuxtLink to="/" class="flex flex-col gap-3 group">
                     <div class=" overflow-hidden">
@@ -91,7 +91,7 @@
             </div>
             
         </div>
-        <div class=" col-span-3">
+        <div class="col-span-12 md:col-span-3">
             Right Sidebar
         </div>
     </div>
