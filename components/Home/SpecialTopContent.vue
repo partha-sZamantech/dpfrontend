@@ -21,7 +21,7 @@
                     <div class="col-span-12 md:col-span-5">
                         <div class="flex flex-col gap-2">
                             <NuxtLink to="/" class=" grid grid-cols-12 gap-4 group py-4 border-b specialMiddleTop">
-                                <div class="col-span-12 md:col-span-5">
+                                <div class="col-span-5">
                                     <div class="overflow-hidden">
                                         <nuxt-img
                                             src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
@@ -29,14 +29,14 @@
                                             :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-7">
+                                <div class="col-span-7">
                                     <h4 class="text-[20px] leading-tight group-hover:text-[#ff0000]">গাজায় বিদ্যুৎ, জ্বালানি
                                         ও পণ্য সরবরাহ বন্ধ করল
                                         ইসরায়েল</h4>
                                 </div>
                             </NuxtLink>
                             <NuxtLink to="/" class=" grid grid-cols-12 gap-4 group py-4 border-b specialMiddleTop">
-                                <div class="col-span-12 md:col-span-5">
+                                <div class="col-span-5">
                                     <div class="overflow-hidden">
                                         <nuxt-img
                                             src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
@@ -44,14 +44,14 @@
                                             :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-7">
+                                <div class="col-span-7">
                                     <h4 class="text-[20px] leading-tight group-hover:text-[#ff0000]">গাজায় বিদ্যুৎ, জ্বালানি
                                         ও পণ্য সরবরাহ বন্ধ করল
                                         ইসরায়েল</h4>
                                 </div>
                             </NuxtLink>
                             <NuxtLink to="/" class=" grid grid-cols-12 gap-4 group py-4 border-b specialMiddleTop">
-                                <div class="col-span-12 md:col-span-5">
+                                <div class="col-span-5">
                                     <div class="overflow-hidden">
                                         <nuxt-img
                                             src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
@@ -59,14 +59,14 @@
                                             :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-7">
+                                <div class="col-span-7">
                                     <h4 class="text-[20px] leading-tight group-hover:text-[#ff0000]">গাজায় বিদ্যুৎ, জ্বালানি
                                         ও পণ্য সরবরাহ বন্ধ করল
                                         ইসরায়েল</h4>
                                 </div>
                             </NuxtLink>
                             <NuxtLink to="/" class=" grid grid-cols-12 gap-4 group py-4 border-b specialMiddleTop">
-                                <div class="col-span-12 md:col-span-5">
+                                <div class="col-span-5">
                                     <div class="overflow-hidden">
                                         <nuxt-img
                                             src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
@@ -74,7 +74,7 @@
                                             :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     </div>
                                 </div>
-                                <div class="col-span-12 md:col-span-7">
+                                <div class="col-span-7">
                                     <h4 class="text-[20px] leading-tight group-hover:text-[#ff0000]">গাজায় বিদ্যুৎ, জ্বালানি
                                         ও পণ্য সরবরাহ বন্ধ করল
                                         ইসরায়েল</h4>
