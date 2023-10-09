@@ -55,7 +55,6 @@
         <!--/ Latest Post -->
         <!-- Popular Post -->
         <div v-else class="latest-post px-3 h-[240px] overflow-y-auto">
-            popular
             <NuxtLink to="/" class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop">
                 <div class="latest-post-tab-image col-span-4 overflow-hidden">
                     <nuxt-img
