@@ -15,6 +15,9 @@
                 <!-- National Category Component -->
                 <HomeCategoryNational />
                 <!--/ National Category Component -->
+                <!-- National Category Component -->
+                <HomeCategoryPoliticsEconomyInternational />
+                <!--/ National Category Component -->
             </div>
 
             <div class="col-span-12 md:col-span-3">
