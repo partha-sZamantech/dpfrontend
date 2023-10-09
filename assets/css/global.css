@@ -6,3 +6,24 @@ body {
     font-family: 'SolaimanLipi', Arial, sans-serif;
     color:#333
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ddd;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    /* background: #c9c3c3; */
+    background: #6facf1;
+    border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #bdb8b8;
+}
