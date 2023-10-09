@@ -8,7 +8,7 @@
         <!--/ Special Top Content Component -->
 
         <!-- Special Top Content Component -->
-            <HomeSpecialBottomContent />
+        <HomeSpecialBottomContent />
         <!--/ Special Top Content Component -->
         
 
