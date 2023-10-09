@@ -7,10 +7,20 @@
         <HomeSpecialTopContent />
         <!--/ Special Top Content Component -->
 
-        <!-- Special Top Content Component -->
-        <HomeSpecialBottomContent />
-        <!--/ Special Top Content Component -->
-        
+        <div class=" grid grid-cols-12 gap-4">
+            <div class="col-span-12 md:col-span-9">
+                <!-- Special Top Content Component -->
+                <HomeSpecialBottomContent />
+                <!--/ Special Top Content Component -->
+            </div>
+
+            <div class="col-span-12 md:col-span-3">
+                <!-- Home Right Sidebar -->
+                <HomePostTabs />
+                <!--/ Home Right Sidebar -->
+            </div>
+        </div>
+
 
     </div>
 </template>

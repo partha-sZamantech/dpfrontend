@@ -1,5 +1,6 @@
 <template>
-    <div class="home-post-tabs border border-t-2 border-t-[#124d80]">
+    <div class="home-post-tabs border border-t-2 border-t-[#124d80] my-4
+    +">
         <div class="grid grid-cols-2 text-[17px] text-center">
             <div v-if="isActiveStatus === false" :class="`bg-[#3375af] text-white py-1`">সর্বশেষ</div>
             <div v-else @click="tabToggleHandler" :class="`hover:bg-[#3375af] hover:text-white cursor-pointer py-1`">সর্বশেষ</div>
