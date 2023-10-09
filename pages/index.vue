@@ -12,6 +12,9 @@
                 <!-- Special Top Content Component -->
                 <HomeSpecialBottomContent />
                 <!--/ Special Top Content Component -->
+                <!-- National Category Component -->
+                <HomeCategoryNational />
+                <!--/ National Category Component -->
             </div>
 
             <div class="col-span-12 md:col-span-3">
