@@ -2,7 +2,7 @@
     <div class="home-post-tabs border border-t-2 border-t-[#124d80]">
         <div class="grid grid-cols-2 text-[17px] text-center">
             <div class="bg-[#3375af] text-white py-1">সর্বশেষ</div>
-            <div class="py-1">সর্বাধিক পঠিত</div>
+            <div class="py-1 hover:bg-[#3375af] hover:text-white cursor-pointer">সর্বাধিক পঠিত</div>
         </div>
         <div class="latest-post px-3 h-[240px] overflow-y-auto">
             <NuxtLink to="/" class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop">
