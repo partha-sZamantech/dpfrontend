@@ -92,7 +92,7 @@
             
         </div>
         <div class="col-span-12 md:col-span-3">
-            Right Sidebar
+            <HomePostTabs />
         </div>
     </div>
 </template>

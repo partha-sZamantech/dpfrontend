@@ -1,0 +1,26 @@
+<template>
+    <div class="home-post-tabs border border-t-2 border-t-[#124d80]">
+        <div class="grid grid-cols-2 text-[17px] text-center">
+            <div class="bg-[#3375af] text-white py-1">সর্বশেষ</div>
+            <div class="py-1">সর্বাধিক পঠিত</div>
+        </div>
+        <div class="latest-post px-3">
+            <NuxtLink to="/" class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop">
+                <div class="latest-post-tab-image col-span-4 overflow-hidden">
+                    <nuxt-img src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                </div>
+                <div class="tab-latast-post-title col-span-8">
+                    <h4 class="text-[17px] group-hover:text-[#ff0000]">উন্নত চিকিৎসা না পেলে, যে কোন সময় মারা যেতে পারেন খালেদা জিয়া</h4>
+                </div>
+            </NuxtLink>
+        </div>
+    </div>
+</template>
+
+<script setup>
+const img = useImage()
+</script>
+
+<style lang="scss" scoped></style>
