@@ -26,7 +26,10 @@
                 <!--/ Home Right Sidebar -->
             </div>
         </div>
-
+        
+        <!-- Special Top Content Component -->
+        <HomeCategorySpecialReport />
+        <!--/ Special Top Content Component -->
 
     </div>
 </template>
