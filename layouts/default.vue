@@ -17,7 +17,7 @@
             <!-- </div> -->
         </div>
         <MobileHeaderTop />
-        <div class="main-container max-w-[1280px] mx-auto px-4 md:px-2 duration-900 mt-4 md:mt-0">
+        <div class="main-container  duration-900 mt-4 md:mt-0">
 
             <slot />
             <FooterContent />

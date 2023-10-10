@@ -1,62 +1,65 @@
 <template>
-    <div class="py-2 md:px-0">
-        <!-- Headline Component -->
-        <Headline v-if="allHeadline?.length > 0" />
-        <!--/ Headline Component -->
-        <!-- Special Top Content Component -->
-        <HomeSpecialTopContent />
-        <!--/ Special Top Content Component -->
+    <div class="home-page">
+        <div class="py-2 md:px-2 max-w-[1280px] mx-auto px-4">
+            <!-- Headline Component -->
+            <Headline v-if="allHeadline?.length > 0" />
+            <!--/ Headline Component -->
+            <!-- Special Top Content Component -->
+            <HomeSpecialTopContent />
+            <!--/ Special Top Content Component -->
 
-        <div class=" grid grid-cols-12 gap-4">
-            <div class="col-span-12 md:col-span-9">
-                <!-- Special Top Content Component -->
-                <HomeSpecialBottomContent />
-                <!--/ Special Top Content Component -->
-                <!-- National Category Component -->
-                <HomeCategoryNational />
-                <!--/ National Category Component -->
-                <!-- National Category Component -->
-                <HomeCategoryPoliticsEconomyInternational />
-                <!--/ National Category Component -->
+            <div class=" grid grid-cols-12 gap-4">
+                <div class="col-span-12 md:col-span-9">
+                    <!-- Special Top Content Component -->
+                    <HomeSpecialBottomContent />
+                    <!--/ Special Top Content Component -->
+                    <!-- National Category Component -->
+                    <HomeCategoryNational />
+                    <!--/ National Category Component -->
+                    <!-- National Category Component -->
+                    <HomeCategoryPoliticsEconomyInternational />
+                    <!--/ National Category Component -->
+                </div>
+
+                <div class="col-span-12 md:col-span-3">
+                    <!-- Home Right Sidebar -->
+                    <HomePostTabs />
+                    <!--/ Home Right Sidebar -->
+                </div>
             </div>
 
-            <div class="col-span-12 md:col-span-3">
-                <!-- Home Right Sidebar -->
-                <HomePostTabs />
-                <!--/ Home Right Sidebar -->
+            <!-- Special Top Content Component -->
+            <HomeCategorySpecialReport />
+            <!--/ Special Top Content Component -->
+
+            <div class="grid grid-cols-12 gap-4 mb-6">
+                <div class="col-span-12 md:col-span-9">
+                    <!-- Sports Category Component -->
+                    <HomeCategorySports />
+                    <!--/ Sports Category Component -->
+                </div>
+                <div class="col-span-12 md:col-span-3">
+                    <!-- Saradesh Category Component -->
+                    <HomeCategorySaradesh />
+                    <!--/ Saradesh Category Component -->
+                </div>
             </div>
+
+            <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-12 md:col-span-9">
+                    <!-- Sports Category Component -->
+                    <HomeCategoryEntertainment />
+                    <!--/ Sports Category Component -->
+                </div>
+                <div class="col-span-12 md:col-span-3">
+                    <!-- Saradesh Category Component -->
+                    <HomeCategoryLifestyle />
+                    <!--/ Saradesh Category Component -->
+                </div>
+            </div>
+
+
         </div>
-
-        <!-- Special Top Content Component -->
-        <HomeCategorySpecialReport />
-        <!--/ Special Top Content Component -->
-
-        <div class="grid grid-cols-12 gap-4 mb-6">
-            <div class="col-span-12 md:col-span-9">
-                <!-- Sports Category Component -->
-                <HomeCategorySports />
-                <!--/ Sports Category Component -->
-            </div>
-            <div class="col-span-12 md:col-span-3">
-                <!-- Saradesh Category Component -->
-                <HomeCategorySaradesh />
-                <!--/ Saradesh Category Component -->
-            </div>
-        </div>
-
-        <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-12 md:col-span-9">
-                <!-- Sports Category Component -->
-                <HomeCategoryEntertainment />
-                <!--/ Sports Category Component -->
-            </div>
-            <div class="col-span-12 md:col-span-3">
-                <!-- Saradesh Category Component -->
-                <HomeCategoryLifestyle />
-                <!--/ Saradesh Category Component -->
-            </div>
-        </div>
-
     </div>
 </template>
 
