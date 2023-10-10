@@ -57,9 +57,15 @@
                     <!--/ Saradesh Category Component -->
                 </div>
             </div>
-
-
         </div>
+
+        <!-- English Content Area -->
+        <div class="english-content-except bg-[#fff4e6] my-6">
+            <!-- English Component -->
+            <HomeEnglishContent />
+            <!-- English Component -->
+        </div>
+        <!-- English Content Area -->
     </div>
 </template>
 
