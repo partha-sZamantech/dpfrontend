@@ -1,5 +1,5 @@
 <template>
-    <div class="home-special-report-category">
+    <div class="home-special-report-category mb-6">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
             <NuxtLink to="/" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>

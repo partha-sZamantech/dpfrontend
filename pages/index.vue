@@ -1,7 +1,7 @@
 <template>
     <div class="py-2 md:px-0">
         <!-- Headline Component -->
-        <Headline v-if="allHeadline?.length > 0"  />
+        <Headline v-if="allHeadline?.length > 0" />
         <!--/ Headline Component -->
         <!-- Special Top Content Component -->
         <HomeSpecialTopContent />
@@ -26,10 +26,23 @@
                 <!--/ Home Right Sidebar -->
             </div>
         </div>
-        
+
         <!-- Special Top Content Component -->
         <HomeCategorySpecialReport />
         <!--/ Special Top Content Component -->
+
+        <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-12 md:col-span-9">
+                <!-- Sports Category Component -->
+                <HomeCategorySports />
+                <!--/ Sports Category Component -->
+            </div>
+            <div class="col-span-12 md:col-span-3">
+                <!-- Saradesh Category Component -->
+                <HomeCategorySaradesh />
+                <!--/ Saradesh Category Component -->
+            </div>
+        </div>
 
     </div>
 </template>
@@ -37,7 +50,7 @@
 <script setup>
 const config = useRuntimeConfig()
 const allHeadline = useState(() => [])
-const {data:allhead} = await useFetch(`${config.public.apiUrl}/api/breaking-news`,{
+const { data: allhead } = await useFetch(`${config.public.apiUrl}/api/breaking-news`, {
     method: 'GET'
 })
 allHeadline.value = allhead
