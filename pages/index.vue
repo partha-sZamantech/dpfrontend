@@ -31,7 +31,7 @@
         <HomeCategorySpecialReport />
         <!--/ Special Top Content Component -->
 
-        <div class="grid grid-cols-12 gap-4">
+        <div class="grid grid-cols-12 gap-4 mb-6">
             <div class="col-span-12 md:col-span-9">
                 <!-- Sports Category Component -->
                 <HomeCategorySports />
@@ -40,6 +40,19 @@
             <div class="col-span-12 md:col-span-3">
                 <!-- Saradesh Category Component -->
                 <HomeCategorySaradesh />
+                <!--/ Saradesh Category Component -->
+            </div>
+        </div>
+
+        <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-12 md:col-span-9">
+                <!-- Sports Category Component -->
+                <HomeCategoryEntertainment />
+                <!--/ Sports Category Component -->
+            </div>
+            <div class="col-span-12 md:col-span-3">
+                <!-- Saradesh Category Component -->
+                <HomeCategoryLifestyle />
                 <!--/ Saradesh Category Component -->
             </div>
         </div>
