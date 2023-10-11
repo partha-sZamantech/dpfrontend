@@ -71,34 +71,59 @@
 
             <div class=" grid grid-cols-12 gap-6">
                 <div class=" col-span-12 md:col-span-9">
-                <!-- Law Court Component -->
+                    <!-- Law Court Component -->
                     <HomeCategoryLawCourt />
-                <!-- Law Court Component -->
+                    <!-- Law Court Component -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">
-                <!-- Crime Component -->
+                    <!-- Crime Component -->
                     <HomeCategoryCrime />
-                <!-- Crime Component -->
+                    <!-- Crime Component -->
                 </div>
             </div>
 
             <div class=" grid grid-cols-12 gap-6 py-4">
                 <div class=" col-span-12 md:col-span-6">
-                <!-- Technology Component -->
+                    <!-- Technology Component -->
                     <HomeCategoryTechnology />
-                <!-- Technology Component -->
+                    <!-- Technology Component -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">
-                <!-- Career Component -->
+                    <!-- Career Component -->
                     <HomeCategoryCareer />
-                <!-- Career Component -->
+                    <!-- Career Component -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">
-                <!-- Campus Component -->
+                    <!-- Campus Component -->
                     <HomeCategoryCampus />
-                <!-- Campus Component -->
+                    <!-- Campus Component -->
                 </div>
             </div>
+
+
+            <div class=" grid grid-cols-12 gap-6 py-4">
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Art Culture Component -->
+                    <HomeCategoryArtCulture />
+                    <!-- Technology Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Health Component -->
+                    <HomeCategoryHealth />
+                    <!-- Career Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Education Component -->
+                    <HomeCategoryEducation />
+                    <!-- Campus Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Religion Component -->
+                    <HomeCategoryReligion />
+                    <!-- Campus Component -->
+                </div>
+            </div>
+
 
         </div>
 
