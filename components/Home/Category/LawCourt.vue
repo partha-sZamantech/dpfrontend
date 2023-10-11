@@ -1,9 +1,9 @@
 <template>
-    <div class="home-intertainment-category">
+    <div class="home-law-court-category">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
             <NuxtLink to="/" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
-                <h2 class="text-[#3375af] text-[18px] font-semibold">বিনোদন</h2>
+                <h2 class="text-[#3375af] text-[18px] font-semibold">আইন আদালত</h2>
             </NuxtLink>
         </div>
         <div class="grid grid-cols-12 gap-4">
@@ -109,7 +109,7 @@
 </template>
 
 <script setup>
-const img = useImage()
+    const img = useImage()
 </script>
 
 <style scoped>

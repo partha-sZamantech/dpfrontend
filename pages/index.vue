@@ -66,6 +66,18 @@
             <!-- English Component -->
         </div>
         <!-- English Content Area -->
+
+        <div class="py-2 md:px-2 max-w-[1280px] mx-auto px-4">
+            <div class=" grid grid-cols-12 gap-6">
+                <div class=" col-span-12 md:col-span-9">
+                    <HomeCategoryLawCourt />
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <HomeCategoryCrime />
+                </div>
+            </div>
+        </div>
+
     </div>
 </template>
 
