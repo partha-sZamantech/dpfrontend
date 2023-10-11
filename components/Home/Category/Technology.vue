@@ -1,14 +1,14 @@
 <template>
-    <div class="home-law-court-category">
+    <div class="home-career-category">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
             <NuxtLink to="/" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
-                <h2 class="text-[#3375af] text-[18px] font-semibold">আইন আদালত</h2>
+                <h2 class="text-[#3375af] text-[18px] font-semibold">বিজ্ঞান-তথ্যপ্রযুক্তি</h2>
             </NuxtLink>
         </div>
-        <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-12 md:col-span-6">
-                <NuxtLink to="/" class="flex flex-col group gap-2">
+        <div class="flex flex-col gap-4">
+            <div class="">
+                <NuxtLink to="/" class="grid grid-cols-1 md:grid-cols-2 group gap-2">
                     <div class="intertainment-feature-image overflow-hidden">
                         <nuxt-img
                             src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
@@ -19,9 +19,7 @@
                         <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">পদ্মা সেতু দিয়ে ছুটবে ট্রেন
                             দক্ষিণাঞ্চলে, উচ্ছ্বসিত সর্বস্তরের মানুষ</h3>
                         <p class="text-md">সব জল্পনা-কল্পনার অবসান ঘটিয়ে গত বছরের ২৬ জুন সকাল ৬টা থেকে স্বপ্নের পদ্মা সেতু
-                            দিয়ে যান চলাচল শুরু হয়েছে। বাকি ছিল রেল যোগাযোগ। সেই জল্পনা-কল্পনারও অবসান ঘটছে আগামী ১০
-                            অক্টোবর। এর ফলে দক্ষিণ-পশ্চিমাঞ্চলের সঙ্গে গোটা দেশের যোগাযোগ ব্যবস্থায় যোগ হচ্ছে নতুনমাত্রা।
-                            দিন যতই এগোচ্ছে তাদের ভেতর আনন্দ আর উদ্দীপনা ততই বাড়ছে।</p>
+                            দিয়ে যান চলাচল শুরু হয়েছে। বাকি  </p>
                     </div>
                 </NuxtLink>
             </div>
@@ -110,8 +108,4 @@
     const img = useImage()
 </script>
 
-<style scoped>
-.h-sports-excpt:first-child {
-    padding-top: 0px
-}
-</style>
+<style lang="scss" scoped></style>

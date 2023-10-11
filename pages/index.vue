@@ -68,14 +68,38 @@
         <!-- English Content Area -->
 
         <div class="py-2 md:px-2 max-w-[1280px] mx-auto px-4">
+
             <div class=" grid grid-cols-12 gap-6">
                 <div class=" col-span-12 md:col-span-9">
+                <!-- Law Court Component -->
                     <HomeCategoryLawCourt />
+                <!-- Law Court Component -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">
+                <!-- Crime Component -->
                     <HomeCategoryCrime />
+                <!-- Crime Component -->
                 </div>
             </div>
+
+            <div class=" grid grid-cols-12 gap-6 py-4">
+                <div class=" col-span-12 md:col-span-6">
+                <!-- Technology Component -->
+                    <HomeCategoryTechnology />
+                <!-- Technology Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                <!-- Career Component -->
+                    <HomeCategoryCareer />
+                <!-- Career Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                <!-- Campus Component -->
+                    <HomeCategoryCampus />
+                <!-- Campus Component -->
+                </div>
+            </div>
+
         </div>
 
     </div>
