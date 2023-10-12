@@ -1,9 +1,9 @@
 <template>
-    <div class="home-technology-category">
+    <div class="home-literature-category">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
             <NuxtLink to="/" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
-                <h2 class="text-[#3375af] text-[18px] font-semibold">বিজ্ঞান-তথ্যপ্রযুক্তি</h2>
+                <h2 class="text-[#3375af] text-[18px] font-semibold">সাহিত্য</h2>
             </NuxtLink>
         </div>
         <div class="flex flex-col gap-4">

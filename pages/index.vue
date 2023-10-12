@@ -105,27 +105,76 @@
                 <div class=" col-span-12 md:col-span-3">
                     <!-- Art Culture Component -->
                     <HomeCategoryArtCulture />
-                    <!-- Technology Component -->
+                    <!-- Art Culture Component -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">
                     <!-- Health Component -->
                     <HomeCategoryHealth />
-                    <!-- Career Component -->
+                    <!-- Health Component -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">
                     <!-- Education Component -->
                     <HomeCategoryEducation />
-                    <!-- Campus Component -->
+                    <!-- Education Component -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">
                     <!-- Religion Component -->
                     <HomeCategoryReligion />
-                    <!-- Campus Component -->
+                    <!-- Religion Component -->
                 </div>
             </div>
 
+            <div class=" grid grid-cols-12 gap-6 py-4">
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Child Adolescent Component -->
+                    <HomeCategoryChildAdolescent />
+                    <!-- Child Adolescent Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Motivation Component -->
+                    <HomeCategoryMotivation />
+                    <!-- Motivation Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Probash Component -->
+                    <HomeCategoryProbash />
+                    <!-- Probash Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Corporate Component -->
+                    <HomeCategoryCorporate />
+                    <!-- Corporate Component -->
+                </div>
+            </div>
 
+            <div class=" grid grid-cols-12 gap-6 py-4">
+                <div class=" col-span-12 md:col-span-6">
+                    <!-- Literature Component -->
+                    <HomeCategoryLiterature />
+                    <!-- Literature Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Opinion Component -->
+                    <HomeCategoryOpinion />
+                    <!-- Opinion Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Special Article Component -->
+                    <HomeCategorySpecialArticle />
+                    <!-- Special Article Component -->
+                </div>
+            </div>
         </div>
+
+
+        <!-- Gallery Content Area -->
+        <div class="english-content-except bg-[#00427A] my-6 text-white">
+            <!-- Gallery Component -->
+            <HomeGallery />
+            <!-- Gallery Component -->
+        </div>
+        <!-- Gallery Content Area -->
+
 
     </div>
 </template>
