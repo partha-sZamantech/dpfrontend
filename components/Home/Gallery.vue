@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-[1280px] mx-auto py-4">
+    <div class="max-w-[1280px] mx-auto py-4 px-4 md:px-2">
         <div class="home-photo-gallery mb-4">
             <div class="category-header border-b-4 border-b-white">
                 <NuxtLink to="/" class="flex gap-3 items-center">
@@ -8,9 +8,9 @@
                 </NuxtLink>
             </div>
         </div>
-        <div class=" grid grid-cols-12 grid-rows-2 gap-2 mb-6">
+        <div class=" grid grid-cols-12 md:grid-rows-2 gap-4 md:gap-2 mb-6">
             <!-- First Item -->
-            <div class=" row-span-2 col-span-6 group image-box">
+            <div class="col-span-12 md:row-span-2 md:col-span-6 group image-box">
                 <div class=" overflow-hidden">
                     <NuxtLink to="/" class=" relative">
                         <nuxt-img
@@ -26,7 +26,7 @@
             <!-- First Item -->
 
             <!-- Looping -->
-            <div class=" col-span-3  group image-box">
+            <div class="col-span-12 md:col-span-3  group image-box">
                 <div class=" overflow-hidden">
                     <NuxtLink to="/" class=" relative">
                         <nuxt-img
@@ -42,7 +42,7 @@
             <!-- Looping -->
            
             <!-- Looping -->
-            <div class=" col-span-3  group image-box">
+            <div class=" col-span-12 md:col-span-3  group image-box">
                 <div class=" overflow-hidden">
                     <NuxtLink to="/" class=" relative">
                         <nuxt-img
@@ -58,7 +58,7 @@
             <!-- Looping -->
             
             <!-- Looping -->
-            <div class=" col-span-3  group image-box">
+            <div class=" col-span-12 md:col-span-3  group image-box">
                 <div class=" overflow-hidden">
                     <NuxtLink to="/" class=" relative">
                         <nuxt-img
@@ -74,7 +74,7 @@
             <!-- Looping -->
             
             <!-- Looping -->
-            <div class=" col-span-3  group image-box">
+            <div class=" col-span-12 md:col-span-3  group image-box">
                 <div class=" overflow-hidden">
                     <NuxtLink to="/" class=" relative">
                         <nuxt-img
@@ -90,7 +90,7 @@
             <!-- Looping -->
             
             <!-- Looping -->
-            <div class=" col-span-3  group image-box">
+            <div class=" col-span-12 md:col-span-3  group image-box">
                 <div class=" overflow-hidden">
                     <NuxtLink to="/" class=" relative">
                         <nuxt-img
@@ -106,7 +106,7 @@
             <!-- Looping -->
             
             <!-- Looping -->
-            <div class=" col-span-3  group image-box">
+            <div class=" col-span-12 md:col-span-3  group image-box">
                 <div class=" overflow-hidden">
                     <NuxtLink to="/" class=" relative">
                         <nuxt-img
@@ -122,7 +122,7 @@
             <!-- Looping -->
             
             <!-- Looping -->
-            <div class=" col-span-3  group image-box">
+            <div class=" col-span-12 md:col-span-3  group image-box">
                 <div class=" overflow-hidden">
                     <NuxtLink to="/" class=" relative">
                         <nuxt-img
@@ -138,7 +138,7 @@
             <!-- Looping -->
             
             <!-- Looping -->
-            <div class=" col-span-3  group image-box">
+            <div class=" col-span-12 md:col-span-3  group image-box">
                 <div class=" overflow-hidden">
                     <NuxtLink to="/" class=" relative">
                         <nuxt-img
