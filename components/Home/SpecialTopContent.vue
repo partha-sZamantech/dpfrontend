@@ -12,9 +12,7 @@
                                     :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" :title="specialTopContents[0]?.content_heading" />
                             </div>
                             <h2 class="text-[#ff0000] text-[32px] leading-tight">{{ specialTopContents[0]?.content_heading }}</h2>
-                            <p class="text-[18px]">ফিলিস্তিনি সশস্ত্র গোষ্ঠী হামাসের আকস্মিক হামলায় বিপর্যস্ত হয়ে পড়েছে
-                                ইসরাইল। মাত্র ২০ মিনিটে দেশটিতে পাঁচ হাজার রকেট ছুড়েছে ফিলিস্তিনের স্বাধীনতাকামী সংগঠন
-                                হামাস। এ অবস্থায় ইসরাইলের...</p>
+                            <p class="text-[18px]">{{ specialTopContents[0]?.content_details.substring(0, 165).toString().replace( /(<([^>]+)>)/ig, '') }}...</p>
                         </NuxtLink>
                     </div>
                     <div class="col-span-12 md:col-span-5">
