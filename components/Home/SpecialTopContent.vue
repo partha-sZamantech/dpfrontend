@@ -6,25 +6,25 @@
                     <div class="col-span-12 md:col-span-7 group">
                         <!-- Special First Content -->
                         <NuxtLink :to="`/${specialTopContents[0]?.category?.cat_slug}/${specialTopContents[0]?.content_id}`"
-                            class="flex flex-col gap-3" :title="specialTopContents[0]?.content_heading">
+                            class="flex flex-col gap-3" >
                             <div class="overflow-hidden">
                                 <nuxt-img
                                     :src="`${config.public.apiUrl}/media/content/images/${specialTopContents[0].img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })"
-                                    :title="specialTopContents[0]?.content_heading" :alt="specialTopContents[0]?.content_heading" />
+                                     />
                             </div>
                             <h2 class="text-[#ff0000] text-[32px] leading-tight">{{ specialTopContents[0]?.content_heading
                             }}</h2>
-                            <p class="text-[18px]">{{ specialTopContents[0]?.content_details.substring(0,
-                                165).toString().replace(/(<([^>]+)>)/ig, '') }}...</p>
+                            <p class="text-[18px]">{{ specialTopContents[0]?.content_details?.substring(0,
+                                165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p>
                         </NuxtLink>
                         <!-- Special First Content -->
                     </div>
                     <div class="col-span-12 md:col-span-5">
                         <div class="flex flex-col gap-2">
-                            <!-- Loop Item -->
-                            <NuxtLink to="/" class=" grid grid-cols-12 gap-4 group py-4 border-b specialMiddleTop" v-for="topcontent in specialTopContents.slice(1, 5)" :key="topcontent.content_id">
+                            <!-- ========== Loop Item =========== -->
+                            <NuxtLink :to="`/${topcontent?.category?.cat_slug}/${topcontent?.content_id}`" class=" grid grid-cols-12 gap-4 group py-4 border-b specialMiddleTop" v-for="topcontent in specialTopContents.slice(1, 5)" :key="topcontent.content_id">
                                 <div class="col-span-5">
                                     <div class="overflow-hidden">
                                         <nuxt-img :alt="topcontent?.content_heading"
@@ -37,7 +37,7 @@
                                     <h4 class="text-[20px] leading-tight group-hover:text-[#ff0000]">{{ topcontent?.content_heading }}</h4>
                                 </div>
                             </NuxtLink>
-                            <!-- Loop Item -->
+                         <!-- ========== Loop Item =========== -->
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@ const img = useImage()
 // =============== Special Content Fetching ====================//
 const config = useRuntimeConfig();
 const specialTopContents = specialTopContentState()
-const { data: spTopCon } = await useFetch(`${config.public.apiUrl}/api/specialcontent`, {
+const { data: spTopCon } = await useFetch("/api/home/specialtopcontent", {
     method: 'GET'
 })
 specialTopContents.value = spTopCon

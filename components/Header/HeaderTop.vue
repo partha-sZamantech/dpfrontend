@@ -34,7 +34,7 @@
                     <!-- <nuxt-img class="mx-auto" src="/assets/img/logo.png" height="56" alt="Dhaka Prokash"
                 :placeholder="img('/assets/img/logo.png', { h: 56, blur: 2, q: 50 })" /> -->
                     <NuxtLink to="/">
-                        <nuxt-img class="mx-auto" :src="`${siteConfig.public.apiUrl}/media/common/${siteSetting.logo}`" width="300" alt="Dhaka Prokash" />
+                        <nuxt-img class="mx-auto" :src="`${siteConfig.public.apiUrl}/media/common/${siteSetting?.logo}`" width="300" alt="Dhaka Prokash" />
                     </NuxtLink>
                 </div>
                 <div class="flex gap-4 flex-col">
