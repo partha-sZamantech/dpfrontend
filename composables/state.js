@@ -13,3 +13,7 @@ export const allCategoryState = () => {
 export const specialTopContentState = () => {
     return useState(() => [])
 }
+
+export const NationalHomeContentState = () => {
+    return useState(() => [])
+}
