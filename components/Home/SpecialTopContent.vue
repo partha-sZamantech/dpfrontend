@@ -4,15 +4,14 @@
             <div class="col-span-12 md:col-span-7">
                 <div class="grid grid-cols-12 gap-4">
                     <div class="col-span-12 md:col-span-7 group">
-                        <NuxtLink to="/" class="flex flex-col gap-3">
+                        <NuxtLink :to="`/${specialTopContents[0]?.category?.cat_slug}/${specialTopContents[0]?.content_id}`" class="flex flex-col gap-3" :title="specialTopContents[0]?.content_heading">
                             <div class="overflow-hidden">
                                 <nuxt-img
-                                    src="https://www.dhakaprokash24.com/media/content/images/2023October/nobel-20231005171906.jpg"
+                                    :src="`${config.public.apiUrl}/media/content/images/${specialTopContents[0].img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" :title="specialTopContents[0]?.content_heading" />
                             </div>
-                            <h2 class="text-[#ff0000] text-[32px] leading-tight">ইসরাইলের পাশে থাকার ঘোষণা নরেন্দ্র মোদির
-                            </h2>
+                            <h2 class="text-[#ff0000] text-[32px] leading-tight">{{ specialTopContents[0]?.content_heading }}</h2>
                             <p class="text-[18px]">ফিলিস্তিনি সশস্ত্র গোষ্ঠী হামাসের আকস্মিক হামলায় বিপর্যস্ত হয়ে পড়েছে
                                 ইসরাইল। মাত্র ২০ মিনিটে দেশটিতে পাঁচ হাজার রকেট ছুড়েছে ফিলিস্তিনের স্বাধীনতাকামী সংগঠন
                                 হামাস। এ অবস্থায় ইসরাইলের...</p>
@@ -120,6 +119,14 @@
 
 <script setup>
 const img = useImage()
+// =============== Special Content Fetching ====================//
+const config = useRuntimeConfig();
+const specialTopContents = specialTopContentState()
+const { data: spTopCon } = await useFetch(`${config.public.apiUrl}/api/specialcontent`, {
+    method: 'GET'
+})
+specialTopContents.value = spTopCon
+// =============== Special Content Fetching ====================//
 </script>
 
 <style scoped>

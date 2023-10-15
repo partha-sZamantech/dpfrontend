@@ -10,3 +10,6 @@ export const globalPopupState = () => {
 export const allCategoryState = () => {
     return useState(() => [])
 }
+export const specialTopContentState = () => {
+    return useState(() => [])
+}
