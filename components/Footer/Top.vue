@@ -1,5 +1,5 @@
 <template>
-    <div class="footerTop grid grid-cols-1 place-items-center gap-6 md:gap-0 md:flex md:justify-between pb-8">
+    <div class="footerTop grid grid-cols-1 place-items-center md:place-items-start gap-6 md:gap-0 md:flex md:justify-between pb-8">
         <div class="flex flex-col gap-3 text-center md:text-left">
             <NuxtLink to="/">
                 <nuxt-img class="mx-auto md:mx-0" :src="`${siteConfig.public.apiUrl}/media/common/${siteSettings.logo}`" width="220"
