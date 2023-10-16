@@ -13,46 +13,21 @@
                     <NuxtLink to="/" class="flex flex-col gap-2 group">
                         <div class=" overflow-hidden">
                             <nuxt-img
-                                src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
+                                :src="`${siteurl.site_url}/media/content/images/${politics[0]?.img_bg_path}`"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
                                 :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                         </div>
-                        <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">উন্নত চিকিৎসা না পেলে, যে কোন সময়
-                            মারা যেতে পারেন খালেদা জিয়া</h3>
+                        <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ politics[0]?.content_heading }}</h3>
                     </NuxtLink>
                     <!--/ Politic Feature Content -->
 
                     <div class="h-p-c-excpt flex flex-col">
                         <!-- Loop Item -->
-                        <NuxtLink to="/" class=" border-b py-3">
-                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">ভিসানীতি নিয়ে বেশি আতঙ্কে
-                                প্রধানমন্ত্রী: মির্জা ফখরুল</h4>
+                        <NuxtLink to="/" class=" border-b py-3" v-for="hpolitic in politics.slice(1,6)" :key="hpolitic.contentid">
+                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{hpolitic.content_heading}}</h4>
                         </NuxtLink>
                         <!--/ Loop Item -->
-                        <!-- Loop Item -->
-                        <NuxtLink to="/" class=" border-b py-3">
-                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">ভিসানীতি নিয়ে বেশি আতঙ্কে
-                                প্রধানমন্ত্রী: মির্জা ফখরুল</h4>
-                        </NuxtLink>
-                        <!--/ Loop Item -->
-                        <!-- Loop Item -->
-                        <NuxtLink to="/" class=" border-b py-3">
-                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">ভিসানীতি নিয়ে বেশি আতঙ্কে
-                                প্রধানমন্ত্রী: মির্জা ফখরুল</h4>
-                        </NuxtLink>
-                        <!--/ Loop Item -->
-                        <!-- Loop Item -->
-                        <NuxtLink to="/" class=" border-b py-3">
-                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">ভিসানীতি নিয়ে বেশি আতঙ্কে
-                                প্রধানমন্ত্রী: মির্জা ফখরুল</h4>
-                        </NuxtLink>
-                        <!--/ Loop Item -->
-                        <!-- Loop Item -->
-                        <NuxtLink to="/" class=" border-b py-3">
-                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">ভিসানীতি নিয়ে বেশি আতঙ্কে
-                                প্রধানমন্ত্রী: মির্জা ফখরুল</h4>
-                        </NuxtLink>
-                        <!--/ Loop Item -->
+                       
                     </div>
 
                 </div>
@@ -179,6 +154,13 @@
 
 <script setup>
 const img = useImage()
+const siteurl =  siteUrlState()
+const politics = useState(() => [])
+const {data:pltic} = await useFetch("/api/home/politicscontent", {
+    method: 'GET'
+})
+politics.value = pltic
+
 </script>
 
 <style lang="scss" scoped></style>
