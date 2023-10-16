@@ -9,7 +9,7 @@
         </div>
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 md:col-span-7">
-                <NuxtLink to="/" class="flex flex-col group gap-2">
+                <NuxtLink :to="`${nationalHCon[0]?.category?.cat_slug}/${nationalHCon[0]?.content_id}`" class="flex flex-col group gap-2">
                     <div class="national-feature-image overflow-hidden">
                         <nuxt-img
                         :src="`${siteUrl.site_url}/media/content/images/${nationalHCon[0]?.img_bg_path}`"
@@ -28,7 +28,7 @@
                     <!-- Loop Item -->
                     <div v-for="nationalcntent in nationalHCon.slice(1, 5)" :key="nationalcntent.content_id" class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink to="/">
+                            <NuxtLink :to="`${nationalcntent?.category?.cat_slug}/${nationalcntent?.content_id}`">
                                 <nuxt-img
                                 :src="`${siteUrl.site_url}/media/content/images/${nationalcntent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -36,7 +36,7 @@
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink to="/">
+                            <NuxtLink :to="`${nationalcntent?.category?.cat_slug}/${nationalcntent?.content_id}`">
                                 <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{ nationalcntent?.content_heading }}</h4>
                             </NuxtLink>
                         </div>
