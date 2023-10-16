@@ -9,9 +9,9 @@
                             class="flex flex-col gap-3" >
                             <div class="overflow-hidden">
                                 <nuxt-img
-                                    :src="`${config.public.apiUrl}/media/content/images/${specialTopContents[0].img_bg_path}`"
+                                    :src="`${siteurl.site_url}/media/content/images/${specialTopContents[0].img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })"
+                                    :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })"
                                      />
                             </div>
                             <h2 class="text-[#ff0000] text-[32px] leading-tight">{{ specialTopContents[0]?.content_heading
@@ -28,9 +28,9 @@
                                 <div class="col-span-5">
                                     <div class="overflow-hidden">
                                         <nuxt-img :alt="topcontent?.content_heading"
-                                        :src="`${config.public.apiUrl}/media/content/images/${topcontent?.img_bg_path}`"
+                                        :src="`${siteurl.site_url}/media/content/images/${topcontent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                                            :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                            :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                                     </div>
                                 </div>
                                 <div class="col-span-7">
@@ -86,8 +86,9 @@
 
 <script setup>
 const img = useImage()
+const siteurl =  siteUrlState()
 // =============== Special Content Fetching ====================//
-const config = useRuntimeConfig();
+
 const specialTopContents = specialTopContentState()
 const { data: spTopCon } = await useFetch("/api/home/specialtopcontent", {
     method: 'GET'
