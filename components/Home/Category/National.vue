@@ -12,14 +12,14 @@
                 <NuxtLink to="/" class="flex flex-col group gap-2">
                     <div class="national-feature-image overflow-hidden">
                         <nuxt-img
-                        :src="`${config.public.apiUrl}/media/content/images/${nationalHCon[0]?.img_bg_path}`"
+                        :src="`${siteUrl.site_url}/media/content/images/${nationalHCon[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                            :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                            :placeholder="img(`${siteUrl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                     </div>
                     <div class="national-feature-description flex flex-col gap-1">
                         <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{ nationalHCon[0]?.content_heading }}</h3>
                        <ClientOnly> <p class="text-md">{{ nationalHCon[0]?.content_details?.substring(0,
-                                300)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p></ClientOnly>
+                                200)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p></ClientOnly>
                     </div>
                 </NuxtLink>
             </div>
@@ -30,7 +30,7 @@
                         <div class=" col-span-5 overflow-hidden">
                             <NuxtLink to="/">
                                 <nuxt-img
-                                :src="`${config.public.apiUrl}/media/content/images/${nationalcntent?.img_bg_path}`"
+                                :src="`${siteUrl.site_url}/media/content/images/${nationalcntent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                             </NuxtLink>
@@ -50,6 +50,7 @@
 </template>
 
 <script setup>
+const siteUrl = siteUrlState()
 const img = useImage()
     const nationalHCon = NationalHomeContentState()
     const {data:nationalhc} = await useFetch('/api/home/nationalhomecontent', {

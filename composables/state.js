@@ -17,3 +17,9 @@ export const specialTopContentState = () => {
 export const NationalHomeContentState = () => {
     return useState(() => [])
 }
+
+export const siteUrlState = () => {
+    return useState(() => ({
+        site_url: 'https://www.dhakaprokash24.com'
+    }))
+}
