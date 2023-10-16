@@ -8,7 +8,7 @@
                 </NuxtLink>
             </li>
             <li v-for="category in headCategory" :key="category.cat_id">
-                <NuxtLink :to="`/category/${category.cat_slug}`"
+                <NuxtLink :to="`/${category.cat_slug}`"
                     class="py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
                     {{ category.cat_name_bn }}</NuxtLink>
             </li>

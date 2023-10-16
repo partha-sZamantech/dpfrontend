@@ -3,12 +3,12 @@
         :class="`${desktopMenuStatus ? '-left-0' : '-left-72'} fixed inset-0 w-64 shadow-[#ddd_4px_3px_4px_2px] flex flex-col gap-2 duration-500 bg-white h-screen z-10`">
 
         <div class="desktopLogo px-5 py-5 flex justify-between items-center">
-            <nuxt-img src="https://www.dhakaprokash24.com/media/common/logo1672518180.png" class=" w-40" />
+            <NuxtLink to="/"><nuxt-img src="https://www.dhakaprokash24.com/media/common/logo1672518180.png" class=" w-40" /></NuxtLink>
             <Icon name="material-symbols:close" @click="desktopMenuCloseHandler" class="text-3xl cursor-pointer hover:bg-[#f7f7f7]" />
         </div>
         <div class="overflow-y-auto pb-16">
             <div class="desktopSideMenus  flex flex-col  px-7 py-5 text-[1rem]">
-                <NuxtLink v-for="(cat, cindex) in allCategory" :key="cindex" :to="`/category/${cat?.cat_slug}`" class="py-2 border-b">{{ cat?.cat_name_bn }}</NuxtLink>
+                <NuxtLink v-for="(cat, cindex) in allCategory" :key="cindex" :to="`/${cat?.cat_slug}`" class="py-2 border-b">{{ cat?.cat_name_bn }}</NuxtLink>
            
                 <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>
 
@@ -16,7 +16,8 @@
             <div class="social_media flex flex-col gap-2 px-7">
                 <p class="text-sm">অনুসরণ করুন</p>
                 <div class="flex gap-6">
-                    <NuxtLink target="_blank" to="https://www.facebook.com/DailyProthomAlo">
+        
+                    <NuxtLink target="_blank" to="https://www.facebook.com/dhakaprokash24">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <path fill="#1877F2"
@@ -27,7 +28,7 @@
                             </path>
                         </svg>
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://www.facebook.com/DailyProthomAlo">
+                    <NuxtLink target="_blank" to="https://twitter.com/dhakaprokash24">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <path fill="#1DA1F2"
@@ -38,7 +39,7 @@
                             </path>
                         </svg>
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://www.facebook.com/DailyProthomAlo">
+                    <NuxtLink target="_blank" to="https://www.instagram.com/dhakaprokash24/">
                         <svg height="28" width="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <radialGradient id="SVGID_1_" cx="-246.536" cy="264.8975" r="1"
@@ -63,7 +64,7 @@
                             </path>
                         </svg>
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://www.facebook.com/DailyProthomAlo">
+                    <NuxtLink target="_blank" to="https://www.youtube.com/DhakaProkash">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <path fill="#FF0000"

@@ -39,7 +39,8 @@
                 </div>
                 <div class="flex gap-4 flex-col">
                     <div class="flex gap-4 items-center place-self-end">
-                        <NuxtLink target="_blank" to="https://www.facebook.com/DailyProthomAlo">
+               
+                        <NuxtLink target="_blank" to="https://www.facebook.com/dhakaprokash24">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <path fill="#1877F2"
@@ -50,7 +51,7 @@
                             </path>
                         </svg>
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://www.facebook.com/DailyProthomAlo">
+                    <NuxtLink target="_blank" to="https://twitter.com/dhakaprokash24">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <path fill="#1DA1F2"
@@ -61,7 +62,7 @@
                             </path>
                         </svg>
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://www.facebook.com/DailyProthomAlo">
+                    <NuxtLink target="_blank" to="https://www.instagram.com/dhakaprokash24/">
                         <svg height="28" width="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <radialGradient id="SVGID_1_" cx="-246.536" cy="264.8975" r="1"
@@ -86,7 +87,7 @@
                             </path>
                         </svg>
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://www.facebook.com/DailyProthomAlo">
+                    <NuxtLink target="_blank" to="https://www.youtube.com/DhakaProkash">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <path fill="#FF0000"
@@ -97,6 +98,7 @@
                             </path>
                         </svg>
                     </NuxtLink>
+                    
                     </div>
                     <div class="today_date place-self-end flex gap-2">
                         <div class="px-3 py-1 border cursor-pointer">ইপেপার</div>
