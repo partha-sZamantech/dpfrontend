@@ -9,7 +9,7 @@
                             class="flex flex-col gap-3" >
                             <div class="overflow-hidden">
                                 <nuxt-img
-                                    :src="`http://127.0.0.1:8000/media/content/images/2023August/gm-dhakaprokash-20230831182253.jpg`"
+                                    :src="`${siteurl.site_url}/media/content/images/${specialTopContents[0].img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })"
                                      />
@@ -28,7 +28,7 @@
                                 <div class="col-span-5">
                                     <div class="overflow-hidden">
                                         <nuxt-img :alt="topcontent?.content_heading"
-                                        :src="`http://127.0.0.1:8000/media/content/images/2023August/gm-dhakaprokash-20230831182253.jpg`"
+                                        :src="`${siteurl.site_url}/media/content/images/${topcontent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                                     </div>
