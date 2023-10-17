@@ -61,7 +61,6 @@ const { data: nationalhc } = await useFetch('/api/home/nationalhomecontent', {
     method: 'GET'
 })
 nationalHCon.value = nationalhc
-const config = useRuntimeConfig();
 </script>
 
 <style scoped>.h-national-excpt:first-child {

@@ -4,12 +4,12 @@
         <!-- ========== Loop Item =========== -->
         <NuxtLink :to="`/${tpcontent?.category?.cat_slug}/${tpcontent?.content_id}`" class="flex flex-col gap-3 group" v-for="tpcontent in spTopContent.slice(5, 11)" :key="tpcontent.content_id">
             <div class=" overflow-hidden">
-                <nuxt-img :src="`http://127.0.0.1:8000/media/content/images/2023August/gm-dhakaprokash-20230831182253.jpg`"
+                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${tpcontent?.img_bg_path}`"
                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                    :placeholder="img(`http://127.0.0.1:8000/media/content/images/2023August/gm-dhakaprokash-20230831182253.jpg" />
+                    :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
             </div>
             <div>
-                <h4 class=" leading-tight text-[20px] mb-1 group-hover:text-[#ff0000]">{{ tpcontent?.content_heading }}</h4>
+                <h4 class="leading-tight text-[20px] mb-1 group-hover:text-[#ff0000]">{{ tpcontent?.content_heading }}</h4>
                 <p class="text-[16px]">{{ tpcontent?.content_details?.substring(0,100)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p>
             </div>
         </NuxtLink>
