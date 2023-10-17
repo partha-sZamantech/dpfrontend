@@ -1,7 +1,7 @@
 <template>
     <div>
         <Head>
-            <Title>{{dsiteSetting.title}}</Title>
+            <Title>{{dsiteSetting?.title}}</Title>
             <Meta content="500" http-equiv="refresh" />
             
         </Head>
