@@ -11,19 +11,19 @@
             <div class=" grid grid-cols-12 gap-4">
                 <div class="col-span-12 md:col-span-9">
                     <!-- Special Top Content Component -->
-                    <HomeSpecialBottomContent />
+                    <!-- <HomeSpecialBottomContent /> -->
                     <!--/ Special Top Content Component -->
                     <!-- National Category Component -->
-                    <HomeCategoryNational />
+                    <!-- <HomeCategoryNational /> -->
                     <!--/ National Category Component -->
                     <!-- National Category Component -->
-                    <HomeCategoryPoliticsEconomyInternational />
+                    <!-- <HomeCategoryPoliticsEconomyInternational /> -->
                     <!--/ National Category Component -->
                 </div>
 
                 <div class="col-span-12 md:col-span-3">
                     <!-- Home Right Sidebar -->
-                    <HomePostTabs  />
+                    <!-- <HomePostTabs  /> -->
                     <!--/ Home Right Sidebar -->
                 </div>
             </div>

@@ -65,7 +65,7 @@ const siteurl = siteUrlState()
 
 // ======== Latest Posts Content =============== //
 const latestposts = useState(() => [])
-const { data: latpost } = await useFetch("/api/home/latestposts", {
+const { data: latpost } = await useFetch(`${siteurl.site_url}/api/tablatestposts`, {
     method: 'GET'
 })
 latestposts.value = latpost
@@ -73,7 +73,7 @@ latestposts.value = latpost
 
 // ======== Popular Posts Content =============== //
 const popularposts = useState(() => [])
-const { data: hplpost } = await useFetch("/api/home/popularposts", {
+const { data: hplpost } = await useFetch(`${siteurl.site_url}/api/tabpopularposts`, {
     method: 'GET'
 })
 popularposts.value = hplpost

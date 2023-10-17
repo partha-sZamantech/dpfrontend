@@ -1,6 +1,6 @@
 <template>
     <div>
-        category page
+        contend id
     </div>
 </template>
 
