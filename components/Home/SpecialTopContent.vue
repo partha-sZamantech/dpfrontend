@@ -16,8 +16,11 @@
                             </div>
                             <h2 class="text-[#ff0000] text-[32px] leading-tight">{{ specialTopContents[0]?.content_heading
                             }}</h2>
-                            <p class="text-[18px]">{{ specialTopContents[0]?.content_details?.substring(0,
-                                165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p>
+                            <!-- <p class="text-[18px]">{{ specialTopContents[0]?.content_details?.substring(0,
+                                165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
+                            <div v-html="`${specialTopContents[0]?.content_details?.substring(0,
+                                165)} ...`"></div>
+                                
                         </NuxtLink>
                         <!-- Special First Content -->
                     </div>
@@ -98,6 +101,8 @@ const { data: spTopCon } = await useFetch(`/api/home/specialtopcontent`, {
 // })
 specialTopContents.value = spTopCon
 // =============== Special Content Fetching ====================//
+
+
 </script>
 
 <style scoped>.specialMiddleTop:first-child {
