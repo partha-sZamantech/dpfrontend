@@ -54,13 +54,13 @@
 const img = useImage()
 const siteurl = siteUrlState()
 
-// ======== Politics Content =============== //
+// ======== Entertainment Content =============== //
 const entertainments = useState(() => [])
 const { data: entertainc } = await useFetch("/api/home/entertainmentcontent", {
     method: 'GET'
 })
 entertainments.value = entertainc
-// ======== Politics Content =============== //
+// ======== Entertainment Content =============== //
 </script>
 
 <style scoped>
