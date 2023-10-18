@@ -20,8 +20,10 @@
                         <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{ nationalHCon[0]?.content_heading
                         }}</h3>
                         <ClientOnly>
-                            <p class="text-md">{{ nationalHCon[0]?.content_details?.substring(0,
-                                200)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p>
+                            <!-- <p class="text-md">{{ nationalHCon[0]?.content_details?.substring(0,
+                                200)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
+                                <div class="text-[16px] font-[400]" v-html="`${nationalHCon[0]?.content_details?.substring(0,
+                                200)} ...`"></div>
                         </ClientOnly>
                     </div>
                 </NuxtLink>
