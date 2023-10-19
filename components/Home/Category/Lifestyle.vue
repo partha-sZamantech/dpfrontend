@@ -6,7 +6,7 @@
                 <h2 class="text-[#3375af] text-[18px] font-semibold">লাইফস্টাইল</h2>
             </NuxtLink>
         </div>
-        <div class="home-saradesh-category-except-post flex flex-col">
+        <div class="home-crime-category-except-post flex flex-col">
             <!-- Loop Item -->
             <div class="grid grid-cols-12 gap-4 group h-sports-excpt border-b py-4" v-for="lifestyle in lifestyles"
                 :key="lifestyle.content_id">
