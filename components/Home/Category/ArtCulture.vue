@@ -7,7 +7,7 @@
             </NuxtLink>
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
-            <!-- International Feature Content -->
+            <!-- Art Culture Feature Content -->
             <NuxtLink :to="`${artscontents[0]?.category?.cat_slug}/${artscontents[0]?.content_id}`" class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${artscontents[0]?.img_bg_path}`"
@@ -16,7 +16,7 @@
                 </div>
                 <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ artscontents[0]?.content_heading }}</h3>
             </NuxtLink>
-            <!--/ International Feature Content -->
+            <!--/ Art Culture  Feature Content -->
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
