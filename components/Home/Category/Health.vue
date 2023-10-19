@@ -25,8 +25,6 @@
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ healthcontent?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->
-         
-      
             </div>
 
         </div>
@@ -37,13 +35,13 @@
 const img = useImage()
 const siteurl = siteUrlState()
 
-// ======== Arts Content =============== //
+// ======== Health Content =============== //
 const healthcontents = useState(() => [])
 const { data: chealth } = await useFetch("/api/home/healthcontent", {
     method: 'GET'
 })
 healthcontents.value = chealth
-// ======== Arts Content =============== //
+// ======== Health Content =============== //
 </script>
 
 <style lang="scss" scoped></style>
