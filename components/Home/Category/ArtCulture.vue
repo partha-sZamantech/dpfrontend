@@ -20,12 +20,11 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink to="/" class=" border-b py-3" v-for="artscontent in artscontents.slice(1,5)"
+                <NuxtLink :to="`${artscontent?.category?.cat_slug}/${artscontent?.content_id}`" class=" border-b py-3" v-for="artscontent in artscontents.slice(1,5)"
                 :key="artscontent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ artscontent?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->
-
       
             </div>
 
