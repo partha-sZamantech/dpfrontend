@@ -1,5 +1,5 @@
 <template>
-    <div class="home-childadolescent-category " v-if="childrenContents?.length > 0">
+    <div class="home-childadolescent-category" v-if="childrenContents?.length > 0">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
             <NuxtLink :to="`/${childrenContents[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
@@ -8,25 +8,26 @@
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Children Feature Content -->
-            <NuxtLink :to="`${childrenContents[0]?.category?.cat_slug}/${childrenContents[0]?.content_id}`" class="flex flex-col gap-2 group">
+            <NuxtLink :to="`${childrenContents[0]?.category?.cat_slug}/${childrenContents[0]?.content_id}`"
+                class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${childrenContents[0]?.img_bg_path}`"
-                            class="mx-auto w-full group-hover:scale-110 duration-300"
-                            :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                 </div>
-                <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ childrenContents[0]?.content_heading }}</h3>
+                <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ childrenContents[0]?.content_heading }}
+                </h3>
             </NuxtLink>
             <!--/ Children Feature Content -->
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`${childrenContent?.category?.cat_slug}/${childrenContent?.content_id}`" class=" border-b py-3" v-for="childrenContent in childrenContents.slice(1,5)"
-                :key="childrenContent.content_id">
+                <NuxtLink :to="`${childrenContent?.category?.cat_slug}/${childrenContent?.content_id}`"
+                    class=" border-b py-3" v-for="childrenContent in childrenContents.slice(1, 5)"
+                    :key="childrenContent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ childrenContent?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->
-         
-      
             </div>
 
         </div>
