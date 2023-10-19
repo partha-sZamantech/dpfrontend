@@ -19,8 +19,7 @@
                 </div>
                 <div class=" col-span-7">
                     <NuxtLink :to="`${lifestyle?.category?.cat_slug}/${lifestyle?.content_id}`">
-                        <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
-                                        lifestyle?.content_heading }}</h4>
+                        <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{ lifestyle?.content_heading }}</h4>
                     </NuxtLink>
                 </div>
             </div>
