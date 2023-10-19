@@ -20,7 +20,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`${career?.category?.cat_slug}/${career?.content_id}`" class=" border-b py-3" v-for="career in careers.slice(1,5)"
+                <NuxtLink :to="`${career?.category?.cat_slug}/${career?.content_id}`" class=" border-b py-3" v-for="career in careers.slice(1,8)"
                 :key="career.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ career?.content_heading }}</h4>
                 </NuxtLink>
