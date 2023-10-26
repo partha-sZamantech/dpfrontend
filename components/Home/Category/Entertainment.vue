@@ -8,7 +8,7 @@
         </div>
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 md:col-span-6">
-                <NuxtLink :to="`${entertainments[0]?.category?.cat_slug}/${entertainments[0]?.content_id}`" class="flex flex-col group gap-2">
+                <NuxtLink :to="`/category/${entertainments[0]?.category?.cat_slug}/${entertainments[0]?.content_id}`" class="flex flex-col group gap-2">
                     <div class="intertainment-feature-image overflow-hidden">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${entertainments[0]?.img_bg_path}`"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -28,14 +28,14 @@
                     <!-- Loop Item -->
                     <div class="flex flex-col gap-4 group h-sports-excpt" v-for="entertainment in entertainments.slice(1, 5)" :key="entertainment.content_id">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink :to="`${entertainment?.category?.cat_slug}/${entertainment?.content_id}`">
+                            <NuxtLink :to="`/category/${entertainment?.category?.cat_slug}/${entertainment?.content_id}`">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${entertainment?.img_bg_path}`"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
                                 :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="`${entertainment?.category?.cat_slug}/${entertainment?.content_id}`">
+                            <NuxtLink :to="`/category/${entertainment?.category?.cat_slug}/${entertainment?.content_id}`">
                                 <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
                                         entertainment?.content_heading }}</h4>
                             </NuxtLink>

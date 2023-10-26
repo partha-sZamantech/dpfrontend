@@ -1,5 +1,19 @@
 <template>
     <div class=" max-w-[1280px] mx-auto detail-page px-2 py-4">
+        <div class="breadcrump border-b pb-1 mb-5">
+            <ul class="flex gap-2 justify-start items-center">
+                <li>
+                    <NuxtLink to="/">
+                        <Icon class="text-xl" name="material-symbols:house-rounded" />
+                    </NuxtLink>
+                </li>
+                <li>
+                    <NuxtLink to="/">
+                        National
+                    </NuxtLink>
+                </li>
+            </ul>
+        </div>
         <div class=" grid grid-cols-12 gap-4">
             <div class=" col-span-9">
                 dfsd
@@ -23,7 +37,8 @@
                             </div>
                             <div class=" col-span-7">
                                 <NuxtLink :to="`/`">
-                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">এশিয়া কাপের হাই ভোল্টেজ ম্যাচে ভারত-পাকিস্তান মহারণ আজ</h4>
+                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">এশিয়া কাপের হাই ভোল্টেজ
+                                        ম্যাচে ভারত-পাকিস্তান মহারণ আজ</h4>
                                 </NuxtLink>
                             </div>
                         </div>
@@ -41,7 +56,8 @@
                             </div>
                             <div class=" col-span-7">
                                 <NuxtLink :to="`/`">
-                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">এশিয়া কাপের হাই ভোল্টেজ ম্যাচে ভারত-পাকিস্তান মহারণ আজ</h4>
+                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">এশিয়া কাপের হাই ভোল্টেজ
+                                        ম্যাচে ভারত-পাকিস্তান মহারণ আজ</h4>
                                 </NuxtLink>
                             </div>
                         </div>
@@ -59,7 +75,8 @@
                             </div>
                             <div class=" col-span-7">
                                 <NuxtLink :to="`/`">
-                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">এশিয়া কাপের হাই ভোল্টেজ ম্যাচে ভারত-পাকিস্তান মহারণ আজ</h4>
+                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">এশিয়া কাপের হাই ভোল্টেজ
+                                        ম্যাচে ভারত-পাকিস্তান মহারণ আজ</h4>
                                 </NuxtLink>
                             </div>
                         </div>
@@ -73,7 +90,7 @@
 </template>
 
 <script setup>
-    const img = useImage()
+const img = useImage()
 </script>
 
 <style lang="scss" scoped></style>

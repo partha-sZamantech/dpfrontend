@@ -11,14 +11,14 @@
             <div class="grid grid-cols-12 gap-4 group h-sports-excpt border-b py-4" v-for="crimecontent in crimecontents"
                 :key="crimecontent.content_id">
                 <div class=" col-span-5 overflow-hidden">
-                    <NuxtLink :to="`${crimecontent?.category?.cat_slug}/${crimecontent?.content_id}`">
+                    <NuxtLink :to="`/category/${crimecontent?.category?.cat_slug}/${crimecontent?.content_id}`">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${crimecontent?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                     </NuxtLink>
                 </div>
                 <div class=" col-span-7">
-                    <NuxtLink :to="`${crimecontent?.category?.cat_slug}/${crimecontent?.content_id}`">
+                    <NuxtLink :to="`/category/${crimecontent?.category?.cat_slug}/${crimecontent?.content_id}`">
                         <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
                                         crimecontent?.content_heading }}</h4>
                     </NuxtLink>

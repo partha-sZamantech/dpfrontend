@@ -8,7 +8,7 @@
         </div>
         <div class="home-campus-c-content flex flex-col gap-3">
             <!-- Campus Feature Content -->
-            <NuxtLink :to="`${campuses[0]?.category?.cat_slug}/${campuses[0]?.content_id}`" class="flex flex-col gap-2 group">
+            <NuxtLink :to="`/category/${campuses[0]?.category?.cat_slug}/${campuses[0]?.content_id}`" class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${campuses[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -20,7 +20,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`${campus?.category?.cat_slug}/${campus?.content_id}`" class=" border-b py-3" v-for="campus in campuses.slice(1,8)"
+                <NuxtLink :to="`/category/${campus?.category?.cat_slug}/${campus?.content_id}`" class=" border-b py-3" v-for="campus in campuses.slice(1,8)"
                 :key="campus.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ campus?.content_heading }}</h4>
                 </NuxtLink>

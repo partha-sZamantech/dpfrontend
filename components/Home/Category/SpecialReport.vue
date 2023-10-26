@@ -10,7 +10,7 @@
         <div class=" grid grid-cols-12 gap-4">
             <!-- Loop Item -->
             <div class=" col-span-12 md:col-span-3" v-for="hspecialreport in specialreports" :key="hspecialreport.content_id">
-                <NuxtLink :to="`${hspecialreport?.category?.cat_slug}/${hspecialreport?.content_id}`" class="flex flex-col gap-2 group">
+                <NuxtLink :to="`/category/${hspecialreport?.category?.cat_slug}/${hspecialreport?.content_id}`" class="flex flex-col gap-2 group">
                     <div class=" overflow-hidden">
                         <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${hspecialreport?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"

@@ -8,7 +8,7 @@
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Opinion Feature Content -->
-            <NuxtLink :to="`${opinionContents[0]?.category?.cat_slug}/${opinionContents[0]?.content_id}`" class="flex flex-col gap-2 group">
+            <NuxtLink :to="`/category/${opinionContents[0]?.category?.cat_slug}/${opinionContents[0]?.content_id}`" class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${opinionContents[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -20,7 +20,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`${opinionContent?.category?.cat_slug}/${opinionContent?.content_id}`" class=" border-b py-3" v-for="opinionContent in opinionContents.slice(1, 7)" :key="opinionContent.content_id">
+                <NuxtLink :to="`/category/${opinionContent?.category?.cat_slug}/${opinionContent?.content_id}`" class=" border-b py-3" v-for="opinionContent in opinionContents.slice(1, 7)" :key="opinionContent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ opinionContent?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->

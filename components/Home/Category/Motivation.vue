@@ -8,7 +8,7 @@
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Motivation Feature Content -->
-            <NuxtLink :to="`${motivationContents[0]?.category?.cat_slug}/${motivationContents[0]?.content_id}`"
+            <NuxtLink :to="`/category/${motivationContents[0]?.category?.cat_slug}/${motivationContents[0]?.content_id}`"
                 class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${motivationContents[0]?.img_bg_path}`"
@@ -22,7 +22,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`${motivationContent?.category?.cat_slug}/${motivationContent?.content_id}`"
+                <NuxtLink :to="`/category/${motivationContent?.category?.cat_slug}/${motivationContent?.content_id}`"
                     class=" border-b py-3" v-for="motivationContent in motivationContents.slice(1, 5)"
                     :key="motivationContent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ motivationContent?.content_heading }}</h4>

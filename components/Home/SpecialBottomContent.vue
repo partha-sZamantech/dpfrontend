@@ -2,7 +2,7 @@
     <div class="grid grid-cols-2 md:grid-cols-3 gap-5 py-4">
         <ClientOnly>
         <!-- ========== Loop Item =========== -->
-        <NuxtLink :to="`/${tpcontent?.category?.cat_slug}/${tpcontent?.content_id}`" class="flex flex-col gap-3 group" v-for="tpcontent in spTopContent.slice(5, 11)" :key="tpcontent.content_id">
+        <NuxtLink :to="`/category/${tpcontent?.category?.cat_slug}/${tpcontent?.content_id}`" class="flex flex-col gap-3 group" v-for="tpcontent in spTopContent.slice(5, 11)" :key="tpcontent.content_id">
             <div class=" overflow-hidden">
                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${tpcontent?.img_bg_path}`"
                     class="mx-auto w-full group-hover:scale-110 duration-300"

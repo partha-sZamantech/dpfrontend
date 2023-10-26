@@ -8,7 +8,7 @@
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Health Feature Content -->
-            <NuxtLink :to="`${healthcontents[0]?.category?.cat_slug}/${healthcontents[0]?.content_id}`" class="flex flex-col gap-2 group">
+            <NuxtLink :to="`/category/${healthcontents[0]?.category?.cat_slug}/${healthcontents[0]?.content_id}`" class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${healthcontents[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -20,7 +20,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`${healthcontent?.category?.cat_slug}/${healthcontent?.content_id}`" class=" border-b py-3" v-for="healthcontent in healthcontents.slice(1,5)"
+                <NuxtLink :to="`/category/${healthcontent?.category?.cat_slug}/${healthcontent?.content_id}`" class=" border-b py-3" v-for="healthcontent in healthcontents.slice(1,5)"
                 :key="healthcontent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ healthcontent?.content_heading }}</h4>
                 </NuxtLink>

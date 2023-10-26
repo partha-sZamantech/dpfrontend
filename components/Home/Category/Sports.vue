@@ -8,7 +8,7 @@
         </div>
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 md:col-span-7">
-                <NuxtLink :to="`${sportscontent[0]?.category?.cat_slug}/${sportscontent[0]?.content_id}`"
+                <NuxtLink :to="`/category/${sportscontent[0]?.category?.cat_slug}/${sportscontent[0]?.content_id}`"
                     class="flex flex-col group gap-2">
                     <div class="national-feature-image overflow-hidden">
                         <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${sportscontent[0]?.img_bg_path}`"
@@ -33,14 +33,14 @@
                     <div class="grid grid-cols-12 gap-4 group h-sports-excpt border-b py-4"
                         v-for="hmsport in sportscontent.slice(1, 5)" :key="hmsport.content_id">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink :to="`${hmsport?.category?.cat_slug}/${hmsport?.content_id}`">
+                            <NuxtLink :to="`/category/${hmsport?.category?.cat_slug}/${hmsport?.content_id}`">
                                 <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${hmsport?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteUrl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink to="/">
+                            <NuxtLink :to="`/category/${hmsport?.category?.cat_slug}/${hmsport?.content_id}`">
                                 <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
                                     hmsport?.content_heading }}</h4>
                             </NuxtLink>

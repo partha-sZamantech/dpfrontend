@@ -8,7 +8,7 @@
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Children Feature Content -->
-            <NuxtLink :to="`${childrenContents[0]?.category?.cat_slug}/${childrenContents[0]?.content_id}`"
+            <NuxtLink :to="`/category/${childrenContents[0]?.category?.cat_slug}/${childrenContents[0]?.content_id}`"
                 class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${childrenContents[0]?.img_bg_path}`"
@@ -22,7 +22,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`${childrenContent?.category?.cat_slug}/${childrenContent?.content_id}`"
+                <NuxtLink :to="`/category/${childrenContent?.category?.cat_slug}/${childrenContent?.content_id}`"
                     class=" border-b py-3" v-for="childrenContent in childrenContents.slice(1, 5)"
                     :key="childrenContent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ childrenContent?.content_heading }}</h4>
