@@ -15,7 +15,9 @@
         </div>
         <div class=" grid grid-cols-12 gap-4">
             <div class=" col-span-9">
-                dfsd
+                <div class="single-post">
+                    <h2 class="text-[40px] leading-[50px]">‘বাইডেন সাহেব ট্রাম্পের সঙ্গে যেদিন ডায়ালগ করবেন, সেদিন আমিও করব’</h2>
+                </div>
             </div>
             <div class=" col-span-3">
 
