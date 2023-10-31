@@ -1,18 +1,17 @@
 <template>
     <div class=" max-w-[1280px] mx-auto detail-page px-2 py-4">
         <div class="breadcrump border-b pb-1 mb-5">
-            <ul class="flex gap-2 justify-start items-center">
-                <li>
-                    <NuxtLink to="/">
-                        <Icon class="text-xl" name="material-symbols:house-rounded" />
-                    </NuxtLink>
-                </li>
-                <li>
-                    <NuxtLink to="/">
-                        National
-                    </NuxtLink>
-                </li>
-            </ul>
+            <div class="flex gap-1 justify-start items-center">
+
+                <NuxtLink to="/">
+                    <Icon class="text-xl" name="material-symbols:house-rounded" />
+                </NuxtLink>
+                <Icon name="ic:outline-keyboard-arrow-right" />
+                <NuxtLink to="/">
+                    National
+                </NuxtLink>
+
+            </div>
         </div>
         <div class=" grid grid-cols-12 gap-4">
             <div class=" col-span-9">
@@ -70,7 +69,7 @@
                                     <nuxt-img
                                         :src="`http://127.0.0.1:8000/media/content/images/2023September/indiavspakistan-dp-20230902133542.jpg`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                        :placeholder="img('https://www.dhaka prokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                 </NuxtLink>
                             </div>
                             <div class=" col-span-7">
