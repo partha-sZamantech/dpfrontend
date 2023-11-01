@@ -22,7 +22,8 @@
             <div class=" col-span-9">
                 <div class="single-post flex flex-col gap-3">
                     <div class="singlePost-heading flex flex-col gap-2">
-                        <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{ detailsContent?.content_sub_heading }}</h4>
+                        <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
+                            detailsContent?.content_sub_heading }}</h4>
                         <h2 class="md:text-[32px] md:leading-[50px]">{{ detailsContent.content_heading }}</h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af]"></div>
                     </div>
@@ -30,9 +31,10 @@
                     <div class="flex justify-between items-end border-b pb-3">
                         <div class="author-details flex flex-col gap-1" v-if="authors?.length > 0">
                             <p v-for="(author, auidx) in authors" :key="auidx">
-                                <NuxtLink to="/">{{author.author_name_bn}}</NuxtLink>
+                                <NuxtLink to="/">{{ author.author_name_bn }}</NuxtLink>
                             </p>
-                            <p>প্রকাশ: <ClientOnly><span>{{ postDate }}</span></ClientOnly></p>
+                            <p>প্রকাশ: <ClientOnly><span>{{ postDate }}</span></ClientOnly>
+                            </p>
                         </div>
                         <div class="social-item flex gap-2 items-start justify-center">
                             <NuxtLink to="/">
@@ -70,20 +72,31 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <div class="feature-image border-b">
-                        <nuxt-img
-                            :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
+                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
                             class="mx-auto w-full"
-                            :placeholder="img('https://www.dhaka prokash24.com/media/common/logo1672518180.png', { height: 300 })" />
-                        <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{ detailsContent?.img_bg_caption }}</p>
+                            :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                        <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
+                            detailsContent?.img_bg_caption }}</p>
                     </div>
                     <div class="singlePost-details mx-auto w-[620px]">
-                        <div class="postdetails text-[18px] text-gray-700" v-html="detailsContent?.content_details"></div>
+                        <div class="postdetails text-[18px] text-gray-700 pb-4" v-html="detailsContent?.content_details"></div>
+                        <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3">
+                            <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{ detailsContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
+                            <ul class="flex gap-3 items-center">
+                                <li class="text-[#337ab7] bg-[#d9edf7]"><NuxtLink class="px-4 py-2 block" to="/">মধ্যপ্রাচ্য</NuxtLink></li>
+                                <li>ফিলিস্তিন</li>
+                                <li>রক্তাক্ত</li>
+                                <li>হামাসইসরায়েল</li>
+                            
+                            </ul>
+                        </div>
                     </div>
                 </div>
+
             </div>
             <div class=" col-span-3">
 
-                <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-40' : 'top-14'} `">
+                <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-40' : 'top-14'} duration-200`">
                     <div class=" border-b-[3px] border-[#3375af] pb-1">
                         <h3 class="text-[#3375af] text-[18px] font-[600]">এই বিভাগের আরও</h3>
                     </div>
@@ -166,7 +179,7 @@ const content_id = useRoute().params.content_id
 // const postDetails = useState(() => [])
 const detailsContent = useState(() => [])
 const authors = useState(() => [])
-const {data:pdailts} = await useFetch('/api/detailpage/detail', {
+const { data: pdailts } = await useFetch('/api/detailpage/detail', {
     method: 'POST',
     body: {
         category_slug: category_slug,
@@ -178,15 +191,14 @@ authors.value = pdailts.value.authors
 // moment.locale('bn-bd')
 // const date = moment(detailsContent.value.created_at).format('Y', 'bn-bd')
 // ================ Get Bangla Date ============== //
-const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric'})
+const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
 const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
 // ================ Get Bangla Date ============== //
 // console.log(postDate.replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম'))
 </script>
 
 <style scoped>
-    p{
-        line-height: 1.7 !important;
-    }
-   
+p {
+    line-height: 1.7 !important;
+}
 </style>

@@ -6,7 +6,12 @@ body {
     font-family: 'SolaimanLipi', Arial, sans-serif;
     color:#333
 }
-
+figure.image figcaption {
+    border-bottom: 1px solid #ddd !important;
+    padding: 5px 0px !important;
+    text-align: center !important;
+    font-size: 16px !important;
+}
 /* ::-webkit-scrollbar {
     width: 10px;
 } */
