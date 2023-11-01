@@ -22,16 +22,17 @@
             <div class=" col-span-9">
                 <div class="single-post flex flex-col gap-3">
                     <div class="singlePost-heading flex flex-col gap-2">
-                        <h2 class="md:text-[32px] md:leading-[50px]">‘বাইডেন সাহেব ট্রাম্পের সঙ্গে যেদিন ডায়ালগ করবেন, সেদিন
-                            আমিও করব’</h2>
+                        <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{ detailsContent?.content_sub_heading }}</h4>
+                        <h2 class="md:text-[32px] md:leading-[50px]">{{ detailsContent.content_heading }}</h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af]"></div>
                     </div>
 
                     <div class="flex justify-between items-end border-b pb-3">
                         <div class="author-details flex flex-col gap-1" v-if="authors?.length > 0">
-                            <p v-for="(author, auidx) in authors" :key="auidx"><NuxtLink to="/">{{author.author_name_bn}}</NuxtLink></p>
-                            <p>প্রকাশ: <ClientOnly><span>{{ postDate }}</span></ClientOnly>
+                            <p v-for="(author, auidx) in authors" :key="auidx">
+                                <NuxtLink to="/">{{author.author_name_bn}}</NuxtLink>
                             </p>
+                            <p>প্রকাশ: <ClientOnly><span>{{ postDate }}</span></ClientOnly></p>
                         </div>
                         <div class="social-item flex gap-2 items-start justify-center">
                             <NuxtLink to="/">
@@ -70,23 +71,13 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     </div>
                     <div class="feature-image border-b">
                         <nuxt-img
-                            :src="`http://127.0.0.1:8000/media/content/images/2023September/indiavspakistan-dp-20230902133542.jpg`"
+                            :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
                             class="mx-auto w-full"
                             :placeholder="img('https://www.dhaka prokash24.com/media/common/logo1672518180.png', { height: 300 })" />
-                        <p class="feature-image-capture text-center py-2">প্রধানমন্ত্রীর সংবাদ সম্মেলনে উপস্থিত সাংবাদিকেরা।
-                            আজ মঙ্গলবার বিকেলে গণভবনেছবি: পিআইডি</p>
+                        <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{ detailsContent?.img_bg_caption }}</p>
                     </div>
                     <div class="singlePost-details mx-auto w-[620px]">
-                        <p>
-                            প্রধানমন্ত্রী বলেন, বিএনপি-জামায়াত জোট যে সন্ত্রাসী দল তা আবারও প্রমাণিত হয়েছে। কানাডার আদালত
-                            কিন্তু এ বিষয়টা কয়েকবার বলেছে। সন্ত্রাসী দল হিসেবে কানাডা তাদেরকে প্রত্যাখ্যান করেছে, তাই আশ্রয়
-                            নেওয়ার চেষ্টা করেও তারা সেখানে সুযোগ পায়নি। </p>
-                        <p>
-                            সন্ত্রাসী কর্মকাণ্ড করে পালিয়ে গিয়ে এখন বিএনপি অবরোধের ডাক দিয়েছে উল্লেখ করে তিনি বলেন, ২৮ তারিখ
-                            (২৮ অক্টোবর) বিএনপি যেসব ঘটনা ঘটালো (পুলিশকে কুপিয়ে মারা, সাংবাদিকদের ওপর হামলা) তাতে জনগনের
-                            ধিক্কার ছাড়া কিছুই জুটবে না। ইসরায়েল যেভাবে ফিলিস্তিনের হাসপাতালে হামলা করেছে তার সঙ্গে বিএনপির
-                            হামলার কোনো তফাত দেখছি না।
-                        </p>
+                        <div class="postdetails text-[18px] text-gray-700" v-html="detailsContent?.content_details"></div>
                     </div>
                 </div>
             </div>
@@ -163,7 +154,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 </template>
 
 <script setup>
-import moment from 'moment';
+// import moment from 'moment';
+const siteurl = siteUrlState()
 const img = useImage()
 const singlePageSticky = singlePageStickyState()
 const stickyScroll = computed(() =>
@@ -192,4 +184,9 @@ const postDate = getDate.format(new Date(detailsContent.value.created_at)).repla
 // console.log(postDate.replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম'))
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+    p{
+        line-height: 1.7 !important;
+    }
+   
+</style>
