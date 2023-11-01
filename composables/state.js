@@ -18,8 +18,14 @@ export const NationalHomeContentState = () => {
     return useState(() => [])
 }
 
+export const singlePageStickyState = () => {
+    return useState(() => false)
+}
+
 export const siteUrlState = () => {
     return useState(() => ({
         site_url: 'http://127.0.0.1:8000'
     }))
 }
+
+

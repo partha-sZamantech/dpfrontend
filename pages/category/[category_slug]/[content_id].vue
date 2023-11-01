@@ -86,7 +86,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             </div>
             <div class=" col-span-3" >
 
-                <div class="flex flex-col gap-2 sticky top-4">
+                <div :class="`flex flex-col gap-2 sticky ${stickyScroll  ? ' top-40' : 'top-14'} `">
                     <div class=" border-b-[3px] border-[#3375af] pb-1">
                         <h3 class="text-[#3375af] text-[18px] font-[600]">এই বিভাগের আরও</h3>
                     </div>
@@ -147,16 +147,22 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             </div>
                         </div>
                         <!--/ Loop Item -->
-
+                        
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
 </template>
 
 <script setup>
 const img = useImage()
+const singlePageSticky = singlePageStickyState()
+const stickyScroll = computed(() => 
+    singlePageSticky.value 
+)
+
 </script>
 
 <style lang="scss" scoped></style>

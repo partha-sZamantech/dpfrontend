@@ -62,6 +62,8 @@ const LogoHeaderScollUp = ref(false)
 const scrollDown = ref(false)
 const scrollPostion = ref(120)
 
+ const detailPageSticky = singlePageStickyState()
+
 
 onMounted(() => {
     // counter.value = document.getElementsByTagName('body')[0].scrollHeight 
@@ -93,6 +95,10 @@ onMounted(() => {
                 const classes = document.getElementsByClassName("logoHeader")[0]
                 classes.classList.remove('fixed', '-top-[117px]', 'left-0', 'right-0')
                 classes.classList.add('fixed', '-top-0', 'left-0', 'right-0')
+                
+
+                // Blog Detail page
+                detailPageSticky.value = true
 
             } else {
                 
@@ -103,9 +109,14 @@ onMounted(() => {
                 classes.classList.add('fixed', '-top-[117px]', 'left-0', 'right-0')
 
                 document.getElementsByClassName("main-container")[0].style.marginTop  = "160px";
+
+                // Blog Detail page
+                detailPageSticky.value = false
+                
             }
             prevScrollPosition.value = currentScrollPosition.value
-        
+           
+          
 
         })
         // ============= Scolling =============== //
