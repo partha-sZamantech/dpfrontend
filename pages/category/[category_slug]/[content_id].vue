@@ -7,8 +7,13 @@
                     <Icon class="text-xl" name="material-symbols:house-rounded" />
                 </NuxtLink>
                 <Icon name="ic:outline-keyboard-arrow-right" />
-                <NuxtLink to="/">
-                    National
+                <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`">
+                    {{ detailsContent?.category?.cat_name_bn }}
+                </NuxtLink>
+
+                <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" />
+                <NuxtLink v-if="detailsContent?.subcategory" :to="`/`">
+                    {{ detailsContent?.subcategory?.subcat_name_bn }}
                 </NuxtLink>
 
             </div>
@@ -164,7 +169,8 @@ const stickyScroll = computed(() =>
 )
 const category_slug = useRoute().params.category_slug
 const content_id = useRoute().params.content_id
-const postDetails = useState(() => [])
+// const postDetails = useState(() => [])
+const detailsContent = useState(() => [])
 const {data:pdailts} = await useFetch('/api/detailpage/detail', {
     method: 'POST',
     body: {
@@ -172,8 +178,8 @@ const {data:pdailts} = await useFetch('/api/detailpage/detail', {
         content_id: content_id
     }
 })
-postDetails.value = pdailts
-console.log(postDetails.value)
+detailsContent.value = pdailts.value.detailsContent
+console.log(detailsContent.value)
 </script>
 
 <style lang="scss" scoped></style>
