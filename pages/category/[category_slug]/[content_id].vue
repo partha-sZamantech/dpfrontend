@@ -28,9 +28,10 @@
                     </div>
 
                     <div class="flex justify-between items-end border-b pb-3">
-                        <div class="author-details flex flex-col gap-1">
-                            <p>মুন্সীগঞ্জ প্রতিনিধি</p>
-                            <p>প্রকাশ: <span>৩১ অক্টোবর ২০২৩, ০৫:২৮ পিএম</span></p>
+                        <div class="author-details flex flex-col gap-1" v-if="authors?.length > 0">
+                            <p v-for="(author, auidx) in authors" :key="auidx"><NuxtLink to="/">{{author.author_name_bn}}</NuxtLink></p>
+                            <p>প্রকাশ: <ClientOnly><span>{{ postDate }}</span></ClientOnly>
+                            </p>
                         </div>
                         <div class="social-item flex gap-2 items-start justify-center">
                             <NuxtLink to="/">
@@ -162,6 +163,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 </template>
 
 <script setup>
+import moment from 'moment';
 const img = useImage()
 const singlePageSticky = singlePageStickyState()
 const stickyScroll = computed(() =>
@@ -171,6 +173,7 @@ const category_slug = useRoute().params.category_slug
 const content_id = useRoute().params.content_id
 // const postDetails = useState(() => [])
 const detailsContent = useState(() => [])
+const authors = useState(() => [])
 const {data:pdailts} = await useFetch('/api/detailpage/detail', {
     method: 'POST',
     body: {
@@ -179,7 +182,14 @@ const {data:pdailts} = await useFetch('/api/detailpage/detail', {
     }
 })
 detailsContent.value = pdailts.value.detailsContent
-console.log(detailsContent.value)
+authors.value = pdailts.value.authors
+// moment.locale('bn-bd')
+// const date = moment(detailsContent.value.created_at).format('Y', 'bn-bd')
+// ================ Get Bangla Date ============== //
+const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric'})
+const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+// ================ Get Bangla Date ============== //
+// console.log(postDate.replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম'))
 </script>
 
 <style lang="scss" scoped></style>
