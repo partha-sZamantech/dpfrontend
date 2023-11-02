@@ -99,14 +99,14 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             </div>
             <div class=" col-span-3">
 
-                <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-40' : 'top-14'} duration-200`">
+                <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-40' : 'top-14'} duration-200`" v-if="firstMoreContents?.length > 0">
                     <div class=" border-b-[3px] border-[#3375af] pb-1">
                         <h3 class="text-[#3375af] text-[18px] font-[600]">{{ detailsContent?.category?.cat_name_bn }} নিয়ে
                             আরও পড়ুন</h3>
                     </div>
                     <div class="detail-page-category-content-exept flex flex-col">
                         <!-- Loop Item -->
-                        <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4">
+                        <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4" v-for="fmoreContent in firstMoreContents" :key="fmoreContent.content_id">
                             <div class=" col-span-5 overflow-hidden">
                                 <NuxtLink to="/">
                                     <nuxt-img
@@ -117,51 +117,11 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             </div>
                             <div class=" col-span-7">
                                 <NuxtLink :to="`/`">
-                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">এশিয়া কাপের হাই ভোল্টেজ
-                                        ম্যাচে ভারত-পাকিস্তান মহারণ আজ</h4>
+                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{ fmoreContent.content_heading }}</h4>
                                 </NuxtLink>
                             </div>
                         </div>
                         <!--/ Loop Item -->
-
-                        <!-- Loop Item -->
-                        <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4">
-                            <div class=" col-span-5 overflow-hidden">
-                                <NuxtLink to="/">
-                                    <nuxt-img
-                                        :src="`http://127.0.0.1:8000/media/content/images/2023September/indiavspakistan-dp-20230902133542.jpg`"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
-                                </NuxtLink>
-                            </div>
-                            <div class=" col-span-7">
-                                <NuxtLink :to="`/`">
-                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">এশিয়া কাপের হাই ভোল্টেজ
-                                        ম্যাচে ভারত-পাকিস্তান মহারণ আজ</h4>
-                                </NuxtLink>
-                            </div>
-                        </div>
-                        <!--/ Loop Item -->
-
-                        <!-- Loop Item -->
-                        <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4">
-                            <div class=" col-span-5 overflow-hidden">
-                                <NuxtLink to="/">
-                                    <nuxt-img
-                                        :src="`http://127.0.0.1:8000/media/content/images/2023September/indiavspakistan-dp-20230902133542.jpg`"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img('https://www.dhaka prokash24.com/media/common/logo1672518180.png', { height: 300 })" />
-                                </NuxtLink>
-                            </div>
-                            <div class=" col-span-7">
-                                <NuxtLink :to="`/`">
-                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">এশিয়া কাপের হাই ভোল্টেজ
-                                        ম্যাচে ভারত-পাকিস্তান মহারণ আজ</h4>
-                                </NuxtLink>
-                            </div>
-                        </div>
-                        <!--/ Loop Item -->
-
                     </div>
                 </div>
             </div>
@@ -240,6 +200,7 @@ const category_slug = useRoute().params.category_slug
 const content_id = useRoute().params.content_id
 // const postDetails = useState(() => [])
 const detailsContent = useState(() => [])
+const firstMoreContents = useState(() => [])
 const authors = useState(() => [])
 const { data: pdailts } = await useFetch('/api/detailpage/detail', {
     method: 'POST',
@@ -249,6 +210,7 @@ const { data: pdailts } = await useFetch('/api/detailpage/detail', {
     }
 })
 detailsContent.value = pdailts.value.detailsContent
+firstMoreContents.value = pdailts.value.moreContents
 authors.value = pdailts.value.authors
 // moment.locale('bn-bd')
 // const date = moment(detailsContent.value.created_at).format('Y', 'bn-bd')
@@ -266,6 +228,8 @@ firstsplittag.forEach(tagval => {
 })
 firstContentTags.value = [...new Map(firstContentTags.value.map(fvl => [fvl, fvl])).values()]
 // First Details Tags
+
+console.log(pdailts.value.moreContents)
 
 const printArea = () => {
     var prtContent = document.getElementsByClassName("d-print")[0];
