@@ -89,7 +89,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
                                 <li v-for="ftag in firstContentTags"
                                     class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1]">
-                                    <NuxtLink class="px-4 py-2 block" to="/">{{ ftag }}</NuxtLink>
+                                    <NuxtLink class="px-4 py-2 block" :to="`/topic/${ftag}`">{{ ftag }}</NuxtLink>
                                 </li>
                             </ul>
                         </div>
