@@ -18,7 +18,7 @@
 
             </div>
         </div>
-        <div class=" grid grid-cols-12 gap-4 relative">
+        <div class=" grid grid-cols-12 gap-4 relative d-print">
             <div class=" col-span-9">
                 <div class="single-post flex flex-col gap-3">
                     <div class="singlePost-heading flex flex-col gap-2">
@@ -57,7 +57,7 @@
 l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
                                 </svg>
                             </NuxtLink>
-                            <NuxtLink to="/">
+                            <div class=" cursor-pointer" @click="printArea">
                                 <svg class=" hover:scale-125 duration-200" height="28" width="28"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
                                     xml:space="preserve">
@@ -68,7 +68,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                         d="M12,20h8v4h-8V20z M21.6,22.4v-4H10.4v4H8.8c-0.212,0-0.416-0.084-0.566-0.234C8.084,22.016,8,21.812,8,21.6 v-8c0-0.212,0.084-0.416,0.234-0.566C8.384,12.884,8.588,12.8,8.8,12.8h14.4c0.212,0,0.416,0.084,0.566,0.234 C23.916,13.184,24,13.388,24,13.6v8c0,0.212-0.084,0.416-0.234,0.566c-0.15,0.15-0.353,0.234-0.566,0.234H21.6z M10.4,14.4V16h2.4 v-1.6H10.4z M12,8h8c0.212,0,0.416,0.084,0.566,0.234C20.716,8.384,20.8,8.588,20.8,8.8v2.4h-9.6V8.8 c0-0.212,0.084-0.416,0.234-0.566C11.584,8.084,11.788,8,12,8z">
                                     </path>
                                 </svg>
-                            </NuxtLink>
+                            </div>
                         </div>
                     </div>
                     <div class="feature-image border-b">
@@ -79,26 +79,30 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             detailsContent?.img_bg_caption }}</p>
                     </div>
                     <div class="singlePost-details mx-auto w-[620px]">
-                        <div class="postdetails text-[18px] text-gray-700 pb-4" v-html="detailsContent?.content_details"></div>
+                        <div class="postdetails text-[18px] text-gray-700 pb-4" v-html="detailsContent?.content_details">
+                        </div>
                         <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3">
-                            <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{ detailsContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
-                            <ul class="flex gap-3 items-center">
-                                <li class="text-[#337ab7] bg-[#d9edf7]"><NuxtLink class="px-4 py-2 block" to="/">মধ্যপ্রাচ্য</NuxtLink></li>
-                                <li>ফিলিস্তিন</li>
-                                <li>রক্তাক্ত</li>
-                                <li>হামাসইসরায়েল</li>
-                            
+                            <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
+                                    class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
+                                        detailsContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
+                            <ul class="flex flex-wrap gap-3 items-center" v-if="firstContentTags?.length > 0">
+
+                                <li v-for="ftag in firstContentTags"
+                                    class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1]">
+                                    <NuxtLink class="px-4 py-2 block" to="/">{{ ftag }}</NuxtLink>
+                                </li>
                             </ul>
                         </div>
-                    </div>
-                </div>
+                    </div> <!-- singlePost-details -->
+                </div> <!-- /single-post -->
 
             </div>
             <div class=" col-span-3">
 
                 <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-40' : 'top-14'} duration-200`">
                     <div class=" border-b-[3px] border-[#3375af] pb-1">
-                        <h3 class="text-[#3375af] text-[18px] font-[600]">এই বিভাগের আরও</h3>
+                        <h3 class="text-[#3375af] text-[18px] font-[600]">{{ detailsContent?.category?.cat_name_bn }} নিয়ে
+                            আরও পড়ুন</h3>
                     </div>
                     <div class="detail-page-category-content-exept flex flex-col">
                         <!-- Loop Item -->
@@ -161,6 +165,64 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     </div>
                 </div>
             </div>
+            <!-- Read more first content -->
+            <div class="col-span-12">
+                <div class="read-more">
+                    <div class="category-header border-b-4 border-b-[#3375af] my-3">
+                        <div class="flex gap-3 items-center">
+                            <span class="w-3 h-3 bg-[#3375af]"></span>
+                            <h2 class="text-[#3375af] text-[18px] font-semibold">আরও পড়ুন</h2>
+                        </div>
+                    </div>
+                    <div class=" grid grid-cols-4 gap-4">
+                        <!-- Loop Item -->
+                        <NuxtLink to="/" class="flex flex-col gap-2 group">
+                            <div class="feature_image_readmore overflow-hidden">
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
+                                    class="mx-auto w-full duration-300 group-hover:scale-110"
+                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                            </div>
+                            <h5 class="text-[18px] group-hover:text-[#ff0000]">মৌলভীবাজারে সড়ক দুর্ঘটনায় ছাত্রলীগ নেতার
+                                মৃত্যু</h5>
+                        </NuxtLink>
+                        <!-- Loop Item -->
+                        <!-- Loop Item -->
+                        <NuxtLink to="/" class="flex flex-col gap-2 group">
+                            <div class="feature_image_readmore overflow-hidden">
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
+                                    class="mx-auto w-full duration-300 group-hover:scale-110"
+                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                            </div>
+                            <h5 class="text-[18px] group-hover:text-[#ff0000]">মৌলভীবাজারে সড়ক দুর্ঘটনায় ছাত্রলীগ নেতার
+                                মৃত্যু</h5>
+                        </NuxtLink>
+                        <!-- Loop Item -->
+                        <!-- Loop Item -->
+                        <NuxtLink to="/" class="flex flex-col gap-2 group">
+                            <div class="feature_image_readmore overflow-hidden">
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
+                                    class="mx-auto w-full duration-300 group-hover:scale-110"
+                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                            </div>
+                            <h5 class="text-[18px] group-hover:text-[#ff0000]">মৌলভীবাজারে সড়ক দুর্ঘটনায় ছাত্রলীগ নেতার
+                                মৃত্যু</h5>
+                        </NuxtLink>
+                        <!-- Loop Item -->
+                        <!-- Loop Item -->
+                        <NuxtLink to="/" class="flex flex-col gap-2 group">
+                            <div class="feature_image_readmore overflow-hidden">
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
+                                    class="mx-auto w-full duration-300 group-hover:scale-110"
+                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                            </div>
+                            <h5 class="text-[18px] group-hover:text-[#ff0000]">মৌলভীবাজারে সড়ক দুর্ঘটনায় ছাত্রলীগ নেতার
+                                মৃত্যু</h5>
+                        </NuxtLink>
+                        <!-- Loop Item -->
+                    </div>
+                </div>
+            </div>
+            <!-- Read more first content -->
         </div>
 
     </div>
@@ -195,6 +257,25 @@ const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long
 const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
 // ================ Get Bangla Date ============== //
 // console.log(postDate.replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম'))
+
+// First Details Tags
+const firstContentTags = useState(() => [])
+const firstsplittag = detailsContent?.value?.tags.split(',')
+firstsplittag.forEach(tagval => {
+    firstContentTags.value.push(tagval)
+})
+firstContentTags.value = [...new Map(firstContentTags.value.map(fvl => [fvl, fvl])).values()]
+// First Details Tags
+
+const printArea = () => {
+    var prtContent = document.getElementsByClassName("d-print")[0];
+    var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+    WinPrint.document.write(prtContent.innerHTML);
+    WinPrint.document.close();
+    WinPrint.focus();
+    WinPrint.print();
+    WinPrint.close();
+}
 </script>
 
 <style scoped>

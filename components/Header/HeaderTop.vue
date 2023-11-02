@@ -116,7 +116,7 @@
 
 const { scrollDown, counter } = defineProps(['scrollDown', 'LogoHeaderScollUp'])
 // ================ Get Bangla Date ============== //
-const getDate = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric'})
+const getDate = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numeric', month: 'long', day: "numeric"})
 const todayDate = getDate.format(new Date())
 // ================ Get Bangla Date ============== //
 const img = useImage()
