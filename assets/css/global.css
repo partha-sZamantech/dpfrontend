@@ -12,6 +12,14 @@ figure.image figcaption {
     text-align: center !important;
     font-size: 16px !important;
 }
+.singlePost-details .postdetails p a {
+    /*display: block;*/
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
 /* ::-webkit-scrollbar {
     width: 10px;
 } */
