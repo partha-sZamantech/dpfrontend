@@ -81,6 +81,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="singlePost-details mx-auto w-[620px]">
                         <div class="postdetails text-[18px] text-gray-700 pb-4" v-html="detailsContent?.content_details">
                         </div>
+                        <!-- Tag Area -->
                         <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3">
                             <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
                                     class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
@@ -93,6 +94,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 </li>
                             </ul>
                         </div>
+                        <!-- Tag Area -->
                     </div> <!-- singlePost-details -->
                 </div> <!-- /single-post -->
 
@@ -110,15 +112,14 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
                             v-for="fmoreContent in firstMoreContents" :key="fmoreContent.content_id">
                             <div class=" col-span-5 overflow-hidden">
-                                <NuxtLink to="/">
-                                    <nuxt-img
-                                        :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
+                                <NuxtLink :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
+                                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
                                         :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                                 </NuxtLink>
                             </div>
                             <div class=" col-span-7">
-                                <NuxtLink :to="`/`">
+                                <NuxtLink :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
                                     <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
                                         fmoreContent.content_heading }}</h4>
                                 </NuxtLink>
@@ -139,18 +140,19 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     </div>
                     <div class=" grid grid-cols-4 gap-4">
                         <!-- Loop Item -->
-                        <NuxtLink to="/" class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents" :key="fRelatedContent.content_id">
+                        <NuxtLink :to="`/category/${fRelatedContent?.category?.cat_slug}/${fRelatedContent?.content_id}`"
+                            class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents"
+                            :key="fRelatedContent.content_id">
                             <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img
-                                        :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                             </div>
                             <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ fRelatedContent?.content_heading }}</h5>
                         </NuxtLink>
                         <!-- Loop Item -->
-                 
-           
+
+
                     </div>
                 </div>
             </div>
@@ -198,23 +200,26 @@ const postDate = getDate.format(new Date(detailsContent.value.created_at)).repla
 
 // ==================== First Details Tags ======================= //
 const firstContentTags = useState(() => [])
-const firstsplittag = detailsContent?.value?.tags.split(',')
-firstsplittag.forEach(tagval => {
-    firstContentTags.value.push(tagval)
-})
-firstContentTags.value = [...new Map(firstContentTags.value.map(fvl => [fvl, fvl])).values()]
+const firstsplittag = detailsContent?.value?.tags?.split(',')
+if (firstsplittag) {
+    firstsplittag.forEach(tagval => {
+        firstContentTags.value.push(tagval)
+    })
+    firstContentTags.value = [...new Map(firstContentTags.value.map(fvl => [fvl, fvl])).values()]
+}
+
 // ==================== First Details Tags ======================= //
 
 // ============== First Related Content ================//
-    const fRelatedContents = useState(() => [])
-    const {data:frcontent} = await useFetch('/api/detailpage/firstrelatedcontent', {
-        method: "POST",
-        body: {
-            content_id: JSON.stringify(content_id)
-        }
-    })
-    fRelatedContents.value = frcontent
-    console.log(fRelatedContents.value)
+const fRelatedContents = useState(() => [])
+const { data: frcontent } = await useFetch('/api/detailpage/firstrelatedcontent', {
+    method: "POST",
+    body: {
+        content_id: content_id
+    }
+})
+fRelatedContents.value = frcontent
+console.log(fRelatedContents.value)
 // ============== First Related Content ================//
 
 // =============== Print Script ======================= //
@@ -232,6 +237,8 @@ const printArea = () => {
 
 </script>
 
-<style scoped>p {
+<style scoped>
+p {
     line-height: 1.7 !important;
-}</style>
+}
+</style>
