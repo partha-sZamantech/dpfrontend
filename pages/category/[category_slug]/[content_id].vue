@@ -232,7 +232,6 @@ firstsplittag.forEach(tagval => {
 firstContentTags.value = [...new Map(firstContentTags.value.map(fvl => [fvl, fvl])).values()]
 // First Details Tags
 
-console.log(pdailts.value.moreContents)
 
 const printArea = () => {
     var prtContent = document.getElementsByClassName("d-print")[0];
