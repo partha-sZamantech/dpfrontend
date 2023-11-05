@@ -129,7 +129,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 </div>
             </div>
             <!-- Read more first content -->
-            <div class="col-span-12">
+            <div class="col-span-12" v-if="fRelatedContents?.length > 0">
                 <div class="read-more">
                     <div class="category-header border-b-4 border-b-[#3375af] my-3">
                         <div class="flex gap-3 items-center">
@@ -139,49 +139,18 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     </div>
                     <div class=" grid grid-cols-4 gap-4">
                         <!-- Loop Item -->
-                        <NuxtLink to="/" class="flex flex-col gap-2 group">
+                        <NuxtLink to="/" class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents" :key="fRelatedContent.content_id">
                             <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
-                                    class="mx-auto w-full duration-300 group-hover:scale-110"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                <nuxt-img
+                                        :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
+                                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                                        :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                             </div>
-                            <h5 class="text-[18px] group-hover:text-[#ff0000]">মৌলভীবাজারে সড়ক দুর্ঘটনায় ছাত্রলীগ নেতার
-                                মৃত্যু</h5>
+                            <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ fRelatedContent?.content_heading }}</h5>
                         </NuxtLink>
                         <!-- Loop Item -->
-                        <!-- Loop Item -->
-                        <NuxtLink to="/" class="flex flex-col gap-2 group">
-                            <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
-                                    class="mx-auto w-full duration-300 group-hover:scale-110"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
-                            </div>
-                            <h5 class="text-[18px] group-hover:text-[#ff0000]">মৌলভীবাজারে সড়ক দুর্ঘটনায় ছাত্রলীগ নেতার
-                                মৃত্যু</h5>
-                        </NuxtLink>
-                        <!-- Loop Item -->
-                        <!-- Loop Item -->
-                        <NuxtLink to="/" class="flex flex-col gap-2 group">
-                            <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
-                                    class="mx-auto w-full duration-300 group-hover:scale-110"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
-                            </div>
-                            <h5 class="text-[18px] group-hover:text-[#ff0000]">মৌলভীবাজারে সড়ক দুর্ঘটনায় ছাত্রলীগ নেতার
-                                মৃত্যু</h5>
-                        </NuxtLink>
-                        <!-- Loop Item -->
-                        <!-- Loop Item -->
-                        <NuxtLink to="/" class="flex flex-col gap-2 group">
-                            <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
-                                    class="mx-auto w-full duration-300 group-hover:scale-110"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
-                            </div>
-                            <h5 class="text-[18px] group-hover:text-[#ff0000]">মৌলভীবাজারে সড়ক দুর্ঘটনায় ছাত্রলীগ নেতার
-                                মৃত্যু</h5>
-                        </NuxtLink>
-                        <!-- Loop Item -->
+                 
+           
                     </div>
                 </div>
             </div>
@@ -199,8 +168,12 @@ const singlePageSticky = singlePageStickyState()
 const stickyScroll = computed(() =>
     singlePageSticky.value
 )
+
+// Category Slug & Content id pages/category/[category_slug]/[content_id].vue
 const category_slug = useRoute().params.category_slug
 const content_id = useRoute().params.content_id
+// Category Slug & Content id pages/category/[category_slug]/[content_id].vue
+
 // const postDetails = useState(() => [])
 const detailsContent = useState(() => [])
 const firstMoreContents = useState(() => [])
@@ -223,16 +196,28 @@ const postDate = getDate.format(new Date(detailsContent.value.created_at)).repla
 // ================ Get Bangla Date ============== //
 // console.log(postDate.replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম'))
 
-// First Details Tags
+// ==================== First Details Tags ======================= //
 const firstContentTags = useState(() => [])
 const firstsplittag = detailsContent?.value?.tags.split(',')
 firstsplittag.forEach(tagval => {
     firstContentTags.value.push(tagval)
 })
 firstContentTags.value = [...new Map(firstContentTags.value.map(fvl => [fvl, fvl])).values()]
-// First Details Tags
+// ==================== First Details Tags ======================= //
 
+// ============== First Related Content ================//
+    const fRelatedContents = useState(() => [])
+    const {data:frcontent} = await useFetch('/api/detailpage/firstrelatedcontent', {
+        method: "POST",
+        body: {
+            content_id: JSON.stringify(content_id)
+        }
+    })
+    fRelatedContents.value = frcontent
+    console.log(fRelatedContents.value)
+// ============== First Related Content ================//
 
+// =============== Print Script ======================= //
 const printArea = () => {
     var prtContent = document.getElementsByClassName("d-print")[0];
     var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
@@ -242,6 +227,9 @@ const printArea = () => {
     WinPrint.print();
     WinPrint.close();
 }
+// =============== Print Script ===================== //
+
+
 </script>
 
 <style scoped>p {
