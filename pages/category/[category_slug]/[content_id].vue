@@ -165,20 +165,19 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents" :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-4 relative d-print">
             <div class=" col-span-9">
                 <div class="single-post flex flex-col gap-3">
+                    
                     <div class="singlePost-heading flex flex-col gap-2">
-                        <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
-                            moreDetailContent?.content_sub_heading }}</h4>
+                        <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{ moreDetailContent?.content_sub_heading }}</h4>
                         <h2 class="md:text-[32px] md:leading-[50px]">{{ moreDetailContent.content_heading }}</h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af]"></div>
                     </div>
 
                     <div class="flex justify-between items-end border-b pb-3">
-                        <div class="author-details flex flex-col gap-1" v-if="authors?.length > 0">
-                            <p v-for="(author, auidx) in authors" :key="auidx">
-                                <NuxtLink to="/">{{ author.author_name_bn }}</NuxtLink>
+                        <div class="author-details flex flex-col gap-1" v-if="moreDetailContent?.author">
+                            <p>
+                                <NuxtLink to="/">{{ moreDetailContent?.author?.author_name_bn }}</NuxtLink>
                             </p>
-                            <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span></ClientOnly>
-                            </p>
+                            <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span></ClientOnly></p>
                         </div>
                         <div class="social-item flex gap-2 items-start justify-center">
                             <NuxtLink to="/">
