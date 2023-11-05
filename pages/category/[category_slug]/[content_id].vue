@@ -230,11 +230,12 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
                                     class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
                                         moreDetailContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
-                            <ul class="flex flex-wrap gap-3 items-center" v-if="firstContentTags?.length > 0">
 
-                                <li v-for="ftag in firstContentTags"
+                            <ul class="flex flex-wrap gap-3 items-center" v-if="moreDetailContent?.tags">
+
+                                <li v-for="mtag in moreDetailContent?.tags.split(',')"
                                     class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1]">
-                                    <NuxtLink class="px-4 py-2 block" :to="`/topic/${ftag}`">{{ ftag }}</NuxtLink>
+                                    <NuxtLink class="px-4 py-2 block" :to="`/topic/${mtag}`">{{ mtag }}</NuxtLink>
                                 </li>
                             </ul>
                         </div>
@@ -367,36 +368,8 @@ for(let i = 0; i < moreDetailsContents.value.length; i++){
 
 }
 moreDetailCatWisePost.value = [...new Set(moreDetailCatWisePost.value)]
-// moreDetailCatWisePost.value = moreDetailCatWisePost.value.filter(moreDetailCatWisePost.value)
-
-// moreDetailsContents.value.forEach( async relctpost => {
-//     const {data:mdcwp} = await useFetch("/api/detailpage/catwiseposts" , {
-//         method: 'POST',
-//         body: {
-//             cat_id: relctpost.cat_id,
-//             content_id: relctpost.content_id
-//         }
-//     })
-//     const ok = mdcwp.value
-//     console.log(mdcwp.value)
-//     moreDetailCatWisePost.value.push(ok)
-//     moreDetailCatWisePost.value.push(mdcwp.value)
-// })
 
 
-console.log(moreDetailCatWisePost.value)
-// moreDetailCatWisePost.value = [...new Set(moreDetailCatWisePost.value)]
-// console.log(moreDetailCatWisePost.value)
-// const moreDetailPostCatWisePost = async (cat_id, content_id) => {
-//     await useFetch("/api/detailpage/catwiseposts" , {
-//         method: 'POST',
-//         body: {
-//             cat_id: cat_id,
-//             content_id: content_id
-//         }
-//     })
- 
-// }
 // More Details Related RightSide Category Post
 
 // moment.locale('bn-bd')
