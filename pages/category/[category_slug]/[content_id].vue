@@ -30,12 +30,12 @@
                     </div>
 
                     <div class="flex justify-between items-end border-b pb-3">
-                        <div class="author-details flex flex-col gap-1" v-if="authors?.length > 0">
-                            <p v-for="(author, auidx) in authors" :key="auidx">
-                                <NuxtLink to="/">{{ author.author_name_bn }}</NuxtLink>
+                        <div class="author-details flex flex-col gap-1" >
+                            <p v-if="detailsContent?.author">
+                                <NuxtLink :to="`/author/${detailsContent?.author?.author_slug}`">{{ detailsContent?.author?.author_name_bn }}</NuxtLink>
                             </p>
-                            <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span></ClientOnly>
-                            </p>
+                            <p v-else><NuxtLink to="/">ঢাকাপ্রকাশ ডেস্ক</NuxtLink></p>
+                            <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span></ClientOnly></p>
                         </div>
                         <div class="social-item flex gap-2 items-start justify-center">
                             <NuxtLink to="/">
@@ -174,9 +174,10 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
                     <div class="flex justify-between items-end border-b pb-3">
                         <div class="author-details flex flex-col gap-1" v-if="moreDetailContent?.author">
-                            <p>
-                                <NuxtLink to="/">{{ moreDetailContent?.author?.author_name_bn }}</NuxtLink>
+                            <p v-if="moreDetailContent?.author">
+                                <NuxtLink :to="`/author/${moreDetailContent?.author?.author_slug}`">{{ moreDetailContent?.author?.author_name_bn }}</NuxtLink>
                             </p>
+                            <p v-else><NuxtLink to="/">ঢাকাপ্রকাশ ডেস্ক</NuxtLink></p>
                             <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span></ClientOnly></p>
                         </div>
                         <div class="social-item flex gap-2 items-start justify-center">
@@ -251,20 +252,21 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             আরও পড়ুন</h3>
                     </div>
                     <div class="detail-page-category-content-exept flex flex-col">
+                        <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                         <!-- Loop Item -->
                         <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
-                            v-for="fmoreContent in firstMoreContents" :key="fmoreContent.content_id">
+                            v-for="moreDetCatCon in moreDetailCatWisePost[mcinx]" :key="moreDetCatCon.content_id"> 
                             <div class=" col-span-5 overflow-hidden">
-                                <NuxtLink :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
-                                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
+                                <NuxtLink :to="`/category/${moreDetCatCon?.category?.cat_slug}/${moreDetCatCon?.content_id}`">
+                                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${moreDetCatCon?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
                                         :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                                 </NuxtLink>
                             </div>
                             <div class=" col-span-7">
-                                <NuxtLink :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
+                                <NuxtLink :to="`/category/${moreDetCatCon?.category?.cat_slug}/${moreDetCatCon?.content_id}`">
                                     <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
-                                        fmoreContent.content_heading }}</h4>
+                                        moreDetCatCon.content_heading }}</h4>
                                 </NuxtLink>
                             </div>
                         </div>
@@ -338,15 +340,64 @@ const firstMoreContents = useState(() => [])
 firstMoreContents.value = pdailts?.value?.moreContents
 // ========== First More Right Side Content ======= //
 // ========== First Details Content Author ======= //
-const authors = useState(() => [])
-authors.value = pdailts?.value?.authors
+// const authors = useState(() => [])
+// authors.value = pdailts?.value?.authors
 // ========== First Details Content Author ======= //
 // ========== More Details Contents ======= //
 const moreDetailsContents = useState(() => [])
 moreDetailsContents.value = pdailts?.value?.moreDetailContent
-console.log(moreDetailsContents.value)
+// console.log(moreDetailsContents.value)
 // ========== More Details Contents ======= //
 
+// More Details Related RightSide Category Post
+const moreDetailCatWisePost = useState(() => [])
+for(let i = 0; i < moreDetailsContents.value.length; i++){
+    const {data:mdcwp} = await useFetch("/api/detailpage/catwiseposts" , {
+        method: 'POST',
+        body: {
+            cat_id: moreDetailsContents.value[i].cat_id,
+            content_id: moreDetailsContents.value[i].content_id
+        }
+    })
+
+   
+    let datapush = mdcwp.value
+    // console.log(mdcwp.value)
+    moreDetailCatWisePost.value.push(datapush)
+
+}
+moreDetailCatWisePost.value = [...new Set(moreDetailCatWisePost.value)]
+// moreDetailCatWisePost.value = moreDetailCatWisePost.value.filter(moreDetailCatWisePost.value)
+
+// moreDetailsContents.value.forEach( async relctpost => {
+//     const {data:mdcwp} = await useFetch("/api/detailpage/catwiseposts" , {
+//         method: 'POST',
+//         body: {
+//             cat_id: relctpost.cat_id,
+//             content_id: relctpost.content_id
+//         }
+//     })
+//     const ok = mdcwp.value
+//     console.log(mdcwp.value)
+//     moreDetailCatWisePost.value.push(ok)
+//     moreDetailCatWisePost.value.push(mdcwp.value)
+// })
+
+
+console.log(moreDetailCatWisePost.value)
+// moreDetailCatWisePost.value = [...new Set(moreDetailCatWisePost.value)]
+// console.log(moreDetailCatWisePost.value)
+// const moreDetailPostCatWisePost = async (cat_id, content_id) => {
+//     await useFetch("/api/detailpage/catwiseposts" , {
+//         method: 'POST',
+//         body: {
+//             cat_id: cat_id,
+//             content_id: content_id
+//         }
+//     })
+ 
+// }
+// More Details Related RightSide Category Post
 
 // moment.locale('bn-bd')
 // const date = moment(detailsContent.value.created_at).format('Y', 'bn-bd')
@@ -395,6 +446,9 @@ const printArea = () => {
 }
 // =============== Print Script ===================== //
 
+
+
+// console.log(ctwisep.value)
 
 </script>
 
