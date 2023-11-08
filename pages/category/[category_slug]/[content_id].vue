@@ -301,7 +301,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <div class=" grid grid-cols-4 gap-4">
-                           <!-- {{ moreDetailCatWisePost[mcinx] }} -->
+                        <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                         <!-- Loop Item -->
                         <NuxtLink :to="`/category/${relDetailContent?.category?.cat_slug}/${relDetailContent?.content_id}`"
                             class="flex flex-col gap-2 group" v-for="relDetailContent in relatedDetailContent[mcinx]"
@@ -319,10 +319,37 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     </div>
                 </div>
             </div>
-            <div v-else>
-                {{ mcinx}}
-            </div>
             <!-- Read more first content -->
+
+            <!-- Latest 20 Posts content -->
+            <div class="col-span-12" v-else>
+                <div class="read-more">
+                    <div class="category-header border-b-4 border-b-[#3375af] my-3">
+                        <div class="flex gap-3 items-center">
+                            <span class="w-3 h-3 bg-[#3375af]"></span>
+                            <h2 class="text-[#3375af] text-[18px] font-semibold">সর্বশেষ সংবাদ</h2>
+                        </div>
+                    </div>
+                    <div class=" grid grid-cols-4 gap-4">
+                        <!-- {{ moreDetailCatWisePost[mcinx] }} -->
+                        <!-- Loop Item -->
+                        <NuxtLink :to="`/category/${latestPostC?.category?.cat_slug}/${latestPostC?.content_id}`"
+                            class="flex flex-col gap-2 group" v-for="latestPostC in latestPostsDpage"
+                            :key="latestPostC.content_id">
+                            <div class="feature_image_readmore overflow-hidden">
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPostC?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                            </div>
+                            <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ latestPostC?.content_heading }}</h5>
+                        </NuxtLink>
+                        <!-- Loop Item -->
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- Latest 20 Posts content -->
         </div>
         <!--========== // <3> More Details Content ============ -->
     </div>
@@ -357,6 +384,12 @@ const { data: pdailts } = await useFetch('/api/detailpage/detail', {
 const detailsContent = useState(() => [])
 detailsContent.value = pdailts?.value?.detailsContent
 // ========== First Details Content ======= // 
+
+// ============ Latest 20 Posts ===============//
+const latestPostsDpage = useState(() => [])
+latestPostsDpage.value = pdailts?.value?.allLatestPost
+// ============ Latest 20 Posts ===============//
+
 // ========== First More Right Side Content ======= //
 const firstMoreContents = useState(() => [])
 firstMoreContents.value = pdailts?.value?.moreContents
@@ -372,13 +405,13 @@ moreDetailsContents.value = pdailts?.value?.moreDetailContent
 // ========== More Details Contents ======= //
 
 
-// ===== RelatedContent for More <3> Three content ============= //
+// ====================== RelatedContent for More <3> Three content ======================= //
 const readPostsState = useState(() => [])
 const relatedDetailContent = useState(() => [])
 
 for (let s = 0; s < moreDetailsContents.value.length; s++) {
     readPostsState.value.push(moreDetailsContents.value[s].content_id)
-    const {data:rlcd} = await useFetch("/api/detailpage/relatedcontent", {
+    const { data: rlcd } = await useFetch("/api/detailpage/relatedcontent", {
         method: "POST",
         body: {
             readedIds: readPostsState.value,
@@ -389,12 +422,11 @@ for (let s = 0; s < moreDetailsContents.value.length; s++) {
     relatedDetailContent.value.push(reldata)
 
 }
+// console.log(relatedDetailContent.value)
+// ==================== RelatedContent for More <3> Three content  ======================= //
 
-console.log(relatedDetailContent.value)
-// ===== RelatedContent for More <3> Three content ============= //
 
-
-// More Details Related RightSide Category Post
+// ==================== More Details Related RightSide Category Post =======================
 const moreDetailCatWisePost = useState(() => [])
 for (let i = 0; i < moreDetailsContents.value.length; i++) {
     const { data: mdcwp } = await useFetch("/api/detailpage/catwiseposts", {
@@ -404,17 +436,13 @@ for (let i = 0; i < moreDetailsContents.value.length; i++) {
             content_id: moreDetailsContents?.value[i]?.content_id
         }
     })
-
-
+    
     let datapush = mdcwp.value
     // console.log(mdcwp.value)
     moreDetailCatWisePost.value.push(datapush)
-
 }
 moreDetailCatWisePost.value = [...new Set(moreDetailCatWisePost.value)]
-
-
-// More Details Related RightSide Category Post
+// =================== More Details Related RightSide Category Post ==========================
 
 // moment.locale('bn-bd')
 // const date = moment(detailsContent.value.created_at).format('Y', 'bn-bd')
@@ -469,6 +497,8 @@ const printArea = () => {
 
 </script>
 
-<style scoped>p {
+<style scoped>
+p {
     line-height: 1.7 !important;
-}</style>
+}
+</style>
