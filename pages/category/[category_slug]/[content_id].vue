@@ -292,7 +292,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 </div>
             </div>
             <!-- Read more first content -->
-            <div class="col-span-12" v-if="fRelatedContents?.length > 0">
+            <div class="col-span-12" v-if="relatedDetailContent?.length > 0">
                 <div class="read-more">
                     <div class="category-header border-b-4 border-b-[#3375af] my-3">
                         <div class="flex gap-3 items-center">
@@ -301,16 +301,17 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <div class=" grid grid-cols-4 gap-4">
+                           <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${fRelatedContent?.category?.cat_slug}/${fRelatedContent?.content_id}`"
-                            class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents"
-                            :key="fRelatedContent.content_id">
+                        <NuxtLink :to="`/category/${relDetailContent?.category?.cat_slug}/${relDetailContent?.content_id}`"
+                            class="flex flex-col gap-2 group" v-for="relDetailContent in relatedDetailContent[mcinx]"
+                            :key="relDetailContent.content_id">
                             <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${relDetailContent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                             </div>
-                            <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ fRelatedContent?.content_heading }}</h5>
+                            <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ relDetailContent?.content_heading }}</h5>
                         </NuxtLink>
                         <!-- Loop Item -->
 
@@ -367,11 +368,28 @@ moreDetailsContents.value = pdailts?.value?.moreDetailContent
 // console.log(moreDetailsContents.value)
 // ========== More Details Contents ======= //
 
-// const readPostsState = useState(() => [])
-// moreDetailsContents.value.forEach(rdPost => {
-//     va
-// })
-// console.log(readPostsState.value)
+
+// ===== RelatedContent for More <3> Three content ============= //
+const readPostsState = useState(() => [])
+const relatedDetailContent = useState(() => [])
+
+for (let s = 0; s < moreDetailsContents.value.length; s++) {
+    readPostsState.value.push(moreDetailsContents.value[s].content_id)
+    const {data:rlcd} = await useFetch("/api/detailpage/relatedcontent", {
+        method: "POST",
+        body: {
+            readedIds: readPostsState.value,
+            detailId: detailsContent?.value?.content_id
+        }
+    })
+    let reldata = rlcd.value.slice(1, 5)
+    relatedDetailContent.value.push(reldata)
+
+}
+
+console.log(relatedDetailContent.value)
+// ===== RelatedContent for More <3> Three content ============= //
+
 
 // More Details Related RightSide Category Post
 const moreDetailCatWisePost = useState(() => [])
@@ -379,8 +397,8 @@ for (let i = 0; i < moreDetailsContents.value.length; i++) {
     const { data: mdcwp } = await useFetch("/api/detailpage/catwiseposts", {
         method: 'POST',
         body: {
-            cat_id: moreDetailsContents.value[i].cat_id,
-            content_id: moreDetailsContents.value[i].content_id
+            cat_id: moreDetailsContents?.value[i]?.cat_id,
+            content_id: moreDetailsContents?.value[i]?.content_id
         }
     })
 
