@@ -147,7 +147,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class=" grid grid-cols-4 gap-4">
                         <!-- Loop Item -->
                         <NuxtLink :to="`/category/${fRelatedContent?.category?.cat_slug}/${fRelatedContent?.content_id}`"
-                            class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents"
+                            class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents.slice(1, 5)"
                             :key="fRelatedContent.content_id">
                             <div class="feature_image_readmore overflow-hidden">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
@@ -292,7 +292,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 </div>
             </div>
             <!-- Read more first content -->
-            <div class="col-span-12" v-if="relatedDetailContent?.length > 0">
+            <div class="col-span-12" v-if="relatedDetailContent?.length > 0 && mcinx !== 2">
                 <div class="read-more">
                     <div class="category-header border-b-4 border-b-[#3375af] my-3">
                         <div class="flex gap-3 items-center">
@@ -318,6 +318,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
                     </div>
                 </div>
+            </div>
+            <div v-else>
+                {{ mcinx}}
             </div>
             <!-- Read more first content -->
         </div>
