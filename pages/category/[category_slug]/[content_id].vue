@@ -30,12 +30,17 @@
                     </div>
 
                     <div class="flex justify-between items-end border-b pb-3">
-                        <div class="author-details flex flex-col gap-1" >
+                        <div class="author-details flex flex-col gap-1">
                             <p v-if="detailsContent?.author">
-                                <NuxtLink :to="`/author/${detailsContent?.author?.author_slug}`">{{ detailsContent?.author?.author_name_bn }}</NuxtLink>
+                                <NuxtLink :to="`/author/${detailsContent?.author?.author_slug}`">{{
+                                    detailsContent?.author?.author_name_bn }}</NuxtLink>
                             </p>
-                            <p v-else><NuxtLink to="/">ঢাকাপ্রকাশ ডেস্ক</NuxtLink></p>
-                            <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span></ClientOnly></p>
+                            <p v-else>
+                                <NuxtLink to="/">ঢাকাপ্রকাশ ডেস্ক</NuxtLink>
+                            </p>
+                            <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
+                                </ClientOnly>
+                            </p>
                         </div>
                         <div class="social-item flex gap-2 items-start justify-center">
                             <NuxtLink to="/">
@@ -162,12 +167,14 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <!--========== // First Details Content ============ -->
 
         <!--========== <3> More Details Content ============ -->
-        <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents" :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-4 relative d-print">
+        <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
+            :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-4 relative d-print">
             <div class=" col-span-9">
                 <div class="single-post flex flex-col gap-3">
-                    
+
                     <div class="singlePost-heading flex flex-col gap-2">
-                        <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{ moreDetailContent?.content_sub_heading }}</h4>
+                        <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
+                            moreDetailContent?.content_sub_heading }}</h4>
                         <h2 class="md:text-[32px] md:leading-[50px]">{{ moreDetailContent.content_heading }}</h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af]"></div>
                     </div>
@@ -175,10 +182,15 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="flex justify-between items-end border-b pb-3">
                         <div class="author-details flex flex-col gap-1" v-if="moreDetailContent?.author">
                             <p v-if="moreDetailContent?.author">
-                                <NuxtLink :to="`/author/${moreDetailContent?.author?.author_slug}`">{{ moreDetailContent?.author?.author_name_bn }}</NuxtLink>
+                                <NuxtLink :to="`/author/${moreDetailContent?.author?.author_slug}`">{{
+                                    moreDetailContent?.author?.author_name_bn }}</NuxtLink>
                             </p>
-                            <p v-else><NuxtLink to="/">ঢাকাপ্রকাশ ডেস্ক</NuxtLink></p>
-                            <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span></ClientOnly></p>
+                            <p v-else>
+                                <NuxtLink to="/">ঢাকাপ্রকাশ ডেস্ক</NuxtLink>
+                            </p>
+                            <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span>
+                                </ClientOnly>
+                            </p>
                         </div>
                         <div class="social-item flex gap-2 items-start justify-center">
                             <NuxtLink to="/">
@@ -249,23 +261,27 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-40' : 'top-14'} duration-200`"
                     v-if="firstMoreContents?.length > 0">
                     <div class=" border-b-[3px] border-[#3375af] pb-1">
-                        <h3 class="text-[#3375af] text-[18px] font-[600]">{{ moreDetailContent?.category?.cat_name_bn }} নিয়ে
+                        <h3 class="text-[#3375af] text-[18px] font-[600]">{{ moreDetailContent?.category?.cat_name_bn }}
+                            নিয়ে
                             আরও পড়ুন</h3>
                     </div>
                     <div class="detail-page-category-content-exept flex flex-col">
                         <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                         <!-- Loop Item -->
                         <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
-                            v-for="moreDetCatCon in moreDetailCatWisePost[mcinx]" :key="moreDetCatCon.content_id"> 
+                            v-for="moreDetCatCon in moreDetailCatWisePost[mcinx]" :key="moreDetCatCon.content_id">
                             <div class=" col-span-5 overflow-hidden">
-                                <NuxtLink :to="`/category/${moreDetCatCon?.category?.cat_slug}/${moreDetCatCon?.content_id}`">
-                                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${moreDetCatCon?.img_bg_path}`"
+                                <NuxtLink
+                                    :to="`/category/${moreDetCatCon?.category?.cat_slug}/${moreDetCatCon?.content_id}`">
+                                    <nuxt-img
+                                        :src="`${siteurl.site_url}/media/content/images/${moreDetCatCon?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
                                         :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                                 </NuxtLink>
                             </div>
                             <div class=" col-span-7">
-                                <NuxtLink :to="`/category/${moreDetCatCon?.category?.cat_slug}/${moreDetCatCon?.content_id}`">
+                                <NuxtLink
+                                    :to="`/category/${moreDetCatCon?.category?.cat_slug}/${moreDetCatCon?.content_id}`">
                                     <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
                                         moreDetCatCon.content_heading }}</h4>
                                 </NuxtLink>
@@ -310,6 +326,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
 <script setup>
 // import moment from 'moment';
+const { x, y } = useMouse()
 const siteurl = siteUrlState()
 const img = useImage()
 const singlePageSticky = singlePageStickyState()
@@ -350,10 +367,16 @@ moreDetailsContents.value = pdailts?.value?.moreDetailContent
 // console.log(moreDetailsContents.value)
 // ========== More Details Contents ======= //
 
+// const readPostsState = useState(() => [])
+// moreDetailsContents.value.forEach(rdPost => {
+//     va
+// })
+// console.log(readPostsState.value)
+
 // More Details Related RightSide Category Post
 const moreDetailCatWisePost = useState(() => [])
-for(let i = 0; i < moreDetailsContents.value.length; i++){
-    const {data:mdcwp} = await useFetch("/api/detailpage/catwiseposts" , {
+for (let i = 0; i < moreDetailsContents.value.length; i++) {
+    const { data: mdcwp } = await useFetch("/api/detailpage/catwiseposts", {
         method: 'POST',
         body: {
             cat_id: moreDetailsContents.value[i].cat_id,
@@ -361,7 +384,7 @@ for(let i = 0; i < moreDetailsContents.value.length; i++){
         }
     })
 
-   
+
     let datapush = mdcwp.value
     // console.log(mdcwp.value)
     moreDetailCatWisePost.value.push(datapush)
@@ -425,8 +448,6 @@ const printArea = () => {
 
 </script>
 
-<style scoped>
-p {
+<style scoped>p {
     line-height: 1.7 !important;
-}
-</style>
+}</style>
