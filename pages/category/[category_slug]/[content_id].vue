@@ -19,8 +19,8 @@
             </div>
         </div>
         <!--========== First Details Content ============ -->
-        <div class=" grid grid-cols-12 gap-4 relative d-print">
-            <div class=" col-span-9">
+        <div class=" grid grid-cols-12 gap-5 relative d-print">
+            <div class="col-span-12 md:col-span-9">
                 <div class="single-post flex flex-col gap-3">
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
@@ -84,28 +84,33 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
                             detailsContent?.img_bg_caption }}</p>
                     </div>
-                    <div class="singlePost-details mx-auto w-[620px]">
-                        <div class="postdetails text-[18px] text-gray-700 pb-4" v-html="detailsContent?.content_details">
-                        </div>
-                        <!-- Tag Area -->
-                        <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3">
-                            <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
-                                    class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
-                                        detailsContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
-                            <ul class="flex flex-wrap gap-3 items-center" v-if="firstContentTags?.length > 0">
+                    <div class="singlePost-detail grid grid-cols-12">
+                        <div class=" hidden md:block md:col-span-2"></div>
+                        <div class="col-span-12 md:col-span-8">
+                            <div class="postdetails text-[18px] text-gray-700 pb-4"
+                                v-html="detailsContent?.content_details">
+                            </div>
+                            <!-- Tag Area -->
+                            <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3">
+                                <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
+                                        class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
+                                            detailsContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
+                                <ul class="flex flex-wrap gap-3 items-center" v-if="firstContentTags?.length > 0">
 
-                                <li v-for="ftag in firstContentTags"
-                                    class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1]">
-                                    <NuxtLink class="px-4 py-2 block" :to="`/topic/${ftag}`">{{ ftag }}</NuxtLink>
-                                </li>
-                            </ul>
+                                    <li v-for="ftag in firstContentTags"
+                                        class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1]">
+                                        <NuxtLink class="px-4 py-2 block" :to="`/topic/${ftag}`">{{ ftag }}</NuxtLink>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Tag Area -->
                         </div>
-                        <!-- Tag Area -->
+                        <div class=" hidden md:block md:col-span-2"></div>
                     </div> <!-- singlePost-details -->
                 </div> <!-- /single-post -->
 
             </div>
-            <div class=" col-span-3">
+            <div class=" col-span-12 md:col-span-3">
 
                 <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-40' : 'top-14'} duration-200`"
                     v-if="firstMoreContents?.length > 0">
@@ -144,7 +149,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <h2 class="text-[#3375af] text-[18px] font-semibold">আরও পড়ুন</h2>
                         </div>
                     </div>
-                    <div class=" grid grid-cols-4 gap-4">
+                    <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
                         <!-- Loop Item -->
                         <NuxtLink :to="`/category/${fRelatedContent?.category?.cat_slug}/${fRelatedContent?.content_id}`"
                             class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents.slice(1, 5)"
@@ -168,8 +173,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
         <!--========== <3> More Details Content ============ -->
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
-            :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-4 relative d-print">
-            <div class=" col-span-9">
+            :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
+            <div class="col-span-12 md:col-span-9">
                 <div class="single-post flex flex-col gap-3">
 
                     <div class="singlePost-heading flex flex-col gap-2">
@@ -234,29 +239,34 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         <p v-if="moreDetailContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
                             moreDetailContent?.img_bg_caption }}</p>
                     </div>
-                    <div class="singlePost-details mx-auto w-[620px]">
-                        <div class="postdetails text-[18px] text-gray-700 pb-4" v-html="moreDetailContent?.content_details">
-                        </div>
-                        <!-- Tag Area -->
-                        <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3">
-                            <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
-                                    class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
-                                        moreDetailContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
+                    <div class="singlePost-detail grid grid-cols-12">
+                        <div class=" hidden md:block md:col-span-2"></div>
+                        <div class="col-span-12 md:col-span-8">
+                            <div class="postdetails text-[18px] text-gray-700 pb-4"
+                                v-html="moreDetailContent?.content_details">
+                            </div>
+                            <!-- Tag Area -->
+                            <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3">
+                                <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
+                                        class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
+                                            moreDetailContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
 
-                            <ul class="flex flex-wrap gap-3 items-center" v-if="moreDetailContent?.tags">
+                                <ul class="flex flex-wrap gap-3 items-center" v-if="moreDetailContent?.tags">
 
-                                <li v-for="mtag in moreDetailContent?.tags.split(',')"
-                                    class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1]">
-                                    <NuxtLink class="px-4 py-2 block" :to="`/topic/${mtag}`">{{ mtag }}</NuxtLink>
-                                </li>
-                            </ul>
+                                    <li v-for="mtag in moreDetailContent?.tags.split(',')"
+                                        class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1]">
+                                        <NuxtLink class="px-4 py-2 block" :to="`/topic/${mtag}`">{{ mtag }}</NuxtLink>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Tag Area -->
                         </div>
-                        <!-- Tag Area -->
+                        <div class="hidden md:block md:col-span-2"></div>
                     </div> <!-- singlePost-details -->
                 </div> <!-- /single-post -->
 
             </div>
-            <div class=" col-span-3">
+            <div class="col-span-12 md:col-span-3">
 
                 <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-40' : 'top-14'} duration-200`"
                     v-if="firstMoreContents?.length > 0">
@@ -300,7 +310,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <h2 class="text-[#3375af] text-[18px] font-semibold">আরও পড়ুন</h2>
                         </div>
                     </div>
-                    <div class=" grid grid-cols-4 gap-4">
+                    <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
                         <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                         <!-- Loop Item -->
                         <NuxtLink :to="`/category/${relDetailContent?.category?.cat_slug}/${relDetailContent?.content_id}`"
@@ -330,7 +340,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <h2 class="text-[#3375af] text-[18px] font-semibold">সর্বশেষ সংবাদ</h2>
                         </div>
                     </div>
-                    <div class=" grid grid-cols-4 gap-4">
+                    <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
                         <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                         <!-- Loop Item -->
                         <NuxtLink :to="`/category/${latestPostC?.category?.cat_slug}/${latestPostC?.content_id}`"
@@ -436,7 +446,7 @@ for (let i = 0; i < moreDetailsContents.value.length; i++) {
             content_id: moreDetailsContents?.value[i]?.content_id
         }
     })
-    
+
     let datapush = mdcwp.value
     // console.log(mdcwp.value)
     moreDetailCatWisePost.value.push(datapush)

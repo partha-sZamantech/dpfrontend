@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="`${mobileMenuStatus ? 'left-0 fixed' : 'fixed -left-[815px]'} duration-200 bg-white max-w-full md:hidden right-0 top-12`">
+        :class="`${mobileMenuStatus ? 'left-0 fixed' : 'fixed -left-[815px]'} duration-200 bg-white max-w-full md:hidden right-0 top-12 z-[99999px]`">
         <div class="px-8 py-8 flex flex-col gap-4  overflow-y-scroll h-screen">
             <div class="todayDate text-sm">
                 {{ todayDate }}
