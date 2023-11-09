@@ -1,5 +1,6 @@
 <template>
     <div class=" max-w-[1280px] mx-auto detail-page px-4 md:px-2 py-4">
+
         <Head>
             <Title>{{ detailsContent.content_heading }}</Title>
         </Head>
@@ -418,9 +419,9 @@ moreDetailsContents.value = pdailts?.value?.moreDetailContent
 // ========== More Details Contents ======= //
 
 //===== First Detail Inside More News =====//
-    const firstInsideMoreNews = useState(() => [])
-    firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
-    console.log(firstInsideMoreNews.value)
+const firstInsideMoreNews = useState(() => [])
+firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
+console.log(firstInsideMoreNews.value)
 
 //===== First Detail Inside More News =====//
 
@@ -509,7 +510,7 @@ const printArea = () => {
     WinPrint.close();
 }
 // =============== Print Script ===================== //
-
+const router = useRouter()
 onMounted(() => {
 
     // ================== First Post Detail Content Inside Element Added =============== //
@@ -521,30 +522,89 @@ onMounted(() => {
     let descParam = firstDetail[0].querySelectorAll('p');
     // ==== Gooogle news Link === //
     let googleNewses = () => {
-            let link = document.createElement(`a`);
-            link.className = `text-center border border-[#d3d3d3] bg-[#b5d3f366] py-2 my-4`;
-            link.style.cssText =`text-decoration:none; display:flex; justify-content:center`;
-            link.href = `https://news.google.com/publications/CAAqBwgKMNq9sgsw59jJAw?ceid=BD:bn&oc=3&hl=bn&gl=BD`;
-            link.target = `_blank`;
+        let link = document.createElement(`a`);
+        link.className = `text-center border border-[#d3d3d3] bg-[#b5d3f366] py-2 my-4`;
+        link.style.cssText = `text-decoration:none; display:flex; justify-content:center`;
+        link.href = `https://news.google.com/publications/CAAqBwgKMNq9sgsw59jJAw?ceid=BD:bn&oc=3&hl=bn&gl=BD`;
+        link.target = `_blank`;
 
-            let img = document.createElement(`img`);
-            img.src = `https://cdn-icons-png.flaticon.com/512/2702/2702605.png`;
-            img.style.cssText = `width: 25px; margin-right: 8px`;
+        let img = document.createElement(`img`);
+        img.src = `https://cdn-icons-png.flaticon.com/512/2702/2702605.png`;
+        img.style.cssText = `width: 25px; margin-right: 8px`;
 
-            let h4 = document.createElement(`h4`);
-            h4.className = 'text-[#337ab7]';
-            h4.style.cssText = `font-weight: bold`;
-            h4.innerText = `সর্বশেষ খবর পেতে ঢাকা প্রকাশের গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
-            link.append(img);
-            link.append(h4);
+        let h4 = document.createElement(`h4`);
+        h4.className = 'text-[#337ab7]';
+        h4.style.cssText = `font-weight: bold`;
+        h4.innerText = `সর্বশেষ খবর পেতে ঢাকা প্রকাশের গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
+        link.append(img);
+        link.append(h4);
 
-            return link;
-        }
-        if (descParam.length > 1) {
-            descParam[0].parentNode.insertBefore(googleNewses(), descParam[0].nextSibling);
-        }
+        return link;
+    }
+    if (descParam.length > 1) {
+        descParam[0].parentNode.insertBefore(googleNewses(), descParam[0].nextSibling);
+    }
     // ==== Gooogle news Link === //
-    
+
+    let insertRelatedNewses = (title, href) => {
+
+        let relatedNews = document.createElement('div');
+        relatedNews.className = 'inside-news my-4';
+
+        let h5 = document.createElement('h5');
+        // h5.style.fontSize = '16px';
+        h5.className = 'text-[16px] text-[#575757] font-bold'
+        // h5.style.fontWeight = 'bold';
+        h5.innerText = 'আরও পড়ুন';
+        relatedNews.append(h5);
+
+        let containerFluid = document.createElement('div');
+        containerFluid.className = 'container-fluid border border-[#e2e2e2] mt-1 group';
+        // containerFluid.style.border = '1px solid #575757';
+        relatedNews.append(containerFluid);
+
+        let link = document.createElement('a');
+        link.href = href;
+        containerFluid.append(link);
+
+        let headline = document.createElement('div');
+        headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af]';
+        // headline.style.cssText = 'font-size:19px;font-weight: bold; width: 65%; float: left';
+        // headline.style.cssText = 'font-size:16px;font-weight: bold;';
+        headline.innerText = title;
+        link.append(headline);
+
+        // let img = document.createElement('img');
+        // img.className = 'marginTop10 marginBottom10';
+        // img.style.cssText = 'width: 85px;float: right';
+        // img.src = src;
+        // img.title = title;
+        // img.alt = title;
+        // link.append(img);
+
+        return relatedNews;
+    }
+
+    descParam.forEach((item, i) => {
+
+        if (i > 0 && i % 3 === 0 && firstInsideMoreNews.value[i]) {
+            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews.value[i].content_heading, fJsNewsURLs(firstInsideMoreNews.value[i].category.cat_slug, firstInsideMoreNews.value[i].content_id)), descParam[i - 1].nextSibling);
+
+        }
+    })
+
+
+    function fJsNewsURLs(cat_slug, content_id) {
+        return location.origin + '/category/' + cat_slug +'/' + content_id;
+        // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
+    }
+
+    // function fJsNewsImgPaths(img_path) {
+    //     return location.origin + '/media/content/images/' + img_path;
+    // }
+
+
+    // ================== First Post Detail Content Inside Element Added =============== //
 })
 
 </script>
