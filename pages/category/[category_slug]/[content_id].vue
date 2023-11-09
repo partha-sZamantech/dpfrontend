@@ -417,6 +417,12 @@ moreDetailsContents.value = pdailts?.value?.moreDetailContent
 // console.log(moreDetailsContents.value)
 // ========== More Details Contents ======= //
 
+//===== First Detail Inside More News =====//
+    const firstInsideMoreNews = useState(() => [])
+    firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
+    console.log(firstInsideMoreNews.value)
+
+//===== First Detail Inside More News =====//
 
 // ====================== RelatedContent for More <3> Three content ======================= //
 const readPostsState = useState(() => [])
@@ -505,9 +511,15 @@ const printArea = () => {
 // =============== Print Script ===================== //
 
 onMounted(() => {
+
+    // ================== First Post Detail Content Inside Element Added =============== //
+
+    // Select First Post detail Class Name
     const firstDetail = document.getElementsByClassName('postdetails')
     // console.log(ok.querySelectorAll('p').length)
+    // Select All P Tag
     let descParam = firstDetail[0].querySelectorAll('p');
+    // ==== Gooogle news Link === //
     let googleNewses = () => {
             let link = document.createElement(`a`);
             link.className = `text-center border border-[#d3d3d3] bg-[#b5d3f366] py-2 my-4`;
@@ -531,6 +543,7 @@ onMounted(() => {
         if (descParam.length > 1) {
             descParam[0].parentNode.insertBefore(googleNewses(), descParam[0].nextSibling);
         }
+    // ==== Gooogle news Link === //
     
 })
 
