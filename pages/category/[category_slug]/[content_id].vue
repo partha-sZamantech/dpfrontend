@@ -510,7 +510,29 @@ const printArea = () => {
     WinPrint.close();
 }
 // =============== Print Script ===================== //
-const router = useRouter()
+// const router = useRouter()
+
+//================= Inside More Detail Post Except Read More ===================//
+const insideMoreExceptPost = useState(() => [])
+
+for (let m = 0; m < moreDetailsContents.value.length; m++) {
+    const { data: insidempect } = await useFetch("/api/detailpage/insidemoredetailexcept", {
+        method: 'POST',
+        body: {
+            currentPostDetailId: detailsContent?.value?.content_id,
+            morePostId: moreDetailsContents?.value[m]?.content_id,
+            cat_id: moreDetailsContents?.value[m]?.cat_id
+        }
+    })
+
+    let insidePost = insidempect.value
+
+    insideMoreExceptPost.value.push(insidePost)
+}
+insideMoreExceptPost.value = [...new Set(insideMoreExceptPost.value)]
+    console.log(insideMoreExceptPost.value)
+//================= Inside More Detail Post Except Read More ===================//
+
 onMounted(() => {
 
     // ================== First Post Detail Content Inside Element Added =============== //
@@ -596,7 +618,7 @@ onMounted(() => {
 
 
     function fJsNewsURLs(cat_slug, content_id) {
-        return location.origin + '/category/' + cat_slug +'/' + content_id;
+        return location.origin + '/category/' + cat_slug + '/' + content_id;
         // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
     }
 
