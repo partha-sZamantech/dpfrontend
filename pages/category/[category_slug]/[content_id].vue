@@ -585,11 +585,12 @@ onMounted(() => {
         return relatedNews;
     }
 
+    let itemIncrement = 0;
     descParam.forEach((item, i) => {
 
-        if (i > 0 && i % 3 === 0 && firstInsideMoreNews.value[i]) {
-            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews.value[i].content_heading, fJsNewsURLs(firstInsideMoreNews.value[i].category.cat_slug, firstInsideMoreNews.value[i].content_id)), descParam[i - 1].nextSibling);
-
+        if (i > 0 && i % 3 === 0 && firstInsideMoreNews.value[itemIncrement]) {
+            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews.value[itemIncrement].content_heading, fJsNewsURLs(firstInsideMoreNews.value[itemIncrement].category.cat_slug, firstInsideMoreNews.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
+            itemIncrement++;
         }
     })
 
