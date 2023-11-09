@@ -547,21 +547,21 @@ onMounted(() => {
     // ==== Gooogle news Link === //
     let googleNewses = () => {
         let link = document.createElement(`a`);
-        link.className = `text-center border border-[#d3d3d3] bg-[#b5d3f366] py-2 my-4`;
-        link.style.cssText = `text-decoration:none; display:flex; justify-content:center`;
-        link.href = `https://news.google.com/publications/CAAqBwgKMNq9sgsw59jJAw?ceid=BD:bn&oc=3&hl=bn&gl=BD`;
-        link.target = `_blank`;
+            link.className = `text-center border border-[#d3d3d3] bg-[#b5d3f366] py-2 my-4 group hover:bg-[#3375af]`;
+            link.style.cssText = `text-decoration:none; display:flex; justify-content:center`;
+            link.href = `https://news.google.com/publications/CAAqBwgKMNq9sgsw59jJAw?ceid=BD:bn&oc=3&hl=bn&gl=BD`;
+            link.target = `_blank`;
 
-        let img = document.createElement(`img`);
-        img.src = `https://cdn-icons-png.flaticon.com/512/2702/2702605.png`;
-        img.style.cssText = `width: 25px; margin-right: 8px`;
+            let img = document.createElement(`img`);
+            img.src = `https://cdn-icons-png.flaticon.com/512/2702/2702605.png`;
+            img.style.cssText = `width: 25px; margin-right: 8px`;
 
-        let h4 = document.createElement(`h4`);
-        h4.className = 'text-[#337ab7]';
-        h4.style.cssText = `font-weight: bold`;
-        h4.innerText = `সর্বশেষ খবর পেতে ঢাকা প্রকাশের গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
-        link.append(img);
-        link.append(h4);
+            let h4 = document.createElement(`h4`);
+            h4.className = 'text-[#337ab7] group-hover:text-[#ffffff]';
+            h4.style.cssText = `font-weight: bold`;
+            h4.innerText = `সর্বশেষ খবর পেতে ঢাকা প্রকাশের গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
+            link.append(img);
+            link.append(h4);
 
         return link;
     }
