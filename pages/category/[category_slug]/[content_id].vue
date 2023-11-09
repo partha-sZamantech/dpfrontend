@@ -22,6 +22,7 @@
 
             </div>
         </div>
+
         <!--========== First Details Content ============ -->
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9">
@@ -246,16 +247,17 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="singlePost-detail grid grid-cols-12">
                         <div class=" hidden md:block md:col-span-2"></div>
                         <div class="col-span-12 md:col-span-8">
-                            <div class="postdetails text-[18px] text-gray-700 pb-4"
+                            <div :class="`postdetails postdetailinside${mcinx} text-[18px] text-gray-700 pb-4`"
                                 v-html="moreDetailContent?.content_details">
                             </div>
                             <!-- Tag Area -->
-                            <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3">
+                            <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3"
+                                v-if="moreDetailContent?.tags">
                                 <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
                                         class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
                                             moreDetailContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
 
-                                <ul class="flex flex-wrap gap-3 items-center" v-if="moreDetailContent?.tags">
+                                <ul class="flex flex-wrap gap-3 items-center">
 
                                     <li v-for="mtag in moreDetailContent?.tags.split(',')"
                                         class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1]">
@@ -421,7 +423,7 @@ moreDetailsContents.value = pdailts?.value?.moreDetailContent
 //===== First Detail Inside More News =====//
 const firstInsideMoreNews = useState(() => [])
 firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
-console.log(firstInsideMoreNews.value)
+// console.log(firstInsideMoreNews.value)
 
 //===== First Detail Inside More News =====//
 
@@ -530,7 +532,7 @@ for (let m = 0; m < moreDetailsContents.value.length; m++) {
     insideMoreExceptPost.value.push(insidePost)
 }
 insideMoreExceptPost.value = [...new Set(insideMoreExceptPost.value)]
-    console.log(insideMoreExceptPost.value)
+console.log(insideMoreExceptPost.value)
 //================= Inside More Detail Post Except Read More ===================//
 
 onMounted(() => {
@@ -626,8 +628,108 @@ onMounted(() => {
     //     return location.origin + '/media/content/images/' + img_path;
     // }
 
+    // ================== End First Post Detail Content Inside Element Added =============== //
 
-    // ================== First Post Detail Content Inside Element Added =============== //
+    // ================== More Post Details Inside Element Added ==========================// 
+
+
+    // Start For loop
+    for (let i = 0; i < insideMoreExceptPost.value.length; i++) {
+
+        let insideMoreNews = insideMoreExceptPost.value[i];
+        let desc = document.getElementsByClassName('postdetailinside' + i)
+        let descParas = desc[0].querySelectorAll('p');
+
+        // ==== Gooogle news Link === //
+        let googleNews = () => {
+            let link = document.createElement(`a`);
+            link.className = `text-center border border-[#d3d3d3] bg-[#b5d3f366] py-2 my-4 group hover:bg-[#3375af]`;
+            link.style.cssText = `text-decoration:none; display:flex; justify-content:center`;
+            link.href = `https://news.google.com/publications/CAAqBwgKMNq9sgsw59jJAw?ceid=BD:bn&oc=3&hl=bn&gl=BD`;
+            link.target = `_blank`;
+
+            let img = document.createElement(`img`);
+            img.src = `https://cdn-icons-png.flaticon.com/512/2702/2702605.png`;
+            img.style.cssText = `width: 25px; margin-right: 8px`;
+
+            let h4 = document.createElement(`h4`);
+            h4.className = 'text-[#337ab7] group-hover:text-[#ffffff]';
+            h4.style.cssText = `font-weight: bold`;
+            h4.innerText = `সর্বশেষ খবর পেতে ঢাকা প্রকাশের গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
+            link.append(img);
+            link.append(h4);
+
+            return link;
+        }
+        if (descParas.length > 1) {
+            descParas[0].parentNode.insertBefore(googleNews(), descParas[0].nextSibling);
+        }
+        // ==== Gooogle news Link === //
+
+        let insertRelatedNews = (title, href) => {
+
+            let relatedNews = document.createElement('div');
+            relatedNews.className = 'inside-news my-4';
+
+            let h5 = document.createElement('h5');
+            // h5.style.fontSize = '16px';
+            h5.className = 'text-[16px] text-[#575757] font-bold'
+            // h5.style.fontWeight = 'bold';
+            h5.innerText = 'আরও পড়ুন';
+            relatedNews.append(h5);
+
+            let containerFluid = document.createElement('div');
+            containerFluid.className = 'container-fluid border border-[#e2e2e2] mt-1 group';
+            // containerFluid.style.border = '1px solid #575757';
+            relatedNews.append(containerFluid);
+
+            let link = document.createElement('a');
+            link.href = href;
+            containerFluid.append(link);
+
+            let headline = document.createElement('div');
+            headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af]';
+            // headline.style.cssText = 'font-size:19px;font-weight: bold; width: 65%; float: left';
+            // headline.style.cssText = 'font-size:16px;font-weight: bold;';
+            headline.innerText = title;
+            link.append(headline);
+
+            // let img = document.createElement('img');
+            // img.className = 'marginTop10 marginBottom10';
+            // img.style.cssText = 'width: 85px;float: right';
+            // img.src = src;
+            // img.title = title;
+            // img.alt = title;
+            // link.append(img);
+
+            return relatedNews;
+        }
+
+        let itemIncrement = 0;
+        descParas.forEach((item, i) => {
+
+            if (i > 0 && i % 3 === 0 && insideMoreNews[itemIncrement]) {
+                descParas[0].parentNode.insertBefore(insertRelatedNewses(insideMoreNews[itemIncrement].content_heading, fJsNewsURL(insideMoreNews[itemIncrement].category.cat_slug, insideMoreNews[itemIncrement].content_id)), descParas[i - 1].nextSibling);
+                itemIncrement++;
+            }
+        })
+
+
+        function fJsNewsURL(cat_slug, content_id) {
+            return location.origin + '/category/' + cat_slug + '/' + content_id;
+            // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
+        }
+
+        // function fJsNewsImgPaths(img_path) {
+        //     return location.origin + '/media/content/images/' + img_path;
+        // }
+
+    }
+    // End For loop
+
+
+    // console.log(insideMoreExceptPost.value)
+    // ================== END More Post Details Inside Element Added =======================// 
 })
 
 </script>
