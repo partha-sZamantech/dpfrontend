@@ -1,5 +1,8 @@
 <template>
-    <div class=" max-w-[1280px] mx-auto detail-page px-2 py-4">
+    <div class=" max-w-[1280px] mx-auto detail-page px-4 md:px-2 py-4">
+        <Head>
+            <Title>{{ detailsContent.content_heading }}</Title>
+        </Head>
         <div class="breadcrump border-b pb-1 mb-5">
             <div class="flex gap-1 justify-start items-center">
 
@@ -29,7 +32,7 @@
                         <div class="h-2 w-12 rounded-md bg-[#3375af]"></div>
                     </div>
 
-                    <div class="flex justify-between items-end border-b pb-3">
+                    <div class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-3">
                         <div class="author-details flex flex-col gap-1">
                             <p v-if="detailsContent?.author">
                                 <NuxtLink :to="`/author/${detailsContent?.author?.author_slug}`">{{
@@ -42,7 +45,7 @@
                                 </ClientOnly>
                             </p>
                         </div>
-                        <div class="social-item flex gap-2 items-start justify-center">
+                        <div class="social-item flex gap-2 items-start md:justify-center">
                             <NuxtLink to="/">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg" height="28"
                                     width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
