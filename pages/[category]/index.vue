@@ -207,6 +207,9 @@
                         </div>
                         <div class="col-span-2 hidden md:block"></div>
                     </div>
+                    <div class="flex justify-center items-center">
+                        <button class="border border-[#dee2e6] text-[#3375af] px-8 py-2 rounded-sm mt-5 hover:border-[#3375af]"><b>আরও</b></button>
+                    </div>
                     <!-- Loop Category Post Section -->
                 </div>
                 <div class=" col-span-3">
