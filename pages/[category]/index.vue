@@ -14,6 +14,7 @@
         </div>
         <!-- Space For Ads -->
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4">
+            <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-4">
                 <div class="flex gap-1 justify-start items-center">
 
@@ -37,8 +38,10 @@
                     </div>
                 </div>
             </div>
+            <!-- Breadcrump Section -->
+
             <div class="grid grid-cols-12 gap-3">
-                <div class="col-span-9">
+                <div class="col-span-9 border-r pr-3">
                     <div class="grid grid-cols-12 border-b border-b-[#dee2e6] pb-4">
                         <div class="col-span-8 pr-3">
                             <div class="lead-post h-[328px] group overflow-hidden">
@@ -119,7 +122,7 @@
                                 </small>
                             </div>
                         </NuxtLink>
-                        <NuxtLink to="/" class="cat-box group px-3 border-r border-r-[#dee2e6]">
+                        <NuxtLink to="/" class="cat-box group px-3">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
                                     :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
@@ -195,8 +198,8 @@ console.log(categoryContent.value)
     margin-left: 10px;
 }
 
-.category-page .cat-box:last-child {
-    border-right: 0px;
+.cat-box:last-child {
+    border-right: 0px !important;
 }
 
 .lead-overly {

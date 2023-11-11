@@ -14,9 +14,9 @@
         </div>
 
         <!-- Latest Post -->
-        <div v-if="isActiveStatus === false" class="latest-post h-[350px] overflow-y-auto mt-2">
+        <div v-if="isActiveStatus === false" class="latest-post h-[430px] overflow-y-auto mt-2">
             <NuxtLink :to="`/category/${latstpost?.category?.cat_slug}/${latstpost?.content_id}`"
-                class="latest-post-loop py-1 flex gap-2 border-b border-b-[#e2e2e2] group" v-for="(latstpost, Linx) in latestposts"
+                class="latest-post-loop py-3 flex gap-2 border-b border-b-[#e2e2e2] group" v-for="(latstpost, Linx) in latestposts"
                 :key="latstpost?.content_id">
                 <span class="number-count text-[26px] text-[#949494]"><b>{{ toBn(`${Linx+1}`) }}.</b> </span>
                 <h4 class="text-[20px] group-hover:text-[#ff0000] text-[#121212]"> {{ latstpost?.content_heading }}</h4>
