@@ -14,7 +14,7 @@
         </div>
         <!-- Space For Ads -->
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4">
-            <div class="breadcrump border-b pb-1 mb-5 flex flex-col gap-2">
+            <div class="breadcrump border-b pb-2 mb-5 flex flex-col gap-4">
                 <div class="flex gap-1 justify-start items-center">
 
                     <NuxtLink to="/">
@@ -26,7 +26,7 @@
                         {{ category.cat_name_bn }}
                     </NuxtLink>
                 </div>
-                <div class="subcategory flex gap-4" v-if="category?.subcat?.length > 0">
+                <div class="subcategory flex gap-3" v-if="category?.subcat?.length > 0">
                     <!-- <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" /> -->
                     <NuxtLink v-for="subcategory in category?.subcat" :to="`/`" class="text-[000000] font-[600]">
                         {{ subcategory.subcat_name_bn }}
@@ -57,4 +57,15 @@ console.log(categoryContent.value)
 
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.subcategory a:not(:last-child)::after {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: #3375af;
+    display: inline-block;
+    border-radius: 100%;
+    margin-bottom: 3px;
+    margin-left: 10px;
+}
+</style>
