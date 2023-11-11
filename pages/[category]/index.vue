@@ -76,8 +76,10 @@
                                         class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                         {{ categoryContent[1]?.content_heading }}
                                     </h3>
+                                    <ClientOnly>
                                     <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
                                         v-html="categoryContent[1]?.content_details.substring(0, 155)"></div>
+                                    </ClientOnly>
                                     <small class="cat-postdate">
                                         ৩ ঘণ্টা আগে
                                     </small>
@@ -102,8 +104,10 @@
                                     class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                     {{ categoryContent[2]?.content_heading }}
                                 </h3>
+                                <ClientOnly>
                                 <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
                                     v-html="categoryContent[2]?.content_details.substring(0, 155)"></div>
+                                </ClientOnly>
                                 <small class="cat-postdate">
                                     ৩ ঘণ্টা আগে
                                 </small>
@@ -144,8 +148,10 @@
                                     class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                     {{ categoryContent[4]?.content_heading }}
                                 </h3>
+                                <ClientOnly>
                                 <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
                                     v-html="categoryContent[4]?.content_details.substring(0, 155)"></div>
+                                </ClientOnly>
                                 <small class="cat-postdate">
                                     ৩ ঘণ্টা আগে
                                 </small>
@@ -167,21 +173,23 @@
                         <div class="col-span-2 hidden md:block"></div>
                         <div class="col-span-12 md:col-span-8">
                             <!-- Loop Item -->
-                            <div class="cat-post-item py-4 border-b" v-for="(catPost, cpInx) in categoryContent.slice(5, 15)"
-                                :key="cpInx">
-                                <NuxtLink :to="`/category/${catPost?.category?.cat_slug}/${catPost?.content_id}`" class=" grid grid-cols-12 gap-3 group">
+                            <div class="cat-post-item py-4 border-b"
+                                v-for="(catPost, cpInx) in categoryContent.slice(5, 15)" :key="cpInx">
+                                <NuxtLink :to="`/category/${catPost?.category?.cat_slug}/${catPost?.content_id}`"
+                                    class=" grid grid-cols-12 gap-3 group">
                                     <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
                                         catPost?.content_heading }}</h3>
                                     <div class=" col-span-7 flex flex-col gap-3">
+                                        <ClientOnly>
                                         <div class="cat-desc text-[#555555] text-[15px] font-[300]"
                                             v-html="catPost?.content_details.substring(0, 155)"></div>
+                                        </ClientOnly>
                                         <span class="post-date">
                                             <small class="text-[#555555]">আপডেট: ১১ নভেম্বর ২০২৩, ০৩:০৫ পিএম</small>
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
-                                        <nuxt-img
-                                            :src="`${siteurl.site_url}/media/content/images/${catPost?.img_bg_path}`"
+                                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${catPost?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     </div>
@@ -193,7 +201,7 @@
                         <div class="col-span-2 hidden md:block"></div>
                     </div>
                     <div class="flex justify-center items-center">
-                        <button
+                        <button @click="loadMoreButtonHandler"
                             class="border border-[#dee2e6] text-[#3375af] px-8 py-2 rounded-sm mt-5 hover:border-[#3375af]"><b>আরও</b></button>
                     </div>
                     <!-- Loop Category Post Section -->
@@ -236,8 +244,23 @@ const { data: catcont } = await useFetch('/api/category/categorycontent', {
 categoryContent.value = catcont.value.contents
 // Category Assign
 category.value = catcont?.value?.category
-console.log(categoryContent.value)
 //================== Category Content fetching =============== //
+
+//================ Load More Category Content Button =================//
+const loadMoreButtonHandler = async () => {
+    take.value += 10
+    const { data: loadCtP } = await await useFetch('/api/category/categorycontent', {
+        method: "POST",
+        body: {
+            cat_slug: cat_slug,
+            take: take.value
+        }
+    })
+    categoryContent.value = loadCtP.value.contents
+    console.log(categoryContent.value)
+}
+//================ Load More Category Content Button =================//
+
 
 </script>
 
@@ -259,4 +282,5 @@ console.log(categoryContent.value)
 
 .lead-overly {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(53, 50, 50, 0.9) 75%, rgb(0, 0, 0) 100%);
-}</style>
+}
+</style>
