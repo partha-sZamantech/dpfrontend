@@ -71,7 +71,7 @@
                                         class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                         নরসিংদীতে গলাকেটে হত্যা: ফেলে যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার
                                     </h3>
-                                    <p class="cat-postdesc text-[16px] text-[#555]">যাওয়া মুঠোফোনের সূত্র ধরে আসামি
+                                    <p class="cat-postdesc text-[16px] text-[#555555]">যাওয়া মুঠোফোনের সূত্র ধরে আসামি
                                         গ্রেপ্তার হত্যা মুগদায় ঘুমন্ত
                                         নারীর মাথায়–মুখে আঘাত করে হত্যা এ ঘটনায় ওই নারীর স্বামীকে আ</p>
                                     <small class="cat-postdate">
@@ -122,7 +122,7 @@
                                 </small>
                             </div>
                         </NuxtLink>
-                        <NuxtLink to="/" class="cat-box group px-3">
+                        <NuxtLink to="/" class="cat-box group pl-3">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
                                     :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"

@@ -100,4 +100,9 @@ const toBn = n => n.replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d])
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #bdb8b8;
-}</style>
+}
+
+.latest-post-loop:last-child {
+    border-bottom: 0 !important;
+}
+</style>
