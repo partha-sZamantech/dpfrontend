@@ -13,7 +13,7 @@
             </div>
         </div>
         <!-- Space For Ads -->
-        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4">
+        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-4">
                 <div class="flex gap-1 justify-start items-center">
@@ -154,7 +154,7 @@
                     </div>
                 </div>
                 <div class=" col-span-3">
-                    <Tabs />
+                    <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" />
                 </div>
             </div>
         </div>
@@ -166,7 +166,12 @@
 const img = useImage()
 const siteurl = siteUrlState()
 
-
+// Sticky Status
+const singlePageSticky = singlePageStickyState()
+const stickyScroll = computed(() =>
+    singlePageSticky.value
+)
+//
 const cat_slug = useRoute().params.category
 const category = ref('')
 //================== Category Content fetching =============== //
