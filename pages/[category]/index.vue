@@ -48,8 +48,7 @@
                                         class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                         :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     <div class="lead-overly absolute h-full w-full block top-0">
-                                        <h5
-                                            class="img-title text-white group-hover:text-[#ff0000] text-[24px] absolute bottom-4 left-6">
+                                        <h5 class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[24px] absolute bottom-4 left-6">
                                             নরসিংদীতে গলাকেটে হত্যা: ফেলে যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার </h5>
                                     </div>
                                 </NuxtLink>
