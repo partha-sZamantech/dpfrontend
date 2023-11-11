@@ -28,9 +28,11 @@
                 </div>
                 <div class="subcategory flex gap-3" v-if="category?.subcat?.length > 0">
                     <!-- <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" /> -->
-                    <NuxtLink v-for="subcategory in category?.subcat" :to="`/`" class="text-[000000] font-[600]">
+                    <div class="subcategoryLink" v-for="subcategory in category?.subcat">
+                        <NuxtLink  :to="`/`" class="text-[000000] font-[600]">
                         {{ subcategory.subcat_name_bn }}
                     </NuxtLink>
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,7 +60,7 @@ console.log(categoryContent.value)
 </script>
 
 <style scoped>
-.subcategory a:not(:last-child)::after {
+.subcategory .subcategoryLink:not(:last-child)::after {
     content: "";
     width: 7px;
     height: 7px;
