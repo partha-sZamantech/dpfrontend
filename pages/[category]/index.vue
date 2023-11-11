@@ -48,13 +48,11 @@
                             <div class="lead-post h-[328px] group overflow-hidden">
                                 <NuxtLink :to="`/`" class=" relative">
                                     <nuxt-img
-                                        :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
+                                        :src="`${siteurl.site_url}/media/content/images/${categoryContent[0]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                         :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     <div class="lead-overly absolute h-full w-full block top-0">
-                                        <h5
-                                            class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[24px] absolute bottom-4 left-6">
-                                            নরসিংদীতে গলাকেটে হত্যা: ফেলে যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার </h5>
+                                        <h5 class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[24px] absolute bottom-4 left-6">{{ categoryContent[0]?.content_heading }}</h5>
                                     </div>
                                 </NuxtLink>
                             </div>
@@ -63,18 +61,15 @@
                             <NuxtLink to="/" class="categorypost-2 group">
                                 <div class="cat-feature-image overflow-hidden">
                                     <nuxt-img
-                                        :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
+                                        :src="`${siteurl.site_url}/media/content/images/${categoryContent[1]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                         :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                 </div>
                                 <div class="flex flex-col gap-2 mt-2">
-                                    <h3
-                                        class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
-                                        নরসিংদীতে গলাকেটে হত্যা: ফেলে যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার
+                                    <h3 class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                        {{ categoryContent[1]?.content_heading }}
                                     </h3>
-                                    <p class="cat-postdesc text-[16px] text-[#555555]">যাওয়া মুঠোফোনের সূত্র ধরে আসামি
-                                        গ্রেপ্তার হত্যা মুগদায় ঘুমন্ত
-                                        নারীর মাথায়–মুখে আঘাত করে হত্যা এ ঘটনায় ওই নারীর স্বামীকে আ</p>
+                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]" v-html="categoryContent[1]?.content_details.substring(0,150)"></div>
                                     <small class="cat-postdate">
                                         ৩ ঘণ্টা আগে
                                     </small>
@@ -232,8 +227,11 @@ const stickyScroll = computed(() =>
 )
 //
 const cat_slug = useRoute().params.category
-const category = ref('')
+
 //================== Category Content fetching =============== //
+// Category State
+const category = ref('')
+//Category Content State
 const categoryContent = useState(() => [])
 const take = ref(15)
 const { data: catcont } = await useFetch('/api/category/categorycontent', {
@@ -243,7 +241,9 @@ const { data: catcont } = await useFetch('/api/category/categorycontent', {
         take: take.value
     }
 })
-categoryContent.value = catcont.value
+// Category Content Assign
+categoryContent.value = catcont.value.contents
+// Category Assign
 category.value = catcont?.value?.category
 console.log(categoryContent.value)
 //================== Category Content fetching =============== //
