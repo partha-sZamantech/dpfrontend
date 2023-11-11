@@ -5,7 +5,7 @@
             <Title>{{ category.cat_name_bn }}</Title>
         </Head>
         <!-- Space For Ads -->
-        <div class="category-ads-section border-b py-4 ">
+        <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
             <div class="bg-[#f7f7f7]">
                 <a target="_blank" href="/">
                     <img class="mx-auto" src="/assets/img/bar-ads.gif" alt="">
@@ -14,7 +14,7 @@
         </div>
         <!-- Space For Ads -->
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4">
-            <div class="breadcrump border-b pb-2 mb-5 flex flex-col gap-4">
+            <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-4">
                 <div class="flex gap-1 justify-start items-center">
 
                     <NuxtLink to="/">
@@ -37,24 +37,43 @@
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-12">
+            <div class="grid grid-cols-12 gap-3">
                 <div class="col-span-9">
-                    <div class="grid grid-cols-12">
-                        <div class="col-span-8">
-                            <div class="lead-post h-[328px]">
+                    <div class="grid grid-cols-12 border-b border-b-[#dee2e6] pb-4">
+                        <div class="col-span-8 pr-3">
+                            <div class="lead-post h-[328px] group overflow-hidden">
                                 <NuxtLink :to="`/`" class=" relative">
                                     <nuxt-img
                                         :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                         :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     <div class="lead-overly absolute h-full w-full block top-0">
-                                        <h5 class="img-title text-center text-white group-hover:text-[#ff0000] text-[19px] absolute bottom-4 left-6">
-                                            dfdsf</h5>
+                                        <h5
+                                            class="img-title text-white group-hover:text-[#ff0000] text-[24px] absolute bottom-4 left-6">
+                                            নরসিংদীতে গলাকেটে হত্যা: ফেলে যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার </h5>
                                     </div>
                                 </NuxtLink>
                             </div>
                         </div>
-                        <div class="col-span-4">
+                        <div class="col-span-4 pl-3 border-l border-l-[#dee2e6]">
+                            <NuxtLink to="/" class="categorypost-2 group">
+                                <div class="cat-feature-image overflow-hidden">
+                                    <nuxt-img
+                                        :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
+                                        class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
+                                        :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                </div>
+                                <div class="flex flex-col gap-2 mt-2">
+                                    <h3 class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                        নরসিংদীতে গলাকেটে হত্যা: ফেলে যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার
+                                    </h3>
+                                    <p class="cat-postdesc text-[16px] text-[#555]">যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার হত্যা মুগদায় ঘুমন্ত
+                                        নারীর মাথায়–মুখে আঘাত করে হত্যা এ ঘটনায় ওই নারীর স্বামীকে আ</p>
+                                    <small class="cat-postdate">
+                                        ৩ ঘণ্টা আগে
+                                    </small>
+                                </div>
+                            </NuxtLink>
                         </div>
                     </div>
                 </div>
@@ -100,7 +119,7 @@ console.log(categoryContent.value)
     margin-bottom: 3px;
     margin-left: 10px;
 }
-.lead-overly{
+
+.lead-overly {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(53, 50, 50, 0.9) 75%, rgb(0, 0, 0) 100%);
-}
-</style>
+}</style>
