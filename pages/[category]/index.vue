@@ -46,19 +46,25 @@
                     <div class="grid grid-cols-12 border-b border-b-[#dee2e6] pb-4">
                         <div class="col-span-8 pr-3">
                             <div class="lead-post h-[328px] group overflow-hidden">
-                                <NuxtLink :to="`/`" class=" relative">
+                                <NuxtLink
+                                    :to="`/category/${categoryContent[0]?.category?.cat_slug}/${categoryContent[0]?.content_id}`"
+                                    class="relative">
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${categoryContent[0]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                         :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     <div class="lead-overly absolute h-full w-full block top-0">
-                                        <h5 class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[24px] absolute bottom-4 left-6">{{ categoryContent[0]?.content_heading }}</h5>
+                                        <h5
+                                            class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[24px] absolute bottom-4 left-6">
+                                            {{ categoryContent[0]?.content_heading }}</h5>
                                     </div>
                                 </NuxtLink>
                             </div>
                         </div>
                         <div class="col-span-4 pl-3 border-l border-l-[#dee2e6]">
-                            <NuxtLink to="/" class="categorypost-2 group">
+                            <NuxtLink
+                                :to="`/category/${categoryContent[1]?.category?.cat_slug}/${categoryContent[1]?.content_id}`"
+                                class="categorypost-2 group">
                                 <div class="cat-feature-image overflow-hidden">
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${categoryContent[1]?.img_bg_path}`"
@@ -66,10 +72,12 @@
                                         :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                 </div>
                                 <div class="flex flex-col gap-2 mt-2">
-                                    <h3 class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                    <h3
+                                        class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                         {{ categoryContent[1]?.content_heading }}
                                     </h3>
-                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]" v-html="categoryContent[1]?.content_details.substring(0,150)"></div>
+                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                        v-html="categoryContent[1]?.content_details.substring(0, 155)"></div>
                                     <small class="cat-postdate">
                                         ৩ ঘণ্টা আগে
                                     </small>
@@ -80,61 +88,64 @@
                     <!--/ Category Lead Section -->
                     <!-- Category Bottom Lead -->
                     <div class="grid grid-cols-3 py-4 border-b border-b-[#dee2e6]">
-                        <NuxtLink to="/" class="cat-box group pr-3 border-r border-r-[#dee2e6]">
+                        <NuxtLink
+                            :to="`/category/${categoryContent[2]?.category?.cat_slug}/${categoryContent[2]?.content_id}`"
+                            class="cat-box group pr-3 border-r border-r-[#dee2e6]">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
-                                    :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
+                                    :src="`${siteurl.site_url}/media/content/images/${categoryContent[2]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                             </div>
                             <div class="flex flex-col gap-2 mt-2">
                                 <h3
                                     class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
-                                    নরসিংদীতে গলাকেটে হত্যা: ফেলে যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার
+                                    {{ categoryContent[2]?.content_heading }}
                                 </h3>
-                                <p class="cat-postdesc text-[16px] text-[#555]">যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার
-                                    হত্যা মুগদায় ঘুমন্ত
-                                    নারীর মাথায়–মুখে আঘাত করে হত্যা এ ঘটনায় ওই নারীর স্বামীকে আ</p>
+                                <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                    v-html="categoryContent[2]?.content_details.substring(0, 155)"></div>
                                 <small class="cat-postdate">
                                     ৩ ঘণ্টা আগে
                                 </small>
                             </div>
                         </NuxtLink>
-                        <NuxtLink to="/" class="cat-box group px-3 border-r border-r-[#dee2e6]">
+                        <NuxtLink
+                            :to="`/category/${categoryContent[3]?.category?.cat_slug}/${categoryContent[3]?.content_id}`"
+                            class="cat-box group px-3 border-r border-r-[#dee2e6]">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
-                                    :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
+                                    :src="`${siteurl.site_url}/media/content/images/${categoryContent[3]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                             </div>
                             <div class="flex flex-col gap-2 mt-2">
                                 <h3
                                     class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
-                                    নরসিংদীতে গলাকেটে হত্যা: ফেলে যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার
+                                    {{ categoryContent[3]?.content_heading }}
                                 </h3>
-                                <p class="cat-postdesc text-[16px] text-[#555]">যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার
-                                    হত্যা মুগদায় ঘুমন্ত
-                                    নারীর মাথায়–মুখে আঘাত করে হত্যা এ ঘটনায় ওই নারীর স্বামীকে আ</p>
+                                <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                    v-html="categoryContent[3]?.content_details.substring(0, 155)"></div>
                                 <small class="cat-postdate">
                                     ৩ ঘণ্টা আগে
                                 </small>
                             </div>
                         </NuxtLink>
-                        <NuxtLink to="/" class="cat-box group pl-3">
+                        <NuxtLink
+                            :to="`/category/${categoryContent[4]?.category?.cat_slug}/${categoryContent[4]?.content_id}`"
+                            class="cat-box group pl-3">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
-                                    :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
+                                    :src="`${siteurl.site_url}/media/content/images/${categoryContent[4]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                             </div>
                             <div class="flex flex-col gap-2 mt-2">
                                 <h3
                                     class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
-                                    নরসিংদীতে গলাকেটে হত্যা: ফেলে যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার
+                                    {{ categoryContent[4]?.content_heading }}
                                 </h3>
-                                <p class="cat-postdesc text-[16px] text-[#555]">যাওয়া মুঠোফোনের সূত্র ধরে আসামি গ্রেপ্তার
-                                    হত্যা মুগদায় ঘুমন্ত
-                                    নারীর মাথায়–মুখে আঘাত করে হত্যা এ ঘটনায় ওই নারীর স্বামীকে আ</p>
+                                <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                    v-html="categoryContent[4]?.content_details.substring(0, 155)"></div>
                                 <small class="cat-postdate">
                                     ৩ ঘণ্টা আগে
                                 </small>
@@ -156,54 +167,34 @@
                         <div class="col-span-2 hidden md:block"></div>
                         <div class="col-span-12 md:col-span-8">
                             <!-- Loop Item -->
-                            <div class="cat-post-item py-4 border-b">
-                                <NuxtLink to="/" class=" grid grid-cols-12 gap-3 group">
-                                    <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">পুলিশের অস্ত্র
-                                        ছিনতাই, বিএনপি নেতা আমিনুলসহ তিনজন কারাগারে</h3>
+                            <div class="cat-post-item py-4 border-b" v-for="(catPost, cpInx) in categoryContent.slice(5, 15)"
+                                :key="cpInx">
+                                <NuxtLink :to="`/category/${catPost?.category?.cat_slug}/${catPost?.content_id}`" class=" grid grid-cols-12 gap-3 group">
+                                    <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
+                                        catPost?.content_heading }}</h3>
                                     <div class=" col-span-7 flex flex-col gap-3">
-
-                                        <p class="cat-desc text-[#555555]">ঢাকা মহানগর উত্তর বিএনপির সদস্যসচিব আমিনুল হকসহ
-                                            তিনজনকে কারাগারে পাঠানোর আদেশ দিয়েছেন আদালত। পুলিশের অস্ত্র...</p>
+                                        <div class="cat-desc text-[#555555] text-[15px] font-[300]"
+                                            v-html="catPost?.content_details.substring(0, 155)"></div>
                                         <span class="post-date">
                                             <small class="text-[#555555]">আপডেট: ১১ নভেম্বর ২০২৩, ০৩:০৫ পিএম</small>
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
                                         <nuxt-img
-                                            :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
+                                            :src="`${siteurl.site_url}/media/content/images/${catPost?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     </div>
                                 </NuxtLink>
                             </div>
                             <!--/ Loop Item -->
-                            <!-- Loop Item -->
-                            <div class="cat-post-item py-4 border-b">
-                                <NuxtLink to="/" class=" grid grid-cols-12 gap-3 group">
-                                    <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">পুলিশের অস্ত্র
-                                        ছিনতাই, বিএনপি নেতা আমিনুলসহ তিনজন কারাগারে</h3>
-                                    <div class=" col-span-7 flex flex-col gap-3">
 
-                                        <p class="cat-desc text-[#555555]">ঢাকা মহানগর উত্তর বিএনপির সদস্যসচিব আমিনুল হকসহ
-                                            তিনজনকে কারাগারে পাঠানোর আদেশ দিয়েছেন আদালত। পুলিশের অস্ত্র...</p>
-                                        <span class="post-date">
-                                            <small class="text-[#555555]">আপডেট: ১১ নভেম্বর ২০২৩, ০৩:০৫ পিএম</small>
-                                        </span>
-                                    </div>
-                                    <div class=" col-span-5 category-post-image overflow-hidden">
-                                        <nuxt-img
-                                            :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
-                                            class="mx-auto w-full group-hover:scale-110 duration-300"
-                                            :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
-                                    </div>
-                                </NuxtLink>
-                            </div>
-                            <!--/ Loop Item -->
                         </div>
                         <div class="col-span-2 hidden md:block"></div>
                     </div>
                     <div class="flex justify-center items-center">
-                        <button class="border border-[#dee2e6] text-[#3375af] px-8 py-2 rounded-sm mt-5 hover:border-[#3375af]"><b>আরও</b></button>
+                        <button
+                            class="border border-[#dee2e6] text-[#3375af] px-8 py-2 rounded-sm mt-5 hover:border-[#3375af]"><b>আরও</b></button>
                     </div>
                     <!-- Loop Category Post Section -->
                 </div>
@@ -268,5 +259,4 @@ console.log(categoryContent.value)
 
 .lead-overly {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(53, 50, 50, 0.9) 75%, rgb(0, 0, 0) 100%);
-}
-</style>
+}</style>
