@@ -42,6 +42,7 @@
 
             <div class="grid grid-cols-12 gap-3">
                 <div class="col-span-9 border-r pr-3">
+                    <!-- Category Lead Section -->
                     <div class="grid grid-cols-12 border-b border-b-[#dee2e6] pb-4">
                         <div class="col-span-8 pr-3">
                             <div class="lead-post h-[328px] group overflow-hidden">
@@ -81,6 +82,8 @@
                             </NuxtLink>
                         </div>
                     </div>
+                    <!--/ Category Lead Section -->
+                    <!-- Category Bottom Lead -->
                     <div class="grid grid-cols-3 py-4 border-b border-b-[#dee2e6]">
                         <NuxtLink to="/" class="cat-box group pr-3 border-r border-r-[#dee2e6]">
                             <div class="cat-box-image overflow-hidden">
@@ -152,6 +155,31 @@
                         </div>
                         <!--::::::::::::::::::: Ads Section :::::::::::::::::::::::: -->
                     </div>
+                    <!--/ Category Bottom Lead -->
+                    <!-- Loop Category Post Section -->
+                    <div class="category-post-list grid grid-cols-12 mt-8">
+                        <div class="col-span-2 hidden md:block"></div>
+                        <div class="col-span-12 md:col-span-8">
+                            <NuxtLink to="/" class=" grid grid-cols-12 gap-3 group">
+                                 <h3 class="cat-title col-span-12 text-[20px]">পুলিশের অস্ত্র ছিনতাই, বিএনপি নেতা আমিনুলসহ তিনজন কারাগারে</h3>
+                                <div class=" col-span-7 flex flex-col gap-3">
+                            
+                                    <p class="cat-desc text-[#555555]">ঢাকা মহানগর উত্তর বিএনপির সদস্যসচিব আমিনুল হকসহ তিনজনকে কারাগারে পাঠানোর আদেশ দিয়েছেন আদালত। পুলিশের অস্ত্র...</p>
+                                    <span class="post-date">
+                                        <small class="text-[#555555]">আপডেট: ১১ নভেম্বর ২০২৩, ০৩:০৫ পিএম</small>
+                                    </span>
+                                </div>
+                                <div class=" col-span-5 category-post-image overflow-hidden">
+                                    <nuxt-img
+                                        :src="`https://www.dhakaprokash24.com/media/content/images/2023October/asad-dhakaprokash-20231005140541.jpg`"
+                                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                                        :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                </div>
+                            </NuxtLink>
+                        </div>
+                        <div class="col-span-2 hidden md:block"></div>
+                    </div>
+                    <!-- Loop Category Post Section -->
                 </div>
                 <div class=" col-span-3">
                     <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" />
