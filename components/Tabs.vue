@@ -19,7 +19,7 @@
                 class="latest-post-loop py-3 flex gap-2 border-b border-b-[#e2e2e2] group" v-for="(latstpost, Linx) in latestposts"
                 :key="latstpost?.content_id">
                 <span class="number-count text-[26px] text-[#949494]"><b>{{ toBn(`${Linx+1}`) }}.</b> </span>
-                <h4 class="text-[20px] group-hover:text-[#ff0000] text-[#121212]"> {{ latstpost?.content_heading }}</h4>
+                <h4 class="text-[20px] group-hover:text-[#ff0000] text-[#121212] leading-6"> {{ latstpost?.content_heading }}</h4>
            
             </NuxtLink>
 
@@ -31,7 +31,7 @@
                 class="latest-post-loop py-1 flex gap-2 border-b border-b-[#e2e2e2] group" v-for="(poplarpost, Pinx) in popularposts"
                 :key="poplarpost?.content_id">
                 <span class="number-count text-[26px] text-[#949494]"><b>{{ toBn(`${Pinx+1}`) }}.</b> </span>
-                <h4 class="text-[20px] group-hover:text-[#ff0000] text-[#121212]"> {{ poplarpost?.content_heading }}</h4>
+                <h4 class="text-[20px] group-hover:text-[#ff0000] text-[#121212] leading-6"> {{ poplarpost?.content_heading }}</h4>
             </NuxtLink>
            
        
