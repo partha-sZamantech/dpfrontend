@@ -151,7 +151,7 @@
                     </div>
                 </div>
                 <div class=" col-span-3">
-                    dfds
+                    <Tabs />
                 </div>
             </div>
         </div>
@@ -162,6 +162,8 @@
 
 const img = useImage()
 const siteurl = siteUrlState()
+
+
 const cat_slug = useRoute().params.category
 const category = ref('')
 //================== Category Content fetching =============== //
