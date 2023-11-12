@@ -15,7 +15,7 @@
         <!-- Space For Ads -->
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
             <!-- Breadcrump Section -->
-            <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-4">
+            <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
                 <!-- <div class="flex gap-1 justify-start items-center">
 
                     <NuxtLink to="/">
@@ -30,7 +30,7 @@
                 <div class="flex gap-1 justify-start items-center">
                     <NuxtLink :to="`/${category.cat_slug}`" class="text-[#3375af] font-semibold">
                         <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                        <h1 class="text-2xl md:text-3xl">{{ category.cat_name_bn }}</h1>
+                        <h1 class="text-xl md:text-3xl">{{ category.cat_name_bn }}</h1>
                     </NuxtLink>
                 </div>
                 <div>
