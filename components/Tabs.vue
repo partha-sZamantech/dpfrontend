@@ -26,7 +26,7 @@
         </div>
         <!--/ Latest Post -->
         <!-- Popular Post -->
-        <div v-else class="latest-post px-3 h-[240px] overflow-y-auto mt-2">
+        <div v-else class="latest-post px-3 h-[430px] overflow-y-auto mt-2">
             <NuxtLink :to="`/category/${poplarpost?.category?.cat_slug}/${poplarpost?.content_id}`"
                 class="latest-post-loop py-1 flex gap-2 border-b border-b-[#e2e2e2] group" v-for="(poplarpost, Pinx) in popularposts"
                 :key="poplarpost?.content_id">

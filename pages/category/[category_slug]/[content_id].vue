@@ -376,7 +376,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 const { x, y } = useMouse()
 const siteurl = siteUrlState()
 const img = useImage()
-// Sticky Status
+// single Page sticky
 const singlePageSticky = singlePageStickyState()
 const stickyScroll = computed(() =>
     singlePageSticky.value

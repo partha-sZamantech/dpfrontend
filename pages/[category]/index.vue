@@ -39,7 +39,7 @@
                 </div>
             </div>
             <!-- Breadcrump Section -->
-
+            
             <div class="grid grid-cols-12 gap-3">
                 <div class="col-span-9 border-r pr-3">
                     <!-- Category Lead Section -->
@@ -127,8 +127,10 @@
                                     class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                     {{ categoryContent[3]?.content_heading }}
                                 </h3>
+                                <ClientOnly>
                                 <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
                                     v-html="categoryContent[3]?.content_details.substring(0, 155)"></div>
+                                </ClientOnly>
                                 <small class="cat-postdate">
                                     ৩ ঘণ্টা আগে
                                 </small>
@@ -173,8 +175,9 @@
                         <div class="col-span-2 hidden md:block"></div>
                         <div class="col-span-12 md:col-span-8">
                             <!-- Loop Item -->
+                            <ClientOnly>
                             <div class="cat-post-item py-4 border-b"
-                                v-for="(catPost, cpInx) in categoryContent.slice(5, 15)" :key="cpInx">
+                                v-for="(catPost, cpInx) in categoryContentExcept" :key="cpInx">
                                 <NuxtLink :to="`/category/${catPost?.category?.cat_slug}/${catPost?.content_id}`"
                                     class=" grid grid-cols-12 gap-3 group">
                                     <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
@@ -184,6 +187,7 @@
                                         <div class="cat-desc text-[#555555] text-[15px] font-[300]"
                                             v-html="catPost?.content_details.substring(0, 155)"></div>
                                         </ClientOnly>
+                                    
                                         <span class="post-date">
                                             <small class="text-[#555555]">আপডেট: ১১ নভেম্বর ২০২৩, ০৩:০৫ পিএম</small>
                                         </span>
@@ -195,6 +199,7 @@
                                     </div>
                                 </NuxtLink>
                             </div>
+                        </ClientOnly>
                             <!--/ Loop Item -->
 
                         </div>
@@ -232,6 +237,7 @@ const cat_slug = useRoute().params.category
 const category = ref('')
 //Category Content State
 const categoryContent = useState(() => [])
+const categoryContentExcept = useState(() => [])
 const take = ref(15)
 const { data: catcont } = await useFetch('/api/category/categorycontent', {
     method: "POST",
@@ -242,6 +248,7 @@ const { data: catcont } = await useFetch('/api/category/categorycontent', {
 })
 // Category Content Assign
 categoryContent.value = catcont.value.contents
+categoryContentExcept.value = catcont.value.contents.slice(5,15)
 // Category Assign
 category.value = catcont?.value?.category
 //================== Category Content fetching =============== //
