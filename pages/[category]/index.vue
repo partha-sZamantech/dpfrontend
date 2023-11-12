@@ -16,52 +16,58 @@
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-4">
-                <div class="flex gap-1 justify-start items-center">
+                <!-- <div class="flex gap-1 justify-start items-center">
 
                     <NuxtLink to="/">
                         <Icon class="text-xl" name="material-symbols:house-rounded" />
                     </NuxtLink>
                     <Icon name="ic:outline-keyboard-arrow-right" class="text-[#3375af]" />
-                    <NuxtLink :to="`/`" class="text-[#3375af] font-semibold">
+                    <NuxtLink :to="`/`" class="text-[#3375af] font-semibold"> -->
+                <!-- {{ detailsContent?.category?.cat_name_bn }} -->
+                <!-- {{ category.cat_name_bn }}
+                    </NuxtLink>
+                </div> -->
+                <div class="flex gap-1 justify-start items-center">
+                    <NuxtLink :to="`/${category.cat_slug}`" class="text-[#3375af] font-semibold">
                         <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                        {{ category.cat_name_bn }}
+                        <h1 class="text-2xl md:text-3xl">{{ category.cat_name_bn }}</h1>
                     </NuxtLink>
                 </div>
                 <div>
                     <div class="subcategory flex flex-wrap gap-3" v-if="category?.subcat?.length > 0">
                         <!-- <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" /> -->
                         <div class="subcategoryLink" v-for="subcategory in category?.subcat">
-                            <NuxtLink :to="`/`" class="text-[000000] font-[600] hover:text-[#3375af]">
+                            <NuxtLink :to="`/`" class="text-[000000] font-[600] text-sm md:text-[16px] hover:text-[#3375af]">
                                 {{ subcategory.subcat_name_bn }}
                             </NuxtLink>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Breadcrump Section -->
-            
-            <div class="grid grid-cols-12 gap-3">
-                <div class="col-span-9 border-r pr-3">
+            <!--/ Breadcrump Section -->
+
+            <div class="grid grid-cols-12 gap-8 md:gap-3">
+                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3">
                     <!-- Category Lead Section -->
                     <div class="grid grid-cols-12 border-b border-b-[#dee2e6] pb-4">
-                        <div class="col-span-8 pr-3">
-                            <div class="lead-post h-[328px] group overflow-hidden">
+                        <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">
+                            <div class="lead-post md:h-[328px] group overflow-hidden">
                                 <NuxtLink
                                     :to="`/category/${categoryContent[0]?.category?.cat_slug}/${categoryContent[0]?.content_id}`"
                                     class="relative">
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${categoryContent[0]?.img_bg_path}`"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
+                                        class="mx-auto w-full group-hover:scale-110 duration-300 md:h-full"
                                         :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     <div class="lead-overly absolute h-full w-full block top-0">
                                         <h5
-                                            class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[24px] absolute bottom-4 left-6">
+                                            class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[18px] md:text-[24px] absolute bottom-4 left-6">
                                             {{ categoryContent[0]?.content_heading }}</h5>
                                     </div>
                                 </NuxtLink>
                             </div>
                         </div>
-                        <div class="col-span-4 pl-3 border-l border-l-[#dee2e6]">
+                        <div class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
                             <NuxtLink
                                 :to="`/category/${categoryContent[1]?.category?.cat_slug}/${categoryContent[1]?.content_id}`"
                                 class="categorypost-2 group">
@@ -77,8 +83,8 @@
                                         {{ categoryContent[1]?.content_heading }}
                                     </h3>
                                     <ClientOnly>
-                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
-                                        v-html="categoryContent[1]?.content_details.substring(0, 155)"></div>
+                                        <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                            v-html="categoryContent[1]?.content_details.substring(0, 155)"></div>
                                     </ClientOnly>
                                     <small class="cat-postdate">
                                         ৩ ঘণ্টা আগে
@@ -89,10 +95,10 @@
                     </div>
                     <!--/ Category Lead Section -->
                     <!-- Category Bottom Lead -->
-                    <div class="grid grid-cols-3 py-4 border-b border-b-[#dee2e6]">
+                    <div class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
                         <NuxtLink
                             :to="`/category/${categoryContent[2]?.category?.cat_slug}/${categoryContent[2]?.content_id}`"
-                            class="cat-box group pr-3 border-r border-r-[#dee2e6]">
+                            class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${categoryContent[2]?.img_bg_path}`"
@@ -105,8 +111,8 @@
                                     {{ categoryContent[2]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
-                                    v-html="categoryContent[2]?.content_details.substring(0, 155)"></div>
+                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                        v-html="categoryContent[2]?.content_details.substring(0, 155)"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
                                     ৩ ঘণ্টা আগে
@@ -115,7 +121,7 @@
                         </NuxtLink>
                         <NuxtLink
                             :to="`/category/${categoryContent[3]?.category?.cat_slug}/${categoryContent[3]?.content_id}`"
-                            class="cat-box group px-3 border-r border-r-[#dee2e6]">
+                            class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${categoryContent[3]?.img_bg_path}`"
@@ -128,8 +134,8 @@
                                     {{ categoryContent[3]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
-                                    v-html="categoryContent[3]?.content_details.substring(0, 155)"></div>
+                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                        v-html="categoryContent[3]?.content_details.substring(0, 155)"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
                                     ৩ ঘণ্টা আগে
@@ -138,7 +144,7 @@
                         </NuxtLink>
                         <NuxtLink
                             :to="`/category/${categoryContent[4]?.category?.cat_slug}/${categoryContent[4]?.content_id}`"
-                            class="cat-box group pl-3">
+                            class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${categoryContent[4]?.img_bg_path}`"
@@ -151,8 +157,8 @@
                                     {{ categoryContent[4]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
-                                    v-html="categoryContent[4]?.content_details.substring(0, 155)"></div>
+                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                        v-html="categoryContent[4]?.content_details.substring(0, 155)"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
                                     ৩ ঘণ্টা আগে
@@ -175,19 +181,19 @@
                         <div class="col-span-2 hidden md:block"></div>
                         <div class="col-span-12 md:col-span-8">
                             <!-- Loop Item -->
-                            <ClientOnly>
-                            <div class="cat-post-item py-4 border-b"
-                                v-for="(catPost, cpInx) in categoryContentExcept" :key="cpInx">
+
+                            <div class="cat-post-item py-4 border-b" v-for="(catPost, cpInx) in categoryContentExcept"
+                                :key="cpInx">
                                 <NuxtLink :to="`/category/${catPost?.category?.cat_slug}/${catPost?.content_id}`"
                                     class=" grid grid-cols-12 gap-3 group">
                                     <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
                                         catPost?.content_heading }}</h3>
                                     <div class=" col-span-7 flex flex-col gap-3">
                                         <ClientOnly>
-                                        <div class="cat-desc text-[#555555] text-[15px] font-[300]"
-                                            v-html="catPost?.content_details.substring(0, 155)"></div>
+                                            <div class="cat-desc text-[#555555] text-[15px] font-[300]"
+                                                v-html="catPost?.content_details.substring(0, 160)"></div>
                                         </ClientOnly>
-                                    
+
                                         <span class="post-date">
                                             <small class="text-[#555555]">আপডেট: ১১ নভেম্বর ২০২৩, ০৩:০৫ পিএম</small>
                                         </span>
@@ -199,7 +205,7 @@
                                     </div>
                                 </NuxtLink>
                             </div>
-                        </ClientOnly>
+
                             <!--/ Loop Item -->
 
                         </div>
@@ -211,7 +217,7 @@
                     </div>
                     <!-- Loop Category Post Section -->
                 </div>
-                <div class=" col-span-3">
+                <div class=" col-span-12 md:col-span-3">
                     <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" />
                 </div>
             </div>
@@ -248,7 +254,7 @@ const { data: catcont } = await useFetch('/api/category/categorycontent', {
 })
 // Category Content Assign
 categoryContent.value = catcont.value.contents
-categoryContentExcept.value = catcont.value.contents.slice(5,take.value)
+categoryContentExcept.value = catcont.value.contents.slice(5, take.value)
 // Category Assign
 category.value = catcont?.value?.category
 //================== Category Content fetching =============== //
@@ -263,7 +269,7 @@ const loadMoreButtonHandler = async () => {
             take: take.value
         }
     })
-    categoryContentExcept.value = loadCtP.value.contents.slice(5,take.value)
+    categoryContentExcept.value = loadCtP.value.contents.slice(5, take.value)
 
 }
 //================ Load More Category Content Button =================//
