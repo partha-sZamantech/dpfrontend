@@ -17,7 +17,7 @@
          <!-- Breadcrump Section -->
          <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
           
-            <div class="tag-title">
+            <div class="tag-title md:py-6">
                   <h1 class="text-xl md:text-3xl text-[#3375af] font-semibold">{{ tag_slug.replaceAll('-', ' ')}}</h1>
             </div>
            
@@ -28,15 +28,14 @@
             <div class="col-span-12 md:col-span-9 md:border-r md:pr-3">
 
                <!-- Loop Category Post Section -->
-               <div class="category-post-list grid grid-cols-12 mt-4">
+               <div class="category-post-list grid grid-cols-12">
                   <div class="col-span-2 hidden md:block"></div>
                   <div class="col-span-12 md:col-span-8">
                      <!-- Loop Item -->
 
                      <div class="cat-post-item py-4 border-b" v-for="(tagContent, cpInx) in tagContents"
                         :key="cpInx">
-                        <!-- :to="`/category/${tagContent?.category?.cat_slug}/${tagContent?.content_id}`" -->
-                        {{ tagContent?.category?.cat_slug }} {{ tagContent?.content_id }}
+                    
                         <NuxtLink :to="`/category/${tagContent?.category?.cat_slug}/${tagContent?.content_id}`"
                            class=" grid grid-cols-12 gap-3 group">
                            <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
@@ -95,7 +94,7 @@ const tag_slug = useRoute().params.tag_slug
 
 //Tag Content State
 const tagContents = useState(() => [])
-const take = ref(15)
+const take = ref(10)
 const { data: tgcont } = await useFetch('/api/tag/tagcontent', {
    method: "POST",
    body: {
