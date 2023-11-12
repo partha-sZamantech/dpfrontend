@@ -16,8 +16,9 @@
       <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
          <!-- Breadcrump Section -->
          <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
-          
-            <div class="tag-title md:py-6">
+            
+            <div class="tag-title md:py-6 flex gap-3 items-center">
+                  <Icon name="bi:tags-fill" class="text-[#3375af] text-3xl" />
                   <h1 class="text-xl md:text-3xl text-[#3375af] font-semibold">{{ tag_slug.replaceAll('-', ' ')}}</h1>
             </div>
            
