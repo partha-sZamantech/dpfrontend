@@ -248,7 +248,7 @@ const { data: catcont } = await useFetch('/api/category/categorycontent', {
 })
 // Category Content Assign
 categoryContent.value = catcont.value.contents
-categoryContentExcept.value = catcont.value.contents.slice(5,15)
+categoryContentExcept.value = catcont.value.contents.slice(5,take.value)
 // Category Assign
 category.value = catcont?.value?.category
 //================== Category Content fetching =============== //
@@ -256,15 +256,15 @@ category.value = catcont?.value?.category
 //================ Load More Category Content Button =================//
 const loadMoreButtonHandler = async () => {
     take.value += 10
-    const { data: loadCtP } = await await useFetch('/api/category/categorycontent', {
+    const { data: loadCtP } = await useFetch('/api/category/categorycontent', {
         method: "POST",
         body: {
             cat_slug: cat_slug,
             take: take.value
         }
     })
-    categoryContent.value = loadCtP.value.contents
-    console.log(categoryContent.value)
+    categoryContentExcept.value = loadCtP.value.contents.slice(5,take.value)
+
 }
 //================ Load More Category Content Button =================//
 
