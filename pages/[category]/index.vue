@@ -37,8 +37,8 @@
                     <div class="subcategory flex flex-wrap gap-3" v-if="category?.subcat?.length > 0">
                         <!-- <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" /> -->
                         <div class="subcategoryLink" v-for="subcategory in category?.subcat">
-                            <NuxtLink :to="`/`" class="text-[000000] font-[600] text-sm md:text-[16px] hover:text-[#3375af]">
-                                {{ subcategory.subcat_name_bn }}
+                            <NuxtLink :to="`/${category.cat_slug}/${subcategory?.subcat_slug}`" class="text-[000000] font-[600] text-sm md:text-[16px] hover:text-[#3375af]">
+                                {{ subcategory?.subcat_name_bn }}
                             </NuxtLink>
                         </div>
                     </div>
