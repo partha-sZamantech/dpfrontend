@@ -11,7 +11,7 @@
             <div>
                 <h4 class="leading-tight text-[20px] mb-1 group-hover:text-[#ff0000]">{{ tpcontent?.content_heading }}</h4>
                 <!-- <p class="text-[16px]">{{ tpcontent?.content_details?.substring(0,100)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
-                <div class="text-[16px] font-[400]" v-html="`${tpcontent?.content_details?.substring(0,100)} ...`"></div>
+                <div class="text-[15px] font-[300] text-[#555555]" v-html="`${tpcontent?.content_details?.substring(0,100)} ...`"></div>
             </div>
         </NuxtLink>
         <!-- ========== Loop Item =========== -->

@@ -18,7 +18,7 @@
                             <!-- <p class="text-[18px]">{{ specialTopContents[0]?.content_details?.substring(0,
                                 165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
                             <ClientOnly>
-                                <div v-html="`${specialTopContents[0]?.content_details?.substring(0,
+                                <div class=" font-[300] text-[#555555]" v-html="`${specialTopContents[0]?.content_details?.substring(0,
                                         165)} ...`"></div>
                             </ClientOnly>
 

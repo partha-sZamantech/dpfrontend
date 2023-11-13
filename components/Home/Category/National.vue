@@ -12,9 +12,9 @@
                 <NuxtLink :to="`/category/${nationalHCon[0]?.category?.cat_slug}/${nationalHCon[0]?.content_id}`"
                     class="flex flex-col group gap-2">
                     <div class="national-feature-image overflow-hidden">
-                        <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${nationalHCon[0]?.img_bg_path}`"
+                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${nationalHCon[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                            :placeholder="img(`${siteUrl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                            :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                     </div>
                     <div class="national-feature-description flex flex-col gap-1">
                         <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{ nationalHCon[0]?.content_heading
@@ -22,7 +22,7 @@
                         <ClientOnly>
                             <!-- <p class="text-md">{{ nationalHCon[0]?.content_details?.substring(0,
                                 200)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
-                                <div class="text-[16px] font-[400]" v-html="`${nationalHCon[0]?.content_details?.substring(0,
+                                <div class="text-[16px] font-[300] text-[#555555]" v-html="`${nationalHCon[0]?.content_details?.substring(0,
                                 200)} ...`"></div>
                         </ClientOnly>
                     </div>
@@ -35,9 +35,9 @@
                         class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4">
                         <div class=" col-span-5 overflow-hidden">
                             <NuxtLink :to="`/category/${nationalcntent?.category?.cat_slug}/${nationalcntent?.content_id}`">
-                                <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${nationalcntent?.img_bg_path}`"
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${nationalcntent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
@@ -56,7 +56,7 @@
 </template>
 
 <script setup>
-const siteUrl = siteUrlState()
+const siteurl = siteUrlState()
 const img = useImage()
 const nationalHCon = NationalHomeContentState()
 const { data: nationalhc } = await useFetch('/api/home/nationalhomecontent', {
