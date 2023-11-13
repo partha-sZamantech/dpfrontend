@@ -2,7 +2,7 @@
     <div class="category-page">
 
         <Head>
-            <Title>{{ category.cat_name_bn }}</Title>
+            <Title>{{ category.cat_name_bn }} </Title>
         </Head>
         <!-- Space For Ads -->
         <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
@@ -12,8 +12,10 @@
                 </a>
             </div>
         </div>
+        
         <!-- Space For Ads -->
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
+         
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
                 <!-- <div class="flex gap-1 justify-start items-center">
@@ -87,7 +89,7 @@
                                             v-html="categoryContent[1]?.content_details.substring(0, 155)"></div>
                                     </ClientOnly>
                                     <small class="cat-postdate">
-                                        ৩ ঘণ্টা আগে
+                                        2 din go
                                     </small>
                                 </div>
                             </NuxtLink>
@@ -226,9 +228,13 @@
 </template>
 
 <script setup>
+import moment from 'moment'
+moment.locale('bn');
+
 
 const img = useImage()
 const siteurl = siteUrlState()
+
 
 // Sticky Status
 const singlePageSticky = singlePageStickyState()
@@ -259,6 +265,7 @@ categoryContentExcept.value = catcont.value.contents.slice(5, take.value)
 category.value = catcont?.value?.category
 //================== Category Content fetching =============== //
 
+
 //================ Load More Category Content Button =================//
 const loadMoreButtonHandler = async () => {
     take.value += 10
@@ -274,6 +281,7 @@ const loadMoreButtonHandler = async () => {
 }
 //================ Load More Category Content Button =================//
 
+// let date = new Date(categoryContent.value[0].created_at).toLocaleDateString("bn")
 
 </script>
 

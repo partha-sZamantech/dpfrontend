@@ -21,6 +21,7 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@nuxtjs/device',
     '@vueuse/nuxt',
+    '@samk-dev/nuxt-vcalendar'
   ],
 
 })

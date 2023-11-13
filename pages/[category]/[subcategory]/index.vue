@@ -253,7 +253,7 @@ category.value = subctcont?.value?.category
 subcategoryContents.value = subctcont?.value?.contents
 subcategory.value = subctcont?.value?.subcategory
 subcategoryContentExcept.value = subctcont?.value?.contents.slice(5, take.value)
-console.log(subcategoryContents.value)
+// console.log(subcategoryContents.value)
 // ================== Subcategory Content ============= //
 
 //================ Load More Sub Category Content Button =================//
