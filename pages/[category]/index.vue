@@ -12,10 +12,10 @@
                 </a>
             </div>
         </div>
-        
+
         <!-- Space For Ads -->
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
-         
+
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
                 <!-- <div class="flex gap-1 justify-start items-center">
@@ -39,7 +39,8 @@
                     <div class="subcategory flex flex-wrap gap-3" v-if="category?.subcat?.length > 0">
                         <!-- <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" /> -->
                         <div class="subcategoryLink" v-for="subcategory in category?.subcat">
-                            <NuxtLink :to="`/${category.cat_slug}/${subcategory?.subcat_slug}`" class="text-[000000] font-[600] text-sm md:text-[16px] hover:text-[#3375af]">
+                            <NuxtLink :to="`/${category.cat_slug}/${subcategory?.subcat_slug}`"
+                                class="text-[000000] font-[600] text-sm md:text-[16px] hover:text-[#3375af]">
                                 {{ subcategory?.subcat_name_bn }}
                             </NuxtLink>
                         </div>
@@ -69,7 +70,8 @@
                                 </NuxtLink>
                             </div>
                         </div>
-                        <div class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
+                        <div
+                            class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
                             <NuxtLink
                                 :to="`/category/${categoryContent[1]?.category?.cat_slug}/${categoryContent[1]?.content_id}`"
                                 class="categorypost-2 group">
@@ -79,17 +81,17 @@
                                         class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 </div>
-                                <div class="flex flex-col gap-2 mt-2">
+                                <div class="flex flex-col gap-3 mt-2">
                                     <h3
                                         class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                         {{ categoryContent[1]?.content_heading }}
                                     </h3>
                                     <ClientOnly>
                                         <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
-                                            v-html="categoryContent[1]?.content_details.substring(0, 155)"></div>
+                                            v-html="`${categoryContent[1]?.content_details.substring(0, 155)}...`"></div>
                                     </ClientOnly>
                                     <small class="cat-postdate">
-                                        2 din go
+                                        প্রকাশ: {{ postCreatedDate(categoryContent[1]?.created_at) }}
                                     </small>
                                 </div>
                             </NuxtLink>
@@ -107,17 +109,17 @@
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <div class="flex flex-col gap-2 mt-2">
+                            <div class="flex flex-col gap-3 mt-2">
                                 <h3
                                     class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                     {{ categoryContent[2]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
                                     <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
-                                        v-html="categoryContent[2]?.content_details.substring(0, 155)"></div>
+                                        v-html="`${categoryContent[2]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
-                                    ৩ ঘণ্টা আগে
+                                    প্রকাশ: {{ postCreatedDate(categoryContent[2]?.created_at) }}
                                 </small>
                             </div>
                         </NuxtLink>
@@ -130,17 +132,17 @@
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <div class="flex flex-col gap-2 mt-2">
+                            <div class="flex flex-col gap-3 mt-2">
                                 <h3
                                     class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                     {{ categoryContent[3]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
                                     <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
-                                        v-html="categoryContent[3]?.content_details.substring(0, 155)"></div>
+                                        v-html="`${categoryContent[3]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
-                                    ৩ ঘণ্টা আগে
+                                    প্রকাশ: {{ postCreatedDate(categoryContent[3]?.created_at) }}
                                 </small>
                             </div>
                         </NuxtLink>
@@ -153,17 +155,17 @@
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <div class="flex flex-col gap-2 mt-2">
+                            <div class="flex flex-col gap-3 mt-2">
                                 <h3
                                     class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                     {{ categoryContent[4]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
                                     <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
-                                        v-html="categoryContent[4]?.content_details.substring(0, 155)"></div>
+                                        v-html="`${categoryContent[4]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
-                                    ৩ ঘণ্টা আগে
+                                    প্রকাশ: {{ postCreatedDate(categoryContent[4]?.created_at) }}
                                 </small>
                             </div>
                         </NuxtLink>
@@ -196,8 +198,11 @@
                                                 v-html="catPost?.content_details.substring(0, 160)"></div>
                                         </ClientOnly>
 
-                                        <span class="post-date">
-                                            <small class="text-[#555555]">আপডেট: ১১ নভেম্বর ২০২৩, ০৩:০৫ পিএম</small>
+                                        <span class="post-date flex flex-col gap-1">
+                                            <small class="text-[#555555]">আপডেট: {{
+                                                postCreatedDate(catPost?.updated_at) }}</small>
+                                            <small class="text-[#555555]">প্রকাশ: {{
+                                                postCreatedDate(catPost?.created_at) }}</small>
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
@@ -228,9 +233,15 @@
 </template>
 
 <script setup>
-import moment from 'moment'
-moment.locale('bn');
-
+// import moment from 'moment'
+// moment.locale('bn');
+// ================ Get Bangla Date ============== //
+const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
+// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+const postCreatedDate = (date) => {
+    return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+}
+// ================ Get Bangla Date ============== //
 
 const img = useImage()
 const siteurl = siteUrlState()
