@@ -85,7 +85,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="feature-image border-b">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
                             class="mx-auto w-full"
-                            :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                         <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
                             detailsContent?.img_bg_caption }}</p>
                     </div>
@@ -133,7 +133,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 <NuxtLink :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
                                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                                        :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 </NuxtLink>
                             </div>
                             <div class=" col-span-7">
@@ -164,7 +164,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <div class="feature_image_readmore overflow-hidden">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ fRelatedContent?.content_heading }}</h5>
                         </NuxtLink>
@@ -242,7 +242,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="feature-image border-b">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`"
                             class="mx-auto w-full"
-                            :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                         <p v-if="moreDetailContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
                             moreDetailContent?.img_bg_caption }}</p>
                     </div>
@@ -294,7 +294,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${moreDetCatCon?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                                        :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 </NuxtLink>
                             </div>
                             <div class=" col-span-7">
@@ -327,7 +327,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <div class="feature_image_readmore overflow-hidden">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${relDetailContent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ relDetailContent?.content_heading }}</h5>
                         </NuxtLink>
@@ -357,7 +357,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <div class="feature_image_readmore overflow-hidden">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPostC?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ latestPostC?.content_heading }}</h5>
                         </NuxtLink>

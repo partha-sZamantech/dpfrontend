@@ -60,7 +60,7 @@
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${categoryContent[0]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 md:h-full"
-                                        :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                        :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     <div class="lead-overly absolute h-full w-full block top-0">
                                         <h5
                                             class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[18px] md:text-[24px] absolute bottom-4 left-6">
@@ -77,7 +77,7 @@
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${categoryContent[1]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
-                                        :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                        :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 </div>
                                 <div class="flex flex-col gap-2 mt-2">
                                     <h3
@@ -105,7 +105,7 @@
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${categoryContent[2]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <div class="flex flex-col gap-2 mt-2">
                                 <h3
@@ -128,7 +128,7 @@
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${categoryContent[3]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <div class="flex flex-col gap-2 mt-2">
                                 <h3
@@ -151,7 +151,7 @@
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${categoryContent[4]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <div class="flex flex-col gap-2 mt-2">
                                 <h3
@@ -172,7 +172,7 @@
                             <NuxtLink to="/">
                                 <nuxt-img :src="`/assets/img/cat-ads.gif`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 px-2 mt-6 mb-2"
-                                    :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </NuxtLink>
                         </div>
                         <!--::::::::::::::::::: Ads Section :::::::::::::::::::::::: -->
@@ -203,7 +203,7 @@
                                     <div class=" col-span-5 category-post-image overflow-hidden">
                                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${catPost?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                                            :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     </div>
                                 </NuxtLink>
                             </div>

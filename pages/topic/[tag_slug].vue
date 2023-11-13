@@ -2,7 +2,7 @@
    <div class="category-page">
 
       <Head>
-         <Title>{{ tag_slug.replaceAll('-', ' ')}}</Title>
+         <Title>{{ tag_slug.replaceAll('-', ' ') }}</Title>
       </Head>
       <!-- Space For Ads -->
       <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
@@ -16,12 +16,12 @@
       <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
          <!-- Breadcrump Section -->
          <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
-            
+
             <div class="tag-title md:py-6 flex gap-3 items-center">
-                  <Icon name="bi:tags-fill" class="text-[#3375af] text-3xl" />
-                  <h1 class="text-xl md:text-3xl text-[#3375af] font-semibold">{{ tag_slug.replaceAll('-', ' ')}}</h1>
+               <Icon name="bi:tags-fill" class="text-[#3375af] text-3xl" />
+               <h1 class="text-xl md:text-3xl text-[#3375af] font-semibold">{{ tag_slug.replaceAll('-', ' ') }}</h1>
             </div>
-           
+
          </div>
          <!--/ Breadcrump Section -->
 
@@ -34,9 +34,8 @@
                   <div class="col-span-12 md:col-span-8">
                      <!-- Loop Item -->
 
-                     <div class="cat-post-item py-4 border-b" v-for="(tagContent, cpInx) in tagContents"
-                        :key="cpInx">
-                    
+                     <div class="cat-post-item py-4 border-b" v-for="(tagContent, cpInx) in tagContents" :key="cpInx">
+
                         <NuxtLink :to="`/category/${tagContent?.category?.cat_slug}/${tagContent?.content_id}`"
                            class=" grid grid-cols-12 gap-3 group">
                            <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
@@ -52,9 +51,13 @@
                               </span>
                            </div>
                            <div class=" col-span-5 category-post-image overflow-hidden">
+                              <!-- <nuxt-img :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
+                                 class="mx-auto w-full group-hover:scale-110 duration-300"
+                                 :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" /> -->
                               <nuxt-img :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
                                  class="mx-auto w-full group-hover:scale-110 duration-300"
-                                 :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                 :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+
                            </div>
                         </NuxtLink>
                      </div>
