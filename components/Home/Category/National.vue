@@ -14,7 +14,7 @@
                     <div class="national-feature-image overflow-hidden">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${nationalHCon[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                            :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
                     </div>
                     <div class="national-feature-description flex flex-col gap-1">
                         <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{ nationalHCon[0]?.content_heading
