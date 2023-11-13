@@ -13,7 +13,7 @@
                     <div class="intertainment-feature-image overflow-hidden">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${literatureContents[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                            :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                            :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                     </div>
                     <div class="intertainment-feature-description flex flex-col gap-1">
                         <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{
@@ -35,7 +35,7 @@
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${literatureContent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
