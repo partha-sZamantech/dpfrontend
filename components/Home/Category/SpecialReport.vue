@@ -14,7 +14,7 @@
                     <div class=" overflow-hidden">
                         <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${hspecialreport?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                            :placeholder="img(`${siteUrl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                            :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
                     </div>
                     <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ hspecialreport?.content_heading
                         }}</h3>
