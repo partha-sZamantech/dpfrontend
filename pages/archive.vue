@@ -34,7 +34,7 @@
                         <div class="col-span-12 md:col-span-8">
                             <!-- Loop Item -->
 
-                            <div class="cat-post-item py-4 border-b" v-for="(archiveContent, cpInx) in archiveContents"
+                            <div v-if="archiveContents?.length > 0" class="cat-post-item py-4 border-b" v-for="(archiveContent, cpInx) in archiveContents"
                                 :key="cpInx">
 
                                 <NuxtLink
@@ -63,13 +63,16 @@
                                     </div>
                                 </NuxtLink>
                             </div>
+                            <div v-else>
+                                <h2 class="text-4xl">কোনো তথ্য পাওয়া যায়নি</h2>
+                            </div>
 
                             <!--/ Loop Item -->
 
                         </div>
                         <div class="col-span-2 hidden md:block"></div>
                     </div>
-                    <div class="flex justify-center items-center">
+                    <div v-if="archiveContents?.length > 0" class="flex justify-center items-center">
                         <button @click="loadMoreButtonHandler"
                             class="border border-[#dee2e6] text-[#3375af] px-8 py-2 rounded-sm mt-5 hover:border-[#3375af]"><b>আরও</b></button>
                     </div>
@@ -82,6 +85,7 @@
                         </client-only>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -99,7 +103,7 @@ const attrs = ref([
             color: '#284f81',
             fillMode: 'solid'
         },
-
+        
     }
 ])
 // Sticky Status
@@ -133,7 +137,7 @@ const { data: arcvCon } = await useFetch('/api/archive/getarchive', {
 })
 // Tag Content Assign
 archiveContents.value = arcvCon
-console.log(archiveContents.value)
+
 
 //================== Tag Content fetching =============== //
 
@@ -149,6 +153,7 @@ const onClickDate = async () => {
         }
     })
     archiveContents.value = dcont
+    console.log(archiveContents.value)
 }
 
 //================ Load More Tag Content Button =================//
