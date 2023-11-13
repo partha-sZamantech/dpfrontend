@@ -21,7 +21,7 @@
                 <div class="latest-post-tab-image col-span-4 overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latstpost?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
-                        :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
                 <div class="tab-latast-post-title col-span-8">
                     <h4 class="text-[17px] group-hover:text-[#ff0000]">{{ latstpost?.content_heading }}</h4>
@@ -38,7 +38,7 @@
                 <div class="latest-post-tab-image col-span-4 overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${poplarpost?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
-                        :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
                 <div class="tab-latast-post-title col-span-8">
                     <h4 class="text-[17px] group-hover:text-[#ff0000]">{{ poplarpost?.content_heading }}</h4>

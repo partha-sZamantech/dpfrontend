@@ -16,7 +16,7 @@
                         <nuxt-img
                             :src="`${siteurl.site_url}/media/photoAlbum/${gallerContents[0].album_details[0].img}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300 "
-                            :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                            :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                         <div class="overlay">
                             <b><p class="img-title text-white group-hover:text-[#ff0000] text-[30px]">{{ gallerContents[0].album_name }}</p></b>
                         </div>
@@ -32,7 +32,7 @@
                         <nuxt-img
                         :src="`${siteurl.site_url}/media/photoAlbum/${gallerContent.album_details[0].img}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300 "
-                            :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                            :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                         <div class="overlay">
                             <b><p class="img-title text-white group-hover:text-[#ff0000] text-[19px]">{{ gallerContent.album_name }}</p></b>
                         </div>
