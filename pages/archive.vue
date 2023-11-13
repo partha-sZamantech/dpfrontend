@@ -37,7 +37,8 @@
                             <div class="cat-post-item py-4 border-b" v-for="(archiveContent, cpInx) in archiveContents"
                                 :key="cpInx">
 
-                                <NuxtLink :to="`/category/${archiveContent?.category?.cat_slug}/${archiveContent?.content_id}`"
+                                <NuxtLink
+                                    :to="`/category/${archiveContent?.category?.cat_slug}/${archiveContent?.content_id}`"
                                     class=" grid grid-cols-12 gap-3 group">
                                     <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
                                         archiveContent?.content_heading }}</h3>
@@ -48,8 +49,10 @@
                                         </ClientOnly>
 
                                         <span class="post-date flex flex-col gap-1">
-                                            <small class="text-[#555555]">আপডেট: {{ postCreatedDate(archiveContent?.updated_at) }}</small>
-                                            <small class="text-[#555555]">প্রকাশ: {{ postCreatedDate(archiveContent?.created_at) }}</small>
+                                            <small class="text-[#555555]">আপডেট: {{
+                                                postCreatedDate(archiveContent?.updated_at) }}</small>
+                                            <small class="text-[#555555]">প্রকাশ: {{
+                                                postCreatedDate(archiveContent?.created_at) }}</small>
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
@@ -96,7 +99,7 @@ const attrs = ref([
             color: '#284f81',
             fillMode: 'solid'
         },
-     
+
     }
 ])
 // Sticky Status
@@ -118,6 +121,7 @@ const postCreatedDate = (date) => {
 
 //Archive Content State
 const firstLoad = ref(true)
+const isArchiveClickedDate = ref(false)
 const archiveContents = useState(() => [])
 const take = ref(10)
 const { data: arcvCon } = await useFetch('/api/archive/getarchive', {
@@ -134,6 +138,8 @@ console.log(archiveContents.value)
 //================== Tag Content fetching =============== //
 
 const onClickDate = async () => {
+    firstLoad.value = false
+    isArchiveClickedDate.value = true
     take.value = 10
     const { data: dcont } = await useFetch('/api/archive/getarchive', {
         method: "POST",
@@ -148,14 +154,28 @@ const onClickDate = async () => {
 //================ Load More Tag Content Button =================//
 const loadMoreButtonHandler = async () => {
     take.value += 10
-    const { data: lodarch } = await useFetch('/api/archive/getarchive', {
-        method: "POST",
-        body: {
-            date: '',
-            take: take.value
-        }
-    })
-    archiveContents.value = lodarch
+    if (firstLoad.value === true && isArchiveClickedDate.value === false) {
+        const { data: lodarch } = await useFetch('/api/archive/getarchive', {
+            method: "POST",
+            body: {
+                date: '',
+                take: take.value
+            }
+        })
+        archiveContents.value = lodarch
+    } else {
+        const { data: lodarch } = await useFetch('/api/archive/getarchive', {
+            method: "POST",
+            body: {
+                date: archiveDate.value,
+                take: take.value
+            }
+        })
+        archiveContents.value = lodarch
+
+    }
+
+
 }
 //================ Load More Tag Content Button =================//
 

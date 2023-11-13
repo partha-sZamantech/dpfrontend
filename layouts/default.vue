@@ -24,11 +24,11 @@
         </div>
        
         <!-- Footer Ads Sticky -->
-        <AdverstmentFooterStickyAds />
+        <!-- <AdverstmentFooterStickyAds /> -->
         <!-- Footer Ads Sticky -->
     </div>
     <!-- Global Popup -->
-    <PopupGlobal />
+    <!-- <PopupGlobal /> -->
     <!-- Global Popup -->
 </template>
 
