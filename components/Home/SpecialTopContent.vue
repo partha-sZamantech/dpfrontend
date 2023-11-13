@@ -11,7 +11,7 @@
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${specialTopContents[0].img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <h2 class="text-[#ff0000] text-[32px] leading-tight">{{ specialTopContents[0]?.content_heading
                             }}</h2>
@@ -30,13 +30,13 @@
                             <!-- ========== Loop Item =========== -->
                             <NuxtLink :to="`/category/${topcontent?.category?.cat_slug}/${topcontent?.content_id}`"
                                 class=" grid grid-cols-12 gap-4 group py-4 border-b specialMiddleTop"
-                                v-for="topcontent in specialTopContents.slice(1, 5)" :key="topcontent.content_id">
+                                v-for="topcontent in specialTopContents?.slice(1, 5)" :key="topcontent?.content_id">
                                 <div class="col-span-5">
                                     <div class="overflow-hidden">
                                         <nuxt-img :alt="topcontent?.content_heading"
-                                            :src="`${siteurl.site_url}/media/content/images/${topcontent?.img_bg_path}`"
+                                            :src="`${siteurl?.site_url}/media/content/images/${topcontent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                                            :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                                            :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                                     </div>
                                 </div>
                                 <div class="col-span-7">
