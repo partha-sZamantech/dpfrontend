@@ -12,7 +12,7 @@
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${campuses[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                            :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                            :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
                 </div>
                 <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ campuses[0]?.content_heading }}</h3>
             </NuxtLink>
