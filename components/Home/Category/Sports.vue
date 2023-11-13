@@ -36,7 +36,7 @@
                             <NuxtLink :to="`/category/${hmsport?.category?.cat_slug}/${hmsport?.content_id}`">
                                 <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${hmsport?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteUrl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                                    :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
