@@ -5,7 +5,9 @@ export default defineEventHandler( async (event) => {
     const data = await $fetch(`${config.public.apiUrl}/api/archive/post/get`, {
         method: 'POST',
         body: {
-            date: getBody?.date
+            date: getBody?.date,
+            take: getBody?.take
+
         }
     })
 
