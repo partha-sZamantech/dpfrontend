@@ -14,7 +14,7 @@
                             <nuxt-img
                                 src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
-                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
                         </div>
                         <p class="text-[20px] group-hover:text-[#ff0000] font-semibold">Level playing field will ensure in
                             KCC polls: CEC</p>
@@ -24,7 +24,7 @@
                             <nuxt-img
                                 src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
-                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
                         </div>
                         <p class="text-[20px] group-hover:text-[#ff0000] font-semibold">Level playing field will ensure in
                             KCC polls: CEC</p>
@@ -39,7 +39,7 @@
                         <nuxt-img
                             src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                            :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                            :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
 
                     </div>
                     <div class="flex flex-col gap-2">
@@ -60,7 +60,7 @@
                             <nuxt-img
                                 src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
-                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
                         </div>
                         <p class="text-[20px] group-hover:text-[#ff0000] font-semibold">Level playing field will ensure in
                             KCC polls: CEC</p>
@@ -70,7 +70,7 @@
                             <nuxt-img
                                 src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
-                                :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
+                                :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
                         </div>
                         <p class="text-[20px] group-hover:text-[#ff0000] font-semibold">Level playing field will ensure in
                             KCC polls: CEC</p>
@@ -84,6 +84,7 @@
 
 <script setup>
 const img = useImage()
+const siteUrl = siteUrlState()
 </script>
 
 <style lang="scss" scoped></style>
