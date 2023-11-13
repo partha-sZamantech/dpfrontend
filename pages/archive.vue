@@ -34,26 +34,27 @@
                         <div class="col-span-12 md:col-span-8">
                             <!-- Loop Item -->
 
-                            <div class="cat-post-item py-4 border-b" v-for="(tagContent, cpInx) in tagContents"
+                            <div class="cat-post-item py-4 border-b" v-for="(archiveContent, cpInx) in archiveContents"
                                 :key="cpInx">
 
-                                <NuxtLink :to="`/category/${tagContent?.category?.cat_slug}/${tagContent?.content_id}`"
+                                <NuxtLink :to="`/category/${archiveContent?.category?.cat_slug}/${archiveContent?.content_id}`"
                                     class=" grid grid-cols-12 gap-3 group">
                                     <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
-                                        tagContent?.content_heading }}</h3>
+                                        archiveContent?.content_heading }}</h3>
                                     <div class=" col-span-7 flex flex-col gap-3">
                                         <ClientOnly>
                                             <div class="cat-desc text-[#555555] text-[15px] font-[300]"
-                                                v-html="tagContent?.content_details.substring(0, 160)"></div>
+                                                v-html="archiveContent?.content_details.substring(0, 160)"></div>
                                         </ClientOnly>
 
-                                        <span class="post-date">
-                                            <small class="text-[#555555]">আপডেট: ১১ নভেম্বর ২০২৩, ০৩:০৫ পিএম</small>
+                                        <span class="post-date flex flex-col gap-1">
+                                            <small class="text-[#555555]">আপডেট: {{ postCreatedDate(archiveContent?.updated_at) }}</small>
+                                            <small class="text-[#555555]">প্রকাশ: {{ postCreatedDate(archiveContent?.created_at) }}</small>
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
                                         <nuxt-img
-                                            :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
+                                            :src="`${siteurl.site_url}/media/content/images/${archiveContent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" />
                                     </div>
@@ -103,28 +104,37 @@ const singlePageSticky = singlePageStickyState()
 const stickyScroll = computed(() =>
     singlePageSticky.value
 )
-//
-const tag_slug = useRoute().params.tag_slug
+// Sticky Status
+
+// ================ Get Bangla Date ============== //
+const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
+// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+const postCreatedDate = (date) => {
+    return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+}
+// ================ Get Bangla Date ============== //
 
 //================== Tag Content fetching =============== //
 
-//Tag Content State
-const tagContents = useState(() => [])
+//Archive Content State
+const firstLoad = ref(true)
+const archiveContents = useState(() => [])
 const take = ref(10)
 const { data: arcvCon } = await useFetch('/api/archive/getarchive', {
     method: "POST",
     body: {
-        date: archiveDate.value,
+        date: '',
         take: take.value
     }
 })
 // Tag Content Assign
-tagContents.value = arcvCon
-console.log(tagContents.value)
+archiveContents.value = arcvCon
+console.log(archiveContents.value)
 
 //================== Tag Content fetching =============== //
 
 const onClickDate = async () => {
+    take.value = 10
     const { data: dcont } = await useFetch('/api/archive/getarchive', {
         method: "POST",
         body: {
@@ -132,7 +142,7 @@ const onClickDate = async () => {
             take: take.value
         }
     })
-    tagContents.value = dcont
+    archiveContents.value = dcont
 }
 
 //================ Load More Tag Content Button =================//
@@ -141,11 +151,11 @@ const loadMoreButtonHandler = async () => {
     const { data: lodarch } = await useFetch('/api/archive/getarchive', {
         method: "POST",
         body: {
-            date: archiveDate.value,
+            date: '',
             take: take.value
         }
     })
-    tagContents.value = lodarch
+    archiveContents.value = lodarch
 }
 //================ Load More Tag Content Button =================//
 
