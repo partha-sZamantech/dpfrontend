@@ -70,7 +70,7 @@
                                 </NuxtLink>
                             </div>
                         </div>
-                        <div
+                        <div v-if="categoryContent[1]"
                             class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
                             <NuxtLink
                                 :to="`/category/${categoryContent[1]?.category?.cat_slug}/${categoryContent[1]?.content_id}`"
@@ -99,7 +99,7 @@
                     </div>
                     <!--/ Category Lead Section -->
                     <!-- Category Bottom Lead -->
-                    <div class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
+                    <div v-if="categoryContent[2]" class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
                         <NuxtLink
                             :to="`/category/${categoryContent[2]?.category?.cat_slug}/${categoryContent[2]?.content_id}`"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
@@ -123,7 +123,7 @@
                                 </small>
                             </div>
                         </NuxtLink>
-                        <NuxtLink
+                        <NuxtLink v-if="categoryContent[3]"
                             :to="`/category/${categoryContent[3]?.category?.cat_slug}/${categoryContent[3]?.content_id}`"
                             class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
@@ -146,7 +146,7 @@
                                 </small>
                             </div>
                         </NuxtLink>
-                        <NuxtLink
+                        <NuxtLink v-if="categoryContent[4]"
                             :to="`/category/${categoryContent[4]?.category?.cat_slug}/${categoryContent[4]?.content_id}`"
                             class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
