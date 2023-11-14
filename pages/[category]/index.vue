@@ -195,7 +195,7 @@
                                     <div class=" col-span-7 flex flex-col gap-3">
                                         <ClientOnly>
                                             <div class="cat-desc text-[#555555] text-[15px] font-[300]"
-                                                v-html="catPost?.content_details.substring(0, 160)"></div>
+                                                v-html="`${catPost?.content_details.substring(0, 160)}...`"></div>
                                         </ClientOnly>
 
                                         <span class="post-date flex flex-col gap-1">

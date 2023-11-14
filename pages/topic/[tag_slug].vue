@@ -43,11 +43,14 @@
                            <div class=" col-span-7 flex flex-col gap-3">
                               <ClientOnly>
                                  <div class="cat-desc text-[#555555] text-[15px] font-[300]"
-                                    v-html="tagContent?.content_details.substring(0, 160)"></div>
+                                    v-html="`${tagContent?.content_details.substring(0, 160)}...`"></div>
                               </ClientOnly>
 
-                              <span class="post-date">
-                                 <small class="text-[#555555]">আপডেট: ১১ নভেম্বর ২০২৩, ০৩:০৫ পিএম</small>
+                              <span class="post-date flex flex-col gap-1">
+                                 <small class="text-[#555555]">আপডেট: {{
+                                    postCreatedDate(tagContent?.updated_at) }}</small>
+                                 <small class="text-[#555555]">প্রকাশ: {{
+                                    postCreatedDate(tagContent?.created_at) }}</small>
                               </span>
                            </div>
                            <div class=" col-span-5 category-post-image overflow-hidden">
@@ -91,8 +94,19 @@ const singlePageSticky = singlePageStickyState()
 const stickyScroll = computed(() =>
    singlePageSticky.value
 )
-//
+// Get Tag Slug
 const tag_slug = useRoute().params.tag_slug
+
+// ================ Get Bangla Date ============== //
+const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
+// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+const postCreatedDate = (date) => {
+    // If date value has
+    if(date){
+        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+    }
+}
+// ================ Get Bangla Date ============== //
 
 //================== Tag Content fetching =============== //
 
@@ -108,7 +122,7 @@ const { data: tgcont } = await useFetch('/api/tag/tagcontent', {
 })
 // Tag Content Assign
 tagContents.value = tgcont
-console.log(tagContents.value)
+// console.log(tagContents.value)
 
 //================== Tag Content fetching =============== //
 
