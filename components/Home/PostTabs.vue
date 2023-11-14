@@ -14,7 +14,7 @@
         </div>
 
         <!-- Latest Post -->
-        <div v-if="isActiveStatus === false" class="latest-post px-3 h-[240px] overflow-y-auto">
+        <div v-if="isActiveStatus === false" class="latest-post px-3 h-[430px] overflow-y-auto">
             <NuxtLink :to="`/category/${latstpost?.category?.cat_slug}/${latstpost?.content_id}`"
                 class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop" v-for="latstpost in latestposts"
                 :key="latstpost?.content_id">
@@ -31,7 +31,7 @@
         </div>
         <!--/ Latest Post -->
         <!-- Popular Post -->
-        <div v-else class="latest-post px-3 h-[240px] overflow-y-auto">
+        <div v-else class="latest-post px-3 h-[430px] overflow-y-auto">
             <NuxtLink :to="`/category/${poplarpost?.category?.cat_slug}/${poplarpost?.content_id}`"
                 class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop" v-for="poplarpost in popularposts"
                 :key="poplarpost?.content_id">

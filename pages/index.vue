@@ -23,8 +23,8 @@
 
                 <div class="col-span-12 md:col-span-3">
                     <!-- Home Right Sidebar -->
-                    <!-- <HomePostTabs  /> -->
-                    <Tabs />
+                    <HomePostTabs  />
+                    <!-- <Tabs /> -->
                     <!--/ Home Right Sidebar -->
                 </div>
             </div>
