@@ -43,7 +43,7 @@
             </div>
             <!--/ Breadcrump Section -->
             <div class="grid grid-cols-12 gap-8 md:gap-3">
-                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3">
+                <div v-if="subcategoryContents[0]" class="col-span-12 md:col-span-9 md:border-r md:pr-3">
                     <!-- Category Lead Section -->
                     <div class="grid grid-cols-12 border-b border-b-[#dee2e6] pb-4">
                         <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">
@@ -63,7 +63,7 @@
                                 </NuxtLink>
                             </div>
                         </div>
-                        <div
+                        <div v-if="subcategoryContents[1]"
                             class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
                             <NuxtLink
                                 :to="`/category/${subcategoryContents[1]?.category?.cat_slug}/${subcategoryContents[1]?.content_id}`"
@@ -94,7 +94,7 @@
                     <!--/ Category Lead Section -->
                     <!-- Category Bottom Lead -->
                     <div class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
-                        <NuxtLink
+                        <NuxtLink v-if="subcategoryContents[2]"
                             :to="`/category/${subcategoryContents[2]?.category?.cat_slug}/${subcategoryContents[2]?.content_id}`"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
@@ -117,7 +117,7 @@
                                 </small>
                             </div>
                         </NuxtLink>
-                        <NuxtLink
+                        <NuxtLink v-if="subcategoryContents[3]"
                             :to="`/category/${subcategoryContents[3]?.category?.cat_slug}/${subcategoryContents[3]?.content_id}`"
                             class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
@@ -140,7 +140,7 @@
                                 </small>
                             </div>
                         </NuxtLink>
-                        <NuxtLink
+                        <NuxtLink v-if="subcategoryContents[4]"
                             :to="`/category/${subcategoryContents[4]?.category?.cat_slug}/${subcategoryContents[4]?.content_id}`"
                             class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
@@ -218,6 +218,9 @@
                     </div>
                     <!-- Loop Category Post Section -->
                 </div>
+                <div v-else class="col-span-12 md:col-span-9 md:border-r md:pr-3">
+                    <h2 class="text-2xl text-center py-8">আপনি যে বিষয়টি অনুসন্ধান করছেন তা খুজে পাওয়া যায়নি</h2>
+                </div>
                 <div class=" col-span-12 md:col-span-3">
                     <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" />
                 </div>
@@ -241,7 +244,7 @@ const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long
 // const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
 const postCreatedDate = (date) => {
     // If date value has
-    if(date){
+    if (date) {
         return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
     }
 }
