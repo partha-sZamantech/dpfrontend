@@ -37,11 +37,13 @@
                     <div class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-3">
                         <div class="author-details flex flex-col gap-1">
                             <p v-if="detailsContent?.author">
-                                <NuxtLink class="hover:text-[#3375af] font-[600]" :to="`/author/${detailsContent?.author?.author_slug}`">{{
-                                    detailsContent?.author?.author_name_bn }}</NuxtLink>
+                                <NuxtLink class="hover:text-[#3375af] font-[600]"
+                                    :to="`/author/${detailsContent?.author?.author_slug}`">{{
+                                        detailsContent?.author?.author_name_bn }}</NuxtLink>
                             </p>
                             <p v-else>
-                                <NuxtLink class="hover:text-[#3375af] font-[600]" to="/author/dhaka-prokash-desk">ঢাকাপ্রকাশ ডেস্ক</NuxtLink>
+                                <NuxtLink class="hover:text-[#3375af] font-[600]" to="/author/dhaka-prokash-desk">ঢাকাপ্রকাশ
+                                    ডেস্ক</NuxtLink>
                             </p>
                             <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
                                 </ClientOnly>
@@ -84,8 +86,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     </div>
                     <div class="feature-image border-b">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
-                            class="mx-auto w-full"
-                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                            class="mx-auto w-full" :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                         <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
                             detailsContent?.img_bg_caption }}</p>
                     </div>
@@ -194,11 +195,13 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="flex justify-between items-end border-b pb-3">
                         <div class="author-details flex flex-col gap-1" v-if="moreDetailContent?.author">
                             <p v-if="moreDetailContent?.author">
-                                <NuxtLink class="hover:text-[#3375af] font-[600]" :to="`/author/${moreDetailContent?.author?.author_slug}`">{{
-                                    moreDetailContent?.author?.author_name_bn }}</NuxtLink>
+                                <NuxtLink class="hover:text-[#3375af] font-[600]"
+                                    :to="`/author/${moreDetailContent?.author?.author_slug}`">{{
+                                        moreDetailContent?.author?.author_name_bn }}</NuxtLink>
                             </p>
                             <p v-else>
-                                <NuxtLink class="hover:text-[#3375af] font-[600]" to="/author/dhaka-prokash-desk">ঢাকাপ্রকাশ ডেস্ক</NuxtLink>
+                                <NuxtLink class="hover:text-[#3375af] font-[600]" to="/author/dhaka-prokash-desk">ঢাকাপ্রকাশ
+                                    ডেস্ক</NuxtLink>
                             </p>
                             <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span>
                                 </ClientOnly>
@@ -241,8 +244,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     </div>
                     <div class="feature-image border-b">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`"
-                            class="mx-auto w-full"
-                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                            class="mx-auto w-full" :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                         <p v-if="moreDetailContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
                             moreDetailContent?.img_bg_caption }}</p>
                     </div>
@@ -590,17 +592,20 @@ onMounted(() => {
         // containerFluid.style.border = '1px solid #575757';
         relatedNews.append(containerFluid);
 
-        let link = document.createElement('a');
-        link.href = href;
-        containerFluid.append(link);
+        // let link = document.createElement('a');
+        // link.href = href;
+        // containerFluid.append(link);
 
         let headline = document.createElement('div');
-        headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af]';
+        headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af] cursor-pointer';
         // headline.style.cssText = 'font-size:19px;font-weight: bold; width: 65%; float: left';
         // headline.style.cssText = 'font-size:16px;font-weight: bold;';
         headline.innerText = title;
-        link.append(headline);
-
+        // link.append(headline);
+        containerFluid.append(headline);
+        headline.addEventListener('click', function handleClick(event) {
+             navigateTo(`/${href}`)
+        });
         // let img = document.createElement('img');
         // img.className = 'marginTop10 marginBottom10';
         // img.style.cssText = 'width: 85px;float: right';
@@ -623,7 +628,8 @@ onMounted(() => {
 
 
     function fJsNewsURLs(cat_slug, content_id) {
-        return location.origin + '/category/' + cat_slug + '/' + content_id;
+        return 'category/' + cat_slug + '/' + content_id;
+        // return location.origin + '/category/' + cat_slug + '/' + content_id;
         // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
     }
 

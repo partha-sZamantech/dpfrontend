@@ -2,7 +2,7 @@
   <div class="category-page">
 
     <Head>
-      <Title>{{ author?.author_name }}</Title>
+      <Title>{{ author?.author_name_bn }}</Title>
     </Head>
     <!-- Space For Ads -->
     <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
@@ -19,7 +19,7 @@
 
         <div class="tag-title md:py-6 flex gap-3 items-center">
           <Icon name="mdi:fountain-pen-tip" class="text-[#3375af] text-4xl" />
-          <h1 class="text-xl md:text-3xl text-[#3375af] font-semibold">{{ author?.author_name }}</h1>
+          <h1 class="text-xl md:text-3xl text-[#3375af] font-semibold">{{ author?.author_name_bn }}</h1>
         </div>
 
       </div>

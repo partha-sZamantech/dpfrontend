@@ -246,7 +246,7 @@ const { data: lcpt } = await useFetch('/api/collection/latestpost', {
         take: take.value
     }
 })
-console.log(lcpt.value)
+// console.log(lcpt.value)
 // Latest Post Content Assign
 latestPosts.value = lcpt
 latestPostContentExcept.value = lcpt.value.slice(5, take.value)
