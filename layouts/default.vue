@@ -3,7 +3,7 @@
         <Head>
             <Title>{{dsiteSetting?.title}}</Title>
             <!-- <Meta content="500" http-equiv="refresh" /> -->
-            
+            <Meta name="robots" content="index, follow" />
         </Head>
 
         <div :class="`logoHeader duration-300 z-50`">
