@@ -4,8 +4,13 @@
         <ul class="flex gap-0 justify-center text-[18px] text-white">
             <li>
                 <NuxtLink to="/" class=" py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
-                    <Icon name="material-symbols:house-rounded" />
+                    <Icon name="material-symbols:house-rounded" class="text-xl" />
                 </NuxtLink>
+            </li>
+            <li>
+                <NuxtLink :to="`/collection/latest`"
+                    class="py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
+                    সর্বশেষ</NuxtLink>
             </li>
             <li v-for="category in headCategory" :key="category.cat_id">
                 <NuxtLink :to="`/${category.cat_slug}`"
