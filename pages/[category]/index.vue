@@ -50,7 +50,7 @@
             <!--/ Breadcrump Section -->
 
             <div class="grid grid-cols-12 gap-8 md:gap-3">
-                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3">
+                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3"  v-if="categoryContent?.length > 1">
                     <!-- Category Lead Section -->
                     <div class="grid grid-cols-12 border-b border-b-[#dee2e6] pb-4">
                         <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">
@@ -223,6 +223,9 @@
                             class="border border-[#dee2e6] text-[#3375af] px-8 py-2 rounded-sm mt-5 hover:border-[#3375af]"><b>আরও</b></button>
                     </div>
                     <!-- Loop Category Post Section -->
+                </div>
+                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3"  v-else>
+                    <h2 class="text-2xl text-center py-8">আপনি যে বিষয়টি অনুসন্ধান করছেন তা খুজে পাওয়া যায়নি</h2>
                 </div>
                 <div class=" col-span-12 md:col-span-3">
                     <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" />
