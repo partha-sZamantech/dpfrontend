@@ -604,7 +604,7 @@ onMounted(() => {
         // link.append(headline);
         containerFluid.append(headline);
         headline.addEventListener('click', function handleClick(event) {
-             navigateTo(`/${href}`)
+            navigateTo(`/${href}`)
         });
         // let img = document.createElement('img');
         // img.className = 'marginTop10 marginBottom10';
@@ -692,16 +692,20 @@ onMounted(() => {
                 containerFluid.className = 'container-fluid border border-[#e2e2e2] mt-1 group';
 
                 relatedNews.append(containerFluid);
-
-                let link = document.createElement('a');
-                link.href = href;
-                containerFluid.append(link);
+                // let link = document.createElement('a');
+                // link.href = href;
+                // containerFluid.append(link);
 
                 let headline = document.createElement('div');
-                headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af]';
-
+                headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af] cursor-pointer';
+                // headline.style.cssText = 'font-size:19px;font-weight: bold; width: 65%; float: left';
+                // headline.style.cssText = 'font-size:16px;font-weight: bold;';
                 headline.innerText = title;
-                link.append(headline);
+                // link.append(headline);
+                containerFluid.append(headline);
+                headline.addEventListener('click', function handleClick(event) {
+                    navigateTo(`/${href}`)
+                });
 
                 return relatedNews;
             }
@@ -717,7 +721,7 @@ onMounted(() => {
 
 
             function fJsNewsURL(cat_slug, content_id) {
-                return location.origin + '/category/' + cat_slug + '/' + content_id;
+                return 'category/' + cat_slug + '/' + content_id;
                 // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
             }
 
