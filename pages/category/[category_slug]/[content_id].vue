@@ -37,11 +37,11 @@
                     <div class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-3">
                         <div class="author-details flex flex-col gap-1">
                             <p v-if="detailsContent?.author">
-                                <NuxtLink :to="`/author/${detailsContent?.author?.author_slug}`">{{
+                                <NuxtLink class="hover:text-[#3375af] font-[600]" :to="`/author/${detailsContent?.author?.author_slug}`">{{
                                     detailsContent?.author?.author_name_bn }}</NuxtLink>
                             </p>
                             <p v-else>
-                                <NuxtLink to="/">ঢাকাপ্রকাশ ডেস্ক</NuxtLink>
+                                <NuxtLink class="hover:text-[#3375af] font-[600]" to="/author/dhaka-prokash-desk">ঢাকাপ্রকাশ ডেস্ক</NuxtLink>
                             </p>
                             <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
                                 </ClientOnly>
@@ -194,11 +194,11 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="flex justify-between items-end border-b pb-3">
                         <div class="author-details flex flex-col gap-1" v-if="moreDetailContent?.author">
                             <p v-if="moreDetailContent?.author">
-                                <NuxtLink :to="`/author/${moreDetailContent?.author?.author_slug}`">{{
+                                <NuxtLink class="hover:text-[#3375af] font-[600]" :to="`/author/${moreDetailContent?.author?.author_slug}`">{{
                                     moreDetailContent?.author?.author_name_bn }}</NuxtLink>
                             </p>
                             <p v-else>
-                                <NuxtLink to="/">ঢাকাপ্রকাশ ডেস্ক</NuxtLink>
+                                <NuxtLink class="hover:text-[#3375af] font-[600]" to="/author/dhaka-prokash-desk">ঢাকাপ্রকাশ ডেস্ক</NuxtLink>
                             </p>
                             <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span>
                                 </ClientOnly>
