@@ -207,8 +207,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             moreDetailContent?.content_sub_heading }}</h4>
-                        <h2 class="md:text-[32px] md:leading-[50px]">{{ moreDetailContent.content_heading }}</h2>
-                        <div class="h-2 w-12 rounded-md bg-[#3375af]"></div>
+                        <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ moreDetailContent.content_heading }}</h2>
+                        <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
                     </div>
 
                     <div class="flex justify-between items-end border-b pb-3">
