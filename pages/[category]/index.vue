@@ -228,7 +228,7 @@
                     <h2 class="text-2xl text-center py-8">আপনি যে বিষয়টি অনুসন্ধান করছেন তা খুজে পাওয়া যায়নি</h2>
                 </div>
                 <div class=" col-span-12 md:col-span-3">
-                    <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" />
+                    <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} duration-200`" />
                 </div>
             </div>
         </div>
