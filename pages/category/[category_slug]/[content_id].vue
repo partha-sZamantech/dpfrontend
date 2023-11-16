@@ -437,15 +437,15 @@ ogUrl.value                 = websiteUrl.value.website_url
 const ogTitle               = ref(null);
 ogTitle.value               = detailsContent?.value?.content_heading
 const ogDescription         = ref(null);
-ogDescription.value         = 
+ogDescription.value         = detailsContent?.value?.content_brief
 const ogImage               = ref(null);
-ogImage.value               =
+ogImage.value               = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
 const twitterTitle          = ref(null);
-twitterTitle.value          =
+twitterTitle.value          = detailsContent?.value?.content_heading
 const twitterDescription    = ref(null);
-twitterDescription.value    = 
+twitterDescription.value    = detailsContent?.value?.content_brief
 const twitterImage          = ref(null);
-twitterImage.value          = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`
+twitterImage.value          = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
 // ================//  OG - Open Graph ====================// 
 
 // ============ Latest 20 Posts ===============//
