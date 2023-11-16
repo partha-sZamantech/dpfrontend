@@ -5,23 +5,20 @@
             <Title>{{ detailsContent.content_heading }}</Title>
             <Meta property="og:type" content="website" />
             <Meta property="og:site_name" content="ঢাকা প্রকাশ - খবরের কাগজ" />
-            <Meta property="og:url"
-                :content="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`" />
-            <Meta property="og:title" :content="`${detailsContent.content_heading}`" />
-            <Meta property="og:description" :content="`${detailsContent?.content_brief}`" />
-            <Meta property="og:image"
-                :content="`${siteurl.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`" />
+            <Meta property="og:url" :content="ogUrl" />
+            <Meta property="og:title" :content="ogTitle" />
+            <Meta property="og:description" :content="ogDescription" />
+            <Meta property="og:image" :content="ogImage" />
             <Meta name="twitter:card" content="summary_large_image" />
-            <Meta name="twitter:title" :content="`${detailsContent.content_heading}`" />
-            <Meta name="twitter:description" :content="`${detailsContent?.content_brief}`" />
-            <Meta property="twitter:image"
-                :content="`${siteurl.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`" />
+            <Meta name="twitter:title" :content="ogTitle" />
+            <Meta name="twitter:description" :content="ogDescription" />
+            <Meta property="twitter:image" :content="ogImage" />
             <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
             <Meta name="twitter:site" content="@dhakaprokash24" />
             <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
             <Meta name="robots" content="index, follow" />
             <Link rel="canonical"
-                :href="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_name}/${detailsContent?.content_id}`" />
+                :href="ogUrl" />
         </Head>
         <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
         <div class="breadcrump border-b pb-1 mb-5">
@@ -433,7 +430,7 @@ detailsContent.value = pdailts?.value?.detailsContent
 
 // ================  OG - Open Graph ====================// 
 const ogUrl                 = ref(null);
-ogUrl.value                 = websiteUrl.value.website_url
+ogUrl.value                 = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
 const ogTitle               = ref(null);
 ogTitle.value               = detailsContent?.value?.content_heading
 const ogDescription         = ref(null);
