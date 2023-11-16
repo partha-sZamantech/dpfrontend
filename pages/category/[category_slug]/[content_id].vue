@@ -4,16 +4,18 @@
         <Head>
             <Title>{{ detailsContent.content_heading }}</Title>
             <Meta property="og:type" content="website" />
-            <Meta property="og:site_name" content="ঢাকা প্রকাশ -খবরের কাগজ" />
+            <Meta property="og:site_name" content="ঢাকা প্রকাশ - খবরের কাগজ" />
             <Meta property="og:url"
                 :content="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`" />
             <Meta property="og:title" :content="`${detailsContent.content_heading}`" />
             <Meta property="og:description" :content="`${detailsContent?.content_brief}`" />
-            <Meta property="og:image" :content="`${siteurl.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`" />
+            <Meta property="og:image"
+                :content="`${siteurl.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`" />
             <Meta name="twitter:card" content="summary_large_image" />
-            <Meta name="twitter:title" content="ঢাকা প্রকাশ । বাংলা নিউজ পেপার । অনলাইন ভার্সন" />
+            <Meta name="twitter:title" :content="`${detailsContent.content_heading}`" />
             <Meta name="twitter:description" :content="`${detailsContent?.content_brief}`" />
-            <Meta property="twitter:image" :content="`${siteurl.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`" />
+            <Meta property="twitter:image"
+                :content="`${siteurl.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`" />
             <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
             <Meta name="twitter:site" content="@dhakaprokash24" />
             <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
@@ -42,7 +44,7 @@
         </div>
 
         <!--========== First Details Content ============ -->
- 
+
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
                 <div class="single-post flex flex-col gap-3">
@@ -209,7 +211,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             moreDetailContent?.content_sub_heading }}</h4>
-                        <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ moreDetailContent.content_heading }}</h2>
+                        <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ moreDetailContent.content_heading
+                        }}</h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
                     </div>
 
@@ -427,6 +430,23 @@ const { data: pdailts } = await useFetch('/api/detailpage/detail', {
 const detailsContent = useState(() => [])
 detailsContent.value = pdailts?.value?.detailsContent
 // ========== First Details Content ======= // 
+
+// ================  OG - Open Graph ====================// 
+const ogUrl                 = ref(null);
+ogUrl.value                 = websiteUrl.value.website_url
+const ogTitle               = ref(null);
+ogTitle.value               = detailsContent?.value?.content_heading
+const ogDescription         = ref(null);
+ogDescription.value         = 
+const ogImage               = ref(null);
+ogImage.value               =
+const twitterTitle          = ref(null);
+twitterTitle.value          =
+const twitterDescription    = ref(null);
+twitterDescription.value    = 
+const twitterImage          = ref(null);
+twitterImage.value          = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`
+// ================//  OG - Open Graph ====================// 
 
 // ============ Latest 20 Posts ===============//
 const latestPostsDpage = useState(() => [])
@@ -794,7 +814,6 @@ onMounted(() => {
 
 </script>
 
-<style scoped>
-p {
+<style scoped>p {
     line-height: 1.7 !important;
 }</style>
