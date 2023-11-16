@@ -115,7 +115,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             </div>
 
                             <!-- Tag Area -->
-                            <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3">
+                            <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3 print:hidden">
                                 <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
                                         class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
                                             detailsContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
@@ -535,14 +535,25 @@ const printArea = () => {
 }
 
 const printPageArea = (areaID) => {
-            var printContent = document.getElementById(areaID).innerHTML;
+      
+            let printContent = document.getElementById(areaID).innerHTML;
+         
             printContent  += "</br></br></br><hr><div><img style='margin-bottom: 20px; margin-top: 10px' src='http://127.0.0.1:8000/media/common/logo1672518180.png' alt='dfd' /></br><h3 style='margin: 0;  padding: 0'>যোগাযোগ: +৮৮০ ৯৬১ ৩৩৩ ১০১০</h3></br><h3 style='margin: 0;  padding: 0'>ইমেইল: info@dhakaprokash24.com</h3></br><h3 style='margin: 0; padding: 0'>ঠিকানা: ৯৩, কাজী নজরুল ইসলাম এভিনিউ, (ষষ্ঠ তলা) </br>কারওয়ান বাজার, ঢাকা-১২১৫।</h3></div>";
-            var originalContent = document.body.innerHTML;
-            document.body.innerHTML = printContent;
+        
+            let originalContent = document.body.innerHTML;
+            let logo = "<img style='margin-bottom: 20px; margin-top: 10px' src='http://127.0.0.1:8000/media/common/logo1672518180.png' alt='dfd' />"
+            logo += printContent
+            document.body.innerHTML = logo;
 
             window.print();
             document.body.innerHTML = originalContent;
-        }
+            location.reload()
+
+          
+
+  
+}
+
 // =============== Print Script ===================== //
 // const router = useRouter()
 
@@ -579,17 +590,18 @@ onMounted(() => {
     // ==== Gooogle news Link === //
     let googleNewses = () => {
         let link = document.createElement(`a`);
-        link.className = `text-center border border-[#d3d3d3] bg-[#b5d3f366] py-2 my-4 group hover:bg-[#3375af]`;
+        link.className = 'text-center border border-[#d3d3d3] bg-[#b5d3f366] py-2 my-4 group hover:bg-[#3375af] print:py-0 print:my-1 print:hidden print:border-none';
         link.style.cssText = `text-decoration:none; display:flex; justify-content:center`;
         link.href = `https://news.google.com/publications/CAAqBwgKMNq9sgsw59jJAw?ceid=BD:bn&oc=3&hl=bn&gl=BD`;
         link.target = `_blank`;
 
         let img = document.createElement(`img`);
+        img.className = 'print:hidden'
         img.src = `https://cdn-icons-png.flaticon.com/512/2702/2702605.png`;
         img.style.cssText = `width: 25px; margin-right: 8px`;
 
         let h4 = document.createElement(`h4`);
-        h4.className = 'text-[#337ab7] group-hover:text-[#ffffff]';
+        h4.className = 'text-[#337ab7] group-hover:text-[#ffffff] print:hidden';
         h4.style.cssText = `font-weight: bold`;
         h4.innerText = `সর্বশেষ খবর পেতে ঢাকা প্রকাশের গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
         link.append(img);
@@ -605,7 +617,7 @@ onMounted(() => {
     let insertRelatedNewses = (title, href) => {
 
         let relatedNews = document.createElement('div');
-        relatedNews.className = 'inside-news my-4';
+        relatedNews.className = 'inside-news my-4 print:hidden';
 
         let h5 = document.createElement('h5');
         // h5.style.fontSize = '16px';
