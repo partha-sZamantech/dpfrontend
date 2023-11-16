@@ -5,10 +5,11 @@
             <Title>{{ detailsContent.content_heading }}</Title>
             <Meta property="og:type" content="website" />
             <Meta property="og:site_name" content="ঢাকা প্রকাশ -খবরের কাগজ" />
-            <Meta property="og:url" :content="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`" />
+            <Meta property="og:url"
+                :content="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`" />
             <Meta property="og:title" :content="`${detailsContent.content_heading}`" />
-            <Meta property="og:description" :content="`${detailsContent?.content_brief}`" /> 
-            <Meta property="og:image" content="public/uploads/2023/11/15/1700034640.Dialaugue.jpg"/>
+            <Meta property="og:description" :content="`${detailsContent?.content_brief}`" />
+            <Meta property="og:image" content="public/uploads/2023/11/15/1700034640.Dialaugue.jpg" />
             <Meta name="twitter:card" content="summary_large_image" />
             <Meta name="twitter:title" content="ঢাকা প্রকাশ । বাংলা নিউজ পেপার । অনলাইন ভার্সন" />
             <Meta name="twitter:description" :content="`${detailsContent?.content_brief}`" />
@@ -17,7 +18,8 @@
             <Meta name="twitter:site" content="@dhakaprokash24" />
             <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
             <Meta name="robots" content="index, follow" />
-            <Link rel="canonical" :href="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_name}/${detailsContent?.content_id}`" />
+            <Link rel="canonical"
+                :href="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_name}/${detailsContent?.content_id}`" />
         </Head>
         <div class="breadcrump border-b pb-1 mb-5">
             <div class="flex gap-1 justify-start items-center">
@@ -41,13 +43,14 @@
         <!--========== First Details Content ============ -->
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
-                <div class="single-post flex flex-col gap-3" >
+                <div class="single-post flex flex-col gap-3">
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             detailsContent?.content_sub_heading }}</h4>
-                        <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ detailsContent.content_heading }}</h2>
+                        <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ detailsContent.content_heading }}
+                        </h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
-                        
+
                     </div>
 
                     <div class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-3">
@@ -198,7 +201,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <!--========== <3> More Details Content ============ -->
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
             :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
-            <div class="col-span-12 md:col-span-9">
+            <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
                 <div class="single-post flex flex-col gap-3">
 
                     <div class="singlePost-heading flex flex-col gap-2">
@@ -223,7 +226,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 </ClientOnly>
                             </p>
                         </div>
-                        <div class="social-item flex gap-2 items-start justify-center">
+                        <div class="social-item flex gap-2 items-start justify-center print:hidden">
                             <NuxtLink to="/">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg" height="28"
                                     width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
@@ -244,7 +247,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
                                 </svg>
                             </NuxtLink>
-                            <div class=" cursor-pointer" @click="printArea">
+                            <div class=" cursor-pointer" @click="printPageArea(`singlepost${mcinx}`)">
                                 <svg class=" hover:scale-125 duration-200" height="28" width="28"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
                                     xml:space="preserve">
@@ -271,7 +274,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 v-html="moreDetailContent?.content_details">
                             </div>
                             <!-- Tag Area -->
-                            <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3"
+                            <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3 print:hidden"
                                 v-if="moreDetailContent?.tags">
                                 <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
                                         class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
@@ -524,34 +527,29 @@ fRelatedContents.value = frcontent
 // ============== First Related Content ================//
 
 // =============== Print Script ======================= //
-const printArea = () => {
-    var prtContent = document.getElementsByClassName("d-print")[0];
-    var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
-    WinPrint.document.write(prtContent.innerHTML);
-    WinPrint.document.close();
-    WinPrint.focus();
-    WinPrint.print();
-    WinPrint.close();
-}
+// const printArea = () => {
+//     var prtContent = document.getElementsByClassName("d-print")[0];
+//     var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+//     WinPrint.document.write(prtContent.innerHTML);
+//     WinPrint.document.close();
+//     WinPrint.focus();
+//     WinPrint.print();
+//     WinPrint.close();
+// }
 
 const printPageArea = (areaID) => {
-      
-            let printContent = document.getElementById(areaID).innerHTML;
-         
-            printContent  += "</br></br></br><hr><div><img style='margin-bottom: 20px; margin-top: 10px' src='http://127.0.0.1:8000/media/common/logo1672518180.png' alt='dfd' /></br><h3 style='margin: 0;  padding: 0'>যোগাযোগ: +৮৮০ ৯৬১ ৩৩৩ ১০১০</h3></br><h3 style='margin: 0;  padding: 0'>ইমেইল: info@dhakaprokash24.com</h3></br><h3 style='margin: 0; padding: 0'>ঠিকানা: ৯৩, কাজী নজরুল ইসলাম এভিনিউ, (ষষ্ঠ তলা) </br>কারওয়ান বাজার, ঢাকা-১২১৫।</h3></div>";
-        
-            let originalContent = document.body.innerHTML;
-            let logo = "<img style='margin-bottom: 20px; margin-top: 10px' src='http://127.0.0.1:8000/media/common/logo1672518180.png' alt='dfd' />"
-            logo += printContent
-            document.body.innerHTML = logo;
 
-            window.print();
-            document.body.innerHTML = originalContent;
-            location.reload()
+    let printContent = document.getElementById(areaID).innerHTML;
+    printContent += "</br></br></br><hr><div><img style='margin-bottom: 20px; margin-top: 10px' src='http://127.0.0.1:8000/media/common/logo1672518180.png' alt='dfd' /></br><h3 style='margin: 0;  padding: 0'>যোগাযোগ: +৮৮০ ৯৬১ ৩৩৩ ১০১০</h3></br><h3 style='margin: 0;  padding: 0'>ইমেইল: info@dhakaprokash24.com</h3></br><h3 style='margin: 0; padding: 0'>ঠিকানা: ৯৩, কাজী নজরুল ইসলাম এভিনিউ, (ষষ্ঠ তলা) </br>কারওয়ান বাজার, ঢাকা-১২১৫।</h3></div>";
+    let originalContent = document.body.innerHTML;
+    let logo = "<img style='margin-bottom: 20px; margin-top: 10px' src='http://127.0.0.1:8000/media/common/logo1672518180.png' alt='dfd' />"
+    logo += printContent
+    document.body.innerHTML = logo;
 
-          
+    window.print();
+    document.body.innerHTML = originalContent;
+    location.reload()
 
-  
 }
 
 // =============== Print Script ===================== //
@@ -692,17 +690,18 @@ onMounted(() => {
             // ==== Gooogle news Link === //
             let googleNews = () => {
                 let link = document.createElement(`a`);
-                link.className = `text-center border border-[#d3d3d3] bg-[#b5d3f366] py-2 my-4 group hover:bg-[#3375af]`;
+                link.className = `text-center border border-[#d3d3d3] bg-[#b5d3f366] py-2 my-4 group hover:bg-[#3375af] print:py-0 print:my-1 print:hidden print:border-none`;
                 link.style.cssText = `text-decoration:none; display:flex; justify-content:center`;
                 link.href = `https://news.google.com/publications/CAAqBwgKMNq9sgsw59jJAw?ceid=BD:bn&oc=3&hl=bn&gl=BD`;
                 link.target = `_blank`;
 
                 let img = document.createElement(`img`);
+                img.className = 'print:hidden'
                 img.src = `https://cdn-icons-png.flaticon.com/512/2702/2702605.png`;
                 img.style.cssText = `width: 25px; margin-right: 8px`;
 
                 let h4 = document.createElement(`h4`);
-                h4.className = 'text-[#337ab7] group-hover:text-[#ffffff]';
+                h4.className = 'text-[#337ab7] group-hover:text-[#ffffff] print:hidden';
                 h4.style.cssText = `font-weight: bold`;
                 h4.innerText = `সর্বশেষ খবর পেতে ঢাকা প্রকাশের গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
                 link.append(img);
@@ -718,7 +717,7 @@ onMounted(() => {
             let insertRelatedNews = (title, href) => {
 
                 let relatedNews = document.createElement('div');
-                relatedNews.className = 'inside-news my-4';
+                relatedNews.className = 'inside-news my-4 print:hidden';
 
                 let h5 = document.createElement('h5');
 
@@ -786,5 +785,4 @@ onMounted(() => {
 <style scoped>
 p {
     line-height: 1.7 !important;
-}
-</style>
+}</style>
