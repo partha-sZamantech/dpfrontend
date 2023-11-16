@@ -9,11 +9,11 @@
                 :content="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`" />
             <Meta property="og:title" :content="`${detailsContent.content_heading}`" />
             <Meta property="og:description" :content="`${detailsContent?.content_brief}`" />
-            <Meta property="og:image" content="public/uploads/2023/11/15/1700034640.Dialaugue.jpg" />
+            <Meta property="og:image" :content="`${siteurl.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`" />
             <Meta name="twitter:card" content="summary_large_image" />
             <Meta name="twitter:title" content="ঢাকা প্রকাশ । বাংলা নিউজ পেপার । অনলাইন ভার্সন" />
             <Meta name="twitter:description" :content="`${detailsContent?.content_brief}`" />
-            <Meta property="twitter:image" content="public/uploads/2023/11/15/1700034640.Dialaugue.jpg" />
+            <Meta property="twitter:image" :content="`${siteurl.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`" />
             <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
             <Meta name="twitter:site" content="@dhakaprokash24" />
             <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
@@ -21,6 +21,7 @@
             <Link rel="canonical"
                 :href="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_name}/${detailsContent?.content_id}`" />
         </Head>
+        <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
         <div class="breadcrump border-b pb-1 mb-5">
             <div class="flex gap-1 justify-start items-center">
 
@@ -41,6 +42,7 @@
         </div>
 
         <!--========== First Details Content ============ -->
+ 
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
                 <div class="single-post flex flex-col gap-3">
@@ -396,7 +398,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
 <script setup>
 // import moment from 'moment';
-const { x, y } = useMouse()
+
 const siteurl = siteUrlState()
 const websiteUrl = websiteUrlState()
 const img = useImage()
@@ -772,14 +774,24 @@ onMounted(() => {
 
     // ================= END More Post Details Inside Element Added =======================// 
 })
-// const {data:ogimage} = await useFetch('/api/shareimage/ogimage' , {
+
+// const okd = ref('')
+// try{
+//     const {data:ogimage} = await useFetch('/api/shareimage/ogimage' , {
 //     method: "POST",
 //     body: {
-//         cat_slug: detailsContent?.value.category?.cat_slug,
-//         img_bg_path: detailsContent?.value.img_bg_path
+//         cat_slug: detailsContent?.value?.category?.cat_slug,
+//         img_bg_path: detailsContent?.value?.img_bg_path
 //     }
 // })
-// console.log(ogimage.value)
+// okd.value= ogimage
+// console.log(ogimage)
+// }catch(e){
+//     console.log(e)
+// }
+
+
+
 </script>
 
 <style scoped>
