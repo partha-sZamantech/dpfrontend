@@ -3,6 +3,21 @@
 
         <Head>
             <Title>{{ detailsContent.content_heading }}</Title>
+            <Meta property="og:type" content="website" />
+            <Meta property="og:site_name" content="ঢাকা প্রকাশ -খবরের কাগজ" />
+            <Meta property="og:url" :content="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`" />
+            <Meta property="og:title" :content="`${detailsContent.content_heading}`" />
+            <Meta property="og:description" :content="`${detailsContent?.content_brief}`" /> 
+            <Meta property="og:image" content="public/uploads/2023/11/15/1700034640.Dialaugue.jpg"/>
+            <Meta name="twitter:card" content="summary_large_image" />
+            <Meta name="twitter:title" content="ঢাকা প্রকাশ । বাংলা নিউজ পেপার । অনলাইন ভার্সন" />
+            <Meta name="twitter:description" :content="`${detailsContent?.content_brief}`" />
+            <Meta property="twitter:image" content="public/uploads/2023/11/15/1700034640.Dialaugue.jpg" />
+            <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
+            <Meta name="twitter:site" content="@dhakaprokash24" />
+            <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
+            <Meta name="robots" content="index, follow" />
+            <Link rel="canonical" :href="`${websiteUrl.website_url}/category/${detailsContent?.category?.cat_name}/${detailsContent?.content_id}`" />
         </Head>
         <div class="breadcrump border-b pb-1 mb-5">
             <div class="flex gap-1 justify-start items-center">
@@ -25,13 +40,14 @@
 
         <!--========== First Details Content ============ -->
         <div class=" grid grid-cols-12 gap-5 relative d-print">
-            <div class="col-span-12 md:col-span-9">
-                <div class="single-post flex flex-col gap-3">
+            <div class="col-span-12 md:col-span-9" id="singlepost">
+                <div class="single-post flex flex-col gap-3" >
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             detailsContent?.content_sub_heading }}</h4>
-                        <h2 class="md:text-[32px] md:leading-[50px]">{{ detailsContent.content_heading }}</h2>
-                        <div class="h-2 w-12 rounded-md bg-[#3375af]"></div>
+                        <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ detailsContent.content_heading }}</h2>
+                        <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
+                        
                     </div>
 
                     <div class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-3">
@@ -49,7 +65,7 @@
                                 </ClientOnly>
                             </p>
                         </div>
-                        <div class="social-item flex gap-2 items-start md:justify-center">
+                        <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
                             <NuxtLink to="/">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg" height="28"
                                     width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
@@ -70,7 +86,7 @@
 l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
                                 </svg>
                             </NuxtLink>
-                            <div class=" cursor-pointer" @click="printArea">
+                            <div class=" cursor-pointer" @click="printPageArea('singlepost')">
                                 <svg class=" hover:scale-125 duration-200" height="28" width="28"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
                                     xml:space="preserve">
@@ -379,6 +395,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 // import moment from 'moment';
 const { x, y } = useMouse()
 const siteurl = siteUrlState()
+const websiteUrl = websiteUrlState()
 const img = useImage()
 // single Page sticky
 const singlePageSticky = singlePageStickyState()
@@ -516,6 +533,16 @@ const printArea = () => {
     WinPrint.print();
     WinPrint.close();
 }
+
+const printPageArea = (areaID) => {
+            var printContent = document.getElementById(areaID).innerHTML;
+            printContent  += "</br></br></br><hr><div><img style='margin-bottom: 20px; margin-top: 10px' src='http://127.0.0.1:8000/media/common/logo1672518180.png' alt='dfd' /></br><h3 style='margin: 0;  padding: 0'>যোগাযোগ: +৮৮০ ৯৬১ ৩৩৩ ১০১০</h3></br><h3 style='margin: 0;  padding: 0'>ইমেইল: info@dhakaprokash24.com</h3></br><h3 style='margin: 0; padding: 0'>ঠিকানা: ৯৩, কাজী নজরুল ইসলাম এভিনিউ, (ষষ্ঠ তলা) </br>কারওয়ান বাজার, ঢাকা-১২১৫।</h3></div>";
+            var originalContent = document.body.innerHTML;
+            document.body.innerHTML = printContent;
+
+            window.print();
+            document.body.innerHTML = originalContent;
+        }
 // =============== Print Script ===================== //
 // const router = useRouter()
 
@@ -732,22 +759,16 @@ onMounted(() => {
         console.log(e)
     }
 
-    //     onBeforeMount(() => {
-    //         detailsContent.value = []
-    // latestPostsDpage.value = []
-    // firstMoreContents.value = []
-    // moreDetailsContents.value = []
-    // firstInsideMoreNews.value = []
-    // readPostsState.value = []
-    // moreDetailCatWisePost.value = []
-    // firstContentTags.value = []
-    // fRelatedContents.value = []
-    // insideMoreExceptPost.value = []
-    //     })
-    // console.log(insideMoreExceptPost.value)
-    // ================== END More Post Details Inside Element Added =======================// 
+    // ================= END More Post Details Inside Element Added =======================// 
 })
-
+// const {data:ogimage} = await useFetch('/api/shareimage/ogimage' , {
+//     method: "POST",
+//     body: {
+//         cat_slug: detailsContent?.value.category?.cat_slug,
+//         img_bg_path: detailsContent?.value.img_bg_path
+//     }
+// })
+// console.log(ogimage.value)
 </script>
 
 <style scoped>

@@ -27,5 +27,10 @@ export const siteUrlState = () => {
         site_url: 'http://127.0.0.1:8000'
     }))
 }
+export const websiteUrlState = () => {
+    return useState(() => ({
+        website_url: 'http://localhost:3000'
+    }))
+}
 
 
