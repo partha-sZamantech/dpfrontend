@@ -17,8 +17,7 @@
             <Meta name="twitter:site" content="@dhakaprokash24" />
             <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
             <Meta name="robots" content="index, follow" />
-            <Link rel="canonical"
-                :href="ogUrl" />
+            <Link rel="canonical" :href="ogUrl" />
         </Head>
         <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
         <div class="breadcrump border-b pb-1 mb-5">
@@ -44,7 +43,7 @@
 
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
-                <div class="single-post flex flex-col gap-3">
+                <div class="single-post flex flex-col gap-3" id="1">
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             detailsContent?.content_sub_heading }}</h4>
@@ -203,7 +202,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
             :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
-                <div class="single-post flex flex-col gap-3">
+                <div class="single-post flex flex-col gap-3" :id="`${mcinx+2}`">
 
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
@@ -429,20 +428,20 @@ detailsContent.value = pdailts?.value?.detailsContent
 // ========== First Details Content ======= // 
 
 // ================  OG - Open Graph ====================// 
-const ogUrl                 = ref(null);
-ogUrl.value                 = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
-const ogTitle               = ref(null);
-ogTitle.value               = detailsContent?.value?.content_heading
-const ogDescription         = ref(null);
-ogDescription.value         = detailsContent?.value?.content_brief
-const ogImage               = ref(null);
-ogImage.value               = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
-const twitterTitle          = ref(null);
-twitterTitle.value          = detailsContent?.value?.content_heading
-const twitterDescription    = ref(null);
-twitterDescription.value    = detailsContent?.value?.content_brief
-const twitterImage          = ref(null);
-twitterImage.value          = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
+const ogUrl = ref(null);
+ogUrl.value = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
+const ogTitle = ref(null);
+ogTitle.value = detailsContent?.value?.content_heading
+const ogDescription = ref(null);
+ogDescription.value = detailsContent?.value?.content_brief
+const ogImage = ref(null);
+ogImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
+const twitterTitle = ref(null);
+twitterTitle.value = detailsContent?.value?.content_heading
+const twitterDescription = ref(null);
+twitterDescription.value = detailsContent?.value?.content_brief
+const twitterImage = ref(null);
+twitterImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
 // ================//  OG - Open Graph ====================// 
 
 // ============ Latest 20 Posts ===============//
@@ -506,6 +505,7 @@ for (let i = 0; i < moreDetailsContents.value.length; i++) {
     let datapush = mdcwp.value
     // console.log(mdcwp.value)
     moreDetailCatWisePost.value.push(datapush)
+
 }
 moreDetailCatWisePost.value = [...new Set(moreDetailCatWisePost.value)]
 // =================== More Details Related RightSide Category Post ==========================
@@ -594,8 +594,43 @@ for (let m = 0; m < moreDetailsContents.value.length; m++) {
 insideMoreExceptPost.value = [...new Set(insideMoreExceptPost.value)]
 // console.log(insideMoreExceptPost.value)
 //================= Inside More Detail Post Except Read More ===================//
+const pvScrollPosi = ref(0)
+const currScrollPosi = ref(0)
 
 onMounted(() => {
+
+
+
+
+    pvScrollPosi.value = window.scrollY
+    // ============= Scolling ===============
+    window.addEventListener("scroll", function () {
+
+        const contentSections = document.querySelectorAll('.single-post');
+
+        currScrollPosi.value = window.scrollY
+
+        if (pvScrollPosi.value > currScrollPosi.value) {
+            // Scroll Up
+            
+            console.log(`Up ${contentSections.length}`)
+
+        } else {
+
+            // Scroll down
+            console.log(`down ${contentSections.length}`)
+
+        }
+        pvScrollPosi.value = currScrollPosi.value
+
+
+
+    })
+    // ============= Scolling =============== //
+
+
+
+
 
     // ================== First Post Detail Content Inside Element Added =============== //
 
@@ -789,28 +824,16 @@ onMounted(() => {
         console.log(e)
     }
 
+
     // ================= END More Post Details Inside Element Added =======================// 
 })
-
-// const okd = ref('')
-// try{
-//     const {data:ogimage} = await useFetch('/api/shareimage/ogimage' , {
-//     method: "POST",
-//     body: {
-//         cat_slug: detailsContent?.value?.category?.cat_slug,
-//         img_bg_path: detailsContent?.value?.img_bg_path
-//     }
-// })
-// okd.value= ogimage
-// console.log(ogimage)
-// }catch(e){
-//     console.log(e)
-// }
 
 
 
 </script>
 
-<style scoped>p {
+<style scoped>
+p {
     line-height: 1.7 !important;
-}</style>
+}
+</style>
