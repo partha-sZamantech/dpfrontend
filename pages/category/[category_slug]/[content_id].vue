@@ -7,10 +7,10 @@
             <Meta content="500" http-equiv="refresh" />
             <!-- Refresh Reload -->
             <Meta name="description" :content="ogDescription" />
-         
+
             <Meta name="keywords" :content="metaKeywords" />
 
-    
+
             <Meta property="og:url" :content="ogUrl" />
             <Meta property="og:title" :content="ogTitle" />
             <Meta property="og:description" :content="ogDescription" />
@@ -20,7 +20,7 @@
             <Meta name="twitter:description" :content="ogDescription" />
             <Meta name="twitter:image" :content="ogImage" />
             <Meta name="twitter:url" :content="ogUrl" />
-            
+
 
             <Link rel="canonical" :href="ogUrl" />
         </Head>
@@ -48,7 +48,10 @@
 
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
-                <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading" :data-description="detailsContent?.content_brief" :data-keywords="detailsContent?.meta_keywords" :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`" :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`" >
+                <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
+                    :data-description="detailsContent?.content_brief" :data-keywords="detailsContent?.meta_keywords"
+                    :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
+                    :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`">
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             detailsContent?.content_sub_heading }}</h4>
@@ -208,7 +211,10 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
             :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
-                <div class="single-post flex flex-col gap-3"  :title="moreDetailContent.content_heading" :data-description="moreDetailContent?.content_brief" :data-keywords="moreDetailContent?.meta_keywords" :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`" :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`">
+                <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent.content_heading"
+                    :data-description="moreDetailContent?.content_brief" :data-keywords="moreDetailContent?.meta_keywords"
+                    :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
+                    :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`">
 
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
@@ -609,15 +615,12 @@ const balvalue = ref(null)
 
 onMounted(() => {
 
-
-
-
     pvScrollPosi.value = window.scrollY
     // ============= Scolling ===============
     window.addEventListener("scroll", function () {
 
         const contentSections = document.querySelectorAll('.single-post');
-        let activeSection = null;
+
         currScrollPosi.value = window.scrollY
 
         if (pvScrollPosi.value > currScrollPosi.value) {
@@ -630,18 +633,24 @@ onMounted(() => {
 
                 // checking for partial visibility
                 if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                    console.log(`Element is partially visible in screen top ${contentSections[i]}`);
-           
-                    document.querySelector('meta[name="keywords"]').setAttribute("content", contentSections[i].title);
-                    document.querySelector('title').value =  contentSections[i].title
-                    document.querySelector('title').textContent = contentSections[i].title;
-                    // balvalue.value = contentSections[i].title
+                    // console.log(`Element is partially visible in screen top ${contentSections[i].getAttribute('data-title')}`);
+
+                    document.querySelector('title').textContent = contentSections[i].getAttribute('data-title');
+                    document.querySelector('meta[name="keywords"]').setAttribute("content", contentSections[i].getAttribute('data-keywords'));
+                    document.querySelector('meta[property="og:title"]').setAttribute("content", contentSections[i].getAttribute('data-title'));
+                    document.querySelector('meta[property="og:description"]').setAttribute("content", contentSections[i].getAttribute('data-description'));
+                    document.querySelector('meta[property="og:image"]').setAttribute("content", contentSections[i].getAttribute('data-src'));
+                    document.querySelector('meta[property="og:url"]').setAttribute("content", contentSections[i].getAttribute('data-href'));
+                    document.querySelector('meta[name="twitter:title"]').setAttribute("content", contentSections[i].getAttribute('data-title'));
+                    document.querySelector('meta[name="twitter:description"]').setAttribute("content", contentSections[i].getAttribute('data-description'));
+                    document.querySelector('meta[name="twitter:image"]').setAttribute("content", contentSections[i].getAttribute('data-src'));
+                    document.querySelector('meta[name="twitter:url"]').setAttribute("content", contentSections[i].getAttribute('data-href'));
+                    history.pushState('', contentSections[i].getAttribute('data-title'), contentSections[i].getAttribute('data-href'));
+
                     // document.querySelector('meta[property="og:title"]').setAttribute("content", contentSections[i].title)
                 }
-                
-            }
-     
 
+            }
 
         } else {
 
@@ -653,19 +662,23 @@ onMounted(() => {
 
                 // checking for partial visibility
                 if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                    console.log(`Element is partially visible in screen bottom ${contentSections[p]}`);
-                    // balvalue.value = contentSections[i].title
-                    document.querySelector('meta[name="keywords"]').setAttribute("content", contentSections[p].title);
-                    document.querySelector('title').textContent = contentSections[p].title;
+                    // console.log(`Element is partially visible in screen bottom ${contentSections[p].getAttribute('data-title')}`);
+         
+                    document.querySelector('title').textContent = contentSections[p].getAttribute('data-title');
+                    document.querySelector('meta[name="keywords"]').setAttribute("content", contentSections[p].getAttribute('data-keywords'));
+                    document.querySelector('meta[property="og:title"]').setAttribute("content", contentSections[p].getAttribute('data-title'));
+                    document.querySelector('meta[property="og:description"]').setAttribute("content", contentSections[p].getAttribute('data-description'));
+                    document.querySelector('meta[property="og:image"]').setAttribute("content", contentSections[p].getAttribute('data-src'));
+                    document.querySelector('meta[property="og:url"]').setAttribute("content", contentSections[p].getAttribute('data-href'));
+                    document.querySelector('meta[name="twitter:title"]').setAttribute("content", contentSections[p].getAttribute('data-title'));
+                    document.querySelector('meta[name="twitter:description"]').setAttribute("content", contentSections[p].getAttribute('data-description'));
+                    document.querySelector('meta[name="twitter:image"]').setAttribute("content", contentSections[p].getAttribute('data-src'));
+                    document.querySelector('meta[name="twitter:url"]').setAttribute("content", contentSections[p].getAttribute('data-href'));
+                    history.pushState('', contentSections[p].getAttribute('data-title'), contentSections[p].getAttribute('data-href'));
                     // document.querySelector('title').value("content", ok)
                 }
             }
 
-            // if (activeSection) {
-            //     // Update the route based on the active content section
-            //     console.log(`down ${activeSection.id}`)
-
-            // }
 
         }
         pvScrollPosi.value = currScrollPosi.value
@@ -674,9 +687,6 @@ onMounted(() => {
 
     })
     // ============= Scolling =============== //
-
-
-
 
 
     // ================== First Post Detail Content Inside Element Added =============== //
@@ -879,8 +889,6 @@ onMounted(() => {
 
 </script>
 
-<style scoped>
-p {
+<style scoped>p {
     line-height: 1.7 !important;
-}
-</style>
+}</style>
