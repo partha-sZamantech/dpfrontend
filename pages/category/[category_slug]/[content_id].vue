@@ -3,25 +3,26 @@
 
         <Head>
             <Title>{{ detailsContent.content_heading }}</Title>
+            <!-- Refresh Reload -->
+            <Meta content="500" http-equiv="refresh" />
+            <!-- Refresh Reload -->
             <Meta name="description" :content="ogDescription" />
-            <Meta content="ALL" name="robots" />
-            <Meta name="description" :content="ogDescription" />
+         
             <Meta name="keywords" :content="metaKeywords" />
 
             <Meta property="og:type" content="website" />
-            <Meta property="og:site_name" content="ঢাকা প্রকাশ" />
+          
             <Meta property="og:url" :content="ogUrl" />
             <Meta property="og:title" :content="ogTitle" />
             <Meta property="og:description" :content="ogDescription" />
             <Meta property="og:image" :content="ogImage" />
 
-            <Meta name="twitter:card" content="summary_large_image" />
-            <Meta name="twitter:site" content="@dhakaprokash24" />
             <Meta name="twitter:title" :content="ogTitle" />
             <Meta name="twitter:description" :content="ogDescription" />
             <Meta name="twitter:image" :content="ogImage" />
+            <Meta name="twitter:url" :content="ogImage" />
+            
 
-            <Meta name="robots" content="index, follow" />
             <Link rel="canonical" :href="ogUrl" />
         </Head>
         <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->

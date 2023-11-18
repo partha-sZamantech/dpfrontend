@@ -2,6 +2,16 @@
     <div>
         <Head>
             <Title>{{dsiteSetting?.title}}</Title>
+            <Meta name="Developed By" content="Dhaka Prokash Deleloper" />
+            <Meta name="keywords" content="Dhaka Prokash, bangla news, current News, bangla newspaper, bangladesh newspaper, online paper, bangladeshi newspaper, bangla news paper, bangladesh newspapers, newspaper, all bangla news paper, bd news paper, news paper, bangladesh news paper, daily, bangla newspaper, daily news paper, bangladeshi news paper, bangla paper, all bangla newspaper, bangladesh news, daily newspaper, অনলাইন, পত্রিকা, বাংলাদেশ, আজকের পত্রিকা, আন্তর্জাতিক, অর্থনীতি, খেলা, বিনোদন, ফিচার, বিজ্ঞান ও প্রযুক্তি, চলচ্চিত্র, ঢালিউড, বলিউড, হলিউড, বাংলা গান, মঞ্চ, টেলিভিশন, নকশা, রস+আলো, ছুটির দিনে, অধুনা, স্বপ্ন নিয়ে, আনন্দ, অন্য আলো, সাহিত্য, গোল্লাছুট, প্রজন্ম ডট কম, বন্ধুসভা,কম্পিউটার, মোবাইল ফোন, অটোমোবাইল, মহাকাশ, গেমস, মাল্টিমিডিয়া, রাজনীতি, সরকার, অপরাধ, দুর্নীতি, আইন ও বিচার, পরিবেশ, দুর্ঘটনা, সংসদ, রাজধানী, শেয়ার বাজার, বাণিজ্য, পোশাক শিল্প, ক্রিকেট, ফুটবল, লাইভ স্কোর" />
+            <Meta name="distribution" content="Global" />
+            <Meta property="og:site_name" content="ঢাকা প্রকাশ" />
+            <Meta name="twitter:card" content="summary_large_image" />
+            <Meta name="twitter:site" content="@dhakaprokash24" />
+            <Meta name="twitter:creator" content="ঢাকা প্রকাশ | বাংলা নিউজ পেপার" />
+            <Meta name="googlebot" content="index, follow" />
+            <Meta name="robots" content="index, follow" />
+            <Meta content="ALL" name="robots" />
             <!-- <Meta content="500" http-equiv="refresh" /> -->
             <!-- <Meta name="robots" content="index, follow" /> -->
         </Head>
