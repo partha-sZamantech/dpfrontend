@@ -10,8 +10,7 @@
          
             <Meta name="keywords" :content="metaKeywords" />
 
-            <Meta property="og:type" content="website" />
-          
+    
             <Meta property="og:url" :content="ogUrl" />
             <Meta property="og:title" :content="ogTitle" />
             <Meta property="og:description" :content="ogDescription" />

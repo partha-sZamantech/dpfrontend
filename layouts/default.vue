@@ -2,10 +2,16 @@
     <div>
         <Head>
             <Title>{{dsiteSetting?.title}}</Title>
+            <Meta name="description" content="ঢাকা প্রকাশ বাংলাদেশসহ বিশ্বের সর্বশেষ সংবাদ শিরোনাম, প্রতিবেদন, বিশ্লেষণ, খেলা, বিনোদন, চাকরি, রাজনীতি ও বাণিজ্যের বাংলা নিউজ পড়তে ভিজিট করুন।" />
             <Meta name="Developed By" content="Dhaka Prokash Developer" />
             <Meta name="keywords" content="Dhaka Prokash, bangla news, current News, bangla newspaper, bangladesh newspaper, online paper, bangladeshi newspaper, bangla news paper, bangladesh newspapers, newspaper, all bangla news paper, bd news paper, news paper, bangladesh news paper, daily, bangla newspaper, daily news paper, bangladeshi news paper, bangla paper, all bangla newspaper, bangladesh news, daily newspaper, অনলাইন, পত্রিকা, বাংলাদেশ, আজকের পত্রিকা, আন্তর্জাতিক, অর্থনীতি, খেলা, বিনোদন, ফিচার, বিজ্ঞান ও প্রযুক্তি, চলচ্চিত্র, ঢালিউড, বলিউড, হলিউড, বাংলা গান, মঞ্চ, টেলিভিশন, নকশা, রস+আলো, ছুটির দিনে, অধুনা, স্বপ্ন নিয়ে, আনন্দ, অন্য আলো, সাহিত্য, গোল্লাছুট, প্রজন্ম ডট কম, বন্ধুসভা,কম্পিউটার, মোবাইল ফোন, অটোমোবাইল, মহাকাশ, গেমস, মাল্টিমিডিয়া, রাজনীতি, সরকার, অপরাধ, দুর্নীতি, আইন ও বিচার, পরিবেশ, দুর্ঘটনা, সংসদ, রাজধানী, শেয়ার বাজার, বাণিজ্য, পোশাক শিল্প, ক্রিকেট, ফুটবল, লাইভ স্কোর" />
             <Meta name="distribution" content="Global" />
+            <Meta property="og:type" content="website" />
             <Meta property="og:site_name" content="ঢাকা প্রকাশ" />
+            <Meta property="og:title" content="ঢাকা প্রকাশ | বাংলা নিউজ পেপার" />
+            <Meta property="og:description" content="ঢাকা প্রকাশ বাংলাদেশসহ বিশ্বের সর্বশেষ সংবাদ শিরোনাম, প্রতিবেদন, বিশ্লেষণ, খেলা, বিনোদন, চাকরি, রাজনীতি ও বাণিজ্যের বাংলা নিউজ পড়তে ভিজিট করুন।" />
+            <Meta name="twitter:title" content="ঢাকা প্রকাশ | বাংলা নিউজ পেপার" />
+            <Meta name="twitter:description" content="ঢাকা প্রকাশ বাংলাদেশসহ বিশ্বের সর্বশেষ সংবাদ শিরোনাম, প্রতিবেদন, বিশ্লেষণ, খেলা, বিনোদন, চাকরি, রাজনীতি ও বাণিজ্যের বাংলা নিউজ পড়তে ভিজিট করুন।" />
             <Meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:domain" content="https://www.dhakaprokash24.com">
             <Meta name="twitter:site" content="@dhakaprokash24" />
