@@ -48,6 +48,7 @@
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             detailsContent?.content_sub_heading }}</h4>
                         <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ detailsContent.content_heading }}
+                            {{ balvalue }}
                         </h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
 
@@ -202,13 +203,13 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
             :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
-                <div class="single-post flex flex-col gap-3" :id="`${mcinx+2}`">
+                <div class="single-post flex flex-col gap-3" :id="`${mcinx + 2}`">
 
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             moreDetailContent?.content_sub_heading }}</h4>
                         <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ moreDetailContent.content_heading
-                        }}</h2>
+                        }} {{ balvalue }}</h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
                     </div>
 
@@ -596,6 +597,7 @@ insideMoreExceptPost.value = [...new Set(insideMoreExceptPost.value)]
 //================= Inside More Detail Post Except Read More ===================//
 const pvScrollPosi = ref(0)
 const currScrollPosi = ref(0)
+const balvalue = ref(null)
 
 onMounted(() => {
 
@@ -607,18 +609,61 @@ onMounted(() => {
     window.addEventListener("scroll", function () {
 
         const contentSections = document.querySelectorAll('.single-post');
-
+        let activeSection = null;
         currScrollPosi.value = window.scrollY
 
         if (pvScrollPosi.value > currScrollPosi.value) {
             // Scroll Up
-            
-            console.log(`Up ${contentSections.length}`)
+            for (let i = 0; i < contentSections.length; i++) {
+                const rect = contentSections[i].getBoundingClientRect();
+                // if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                //     console.log('Element is fully visible in screen');
+                // }
+
+                // checking for partial visibility
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    console.log(`Element is partially visible in screen top ${contentSections[i].id}`);
+                    balvalue.value = contentSections[i].id
+                }
+            }
+            // contentSections.forEach((section) => {
+            //     const rect = section.getBoundingClientRect();
+
+            //     if (rect.top >= 0 && rect.bottom <= this.window.innerHeight) {
+            //         balvalue.value = section.id
+            //         console.log(`Up ${balvalue.value}`)
+
+            //     }
+            // });
+
+            // if (activeSection) {
+            //     // Update the route based on the active content section
+
+
+            // }
+
+
 
         } else {
 
-            // Scroll down
-            console.log(`down ${contentSections.length}`)
+            for (let i = 0; i < contentSections.length; i++) {
+                const rect = contentSections[i].getBoundingClientRect();
+                // if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                //     console.log('Element is fully visible in screen bottom');
+                // }
+
+                // checking for partial visibility
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    console.log(`Element is partially visible in screen bottom ${contentSections[i].id}`);
+                    balvalue.value = contentSections[i].id
+                }
+            }
+
+            // if (activeSection) {
+            //     // Update the route based on the active content section
+            //     console.log(`down ${activeSection.id}`)
+
+            // }
 
         }
         pvScrollPosi.value = currScrollPosi.value
