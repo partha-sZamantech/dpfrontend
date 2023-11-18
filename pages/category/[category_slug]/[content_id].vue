@@ -3,19 +3,24 @@
 
         <Head>
             <Title>{{ detailsContent.content_heading }}</Title>
+            <Meta name="description" :content="ogDescription" />
+            <Meta content="ALL" name="robots" />
+            <Meta name="description" :content="ogDescription" />
+            <Meta name="keywords" :content="metaKeywords" />
+
             <Meta property="og:type" content="website" />
-            <Meta property="og:site_name" content="ঢাকা প্রকাশ - খবরের কাগজ" />
+            <Meta property="og:site_name" content="ঢাকা প্রকাশ" />
             <Meta property="og:url" :content="ogUrl" />
             <Meta property="og:title" :content="ogTitle" />
             <Meta property="og:description" :content="ogDescription" />
             <Meta property="og:image" :content="ogImage" />
+
             <Meta name="twitter:card" content="summary_large_image" />
+            <Meta name="twitter:site" content="@dhakaprokash24" />
             <Meta name="twitter:title" :content="ogTitle" />
             <Meta name="twitter:description" :content="ogDescription" />
-            <Meta property="twitter:image" :content="ogImage" />
-            <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
-            <Meta name="twitter:site" content="@dhakaprokash24" />
-            <Meta name="twitter:domain" :content="`${websiteUrl.website_url}`" />
+            <Meta name="twitter:image" :content="ogImage" />
+
             <Meta name="robots" content="index, follow" />
             <Link rel="canonical" :href="ogUrl" />
         </Head>
@@ -43,7 +48,7 @@
 
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
-                <div class="single-post flex flex-col gap-3" id="1">
+                <div class="single-post flex flex-col gap-3" :title="detailsContent.content_heading">
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             detailsContent?.content_sub_heading }}</h4>
@@ -140,7 +145,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             </div>
             <div class=" col-span-12 md:col-span-3">
 
-                <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-40' : 'top-14'} duration-200`"
+                <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`"
                     v-if="firstMoreContents?.length > 0">
                     <div class=" border-b-[3px] border-[#3375af] pb-1">
                         <h3 class="text-[#3375af] text-[18px] font-[600]">{{ detailsContent?.category?.cat_name_bn }} নিয়ে
@@ -203,7 +208,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
             :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
-                <div class="single-post flex flex-col gap-3" :id="`${mcinx + 2}`">
+                <div class="single-post flex flex-col gap-3"  :title="moreDetailContent.content_heading" :id="`${mcinx + 2}`">
 
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
@@ -299,7 +304,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             </div>
             <div class="col-span-12 md:col-span-3">
 
-                <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-40' : 'top-14'} duration-200`"
+                <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`"
                     v-if="firstMoreContents?.length > 0">
                     <div class=" border-b-[3px] border-[#3375af] pb-1">
                         <h3 class="text-[#3375af] text-[18px] font-[600]">{{ moreDetailContent?.category?.cat_name_bn }}
@@ -434,6 +439,9 @@ ogUrl.value = `${websiteUrl?.value?.website_url}/category/${detailsContent?.valu
 const ogTitle = ref(null);
 ogTitle.value = detailsContent?.value?.content_heading
 const ogDescription = ref(null);
+ogDescription.value = detailsContent?.value?.content_brief
+const metaKeywords = ref(null);
+metaKeywords.value = detailsContent?.value?.meta_keywords
 ogDescription.value = detailsContent?.value?.content_brief
 const ogImage = ref(null);
 ogImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
@@ -617,45 +625,36 @@ onMounted(() => {
             for (let i = 0; i < contentSections.length; i++) {
                 const rect = contentSections[i].getBoundingClientRect();
                 // if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                //     console.log('Element is fully visible in screen');
+                //     console.log(`Element is partially visible in screen top ${contentSections[i].id}`);
                 // }
 
                 // checking for partial visibility
                 if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                    console.log(`Element is partially visible in screen top ${contentSections[i].id}`);
-                    balvalue.value = contentSections[i].id
+                    console.log(`Element is partially visible in screen top ${contentSections[i]}`);
+           
+                    document.querySelector('meta[name="keywords"]').setAttribute("content", contentSections[i].title);
+                    // balvalue.value = contentSections[i].title
+                    // document.querySelector('meta[property="og:title"]').setAttribute("content", contentSections[i].title)
                 }
+                
             }
-            // contentSections.forEach((section) => {
-            //     const rect = section.getBoundingClientRect();
-
-            //     if (rect.top >= 0 && rect.bottom <= this.window.innerHeight) {
-            //         balvalue.value = section.id
-            //         console.log(`Up ${balvalue.value}`)
-
-            //     }
-            // });
-
-            // if (activeSection) {
-            //     // Update the route based on the active content section
-
-
-            // }
-
+     
 
 
         } else {
 
-            for (let i = 0; i < contentSections.length; i++) {
-                const rect = contentSections[i].getBoundingClientRect();
+            for (let p = 0; p < contentSections.length; p++) {
+                const rect = contentSections[p].getBoundingClientRect();
                 // if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                //     console.log('Element is fully visible in screen bottom');
+                //     console.log(`Element is partially visible in screen top ${contentSections[i].id}`);
                 // }
 
                 // checking for partial visibility
                 if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                    console.log(`Element is partially visible in screen bottom ${contentSections[i].id}`);
-                    balvalue.value = contentSections[i].id
+                    console.log(`Element is partially visible in screen bottom ${contentSections[p]}`);
+                    // balvalue.value = contentSections[i].title
+                    document.querySelector('meta[name="keywords"]').setAttribute("content", contentSections[p].title);
+                    // document.querySelector('title').value("content", ok)
                 }
             }
 
