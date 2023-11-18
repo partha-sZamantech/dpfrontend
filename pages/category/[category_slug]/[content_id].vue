@@ -633,6 +633,8 @@ onMounted(() => {
                     console.log(`Element is partially visible in screen top ${contentSections[i]}`);
            
                     document.querySelector('meta[name="keywords"]').setAttribute("content", contentSections[i].title);
+                    document.querySelector('title').value =  contentSections[i].title
+                    document.querySelector('title').textContent = contentSections[i].title;
                     // balvalue.value = contentSections[i].title
                     // document.querySelector('meta[property="og:title"]').setAttribute("content", contentSections[i].title)
                 }
@@ -654,6 +656,7 @@ onMounted(() => {
                     console.log(`Element is partially visible in screen bottom ${contentSections[p]}`);
                     // balvalue.value = contentSections[i].title
                     document.querySelector('meta[name="keywords"]').setAttribute("content", contentSections[p].title);
+                    document.querySelector('title').textContent = contentSections[p].title;
                     // document.querySelector('title').value("content", ok)
                 }
             }
