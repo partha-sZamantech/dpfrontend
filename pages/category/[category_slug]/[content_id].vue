@@ -19,7 +19,7 @@
             <Meta name="twitter:title" :content="ogTitle" />
             <Meta name="twitter:description" :content="ogDescription" />
             <Meta name="twitter:image" :content="ogImage" />
-            <Meta name="twitter:url" :content="ogImage" />
+            <Meta name="twitter:url" :content="ogUrl" />
             
 
             <Link rel="canonical" :href="ogUrl" />
@@ -48,7 +48,7 @@
 
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
-                <div class="single-post flex flex-col gap-3" :title="detailsContent.content_heading">
+                <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading" :data-description="detailsContent?.content_brief" :data-keywords="detailsContent?.meta_keywords" :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`" :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`" >
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             detailsContent?.content_sub_heading }}</h4>
@@ -208,7 +208,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
             :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
-                <div class="single-post flex flex-col gap-3"  :title="moreDetailContent.content_heading" :id="`${mcinx + 2}`">
+                <div class="single-post flex flex-col gap-3"  :title="moreDetailContent.content_heading" :data-description="moreDetailContent?.content_brief" :data-keywords="moreDetailContent?.meta_keywords" :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`" :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`">
 
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{

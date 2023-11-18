@@ -16,8 +16,8 @@
             <meta name="twitter:domain" content="https://www.dhakaprokash24.com">
             <Meta name="twitter:site" content="@dhakaprokash24" />
             <Meta name="twitter:creator" content="ঢাকা প্রকাশ | বাংলা নিউজ পেপার" />
-            <meta property="fb:app_id" content="270848064771492">
-            <meta property="fb:pages" content="100063660752112">
+            <Meta property="fb:app_id" content="270848064771492" />
+            <Meta property="fb:pages" content="100063660752112" />
             <Meta name="googlebot" content="index, follow" />
             <Meta name="robots" content="index, follow" />
             <Meta content="ALL" name="robots" />
