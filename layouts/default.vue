@@ -25,8 +25,8 @@
             <!-- <Meta name="robots" content="index, follow" /> -->
 
         </Head>
-        
-        <AdsDesktopHeaderTopBanner />
+        <!-- Header Top Ads Page=1, Position=1 -->
+        <AdsDesktopAdvertisement page="1" position="1" />
         <div :class="`logoHeader duration-300 z-50`">
         <!-- <div :class="`${LogoHeaderScollUp ? 'fixed  top-0 left-0 right-0' : '' } logoHeader duration-300`"> -->
             <!-- <div class="header-container max-w-[1280px] mx-auto "> -->
@@ -58,6 +58,8 @@
 // ==================== Title & Favicon ====================
 const DsiteConfig = useRuntimeConfig()
 const dsiteSetting = useState(() => [])
+//============ Header Top Advertisement
+
 const {data:dsiteSet} = await useFetch(`${DsiteConfig.public.apiUrl}/api/site-setting`,{
     method: 'GET'
 })
