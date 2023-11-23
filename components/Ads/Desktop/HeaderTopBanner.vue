@@ -9,7 +9,14 @@
 </template>
 
 <script setup>
-
+    const {data:topbA} = await useFetch('/api/adsmanagement/getads', {
+        method: "POST",
+        body: {
+            page: 1,
+            position: 1
+        }
+    })
+    console.log(topbA.value)
 </script>
 
 <style lang="scss" scoped>
