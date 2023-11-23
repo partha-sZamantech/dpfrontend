@@ -6,7 +6,7 @@
             <div @click="bottomAdsToggle" class="bg-[#eee] w-8 h-8 px-2 absolute right-0 -top-6 rounded-l-lg cursor-pointer">
                 <Icon name="material-symbols:close" />
             </div>
-            <img class="mx-auto" src="/assets/img/ads.png" />
+            <AdsDesktopAdvertisement page="1" position="3" />
         </div>
     </div>
     

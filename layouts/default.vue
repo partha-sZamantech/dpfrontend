@@ -26,7 +26,7 @@
 
         </Head>
         <!-- Header Top Ads Page=1, Position=1 -->
-        <AdsDesktopAdvertisement page="1" position="1" />
+        <AdsDesktopHeaderBannerTop :topBannerAd="topBannerAd" />
         <div :class="`logoHeader duration-300 z-50`">
         <!-- <div :class="`${LogoHeaderScollUp ? 'fixed  top-0 left-0 right-0' : '' } logoHeader duration-300`"> -->
             <!-- <div class="header-container max-w-[1280px] mx-auto "> -->
@@ -45,7 +45,7 @@
         </div>
        
         <!-- Footer Ads Sticky -->
-        <!-- <AdverstmentFooterStickyAds /> -->
+    <!-- <AdverstmentFooterStickyAds  /> -->
         <!-- Footer Ads Sticky -->
     </div>
     <!-- Global Popup -->
@@ -139,8 +139,7 @@ onMounted(() => {
             }
             prevScrollPosition.value = currentScrollPosition.value
            
-          
-
+        
         })
         // ============= Scolling =============== //
         // ============== Desktop ===================
@@ -157,6 +156,19 @@ const {data:cats} = await useFetch(`${catConfig.public.apiUrl}/api/allcat`,{
 })
 allCategory.value = cats
 // ==================== Logo ====================
+
+//============= Header Banner Top Ads ===========//
+const topBannerAd = ref(null)
+const { data: topbA } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 1,
+        position: 1
+    }
+})
+topBannerAd.value = topbA.value
+//============= Header Banner Top Ads ===========//
+
 
 </script>
 
