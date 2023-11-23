@@ -26,7 +26,7 @@
 
         </Head>
         <!-- Header Top Ads Page=1, Position=1 -->
-        <AdsDesktopHeaderBannerTop :topBannerAd="topBannerAd" />
+        <AdsDesktopCommonHeaderBannerTop v-if="topBannerAd?.status === 1" :topBannerAd="topBannerAd" />
         <div :class="`logoHeader duration-300 z-50`">
         <!-- <div :class="`${LogoHeaderScollUp ? 'fixed  top-0 left-0 right-0' : '' } logoHeader duration-300`"> -->
             <!-- <div class="header-container max-w-[1280px] mx-auto "> -->
@@ -45,7 +45,7 @@
         </div>
        
         <!-- Footer Ads Sticky -->
-    <!-- <AdverstmentFooterStickyAds  /> -->
+    <AdsDesktopCommonFooterStickyAds v-if="footerAds?.status === 1" :footerAds="footerAds" />
         <!-- Footer Ads Sticky -->
     </div>
     <!-- Global Popup -->
@@ -167,6 +167,17 @@ const { data: topbA } = await useFetch('/api/adsmanagement/getads', {
     }
 })
 topBannerAd.value = topbA.value
+//============= Header Banner Top Ads ===========//
+//============= Header Banner Top Ads ===========//
+const footerAds = ref(null)
+const { data: fAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 1,
+        position: 3
+    }
+})
+footerAds.value = fAds.value
 //============= Header Banner Top Ads ===========//
 
 
