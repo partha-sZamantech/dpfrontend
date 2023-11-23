@@ -48,7 +48,7 @@
 
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
-                <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
+                <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading" :data-nid="detailsContent?.content_id"
                     :data-description="detailsContent?.content_brief" :data-keywords="detailsContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
                     :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`">
@@ -110,6 +110,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     </path>
                                 </svg>
                             </div>
+                            <!-- ShareThis BEGIN -->
+<div class="sharethis-inline-share-buttons"></div>
+<!-- ShareThis END -->
                         </div>
                     </div>
                     <div class="feature-image border-b">
@@ -211,7 +214,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
             :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
-                <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent.content_heading"
+                <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading" :data-nid="moreDetailContent?.content_id"
                     :data-description="moreDetailContent?.content_brief" :data-keywords="moreDetailContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
                     :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`">
@@ -409,6 +412,16 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
 <script setup>
 // import moment from 'moment';
+useHead({
+    script: [
+        {
+            src: 'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons',
+            async: "true",
+            tagPosition: "head"
+        }
+    ]
+    
+})
 
 const siteurl = siteUrlState()
 const websiteUrl = websiteUrlState()
@@ -583,6 +596,7 @@ const printPageArea = (areaID) => {
     window.print();
     document.body.innerHTML = originalContent;
     location.reload()
+    // navigateTo(`/category/${category_slug}/${content_id}`)
 
 }
 
@@ -645,7 +659,8 @@ onMounted(() => {
                     document.querySelector('meta[name="twitter:description"]').setAttribute("content", contentSections[i].getAttribute('data-description'));
                     document.querySelector('meta[name="twitter:image"]').setAttribute("content", contentSections[i].getAttribute('data-src'));
                     document.querySelector('meta[name="twitter:url"]').setAttribute("content", contentSections[i].getAttribute('data-href'));
-                    history.pushState('', contentSections[i].getAttribute('data-title'), contentSections[i].getAttribute('data-href'));
+                    history.replaceState(contentSections[i].getAttribute('data-nid'), contentSections[i].getAttribute('data-title'), contentSections[i].getAttribute('data-href'));
+                    // history.pushState('', contentSections[i].getAttribute('data-title'), contentSections[i].getAttribute('data-href'));
 
                     // document.querySelector('meta[property="og:title"]').setAttribute("content", contentSections[i].title)
                 }
@@ -674,7 +689,8 @@ onMounted(() => {
                     document.querySelector('meta[name="twitter:description"]').setAttribute("content", contentSections[p].getAttribute('data-description'));
                     document.querySelector('meta[name="twitter:image"]').setAttribute("content", contentSections[p].getAttribute('data-src'));
                     document.querySelector('meta[name="twitter:url"]').setAttribute("content", contentSections[p].getAttribute('data-href'));
-                    history.pushState('', contentSections[p].getAttribute('data-title'), contentSections[p].getAttribute('data-href'));
+                    history.replaceState(contentSections[p].getAttribute('data-nid'), contentSections[p].getAttribute('data-title'), contentSections[p].getAttribute('data-href'));
+                    // history.pushState('', contentSections[p].getAttribute('data-title'), contentSections[p].getAttribute('data-href'));
                     // document.querySelector('title').value("content", ok)
                 }
             }
@@ -797,7 +813,7 @@ onMounted(() => {
 
             let insideMoreNews = insideMoreExceptPost?.value[i];
             let desc = document.getElementsByClassName('postdetailinside' + i)
-            let descParas = desc[0].querySelectorAll("p")
+            let descParas = desc[0]?.querySelectorAll("p")
             // ==== Gooogle news Link === //
             let googleNews = () => {
                 let link = document.createElement(`a`);
@@ -820,7 +836,7 @@ onMounted(() => {
 
                 return link;
             }
-            if (descParas.length > 1) {
+            if (descParas?.length > 1) {
                 descParas[0].parentNode.insertBefore(googleNews(), descParas[0].nextSibling);
             }
             // ==== Gooogle news Link === //
@@ -860,7 +876,7 @@ onMounted(() => {
             }
 
             let itemIncrement = 0;
-            descParas.forEach((item, i) => {
+            descParas?.forEach((item, i) => {
 
                 if (i > 0 && i % 3 === 0 && insideMoreNews[itemIncrement]) {
                     descParas[0].parentNode.insertBefore(insertRelatedNews(insideMoreNews[itemIncrement].content_heading, fJsNewsURL(insideMoreNews[itemIncrement].category.cat_slug, insideMoreNews[itemIncrement].content_id)), descParas[i - 1].nextSibling);
@@ -868,12 +884,10 @@ onMounted(() => {
                 }
             })
 
-
             function fJsNewsURL(cat_slug, content_id) {
                 return 'category/' + cat_slug + '/' + content_id;
                 // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
             }
-
 
         }
         // End For loop

@@ -23,6 +23,9 @@ figure.image figcaption {
     white-space: -o-pre-wrap !important; /* Opera 7 */
     word-wrap: break-word !important; /* Internet Explorer 5.5+ */
 }
+.st-cmp-settings {
+    display: none !important;
+}
 
 .postdetails p img {
     margin: 18px 0px !important;
