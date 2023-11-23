@@ -11,7 +11,7 @@
                         v-if="footerAds?.type === 3">
                         <img class="mx-auto"
                             :src="`${siteurl.site_url}/media/advertisement/${footerAds?.desktop_image_path}`"
-                            alt="Header Ad" />
+                            alt="Footer Ad" />
                     </a>
                     <div v-else v-html="footerAds?.code"></div>
                 </div>

@@ -48,9 +48,9 @@
     <AdsDesktopCommonFooterStickyAds v-if="footerAds?.status === 1" :footerAds="footerAds" />
         <!-- Footer Ads Sticky -->
     </div>
-    <!-- Global Popup -->
-    <!-- <PopupGlobal /> -->
-    <!-- Global Popup -->
+    <!-- Ads Site Block Popup -->
+    <AdsDesktopCommonSiteBlock v-if="siteblockAds?.status === 1" :siteblockAds="siteblockAds" />
+    <!-- Ads Site Block Popup -->
 </template>
 
 <script setup>
@@ -158,7 +158,7 @@ allCategory.value = cats
 // ==================== Logo ====================
 
 //============= Header Banner Top Ads ===========//
-const topBannerAd = ref(null)
+const topBannerAd = useState(() => '')
 const { data: topbA } = await useFetch('/api/adsmanagement/getads', {
     method: "POST",
     body: {
@@ -168,8 +168,8 @@ const { data: topbA } = await useFetch('/api/adsmanagement/getads', {
 })
 topBannerAd.value = topbA.value
 //============= Header Banner Top Ads ===========//
-//============= Header Banner Top Ads ===========//
-const footerAds = ref(null)
+//============= Footer Banner Top Ads ===========//
+const footerAds = useState(() => '')
 const { data: fAds } = await useFetch('/api/adsmanagement/getads', {
     method: "POST",
     body: {
@@ -178,7 +178,19 @@ const { data: fAds } = await useFetch('/api/adsmanagement/getads', {
     }
 })
 footerAds.value = fAds.value
-//============= Header Banner Top Ads ===========//
+//============= Footer Banner Top A ===========//
+
+//============= Site Block Ads  ===========//
+const siteblockAds = useState(() => '')
+const { data: sbAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 1,
+        position: 4
+    }
+})
+siteblockAds.value = sbAds.value
+//============= Site Block Ads ===========//
 
 
 </script>
