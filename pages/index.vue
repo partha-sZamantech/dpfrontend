@@ -104,11 +104,11 @@
             <!-- English Component -->
         </div>
         <!-- English Content Area -->
-        <!-- Home Middle Six Ads -->
+        <!-- Home Middle Seven Ads -->
         <div v-if="homeMiddleSevenAds.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
             <AdsDesktopHomeMiddleSeven :homeMiddleSevenAds="homeMiddleSevenAds" />
         </div>
-        <!-- Home Middle Six Ads -->
+        <!-- Home Middle Seven Ads -->
         <div class="py-2 md:px-2 max-w-[1280px] mx-auto px-4">
 
             <div class=" grid grid-cols-12 gap-6">
@@ -142,7 +142,12 @@
                 </div>
             </div>
 
-
+            <!-- Home Middle Eight Ads -->
+            <div v-if="homeMiddleEightAds.status === 1"
+                class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                <AdsDesktopHomeMiddleEight :homeMiddleEightAds="homeMiddleEightAds" />
+            </div>
+            <!-- Home Middle Eight Ads -->
             <div class=" grid grid-cols-12 gap-6 py-4">
                 <div class=" col-span-12 md:col-span-3">
                     <!-- Art Culture Component -->
@@ -331,6 +336,19 @@ const { data: hmsevenads } = await useFetch('/api/adsmanagement/getads', {
     }
 })
 homeMiddleSevenAds.value = hmsevenads.value
+//========== Home Page Middle Seven Ads ==========//
+
+//========== Home Page Middle Eight Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeMiddleEightAds = useState(() => '')
+const { data: hmeightads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 9
+    }
+})
+homeMiddleEightAds.value = hmeightads.value
 //========== Home Page Middle Seven Ads ==========//
 
 
