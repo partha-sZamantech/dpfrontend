@@ -92,7 +92,11 @@
                 </div>
             </div>
         </div>
-
+        <!-- Home Middle Six Ads -->
+        <div v-if="homeMiddleSixAds.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+            <AdsDesktopHomeMiddleSix :homeMiddleSixAds="homeMiddleSixAds" />
+        </div>
+        <!-- Home Middle Six Ads -->
         <!-- English Content Area -->
         <div class="english-content-except bg-[#fff4e6] my-6">
             <!-- English Component -->
@@ -298,6 +302,19 @@ const { data: hmfiveads } = await useFetch('/api/adsmanagement/getads', {
 })
 homeMiddleFiveAds.value = hmfiveads.value
 //========== Home Page Middle Five Ads ==========//
+
+//========== Home Page Middle Six Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeMiddleSixAds = useState(() => '')
+const { data: hmsixads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 7
+    }
+})
+homeMiddleSixAds.value = hmsixads.value
+//========== Home Page Middle Six Ads ==========//
 
 
 </script>
