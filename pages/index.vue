@@ -42,7 +42,12 @@
                     <!-- National Category Component -->
                     <HomeCategoryPoliticsEconomyInternational />
                     <!--/ National Category Component -->
-
+                    <!-- Home Middle Four Ads -->
+                    <div v-if="homeMiddleFourAds.status === 1"
+                        class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                        <AdsDesktopHomeMiddleFour :homeMiddleFourAds="homeMiddleFourAds" />
+                    </div>
+                    <!-- Home Middle Four Ads -->
                 </div>
 
                 <div class="col-span-12 md:col-span-3">
@@ -262,6 +267,19 @@ const { data: hmthreeads } = await useFetch('/api/adsmanagement/getads', {
     }
 })
 homeMiddleThreeAds.value = hmthreeads.value
+//========== Home Page Middle Three Ads ==========//
+
+//========== Home Page Middle Four Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeMiddleFourAds = useState(() => '')
+const { data: hmfourads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 5
+    }
+})
+homeMiddleFourAds.value = hmfourads.value
 //========== Home Page Middle Three Ads ==========//
 
 
