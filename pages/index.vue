@@ -79,12 +79,18 @@
                         <AdsDesktopHomeRightFour :homeRightFourAds="homeRightFourAds" />
                     </div>
                     <!-- Home Right Four Ads -->
-                    <!-- Home Right Four Ads -->
+                    <!-- Home Right Five Ads -->
                     <div v-if="homeRightFiveAds.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeRightFive :homeRightFiveAds="homeRightFiveAds" />
                     </div>
-                    <!-- Home Right Four Ads -->
+                    <!-- Home Right Five Ads -->
+                    <!-- Home Right Six Ads -->
+                    <div v-if="homeRightSixAds.status === 1"
+                        class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                        <AdsDesktopHomeRIghtSix :homeRightSixAds="homeRightSixAds" />
+                    </div>
+                    <!-- Home Right Six Ads -->
                 </div>
             </div>
 
@@ -463,7 +469,21 @@ const { data: hmnrfiveads } = await useFetch('/api/adsmanagement/getads', {
 homeRightFiveAds.value = hmnrfiveads.value
 //========== Home Page Right Five Ads ==========//
 
+//========== Home Page Right Six Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeRightSixAds = useState(() => '')
+const { data: hmnrsixads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 16
+    }
+})
+homeRightSixAds.value = hmnrsixads.value
+//========== Home Page Right Six Ads ==========//
 
+
+console.log(homeRightSixAds.value)
 </script>
 
 <style lang="scss" scoped></style>
