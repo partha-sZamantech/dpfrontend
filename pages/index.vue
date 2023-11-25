@@ -10,6 +10,9 @@
             <Headline v-if="allHeadline?.length > 0" />
             <!--/ Headline Component -->
             <!-- Special Top Content Component -->
+            <div v-if="homeMiddleAds.status === 1" class="py-4 border-b border-b-[#e2e2e2] mt-6 md:mt-0">
+                
+            </div>
             <HomeSpecialTopContent />
             <!--/ Special Top Content Component -->
 
