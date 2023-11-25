@@ -212,7 +212,11 @@
                 </div>
             </div>
         </div>
-
+        <!-- Home Nine Eight Ads -->
+        <div v-if="homeMiddleNineAds.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+            <AdsDesktopHomeMiddleNine :homeMiddleNineAds="homeMiddleNineAds" />
+        </div>
+        <!-- Home Nine Eight Ads -->
 
         <!-- Gallery Content Area -->
         <div class="english-content-except bg-[#00427A] my-6 text-white">
@@ -349,6 +353,19 @@ const { data: hmeightads } = await useFetch('/api/adsmanagement/getads', {
     }
 })
 homeMiddleEightAds.value = hmeightads.value
+//========== Home Page Middle Seven Ads ==========//
+
+//========== Home Page Nine Eight Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeMiddleNineAds = useState(() => '')
+const { data: hmninetads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 10
+    }
+})
+homeMiddleNineAds.value = hmninetads.value
 //========== Home Page Middle Seven Ads ==========//
 
 
