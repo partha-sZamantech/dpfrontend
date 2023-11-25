@@ -1,5 +1,10 @@
 <template>
     <div class="home-page">
+        <!-- Home Middle Top Ads -->
+        <div v-if="homeMiddleAds.status === 1" class="py-4 border-b border-b-[#e2e2e2] mt-6 md:mt-0">
+            <AdsDesktopHomeMiddleTop :homeMiddleAds="homeMiddleAds" />
+        </div>
+        <!-- Home Middle Top Ads -->
         <div class="py-2 md:px-2 max-w-[1280px] mx-auto px-4">
             <!-- Headline Component -->
             <Headline v-if="allHeadline?.length > 0" />
@@ -188,6 +193,18 @@ const { data: allhead } = await useFetch(`${config.public.apiUrl}/api/breaking-n
 })
 allHeadline.value = allhead
 
+//========== Home Page Middle Top Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeMiddleAds = useState(() => '')
+const { data: hmads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 1
+    }
+})
+homeMiddleAds.value = hmads.value
+//========== Home Page Middle Top Ads ==========//
 
 </script>
 
