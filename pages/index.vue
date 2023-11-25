@@ -79,6 +79,12 @@
                         <AdsDesktopHomeRightFour :homeRightFourAds="homeRightFourAds" />
                     </div>
                     <!-- Home Right Four Ads -->
+                    <!-- Home Right Four Ads -->
+                    <div v-if="homeRightFiveAds.status === 1"
+                        class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                        <AdsDesktopHomeRightFive :homeRightFiveAds="homeRightFiveAds" />
+                    </div>
+                    <!-- Home Right Four Ads -->
                 </div>
             </div>
 
@@ -443,6 +449,19 @@ const { data: hmnrfourads } = await useFetch('/api/adsmanagement/getads', {
 })
 homeRightFourAds.value = hmnrfourads.value
 //========== Home Page Right Four Ads ==========//
+
+//========== Home Page Right Five Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeRightFiveAds = useState(() => '')
+const { data: hmnrfiveads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 15
+    }
+})
+homeRightFiveAds.value = hmnrfiveads.value
+//========== Home Page Right Five Ads ==========//
 
 
 </script>
