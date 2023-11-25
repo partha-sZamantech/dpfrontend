@@ -37,7 +37,7 @@ onMounted(() => {
             document.getElementsByClassName("globalPopup")[0].style.display = "none";
         }
 
-    }, 1000000);
+    }, 6000);
 })
 </script>
 

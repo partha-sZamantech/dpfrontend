@@ -51,6 +51,12 @@
                 </div>
 
                 <div class="col-span-12 md:col-span-3">
+                    <!-- Home Right One Ads -->
+                    <div v-if="homeRightOneAds.status === 1"
+                        class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                        <AdsDesktopHomeRightOne :homeRightOneAds="homeRightOneAds" />
+                    </div>
+                    <!-- Home Right One Ads -->
                     <!-- Home Right Sidebar -->
                     <HomePostTabs />
                     <!-- <Tabs /> -->
@@ -366,6 +372,19 @@ const { data: hmninetads } = await useFetch('/api/adsmanagement/getads', {
     }
 })
 homeMiddleNineAds.value = hmninetads.value
+//========== Home Page Middle Seven Ads ==========//
+
+//========== Home Page Right One Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeRightOneAds = useState(() => '')
+const { data: hmnroneads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 11
+    }
+})
+homeRightOneAds.value = hmnroneads.value
 //========== Home Page Middle Seven Ads ==========//
 
 
