@@ -74,7 +74,11 @@
                     <!--/ Saradesh Category Component -->
                 </div>
             </div>
-
+            <!-- Home Middle Five Ads -->
+            <div v-if="homeMiddleFiveAds.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                <AdsDesktopHomeMiddleFive :homeMiddleFiveAds="homeMiddleFiveAds" />
+            </div>
+            <!-- Home Middle Five Ads -->
             <div class="grid grid-cols-12 gap-4">
                 <div class="col-span-12 md:col-span-9">
                     <!-- Sports Category Component -->
@@ -280,7 +284,20 @@ const { data: hmfourads } = await useFetch('/api/adsmanagement/getads', {
     }
 })
 homeMiddleFourAds.value = hmfourads.value
-//========== Home Page Middle Three Ads ==========//
+//========== Home Page Middle Four Ads ==========//
+
+//========== Home Page Middle Five Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeMiddleFiveAds = useState(() => '')
+const { data: hmfiveads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 6
+    }
+})
+homeMiddleFiveAds.value = hmfiveads.value
+//========== Home Page Middle Five Ads ==========//
 
 
 </script>
