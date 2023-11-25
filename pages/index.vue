@@ -10,28 +10,38 @@
             <Headline v-if="allHeadline?.length > 0" />
             <!--/ Headline Component -->
             <!-- Special Top Content Component -->
-            <div v-if="homeMiddleAds.status === 1" class="py-4 border-b border-b-[#e2e2e2] mt-6 md:mt-0">
-                
-            </div>
             <HomeSpecialTopContent />
             <!--/ Special Top Content Component -->
 
             <div class=" grid grid-cols-12 gap-4">
                 <div class="col-span-12 md:col-span-9">
+                    <!-- Home Middle One Ads -->
+                    <div v-if="homeMiddleOneAds.status === 1"
+                        class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                        <AdsDesktopHomeMiddleOne :homeMiddleOneAds="homeMiddleOneAds" />
+                    </div>
+                    <!-- Home Middle One Ads -->
                     <!-- Special Top Content Component -->
                     <HomeSpecialBottomContent />
                     <!--/ Special Top Content Component -->
+                    <!-- Home Middle Two Ads -->
+                    <div v-if="homeMiddleTwoAds.status === 1"
+                        class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                        <AdsDesktopHomeMiddleTwo :homeMiddleTwoAds="homeMiddleTwoAds" />
+                    </div>
+                    <!-- Home Middle Two Ads -->
                     <!-- National Category Component -->
                     <HomeCategoryNational />
                     <!--/ National Category Component -->
                     <!-- National Category Component -->
                     <HomeCategoryPoliticsEconomyInternational />
                     <!--/ National Category Component -->
+
                 </div>
 
                 <div class="col-span-12 md:col-span-3">
                     <!-- Home Right Sidebar -->
-                    <HomePostTabs  />
+                    <HomePostTabs />
                     <!-- <Tabs /> -->
                     <!--/ Home Right Sidebar -->
                 </div>
@@ -208,6 +218,33 @@ const { data: hmads } = await useFetch('/api/adsmanagement/getads', {
 })
 homeMiddleAds.value = hmads.value
 //========== Home Page Middle Top Ads ==========//
+
+//========== Home Page Middle One Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeMiddleOneAds = useState(() => '')
+const { data: hmoneads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 2
+    }
+})
+homeMiddleOneAds.value = hmoneads.value
+//========== Home Page Middle One Ads ==========//
+
+//========== Home Page Middle Two Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeMiddleTwoAds = useState(() => '')
+const { data: hmtwoads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 3
+    }
+})
+homeMiddleTwoAds.value = hmtwoads.value
+//========== Home Page Middle Two Ads ==========//
+console.log(homeMiddleTwoAds.value)
 
 </script>
 
