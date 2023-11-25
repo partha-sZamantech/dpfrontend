@@ -57,6 +57,12 @@
                         <AdsDesktopHomeRightOne :homeRightOneAds="homeRightOneAds" />
                     </div>
                     <!-- Home Right One Ads -->
+                    <!-- Home Right One Ads -->
+                       <div v-if="homeRightTwoAds.status === 1"
+                        class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                        <AdsDesktopHomeRightTwo :homeRightTwoAds="homeRightTwoAds" />
+                    </div>
+                    <!-- Home Right One Ads -->
                     <!-- Home Right Sidebar -->
                     <HomePostTabs />
                     <!-- <Tabs /> -->
@@ -385,7 +391,20 @@ const { data: hmnroneads } = await useFetch('/api/adsmanagement/getads', {
     }
 })
 homeRightOneAds.value = hmnroneads.value
-//========== Home Page Middle Seven Ads ==========//
+//========== Home Page Right One Ads ==========//
+
+//========== Home Page Right Two Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const homeRightTwoAds = useState(() => '')
+const { data: hmnrtwoads } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 2,
+        position: 12
+    }
+})
+homeRightTwoAds.value = hmnrtwoads.value
+//========== Home Page Right Two Ads ==========//
 
 
 </script>
