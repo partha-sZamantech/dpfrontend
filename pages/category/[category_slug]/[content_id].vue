@@ -110,9 +110,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 </svg>
                             </div>
                             <!-- ShareThis BEGIN -->
-                          
-                                <div class="sharethis-inline-share-buttons"></div>
-                           
+
+                            <div class="sharethis-inline-share-buttons"></div>
+
                             <!-- ShareThis END -->
                         </div>
                     </div>
@@ -156,33 +156,46 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 <div v-if="DetailRightOneAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
                     <AdsDesktopDetailRightOne :DetailRightOneAds="DetailRightOneAds" />
                 </div>
-                <!--:::::::: Detail Page Right One Ads :::::::::-->
-                <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`"
-                    v-if="firstMoreContents?.length > 0">
-                    <div class=" border-b-[3px] border-[#3375af] pb-1">
-                        <h3 class="text-[#3375af] text-[18px] font-[600]">{{ detailsContent?.category?.cat_name_bn }} নিয়ে
-                            আরও পড়ুন</h3>
-                    </div>
-                    <div class="detail-page-category-content-exept flex flex-col">
-                        <!-- Loop Item -->
-                        <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
-                            v-for="fmoreContent in firstMoreContents" :key="fmoreContent.content_id">
-                            <div class=" col-span-5 overflow-hidden">
-                                <NuxtLink :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
-                                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
-                                        class="mx-auto w-full group-hover:scale-110 duration-300"
-                                        :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                                </NuxtLink>
-                            </div>
-                            <div class=" col-span-7">
-                                <NuxtLink :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
-                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
-                                        fmoreContent.content_heading }}</h4>
-                                </NuxtLink>
-                            </div>
+
+
+                <div :class="`sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`">
+
+                    <!--:::::::: Detail Page Right One Ads :::::::::-->
+                    <div :class="`flex flex-col gap-2`" v-if="firstMoreContents?.length > 0">
+                        <div class=" border-b-[3px] border-[#3375af] pb-1">
+                            <h3 class="text-[#3375af] text-[18px] font-[600]">{{ detailsContent?.category?.cat_name_bn }}
+                                নিয়ে
+                                আরও পড়ুন</h3>
                         </div>
-                        <!--/ Loop Item -->
+                        <div class="detail-page-category-content-exept flex flex-col">
+                            <!-- Loop Item -->
+                            <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
+                                v-for="fmoreContent in firstMoreContents" :key="fmoreContent.content_id">
+                                <div class=" col-span-5 overflow-hidden">
+                                    <NuxtLink
+                                        :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
+                                        <nuxt-img
+                                            :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
+                                            class="mx-auto w-full group-hover:scale-110 duration-300"
+                                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                                    </NuxtLink>
+                                </div>
+                                <div class=" col-span-7">
+                                    <NuxtLink
+                                        :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
+                                        <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
+                                            fmoreContent.content_heading }}</h4>
+                                    </NuxtLink>
+                                </div>
+                            </div>
+                            <!--/ Loop Item -->
+                        </div>
                     </div>
+                    <!--:::::::: Detail Page Right Two Ads :::::::::-->
+                    <div v-if="DetailRightTwoAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                        <AdsDesktopDetailRightTwo :DetailRightTwoAds="DetailRightTwoAds" />
+                    </div>
+                    <!--:::::::: Detail Page Right Two Ads :::::::::-->
                 </div>
             </div>
             <!--:::::::: Detail Page After Ads :::::::::::-->
@@ -971,10 +984,21 @@ const { data: detrtoneAds } = await useFetch('/api/adsmanagement/getads', {
 DetailRightOneAds.value = detrtoneAds.value
 //========== Detail Page Right One Ads ==========//
 
+//========== Detail Page Right Two Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const DetailRightTwoAds = useState(() => '')
+const { data: detrttwoAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 4,
+        position: 8
+    }
+})
+DetailRightTwoAds.value = detrttwoAds.value
+//========== Detail Page Right Two Ads ==========//
+
 </script>
 
-<style scoped>
-p {
+<style scoped>p {
     line-height: 1.7 !important;
-}
-</style>
+}</style>
