@@ -39,11 +39,10 @@
             </div>
         </div>
         <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
-        <div v-if="DetailTopAds.status === 1"
-            class="pb-4 mb-4 border-b border-b-[#e2e2e2]">
+        <div v-if="DetailTopAds.status === 1" class="pb-4 mb-4 border-b border-b-[#e2e2e2]">
             <AdsDesktopDetailTop :DetailTopAds="DetailTopAds" />
         </div>
-         <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
+        <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
         <!--========== First Details Content ============ -->
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
@@ -149,6 +148,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 </div> <!-- /single-post -->
 
             </div>
+
             <div class=" col-span-12 md:col-span-3">
 
                 <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`"
@@ -179,6 +179,13 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     </div>
                 </div>
             </div>
+            <!--:::::::: Detail Page After Ads :::::::::::-->
+            <div v-if="DetailAfterAds.status === 1"
+                class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
+            </div>
+
+            <!--:::::::: Detail Page After Ads :::::::::::-->
             <!-- Read more first content -->
             <div class="col-span-12" v-if="fRelatedContents?.length > 0">
                 <div class="read-more">
@@ -911,8 +918,23 @@ const { data: detTpAds } = await useFetch('/api/adsmanagement/getads', {
 DetailTopAds.value = detTpAds.value
 //========== Detail Page Top Ads ==========//
 
+//========== Detail Page After Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const DetailAfterAds = useState(() => '')
+const { data: detaftAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 4,
+        position: 5
+    }
+})
+DetailAfterAds.value = detaftAds.value
+//========== Detail Page After Ads ==========//
+
 </script>
 
-<style scoped>p {
+<style scoped>
+p {
     line-height: 1.7 !important;
-}</style>
+}
+</style>
