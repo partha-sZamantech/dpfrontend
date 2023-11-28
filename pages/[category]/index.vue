@@ -231,13 +231,20 @@
                     <h2 class="text-2xl text-center py-8">আপনি যে বিষয়টি অনুসন্ধান করছেন তা খুজে পাওয়া যায়নি</h2>
                 </div>
                 <div class=" col-span-12 md:col-span-3">
-                    <!-- Category Bottom Ads -->
-                    <div v-if="categoryRightOneAds.status === 1"
-                        class="py-4 border-b border-b-[#e2e2e2] mb-3">
+                    <!-- Category Right One Ads -->
+                    <div v-if="categoryRightOneAds.status === 1" class="py-4 border-b border-b-[#e2e2e2] mb-3">
                         <AdsDesktopCategoryRightOne :categoryRightOneAds="categoryRightOneAds" />
                     </div>
-                    <!-- Category Bottom Ads -->
-                    <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} duration-200`" />
+                    <!-- Category Right One Ads -->
+                    <div :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} duration-200`">
+                        <Tabs  />
+                        <!-- Category Right Two Ads -->
+                        <div v-if="categoryRightTwoAds.status === 1" class="py-4 border-b border-b-[#e2e2e2] border-t border-t-[#e2e2e2] mt-4">
+                            <AdsDesktopCategoryRightTwo :categoryRightTwoAds="categoryRightTwoAds" />
+                        </div>
+                        <!-- Category Right Two Ads -->
+                    </div>
+
                 </div>
             </div>
             <!-- Category Bottom Ads -->
@@ -353,6 +360,19 @@ const { data: catRoneAds } = await useFetch('/api/adsmanagement/getads', {
 })
 categoryRightOneAds.value = catRoneAds.value
 //========== Category Page Right One Ads ==========//
+
+//========== Category Page Right Two Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const categoryRightTwoAds = useState(() => '')
+const { data: catRtwoAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 3,
+        position: 4
+    }
+})
+categoryRightTwoAds.value = catRtwoAds.value
+//========== Category Page Right Two Ads ==========//
 
 </script>
 
