@@ -213,6 +213,12 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 </div>
             </div>
             <!-- Read more first content -->
+            <!--:::::::: Detail Page Bottom Ads :::::::::::-->
+            <div v-if="DetailBottomAds.status === 1"
+                class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                <AdsDesktopDetailBottom :DetailBottomAds="DetailBottomAds" />
+            </div>
+            <!--:::::::: Detail Page Bottom Ads :::::::::::-->
         </div>
         <!--========== // First Details Content ============ -->
 
@@ -418,6 +424,12 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 </div>
             </div>
             <!-- Latest 20 Posts content -->
+            <!--:::::::: Detail Page Bottom Ads :::::::::::-->
+            <div v-if="DetailBottomAds.status === 1"
+                class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                <AdsDesktopDetailBottom :DetailBottomAds="DetailBottomAds" />
+            </div>
+            <!--:::::::: Detail Page Bottom Ads :::::::::::-->
         </div>
         <!--========== // <3> More Details Content ============ -->
     </div>
@@ -935,6 +947,19 @@ const { data: detaftAds } = await useFetch('/api/adsmanagement/getads', {
 })
 DetailAfterAds.value = detaftAds.value
 //========== Detail Page After Ads ==========//
+
+//========== Detail Page Bottom Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const DetailBottomAds = useState(() => '')
+const { data: detbtmAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 4,
+        position: 6
+    }
+})
+DetailBottomAds.value = detbtmAds.value
+//========== Detail Page Before Ads ==========//
 
 </script>
 
