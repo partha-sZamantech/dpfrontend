@@ -237,12 +237,19 @@
                     </div>
                     <!-- Category Right One Ads -->
                     <div :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} duration-200`">
-                        <Tabs  />
+                        <Tabs />
                         <!-- Category Right Two Ads -->
-                        <div v-if="categoryRightTwoAds.status === 1" class="py-4 border-b border-b-[#e2e2e2] border-t border-t-[#e2e2e2] mt-4">
+                        <div v-if="categoryRightTwoAds.status === 1"
+                            class="py-4 border-b border-b-[#e2e2e2] border-t border-t-[#e2e2e2] mt-4">
                             <AdsDesktopCategoryRightTwo :categoryRightTwoAds="categoryRightTwoAds" />
                         </div>
                         <!-- Category Right Two Ads -->
+                        <!-- Category Right Three Ads -->
+                        <div v-if="categoryRightThreeAds.status === 1"
+                            class="py-4 border-b border-b-[#e2e2e2] border-t border-t-[#e2e2e2] mt-4">
+                            <AdsDesktopCategoryRightThree :categoryRightThreeAds="categoryRightThreeAds" />
+                        </div>
+                        <!-- Category Right Three Ads -->
                     </div>
 
                 </div>
@@ -373,6 +380,19 @@ const { data: catRtwoAds } = await useFetch('/api/adsmanagement/getads', {
 })
 categoryRightTwoAds.value = catRtwoAds.value
 //========== Category Page Right Two Ads ==========//
+
+//========== Category Page Right Three Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const categoryRightThreeAds = useState(() => '')
+const { data: catRthreeAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 3,
+        position: 5
+    }
+})
+categoryRightThreeAds.value = catRthreeAds.value
+//========== Category Page Right Three Ads ==========//
 
 </script>
 
