@@ -193,6 +193,11 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         <AdsDesktopDetailRightTwo :DetailRightTwoAds="DetailRightTwoAds" />
                     </div>
                     <!--:::::::: Detail Page Right Two Ads :::::::::-->
+                    <!--:::::::: Detail Page Right Three Ads :::::::::-->
+                    <div v-if="DetailRightThreeAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                        <AdsDesktopDetailRightThree :DetailRightThreeAds="DetailRightThreeAds" />
+                    </div>
+                    <!--:::::::: Detail Page Right Three Ads :::::::::-->
                 </div>
             </div>
             <!--:::::::: Detail Page After Ads :::::::::::-->
@@ -384,6 +389,11 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         <AdsDesktopDetailRightTwo :DetailRightTwoAds="DetailRightTwoAds" />
                     </div>
                     <!--:::::::: Detail Page Right Two Ads :::::::::-->
+                    <!--:::::::: Detail Page Right Three Ads :::::::::-->
+                    <div v-if="DetailRightThreeAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                        <AdsDesktopDetailRightThree :DetailRightThreeAds="DetailRightThreeAds" />
+                    </div>
+                    <!--:::::::: Detail Page Right Three Ads :::::::::-->
                 </div>
             </div>
             <!--:::::::: Detail Page After Ads :::::::::::-->
@@ -1004,6 +1014,19 @@ const { data: detrttwoAds } = await useFetch('/api/adsmanagement/getads', {
 })
 DetailRightTwoAds.value = detrttwoAds.value
 //========== Detail Page Right Two Ads ==========//
+
+//========== Detail Page Right Three Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const DetailRightThreeAds = useState(() => '')
+const { data: detrtthreeAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 4,
+        position: 9
+    }
+})
+DetailRightThreeAds.value = detrtthreeAds.value
+//========== Detail Page Right Three Ads ==========//
 
 </script>
 
