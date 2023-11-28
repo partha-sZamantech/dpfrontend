@@ -4,15 +4,19 @@
         <Head>
             <Title>{{ category.cat_name_bn }} </Title>
         </Head>
-        <!-- Space For Ads -->
-        <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
+        <!-- Category Top Ads -->
+        <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
             <div class="bg-[#f7f7f7]">
                 <a target="_blank" href="/">
                     <img class="mx-auto" src="/assets/img/bar-ads.gif" alt="">
                 </a>
             </div>
+        </div> -->
+        <div v-if="categoryTopAds.status === 1" class="py-4 mt-2 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+            <AdsDesktopCategoryTop :categoryTopAds="categoryTopAds" />
         </div>
 
+        <!-- Category Top Ads -->
         <!-- Space For Ads -->
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
 
@@ -50,7 +54,7 @@
             <!--/ Breadcrump Section -->
 
             <div class="grid grid-cols-12 gap-8 md:gap-3">
-                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3"  v-if="categoryContent?.length > 1">
+                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3" v-if="categoryContent?.length > 1">
                     <!-- Category Lead Section -->
                     <div class="grid grid-cols-12 border-b border-b-[#dee2e6] pb-4">
                         <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">
@@ -99,7 +103,8 @@
                     </div>
                     <!--/ Category Lead Section -->
                     <!-- Category Bottom Lead -->
-                    <div v-if="categoryContent[2]" class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
+                    <div v-if="categoryContent[2]"
+                        class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
                         <NuxtLink
                             :to="`/category/${categoryContent[2]?.category?.cat_slug}/${categoryContent[2]?.content_id}`"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
@@ -224,7 +229,7 @@
                     </div>
                     <!-- Loop Category Post Section -->
                 </div>
-                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3"  v-else>
+                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3" v-else>
                     <h2 class="text-2xl text-center py-8">আপনি যে বিষয়টি অনুসন্ধান করছেন তা খুজে পাওয়া যায়নি</h2>
                 </div>
                 <div class=" col-span-12 md:col-span-3">
@@ -243,7 +248,7 @@ const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long
 // const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
 const postCreatedDate = (date) => {
     // If date value has
-    if(date){
+    if (date) {
         return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
     }
 }
@@ -299,6 +304,19 @@ const loadMoreButtonHandler = async () => {
 //================ Load More Category Content Button =================//
 
 // let date = new Date(categoryContent.value[0].created_at).toLocaleDateString("bn")
+
+//========== Category Page Top Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const categoryTopAds = useState(() => '')
+const { data: catTpAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 3,
+        position: 1
+    }
+})
+categoryTopAds.value = catTpAds.value
+//========== Category Page Top Ads ==========//
 
 </script>
 
