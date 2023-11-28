@@ -699,8 +699,6 @@ onMounted(() => {
         }
         pvScrollPosi.value = currScrollPosi.value
 
-
-
     })
     // ============= Scolling =============== //
 
@@ -899,7 +897,18 @@ onMounted(() => {
     // ================= END More Post Details Inside Element Added =======================// 
 })
 
-
+//========== Detail Page Top Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const categoryTopAds = useState(() => '')
+const { data: catTpAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 4,
+        position: 1
+    }
+})
+categoryTopAds.value = catTpAds.value
+//========== Detail Page Top Ads ==========//
 
 </script>
 
