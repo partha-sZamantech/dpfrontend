@@ -184,7 +184,6 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                 <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
             </div>
-
             <!--:::::::: Detail Page After Ads :::::::::::-->
             <!-- Read more first content -->
             <div class="col-span-12" v-if="fRelatedContents?.length > 0">
@@ -354,6 +353,12 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     </div>
                 </div>
             </div>
+            <!--:::::::: Detail Page After Ads :::::::::::-->
+            <div v-if="DetailAfterAds.status === 1"
+                class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
+            </div>
+            <!--:::::::: Detail Page After Ads :::::::::::-->
             <!-- Read more first content -->
             <div class="col-span-12" v-if="relatedDetailContent?.length > 0 && mcinx !== 2">
                 <div class="read-more">
