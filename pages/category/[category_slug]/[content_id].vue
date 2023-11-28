@@ -7,10 +7,7 @@
             <Meta content="500" http-equiv="refresh" />
             <!-- Refresh Reload -->
             <Meta name="description" :content="ogDescription" />
-
             <Meta name="keywords" :content="metaKeywords" />
-
-
             <Meta property="og:url" :content="ogUrl" />
             <Meta property="og:title" :content="ogTitle" />
             <Meta property="og:description" :content="ogDescription" />
@@ -20,8 +17,6 @@
             <Meta name="twitter:description" :content="ogDescription" />
             <Meta name="twitter:image" :content="ogImage" />
             <Meta name="twitter:url" :content="ogUrl" />
-
-
             <Link rel="canonical" :href="ogUrl" />
         </Head>
         <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
@@ -43,13 +38,18 @@
 
             </div>
         </div>
-
+        <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
+        <div v-if="DetailTopAds.status === 1"
+            class="pb-4 mb-4 border-b border-b-[#e2e2e2]">
+            <AdsDesktopDetailTop :DetailTopAds="DetailTopAds" />
+        </div>
+         <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
         <!--========== First Details Content ============ -->
-
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
-                <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading" :data-nid="detailsContent?.content_id"
-                    :data-description="detailsContent?.content_brief" :data-keywords="detailsContent?.meta_keywords"
+                <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
+                    :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
+                    :data-keywords="detailsContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
                     :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`">
                     <div class="singlePost-heading flex flex-col gap-2">
@@ -111,8 +111,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 </svg>
                             </div>
                             <!-- ShareThis BEGIN -->
-<div class="sharethis-inline-share-buttons"></div>
-<!-- ShareThis END -->
+                            <div class="sharethis-inline-share-buttons"></div>
+                            <!-- ShareThis END -->
                         </div>
                     </div>
                     <div class="feature-image border-b">
@@ -214,8 +214,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
             :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
-                <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading" :data-nid="moreDetailContent?.content_id"
-                    :data-description="moreDetailContent?.content_brief" :data-keywords="moreDetailContent?.meta_keywords"
+                <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
+                    :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
+                    :data-keywords="moreDetailContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
                     :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`">
 
@@ -420,7 +421,7 @@ useHead({
             tagPosition: "head"
         }
     ]
-    
+
 })
 
 const siteurl = siteUrlState()
@@ -678,7 +679,7 @@ onMounted(() => {
                 // checking for partial visibility
                 if (rect.top < window.innerHeight && rect.bottom >= 0) {
                     // console.log(`Element is partially visible in screen bottom ${contentSections[p].getAttribute('data-title')}`);
-         
+
                     document.querySelector('title').textContent = contentSections[p].getAttribute('data-title');
                     document.querySelector('meta[name="keywords"]').setAttribute("content", contentSections[p].getAttribute('data-keywords'));
                     document.querySelector('meta[property="og:title"]').setAttribute("content", contentSections[p].getAttribute('data-title'));
@@ -899,15 +900,15 @@ onMounted(() => {
 
 //========== Detail Page Top Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
-const categoryTopAds = useState(() => '')
-const { data: catTpAds } = await useFetch('/api/adsmanagement/getads', {
+const DetailTopAds = useState(() => '')
+const { data: detTpAds } = await useFetch('/api/adsmanagement/getads', {
     method: "POST",
     body: {
         page: 4,
         position: 1
     }
 })
-categoryTopAds.value = catTpAds.value
+DetailTopAds.value = detTpAds.value
 //========== Detail Page Top Ads ==========//
 
 </script>
