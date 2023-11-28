@@ -1,4 +1,4 @@
-vba<template>
+<template>
     <div v-if="data?.categoryTopAds?.status === 1" class="ad-container">
         <div class="ad-section bg-[#f7f7f7]">
             <a :href="data?.categoryTopAds?.external_link" target="_blank" rel="nofollow" v-if="data?.categoryTopAds?.type === 3">

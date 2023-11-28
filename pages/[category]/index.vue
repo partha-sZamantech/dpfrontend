@@ -5,19 +5,11 @@
             <Title>{{ category.cat_name_bn }} </Title>
         </Head>
         <!-- Category Top Ads -->
-        <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
-            <div class="bg-[#f7f7f7]">
-                <a target="_blank" href="/">
-                    <img class="mx-auto" src="/assets/img/bar-ads.gif" alt="">
-                </a>
-            </div>
-        </div> -->
         <div v-if="categoryTopAds.status === 1" class="py-4 mt-2 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
             <AdsDesktopCategoryTop :categoryTopAds="categoryTopAds" />
         </div>
-
         <!-- Category Top Ads -->
-        <!-- Space For Ads -->
+
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
 
             <!-- Breadcrump Section -->
@@ -104,7 +96,7 @@
                     <!--/ Category Lead Section -->
                     <!-- Category Bottom Lead -->
                     <div v-if="categoryContent[2]"
-                        class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
+                        :class="`grid grid-cols-12 gap-4 md:gap-0 py-4 ${categoryBottomAds.status === 1 ? '' : 'border-b border-b-[#dee2e6]'} `">
                         <NuxtLink
                             :to="`/category/${categoryContent[2]?.category?.cat_slug}/${categoryContent[2]?.content_id}`"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
@@ -176,11 +168,17 @@
                         </NuxtLink>
                         <!--::::::::::::::::::: Ads Section :::::::::::::::::::::::: -->
                         <div class=" col-span-12 cat-inside-ads">
-                            <NuxtLink to="/">
+                            <!-- Category Bottom Ads -->
+                            <div v-if="categoryBottomAds.status === 1"
+                                class="py-4 mt-16 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                                <AdsDesktopCategoryBottom :categoryBottomAds="categoryBottomAds" />
+                            </div>
+                            <!-- Category Bottom Ads -->
+                            <!-- <NuxtLink to="/">
                                 <nuxt-img :src="`/assets/img/cat-ads.gif`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 px-2 mt-6 mb-2"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                            </NuxtLink>
+                            </NuxtLink> -->
                         </div>
                         <!--::::::::::::::::::: Ads Section :::::::::::::::::::::::: -->
                     </div>
@@ -236,6 +234,12 @@
                     <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} duration-200`" />
                 </div>
             </div>
+            <!-- Category Bottom Ads -->
+            <div v-if="categoryBottomAds.status === 1"
+                class="py-4 mt-16 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                <AdsDesktopCategoryBottom :categoryBottomAds="categoryBottomAds" />
+            </div>
+            <!-- Category Bottom Ads -->
         </div>
     </div>
 </template>
@@ -317,6 +321,19 @@ const { data: catTpAds } = await useFetch('/api/adsmanagement/getads', {
 })
 categoryTopAds.value = catTpAds.value
 //========== Category Page Top Ads ==========//
+
+//========== Category Page Bottom Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const categoryBottomAds = useState(() => '')
+const { data: catBtmAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 3,
+        position: 2
+    }
+})
+categoryBottomAds.value = catBtmAds.value
+//========== Category Page Bottom Ads ==========//
 
 </script>
 
