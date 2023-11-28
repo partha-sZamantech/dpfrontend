@@ -110,7 +110,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 </svg>
                             </div>
                             <!-- ShareThis BEGIN -->
-                            <div class="sharethis-inline-share-buttons"></div>
+                          
+                                <div class="sharethis-inline-share-buttons"></div>
+                           
                             <!-- ShareThis END -->
                         </div>
                     </div>
@@ -150,7 +152,11 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             </div>
 
             <div class=" col-span-12 md:col-span-3">
-
+                <!--:::::::: Detail Page Right One Ads :::::::::-->
+                <div v-if="DetailRightOneAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                    <AdsDesktopDetailRightOne :DetailRightOneAds="DetailRightOneAds" />
+                </div>
+                <!--:::::::: Detail Page Right One Ads :::::::::-->
                 <div :class="`flex flex-col gap-2 sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`"
                     v-if="firstMoreContents?.length > 0">
                     <div class=" border-b-[3px] border-[#3375af] pb-1">
@@ -437,16 +443,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
 <script setup>
 // import moment from 'moment';
-useHead({
-    script: [
-        {
-            src: 'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons',
-            async: "true",
-            tagPosition: "head"
-        }
-    ]
 
-})
 
 const siteurl = siteUrlState()
 const websiteUrl = websiteUrlState()
@@ -959,7 +956,20 @@ const { data: detbtmAds } = await useFetch('/api/adsmanagement/getads', {
     }
 })
 DetailBottomAds.value = detbtmAds.value
-//========== Detail Page Before Ads ==========//
+//========== Detail Page Bottom Ads ==========//
+
+//========== Detail Page Right One Ads ==========//
+// Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
+const DetailRightOneAds = useState(() => '')
+const { data: detrtoneAds } = await useFetch('/api/adsmanagement/getads', {
+    method: "POST",
+    body: {
+        page: 4,
+        position: 7
+    }
+})
+DetailRightOneAds.value = detrtoneAds.value
+//========== Detail Page Right One Ads ==========//
 
 </script>
 

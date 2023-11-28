@@ -76,6 +76,13 @@ useHead({
             type: 'image/png',
             href: DsiteConfig.public.apiUrl+'/media/common/favicon.png'
         }
+    ],
+    script: [
+        {
+            src: 'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons',
+            async: "true",
+            tagPosition: "head"
+        }
     ]
 })
 const { isDesktop } = useDevice();
