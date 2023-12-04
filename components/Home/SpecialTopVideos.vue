@@ -38,6 +38,14 @@
 </template>
 
 <script setup>
+// =============== Special Top Video Fetching ====================//
+    const specialVideoTop = useState(() => [])
+    const {data:sptpvdo} = await useFetch('/api/home/specialvideotop', {
+        method: "GET"
+    })
+    specialVideoTop.value = sptpvdo
+    console.log(specialVideoTop.value)
+// =============== Special Top Video Fetching ====================//
 
 </script>
 

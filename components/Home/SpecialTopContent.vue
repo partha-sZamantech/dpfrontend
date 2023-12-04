@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="col-span-12 md:col-span-5">
-             
+                <HomeSpecialTopVideos />
             </div>
         </div>
     </div>
@@ -70,6 +70,7 @@ const { data: spTopCon } = await useFetch(`/api/home/specialtopcontent`, {
 // })
 specialTopContents.value = spTopCon
 // =============== Special Content Fetching ====================//
+
 
 
 </script>
