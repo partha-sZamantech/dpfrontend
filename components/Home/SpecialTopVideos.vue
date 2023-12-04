@@ -17,7 +17,7 @@
                         <Icon name="simple-icons:youtubemusic"
                             class=" absolute top-[40%] left-[40%] col-span-2 md:col-span-3 text-6xl group-hover:text-[#3375af] text-[#ff0000]" />
                     
-                        <h4>
+                        <h4 class="text-center bg-[#3375af] py-2 text-white group-hover:bg-red-600">
                             {{ specialVideoTop[0]?.title }}
                         </h4>
                     </div>
