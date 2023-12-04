@@ -57,6 +57,7 @@
 </template>
 
 <script setup>
+
 const img = useImage()
 const siteurl = siteUrlState()
 // =============== Special Content Fetching ====================//
@@ -70,7 +71,6 @@ const { data: spTopCon } = await useFetch(`/api/home/specialtopcontent`, {
 // })
 specialTopContents.value = spTopCon
 // =============== Special Content Fetching ====================//
-
 
 
 </script>
