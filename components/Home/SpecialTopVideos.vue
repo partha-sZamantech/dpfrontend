@@ -10,37 +10,41 @@
                     data-width="auto" data-autoplay="true" data-show-captions="false"></div>
             </div>
             <div v-else>
-                <NuxtLink v-if="specialVideoTop[0]?.type == 1" class="group mb-[20px] cursor-pointer" :to="`https://www.youtube.com/watch?v=${specialVideoTop[0]?.code}`" target="_blank" rel="nofollow">
+                <NuxtLink v-if="specialVideoTop[0]?.type == 1" class="group mb-[20px] cursor-pointer"
+                    :to="`https://www.youtube.com/watch?v=${specialVideoTop[0]?.code}`" target="_blank" rel="nofollow">
                     <div class="notliveimage relative">
                         <img :src="`${siteurl?.site_url}/media/videoImages/${specialVideoTop[0]?.img_bg_path}`"
                             :alt="specialVideoTop[0]?.title" style="width: 100%" />
                         <Icon name="simple-icons:youtubemusic"
                             class=" absolute top-[40%] left-[40%] col-span-2 md:col-span-3 text-6xl group-hover:text-[#3375af] text-[#ff0000]" />
-                    
+
                         <h4 class="text-center bg-[#3375af] py-2 text-white group-hover:bg-red-600">
                             {{ specialVideoTop[0]?.title }}
                         </h4>
                     </div>
                 </NuxtLink>
-                <NuxtLink v-else-if="specialVideoTop[0]?.type == 2" class="group mb-[20px] cursor-pointer" :to="`https://www.facebook.com/dhakaprokash24/videos/${specialVideoTop[0]?.code}`" target="_blank" rel="nofollow">
+                <NuxtLink v-else-if="specialVideoTop[0]?.type == 2" class="group mb-[20px] cursor-pointer"
+                    :to="`https://www.facebook.com/dhakaprokash24/videos/${specialVideoTop[0]?.code}`" target="_blank"
+                    rel="nofollow">
                     <div class="notliveimage relative">
                         <img :src="`${siteurl?.site_url}/media/videoImages/${specialVideoTop[0]?.img_bg_path}`"
                             :alt="specialVideoTop[0]?.title" style="width: 100%" />
                         <Icon name="simple-icons:youtubemusic"
                             class=" absolute top-[40%] left-[40%] col-span-2 md:col-span-3 text-6xl group-hover:text-[#3375af] text-[#ff0000]" />
-                    
+
                         <h4 class="text-center bg-[#3375af] py-2 text-white group-hover:bg-red-600">
                             {{ specialVideoTop[0]?.title }}
                         </h4>
                     </div>
                 </NuxtLink>
-                <NuxtLink v-else class="group mb-[20px] cursor-pointer" :to="`/video/${specialVideoTop[0]?.category?.slug}/${specialVideoTop[0]?.id}`" rel="nofollow">
+                <NuxtLink v-else class="group mb-[20px] cursor-pointer"
+                    :to="`/video/${specialVideoTop[0]?.category?.slug}/${specialVideoTop[0]?.id}`" rel="nofollow">
                     <div class="notliveimage relative">
                         <img :src="`${siteurl?.site_url}/media/videoImages/${specialVideoTop[0]?.img_bg_path}`"
                             :alt="specialVideoTop[0]?.title" style="width: 100%" />
                         <Icon name="simple-icons:youtubemusic"
                             class=" absolute top-[40%] left-[40%] col-span-2 md:col-span-3 text-6xl group-hover:text-[#3375af] text-[#ff0000]" />
-                    
+
                         <h4 class="text-center bg-[#3375af] py-2 text-white group-hover:bg-red-600">
                             {{ specialVideoTop[0]?.title }}
                         </h4>
@@ -50,31 +54,42 @@
             <!-- <iframe width="518" height="292" src="https://www.youtube.com/embed/{{$spTopFirstVideo->code}}?enablejsapi=1&autoplay=1&mute=1&rel=0&showinfo=1&controls=1&loop=1&playlist={{$spTopFirstVideo->code}}" frameborder="0" allowfullscreen style="width: 100%!important;"></iframe> -->
 
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 md:place-items-center">
-            <NuxtLink to="/" class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
-                <Icon name="simple-icons:youtubemusic"
-                    class=" col-span-2 md:col-span-3 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
-                <h4 class="text-[18px] col-span-10 md:col-span-9 group-hover:text-[#3375af]">মা দিবসের পেছনের
-                    গল্প</h4>
-            </NuxtLink>
-            <NuxtLink to="/" class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
-                <Icon name="simple-icons:youtubemusic"
-                    class=" col-span-2 md:col-span-3 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
-                <h4 class="text-[18px] col-span-10 md:col-span-9 group-hover:text-[#3375af]">মা দিবসের পেছনের
-                    গল্প</h4>
-            </NuxtLink>
-            <NuxtLink to="/" class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
-                <Icon name="simple-icons:youtubemusic"
-                    class=" col-span-2 md:col-span-3 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
-                <h4 class="text-[18px] col-span-10 md:col-span-9 group-hover:text-[#3375af]">মা দিবসের পেছনের
-                    গল্প</h4>
-            </NuxtLink>
-            <NuxtLink to="/" class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
-                <Icon name="simple-icons:youtubemusic"
-                    class=" col-span-2 md:col-span-3 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
-                <h4 class="text-[18px] col-span-10 md:col-span-9 group-hover:text-[#3375af]">মা দিবসের পেছনের
-                    গল্প</h4>
-            </NuxtLink>
+        <div class="grid grid-cols-1 md:grid-cols-2" v-if="specialVideoTop?.length > 2">
+            <!-- Video Loop -->
+
+            <div v-for="(specialVideo, svinx) in specialVideoTop?.slice(1, 5)" :key="svinx">
+                {{ specialVideo?.target }}
+                <div v-if="specialVideo?.target === 2">
+                    <NuxtLink v-if="specialVideo?.type == 1" :to="`https://www.youtube.com/watch?v=${specialVideo?.code}`"
+                        target="_blank" class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
+                        <Icon name="simple-icons:youtubemusic"
+                            class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
+                        <h4 class="text-[18px] col-span-10 md:col-span-10 group-hover:text-[#3375af]">{{ specialVideo?.title
+                        }}
+                        </h4>
+                    </NuxtLink>
+                    <NuxtLink
+                        :to="`https://www.facebook.com/dhakaprokash24/videos/${specialVideo?.code}`" target="_blank"
+                        class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
+                        <Icon name="simple-icons:youtubemusic"
+                            class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
+                        <h4 class="text-[18px] col-span-10 md:col-span-10 group-hover:text-[#3375af]">{{ specialVideo?.title
+                        }}
+                        </h4>
+                    </NuxtLink>
+                    
+                </div>
+                <div v-else>
+                    <NuxtLink :to="`/video/${specialVideo?.category?.slug}/${specialVideo?.id}`"
+                        class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
+                        <Icon name="simple-icons:youtubemusic"
+                            class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
+                        <h4 class="text-[18px] col-span-10 md:col-span-10 group-hover:text-[#3375af]">{{ specialVideo?.title
+                        }}
+                        </h4>
+                    </NuxtLink>
+                </div>
+            </div>
 
         </div>
     </div>
