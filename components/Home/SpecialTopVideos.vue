@@ -58,7 +58,6 @@
             <!-- Video Loop -->
 
             <div v-for="(specialVideo, svinx) in specialVideoTop?.slice(1, 5)" :key="svinx">
-                {{ specialVideo?.target }}
                 <div v-if="specialVideo?.target === 2">
                     <NuxtLink v-if="specialVideo?.type == 1" :to="`https://www.youtube.com/watch?v=${specialVideo?.code}`"
                         target="_blank" class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
@@ -68,16 +67,15 @@
                         }}
                         </h4>
                     </NuxtLink>
-                    <NuxtLink
-                        :to="`https://www.facebook.com/dhakaprokash24/videos/${specialVideo?.code}`" target="_blank"
-                        class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
+                    <NuxtLink v-else :to="`https://www.facebook.com/dhakaprokash24/videos/${specialVideo?.code}`"
+                        target="_blank" class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
                         <Icon name="simple-icons:youtubemusic"
                             class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
                         <h4 class="text-[18px] col-span-10 md:col-span-10 group-hover:text-[#3375af]">{{ specialVideo?.title
                         }}
                         </h4>
                     </NuxtLink>
-                    
+
                 </div>
                 <div v-else>
                     <NuxtLink :to="`/video/${specialVideo?.category?.slug}/${specialVideo?.id}`"
