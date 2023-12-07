@@ -111,7 +111,6 @@ const { data: sptpvdo } = await useFetch('/api/home/specialvideotop', {
     method: "GET"
 })
 specialVideoTop.value = sptpvdo?.value
-console.log(specialVideoTop.value)
 // =============== Special Top Video Fetching ====================//
 
 </script>
