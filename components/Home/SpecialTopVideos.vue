@@ -10,7 +10,7 @@
                     data-width="auto" data-autoplay="true" data-show-captions="false"></div>
             </div>
             <div v-else>
-                <a class="group" style="margin-bottom: 20px; cursor: pointer" href="dfsdfsd" target="_blank" rel="nofollow">
+                <NuxtLink v-if="specialVideoTop[0]?.target == 2 && specialVideoTop[0]?.type == 1" class="group mb-[20px] cursor-pointer" :to="`https://www.youtube.com/watch?v=${specialVideoTop[0]?.code}`" target="_blank" rel="nofollow">
                     <div class="notliveimage relative">
                         <img :src="`${siteurl?.site_url}/media/videoImages/${specialVideoTop[0]?.img_bg_path}`"
                             :alt="specialVideoTop[0]?.title" style="width: 100%" />
@@ -21,7 +21,31 @@
                             {{ specialVideoTop[0]?.title }}
                         </h4>
                     </div>
-                </a>
+                </NuxtLink>
+                <NuxtLink v-else-if="specialVideoTop[0]?.target == 2 && specialVideoTop[0]?.type == 2" class="group mb-[20px] cursor-pointer" :to="`https://www.facebook.com/dhakaprokash24/videos/${specialVideoTop[0]?.code}`" target="_blank" rel="nofollow">
+                    <div class="notliveimage relative">
+                        <img :src="`${siteurl?.site_url}/media/videoImages/${specialVideoTop[0]?.img_bg_path}`"
+                            :alt="specialVideoTop[0]?.title" style="width: 100%" />
+                        <Icon name="simple-icons:youtubemusic"
+                            class=" absolute top-[40%] left-[40%] col-span-2 md:col-span-3 text-6xl group-hover:text-[#3375af] text-[#ff0000]" />
+                    
+                        <h4 class="text-center bg-[#3375af] py-2 text-white group-hover:bg-red-600">
+                            {{ specialVideoTop[0]?.title }}
+                        </h4>
+                    </div>
+                </NuxtLink>
+                <NuxtLink v-else class="group mb-[20px] cursor-pointer" :to="`/video/${specialVideoTop[0]?.category?.slug}/${specialVideoTop[0]?.id}`" rel="nofollow">
+                    <div class="notliveimage relative">
+                        <img :src="`${siteurl?.site_url}/media/videoImages/${specialVideoTop[0]?.img_bg_path}`"
+                            :alt="specialVideoTop[0]?.title" style="width: 100%" />
+                        <Icon name="simple-icons:youtubemusic"
+                            class=" absolute top-[40%] left-[40%] col-span-2 md:col-span-3 text-6xl group-hover:text-[#3375af] text-[#ff0000]" />
+                    
+                        <h4 class="text-center bg-[#3375af] py-2 text-white group-hover:bg-red-600">
+                            {{ specialVideoTop[0]?.title }}
+                        </h4>
+                    </div>
+                </NuxtLink>
             </div>
             <!-- <iframe width="518" height="292" src="https://www.youtube.com/embed/{{$spTopFirstVideo->code}}?enablejsapi=1&autoplay=1&mute=1&rel=0&showinfo=1&controls=1&loop=1&playlist={{$spTopFirstVideo->code}}" frameborder="0" allowfullscreen style="width: 100%!important;"></iframe> -->
 
@@ -73,7 +97,7 @@ const specialVideoTop = useState(() => [])
 const { data: sptpvdo } = await useFetch('/api/home/specialvideotop', {
     method: "GET"
 })
-specialVideoTop.value = sptpvdo
+specialVideoTop.value = sptpvdo?.value
 console.log(specialVideoTop.value)
 // =============== Special Top Video Fetching ====================//
 

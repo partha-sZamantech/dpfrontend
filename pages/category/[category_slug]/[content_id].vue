@@ -690,9 +690,9 @@ onMounted(() => {
 
         currScrollPosi.value = window.scrollY
 
-        if (pvScrollPosi.value > currScrollPosi.value) {
+        if (pvScrollPosi?.value > currScrollPosi?.value) {
             // Scroll Up
-            for (let i = 0; i < contentSections.length; i++) {
+            for (let i = 0; i < contentSections?.length; i++) {
                 const rect = contentSections[i].getBoundingClientRect();
                 // if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
                 //     console.log(`Element is partially visible in screen top ${contentSections[i].id}`);
@@ -722,8 +722,8 @@ onMounted(() => {
 
         } else {
 
-            for (let p = 0; p < contentSections.length; p++) {
-                const rect = contentSections[p].getBoundingClientRect();
+            for (let p = 0; p < contentSections?.length; p++) {
+                const rect = contentSections[p]?.getBoundingClientRect();
                 // if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
                 //     console.log(`Element is partially visible in screen top ${contentSections[i].id}`);
                 // }
@@ -750,7 +750,7 @@ onMounted(() => {
 
 
         }
-        pvScrollPosi.value = currScrollPosi.value
+        pvScrollPosi.value = currScrollPosi?.value
 
     })
     // ============= Scolling =============== //
@@ -960,7 +960,7 @@ const { data: detTpAds } = await useFetch('/api/adsmanagement/getads', {
         position: 1
     }
 })
-DetailTopAds.value = detTpAds.value
+DetailTopAds.value = detTpAds?.value
 //========== Detail Page Top Ads ==========//
 
 //========== Detail Page After Ads ==========//
@@ -973,7 +973,7 @@ const { data: detaftAds } = await useFetch('/api/adsmanagement/getads', {
         position: 5
     }
 })
-DetailAfterAds.value = detaftAds.value
+DetailAfterAds.value = detaftAds?.value
 //========== Detail Page After Ads ==========//
 
 //========== Detail Page Bottom Ads ==========//
@@ -986,7 +986,7 @@ const { data: detbtmAds } = await useFetch('/api/adsmanagement/getads', {
         position: 6
     }
 })
-DetailBottomAds.value = detbtmAds.value
+DetailBottomAds.value = detbtmAds?.value
 //========== Detail Page Bottom Ads ==========//
 
 //========== Detail Page Right One Ads ==========//
@@ -999,7 +999,7 @@ const { data: detrtoneAds } = await useFetch('/api/adsmanagement/getads', {
         position: 7
     }
 })
-DetailRightOneAds.value = detrtoneAds.value
+DetailRightOneAds.value = detrtoneAds?.value
 //========== Detail Page Right One Ads ==========//
 
 //========== Detail Page Right Two Ads ==========//
@@ -1012,7 +1012,7 @@ const { data: detrttwoAds } = await useFetch('/api/adsmanagement/getads', {
         position: 8
     }
 })
-DetailRightTwoAds.value = detrttwoAds.value
+DetailRightTwoAds.value = detrttwoAds?.value
 //========== Detail Page Right Two Ads ==========//
 
 //========== Detail Page Right Three Ads ==========//
@@ -1025,7 +1025,7 @@ const { data: detrtthreeAds } = await useFetch('/api/adsmanagement/getads', {
         position: 9
     }
 })
-DetailRightThreeAds.value = detrtthreeAds.value
+DetailRightThreeAds.value = detrtthreeAds?.value
 //========== Detail Page Right Three Ads ==========//
 
 </script>
