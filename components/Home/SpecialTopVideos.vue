@@ -10,7 +10,7 @@
                     data-width="auto" data-autoplay="true" data-show-captions="false"></div>
             </div>
             <div v-else>
-                <NuxtLink v-if="specialVideoTop[0]?.target == 2 && specialVideoTop[0]?.type == 1" class="group mb-[20px] cursor-pointer" :to="`https://www.youtube.com/watch?v=${specialVideoTop[0]?.code}`" target="_blank" rel="nofollow">
+                <NuxtLink v-if="specialVideoTop[0]?.type == 1" class="group mb-[20px] cursor-pointer" :to="`https://www.youtube.com/watch?v=${specialVideoTop[0]?.code}`" target="_blank" rel="nofollow">
                     <div class="notliveimage relative">
                         <img :src="`${siteurl?.site_url}/media/videoImages/${specialVideoTop[0]?.img_bg_path}`"
                             :alt="specialVideoTop[0]?.title" style="width: 100%" />
@@ -22,7 +22,7 @@
                         </h4>
                     </div>
                 </NuxtLink>
-                <NuxtLink v-else-if="specialVideoTop[0]?.target == 2 && specialVideoTop[0]?.type == 2" class="group mb-[20px] cursor-pointer" :to="`https://www.facebook.com/dhakaprokash24/videos/${specialVideoTop[0]?.code}`" target="_blank" rel="nofollow">
+                <NuxtLink v-else-if="specialVideoTop[0]?.type == 2" class="group mb-[20px] cursor-pointer" :to="`https://www.facebook.com/dhakaprokash24/videos/${specialVideoTop[0]?.code}`" target="_blank" rel="nofollow">
                     <div class="notliveimage relative">
                         <img :src="`${siteurl?.site_url}/media/videoImages/${specialVideoTop[0]?.img_bg_path}`"
                             :alt="specialVideoTop[0]?.title" style="width: 100%" />
