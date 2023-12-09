@@ -17,7 +17,7 @@
             <Meta name="twitter:site" content="@dhakaprokash24" />
             <Meta name="twitter:creator" content="ঢাকা প্রকাশ | বাংলা নিউজ পেপার" />
             <Meta property="fb:app_id" content="270848064771492" />
-            <Meta property="fb:pages" content="100063660752112" />
+            <!-- <Meta property="fb:pages" content="100063660752112" /> -->
             <Meta name="googlebot" content="index, follow" />
             <Meta name="robots" content="index, follow" />
             <Meta content="ALL" name="robots" />
@@ -75,13 +75,6 @@ useHead({
             rel: 'icon',
             type: 'image/png',
             href: DsiteConfig.public.apiUrl+'/media/common/favicon.png'
-        }
-    ],
-    script: [
-        {
-            src: 'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons',
-            async: "true",
-            tagPosition: "head"
         }
     ]
 })

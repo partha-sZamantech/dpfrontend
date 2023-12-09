@@ -232,20 +232,20 @@
                 </div>
                 <div class=" col-span-12 md:col-span-3">
                     <!-- Category Right One Ads -->
-                    <div v-if="categoryRightOneAds.status === 1" class="py-4 border-b border-b-[#e2e2e2] mb-3">
+                    <div v-if="categoryRightOneAds?.status === 1" class="py-4 border-b border-b-[#e2e2e2] mb-3">
                         <AdsDesktopCategoryRightOne :categoryRightOneAds="categoryRightOneAds" />
                     </div>
                     <!-- Category Right One Ads -->
                     <div :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} duration-200`">
                         <Tabs />
                         <!-- Category Right Two Ads -->
-                        <div v-if="categoryRightTwoAds.status === 1"
+                        <div v-if="categoryRightTwoAds?.status === 1"
                             class="py-4 border-b border-b-[#e2e2e2] border-t border-t-[#e2e2e2] mt-4">
                             <AdsDesktopCategoryRightTwo :categoryRightTwoAds="categoryRightTwoAds" />
                         </div>
                         <!-- Category Right Two Ads -->
                         <!-- Category Right Three Ads -->
-                        <div v-if="categoryRightThreeAds.status === 1"
+                        <div v-if="categoryRightThreeAds?.status === 1"
                             class="py-4 border-b border-b-[#e2e2e2] border-t border-t-[#e2e2e2] mt-4">
                             <AdsDesktopCategoryRightThree :categoryRightThreeAds="categoryRightThreeAds" />
                         </div>
@@ -288,8 +288,8 @@ const stickyScroll = computed(() =>
     singlePageSticky.value
 )
 //
-const cat_slug = useRoute().params?.category
-
+const cat_slug = useRoute().params.category
+console.log(cat_slug)
 //================== Category Content fetching =============== //
 // Category State
 const category = ref('')
@@ -306,7 +306,8 @@ const { data: catcont } = await useFetch('/api/category/categorycontent', {
 })
 // Category Content Assign
 categoryContent.value = catcont?.value?.contents
-categoryContentExcept.value = catcont?.value?.contents?.slice(5, take.value)
+console.log(categoryContent.value)
+categoryContentExcept.value = catcont?.value?.contents.slice(5, take.value)
 // Category Assign
 category.value = catcont?.value?.category
 //================== Category Content fetching =============== //
@@ -322,7 +323,7 @@ const loadMoreButtonHandler = async () => {
             take: take.value
         }
     })
-    categoryContentExcept.value = loadCtP?.value?.contents?.slice(5, take.value)
+    categoryContentExcept.value = loadCtP?.value?.contents.slice(5, take.value)
 
 }
 //================ Load More Category Content Button =================//

@@ -2,7 +2,7 @@
     <div class=" max-w-[1280px] mx-auto detail-page px-4 md:px-2 py-4">
 
         <Head>
-            <Title>{{ detailsContent.content_heading }}</Title>
+            <Title>{{ detailsContent?.content_heading }}</Title>
             <!-- Refresh Reload -->
             <Meta content="500" http-equiv="refresh" />
             <!-- Refresh Reload -->
@@ -19,6 +19,7 @@
             <Meta name="twitter:url" :content="ogUrl" />
             <Link rel="canonical" :href="ogUrl" />
         </Head>
+
         <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
         <div class="breadcrump border-b pb-1 mb-5">
             <div class="flex gap-1 justify-start items-center">
@@ -54,7 +55,7 @@
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             detailsContent?.content_sub_heading }}</h4>
-                        <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ detailsContent.content_heading }}
+                        <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ detailsContent?.content_heading }}
                             {{ balvalue }}
                         </h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
@@ -76,8 +77,9 @@
                                 </ClientOnly>
                             </p>
                         </div>
+                        <!-- Social Share -->
                         <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
-                            <NuxtLink to="/">
+                            <a :href="`https://www.facebook.com/sharer.php?u=${ogUrl}`" target="_blank">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg" height="28"
                                     width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
                                     <path fill="#1877F2"
@@ -87,8 +89,8 @@
                                         d="M18,17.5h2.5l1-4H18v-2c0-1.03,0-2,2-2h1.5V6.14C21.174,6.097,19.943,6,18.643,6C15.928,6,14,7.657,14,10.7 v2.8h-3v4h3V26h4V17.5z">
                                     </path>
                                 </svg>
-                            </NuxtLink>
-                            <NuxtLink to="/">
+                            </a>
+                            <a :href="`https://twitter.com/intent/tweet?url=${ogUrl}`" target="_blank">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" height="28"
                                     width="28">
@@ -96,8 +98,9 @@
                                     <path fill="#FFFFFF" d="M15.531,7h1.662l-3.63,4.236L17.833,17h-3.343l-2.62-3.495L8.876,17H7.212l3.882-4.531L7,7h3.427
 l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
                                 </svg>
-                            </NuxtLink>
-                            <div class=" cursor-pointer" @click="printPageArea('singlepost')">
+                            </a>
+                            <!-- Social Share -->
+                            <div class="cursor-pointer" @click="printPageArea('singlepost')">
                                 <svg class=" hover:scale-125 duration-200" height="28" width="28"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
                                     xml:space="preserve">
@@ -109,11 +112,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     </path>
                                 </svg>
                             </div>
-                            <!-- ShareThis BEGIN -->
 
-                            <div class="sharethis-inline-share-buttons"></div>
-
-                            <!-- ShareThis END -->
                         </div>
                     </div>
                     <div class="feature-image border-b">
@@ -181,7 +180,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     <NuxtLink
                                         :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
                                         <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
-                                            fmoreContent.content_heading }}</h4>
+                                            fmoreContent?.content_heading }}</h4>
                                     </NuxtLink>
                                 </div>
                             </div>
@@ -276,8 +275,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 </ClientOnly>
                             </p>
                         </div>
+                        <!-- Social Share -->
                         <div class="social-item flex gap-2 items-start justify-center print:hidden">
-                            <NuxtLink to="/">
+                            <a href="/" target="_blank">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg" height="28"
                                     width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
                                     <path fill="#1877F2"
@@ -287,8 +287,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                         d="M18,17.5h2.5l1-4H18v-2c0-1.03,0-2,2-2h1.5V6.14C21.174,6.097,19.943,6,18.643,6C15.928,6,14,7.657,14,10.7 v2.8h-3v4h3V26h4V17.5z">
                                     </path>
                                 </svg>
-                            </NuxtLink>
-                            <NuxtLink to="/">
+                            </a>
+                            <a href="/">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" height="28"
                                     width="28">
@@ -296,7 +296,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     <path fill="#FFFFFF" d="M15.531,7h1.662l-3.63,4.236L17.833,17h-3.343l-2.62-3.495L8.876,17H7.212l3.882-4.531L7,7h3.427
 l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
                                 </svg>
-                            </NuxtLink>
+                            </a>
                             <div class=" cursor-pointer" @click="printPageArea(`singlepost${mcinx}`)">
                                 <svg class=" hover:scale-125 duration-200" height="28" width="28"
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
@@ -309,6 +309,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     </path>
                                 </svg>
                             </div>
+                            <!-- Social Share -->
                         </div>
                     </div>
                     <div class="feature-image border-b">
@@ -377,7 +378,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     <NuxtLink
                                         :to="`/category/${moreDetCatCon?.category?.cat_slug}/${moreDetCatCon?.content_id}`">
                                         <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
-                                            moreDetCatCon.content_heading }}</h4>
+                                            moreDetCatCon?.content_heading }}</h4>
                                     </NuxtLink>
                                 </div>
                             </div>
@@ -507,7 +508,8 @@ detailsContent.value = pdailts?.value?.detailsContent
 
 // ================  OG - Open Graph ====================// 
 const ogUrl = ref(null);
-ogUrl.value = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
+const okImage = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
+ogUrl.value = okImage
 const ogTitle = ref(null);
 ogTitle.value = detailsContent?.value?.content_heading
 const ogDescription = ref(null);
@@ -555,17 +557,17 @@ firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
 const readPostsState = useState(() => [])
 const relatedDetailContent = useState(() => [])
 
-for (let s = 0; s < moreDetailsContents.value.length; s++) {
+for (let s = 0; s < moreDetailsContents?.value?.length; s++) {
     readPostsState.value.push(moreDetailsContents.value[s].content_id)
     const { data: rlcd } = await useFetch("/api/detailpage/relatedcontent", {
         method: "POST",
         body: {
-            readedIds: readPostsState.value,
+            readedIds: readPostsState?.value,
             detailId: detailsContent?.value?.content_id
         }
     })
-    let reldata = rlcd.value.slice(1, 5)
-    relatedDetailContent.value.push(reldata)
+    let reldata = rlcd?.value?.slice(1, 5)
+    relatedDetailContent?.value?.push(reldata)
 
 }
 // console.log(relatedDetailContent.value)
@@ -574,7 +576,7 @@ for (let s = 0; s < moreDetailsContents.value.length; s++) {
 
 // ==================== More Details Related RightSide Category Post =======================
 const moreDetailCatWisePost = useState(() => [])
-for (let i = 0; i < moreDetailsContents.value.length; i++) {
+for (let i = 0; i < moreDetailsContents?.value?.length; i++) {
     const { data: mdcwp } = await useFetch("/api/detailpage/catwiseposts", {
         method: 'POST',
         body: {
@@ -659,7 +661,7 @@ const printPageArea = (areaID) => {
 //================= Inside More Detail Post Except Read More ===================//
 const insideMoreExceptPost = useState(() => [])
 
-for (let m = 0; m < moreDetailsContents.value.length; m++) {
+for (let m = 0; m < moreDetailsContents?.value?.length; m++) {
     const { data: insidempect } = await useFetch("/api/detailpage/insidemoredetailexcept", {
         method: 'POST',
         body: {
@@ -785,7 +787,7 @@ onMounted(() => {
 
         return link;
     }
-    if (descParam.length > 1) {
+    if (descParam?.length > 1) {
         descParam[0].parentNode.insertBefore(googleNewses(), descParam[0].nextSibling);
     }
     // ==== Gooogle news Link === //
@@ -836,7 +838,7 @@ onMounted(() => {
     descParam.forEach((item, i) => {
 
         if (i > 0 && i % 3 === 0 && firstInsideMoreNews.value[itemIncrement]) {
-            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews.value[itemIncrement].content_heading, fJsNewsURLs(firstInsideMoreNews.value[itemIncrement].category.cat_slug, firstInsideMoreNews.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
+            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews.value[itemIncrement].category.cat_slug, firstInsideMoreNews.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
             itemIncrement++;
         }
     })
@@ -930,7 +932,7 @@ onMounted(() => {
             descParas?.forEach((item, i) => {
 
                 if (i > 0 && i % 3 === 0 && insideMoreNews[itemIncrement]) {
-                    descParas[0].parentNode.insertBefore(insertRelatedNews(insideMoreNews[itemIncrement].content_heading, fJsNewsURL(insideMoreNews[itemIncrement].category.cat_slug, insideMoreNews[itemIncrement].content_id)), descParas[i - 1].nextSibling);
+                    descParas[0].parentNode.insertBefore(insertRelatedNews(insideMoreNews[itemIncrement]?.content_heading, fJsNewsURL(insideMoreNews[itemIncrement].category.cat_slug, insideMoreNews[itemIncrement].content_id)), descParas[i - 1].nextSibling);
                     itemIncrement++;
                 }
             })
