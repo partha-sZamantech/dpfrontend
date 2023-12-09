@@ -339,7 +339,7 @@ const { data: catTpAds } = await useFetch('/api/adsmanagement/getads', {
         position: 1
     }
 })
-categoryTopAds.value = catTpAds.value
+categoryTopAds.value = catTpAds?.value
 //========== Category Page Top Ads ==========//
 
 //========== Category Page Bottom Ads ==========//
@@ -352,7 +352,7 @@ const { data: catBtmAds } = await useFetch('/api/adsmanagement/getads', {
         position: 2
     }
 })
-categoryBottomAds.value = catBtmAds.value
+categoryBottomAds.value = catBtmAds?.value
 //========== Category Page Bottom Ads ==========//
 
 //========== Category Page Right One Ads ==========//
@@ -365,7 +365,7 @@ const { data: catRoneAds } = await useFetch('/api/adsmanagement/getads', {
         position: 3
     }
 })
-categoryRightOneAds.value = catRoneAds.value
+categoryRightOneAds.value = catRoneAds?.value
 //========== Category Page Right One Ads ==========//
 
 //========== Category Page Right Two Ads ==========//
@@ -378,7 +378,7 @@ const { data: catRtwoAds } = await useFetch('/api/adsmanagement/getads', {
         position: 4
     }
 })
-categoryRightTwoAds.value = catRtwoAds.value
+categoryRightTwoAds.value = catRtwoAds?.value
 //========== Category Page Right Two Ads ==========//
 
 //========== Category Page Right Three Ads ==========//
@@ -391,7 +391,7 @@ const { data: catRthreeAds } = await useFetch('/api/adsmanagement/getads', {
         position: 5
     }
 })
-categoryRightThreeAds.value = catRthreeAds.value
+categoryRightThreeAds.value = catRthreeAds?.value
 //========== Category Page Right Three Ads ==========//
 
 </script>

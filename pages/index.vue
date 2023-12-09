@@ -290,7 +290,7 @@ const { data: hmads } = await useFetch('/api/adsmanagement/getads', {
         position: 1
     }
 })
-homeMiddleAds.value = hmads.value
+homeMiddleAds.value = hmads?.value
 //========== Home Page Middle Top Ads ==========//
 
 //========== Home Page Middle One Ads ==========//
@@ -303,7 +303,7 @@ const { data: hmoneads } = await useFetch('/api/adsmanagement/getads', {
         position: 2
     }
 })
-homeMiddleOneAds.value = hmoneads.value
+homeMiddleOneAds.value = hmoneads?.value
 //========== Home Page Middle One Ads ==========//
 
 //========== Home Page Middle Two Ads ==========//
@@ -316,7 +316,7 @@ const { data: hmtwoads } = await useFetch('/api/adsmanagement/getads', {
         position: 3
     }
 })
-homeMiddleTwoAds.value = hmtwoads.value
+homeMiddleTwoAds.value = hmtwoads?.value
 //========== Home Page Middle Two Ads ==========//
 
 //========== Home Page Middle Three Ads ==========//
@@ -329,7 +329,7 @@ const { data: hmthreeads } = await useFetch('/api/adsmanagement/getads', {
         position: 4
     }
 })
-homeMiddleThreeAds.value = hmthreeads.value
+homeMiddleThreeAds.value = hmthreeads?.value
 //========== Home Page Middle Three Ads ==========//
 
 //========== Home Page Middle Four Ads ==========//
@@ -342,7 +342,7 @@ const { data: hmfourads } = await useFetch('/api/adsmanagement/getads', {
         position: 5
     }
 })
-homeMiddleFourAds.value = hmfourads.value
+homeMiddleFourAds.value = hmfourads?.value
 //========== Home Page Middle Four Ads ==========//
 
 //========== Home Page Middle Five Ads ==========//
@@ -355,7 +355,7 @@ const { data: hmfiveads } = await useFetch('/api/adsmanagement/getads', {
         position: 6
     }
 })
-homeMiddleFiveAds.value = hmfiveads.value
+homeMiddleFiveAds.value = hmfiveads?.value
 //========== Home Page Middle Five Ads ==========//
 
 //========== Home Page Middle Six Ads ==========//
@@ -368,7 +368,7 @@ const { data: hmsixads } = await useFetch('/api/adsmanagement/getads', {
         position: 7
     }
 })
-homeMiddleSixAds.value = hmsixads.value
+homeMiddleSixAds.value = hmsixads?.value
 //========== Home Page Middle Six Ads ==========//
 
 //========== Home Page Middle Seven Ads ==========//
@@ -381,7 +381,7 @@ const { data: hmsevenads } = await useFetch('/api/adsmanagement/getads', {
         position: 8
     }
 })
-homeMiddleSevenAds.value = hmsevenads.value
+homeMiddleSevenAds.value = hmsevenads?.value
 //========== Home Page Middle Seven Ads ==========//
 
 //========== Home Page Middle Eight Ads ==========//
@@ -407,7 +407,7 @@ const { data: hmninetads } = await useFetch('/api/adsmanagement/getads', {
         position: 10
     }
 })
-homeMiddleNineAds.value = hmninetads.value
+homeMiddleNineAds.value = hmninetads?.value
 //========== Home Page Middle Seven Ads ==========//
 
 //========== Home Page Right One Ads ==========//
@@ -420,7 +420,7 @@ const { data: hmnroneads } = await useFetch('/api/adsmanagement/getads', {
         position: 11
     }
 })
-homeRightOneAds.value = hmnroneads.value
+homeRightOneAds.value = hmnroneads?.value
 //========== Home Page Right One Ads ==========//
 
 //========== Home Page Right Two Ads ==========//
@@ -433,7 +433,7 @@ const { data: hmnrtwoads } = await useFetch('/api/adsmanagement/getads', {
         position: 12
     }
 })
-homeRightTwoAds.value = hmnrtwoads.value
+homeRightTwoAds.value = hmnrtwoads?.value
 //========== Home Page Right Two Ads ==========//
 
 //========== Home Page Right Three Ads ==========//
@@ -446,7 +446,7 @@ const { data: hmnrthreeads } = await useFetch('/api/adsmanagement/getads', {
         position: 13
     }
 })
-homeRightThreeAds.value = hmnrthreeads.value
+homeRightThreeAds.value = hmnrthreeads?.value
 //========== Home Page Right Three Ads ==========//
 
 //========== Home Page Right Four Ads ==========//
@@ -459,7 +459,7 @@ const { data: hmnrfourads } = await useFetch('/api/adsmanagement/getads', {
         position: 14
     }
 })
-homeRightFourAds.value = hmnrfourads.value
+homeRightFourAds.value = hmnrfourads?.value
 //========== Home Page Right Four Ads ==========//
 
 //========== Home Page Right Five Ads ==========//
@@ -472,7 +472,7 @@ const { data: hmnrfiveads } = await useFetch('/api/adsmanagement/getads', {
         position: 15
     }
 })
-homeRightFiveAds.value = hmnrfiveads.value
+homeRightFiveAds.value = hmnrfiveads?.value
 //========== Home Page Right Five Ads ==========//
 
 //========== Home Page Right Six Ads ==========//
@@ -485,7 +485,7 @@ const { data: hmnrsixads } = await useFetch('/api/adsmanagement/getads', {
         position: 16
     }
 })
-homeRightSixAds.value = hmnrsixads.value
+homeRightSixAds.value = hmnrsixads?.value
 //========== Home Page Right Six Ads ==========//
 
 //========== Home Page Right Seven Ads ==========//
@@ -498,7 +498,7 @@ const { data: hmnrsevenads } = await useFetch('/api/adsmanagement/getads', {
         position: 17
     }
 })
-homeRightSevenAds.value = hmnrsevenads.value
+homeRightSevenAds.value = hmnrsevenads?.value
 //========== Home Page Right Seven Ads ==========//
 
 </script>
