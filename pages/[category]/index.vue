@@ -2,7 +2,7 @@
     <div class="category-page">
 
         <Head>
-            <Title>{{ category.cat_name_bn }} </Title>
+            <Title>{{ category?.cat_name_bn }} </Title>
         </Head>
         <!-- Category Top Ads -->
         <div v-if="categoryTopAds.status === 1" class="py-4 mt-2 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
@@ -26,16 +26,16 @@
                     </NuxtLink>
                 </div> -->
                 <div class="flex gap-1 justify-start items-center">
-                    <NuxtLink :to="`/${category.cat_slug}`" class="text-[#3375af] font-semibold">
+                    <NuxtLink :to="`/${category?.cat_slug}`" class="text-[#3375af] font-semibold">
                         <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                        <h1 class="text-xl md:text-3xl">{{ category.cat_name_bn }}</h1>
+                        <h1 class="text-xl md:text-3xl">{{ category?.cat_name_bn }}</h1>
                     </NuxtLink>
                 </div>
                 <div>
                     <div class="subcategory flex flex-wrap gap-3" v-if="category?.subcat?.length > 0">
                         <!-- <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" /> -->
                         <div class="subcategoryLink" v-for="subcategory in category?.subcat">
-                            <NuxtLink :to="`/${category.cat_slug}/${subcategory?.subcat_slug}`"
+                            <NuxtLink :to="`/${category?.cat_slug}/${subcategory?.subcat_slug}`"
                                 class="text-[000000] font-[600] text-sm md:text-[16px] hover:text-[#3375af]">
                                 {{ subcategory?.subcat_name_bn }}
                             </NuxtLink>
@@ -288,7 +288,7 @@ const stickyScroll = computed(() =>
     singlePageSticky.value
 )
 //
-const cat_slug = useRoute().params.category
+const cat_slug = useRoute().params?.category
 
 //================== Category Content fetching =============== //
 // Category State
@@ -305,8 +305,8 @@ const { data: catcont } = await useFetch('/api/category/categorycontent', {
     }
 })
 // Category Content Assign
-categoryContent.value = catcont.value.contents
-categoryContentExcept.value = catcont.value.contents.slice(5, take.value)
+categoryContent.value = catcont?.value?.contents
+categoryContentExcept.value = catcont?.value?.contents?.slice(5, take.value)
 // Category Assign
 category.value = catcont?.value?.category
 //================== Category Content fetching =============== //
@@ -322,7 +322,7 @@ const loadMoreButtonHandler = async () => {
             take: take.value
         }
     })
-    categoryContentExcept.value = loadCtP.value.contents.slice(5, take.value)
+    categoryContentExcept.value = loadCtP?.value?.contents?.slice(5, take.value)
 
 }
 //================ Load More Category Content Button =================//
