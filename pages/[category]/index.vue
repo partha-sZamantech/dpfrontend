@@ -5,7 +5,7 @@
             <Title>{{ category?.cat_name_bn }} </Title>
         </Head>
         <!-- Category Top Ads -->
-        <div v-if="categoryTopAds.status === 1" class="py-4 mt-2 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+        <div v-if="categoryTopAds?.status === 1" class="py-4 mt-2 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
             <AdsDesktopCategoryTop :categoryTopAds="categoryTopAds" />
         </div>
         <!-- Category Top Ads -->
@@ -96,7 +96,7 @@
                     <!--/ Category Lead Section -->
                     <!-- Category Bottom Lead -->
                     <div v-if="categoryContent[2]"
-                        :class="`grid grid-cols-12 gap-4 md:gap-0 py-4 ${categoryBottomAds.status === 1 ? '' : 'border-b border-b-[#dee2e6]'} `">
+                        :class="`grid grid-cols-12 gap-4 md:gap-0 py-4 ${categoryBottomAds?.status === 1 ? '' : 'border-b border-b-[#dee2e6]'} `">
                         <NuxtLink
                             :to="`/category/${categoryContent[2]?.category?.cat_slug}/${categoryContent[2]?.content_id}`"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
@@ -169,7 +169,7 @@
                         <!--::::::::::::::::::: Ads Section :::::::::::::::::::::::: -->
                         <div class=" col-span-12 cat-inside-ads">
                             <!-- Category Bottom Ads -->
-                            <div v-if="categoryBottomAds.status === 1"
+                            <div v-if="categoryBottomAds?.status === 1"
                                 class="py-4 mt-16 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                                 <AdsDesktopCategoryBottom :categoryBottomAds="categoryBottomAds" />
                             </div>
@@ -265,6 +265,8 @@
 </template>
 
 <script setup>
+
+
 // import moment from 'moment'
 // moment.locale('bn');
 // ================ Get Bangla Date ============== //
@@ -289,7 +291,7 @@ const stickyScroll = computed(() =>
 )
 //
 const cat_slug = useRoute().params.category
-console.log(cat_slug)
+
 //================== Category Content fetching =============== //
 // Category State
 const category = ref('')
@@ -297,6 +299,8 @@ const category = ref('')
 const categoryContent = useState(() => [])
 const categoryContentExcept = useState(() => [])
 const take = ref(15)
+
+
 const { data: catcont } = await useFetch('/api/category/categorycontent', {
     method: "POST",
     body: {
@@ -306,11 +310,11 @@ const { data: catcont } = await useFetch('/api/category/categorycontent', {
 })
 // Category Content Assign
 categoryContent.value = catcont?.value?.contents
-console.log(categoryContent.value)
 categoryContentExcept.value = catcont?.value?.contents.slice(5, take.value)
 // Category Assign
 category.value = catcont?.value?.category
 //================== Category Content fetching =============== //
+
 
 
 //================ Load More Category Content Button =================//

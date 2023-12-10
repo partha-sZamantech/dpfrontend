@@ -195,4 +195,6 @@ siteblockAds.value = sbAds.value
 
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+
+</style>
