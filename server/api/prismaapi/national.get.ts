@@ -4,7 +4,7 @@ export default defineEventHandler( async (event) => {
   
     const prisma = new PrismaClient()
     // const getBody = await readBody(event)
-    const updateCategory = await prisma.bn_content_positions.findFirst({
+    const position = await prisma.bn_content_positions.findFirst({
         where: {
             cat_id: 1,
             status: 1,
@@ -20,9 +20,27 @@ export default defineEventHandler( async (event) => {
             total_content: true
         }
     })
-   
-    return {
-        success: updateCategory
-    }
+    const data = []
+    if(position && position?.content_ids?.length > 0){
+        const positionArray =  position?.content_ids?.split(',')
+        const getArray =  positionArray?.splice(0,5)
+       for(let i = 0; i< getArray?.length; i++){
+            const content = await prisma.bn_contents.findFirst({
+                where:{
+                    content_id: parseInt(getArray[i])
+                } 
+            })
+            data.push(content)
+       }
+        return [{
+            id : getArray,
+            data: data
 
+        }]
+        
+    }else{
+        return 'nai'
+    }
+   
+    
 })
