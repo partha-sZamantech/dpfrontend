@@ -15,7 +15,7 @@
 
         <!-- Latest Post -->
         <div v-if="isActiveStatus === false" class="latest-post px-3 h-[430px] overflow-y-auto">
-            <NuxtLink :to="`/category/${latstpost?.category?.cat_slug}/${latstpost?.content_id}`"
+            <NuxtLink :to="`/category/${latstpost?.cat_slug}/${latstpost?.content_id}`"
                 class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop" v-for="latstpost in latestposts"
                 :key="latstpost?.content_id">
                 <div class="latest-post-tab-image col-span-4 overflow-hidden">
@@ -32,7 +32,7 @@
         <!--/ Latest Post -->
         <!-- Popular Post -->
         <div v-else class="latest-post px-3 h-[430px] overflow-y-auto">
-            <NuxtLink :to="`/category/${poplarpost?.category?.cat_slug}/${poplarpost?.content_id}`"
+            <NuxtLink :to="`/category/${poplarpost?.cat_slug}/${poplarpost?.content_id}`"
                 class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop" v-for="poplarpost in popularposts"
                 :key="poplarpost?.content_id">
                 <div class="latest-post-tab-image col-span-4 overflow-hidden">
@@ -65,16 +65,29 @@ const siteurl = siteUrlState()
 
 // ======== Latest Posts Content =============== //
 const latestposts = useState(() => [])
-const { data: latpost } = await useFetch(`/api/home/latestposts`, {
-    method: 'GET'
+// const { data: latpost } = await useFetch(`/api/home/latestposts`, {
+//     method: 'GET'
+// })
+
+const { data: latpost } = await useFetch('/api/prismaapi/tabs/latestpost', {
+    method: "POST",
+    body:{
+        take: 20 // How many post you want to fetch. just assign the number
+    }
 })
 latestposts.value = latpost
 // ======== Latest Posts Content =============== //
 
 // ======== Popular Posts Content =============== //
 const popularposts = useState(() => [])
-const { data: hplpost } = await useFetch(`/api/home/popularposts`, {
-    method: 'GET'
+// const { data: hplpost } = await useFetch(`/api/home/popularposts`, {
+//     method: 'GET'
+// })
+const { data: hplpost } = await useFetch('/api/prismaapi/tabs/popularpost', {
+    method: "POST",
+    body:{
+        take: 20 // How many post you want to fetch. just assign the number
+    }
 })
 popularposts.value = hplpost
 // ======== Popular Posts Content =============== //
