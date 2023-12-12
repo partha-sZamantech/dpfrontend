@@ -1,26 +1,12 @@
-// export default defineEventHandler( async (event) => {
-    
-//     const config = useRuntimeConfig()
-
-//     const data = await $fetch(`${config.public.apiUrl}/api/nationalcontent`, {
-//         method: 'GET'
-//     })
-
-
-//     return data;
-    
-
-// })
-
 import { Prisma, PrismaClient } from '@prisma/client'
 export default defineEventHandler(async (event) => {
 
-
-    const prisma = new PrismaClient()
     // const getBody = await readBody(event)
+    const prisma = new PrismaClient()
+    const getBody = await readBody(event)
     const position = await prisma.bn_content_positions.findFirst({
         where: {
-            cat_id: 1,
+            cat_id: parseInt(getBody?.cat_id),
             status: 1,
             deletable: 1
         },
@@ -37,17 +23,17 @@ export default defineEventHandler(async (event) => {
     const data = []
     if (position && position?.content_ids?.length > 0) {
         const positionArray = position?.content_ids?.split(',')
-        const getArray = positionArray?.splice(0, 5)
-        for (let i = 0; i < getArray?.length; i++) {
+        const getContents = positionArray?.splice(0, getBody?.take)
+        for (let i = 0; i < getContents?.length; i++) {
             const content = await prisma.bn_contents.findFirst({
                 where: {
-                    content_id: parseInt(getArray[i])
+                    content_id: parseInt(getContents[i])
                 }
             })
 
             const category = await prisma.bn_categories.findFirst({
                 where: {
-                    cat_id: content?.cat_id,
+                    cat_id: parseInt(content?.cat_id),
                     cat_type: 1
                 }
             })

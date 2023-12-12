@@ -494,15 +494,12 @@ const content_id = useRoute().params.content_id
 // const postDetails = useState(() => [])
 
 
-// const { data: pdailts } = await useFetch('/api/detailpage/detail', {
-//     method: 'POST',
-//     body: {
-//         category_slug: category_slug,
-//         content_id: content_id
-//     }
-// })
-const { data: pdailts } = await useFetch(`${siteurl.value.site_url}/api/${category_slug}/${content_id}`, {
-    method: 'GET'
+const { data: pdailts } = await useFetch('/api/detailpage/detail', {
+    method: 'POST',
+    body: {
+        category_slug: category_slug,
+        content_id: content_id
+    }
 })
 // ========== First Details Content ======= // 
 const detailsContent = useState(() => [])
@@ -532,26 +529,12 @@ twitterImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsConte
 
 // ============ Latest 20 Posts ===============//
 const latestPostsDpage = useState(() => [])
-const {data:dlspostsssss} = await useFetch(`${siteurl?.value?.site_url}/api/detaillatest/posts/allpost`, {
-    method: "GET"
-})
-latestPostsDpage.value = dlspostsssss?.value?.allLatestPost
-console.log(dlspostsssss.value)
+latestPostsDpage.value = pdailts?.value?.allLatestPost
 // ============ Latest 20 Posts ===============//
 
-//========== Get Cat ID ====== //
-const catid = useState(() => '')
-const {data:dcatidss} = await useFetch(`${siteurl?.value?.site_url}/api/detail/getcat/${category_slug}`, {
-    method: "GET"
-})
-catid.value = dcatidss?.value?.cat_id
-//========== Get Cat ID ====== //
 // ========== First More Right Side Content ======= //
 const firstMoreContents = useState(() => [])
-const {data:gtmcssss} = await useFetch(`${siteurl?.value?.site_url}/api/detgetmorecontent/${catid.value}/${content_id}`, {
-    method: "GET"
-})
-firstMoreContents.value = gtmcssss?.value?.moreContents
+firstMoreContents.value = pdailts?.value?.moreContents
 // ========== First More Right Side Content ======= //
 // ========== First Details Content Author ======= //
 // const authors = useState(() => [])
@@ -559,19 +542,13 @@ firstMoreContents.value = gtmcssss?.value?.moreContents
 // ========== First Details Content Author ======= //
 // ========== More Details Contents ======= //
 const moreDetailsContents = useState(() => [])
-const {data:mrdconsssss} = await useFetch(`${siteurl?.value?.site_url}/api/getdetail/contents/${content_id}`, {
-    method: "GET"
-})
-moreDetailsContents.value = mrdconsssss?.value?.moreDetailContent
+moreDetailsContents.value = pdailts?.value?.moreDetailContent
 // console.log(moreDetailsContents.value)
 // ========== More Details Contents ======= //
 
 //===== First Detail Inside More News =====//
 const firstInsideMoreNews = useState(() => [])
-const {data:insidedlssssss} = await useFetch(`${siteurl?.value?.site_url}/api/detinsidemnews/${catid.value}/${content_id}`, {
-    method: "GET"
-})
-firstInsideMoreNews.value = insidedlssssss?.value?.insideMoreNews
+firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
 // console.log(firstInsideMoreNews.value)
 
 //===== First Detail Inside More News =====//
@@ -582,14 +559,7 @@ const relatedDetailContent = useState(() => [])
 
 for (let s = 0; s < moreDetailsContents?.value?.length; s++) {
     readPostsState.value.push(moreDetailsContents.value[s].content_id)
-    // const { data: rlcd } = await useFetch("/api/detailpage/relatedcontent", {
-    //     method: "POST",
-    //     body: {
-    //         readedIds: readPostsState?.value,
-    //         detailId: detailsContent?.value?.content_id
-    //     }
-    // })
-    const { data: rlcd } = await useFetch(`${siteurl.value.site_url}/api/relatedcontdetl`, {
+    const { data: rlcd } = await useFetch("/api/detailpage/relatedcontent", {
         method: "POST",
         body: {
             readedIds: readPostsState?.value,
@@ -607,15 +577,12 @@ for (let s = 0; s < moreDetailsContents?.value?.length; s++) {
 // ==================== More Details Related RightSide Category Post =======================
 const moreDetailCatWisePost = useState(() => [])
 for (let i = 0; i < moreDetailsContents?.value?.length; i++) {
-    // const { data: mdcwp } = await useFetch("/api/detailpage/catwiseposts", {
-    //     method: 'POST',
-    //     body: {
-    //         cat_id: moreDetailsContents?.value[i]?.cat_id,
-    //         content_id: moreDetailsContents?.value[i]?.content_id
-    //     }
-    // })
-    const { data: mdcwp } = await useFetch(`${siteurl.value.site_url}/api/dtpost/catws/${moreDetailsContents?.value[i]?.cat_id}/${moreDetailsContents?.value[i]?.content_id}`, {
-        method: 'GET'
+    const { data: mdcwp } = await useFetch("/api/detailpage/catwiseposts", {
+        method: 'POST',
+        body: {
+            cat_id: moreDetailsContents?.value[i]?.cat_id,
+            content_id: moreDetailsContents?.value[i]?.content_id
+        }
     })
 
     let datapush = mdcwp.value
@@ -651,14 +618,11 @@ if (firstsplittag) {
 
 // ============== First Related Content ================//
 const fRelatedContents = useState(() => [])
-// const { data: frcontent } = await useFetch('/api/detailpage/firstrelatedcontent', {
-//     method: "POST",
-//     body: {
-//         content_id: content_id
-//     }
-// })
-const { data: frcontent } = await useFetch(`${siteurl.value.site_url}/api/first/related/${content_id}`, {
-    method: "GET"
+const { data: frcontent } = await useFetch('/api/detailpage/firstrelatedcontent', {
+    method: "POST",
+    body: {
+        content_id: content_id
+    }
 })
 fRelatedContents.value = frcontent
 
