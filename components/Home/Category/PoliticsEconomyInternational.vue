@@ -38,14 +38,14 @@
         <div class=" col-span-12 md:col-span-4">
             <div class="home-economy-category ">
                 <div class="category-header border-b-4 border-b-[#3375af] my-3">
-                    <NuxtLink :to="`/${economycontent[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
+                    <NuxtLink :to="`/${economycontent[0]?.cat_slug}`" class="flex gap-3 items-center">
                         <span class="w-3 h-3 bg-[#3375af]"></span>
                         <h2 class="text-[#3375af] text-[18px] font-semibold">অর্থনীতি</h2>
                     </NuxtLink>
                 </div>
                 <div class="home-econ-c-ontent flex flex-col gap-3">
                     <!-- Economy Feature Content -->
-                    <NuxtLink :to="`/category/${economycontent[0]?.category?.cat_slug}/${economycontent[0]?.content_id}`"
+                    <NuxtLink :to="`/category/${economycontent[0]?.cat_slug}/${economycontent[0]?.content_id}`"
                         class="flex flex-col gap-2 group">
                         <div class=" overflow-hidden">
                             <nuxt-img :src="`${siteurl.site_url}/media/content/images/${economycontent[0]?.img_bg_path}`"
@@ -59,7 +59,7 @@
 
                     <div class="h-p-c-excpt flex flex-col">
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${heconmy?.category?.cat_slug}/${heconmy?.content_id}`"
+                        <NuxtLink :to="`/category/${heconmy?.cat_slug}/${heconmy?.content_id}`"
                             class=" border-b py-3" v-for="heconmy in economycontent.slice(1, 6)" :key="heconmy.content_id">
                             <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ heconmy.content_heading }}</h4>
                         </NuxtLink>
@@ -73,7 +73,7 @@
         <div class=" col-span-12 md:col-span-4">
             <div class="home-international-category ">
                 <div class="category-header border-b-4 border-b-[#3375af] my-3">
-                    <NuxtLink :to="`/${internationalcontent[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
+                    <NuxtLink :to="`/${internationalcontent[0]?.cat_slug}`" class="flex gap-3 items-center">
                         <span class="w-3 h-3 bg-[#3375af]"></span>
                         <h2 class="text-[#3375af] text-[18px] font-semibold">সারাবিশ্ব</h2>
                     </NuxtLink>
@@ -81,7 +81,7 @@
                 <div class="home-int-c-content flex flex-col gap-3">
                     <!-- International Feature Content -->
                     <NuxtLink
-                        :to="`/category/${internationalcontent[0]?.category?.cat_slug}/${internationalcontent[0]?.content_id}`"
+                        :to="`/category/${internationalcontent[0]?.cat_slug}/${internationalcontent[0]?.content_id}`"
                         class="flex flex-col gap-2 group">
                         <div class=" overflow-hidden">
                             <nuxt-img
@@ -96,7 +96,7 @@
 
                     <div class="h-p-c-excpt flex flex-col">
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${hinternatcon?.category?.cat_slug}/${hinternatcon?.content_id}`"
+                        <NuxtLink :to="`/category/${hinternatcon?.cat_slug}/${hinternatcon?.content_id}`"
                             class=" border-b py-3" v-for="hinternatcon in internationalcontent.slice(1, 6)"
                             :key="hinternatcon.content_id">
                             <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ hinternatcon.content_heading }}
@@ -129,16 +129,24 @@ politics.value = pltic
 
 // ======== Economy Content =============== //
 const economycontent = useState(() => [])
-const { data: econ } = await useFetch("/api/home/economycontent", {
-    method: 'GET'
+const { data: econ } = await useFetch("/api/prismaapi/home/categorycontent", {
+    method: 'POST',
+    body: {
+        cat_id: 3, // assign Category id
+        take: 6
+    }
 })
 economycontent.value = econ
 // ======== Economy Content =============== //
 
 // ======== International Content =============== //
 const internationalcontent = useState(() => [])
-const { data: intntnal } = await useFetch("/api/home/internationalcontent", {
-    method: 'GET'
+const { data: intntnal } = await useFetch("/api/prismaapi/home/categorycontent", {
+    method: 'POST',
+    body: {
+        cat_id: 4, // assign Category id
+        take: 6
+    }
 })
 internationalcontent.value = intntnal
 // ======== International Content =============== //
