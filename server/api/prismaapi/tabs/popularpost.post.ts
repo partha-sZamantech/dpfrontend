@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
 
     const prisma = new PrismaClient()
     const getBody = await readBody(event)
- 
+
     const contents = await prisma.bn_contents.findMany({
         where: {
             status: 1,
@@ -21,16 +21,16 @@ export default defineEventHandler(async (event) => {
             total_hit: 'desc'
         },
         take: parseInt(getBody?.take)
-        
+
     })
-    
+
     const data = []
-    if(contents?.length > 0){
+    if (contents?.length > 0) {
 
-        for(let i = 0; i < contents.length; i++ ){
+        for (let i = 0; i < contents.length; i++) {
 
-             // Category
-             const category = await prisma.bn_categories.findFirst({
+            // Category
+            const category = await prisma.bn_categories.findFirst({
                 where: {
                     cat_id: parseInt(contents[i]?.cat_id),
                     cat_type: 1
@@ -43,8 +43,8 @@ export default defineEventHandler(async (event) => {
                 }
             })
 
-             // Push Data
-             data.push({
+            // Push Data
+            data.push({
                 content_id: contents[i]?.content_id,
                 img_bg_path: contents[i]?.img_bg_path,
                 content_heading: contents[i]?.content_heading,
@@ -56,10 +56,9 @@ export default defineEventHandler(async (event) => {
 
         }
 
+        return data
+
     }
- 
-    
-  
-    return data
+
 
 })
