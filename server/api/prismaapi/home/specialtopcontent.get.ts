@@ -43,6 +43,8 @@ export default defineEventHandler(async (event) => {
                     cat_id: parseInt(content?.cat_id)
                 }
             })
+
+            // Push Data
             data.push({
                 content_id: content?.content_id,
                 img_bg_path: content?.img_bg_path,
