@@ -10,12 +10,12 @@
                 </div>
                 <div class="home-p-c-ontent flex flex-col gap-3">
                     <!-- Politic Feature Content -->
-                    <NuxtLink :to="`/category/${politics[0]?.category?.cat_slug}/${politics[0]?.content_id}`"
+                    <NuxtLink :to="`/category/${politics[0]?.cat_slug}/${politics[0]?.content_id}`"
                         class="flex flex-col gap-2 group">
                         <div class=" overflow-hidden">
                             <nuxt-img :src="`${siteurl.site_url}/media/content/images/${politics[0]?.img_bg_path}`"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
-                                :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
+                                :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                         </div>
                         <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ politics[0]?.content_heading }}
                         </h3>
@@ -24,7 +24,7 @@
 
                     <div class="h-p-c-excpt flex flex-col">
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${hpolitic?.category?.cat_slug}/${hpolitic?.content_id}`" class=" border-b py-3"
+                        <NuxtLink :to="`/category/${hpolitic?.cat_slug}/${hpolitic?.content_id}`" class=" border-b py-3"
                             v-for="hpolitic in politics.slice(1, 6)" :key="hpolitic.content_id">
                             <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ hpolitic.content_heading }}</h4>
                         </NuxtLink>
@@ -50,7 +50,7 @@
                         <div class=" overflow-hidden">
                             <nuxt-img :src="`${siteurl.site_url}/media/content/images/${economycontent[0]?.img_bg_path}`"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
-                                :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
+                                :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                         </div>
                         <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{
                             economycontent[0]?.content_heading }}</h3>
@@ -59,8 +59,8 @@
 
                     <div class="h-p-c-excpt flex flex-col">
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${heconmy?.category?.cat_slug}/${heconmy?.content_id}`" class=" border-b py-3"
-                            v-for="heconmy in economycontent.slice(1, 6)" :key="heconmy.content_id">
+                        <NuxtLink :to="`/category/${heconmy?.category?.cat_slug}/${heconmy?.content_id}`"
+                            class=" border-b py-3" v-for="heconmy in economycontent.slice(1, 6)" :key="heconmy.content_id">
                             <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ heconmy.content_heading }}</h4>
                         </NuxtLink>
                         <!--/ Loop Item -->
@@ -80,12 +80,14 @@
                 </div>
                 <div class="home-int-c-content flex flex-col gap-3">
                     <!-- International Feature Content -->
-                    <NuxtLink :to="`/category/${internationalcontent[0]?.category?.cat_slug}/${internationalcontent[0]?.content_id}`" class="flex flex-col gap-2 group">
+                    <NuxtLink
+                        :to="`/category/${internationalcontent[0]?.category?.cat_slug}/${internationalcontent[0]?.content_id}`"
+                        class="flex flex-col gap-2 group">
                         <div class=" overflow-hidden">
                             <nuxt-img
                                 :src="`${siteurl.site_url}/media/content/images/${internationalcontent[0]?.img_bg_path}`"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
-                                :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
+                                :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                         </div>
                         <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{
                             internationalcontent[0]?.content_heading }}</h3>
@@ -94,8 +96,11 @@
 
                     <div class="h-p-c-excpt flex flex-col">
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${hinternatcon?.category?.cat_slug}/${hinternatcon?.content_id}`" class=" border-b py-3"   v-for="hinternatcon in internationalcontent.slice(1, 6)" :key="hinternatcon.content_id">
-                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ hinternatcon.content_heading }}</h4>
+                        <NuxtLink :to="`/category/${hinternatcon?.category?.cat_slug}/${hinternatcon?.content_id}`"
+                            class=" border-b py-3" v-for="hinternatcon in internationalcontent.slice(1, 6)"
+                            :key="hinternatcon.content_id">
+                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ hinternatcon.content_heading }}
+                            </h4>
                         </NuxtLink>
                         <!--/ Loop Item -->
                     </div>
@@ -112,8 +117,12 @@ const siteurl = siteUrlState()
 
 // ======== Politics Content =============== //
 const politics = useState(() => [])
-const { data: pltic } = await useFetch("/api/home/politicscontent", {
-    method: 'GET'
+const { data: pltic } = await useFetch("/api/prismaapi/home/positioncontent", {
+    method: 'POST',
+    body: {
+        cat_id: 2, // Politics Category id [2]
+        take: 6
+    }
 })
 politics.value = pltic
 // ======== Politics Content =============== //

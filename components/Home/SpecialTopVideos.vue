@@ -38,7 +38,7 @@
                     </div>
                 </NuxtLink>
                 <NuxtLink v-else class="group mb-[20px] cursor-pointer"
-                    :to="`/video/${specialVideoTop[0]?.category?.slug}/${specialVideoTop[0]?.id}`" rel="nofollow">
+                    :to="`/video/${specialVideoTop[0]?.slug}/${specialVideoTop[0]?.id}`" rel="nofollow">
                     <div class="notliveimage relative">
                         <img :src="`${siteurl?.site_url}/media/videoImages/${specialVideoTop[0]?.img_bg_path}`"
                             :alt="specialVideoTop[0]?.title" style="width: 100%" />
@@ -78,7 +78,7 @@
 
                 </div>
                 <div v-else>
-                    <NuxtLink :to="`/video/${specialVideo?.category?.slug}/${specialVideo?.id}`"
+                    <NuxtLink :to="`/video/${specialVideo?.slug}/${specialVideo?.id}`"
                         class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
                         <Icon name="simple-icons:youtubemusic"
                             class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
@@ -107,8 +107,14 @@ useHead({
 const siteurl = siteUrlState()
 // =============== Special Top Video Fetching ====================//
 const specialVideoTop = useState(() => [])
-const { data: sptpvdo } = await useFetch('/api/home/specialvideotop', {
-    method: "GET"
+// const { data: sptpvdo } = await useFetch('/api/home/specialvideotop', {
+//     method: "GET"
+// })
+const { data: sptpvdo } = await useFetch('/api/prismaapi/home/videofeature', {
+    method: "POST",
+    body: {
+        take:5
+    }
 })
 specialVideoTop.value = sptpvdo?.value
 // =============== Special Top Video Fetching ====================//

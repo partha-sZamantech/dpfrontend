@@ -43,7 +43,7 @@ export default defineEventHandler(async (event) => {
             data.push({
                 id: video?.id,
                 cat_id: category?.id,
-                cat_slug: category?.slug,
+                slug: category?.slug,
                 type: video?.type,
                 title: video?.title,
                 img_bg_path: video?.img_bg_path,
