@@ -17,6 +17,7 @@
                     class="py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
                     {{ category.cat_name_bn }}</NuxtLink>
             </li>
+           
         </ul>
     </div>
 </template>
@@ -24,12 +25,16 @@
 <script setup>
 const { scrollDown } = defineProps(['scrollDown'])
 
-const headCatconfig = useRuntimeConfig()
+// const headCatconfig = useRuntimeConfig()
 const headCategory = useState(() => [])
-const { data: headCat } = await useFetch(`${headCatconfig.public.apiUrl}/api/headercat`, {
+// const { data: headCat } = await useFetch(`${headCatconfig.public.apiUrl}/api/headercat`, {
+//     method: 'GET'
+// })
+const { data: headCat } = await useFetch(`/api/prismaapi/header/headercategory`, {
     method: 'GET'
 })
-headCategory.value = headCat
+headCategory.value = headCat.value
+
 
 </script>
 

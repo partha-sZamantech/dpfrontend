@@ -1,14 +1,14 @@
 <template>
     <div class="home-childadolescent-category" v-if="childrenContents?.length > 0">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
-            <NuxtLink :to="`/${childrenContents[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
+            <NuxtLink :to="`/${childrenContents[0]?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
                 <h2 class="text-[#3375af] text-[18px] font-semibold">শিশু-কিশোর</h2>
             </NuxtLink>
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Children Feature Content -->
-            <NuxtLink :to="`/category/${childrenContents[0]?.category?.cat_slug}/${childrenContents[0]?.content_id}`"
+            <NuxtLink :to="`/category/${childrenContents[0]?.cat_slug}/${childrenContents[0]?.content_id}`"
                 class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${childrenContents[0]?.img_bg_path}`"
@@ -22,7 +22,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`/category/${childrenContent?.category?.cat_slug}/${childrenContent?.content_id}`"
+                <NuxtLink :to="`/category/${childrenContent?.cat_slug}/${childrenContent?.content_id}`"
                     class=" border-b py-3" v-for="childrenContent in childrenContents.slice(1, 5)"
                     :key="childrenContent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ childrenContent?.content_heading }}</h4>
@@ -40,10 +40,10 @@ const siteurl = siteUrlState()
 
 // ======== Children Content =============== //
 const childrenContents = useState(() => [])
-const { data: hchildren } = await useFetch("/api/home/childrencontent", {
+const { data: hchildrendddddddd } = await useFetch("/api/prismaapi/home/child", {
     method: 'GET'
 })
-childrenContents.value = hchildren
+childrenContents.value = hchildrendddddddd.value
 // ======== Children Content =============== //
 </script>
 

@@ -13,9 +13,9 @@
             </div>
             <div class="">
                 <div class="grid grid-cols-2 gap-2 font-[400]">
+                    <NuxtLink to="/collection/latest" class="py-2 border-b">সর্বশেষ</NuxtLink>
                     <NuxtLink v-for="(cat, cindex) in allCats" :key="cindex" :to="`/${cat?.cat_slug}`"
                         class="py-2 border-b">{{ cat?.cat_name_bn }}</NuxtLink>
-
                     <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>
                 </div>
             </div>

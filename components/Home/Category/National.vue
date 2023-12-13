@@ -1,6 +1,6 @@
 
 <template>
-    <div class="home-national-category">
+    <div class="home-national-category" v-if="nationalHCon?.length > 0">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
             <NuxtLink :to="`/${nationalHCon[0]?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
@@ -59,12 +59,8 @@
 const siteurl = siteUrlState()
 const img = useImage()
 const nationalHCon = NationalHomeContentState()
-const { data: nationalhc } = await useFetch('/api/prismaapi/home/positioncontent', {
-    method: "POST",
-    body: {
-        cat_id: 1, // National Category ID [1]
-        take: 5
-    }
+const { data: nationalhc } = await useFetch('/api/prismaapi/home/national', {
+    method: "GET"
 })
 nationalHCon.value = nationalhc
 </script>

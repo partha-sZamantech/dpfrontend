@@ -1,5 +1,5 @@
 <template>
-    <div class="home-special-report-category mb-6">
+    <div class="home-special-report-category mb-6" v-if="specialreports?.length > 0">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
             <NuxtLink :to="`/${specialreports[0]?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
@@ -32,14 +32,10 @@ const img = useImage()
 
 const siteUrl = siteUrlState()
 const specialreports = useState(() => [])
-const { data: hsreport } = await useFetch('/api/prismaapi/home/categorycontent', {
-    method: 'POST',
-    body: {
-        cat_id: 30,
-        take:5
-    }
+const { data: hsreportssssssss } = await useFetch('/api/prismaapi/home/specialreport', {
+    method: 'GET'
 })
-specialreports.value = hsreport
+specialreports.value = hsreportssssssss.value
 </script>
 
 <style lang="scss" scoped></style>

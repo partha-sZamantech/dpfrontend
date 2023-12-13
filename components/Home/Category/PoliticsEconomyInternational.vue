@@ -1,6 +1,6 @@
 <template>
     <div class="grid grid-cols-12 gap-4 py-4">
-        <div class=" col-span-12 md:col-span-4">
+        <div v-if="politics?.length > 0" class=" col-span-12 md:col-span-4">
             <div class="home-politic-category ">
                 <div class="category-header border-b-4 border-b-[#3375af] my-3">
                     <NuxtLink :to="`/${politics[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class=" col-span-12 md:col-span-4">
-            <div class="home-economy-category ">
+            <div class="home-economy-category" v-if="economycontent?.length > 0">
                 <div class="category-header border-b-4 border-b-[#3375af] my-3">
                     <NuxtLink :to="`/${economycontent[0]?.cat_slug}`" class="flex gap-3 items-center">
                         <span class="w-3 h-3 bg-[#3375af]"></span>
@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class=" col-span-12 md:col-span-4">
-            <div class="home-international-category ">
+            <div class="home-international-category " v-if="internationalcontent?.length > 0">
                 <div class="category-header border-b-4 border-b-[#3375af] my-3">
                     <NuxtLink :to="`/${internationalcontent[0]?.cat_slug}`" class="flex gap-3 items-center">
                         <span class="w-3 h-3 bg-[#3375af]"></span>
@@ -117,38 +117,26 @@ const siteurl = siteUrlState()
 
 // ======== Politics Content =============== //
 const politics = useState(() => [])
-const { data: pltic } = await useFetch("/api/prismaapi/home/positioncontent", {
-    method: 'POST',
-    body: {
-        cat_id: 2, // Politics Category id [2]
-        take: 6
-    }
+const { data: homePoliticsss } = await useFetch("/api/prismaapi/home/politics", {
+    method: 'GET'
 })
-politics.value = pltic
+politics.value = homePoliticsss.value
 // ======== Politics Content =============== //
 
 // ======== Economy Content =============== //
 const economycontent = useState(() => [])
-const { data: econ } = await useFetch("/api/prismaapi/home/categorycontent", {
-    method: 'POST',
-    body: {
-        cat_id: 3, // assign Category id
-        take: 6
-    }
+const { data: econssssssss } = await useFetch("/api/prismaapi/home/economy", {
+    method: 'GET'
 })
-economycontent.value = econ
+economycontent.value = econssssssss.value
 // ======== Economy Content =============== //
 
 // ======== International Content =============== //
 const internationalcontent = useState(() => [])
-const { data: intntnal } = await useFetch("/api/prismaapi/home/categorycontent", {
-    method: 'POST',
-    body: {
-        cat_id: 4, // assign Category id
-        take: 6
-    }
+const { data: intntnalsssss } = await useFetch("/api/prismaapi/home/international", {
+    method: 'GET'
 })
-internationalcontent.value = intntnal
+internationalcontent.value = intntnalsssss.value
 // ======== International Content =============== //
 
 

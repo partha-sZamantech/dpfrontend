@@ -1,14 +1,14 @@
 <template>
-    <div class="home-literature-category">
+    <div class="home-literature-category" v-if="literatureContents?.length > 0">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
-            <NuxtLink :to="`/${literatureContents[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
+            <NuxtLink :to="`/${literatureContents[0]?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
                 <h2 class="text-[#3375af] text-[18px] font-semibold">সাহিত্য</h2>
             </NuxtLink>
         </div>
         <div class="flex flex-col gap-4">
             <div class="">
-                <NuxtLink :to="`/category/${literatureContents[0]?.category?.cat_slug}/${literatureContents[0]?.content_id}`"
+                <NuxtLink :to="`/category/${literatureContents[0]?.cat_slug}/${literatureContents[0]?.content_id}`"
                     class="grid grid-cols-1 md:grid-cols-2 group gap-2">
                     <div class="intertainment-feature-image overflow-hidden">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${literatureContents[0]?.img_bg_path}`"
@@ -31,7 +31,7 @@
                     <div class="flex flex-col gap-4 group h-sports-excpt"
                         v-for="literatureContent in literatureContents.slice(1, 5)" :key="literatureContent.content_id">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink :to="`/category/${literatureContent?.category?.cat_slug}/${literatureContent?.content_id}`">
+                            <NuxtLink :to="`/category/${literatureContent?.cat_slug}/${literatureContent?.content_id}`">
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${literatureContent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -39,7 +39,7 @@
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="`/category/${literatureContent?.category?.cat_slug}/${literatureContent?.content_id}`">
+                            <NuxtLink :to="`/category/${literatureContent?.cat_slug}/${literatureContent?.content_id}`">
                                 <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{ literatureContent?.content_heading }}</h4>
                             </NuxtLink>
                         </div>
@@ -57,7 +57,7 @@ const siteurl = siteUrlState()
 
 // ======== Literature Content =============== //
 const literatureContents = useState(() => [])
-const { data: hmliterature } = await useFetch("/api/home/literaturecontent", {
+const { data: hmliterature } = await useFetch("/api/prismaapi/home/literature", {
     method: 'GET'
 })
 literatureContents.value = hmliterature

@@ -1,14 +1,14 @@
 <template>
-    <div class="home-corporate-category ">
+    <div v-if="corporateContents?.length > 0" class="home-corporate-category ">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
-            <NuxtLink :to="`/${corporateContents[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
+            <NuxtLink :to="`/${corporateContents[0]?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
                 <h2 class="text-[#3375af] text-[18px] font-semibold">করপোরেট কর্নার</h2>
             </NuxtLink>
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Corporate Feature Content -->
-            <NuxtLink :to="`/category/${corporateContents[0]?.category?.cat_slug}/${corporateContents[0]?.content_id}`"
+            <NuxtLink :to="`/category/${corporateContents[0]?.cat_slug}/${corporateContents[0]?.content_id}`"
                 class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${corporateContents[0]?.img_bg_path}`"
@@ -22,7 +22,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`/category/${corporateContent?.category?.cat_slug}/${corporateContent?.content_id}`"
+                <NuxtLink :to="`/category/${corporateContent?.cat_slug}/${corporateContent?.content_id}`"
                     class=" border-b py-3" v-for="corporateContent in corporateContents.slice(1, 5)"
                     :key="corporateContent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ corporateContent?.content_heading }}</h4>
@@ -40,7 +40,7 @@ const siteurl = siteUrlState()
 
 // ======== Probash Content =============== //
 const corporateContents = useState(() => [])
-const { data: hcorporate } = await useFetch("/api/home/corporatecontent", {
+const { data: hcorporate } = await useFetch("/api/prismaapi/home/corporate", {
     method: 'GET'
 })
 corporateContents.value = hcorporate

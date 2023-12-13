@@ -1,5 +1,5 @@
 <template>
-    <div class="home-sports-category">
+    <div class="home-sports-category" v-if="sportscontent?.length > 0">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
             <NuxtLink :to="`/${sportscontent[0]?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
@@ -57,12 +57,8 @@
 const img = useImage()
 const siteUrl = siteUrlState()
 const sportscontent = useState(() => [])
-const { data: hsport } = await useFetch('/api/prismaapi/home/positioncontent', {
-    method: 'POST',
-    body: {
-        cat_id: 5, // assign Category ID
-        take: 5
-    }
+const { data: hsport } = await useFetch('/api/prismaapi/home/sports', {
+    method: 'GET'
 })
 sportscontent.value = hsport
 </script>

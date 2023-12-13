@@ -1,7 +1,7 @@
 <template>
-    <div class="home-crime-category">
+    <div v-if="crimecontents?.length > 0" class="home-crime-category">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
-            <NuxtLink :to="`/${crimecontents[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
+            <NuxtLink :to="`/${crimecontents[0]?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
                 <h2 class="text-[#3375af] text-[18px] font-semibold">অপরাধ</h2>
             </NuxtLink>
@@ -11,14 +11,14 @@
             <div class="grid grid-cols-12 gap-4 group h-sports-excpt border-b py-4" v-for="crimecontent in crimecontents"
                 :key="crimecontent.content_id">
                 <div class=" col-span-5 overflow-hidden">
-                    <NuxtLink :to="`/category/${crimecontent?.category?.cat_slug}/${crimecontent?.content_id}`">
+                    <NuxtLink :to="`/category/${crimecontent?.cat_slug}/${crimecontent?.content_id}`">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${crimecontent?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
                     </NuxtLink>
                 </div>
                 <div class=" col-span-7">
-                    <NuxtLink :to="`/category/${crimecontent?.category?.cat_slug}/${crimecontent?.content_id}`">
+                    <NuxtLink :to="`/category/${crimecontent?.cat_slug}/${crimecontent?.content_id}`">
                         <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
                                         crimecontent?.content_heading }}</h4>
                     </NuxtLink>
@@ -36,7 +36,7 @@
 
 // ======== Crime Content =============== //
 const crimecontents = useState(() => [])
-const { data: crmct } = await useFetch("/api/home/crimecontent", {
+const { data: crmct } = await useFetch("/api/prismaapi/home/crime", {
     method: 'GET'
 })
 crimecontents.value = crmct

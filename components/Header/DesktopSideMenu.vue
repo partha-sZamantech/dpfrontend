@@ -8,6 +8,7 @@
         </div>
         <div class="overflow-y-auto pb-16">
             <div class="desktopSideMenus  flex flex-col  px-7 py-5 text-[1rem]">
+                <NuxtLink class="py-2 border-b" to="/collection/latest">সর্বশেষ</NuxtLink>
                 <NuxtLink v-for="(cat, cindex) in allCategory" :key="cindex" :to="`/${cat?.cat_slug}`" class="py-2 border-b">{{ cat?.cat_name_bn }}</NuxtLink>
            
                 <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>

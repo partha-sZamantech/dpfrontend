@@ -1,5 +1,5 @@
 <template>
-    <div class="home-special-article-category ">
+    <div v-if="specialArticleContents" class="home-special-article-category ">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
             <NuxtLink :to="`/${specialArticleContents[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
@@ -36,7 +36,7 @@ const siteurl = siteUrlState()
 
 // ======== Special Article Content =============== //
 const specialArticleContents = useState(() => [])
-const { data: hmspecialrticle } = await useFetch("/api/home/specialarticle", {
+const { data: hmspecialrticle } = await useFetch("/api/prismaapi/home/specialarticle", {
     method: 'GET'
 })
 specialArticleContents.value = hmspecialrticle

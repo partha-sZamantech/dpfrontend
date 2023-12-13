@@ -151,7 +151,10 @@ onMounted(() => {
 // ==================== All Category ====================
 const catConfig = useRuntimeConfig()
 const allCategory = allCategoryState()
-const {data:cats} = await useFetch(`${catConfig.public.apiUrl}/api/allcat`,{
+// const {data:cats} = await useFetch(`${catConfig.public.apiUrl}/api/allcat`,{
+//     method: 'GET'
+// })
+const {data:cats} = await useFetch(`/api/prismaapi/header/allcategory`,{
     method: 'GET'
 })
 allCategory.value = cats

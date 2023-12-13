@@ -1,14 +1,14 @@
 <template>
-    <div class="home-opinion-category ">
+    <div v-if="opinionContents" class="home-opinion-category ">
         <div class="category-header border-b-4 border-b-[#3375af] my-3">
-            <NuxtLink :to="`/${opinionContents[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
+            <NuxtLink :to="`/${opinionContents[0]?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
                 <h2 class="text-[#3375af] text-[18px] font-semibold">মতামত</h2>
             </NuxtLink>
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Opinion Feature Content -->
-            <NuxtLink :to="`/category/${opinionContents[0]?.category?.cat_slug}/${opinionContents[0]?.content_id}`" class="flex flex-col gap-2 group">
+            <NuxtLink :to="`/category/${opinionContents[0]?.cat_slug}/${opinionContents[0]?.content_id}`" class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${opinionContents[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -20,7 +20,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`/category/${opinionContent?.category?.cat_slug}/${opinionContent?.content_id}`" class=" border-b py-3" v-for="opinionContent in opinionContents.slice(1, 7)" :key="opinionContent.content_id">
+                <NuxtLink :to="`/category/${opinionContent?.cat_slug}/${opinionContent?.content_id}`" class=" border-b py-3" v-for="opinionContent in opinionContents.slice(1, 7)" :key="opinionContent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ opinionContent?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->
@@ -37,7 +37,7 @@ const siteurl = siteUrlState()
 
 // ======== Opinion Content =============== //
 const opinionContents = useState(() => [])
-const { data: hmOpinion } = await useFetch("/api/home/opinioncontent", {
+const { data: hmOpinion } = await useFetch("/api/prismaapi/home/opinion", {
     method: 'GET'
 })
 opinionContents.value = hmOpinion

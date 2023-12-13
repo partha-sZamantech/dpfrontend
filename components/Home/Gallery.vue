@@ -5,6 +5,7 @@
                 <NuxtLink to="/photo" class="flex gap-3 items-center">
                     <span class="w-4 h-4 bg-white"></span>
                     <h2 class="text-white text-[26px] font-semibold">ফটো গ্যালারি</h2>
+                   
                 </NuxtLink>
             </div>
         </div>
@@ -37,6 +38,7 @@
                             <b><p class="img-title text-white group-hover:text-[#ff0000] text-[19px]">{{ gallerContent.album_name }}</p></b>
                         </div>
                     </NuxtLink>
+                  
                 </div>
             </div>
             <!-- Looping -->
@@ -48,6 +50,7 @@
 </template>
 
 <script setup>
+
 const img = useImage()
 const siteurl = siteUrlState()
 
@@ -56,8 +59,16 @@ const gallerContents = useState(() => [])
 const { data: hmgallery } = await useFetch("/api/home/homegallery", {
     method: 'GET'
 })
+// const { data: okss } = await useFetch("/api/prismaapi/home/gallery", {
+//     method: 'GET'
+// })
 gallerContents.value = hmgallery
+
+
 // ======== Gallery Content =============== //
+
+
+
 </script>
 
 <style scoped>
