@@ -18,14 +18,14 @@
 
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
-              
+
                 <div class="flex gap-1 justify-start items-center">
                     <NuxtLink :to="`/collection/latest`" class="text-[#3375af] font-semibold">
                         <!-- {{ detailsContent?.category?.cat_name_bn }} -->
                         <h1 class="text-xl md:text-3xl">সর্বশেষ খবর</h1>
                     </NuxtLink>
                 </div>
-               
+
             </div>
             <!--/ Breadcrump Section -->
 
@@ -36,7 +36,7 @@
                         <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">
                             <div class="lead-post md:h-[328px] group overflow-hidden">
                                 <NuxtLink
-                                    :to="`/category/${latestPosts[0]?.category?.cat_slug}/${latestPosts[0]?.content_id}`"
+                                    :to="`/category/${latestPosts[0]?.cat_slug}/${latestPosts[0]?.content_id}`"
                                     class="relative">
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${latestPosts[0]?.img_bg_path}`"
@@ -52,8 +52,7 @@
                         </div>
                         <div v-if="latestPosts[1]"
                             class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
-                            <NuxtLink
-                                :to="`/category/${latestPosts[1]?.category?.cat_slug}/${latestPosts[1]?.content_id}`"
+                            <NuxtLink :to="`/category/${latestPosts[1]?.cat_slug}/${latestPosts[1]?.content_id}`"
                                 class="categorypost-2 group">
                                 <div class="cat-feature-image overflow-hidden">
                                     <nuxt-img
@@ -80,12 +79,10 @@
                     <!--/ Category Lead Section -->
                     <!-- Category Bottom Lead -->
                     <div v-if="latestPosts[2]" class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
-                        <NuxtLink
-                            :to="`/category/${latestPosts[2]?.category?.cat_slug}/${latestPosts[2]?.content_id}`"
+                        <NuxtLink :to="`/category/${latestPosts[2]?.cat_slug}/${latestPosts[2]?.content_id}`"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img
-                                    :src="`${siteurl.site_url}/media/content/images/${latestPosts[2]?.img_bg_path}`"
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPosts[2]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
@@ -104,11 +101,10 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="latestPosts[3]"
-                            :to="`/category/${latestPosts[3]?.category?.cat_slug}/${latestPosts[3]?.content_id}`"
+                            :to="`/category/${latestPosts[3]?.cat_slug}/${latestPosts[3]?.content_id}`"
                             class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img
-                                    :src="`${siteurl.site_url}/media/content/images/${latestPosts[3]?.img_bg_path}`"
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPosts[3]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
@@ -127,11 +123,10 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="latestPosts[4]"
-                            :to="`/category/${latestPosts[4]?.category?.cat_slug}/${latestPosts[4]?.content_id}`"
+                            :to="`/category/${latestPosts[4]?.cat_slug}/${latestPosts[4]?.content_id}`"
                             class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img
-                                    :src="`${siteurl.site_url}/media/content/images/${latestPosts[4]?.img_bg_path}`"
+                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPosts[4]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
@@ -168,7 +163,7 @@
 
                             <div class="cat-post-item py-4 border-b" v-for="(latestPost, cpInx) in latestPostContentExcept"
                                 :key="cpInx">
-                                <NuxtLink :to="`/category/${latestPost?.category?.cat_slug}/${latestPost?.content_id}`"
+                                <NuxtLink :to="`/category/${latestPost?.cat_slug}/${latestPost?.content_id}`"
                                     class=" grid grid-cols-12 gap-3 group">
                                     <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
                                         latestPost?.content_heading }}</h3>
@@ -186,7 +181,8 @@
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
-                                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPost?.img_bg_path}`"
+                                        <nuxt-img
+                                            :src="`${siteurl.site_url}/media/content/images/${latestPost?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     </div>
@@ -219,7 +215,7 @@ const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long
 // const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
 const postCreatedDate = (date) => {
     // If date value has
-    if(date){
+    if (date) {
         return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
     }
 }
@@ -240,7 +236,13 @@ const stickyScroll = computed(() =>
 const latestPosts = useState(() => [])
 const latestPostContentExcept = useState(() => [])
 const take = ref(15)
-const { data: lcpt } = await useFetch('/api/collection/latestpost', {
+// const { data: lcpt } = await useFetch('/api/collection/latestpost', {
+//     method: "POST",
+//     body: {
+//         take: take.value
+//     }
+// })
+const { data: lcpt } = await useFetch('/api/prismaapi/collection/latestpost', {
     method: "POST",
     body: {
         take: take.value
@@ -257,7 +259,13 @@ latestPostContentExcept.value = lcpt.value.slice(5, take.value)
 //================ Load More Latest Post Content Button =================//
 const loadMoreButtonHandler = async () => {
     take.value += 10
-    const { data: loadLPC } = await useFetch('/api/collection/latestpost', {
+    // const { data: loadLPC } = await useFetch('/api/collection/latestpost', {
+    //     method: "POST",
+    //     body: {
+    //         take: take.value
+    //     }
+    // })
+    const { data: loadLPC } = await useFetch('/api/prismaapi/collection/latestpost', {
         method: "POST",
         body: {
             take: take.value
