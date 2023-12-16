@@ -2,7 +2,7 @@
     <div class="category-page">
 
         <Head>
-            <Title>{{ subcategory.subcat_name_bn }}</Title>
+            <Title>{{ category.subcat_name_bn }}</Title>
         </Head>
         <!-- Space For Ads -->
         <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
@@ -28,11 +28,11 @@
                 <div class="flex flex-col gap-4">
                     <NuxtLink :to="`/${category?.cat_slug}/${subcat_slug}`" class="text-[#3375af] font-semibold">
                         <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                        <h1 class="text-xl md:text-3xl">{{ subcategory.subcat_name_bn }}</h1>
+                        <h1 class="text-xl md:text-3xl">{{ category.subcat_name_bn }}</h1>
                     </NuxtLink>
-                    <div class="subcategory flex flex-wrap gap-3" v-if="category?.subcat?.length > 0">
+                    <div class="subcategory flex flex-wrap gap-3" v-if="subcategory?.length > 0">
                         <!-- <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" /> -->
-                        <div class="subcategoryLink" v-for="subcat in category?.subcat">
+                        <div class="subcategoryLink" v-for="subcat in subcategory">
                             <NuxtLink :to="`/${category?.cat_slug}/${subcat?.subcat_slug}`"
                                 :class="`${subcategory?.subcat_name_bn === subcat?.subcat_name_bn && 'text-[#3375af]'} text-[#121212] font-[600] text-sm md:text-[16px] hover:text-[#3375af]`">
                                 {{ subcat?.subcat_name_bn }}
@@ -49,7 +49,7 @@
                         <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">
                             <div class="lead-post md:h-[328px] group overflow-hidden">
                                 <NuxtLink
-                                    :to="`/category/${subcategoryContents[0]?.category?.cat_slug}/${subcategoryContents[0]?.content_id}`"
+                                    :to="`/category/${subcategoryContents[0]?.cat_slug}/${subcategoryContents[0]?.content_id}`"
                                     class="relative">
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${subcategoryContents[0]?.img_bg_path}`"
@@ -66,7 +66,7 @@
                         <div v-if="subcategoryContents[1]"
                             class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
                             <NuxtLink
-                                :to="`/category/${subcategoryContents[1]?.category?.cat_slug}/${subcategoryContents[1]?.content_id}`"
+                                :to="`/category/${subcategoryContents[1]?.cat_slug}/${subcategoryContents[1]?.content_id}`"
                                 class="categorypost-2 group">
                                 <div class="cat-feature-image overflow-hidden">
                                     <nuxt-img
@@ -95,7 +95,7 @@
                     <!-- Category Bottom Lead -->
                     <div class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
                         <NuxtLink v-if="subcategoryContents[2]"
-                            :to="`/category/${subcategoryContents[2]?.category?.cat_slug}/${subcategoryContents[2]?.content_id}`"
+                            :to="`/category/${subcategoryContents[2]?.cat_slug}/${subcategoryContents[2]?.content_id}`"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
@@ -118,7 +118,7 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="subcategoryContents[3]"
-                            :to="`/category/${subcategoryContents[3]?.category?.cat_slug}/${subcategoryContents[3]?.content_id}`"
+                            :to="`/category/${subcategoryContents[3]?.cat_slug}/${subcategoryContents[3]?.content_id}`"
                             class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
@@ -141,7 +141,7 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="subcategoryContents[4]"
-                            :to="`/category/${subcategoryContents[4]?.category?.cat_slug}/${subcategoryContents[4]?.content_id}`"
+                            :to="`/category/${subcategoryContents[4]?.cat_slug}/${subcategoryContents[4]?.content_id}`"
                             class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
@@ -182,7 +182,7 @@
 
                             <div class="cat-post-item py-4 border-b" v-for="(catPost, cpInx) in subcategoryContentExcept"
                                 :key="cpInx">
-                                <NuxtLink :to="`/category/${catPost?.category?.cat_slug}/${catPost?.content_id}`"
+                                <NuxtLink :to="`/category/${catPost?.cat_slug}/${catPost?.content_id}`"
                                     class=" grid grid-cols-12 gap-3 group">
                                     <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
                                         catPost?.content_heading }}</h3>
@@ -258,7 +258,15 @@ const subcategoryContentExcept = useState(() => [])
 const category = ref(null)
 const subcategory = ref(null)
 const take = ref(15)
-const { data: subctcont } = await useFetch('/api/subcatcontent/subcatcontent', {
+// const { data: subctcont } = await useFetch('/api/subcatcontent/subcatcontent', {
+//     method: "POST",
+//     body: {
+//         cat_slug: cat_slug,
+//         subcat_slug: subcat_slug,
+//         take: take.value
+//     }
+// })
+const { data: subctcont } = await useFetch('/api/prismaapi/subcategory/subcategorycontent', {
     method: "POST",
     body: {
         cat_slug: cat_slug,
@@ -266,9 +274,10 @@ const { data: subctcont } = await useFetch('/api/subcatcontent/subcatcontent', {
         take: take.value
     }
 })
+
 category.value = subctcont?.value?.category
 subcategoryContents.value = subctcont?.value?.contents
-subcategory.value = subctcont?.value?.subcategory
+subcategory.value = subctcont?.value?.subcat
 subcategoryContentExcept.value = subctcont?.value?.contents.slice(5, take.value)
 // console.log(subcategoryContents.value)
 // ================== Subcategory Content ============= //
@@ -276,7 +285,15 @@ subcategoryContentExcept.value = subctcont?.value?.contents.slice(5, take.value)
 //================ Load More Sub Category Content Button =================//
 const loadMoreButtonHandler = async () => {
     take.value += 10
-    const { data: loadsubCtP } = await useFetch('/api/subcatcontent/subcatcontent', {
+    // const { data: loadsubCtP } = await useFetch('/api/subcatcontent/subcatcontent', {
+    //     method: "POST",
+    //     body: {
+    //         cat_slug: cat_slug,
+    //         subcat_slug: subcat_slug,
+    //         take: take.value
+    //     }
+    // })
+    const { data: loadsubCtP } = await useFetch('/api/prismaapi/subcategory/subcategorycontent', {
         method: "POST",
         body: {
             cat_slug: cat_slug,
