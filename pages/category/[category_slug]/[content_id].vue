@@ -277,7 +277,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                         <!-- Social Share -->
                         <div class="social-item flex gap-2 items-start justify-center print:hidden">
-                            <a :href="`https://www.facebook.com/sharer.php?u=${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`" target="_blank">
+                            <a :href="`https://www.facebook.com/sharer.php?u=${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
+                                target="_blank">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg" height="28"
                                     width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
                                     <path fill="#1877F2"
@@ -288,7 +289,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     </path>
                                 </svg>
                             </a>
-                            <a :href="`https://twitter.com/intent/tweet?url=${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`" target="_blank">
+                            <a :href="`https://twitter.com/intent/tweet?url=${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
+                                target="_blank">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" height="28"
                                     width="28">
@@ -445,7 +447,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
                         <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${latestPostC?.category?.cat_slug}/${latestPostC?.content_id}`"
+                        <NuxtLink :to="`/category/${latestPostC?.cat_slug}/${latestPostC?.content_id}`"
                             class="flex flex-col gap-2 group" v-for="latestPostC in latestPostsDpage"
                             :key="latestPostC.content_id">
                             <div class="feature_image_readmore overflow-hidden">
@@ -529,13 +531,25 @@ twitterImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsConte
 
 // ============ Latest 20 Posts ===============//
 const latestPostsDpage = useState(() => [])
-latestPostsDpage.value = pdailts?.value?.allLatestPost
+const { data: allLatestPost } = await useFetch('/api/prismaapi/detail/alllatestpost', {
+    method: 'GET'
+})
+latestPostsDpage.value = allLatestPost.value
+// latestPostsDpage.value = pdailts?.value?.allLatestPost
 // ============ Latest 20 Posts ===============//
 
-// ========== First More Right Side Content ======= //
+// ========== First Detail Right Side Category Content ======= //
 const firstMoreContents = useState(() => [])
-firstMoreContents.value = pdailts?.value?.moreContents
-// ========== First More Right Side Content ======= //
+const { data: ftrightctcontent } = await useFetch('/api/prismaapi/detail/firstrightcatcontent', {
+    method: 'POST',
+    body: {
+        cat_id: detailsContent?.value?.cat_id,
+        content_id: content_id
+    }
+})
+firstMoreContents.value = ftrightctcontent.value
+// firstMoreContents.value = pdailts?.value?.moreContents
+// ========== First Detail Right Side Category Content ======= //
 // ========== First Details Content Author ======= //
 // const authors = useState(() => [])
 // authors.value = pdailts?.value?.authors
@@ -548,7 +562,15 @@ moreDetailsContents.value = pdailts?.value?.moreDetailContent
 
 //===== First Detail Inside More News =====//
 const firstInsideMoreNews = useState(() => [])
-firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
+const { data: dinsidemorenews } = await useFetch("/api/prismaapi/detail/getinsidemorenews", {
+    method: "POST",
+    body: {
+        cat_id: detailsContent?.value?.cat_id,
+        content_id: detailsContent?.value?.content_id
+    }
+})
+firstInsideMoreNews.value = dinsidemorenews?.value
+// firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
 // console.log(firstInsideMoreNews.value)
 
 //===== First Detail Inside More News =====//
@@ -838,7 +860,7 @@ onMounted(() => {
     descParam.forEach((item, i) => {
 
         if (i > 0 && i % 3 === 0 && firstInsideMoreNews.value[itemIncrement]) {
-            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews.value[itemIncrement].category.cat_slug, firstInsideMoreNews.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
+            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews.value[itemIncrement].cat_slug, firstInsideMoreNews.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
             itemIncrement++;
         }
     })
