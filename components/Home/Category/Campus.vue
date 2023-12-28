@@ -36,11 +36,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Career Content =============== //
 const campuses = useState(() => [])
 const { data: dcampus } = await useFetch("/api/prismaapi/home/campus", {
     method: 'GET',
+
+    cache: 'force-cache',
+
 })
 campuses.value = dcampus
 // ======== Career Content =============== //

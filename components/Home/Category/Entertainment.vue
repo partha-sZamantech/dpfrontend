@@ -53,11 +53,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Entertainment Content =============== //
 const entertainments = useState(() => [])
 const { data: entertainc } = await useFetch('/api/prismaapi/home/entertainment', {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+
 })
 entertainments.value = entertainc
 // ======== Entertainment Content =============== //

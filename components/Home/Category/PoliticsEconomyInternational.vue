@@ -114,11 +114,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Politics Content =============== //
 const politics = useState(() => [])
 const { data: homePoliticsss } = await useFetch("/api/prismaapi/home/politics", {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+ 
 })
 politics.value = homePoliticsss.value
 // ======== Politics Content =============== //
@@ -126,7 +129,10 @@ politics.value = homePoliticsss.value
 // ======== Economy Content =============== //
 const economycontent = useState(() => [])
 const { data: econssssssss } = await useFetch("/api/prismaapi/home/economy", {
-    method: 'GET'
+    method: 'GET',
+ 
+    cache: 'force-cache',
+
 })
 economycontent.value = econssssssss.value
 // ======== Economy Content =============== //
@@ -134,7 +140,9 @@ economycontent.value = econssssssss.value
 // ======== International Content =============== //
 const internationalcontent = useState(() => [])
 const { data: intntnalsssss } = await useFetch("/api/prismaapi/home/international", {
-    method: 'GET'
+    method: 'GET',
+    cache: 'force-cache',
+
 })
 internationalcontent.value = intntnalsssss.value
 // ======== International Content =============== //

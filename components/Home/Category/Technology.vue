@@ -57,11 +57,13 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Technology Content =============== //
 const technologycontents = useState(() => [])
 const { data: technologyc } = await useFetch("/api/prismaapi/home/technology", {
-    method: 'GET'
+    method: 'GET',
+    cache: 'force-cache',
+    
 })
 technologycontents.value = technologyc
 // ======== Technology Content =============== //

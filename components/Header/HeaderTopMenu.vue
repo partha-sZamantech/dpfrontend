@@ -3,7 +3,8 @@
         :class="`${scrollDown ? 'fixed top-0 right-0 left-0 shadow-lg' : ''} hidden md:block shadow-lg shadow-gray-300 duration-300 bg-[#3375af]`">
         <ul class="flex gap-0 justify-center text-[18px] text-white">
             <li>
-                <NuxtLink to="/" class=" py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
+                <NuxtLink to="/"
+                    class=" py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
                     <Icon name="material-symbols:house-rounded" class="text-xl" />
                 </NuxtLink>
             </li>
@@ -17,7 +18,12 @@
                     class="py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
                     {{ category.cat_name_bn }}</NuxtLink>
             </li>
-           
+            <li>
+                <NuxtLink :to="`/video`"
+                    class="py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
+                    ভিজ্যুয়াল মিডিয়া</NuxtLink>
+            </li>
+
         </ul>
     </div>
 </template>
@@ -42,4 +48,5 @@ headCategory.value = headCat.value
 .router-link-active {
     background-color: #284f81;
     border-bottom: 2px solid #fff;
-}</style>
+}
+</style>

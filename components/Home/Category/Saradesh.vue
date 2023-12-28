@@ -31,10 +31,13 @@
 
 <script setup>
 const img = useImage()
+const nuxtApp = useNuxtApp()
 const siteUrl = siteUrlState()
 const saradeshcontents = useState(() => [])
 const { data: hsradesh } = await useFetch('/api/prismaapi/home/saradesh', {
-    method: 'GET'
+    method: 'GET',
+    cache: 'force-cache',
+
 })
 saradeshcontents.value = hsradesh
 </script>

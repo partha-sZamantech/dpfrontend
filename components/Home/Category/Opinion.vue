@@ -34,11 +34,13 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Opinion Content =============== //
 const opinionContents = useState(() => [])
 const { data: hmOpinion } = await useFetch("/api/prismaapi/home/opinion", {
-    method: 'GET'
+    method: 'GET',
+    cache: 'force-cache',
+ 
 })
 opinionContents.value = hmOpinion
 // ======== Opinion Content =============== //

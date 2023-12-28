@@ -614,3 +614,16 @@ CREATE TABLE `users` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+-- CreateTable
+CREATE TABLE `p_galleries` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `album_id` INTEGER NOT NULL,
+    `photo` TEXT NOT NULL,
+    `photo_capture` TEXT NULL,
+    `feature_image` TEXT NULL,
+    `created_at` TIMESTAMP(0) NULL,
+    `updated_at` TIMESTAMP(0) NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+

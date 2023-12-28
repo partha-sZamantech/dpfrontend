@@ -57,13 +57,16 @@
 
 <script setup>
 const img = useImage()
-
+const nuxtApp = useNuxtApp()
 const siteurl = siteUrlState()
 
 // ======== Law Court Content =============== //
 const lawcourtContents = useState(() => [])
 const { data: lwcourt } = await useFetch("/api/prismaapi/home/lawcourt", {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+
 })
 lawcourtContents.value = lwcourt
 // ======== Law Court Content =============== //

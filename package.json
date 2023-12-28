@@ -26,6 +26,7 @@
     "@nuxt/image": "^1.0.0-rc.2",
     "@prisma/client": "^5.7.0",
     "moment": "^2.29.4",
-    "vue-marquee-text-component": "^2.0.1"
+    "vue-marquee-text-component": "^2.0.1",
+    "watermark-js-plus": "^1.3.30"
   }
 }

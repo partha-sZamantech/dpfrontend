@@ -231,6 +231,8 @@
 </template>
 
 <script setup>
+const nuxtApp = useNuxtApp()
+
 const img = useImage()
 const siteurl = siteUrlState()
 // Sticky Status
@@ -272,7 +274,34 @@ const { data: subctcont } = await useFetch('/api/prismaapi/subcategory/subcatego
         cat_slug: cat_slug,
         subcat_slug: subcat_slug,
         take: take.value
-    }
+    },
+    transform(input) {
+        return {
+            ...input,
+            fetchedAt: new Date()
+        }
+    },
+    key: `subcat-${subcat_slug}`,
+    cache: 'force-cache',
+    getCachedData(subcat) {
+        const data = nuxtApp.payload.data[subcat] || nuxtApp.static.data[subcat]
+        // If data is not fetched yet
+        if (!data) {
+            // Fetch the first time
+            return
+        }
+
+        // Is the data too old?
+        const expirationDate = new Date(data.fetchedAt)
+        expirationDate.setTime(expirationDate.getTime() + 10 * 1000)
+        const isExpired = expirationDate.getTime() < Date.now()
+        if (isExpired) {
+            // Refetch the data
+            return
+        }
+
+        return data
+    },
 })
 
 category.value = subctcont?.value?.category
@@ -299,7 +328,8 @@ const loadMoreButtonHandler = async () => {
             cat_slug: cat_slug,
             subcat_slug: subcat_slug,
             take: take.value
-        }
+        },
+
     })
     subcategoryContentExcept.value = loadsubCtP.value.contents.slice(5, take.value)
 

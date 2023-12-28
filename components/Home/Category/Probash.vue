@@ -37,11 +37,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Probash Content =============== //
 const probashContents = useState(() => [])
 const { data: hprobash } = await useFetch("/api/prismaapi/home/probash", {
-    method: 'GET'
+    method: 'GET',
+  
+    cache: 'force-cache',
+ 
 })
 probashContents.value = hprobash
 // ======== Probash Content =============== //

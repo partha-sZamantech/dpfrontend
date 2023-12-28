@@ -37,11 +37,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Children Content =============== //
 const childrenContents = useState(() => [])
 const { data: hchildrendddddddd } = await useFetch("/api/prismaapi/home/child", {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+
 })
 childrenContents.value = hchildrendddddddd.value
 // ======== Children Content =============== //

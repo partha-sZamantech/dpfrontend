@@ -55,10 +55,12 @@
 
 <script setup>
 const img = useImage()
+const nuxtApp = useNuxtApp()
 const siteUrl = siteUrlState()
 const sportscontent = useState(() => [])
 const { data: hsport } = await useFetch('/api/prismaapi/home/sports', {
-    method: 'GET'
+    method: 'GET',
+    cache: 'force-cache',
 })
 sportscontent.value = hsport
 </script>

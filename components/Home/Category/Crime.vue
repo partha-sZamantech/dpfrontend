@@ -33,11 +33,14 @@
 <script setup>
     const img = useImage()
     const siteurl = siteUrlState()
-
+    const nuxtApp = useNuxtApp()
 // ======== Crime Content =============== //
 const crimecontents = useState(() => [])
 const { data: crmct } = await useFetch("/api/prismaapi/home/crime", {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+
 })
 crimecontents.value = crmct
 // ======== Crime Content =============== //

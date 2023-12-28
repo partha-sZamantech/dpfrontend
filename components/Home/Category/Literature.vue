@@ -54,11 +54,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Literature Content =============== //
 const literatureContents = useState(() => [])
 const { data: hmliterature } = await useFetch("/api/prismaapi/home/literature", {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+
 })
 literatureContents.value = hmliterature
 // ======== Literature Content =============== //

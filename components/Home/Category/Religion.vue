@@ -34,11 +34,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Religion Content =============== //
 const religioncontents = useState(() => [])
 const { data: hreligion } = await useFetch("/api/prismaapi/home/religion", {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+
 })
 religioncontents.value = hreligion
 // ======== Religion Content =============== //

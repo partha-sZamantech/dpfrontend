@@ -33,11 +33,13 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Special Article Content =============== //
 const specialArticleContents = useState(() => [])
 const { data: hmspecialrticle } = await useFetch("/api/prismaapi/home/specialarticle", {
-    method: 'GET'
+    method: 'GET',
+    cache: 'force-cache',
+   
 })
 specialArticleContents.value = hmspecialrticle
 // ======== Special Article Content =============== //

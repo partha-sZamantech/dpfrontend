@@ -114,7 +114,8 @@ const { data: sptpvdo } = await useFetch('/api/prismaapi/home/videofeature', {
     method: "POST",
     body: {
         take:5
-    }
+    },
+    cache: 'force-cache'
 })
 specialVideoTop.value = sptpvdo?.value
 // =============== Special Top Video Fetching ====================//

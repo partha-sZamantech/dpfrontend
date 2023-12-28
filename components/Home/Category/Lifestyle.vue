@@ -32,11 +32,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Life Style Content =============== //
 const lifestyles = useState(() => [])
 const { data: lifesc } = await useFetch("/api/prismaapi/home/lifestyle", {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+
 })
 lifestyles.value = lifesc
 // ======== Life Style Content =============== //

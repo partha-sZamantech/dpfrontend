@@ -37,11 +37,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Motivation Content =============== //
 const motivationContents = useState(() => [])
 const { data: hmotivation } = await useFetch("/api/prismaapi/home/motivation", {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+
 })
 motivationContents.value = hmotivation
 // ======== Motivation Content =============== //

@@ -263,7 +263,7 @@
 </template>
 
 <script setup>
-
+const nuxtApp = useNuxtApp()
 
 // import moment from 'moment'
 // moment.locale('bn');
@@ -313,12 +313,42 @@ const { data: catcont } = await useFetch('/api/prismaapi/category/categoryconten
     body: {
         cat_slug: cat_slug,
         take: take.value
-    }
+    },
+
+    transform(input) {
+        return {
+            ...input,
+            fetchedAt: new Date()
+        }
+    },
+    key: `cat-${cat_slug}`,
+    cache: 'force-cache',
+    getCachedData(keys) {
+        const data = nuxtApp.payload.data[keys] || nuxtApp.static.data[keys]
+        // If data is not fetched yet
+        if (!data) {
+            // Fetch the first time
+            return
+        }
+
+        // Is the data too old?
+        const expirationDate = new Date(data.fetchedAt)
+
+        // expirationDate.getTime() + [second amount] * 1000
+        expirationDate.setTime(expirationDate.getTime() + 30 * 1000)
+        const isExpired = expirationDate.getTime() < Date.now()
+        if (isExpired) {
+            // Refetch the data
+            return
+        }
+
+        return data
+    },
 })
-// console.log(catssssscont.value)
+
 // Category Content Assign
 categoryContent.value = catcont?.value?.contents
-categoryContentExcept.value = catcont?.value?.contents.slice(5, take.value)
+categoryContentExcept.value = catcont?.value?.contents?.slice(5, take.value)
 // Category Assign
 category.value = catcont?.value?.category
 subcategory.value = catcont?.value?.subcat
@@ -342,11 +372,13 @@ const loadMoreButtonHandler = async () => {
         body: {
             cat_slug: cat_slug,
             take: take.value
-        }
+        },
+        cache: 'force-cache'
     })
-    categoryContentExcept.value = loadCtP?.value?.contents.slice(5, take.value)
+    categoryContentExcept.value = loadCtP?.value?.contents?.slice(5, take.value)
 
 }
+
 //================ Load More Category Content Button =================//
 
 // let date = new Date(categoryContent.value[0].created_at).toLocaleDateString("bn")

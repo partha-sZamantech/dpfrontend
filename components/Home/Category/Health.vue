@@ -34,11 +34,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Health Content =============== //
 const healthcontents = useState(() => [])
 const { data: chealth } = await useFetch("/api/prismaapi/home/health", {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+
 })
 healthcontents.value = chealth
 // ======== Health Content =============== //

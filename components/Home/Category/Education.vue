@@ -36,11 +36,14 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-
+const nuxtApp = useNuxtApp()
 // ======== Arts Content =============== //
 const educationcontents = useState(() => [])
 const { data: heducation } = await useFetch("/api/prismaapi/home/education", {
-    method: 'GET'
+    method: 'GET',
+
+    cache: 'force-cache',
+
 })
 educationcontents.value = heducation
 // ======== Arts Content =============== //

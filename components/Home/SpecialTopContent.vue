@@ -1,5 +1,5 @@
 <template>
-    <div class="specialContent py-3" >
+    <div class="specialContent py-3">
         <div class=" grid grid-cols-12 gap-5">
             <div class="col-span-12 md:col-span-7">
                 <div class="grid grid-cols-12 gap-4">
@@ -57,6 +57,7 @@
 </template>
 
 <script setup>
+const nuxtApp = useNuxtApp()
 
 const img = useImage()
 const siteurl = siteUrlState()
@@ -67,17 +68,20 @@ const specialTopContents = specialTopContentState()
 //     method: 'GET'
 // })
 const { data: spTopCon } = await useFetch('/api/prismaapi/home/specialtopcontent', {
-    method: "GET"
+    method: "GET",
+    cache: 'force-cache'
 })
 // const { data: spTopCon } = await useFetch("/api/home/specialtopcontent", {
 //     method: 'GET'
 // })
-specialTopContents.value = spTopCon
+specialTopContents.value = spTopCon.value
 // =============== Special Content Fetching ====================//
 
 
 </script>
 
-<style scoped>.specialMiddleTop:first-child {
+<style scoped>
+.specialMiddleTop:first-child {
     padding-top: 0;
-}</style>
+}
+</style>

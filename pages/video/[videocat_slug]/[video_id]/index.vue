@@ -22,9 +22,9 @@
         <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
         <div class="breadcrump border-b pb-1 mb-5">
             <div class="flex gap-1 justify-start items-center">
-                <NuxtLink :to="`/video/${videoDetail?.category?.slug}`" class="text-[#3375af] font-semibold">
+                <NuxtLink :to="`/video/${videoDetail?.cat_slug}`" class="text-[#3375af] font-semibold">
                     <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                    <h1 class="text-xl md:text-3xl">{{ videoDetail?.category?.name_bn }}</h1>
+                    <h1 class="text-xl md:text-3xl">{{ videoDetail?.cat_name_bn }}</h1>
                 </NuxtLink>
             </div>
         </div>
@@ -37,9 +37,17 @@
                         <iframe width="100%" class=" md:h-[530px] h-[215px]"
                             :src="`https://www.youtube.com/embed/${videoDetail?.code}?rel=0&enablejsapi=1&autoplay=1&mute=1&showinfo=1&controls=1`"
                             frameborder="0" allowfullscreen></iframe>
-                        </div>
+                    </div>
+                    <div v-else-if="videoDetail?.type == 2" class="play-video">
+                        <div class="fb-video" :data-href="`https://www.facebook.com/watch/?v=${videoDetail?.code}`"
+                            data-width="auto" data-autoplay="true" data-show-captions="false"> </div>
+                    </div>
                 </div>
-
+                <div class="video-title pt-2">
+                    <h1 class="text-[18px] md:text-[28px]">{{ videoDetail?.title }}</h1>
+                    <small class="text-[#555555] text-[14px]">প্রকাশ: {{
+                        postCreatedDate(videoDetail?.created_at) }}</small>
+                </div>
             </div>
 
             <div class=" col-span-12 md:col-span-3">
@@ -51,15 +59,18 @@
                             <span class="w-3 h-3 bg-[#3375af]"></span>
                             <h3 class="text-[#3375af] text-[18px] font-[600]">আরও ভিডিও</h3>
                         </div>
-                        <div class="video-detail-page flex flex-col">
+                        <div class="video-detail-page flex flex-col" v-if="moreVideos?.length > 0">
                             <!-- Loop Item -->
-                            <NuxtLink :to="`dfgfdg`" class="grid grid-cols-12 gap-4 group border-b py-2 items-center">
+                            <NuxtLink v-for="(moreVideo, mvinx) in moreVideos" :key="mvinx"
+                                :to="`/video/${moreVideo?.cat_slug}/${moreVideo?.id}`"
+                                class="grid grid-cols-12 gap-4 group border-b py-2 items-center">
                                 <div class=" col-span-2">
                                     <Icon name="simple-icons:youtubemusic"
                                         class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
                                 </div>
-                                <div class=" col-span-6">
-                                    <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">dfgdfgd</h4>
+                                <div class=" col-span-10">
+                                    <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{ moreVideo?.title }}
+                                    </h4>
                                 </div>
                             </NuxtLink>
 
@@ -70,11 +81,8 @@
                 </div>
             </div>
 
-
-
         </div>
         <!--========== // First Details Content ============ -->
-
 
     </div>
 </template>
@@ -86,10 +94,22 @@ useHead({
             src: 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2',
             async: 'true',
             defer: 'true',
-            tagPosition: "head"
+            tagPosition: "bodyClose"
         }
     ]
 })
+
+// ================ Get Bangla Date ============== //
+const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
+// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+const postCreatedDate = (date) => {
+  // If date value has
+  if (date) {
+    return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+  }
+}
+// ================ Get Bangla Date ============== //
+
 // single Page sticky
 const singlePageSticky = singlePageStickyState()
 const siteurl = siteUrlState()
@@ -102,16 +122,23 @@ const videocat_slug = useRoute().params.videocat_slug
 
 const videoDetail = useState(() => "")
 const moreVideos = useState(() => [])
-const { data: vdtail } = await useFetch('/api/videos/videodetails', {
-    method: 'POST',
+// const { data: vdtail } = await useFetch('/api/videos/videodetails', {
+//     method: 'POST',
+//     body: {
+//         video_id: video_id,
+//         videocat_slug: videocat_slug
+//     }
+// })
+
+const { data: vdtail } = await useFetch(`/api/prismaapi/video/singlevideo`, {
+    method: "POST",
     body: {
-        video_id: video_id,
-        videocat_slug: videocat_slug
+        id: video_id
     }
+
 })
-videoDetail.value = vdtail?.value?.video
-moreVideos.value = vdtail?.value?.videos
-console.log(videoDetail.value)
+videoDetail.value = vdtail?.value?.currentVideo
+moreVideos.value = vdtail?.value?.getVideos
 
 </script>
 

@@ -142,7 +142,7 @@
         <!-- English Content Area -->
         <div class="english-content-except bg-[#fff4e6] my-6">
             <!-- English Component -->
-            <!-- <HomeEnglishContent /> -->
+            <HomeEnglishContent />
             <!-- English Component -->
         </div>
         <!-- English Content Area -->
@@ -244,7 +244,7 @@
                 </div>
                 <div class=" col-span-12 md:col-span-3">
                     <!-- Opinion Component -->
-                    <HomeCategoryOpinion />
+                    <!-- <HomeCategoryOpinion /> -->
                     <!-- Opinion Component -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">
@@ -263,7 +263,7 @@
         <!-- Gallery Content Area -->
         <div class="english-content-except bg-[#00427A] my-6 text-white">
             <!-- Gallery Component -->
-            <!-- <HomeGallery /> -->
+            <HomeGallery />
             <!-- Gallery Component -->
         </div>
         <!-- Gallery Content Area -->

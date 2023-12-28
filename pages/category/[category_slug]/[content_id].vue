@@ -169,7 +169,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 v-for="fmoreContent in firstMoreContents" :key="fmoreContent.content_id">
                                 <div class=" col-span-5 overflow-hidden">
                                     <NuxtLink
-                                        :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
+                                        :to="`/category/${fmoreContent?.cat_slug}/${fmoreContent?.content_id}`">
                                         <nuxt-img
                                             :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -178,7 +178,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 </div>
                                 <div class=" col-span-7">
                                     <NuxtLink
-                                        :to="`/category/${fmoreContent?.category?.cat_slug}/${fmoreContent?.content_id}`">
+                                        :to="`/category/${fmoreContent?.cat_slug}/${fmoreContent?.content_id}`">
                                         <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
                                             fmoreContent?.content_heading }}</h4>
                                     </NuxtLink>
@@ -205,6 +205,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
             </div>
             <!--:::::::: Detail Page After Ads :::::::::::-->
+
+
             <!-- Read more first content -->
             <div class="col-span-12" v-if="fRelatedContents?.length > 0">
                 <div class="read-more">
@@ -217,7 +219,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
                         <!-- Loop Item -->
                         <NuxtLink :to="`/category/${fRelatedContent?.category?.cat_slug}/${fRelatedContent?.content_id}`"
-                            class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents.slice(1, 5)"
+                            class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents"
                             :key="fRelatedContent.content_id">
                             <div class="feature_image_readmore overflow-hidden">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
@@ -233,6 +235,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 </div>
             </div>
             <!-- Read more first content -->
+
+
+            
             <!--:::::::: Detail Page Bottom Ads :::::::::::-->
             <div v-if="DetailBottomAds.status === 1"
                 class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
@@ -496,10 +501,17 @@ const content_id = useRoute().params.content_id
 // const postDetails = useState(() => [])
 
 
-const { data: pdailts } = await useFetch('/api/detailpage/detail', {
+// const { data: pdailts } = await useFetch('/api/detailpage/detail', {
+//     method: 'POST',
+//     body: {
+//         category_slug: category_slug,
+//         content_id: content_id
+//     }
+// })
+const { data: pdailts } = await useFetch('/api/prismaapi/detail/postdetail', {
     method: 'POST',
     body: {
-        category_slug: category_slug,
+        // category_slug: category_slug,
         content_id: content_id
     }
 })
@@ -507,6 +519,20 @@ const { data: pdailts } = await useFetch('/api/detailpage/detail', {
 const detailsContent = useState(() => [])
 detailsContent.value = pdailts?.value?.detailsContent
 // ========== First Details Content ======= // 
+
+
+// ============== First Related Content ================//
+const fRelatedContents = useState(() => [])
+// const { data: frcontent } = await useFetch('/api/detailpage/firstrelatedcontent', {
+//     method: "POST",
+//     body: {
+//         content_id: content_id
+//     }
+// })
+fRelatedContents.value = pdailts?.value?.firstRelatedContents
+
+// ============== First Related Content ================//
+
 
 // ================  OG - Open Graph ====================// 
 const ogUrl = ref(null);
@@ -554,11 +580,19 @@ firstMoreContents.value = ftrightctcontent.value
 // const authors = useState(() => [])
 // authors.value = pdailts?.value?.authors
 // ========== First Details Content Author ======= //
+
+
 // ========== More Details Contents ======= //
 const moreDetailsContents = useState(() => [])
+
+// console.log(dfsdsdfs.value)
+
 moreDetailsContents.value = pdailts?.value?.moreDetailContent
+
+// moreDetailsContents.value = pdailts?.value?.moreDetailContent
 // console.log(moreDetailsContents.value)
 // ========== More Details Contents ======= //
+
 
 //===== First Detail Inside More News =====//
 const firstInsideMoreNews = useState(() => [])
@@ -638,17 +672,7 @@ if (firstsplittag) {
 
 // ==================== First Details Tags ======================= //
 
-// ============== First Related Content ================//
-const fRelatedContents = useState(() => [])
-const { data: frcontent } = await useFetch('/api/detailpage/firstrelatedcontent', {
-    method: "POST",
-    body: {
-        content_id: content_id
-    }
-})
-fRelatedContents.value = frcontent
 
-// ============== First Related Content ================//
 
 // =============== Print Script ======================= //
 // const printArea = () => {
@@ -983,6 +1007,7 @@ const { data: detTpAds } = await useFetch('/api/adsmanagement/getads', {
         page: 4,
         position: 1
     }
+
 })
 DetailTopAds.value = detTpAds?.value
 //========== Detail Page Top Ads ==========//
