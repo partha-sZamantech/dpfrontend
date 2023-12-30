@@ -115,7 +115,14 @@ const author = ref(null)
 //Author Content State
 const authorContents = useState(() => [])
 const take = ref(10)
-const { data: authorcont } = await useFetch('/api/author/getauthorcontent', {
+// const { data: authorcont } = await useFetch('/api/author/getauthorcontent', {
+//   method: "POST",
+//   body: {
+//     author_slug: author_slug,
+//     take: take.value
+//   }
+// })
+const { data: authorcont } = await useFetch('/api/prismaapi/author/getauthorpost', {
   method: "POST",
   body: {
     author_slug: author_slug,
@@ -133,7 +140,7 @@ author.value = authorcont?.value?.author
 //================ Load More Author Content Button =================//
 const loadMoreButtonHandler = async () => {
   take.value += 10
-  const { data: authorMorecont } = await useFetch('/api/author/getauthorcontent', {
+  const { data: authorMorecont } = await useFetch('/api/prismaapi/author/getauthorpost', {
     method: "POST",
     body: {
       author_slug: author_slug,
