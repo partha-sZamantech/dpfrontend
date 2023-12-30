@@ -46,7 +46,7 @@
             <!--/ Breadcrump Section -->
 
             <div class="grid grid-cols-12 gap-8 md:gap-3">
-                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3" v-if="categoryContent?.length > 1">
+                <div class="col-span-12 md:col-span-9 md:border-r md:pr-3" v-if="categoryContent?.length > 0">
                     <!-- Category Lead Section -->
                     <div class="grid grid-cols-12 border-b border-b-[#dee2e6] pb-4">
                         <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">

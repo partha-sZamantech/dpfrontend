@@ -5,13 +5,13 @@
             <Title>{{ category.subcat_name_bn }}</Title>
         </Head>
         <!-- Space For Ads -->
-        <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
+        <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
             <div class="bg-[#f7f7f7]">
                 <a target="_blank" href="/">
                     <img class="mx-auto" src="/assets/img/bar-ads.gif" alt="">
                 </a>
             </div>
-        </div>
+        </div> -->
         <!-- Space For Ads -->
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
             <!-- Breadcrump Section -->
@@ -43,7 +43,7 @@
             </div>
             <!--/ Breadcrump Section -->
             <div class="grid grid-cols-12 gap-8 md:gap-3">
-                <div v-if="subcategoryContents[0]" class="col-span-12 md:col-span-9 md:border-r md:pr-3">
+                <div v-if="subcategoryContents?.length > 0" class="col-span-12 md:col-span-9 md:border-r md:pr-3">
                     <!-- Category Lead Section -->
                     <div class="grid grid-cols-12 border-b border-b-[#dee2e6] pb-4">
                         <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">
@@ -164,13 +164,13 @@
                             </div>
                         </NuxtLink>
                         <!--::::::::::::::::::: Ads Section :::::::::::::::::::::::: -->
-                        <div class=" col-span-12 cat-inside-ads">
+                        <!-- <div class=" col-span-12 cat-inside-ads">
                             <NuxtLink to="/">
                                 <nuxt-img :src="`/assets/img/cat-ads.gif`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 px-2 mt-6 mb-2"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </NuxtLink>
-                        </div>
+                        </div> -->
                         <!--::::::::::::::::::: Ads Section :::::::::::::::::::::::: -->
                     </div>
                     <!--/ Category Bottom Lead -->
