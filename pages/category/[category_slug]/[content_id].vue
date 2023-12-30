@@ -168,8 +168,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
                                 v-for="fmoreContent in firstMoreContents" :key="fmoreContent.content_id">
                                 <div class=" col-span-5 overflow-hidden">
-                                    <NuxtLink
-                                        :to="`/category/${fmoreContent?.cat_slug}/${fmoreContent?.content_id}`">
+                                    <NuxtLink :to="`/category/${fmoreContent?.cat_slug}/${fmoreContent?.content_id}`">
                                         <nuxt-img
                                             :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -177,8 +176,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     </NuxtLink>
                                 </div>
                                 <div class=" col-span-7">
-                                    <NuxtLink
-                                        :to="`/category/${fmoreContent?.cat_slug}/${fmoreContent?.content_id}`">
+                                    <NuxtLink :to="`/category/${fmoreContent?.cat_slug}/${fmoreContent?.content_id}`">
                                         <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
                                             fmoreContent?.content_heading }}</h4>
                                     </NuxtLink>
@@ -237,7 +235,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             <!-- Read more first content -->
 
 
-            
+
             <!--:::::::: Detail Page Bottom Ads :::::::::::-->
             <div v-if="DetailBottomAds.status === 1"
                 class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
@@ -371,8 +369,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                             <!-- Loop Item -->
                             <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
-                                v-for="moreDetCatCon in moreDetailCatWisePost[mcinx]" :key="moreDetCatCon.content_id">
+                                v-for="moreDetCatCon in moreDetailContent?.morecatwisePost" :key="moreDetCatCon.content_id">
                                 <div class=" col-span-5 overflow-hidden">
+
                                     <NuxtLink
                                         :to="`/category/${moreDetCatCon?.category?.cat_slug}/${moreDetCatCon?.content_id}`">
                                         <nuxt-img
@@ -610,44 +609,42 @@ firstInsideMoreNews.value = dinsidemorenews?.value
 //===== First Detail Inside More News =====//
 
 // ====================== RelatedContent for More <3> Three content ======================= //
-const readPostsState = useState(() => [])
 const relatedDetailContent = useState(() => [])
+const readPostsState = useState(() => [detailsContent?.value?.content_id])
+
 
 for (let s = 0; s < moreDetailsContents?.value?.length; s++) {
+    // readPostsState.value.push(moreDetailsContents.value[s].content_id)
+
     readPostsState.value.push(moreDetailsContents.value[s].content_id)
-    const { data: rlcd } = await useFetch("/api/detailpage/relatedcontent", {
+
+
+    // const { data: rlcd } = await useFetch("/api/detailpage/relatedcontent", {
+    //     method: "POST",
+    //     body: {
+    //         readedIds: readPostsState?.value,
+    //         detailId: detailsContent?.value?.content_id
+    //     }
+    // })
+
+    const { data: rlcd } = await useFetch("/api/prismaapi/detail/mreletedcontents", {
         method: "POST",
         body: {
-            readedIds: readPostsState?.value,
-            detailId: detailsContent?.value?.content_id
+            readedids: readPostsState.value
         }
     })
-    let reldata = rlcd?.value?.slice(1, 5)
-    relatedDetailContent?.value?.push(reldata)
+
+    // let reldata = rlcd?.value?.slice(1, 5)
+    relatedDetailContent?.value?.push(rlcd.value)
+
+
 
 }
+
 // console.log(relatedDetailContent.value)
 // ==================== RelatedContent for More <3> Three content  ======================= //
 
 
-// ==================== More Details Related RightSide Category Post =======================
-const moreDetailCatWisePost = useState(() => [])
-for (let i = 0; i < moreDetailsContents?.value?.length; i++) {
-    const { data: mdcwp } = await useFetch("/api/detailpage/catwiseposts", {
-        method: 'POST',
-        body: {
-            cat_id: moreDetailsContents?.value[i]?.cat_id,
-            content_id: moreDetailsContents?.value[i]?.content_id
-        }
-    })
-
-    let datapush = mdcwp.value
-    // console.log(mdcwp.value)
-    moreDetailCatWisePost.value.push(datapush)
-
-}
-moreDetailCatWisePost.value = [...new Set(moreDetailCatWisePost.value)]
-// =================== More Details Related RightSide Category Post ==========================
 
 // moment.locale('bn-bd')
 // const date = moment(detailsContent.value.created_at).format('Y', 'bn-bd')
@@ -708,7 +705,15 @@ const printPageArea = (areaID) => {
 const insideMoreExceptPost = useState(() => [])
 
 for (let m = 0; m < moreDetailsContents?.value?.length; m++) {
-    const { data: insidempect } = await useFetch("/api/detailpage/insidemoredetailexcept", {
+    // const { data: insidempect } = await useFetch("/api/detailpage/insidemoredetailexcept", {
+    //     method: 'POST',
+    //     body: {
+    //         currentPostDetailId: detailsContent?.value?.content_id,
+    //         morePostId: moreDetailsContents?.value[m]?.content_id,
+    //         cat_id: moreDetailsContents?.value[m]?.cat_id
+    //     }
+    // })
+    const { data: insidempect } = await useFetch("/api/prismaapi/detail/moreinsidemorenews", {
         method: 'POST',
         body: {
             currentPostDetailId: detailsContent?.value?.content_id,
@@ -883,8 +888,8 @@ onMounted(() => {
     let itemIncrement = 0;
     descParam.forEach((item, i) => {
 
-        if (i > 0 && i % 3 === 0 && firstInsideMoreNews.value[itemIncrement]) {
-            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews.value[itemIncrement].cat_slug, firstInsideMoreNews.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
+        if (i > 0 && i % 3 === 0 && firstInsideMoreNews?.value[itemIncrement]) {
+            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
             itemIncrement++;
         }
     })

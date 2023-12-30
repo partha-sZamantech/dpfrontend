@@ -97,14 +97,15 @@ export default defineEventHandler(async (event) => {
                 }
             }
         },
-        take: 3,
         orderBy: {
             content_id: 'desc'
-        }
+        },
+        take: 3
     })
 
     const moreDetailContent = []
 
+ 
     for (let i = 0; i < moreContents?.length; i++) {
 
 
@@ -124,6 +125,51 @@ export default defineEventHandler(async (event) => {
             }
         })
 
+
+        // catewise content will be added 
+        const catwisePosts = await prisma.bn_contents.findMany({
+            where: {
+                cat_id: moreContents[i]?.cat_id,
+                NOT: {
+                    content_id: {
+                        equals: moreContents[i]?.content_id
+                    }
+                }
+            },
+            orderBy:{
+                content_id: 'desc'
+            },
+            take: 5
+        })
+        const catwisePost = []
+        for(let catwise = 0; catwise < catwisePosts?.length; catwise++ ){
+
+            const catwisecategory = await prisma.bn_categories.findFirst({
+                where: {
+                    cat_id: catwisePosts[catwise]?.cat_id
+                }
+            })
+            const catwisesubcategory = await prisma.bn_subcategories.findFirst({
+                where: {
+                    cat_id: catwisePosts[catwise]?.cat_id
+                }
+            })
+            catwisePost.push({
+                content_id: catwisePosts[catwise]?.content_id,
+                content_heading: catwisePosts[catwise]?.content_heading,
+                img_bg_path: catwisePosts[catwise]?.img_bg_path,
+                category: {
+                    cat_slug: catwisecategory?.cat_slug,
+                    cat_name_bn: catwisecategory?.cat_name_bn
+                },
+                subcategory: {
+                    subcat_slug: catwisesubcategory?.subcat_slug,
+                    subcat_name_bn: catwisesubcategory?.subcat_name_bn
+                }
+            })
+        }
+
+        // catewise content will be added 
 
         moreDetailContent.push({
             content_id: moreContents[i]?.content_id,
@@ -163,8 +209,11 @@ export default defineEventHandler(async (event) => {
                 author_id: getmoreContentAuthor?.author_id,
                 author_name_bn: getmoreContentAuthor?.author_name_bn,
                 author_slug: getmoreContentAuthor?.author_slug,
-            }
+            },
+            morecatwisePost: catwisePost // cate wise post will be added
         })
+
+        
 
 
     }
