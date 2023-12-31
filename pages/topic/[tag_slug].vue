@@ -5,15 +5,15 @@
          <Title>{{ tag_slug.replaceAll('-', ' ') }}</Title>
       </Head>
       <!-- Space For Ads -->
-      <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
+      <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
          <div class="bg-[#f7f7f7]">
             <a target="_blank" href="/">
                <img class="mx-auto" src="/assets/img/bar-ads.gif" alt="">
             </a>
          </div>
-      </div>
+      </div> -->
       <!-- Space For Ads -->
-      <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
+      <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-2 relative">
          <!-- Breadcrump Section -->
          <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
 
@@ -59,7 +59,7 @@
                                  :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" /> -->
                               <nuxt-img :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
                                  class="mx-auto w-full group-hover:scale-110 duration-300"
-                                 :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                                 :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
 
                            </div>
                         </NuxtLink>
@@ -113,7 +113,14 @@ const postCreatedDate = (date) => {
 //Tag Content State
 const tagContents = useState(() => [])
 const take = ref(10)
-const { data: tgcont } = await useFetch('/api/tag/tagcontent', {
+// const { data: tgcont } = await useFetch('/api/tag/tagcontent', {
+//    method: "POST",
+//    body: {
+//       tag_slug: tag_slug,
+//       take: take.value
+//    }
+// })
+const { data: tgcont } = await useFetch('/api/prismaapi/tag/tagcontents', {
    method: "POST",
    body: {
       tag_slug: tag_slug,
@@ -121,7 +128,7 @@ const { data: tgcont } = await useFetch('/api/tag/tagcontent', {
    }
 })
 // Tag Content Assign
-tagContents.value = tgcont
+tagContents.value = tgcont?.value?.content
 // console.log(tagContents.value)
 
 //================== Tag Content fetching =============== //
@@ -129,14 +136,14 @@ tagContents.value = tgcont
 //================ Load More Tag Content Button =================//
 const loadMoreButtonHandler = async () => {
    take.value += 10
-   const { data: tgMorecont } = await useFetch('/api/tag/tagcontent', {
+   const { data: tgMorecont } = await useFetch('/api/prismaapi/tag/tagcontents', {
       method: "POST",
       body: {
          tag_slug: tag_slug,
          take: take.value
       }
    })
-   tagContents.value = tgMorecont
+   tagContents.value = tgMorecont?.value?.content
 }
 //================ Load More Tag Content Button =================//
 
