@@ -66,7 +66,7 @@ const latestposts = useState(() => [])
 const { data: latpost } = await useFetch('/api/prismaapi/tabs/latestpost', {
     method: "POST",
     body:{
-        take: 20 // How many post you want to fetch. just assign the number
+        take: 10 // How many post you want to fetch. just assign the number
     },
     cache: 'force-cache'
 })
@@ -81,7 +81,7 @@ const popularposts = useState(() => [])
 const { data: hplpost } = await useFetch('/api/prismaapi/tabs/popularpost', {
     method: "POST",
     body:{
-        take: 20 // How many post you want to fetch. just assign the number
+        take: 10 // How many post you want to fetch. just assign the number
     },
     cache: 'force-cache'
 })

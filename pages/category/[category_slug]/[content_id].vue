@@ -491,6 +491,8 @@ const singlePageSticky = singlePageStickyState()
 const stickyScroll = computed(() =>
     singlePageSticky.value
 )
+// Sitesetting - logo, social media
+const sitesettings = sitesettingsState()
 
 // Category Slug & Content id pages/category/[category_slug]/[content_id].vue
 const category_slug = useRoute().params.category_slug
@@ -685,9 +687,9 @@ if (firstsplittag) {
 const printPageArea = (areaID) => {
 
     let printContent = document.getElementById(areaID).innerHTML;
-    printContent += "</br></br></br><hr><div><img style='margin-bottom: 20px; margin-top: 10px' src='http://127.0.0.1:8000/media/common/logo1672518180.png' alt='dfd' /></br><h3 style='margin: 0;  padding: 0'>যোগাযোগ: +৮৮০ ৯৬১ ৩৩৩ ১০১০</h3></br><h3 style='margin: 0;  padding: 0'>ইমেইল: info@dhakaprokash24.com</h3></br><h3 style='margin: 0; padding: 0'>ঠিকানা: ৯৩, কাজী নজরুল ইসলাম এভিনিউ, (ষষ্ঠ তলা) </br>কারওয়ান বাজার, ঢাকা-১২১৫।</h3></div>";
+    printContent += `</br></br></br><hr><div><img style='margin-bottom: 20px; margin-top: 10px' src='${siteurl?.value?.site_url}/media/common/${sitesettings?.value?.logo}' alt='dfd' /></br><h3 style='margin: 0;  padding: 0'>যোগাযোগ: +৮৮০ ৯৬১ ৩৩৩ ১০১০</h3></br><h3 style='margin: 0;  padding: 0'>ইমেইল: info@dhakaprokash24.com</h3></br><h3 style='margin: 0; padding: 0'>ঠিকানা: ৯৩, কাজী নজরুল ইসলাম এভিনিউ, (ষষ্ঠ তলা) </br>কারওয়ান বাজার, ঢাকা-১২১৫।</h3></div>`;
     let originalContent = document.body.innerHTML;
-    let logo = `<img style='margin-bottom: 20px; margin-top: 10px' src='${siteurl?.value?.site_url}/media/common/logo1672518180.png' alt='dfd' />`
+    let logo = `<img style='margin-bottom: 20px; margin-top: 10px' src='${siteurl?.value?.site_url}/media/common/${sitesettings?.value?.logo}' alt='dfd' />`
     logo += printContent
     document.body.innerHTML = logo;
 

@@ -34,13 +34,13 @@
                     <!-- <nuxt-img class="mx-auto" src="/assets/img/logo.png" height="56" alt="Dhaka Prokash"
                 :placeholder="img('/assets/img/logo.png', { h: 56, blur: 2, q: 50 })" /> -->
                     <NuxtLink to="/">
-                        <nuxt-img class="mx-auto" :src="`${siteurl.site_url}/media/common/${siteSetting?.logo}`" width="300" alt="Dhaka Prokash" />
+                        <nuxt-img class="mx-auto" :src="`${siteurl.site_url}/media/common/${headerSiteSettings?.logo}`" width="300" alt="Dhaka Prokash" />
                     </NuxtLink>
                 </div>
                 <div class="flex gap-4 flex-col">
                     <div class="flex gap-4 items-center place-self-end">
                
-                        <NuxtLink target="_blank" to="https://www.facebook.com/dhakaprokash24">
+                        <NuxtLink target="_blank" :to="headerSiteSettings?.facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <path fill="#1877F2"
@@ -51,13 +51,13 @@
                             </path>
                         </svg>
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://twitter.com/dhakaprokash24">
+                    <NuxtLink target="_blank" :to="headerSiteSettings?.twitter">
                         <img src="/assets/img/social/x.svg" width="28" height="28" alt="instagram" />
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://www.instagram.com/dhakaprokash24/">
+                    <NuxtLink target="_blank" :to="headerSiteSettings?.instagram">
                         <img src="/assets/img/social/instagram.png" width="28" height="28" alt="instagram" />
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://www.youtube.com/DhakaProkash">
+                    <NuxtLink target="_blank" :to="headerSiteSettings?.youtube">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <path fill="#FF0000"
@@ -85,6 +85,7 @@
 <script setup>
 
 const { scrollDown, counter } = defineProps(['scrollDown', 'LogoHeaderScollUp'])
+
 // ================ Get Bangla Date ============== //
 const getDate = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numeric', month: 'long', day: "numeric"})
 const todayDate = getDate.format(new Date())
@@ -110,14 +111,10 @@ const searchBoxHandler = () => {
     }
 }
 
-// ==================== Logo ====================
+// ==================== Global Site Setting State ====================
 const siteurl = siteUrlState()
-const siteSetting = useState(() => [])
-const { data: siteSet } = await useFetch(`/api/sitesetting`, {
-    method: 'GET'
-})
-siteSetting.value = siteSet
-// ==================== Logo ====================
+const headerSiteSettings = sitesettingsState()
+// ==================== Global Site Setting State ====================
 </script>
 
 <style lang="scss" scoped></style>

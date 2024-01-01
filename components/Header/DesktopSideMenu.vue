@@ -10,7 +10,7 @@
             <div class="desktopSideMenus  flex flex-col  px-7 py-5 text-[1rem]">
                 <NuxtLink class="py-2 border-b" to="/collection/latest">সর্বশেষ</NuxtLink>
                 <NuxtLink v-for="(cat, cindex) in allCategory" :key="cindex" :to="`/${cat?.cat_slug}`" class="py-2 border-b">{{ cat?.cat_name_bn }}</NuxtLink>
-           
+                <NuxtLink class="py-2 border-b" to="/video">ভিজ্যুয়াল মিডিয়া</NuxtLink>
                 <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>
 
             </div>
@@ -18,7 +18,7 @@
                 <p class="text-sm">অনুসরণ করুন</p>
                 <div class="flex gap-6">
         
-                    <NuxtLink target="_blank" to="https://www.facebook.com/dhakaprokash24">
+                    <NuxtLink target="_blank" :to="siteSetting?.facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <path fill="#1877F2"
@@ -29,13 +29,13 @@
                             </path>
                         </svg>
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://twitter.com/dhakaprokash24">
+                    <NuxtLink target="_blank" :to="siteSetting?.twitter">
                         <img src="/assets/img/social/x.svg" width="28" height="28" alt="instagram" />
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://www.instagram.com/dhakaprokash24/">
+                    <NuxtLink target="_blank" :to="siteSetting?.instagram">
                         <img src="/assets/img/social/instagram.png" width="28" height="28" alt="instagram" />
                     </NuxtLink>
-                    <NuxtLink target="_blank" to="https://www.youtube.com/DhakaProkash">
+                    <NuxtLink target="_blank" :to="siteSetting?.youtube">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
                             enable-background="new 0 0 32 32" xml:space="preserve">
                             <path fill="#FF0000"
@@ -54,8 +54,15 @@
 </template>
 
 <script setup>
+
+// Site Setting Global State
+const siteSetting = sitesettingsState()
+
+// Desktop Menu Status 
 const desktopMenuStatus = desktopMenuState()
+// All Category
 const allCategory = allCategoryState()
+// Desktop Menu Handler
 const desktopMenuCloseHandler = () => {
     desktopMenuStatus.value = false
 }
