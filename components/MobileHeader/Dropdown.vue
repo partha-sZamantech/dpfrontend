@@ -13,11 +13,11 @@
             </div>
             <div class="">
                 <div class="grid grid-cols-2 gap-2 font-[400]">
-                    <NuxtLink to="/collection/latest" class="py-2 border-b">সর্বশেষ</NuxtLink>
-                    <NuxtLink v-for="(cat, cindex) in allCats" :key="cindex" :to="`/${cat?.cat_slug}`"
+                    <NuxtLink @click="menuClicked" to="/collection/latest" class="py-2 border-b">সর্বশেষ</NuxtLink>
+                    <NuxtLink @click="menuClicked" v-for="(cat, cindex) in allCats" :key="cindex" :to="`/${cat?.cat_slug}`"
                         class="py-2 border-b">{{ cat?.cat_name_bn }}</NuxtLink>
-                    <NuxtLink to="/video" class="py-2 border-b">ভিজ্যুয়াল মিডিয়া</NuxtLink>
-                    <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>
+                    <NuxtLink @click="menuClicked" to="/video" class="py-2 border-b">ভিজ্যুয়াল মিডিয়া</NuxtLink>
+                    <NuxtLink @click="menuClicked" to="/" class="py-2 border-b">ইপেপার</NuxtLink>
                 </div>
             </div>
             <div class="social_media flex flex-col gap-2 mt-3 pb-12 px-8">
@@ -61,7 +61,16 @@
 </template>
 
 <script setup>
-const { mobileMenuStatus } = defineProps(['mobileMenuStatus'])
+// const { mobileMenuStatus } = defineProps(['mobileMenuStatus'])
+const mobileMenuStatus = mobileMenuState()
+// const mobileMe = computed(() => {
+//     mobileMenuStatus 
+// })
+const menuClicked = () => {
+    mobileMenuStatus.value = false
+}
+// console.log(mobileMenuStatus)
+
 // ================ Get Bangla Date ============== //
 const getDate = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 const todayDate = getDate.format(new Date())

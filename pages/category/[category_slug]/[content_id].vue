@@ -21,25 +21,12 @@
         </Head>
 
         <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
-        <div class="breadcrump border-b pb-1 mb-5">
+        <div class="breadcrump pb-1">
             <div class="flex gap-1 justify-start items-center">
-                <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[#3375af] font-semibold">
+                <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
                     <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                    <h1 class="text-xl md:text-3xl">{{ detailsContent?.category?.cat_name_bn }}</h1>
+                    <h1 class="text-xl md:text-xl">{{ detailsContent?.category?.cat_name_bn }}</h1>
                 </NuxtLink>
-
-                <!-- <NuxtLink to="/">
-                    <Icon class="text-xl" name="material-symbols:house-rounded" />
-                </NuxtLink>
-                <Icon name="ic:outline-keyboard-arrow-right" />
-                <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`">
-                    {{ detailsContent?.category?.cat_name_bn }}
-                </NuxtLink>
-
-                <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" />
-                <NuxtLink v-if="detailsContent?.subcategory" :to="`/`">
-                    {{ detailsContent?.subcategory?.subcat_name_bn }}
-                </NuxtLink> -->
 
             </div>
         </div>

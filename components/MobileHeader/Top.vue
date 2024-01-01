@@ -7,8 +7,10 @@
                     name="ic:outline-menu" />
                 <Icon v-else name="material-symbols:close" @click="mobileMenuToggle"
                     class="text-3xl cursor-pointer hover:bg-[#f7f7f7]" />
-                <nuxt-img class="mx-auto" :src="`${siteurl.site_url}/media/common/${headerSiteSettings?.logo}`"
-                    alt="Dhaka Prokash" />
+                <NuxtLink to="/">
+                    <nuxt-img class="mx-auto" :src="`${siteurl.site_url}/media/common/${headerSiteSettings?.logo}`"
+                        alt="Dhaka Prokash" />
+                </NuxtLink>
             </div>
 
             <div class="flex gap-3 px-2">
@@ -17,11 +19,12 @@
             </div>
         </div>
         <MobileHeaderDropdown :mobileMenuStatus="mobileMenuStatus" />
+        <!-- <MobileHeaderDropdown :mobileMenuStatus="mobileMenuStatus" /> -->
     </div>
 </template>
 
 <script setup>
-const mobileMenuStatus = ref(false)
+const mobileMenuStatus = mobileMenuState()
 const mobileMenuToggle = () => {
     if (mobileMenuStatus.value === true) {
         mobileMenuStatus.value = false
@@ -29,6 +32,7 @@ const mobileMenuToggle = () => {
         mobileMenuStatus.value = true
     }
 }
+
 
 // ==================== Global Site Setting State ====================
 const siteurl = siteUrlState()
