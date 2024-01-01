@@ -7,11 +7,11 @@
             <Icon name="material-symbols:close" @click="desktopMenuCloseHandler" class="text-3xl cursor-pointer hover:bg-[#f7f7f7]" />
         </div>
         <div class="overflow-y-auto pb-16">
-            <div class="desktopSideMenus  flex flex-col  px-7 py-5 text-[1rem]">
-                <NuxtLink class="py-2 border-b" to="/collection/latest">সর্বশেষ</NuxtLink>
-                <NuxtLink v-for="(cat, cindex) in allCategory" :key="cindex" :to="`/${cat?.cat_slug}`" class="py-2 border-b">{{ cat?.cat_name_bn }}</NuxtLink>
-                <NuxtLink class="py-2 border-b" to="/video">ভিজ্যুয়াল মিডিয়া</NuxtLink>
-                <NuxtLink to="/" class="py-2 border-b">ইপেপার</NuxtLink>
+            <div class="desktopSideMenus  flex flex-col  px-5 py-5 text-[1rem]">
+                <NuxtLink @click="desktopMenuCloseHandler" class="py-2 border-b px-2 hover:bg-gray-100" to="/collection/latest">সর্বশেষ</NuxtLink>
+                <NuxtLink @click="desktopMenuCloseHandler" v-for="(cat, cindex) in allCategory" :key="cindex" :to="`/${cat?.cat_slug}`" class="py-2 hover:bg-gray-100 border-b px-2">{{ cat?.cat_name_bn }}</NuxtLink>
+                <NuxtLink @click="desktopMenuCloseHandler" class="py-2 border-b px-2 hover:bg-gray-100" to="/video">ভিজ্যুয়াল মিডিয়া</NuxtLink>
+                <NuxtLink to="/" @click="desktopMenuCloseHandler" class="py-2 border-b px-2 hover:bg-gray-100">ইপেপার</NuxtLink>
 
             </div>
             <div class="social_media flex flex-col gap-2 px-7">

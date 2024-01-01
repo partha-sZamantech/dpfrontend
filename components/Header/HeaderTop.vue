@@ -114,7 +114,7 @@ const searchBoxHandler = () => {
 // ==================== Global Site Setting State ====================
 const siteurl = siteUrlState()
 const headerSiteSettings = sitesettingsState()
-// ==================== Global Site Setting State ====================
+// ==================== Logo ====================
 </script>
 
 <style lang="scss" scoped></style>
