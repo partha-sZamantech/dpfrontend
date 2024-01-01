@@ -386,7 +386,7 @@ const loadMoreButtonHandler = async () => {
 //========== Category Page Top Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const categoryTopAds = useState(() => '')
-const { data: catTpAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: catTpAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 3,
@@ -399,7 +399,7 @@ categoryTopAds.value = catTpAds?.value
 //========== Category Page Bottom Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const categoryBottomAds = useState(() => '')
-const { data: catBtmAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: catBtmAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 3,
@@ -412,7 +412,7 @@ categoryBottomAds.value = catBtmAds?.value
 //========== Category Page Right One Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const categoryRightOneAds = useState(() => '')
-const { data: catRoneAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: catRoneAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 3,
@@ -425,7 +425,7 @@ categoryRightOneAds.value = catRoneAds?.value
 //========== Category Page Right Two Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const categoryRightTwoAds = useState(() => '')
-const { data: catRtwoAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: catRtwoAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 3,
@@ -438,7 +438,7 @@ categoryRightTwoAds.value = catRtwoAds?.value
 //========== Category Page Right Three Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const categoryRightThreeAds = useState(() => '')
-const { data: catRthreeAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: catRthreeAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 3,

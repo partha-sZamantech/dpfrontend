@@ -61,28 +61,32 @@ const gallerContents = useState(() => [])
 //     cache: 'force-cache'
 // })
 
+// const { data: hmgallery } = await useFetch('/api/prismaapi/home/galleryphoto', {
+//     method: "GET",
+//     cache: 'force-cache',
+//     getCachedData(hgl) {
+//         const data = nuxtApp.payload.data[hgl] || nuxtApp.static.data[hgl]
+//         // If data is not fetched yet
+//         if (!data) {
+//             // Fetch the first time
+//             return
+//         }
+//         // Is the data too old?
+//         const expirationDate = new Date(data.fetchedAt)
+//         // 40 Second cache time
+//         expirationDate.setTime(expirationDate.getTime() + 40 * 1000)
+//         const isExpired = expirationDate.getTime() < Date.now()
+//         if (isExpired) {
+//             // Refetch the data
+//             return
+//         }
+
+//         return data
+//     },
+// })
 const { data: hmgallery } = await useFetch('/api/prismaapi/home/galleryphoto', {
     method: "GET",
     cache: 'force-cache',
-    getCachedData(hgl) {
-        const data = nuxtApp.payload.data[hgl] || nuxtApp.static.data[hgl]
-        // If data is not fetched yet
-        if (!data) {
-            // Fetch the first time
-            return
-        }
-        // Is the data too old?
-        const expirationDate = new Date(data.fetchedAt)
-        // 40 Second cache time
-        expirationDate.setTime(expirationDate.getTime() + 40 * 1000)
-        const isExpired = expirationDate.getTime() < Date.now()
-        if (isExpired) {
-            // Refetch the data
-            return
-        }
-
-        return data
-    },
 })
 // const { data: okss } = await useFetch("/api/prismaapi/home/gallery", {
 //     method: 'GET'

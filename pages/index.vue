@@ -7,7 +7,7 @@
         <!-- Home Middle Top Ads -->
         <div class="py-2 md:px-2 max-w-[1280px] mx-auto px-4">
             <!-- Headline Component -->
-            <Headline v-if="allHeadline?.length > 0" />
+            <Headline v-if="allHeadline?.length > 0" :breakingNews="allHeadline" />
             <!--/ Headline Component -->
             <!-- Special Top Content Component -->
             <HomeSpecialTopContent />
@@ -273,22 +273,24 @@
 </template>
 
 <script setup>
-const config = useRuntimeConfig()
+
 const allHeadline = useState(() => [])
-const { data: allhead } = await useFetch(`${config.public.apiUrl}/api/breaking-news`, {
-    method: 'GET'
+const { data: allhead } = await useFetch(`/api/prismaapi/breakingnews/breaking`, {
+    method: 'GET',
+    cache: 'force-cache'
 })
-allHeadline.value = allhead
+allHeadline.value = allhead.value
 
 //========== Home Page Middle Top Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeMiddleAds = useState(() => '')
-const { data: hmads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 1
-    }
+    },
+    cache: 'force-cache'
 })
 homeMiddleAds.value = hmads?.value
 //========== Home Page Middle Top Ads ==========//
@@ -296,12 +298,13 @@ homeMiddleAds.value = hmads?.value
 //========== Home Page Middle One Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeMiddleOneAds = useState(() => '')
-const { data: hmoneads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmoneads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 2
-    }
+    },
+    cache: 'force-cache'
 })
 homeMiddleOneAds.value = hmoneads?.value
 //========== Home Page Middle One Ads ==========//
@@ -309,12 +312,13 @@ homeMiddleOneAds.value = hmoneads?.value
 //========== Home Page Middle Two Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeMiddleTwoAds = useState(() => '')
-const { data: hmtwoads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmtwoads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 3
-    }
+    },
+    cache: 'force-cache'
 })
 homeMiddleTwoAds.value = hmtwoads?.value
 //========== Home Page Middle Two Ads ==========//
@@ -322,12 +326,13 @@ homeMiddleTwoAds.value = hmtwoads?.value
 //========== Home Page Middle Three Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeMiddleThreeAds = useState(() => '')
-const { data: hmthreeads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmthreeads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 4
-    }
+    },
+    cache: 'force-cache'
 })
 homeMiddleThreeAds.value = hmthreeads?.value
 //========== Home Page Middle Three Ads ==========//
@@ -335,12 +340,13 @@ homeMiddleThreeAds.value = hmthreeads?.value
 //========== Home Page Middle Four Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeMiddleFourAds = useState(() => '')
-const { data: hmfourads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmfourads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 5
-    }
+    },
+    cache: 'force-cache'
 })
 homeMiddleFourAds.value = hmfourads?.value
 //========== Home Page Middle Four Ads ==========//
@@ -348,12 +354,13 @@ homeMiddleFourAds.value = hmfourads?.value
 //========== Home Page Middle Five Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeMiddleFiveAds = useState(() => '')
-const { data: hmfiveads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmfiveads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 6
-    }
+    },
+    cache: 'force-cache'
 })
 homeMiddleFiveAds.value = hmfiveads?.value
 //========== Home Page Middle Five Ads ==========//
@@ -361,12 +368,13 @@ homeMiddleFiveAds.value = hmfiveads?.value
 //========== Home Page Middle Six Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeMiddleSixAds = useState(() => '')
-const { data: hmsixads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmsixads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 7
-    }
+    },
+    cache: 'force-cache'
 })
 homeMiddleSixAds.value = hmsixads?.value
 //========== Home Page Middle Six Ads ==========//
@@ -374,12 +382,13 @@ homeMiddleSixAds.value = hmsixads?.value
 //========== Home Page Middle Seven Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeMiddleSevenAds = useState(() => '')
-const { data: hmsevenads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmsevenads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 8
-    }
+    },
+    cache: 'force-cache'
 })
 homeMiddleSevenAds.value = hmsevenads?.value
 //========== Home Page Middle Seven Ads ==========//
@@ -387,12 +396,13 @@ homeMiddleSevenAds.value = hmsevenads?.value
 //========== Home Page Middle Eight Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeMiddleEightAds = useState(() => '')
-const { data: hmeightads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmeightads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 9
-    }
+    },
+    cache: 'force-cache'
 })
 homeMiddleEightAds.value = hmeightads.value
 //========== Home Page Middle Seven Ads ==========//
@@ -400,12 +410,13 @@ homeMiddleEightAds.value = hmeightads.value
 //========== Home Page Nine Eight Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeMiddleNineAds = useState(() => '')
-const { data: hmninetads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmninetads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 10
-    }
+    },
+    cache: 'force-cache'
 })
 homeMiddleNineAds.value = hmninetads?.value
 //========== Home Page Middle Seven Ads ==========//
@@ -413,12 +424,13 @@ homeMiddleNineAds.value = hmninetads?.value
 //========== Home Page Right One Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeRightOneAds = useState(() => '')
-const { data: hmnroneads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmnroneads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 11
-    }
+    },
+    cache: 'force-cache'
 })
 homeRightOneAds.value = hmnroneads?.value
 //========== Home Page Right One Ads ==========//
@@ -426,12 +438,13 @@ homeRightOneAds.value = hmnroneads?.value
 //========== Home Page Right Two Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeRightTwoAds = useState(() => '')
-const { data: hmnrtwoads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmnrtwoads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 12
-    }
+    },
+    cache: 'force-cache'
 })
 homeRightTwoAds.value = hmnrtwoads?.value
 //========== Home Page Right Two Ads ==========//
@@ -439,12 +452,13 @@ homeRightTwoAds.value = hmnrtwoads?.value
 //========== Home Page Right Three Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeRightThreeAds = useState(() => '')
-const { data: hmnrthreeads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmnrthreeads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 13
-    }
+    },
+    cache: 'force-cache'
 })
 homeRightThreeAds.value = hmnrthreeads?.value
 //========== Home Page Right Three Ads ==========//
@@ -452,12 +466,13 @@ homeRightThreeAds.value = hmnrthreeads?.value
 //========== Home Page Right Four Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeRightFourAds = useState(() => '')
-const { data: hmnrfourads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmnrfourads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 14
-    }
+    },
+    cache: 'force-cache'
 })
 homeRightFourAds.value = hmnrfourads?.value
 //========== Home Page Right Four Ads ==========//
@@ -465,12 +480,13 @@ homeRightFourAds.value = hmnrfourads?.value
 //========== Home Page Right Five Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeRightFiveAds = useState(() => '')
-const { data: hmnrfiveads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmnrfiveads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 15
-    }
+    },
+    cache: 'force-cache'
 })
 homeRightFiveAds.value = hmnrfiveads?.value
 //========== Home Page Right Five Ads ==========//
@@ -478,12 +494,13 @@ homeRightFiveAds.value = hmnrfiveads?.value
 //========== Home Page Right Six Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeRightSixAds = useState(() => '')
-const { data: hmnrsixads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmnrsixads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 16
-    }
+    },
+    cache: 'force-cache'
 })
 homeRightSixAds.value = hmnrsixads?.value
 //========== Home Page Right Six Ads ==========//
@@ -491,12 +508,13 @@ homeRightSixAds.value = hmnrsixads?.value
 //========== Home Page Right Seven Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const homeRightSevenAds = useState(() => '')
-const { data: hmnrsevenads } = await useFetch('/api/adsmanagement/getads', {
+const { data: hmnrsevenads } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 2,
         position: 17
-    }
+    },
+    cache: 'force-cache'
 })
 homeRightSevenAds.value = hmnrsevenads?.value
 //========== Home Page Right Seven Ads ==========//

@@ -40,7 +40,7 @@
             </div>
         </div>
         <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
-        <div v-if="DetailTopAds.status === 1" class="pb-4 mb-4 border-b border-b-[#e2e2e2]">
+        <div v-if="DetailTopAds?.status === 1" class="pb-4 mb-4 border-b border-b-[#e2e2e2]">
             <AdsDesktopDetailTop :DetailTopAds="DetailTopAds" />
         </div>
         <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
@@ -152,7 +152,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
             <div class=" col-span-12 md:col-span-3">
                 <!--:::::::: Detail Page Right One Ads :::::::::-->
-                <div v-if="DetailRightOneAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                <div v-if="DetailRightOneAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
                     <AdsDesktopDetailRightOne :DetailRightOneAds="DetailRightOneAds" />
                 </div>
                 <!--:::::::: Detail Page Right One Ads :::::::::-->
@@ -186,19 +186,19 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <!--:::::::: Detail Page Right Two Ads :::::::::-->
-                    <div v-if="DetailRightTwoAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                    <div v-if="DetailRightTwoAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
                         <AdsDesktopDetailRightTwo :DetailRightTwoAds="DetailRightTwoAds" />
                     </div>
                     <!--:::::::: Detail Page Right Two Ads :::::::::-->
                     <!--:::::::: Detail Page Right Three Ads :::::::::-->
-                    <div v-if="DetailRightThreeAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                    <div v-if="DetailRightThreeAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
                         <AdsDesktopDetailRightThree :DetailRightThreeAds="DetailRightThreeAds" />
                     </div>
                     <!--:::::::: Detail Page Right Three Ads :::::::::-->
                 </div>
             </div>
             <!--:::::::: Detail Page After Ads :::::::::::-->
-            <div v-if="DetailAfterAds.status === 1"
+            <div v-if="DetailAfterAds?.status === 1"
                 class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                 <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
             </div>
@@ -237,7 +237,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
 
             <!--:::::::: Detail Page Bottom Ads :::::::::::-->
-            <div v-if="DetailBottomAds.status === 1"
+            <div v-if="DetailBottomAds?.status === 1"
                 class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                 <AdsDesktopDetailBottom :DetailBottomAds="DetailBottomAds" />
             </div>
@@ -353,7 +353,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             </div>
             <div class="col-span-12 md:col-span-3">
                 <!--:::::::: Detail Page Right One Ads :::::::::-->
-                <div v-if="DetailRightOneAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                <div v-if="DetailRightOneAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
                     <AdsDesktopDetailRightOne :DetailRightOneAds="DetailRightOneAds" />
                 </div>
                 <!--:::::::: Detail Page Right One Ads :::::::::-->
@@ -392,19 +392,19 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <!--:::::::: Detail Page Right Two Ads :::::::::-->
-                    <div v-if="DetailRightTwoAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                    <div v-if="DetailRightTwoAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
                         <AdsDesktopDetailRightTwo :DetailRightTwoAds="DetailRightTwoAds" />
                     </div>
                     <!--:::::::: Detail Page Right Two Ads :::::::::-->
                     <!--:::::::: Detail Page Right Three Ads :::::::::-->
-                    <div v-if="DetailRightThreeAds.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                    <div v-if="DetailRightThreeAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
                         <AdsDesktopDetailRightThree :DetailRightThreeAds="DetailRightThreeAds" />
                     </div>
                     <!--:::::::: Detail Page Right Three Ads :::::::::-->
                 </div>
             </div>
             <!--:::::::: Detail Page After Ads :::::::::::-->
-            <div v-if="DetailAfterAds.status === 1"
+            <div v-if="DetailAfterAds?.status === 1"
                 class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                 <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
             </div>
@@ -469,7 +469,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             </div>
             <!-- Latest 20 Posts content -->
             <!--:::::::: Detail Page Bottom Ads :::::::::::-->
-            <div v-if="DetailBottomAds.status === 1"
+            <div v-if="DetailBottomAds?.status === 1"
                 class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                 <AdsDesktopDetailBottom :DetailBottomAds="DetailBottomAds" />
             </div>
@@ -1006,7 +1006,7 @@ onMounted(() => {
 //========== Detail Page Top Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const DetailTopAds = useState(() => '')
-const { data: detTpAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: detTpAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 4,
@@ -1020,7 +1020,7 @@ DetailTopAds.value = detTpAds?.value
 //========== Detail Page After Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const DetailAfterAds = useState(() => '')
-const { data: detaftAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: detaftAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 4,
@@ -1033,7 +1033,7 @@ DetailAfterAds.value = detaftAds?.value
 //========== Detail Page Bottom Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const DetailBottomAds = useState(() => '')
-const { data: detbtmAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: detbtmAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 4,
@@ -1046,7 +1046,7 @@ DetailBottomAds.value = detbtmAds?.value
 //========== Detail Page Right One Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const DetailRightOneAds = useState(() => '')
-const { data: detrtoneAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: detrtoneAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 4,
@@ -1059,7 +1059,7 @@ DetailRightOneAds.value = detrtoneAds?.value
 //========== Detail Page Right Two Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const DetailRightTwoAds = useState(() => '')
-const { data: detrttwoAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: detrttwoAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 4,
@@ -1072,7 +1072,7 @@ DetailRightTwoAds.value = detrttwoAds?.value
 //========== Detail Page Right Three Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page
 const DetailRightThreeAds = useState(() => '')
-const { data: detrtthreeAds } = await useFetch('/api/adsmanagement/getads', {
+const { data: detrtthreeAds } = await useFetch('/api/prismaapi/adsmanager/commonads', {
     method: "POST",
     body: {
         page: 4,

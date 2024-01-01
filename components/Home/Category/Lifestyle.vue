@@ -37,11 +37,9 @@ const nuxtApp = useNuxtApp()
 const lifestyles = useState(() => [])
 const { data: lifesc } = await useFetch("/api/prismaapi/home/lifestyle", {
     method: 'GET',
-
-    cache: 'force-cache',
-
+    cache: 'force-cache'
 })
-lifestyles.value = lifesc
+lifestyles.value = lifesc.value
 // ======== Life Style Content =============== //
 </script>
 

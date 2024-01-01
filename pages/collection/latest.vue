@@ -5,13 +5,13 @@
             <Title>আজকের খবর, আপডেট নিউজ</Title>
         </Head>
         <!-- Space For Ads -->
-        <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
+        <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
             <div class="bg-[#f7f7f7]">
                 <a target="_blank" href="/">
                     <img class="mx-auto" src="/assets/img/bar-ads.gif" alt="">
                 </a>
             </div>
-        </div>
+        </div> -->
 
         <!-- Space For Ads -->
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
@@ -145,13 +145,13 @@
                             </div>
                         </NuxtLink>
                         <!--::::::::::::::::::: Ads Section :::::::::::::::::::::::: -->
-                        <div class=" col-span-12 cat-inside-ads">
+                        <!-- <div class=" col-span-12 cat-inside-ads">
                             <NuxtLink to="/">
                                 <nuxt-img :src="`/assets/img/cat-ads.gif`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 px-2 mt-6 mb-2"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </NuxtLink>
-                        </div>
+                        </div> -->
                         <!--::::::::::::::::::: Ads Section :::::::::::::::::::::::: -->
                     </div>
                     <!--/ Category Bottom Lead -->
