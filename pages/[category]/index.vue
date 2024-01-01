@@ -14,17 +14,6 @@
 
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
-                <!-- <div class="flex gap-1 justify-start items-center">
-
-                    <NuxtLink to="/">
-                        <Icon class="text-xl" name="material-symbols:house-rounded" />
-                    </NuxtLink>
-                    <Icon name="ic:outline-keyboard-arrow-right" class="text-[#3375af]" />
-                    <NuxtLink :to="`/`" class="text-[#3375af] font-semibold"> -->
-                <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                <!-- {{ category.cat_name_bn }}
-                    </NuxtLink>
-                </div> -->
                 <div class="flex gap-1 justify-start items-center">
                     <NuxtLink :to="`/${category?.cat_slug}`" class="text-[#3375af] font-semibold">
                         <!-- {{ detailsContent?.category?.cat_name_bn }} -->
@@ -321,7 +310,7 @@ const { data: catcont } = await useFetch('/api/prismaapi/category/categoryconten
             fetchedAt: new Date()
         }
     },
-    key: `cat-${cat_slug}`,
+    key: `sdfadasd-${cat_slug}`,
     cache: 'force-cache',
     getCachedData(keys) {
         const data = nuxtApp.payload.data[keys] || nuxtApp.static.data[keys]
