@@ -1,4 +1,8 @@
 
+export const sitesettingsState = () => {
+    return useState(()=> [])
+}
+
 export const desktopMenuState = () => {
     return useState(()=> false)
 }
@@ -32,5 +36,7 @@ export const websiteUrlState = () => {
         website_url: 'http://localhost:3000'
     }))
 }
+
+
 
 

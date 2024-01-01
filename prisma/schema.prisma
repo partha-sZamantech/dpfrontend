@@ -481,6 +481,7 @@ model password_resets {
 model site_settings {
   id                 Int       @id @default(autoincrement())
   site_name          String?   @db.VarChar(255)
+  favicon            String?   @db.VarChar(255)
   logo               String?   @db.VarChar(255)
   logo_header        Int       @default(2)
   logo_footer        Int       @default(2)
@@ -489,6 +490,12 @@ model site_settings {
   meta_description   String?   @db.Text
   og_image           String?   @db.VarChar(255)
   social_links       String?   @db.Text
+  facebook           String?   @db.VarChar(255)
+  twitter            String?   @db.VarChar(255)
+  google_plus        String?   @db.VarChar(255)
+  youtube            String?   @db.VarChar(255)
+  instagram          String?   @db.VarChar(255)
+  linkedin           String?   @db.VarChar(255)
   editor_meta        String?   @db.Text
   address            String?   @db.Text
   copyright          String?   @db.Text
