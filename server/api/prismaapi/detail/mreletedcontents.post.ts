@@ -1,5 +1,4 @@
 import { Prisma, PrismaClient } from "@prisma/client"
-import getmorecontentsPost from "../../detailpage/single/getmorecontents.post"
 export default defineEventHandler(async (event) => {
 
     const prisma = new PrismaClient()

@@ -21,11 +21,12 @@
         </Head>
 
         <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
-        <div class="breadcrump pb-1">
+        <div class="breadcrump pb-3 md:pb-1">
             <div class="flex gap-1 justify-start items-center">
-                <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
+                <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`"
+                    class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
                     <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                    <h1 class="text-xl md:text-xl">{{ detailsContent?.category?.cat_name_bn }}</h1>
+                    <h1 class="text-base md:text-xl">{{ detailsContent?.category?.cat_name_bn }}</h1>
                 </NuxtLink>
 
             </div>
@@ -42,11 +43,17 @@
                     :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
                     :data-keywords="detailsContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
-                    :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`">
+                    :data-src="firstOGImage">
+                    <!-- <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
+                    :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
+                    :data-keywords="detailsContent?.meta_keywords"
+                    :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
+                    :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`"> -->
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             detailsContent?.content_sub_heading }}</h4>
-                        <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ detailsContent?.content_heading }}
+                        <h2 class="text-3xl md:text-[32px] md:leading-[50px] print:text-[32px]">{{
+                            detailsContent?.content_heading }}
                             {{ balvalue }}
                         </h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
@@ -239,17 +246,35 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         <!--========== <3> More Details Content ============ -->
         <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
             :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
+
             <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
-                <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
+                <!----- Breadcump ----->
+                <div class="breadcrump pb-3 md:pb-1">
+                    <div class="flex gap-1 justify-start items-center">
+                        <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`"
+                            class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
+                            <!-- {{ detailsContent?.category?.cat_name_bn }} -->
+                            <h1 class="text-base md:text-xl">{{ moreDetailContent?.category?.cat_name_bn }}</h1>
+                        </NuxtLink>
+                    </div>
+                </div>
+                <!----- Breadcump relatedPostOgImage ----->
+                <!-- <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
                     :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
                     :data-keywords="moreDetailContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
-                    :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`">
+                    :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`"> -->
+                    <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
+                    :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
+                    :data-keywords="moreDetailContent?.meta_keywords"
+                    :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
+                    :data-src="`${relatedPostOgImage[mcinx]?.ogimage}`">
 
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             moreDetailContent?.content_sub_heading }}</h4>
-                        <h2 class="md:text-[32px] md:leading-[50px] print:text-[32px]">{{ moreDetailContent.content_heading
+                        <h2 class="text-3xl md:text-[32px] md:leading-[50px] print:text-[32px]">{{
+                            moreDetailContent.content_heading
                         }} {{ balvalue }}</h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
                     </div>
@@ -472,17 +497,6 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
 <script setup>
 // import moment from 'moment';
-// import {sharp} from 'sharp'
-// const ogImageGenerate = (ogImageUrl) => {
-//     const watermark = sharp('http://127.0.0.1:8000/media/content/images/2023November/dhaka-prokash-news-7-20231111163521.jpg').composite([
-//                     { input: 'http://127.0.0.1:8000/media/ogImages/og-common.png', left:0, top:100  }
-//                 ]).png().toBuffer();
-// }
-
-// const watermark = sharp('http://127.0.0.1:8000/media/content/images/2023November/dhaka-prokash-news-7-20231111163521.jpg').composite([
-//                     { input: 'http://127.0.0.1:8000/media/ogImages/og-common.png', left:0, top:100  }
-//                 ]).png().toBuffer();
-//                 console.log(watermark)
 
 const siteurl = siteUrlState()
 const websiteUrl = websiteUrlState()
@@ -535,12 +549,23 @@ const fRelatedContents = useState(() => [])
 fRelatedContents.value = pdailts?.value?.firstRelatedContents
 
 // ============== First Related Content ================//
+// detailsContent?.value?.img_bg_path
 
+// ============= detailsContent OG Image Generate ========== //
+const firstOGImage = ref('')
+const { data: dcogimage } = await useFetch("/api/prismaapi/ogimage/ogimage", {
+    method: 'POST',
+    body: {
+        img_bg_path: pdailts?.value?.detailsContent?.img_bg_path
+    }
+})
+firstOGImage.value = dcogimage?.value
+// ============= detailsContent OG Image Generate ========== //
 
 // ================  OG - Open Graph ====================// 
 const ogUrl = ref(null);
-const okImage = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
-ogUrl.value = okImage
+// const okImage = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
+ogUrl.value = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
 const ogTitle = ref(null);
 ogTitle.value = detailsContent?.value?.content_heading
 const ogDescription = ref(null);
@@ -549,13 +574,15 @@ const metaKeywords = ref(null);
 metaKeywords.value = detailsContent?.value?.meta_keywords
 ogDescription.value = detailsContent?.value?.content_brief
 const ogImage = ref(null);
-ogImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
+ogImage.value = firstOGImage.value
+// ogImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
 const twitterTitle = ref(null);
 twitterTitle.value = detailsContent?.value?.content_heading
 const twitterDescription = ref(null);
 twitterDescription.value = detailsContent?.value?.content_brief
 const twitterImage = ref(null);
-twitterImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
+// twitterImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
+twitterImage.value = firstOGImage?.value
 // ================//  OG - Open Graph ====================// 
 
 // ============ Latest 20 Posts ===============//
@@ -613,15 +640,15 @@ firstInsideMoreNews.value = dinsidemorenews?.value
 //===== First Detail Inside More News =====//
 
 // ====================== RelatedContent for More <3> Three content ======================= //
-const relatedDetailContent = useState(() => [])
-const readPostsState = useState(() => [detailsContent?.value?.content_id])
 
+const relatedDetailContent = useState(() => [])
+const relatedPostOgImage = useState(() => [])
+const readPostsState = useState(() => [detailsContent?.value?.content_id])
 
 for (let s = 0; s < moreDetailsContents?.value?.length; s++) {
     // readPostsState.value.push(moreDetailsContents.value[s].content_id)
 
     readPostsState.value.push(moreDetailsContents.value[s].content_id)
-
 
     // const { data: rlcd } = await useFetch("/api/detailpage/relatedcontent", {
     //     method: "POST",
@@ -640,10 +667,23 @@ for (let s = 0; s < moreDetailsContents?.value?.length; s++) {
 
     // let reldata = rlcd?.value?.slice(1, 5)
     relatedDetailContent?.value?.push(rlcd.value)
+    
+    // Og Image generate
+    const { data: moreogimgpost } = await useFetch("/api/prismaapi/ogimage/ogimage", {
+        method: 'POST',
+        body: {
+            img_bg_path: moreDetailsContents.value[s].img_bg_path
+        }
+    })
 
-
+    relatedPostOgImage.value.push({
+        ogimage: moreogimgpost.value
+    })
 
 }
+// relatedDetailContent.value = [...new Map(relatedDetailContent.value.map(itemC => [itemC, itemC])).values()]
+relatedPostOgImage.value = [...new Map(relatedPostOgImage.value.map(item => [item['ogimage'], item])).values()]
+
 
 // console.log(relatedDetailContent.value)
 // ==================== RelatedContent for More <3> Three content  ======================= //

@@ -25,7 +25,8 @@ export default defineEventHandler(async (event) => {
     
     })
 
-    return  image.getBase64Async(jimp.AUTO);
+    const ogimage = await image.getBase64Async(jimp.AUTO)
+    return ogimage;
 
   
 })

@@ -1,4 +1,4 @@
-
+import jimp from 'jimp'
 import { Prisma, PrismaClient } from "@prisma/client"
 export default defineEventHandler(async (event) => {
 
@@ -44,8 +44,29 @@ export default defineEventHandler(async (event) => {
         }
     })
 
-    // Post Details
+    // =============== ADS OG Image Generate ============= //
+    // const ogImageBanner = await prisma.site_settings.findFirst({
+    //     where: {
+    //         id: 1
+    //     },
+    //    select: {
+    //         post_ogimage: true
+    //    }
+    // })
+
+    // let  watermarkImage = await jimp.read(`${config.public.apiUrl}/media/ogImages/${ogImageBanner?.post_ogimage}`);
+    // const image = await jimp.read(`${config.public.apiUrl}/media/content/images/${getdetailsContent?.img_bg_path}`);
+    // const watermark = watermarkImage.resize(750,jimp.AUTO);
+    // image.composite(watermark, 0, 337, {
+    //   mode: jimp.BLEND_SOURCE_OVER,
+    //   opacityDest: 1,
+    //   opacitySource: 1,
+    
+    // })
+    // const genretedOG = await image.getBase64Async(jimp.AUTO)
+    // =============== ADS OG Image Generate ============= //
     const detailsContent = {
+        // ogImage: genretedOG,
         content_id: getdetailsContent?.content_id,
         content_type: getdetailsContent?.content_type,
         cat_id: getdetailsContent?.cat_id,
@@ -171,8 +192,18 @@ export default defineEventHandler(async (event) => {
         }
 
         // catewise content will be added 
-
+        // let  watermarkImage = await jimp.read(`${config.public.apiUrl}/media/ogImages/${ogImageBanner?.post_ogimage}`);
+        // const image = await jimp.read(`${config.public.apiUrl}/media/content/images/${moreContents[i]?.img_bg_path}`);
+        // const watermark = watermarkImage.resize(750,jimp.AUTO);
+        // image.composite(watermark, 0, 337, {
+        //   mode: jimp.BLEND_SOURCE_OVER,
+        //   opacityDest: 1,
+        //   opacitySource: 1,
+        
+        // })
+        // const genretedOG = await image.getBase64Async(jimp.AUTO)
         moreDetailContent.push({
+            // ogImage: genretedOG,
             content_id: moreContents[i]?.content_id,
             content_type: moreContents[i]?.content_type,
             cat_id: moreContents[i]?.cat_id,
