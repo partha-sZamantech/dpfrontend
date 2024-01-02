@@ -1,9 +1,10 @@
+
 import { Prisma, PrismaClient } from "@prisma/client"
 export default defineEventHandler(async (event) => {
 
     const prisma = new PrismaClient()
     const getBody = await readBody(event)
-    // const detailsContent = []
+    const config = useRuntimeConfig()
     // Get Content Detail
     const getdetailsContent = await prisma.bn_contents.findFirst({
         where: {
@@ -43,7 +44,7 @@ export default defineEventHandler(async (event) => {
         }
     })
 
-
+    // Post Details
     const detailsContent = {
         content_id: getdetailsContent?.content_id,
         content_type: getdetailsContent?.content_type,

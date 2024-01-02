@@ -489,6 +489,7 @@ model site_settings {
   meta_keywords      String?   @db.Text
   meta_description   String?   @db.Text
   og_image           String?   @db.VarChar(255)
+  post_ogimage       String?   @db.VarChar(255)
   social_links       String?   @db.Text
   facebook           String?   @db.VarChar(255)
   twitter            String?   @db.VarChar(255)

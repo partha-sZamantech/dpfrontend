@@ -2,7 +2,7 @@
     <div class="footerTop grid grid-cols-1 place-items-center md:place-items-start gap-6 md:gap-0 md:flex md:justify-between pb-8">
         <div class="flex flex-col gap-3 text-center md:text-left">
             <NuxtLink to="/">
-                <nuxt-img class="mx-auto md:mx-0" :src="`${siteConfig.public.apiUrl}/media/common/${siteSettings.logo}`" width="220"
+                <nuxt-img class="mx-auto md:mx-0" :src="`${siteConfig.public.apiUrl}/media/common/${sitesettings?.logo}`" width="220"
                     alt="Dhaka Prokash" />
             </NuxtLink>
             <p class="text-[16px] text-[#2a2a2a]">৯৩, কাজী নজরুল ইসলাম এভিনিউ, (ষষ্ঠ তলা)<br>কারওয়ান বাজার, ঢাকা-১২১৫।</p>
@@ -30,11 +30,13 @@
 <script setup>
 // ==================== Logo ====================
 const siteConfig = useRuntimeConfig()
-const siteSettings = useState(() => [])
-const { data: siteset } = await useFetch(`${siteConfig.public.apiUrl}/api/site-setting`, {
-    method: 'GET'
-})
-siteSettings.value = siteset
+// Sitesetting - logo, social media
+const sitesettings = sitesettingsState()
+// const siteSettings = useState(() => [])
+// const { data: siteset } = await useFetch(`${siteConfig.public.apiUrl}/api/site-setting`, {
+//     method: 'GET'
+// })
+// siteSettings.value = siteset
 // ==================== Logo ====================
 </script>
 

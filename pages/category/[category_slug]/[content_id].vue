@@ -472,7 +472,17 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
 <script setup>
 // import moment from 'moment';
+// import {sharp} from 'sharp'
+// const ogImageGenerate = (ogImageUrl) => {
+//     const watermark = sharp('http://127.0.0.1:8000/media/content/images/2023November/dhaka-prokash-news-7-20231111163521.jpg').composite([
+//                     { input: 'http://127.0.0.1:8000/media/ogImages/og-common.png', left:0, top:100  }
+//                 ]).png().toBuffer();
+// }
 
+// const watermark = sharp('http://127.0.0.1:8000/media/content/images/2023November/dhaka-prokash-news-7-20231111163521.jpg').composite([
+//                     { input: 'http://127.0.0.1:8000/media/ogImages/og-common.png', left:0, top:100  }
+//                 ]).png().toBuffer();
+//                 console.log(watermark)
 
 const siteurl = siteUrlState()
 const websiteUrl = websiteUrlState()
