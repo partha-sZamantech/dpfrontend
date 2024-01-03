@@ -1,5 +1,5 @@
 <template>
-    <div :class="`${bottomAdsBox ? '-bottom-[98px] left-0 right-0' : 'bottom-0 left-0 right-0'} fixed duration-700`">
+    <div :class="`${bottomAdsBox ? '-bottom-[100px] left-0 right-0' : 'bottom-0 left-0 right-0'} fixed duration-700`">
         <div class="bg-[#eee] h-[100px] flex flex-col justify-center items-center relative">
             <div @click="bottomAdsToggle"
                 class="bg-[#eee] w-8 h-8 px-2 absolute right-0 -top-6 rounded-l-lg cursor-pointer">

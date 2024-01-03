@@ -41,9 +41,9 @@
         <div class="main-container duration-900 mt-4 md:mt-0">
 
             <slot />
-            <FooterContent />
+      
         </div>
-       
+        <FooterContent />
         <!-- Footer Ads Sticky -->
     <AdsDesktopCommonFooterStickyAds v-if="footerAds?.status === 1" :footerAds="footerAds" />
         <!-- Footer Ads Sticky -->
