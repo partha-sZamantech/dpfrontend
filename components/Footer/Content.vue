@@ -2,9 +2,9 @@
     <div class="footer-mainContainer">
         <div class="bg-[#e4e4e4]">
             <div class=" max-w-[1280px] mx-auto px-4 md:px-2">
-                <div class="main-footer py-8 border-t mt-10">
+                <div class="main-footer pt-10">
                     <FooterTop />
-                    <FooterMiddle />
+                    <!-- <FooterMiddle /> -->
                 </div>
             </div>
         </div>

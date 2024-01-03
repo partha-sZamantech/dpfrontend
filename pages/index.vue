@@ -261,7 +261,7 @@
         <!-- Home Nine Eight Ads -->
 
         <!-- Gallery Content Area -->
-        <div class="english-content-except bg-[#00427A] my-6 text-white">
+        <div class="gallery-content-except bg-[#00427A] mt-6 text-white">
             <!-- Gallery Component -->
             <HomeGallery />
             <!-- Gallery Component -->
