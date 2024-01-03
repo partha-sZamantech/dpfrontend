@@ -12,20 +12,20 @@
 </script>
 
 <style scoped>
-.footer-bottom a:after {
+/* .footer-bottom a:after {
     content: '\2022';
     padding-left: 6px;
     padding-top:4px;
     font-size:20px;
     color:#ccc;
-}
-.copyright:after {
+} */
+/* .copyright:after {
     content: '|';
     padding-left:7px;
     padding-right:7px;
     display:inline-block
-}
-.footer-bottom a:last-child:after {
+} */
+/* .footer-bottom a:last-child:after {
     content: ''; 
-}
+} */
 </style>
