@@ -42,8 +42,7 @@ const nuxtApp = useNuxtApp()
 const childrenContents = useState(() => [])
 const { data: hchildrendddddddd } = await useFetch("/api/prismaapi/home/child", {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 childrenContents.value = hchildrendddddddd.value

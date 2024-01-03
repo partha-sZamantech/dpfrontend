@@ -62,8 +62,7 @@ const nuxtApp = useNuxtApp()
 const nationalHCon = NationalHomeContentState()
 const { data: nationalhc } = await useFetch('/api/prismaapi/home/national', {
     method: "GET",
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 nationalHCon.value = nationalhc

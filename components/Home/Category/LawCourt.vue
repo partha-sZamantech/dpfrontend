@@ -64,8 +64,7 @@ const siteurl = siteUrlState()
 const lawcourtContents = useState(() => [])
 const { data: lwcourt } = await useFetch("/api/prismaapi/home/lawcourt", {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 lawcourtContents.value = lwcourt

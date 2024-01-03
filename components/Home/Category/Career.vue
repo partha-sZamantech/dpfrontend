@@ -40,8 +40,7 @@ const nuxtApp = useNuxtApp()
 const careers = useState(() => [])
 const { data: dcareer } = await useFetch("/api/prismaapi/home/career", {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 careers.value = dcareer

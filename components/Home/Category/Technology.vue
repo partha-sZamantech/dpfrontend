@@ -62,7 +62,7 @@ const nuxtApp = useNuxtApp()
 const technologycontents = useState(() => [])
 const { data: technologyc } = await useFetch("/api/prismaapi/home/technology", {
     method: 'GET',
-    cache: 'force-cache',
+    // cache: 'force-cache',
     
 })
 technologycontents.value = technologyc

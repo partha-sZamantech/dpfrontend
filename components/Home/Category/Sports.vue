@@ -60,7 +60,7 @@ const siteUrl = siteUrlState()
 const sportscontent = useState(() => [])
 const { data: hsport } = await useFetch('/api/prismaapi/home/sports', {
     method: 'GET',
-    cache: 'force-cache',
+    // cache: 'force-cache',
 })
 sportscontent.value = hsport
 </script>

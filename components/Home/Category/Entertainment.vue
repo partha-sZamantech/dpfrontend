@@ -58,8 +58,7 @@ const nuxtApp = useNuxtApp()
 const entertainments = useState(() => [])
 const { data: entertainc } = await useFetch('/api/prismaapi/home/entertainment', {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 entertainments.value = entertainc

@@ -9,12 +9,12 @@ export default defineEventHandler(async (event) => {
 
     const breakingNews = await prisma.bn_breaking_news.findMany({
         where: {
-           
-                expired_time : {
-                    // Greater Then "gte" & Less Then "lte" date or string
+
+            expired_time: {
+                // Greater Then "gte" & Less Then "lte" date or string
                 gte: currentDate
-                }
-           
+            }
+
         },
         select: {
             id: true,

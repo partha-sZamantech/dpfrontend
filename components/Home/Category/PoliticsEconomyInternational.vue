@@ -119,7 +119,7 @@ const nuxtApp = useNuxtApp()
 const politics = useState(() => [])
 const { data: homePoliticsss } = await useFetch("/api/prismaapi/home/politics", {
     method: 'GET',
-    cache: 'force-cache'
+    // cache: 'force-cache'
  
 })
 politics.value = homePoliticsss.value
@@ -129,7 +129,7 @@ politics.value = homePoliticsss.value
 const economycontent = useState(() => [])
 const { data: econssssssss } = await useFetch("/api/prismaapi/home/economy", {
     method: 'GET',
-    cache: 'force-cache'
+    // cache: 'force-cache'
 
 })
 economycontent.value = econssssssss.value
@@ -139,7 +139,7 @@ economycontent.value = econssssssss.value
 const internationalcontent = useState(() => [])
 const { data: intntnalsssss } = await useFetch("/api/prismaapi/home/international", {
     method: 'GET',
-    cache: 'force-cache'
+    // cache: 'force-cache'
 })
 internationalcontent.value = intntnalsssss.value
 // ======== International Content =============== //

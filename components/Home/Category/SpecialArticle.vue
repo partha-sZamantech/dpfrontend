@@ -38,7 +38,7 @@ const nuxtApp = useNuxtApp()
 const specialArticleContents = useState(() => [])
 const { data: hmspecialrticle } = await useFetch("/api/prismaapi/home/specialarticle", {
     method: 'GET',
-    cache: 'force-cache',
+    // cache: 'force-cache',
    
 })
 specialArticleContents.value = hmspecialrticle

@@ -36,7 +36,7 @@ const siteUrl = siteUrlState()
 const saradeshcontents = useState(() => [])
 const { data: hsradesh } = await useFetch('/api/prismaapi/home/saradesh', {
     method: 'GET',
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 saradeshcontents.value = hsradesh

@@ -42,7 +42,7 @@ const siteurl = siteUrlState()
 const corporateContents = useState(() => [])
 const { data: hcorporate } = await useFetch("/api/prismaapi/home/corporate", {
     method: 'GET',
-    cache: 'force-cache'
+    // cache: 'force-cache'
 })
 corporateContents.value = hcorporate
 // ======== Probash Content =============== //

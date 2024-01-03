@@ -38,8 +38,7 @@
 const crimecontents = useState(() => [])
 const { data: crmct } = await useFetch("/api/prismaapi/home/crime", {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 crimecontents.value = crmct

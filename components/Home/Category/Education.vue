@@ -41,8 +41,7 @@ const nuxtApp = useNuxtApp()
 const educationcontents = useState(() => [])
 const { data: heducation } = await useFetch("/api/prismaapi/home/education", {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 educationcontents.value = heducation

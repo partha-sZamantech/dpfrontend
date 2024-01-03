@@ -39,8 +39,7 @@ const nuxtApp = useNuxtApp()
 const healthcontents = useState(() => [])
 const { data: chealth } = await useFetch("/api/prismaapi/home/health", {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 healthcontents.value = chealth

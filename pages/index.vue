@@ -1,7 +1,7 @@
 <template>
     <div class="home-page">
         <!-- Home Middle Top Ads -->
-        <div v-if="homeMiddleAds.status === 1" class="py-4 border-b border-b-[#e2e2e2] mt-6 md:mt-0">
+        <div v-if="homeMiddleAds?.status === 1" class="py-4 border-b border-b-[#e2e2e2] mt-6 md:mt-0">
             <AdsDesktopHomeMiddleTop :homeMiddleAds="homeMiddleAds" />
         </div>
         <!-- Home Middle Top Ads -->
@@ -16,7 +16,7 @@
             <div class=" grid grid-cols-12 gap-4">
                 <div class="col-span-12 md:col-span-9">
                     <!-- Home Middle One Ads -->
-                    <div v-if="homeMiddleOneAds.status === 1"
+                    <div v-if="homeMiddleOneAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeMiddleOne :homeMiddleOneAds="homeMiddleOneAds" />
                     </div>
@@ -25,7 +25,7 @@
                     <HomeSpecialBottomContent />
                     <!--/ Special Top Content Component -->
                     <!-- Home Middle Two Ads -->
-                    <div v-if="homeMiddleTwoAds.status === 1"
+                    <div v-if="homeMiddleTwoAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeMiddleTwo :homeMiddleTwoAds="homeMiddleTwoAds" />
                     </div>
@@ -34,7 +34,7 @@
                     <HomeCategoryNational />
                     <!--/ National Category Component -->
                     <!-- Home Middle Three Ads -->
-                    <div v-if="homeMiddleThreeAds.status === 1"
+                    <div v-if="homeMiddleThreeAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeMiddleThree :homeMiddleThreeAds="homeMiddleThreeAds" />
                     </div>
@@ -43,7 +43,7 @@
                     <HomeCategoryPoliticsEconomyInternational />
                     <!--/ National Category Component -->
                     <!-- Home Middle Four Ads -->
-                    <div v-if="homeMiddleFourAds.status === 1"
+                    <div v-if="homeMiddleFourAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeMiddleFour :homeMiddleFourAds="homeMiddleFourAds" />
                     </div>
@@ -52,13 +52,13 @@
 
                 <div class="col-span-12 md:col-span-3">
                     <!-- Home Right One Ads -->
-                    <div v-if="homeRightOneAds.status === 1"
+                    <div v-if="homeRightOneAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeRightOne :homeRightOneAds="homeRightOneAds" />
                     </div>
                     <!-- Home Right One Ads -->
                     <!-- Home Right Two Ads -->
-                    <div v-if="homeRightTwoAds.status === 1"
+                    <div v-if="homeRightTwoAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeRightTwo :homeRightTwoAds="homeRightTwoAds" />
                     </div>
@@ -68,31 +68,31 @@
                     <!-- <Tabs /> -->
                     <!--/ Home Right Sidebar -->
                     <!-- Home Right Three Ads -->
-                    <div v-if="homeRightThreeAds.status === 1"
+                    <div v-if="homeRightThreeAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeRightThree :homeRightThreeAds="homeRightThreeAds" />
                     </div>
                     <!-- Home Right Three Ads -->
                     <!-- Home Right Four Ads -->
-                    <div v-if="homeRightFourAds.status === 1"
+                    <div v-if="homeRightFourAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeRightFour :homeRightFourAds="homeRightFourAds" />
                     </div>
                     <!-- Home Right Four Ads -->
                     <!-- Home Right Five Ads -->
-                    <div v-if="homeRightFiveAds.status === 1"
+                    <div v-if="homeRightFiveAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeRightFive :homeRightFiveAds="homeRightFiveAds" />
                     </div>
                     <!-- Home Right Five Ads -->
                     <!-- Home Right Six Ads -->
-                    <div v-if="homeRightSixAds.status === 1"
+                    <div v-if="homeRightSixAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeRIghtSix :homeRightSixAds="homeRightSixAds" />
                     </div>
                     <!-- Home Right Six Ads -->
                     <!-- Home Right Seven Ads -->
-                    <div v-if="homeRightSevenAds.status === 1"
+                    <div v-if="homeRightSevenAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                         <AdsDesktopHomeRightSeven :homeRightSevenAds="homeRightSevenAds" />
                     </div>
@@ -117,7 +117,7 @@
                 </div>
             </div>
             <!-- Home Middle Five Ads -->
-            <div v-if="homeMiddleFiveAds.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+            <div v-if="homeMiddleFiveAds?.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                 <AdsDesktopHomeMiddleFive :homeMiddleFiveAds="homeMiddleFiveAds" />
             </div>
             <!-- Home Middle Five Ads -->
@@ -135,7 +135,7 @@
             </div>
         </div>
         <!-- Home Middle Six Ads -->
-        <div v-if="homeMiddleSixAds.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+        <div v-if="homeMiddleSixAds?.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
             <AdsDesktopHomeMiddleSix :homeMiddleSixAds="homeMiddleSixAds" />
         </div>
         <!-- Home Middle Six Ads -->
@@ -147,7 +147,7 @@
         </div>
         <!-- English Content Area -->
         <!-- Home Middle Seven Ads -->
-        <div v-if="homeMiddleSevenAds.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+        <div v-if="homeMiddleSevenAds?.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
             <AdsDesktopHomeMiddleSeven :homeMiddleSevenAds="homeMiddleSevenAds" />
         </div>
         <!-- Home Middle Seven Ads -->
@@ -185,7 +185,7 @@
             </div>
 
             <!-- Home Middle Eight Ads -->
-            <div v-if="homeMiddleEightAds.status === 1"
+            <div v-if="homeMiddleEightAds?.status === 1"
                 class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                 <AdsDesktopHomeMiddleEight :homeMiddleEightAds="homeMiddleEightAds" />
             </div>
@@ -255,7 +255,7 @@
             </div>
         </div>
         <!-- Home Nine Eight Ads -->
-        <div v-if="homeMiddleNineAds.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+        <div v-if="homeMiddleNineAds?.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
             <AdsDesktopHomeMiddleNine :homeMiddleNineAds="homeMiddleNineAds" />
         </div>
         <!-- Home Nine Eight Ads -->

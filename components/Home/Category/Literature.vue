@@ -59,8 +59,7 @@ const nuxtApp = useNuxtApp()
 const literatureContents = useState(() => [])
 const { data: hmliterature } = await useFetch("/api/prismaapi/home/literature", {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 literatureContents.value = hmliterature

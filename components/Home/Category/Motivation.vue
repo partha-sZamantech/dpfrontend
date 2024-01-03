@@ -42,7 +42,7 @@ const nuxtApp = useNuxtApp()
 const motivationContents = useState(() => [])
 const { data: hmotivation } = await useFetch("/api/prismaapi/home/motivation", {
     method: 'GET',
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 motivationContents.value = hmotivation

@@ -42,9 +42,7 @@ const nuxtApp = useNuxtApp()
 const probashContents = useState(() => [])
 const { data: hprobash } = await useFetch("/api/prismaapi/home/probash", {
     method: 'GET',
-  
-    cache: 'force-cache',
- 
+    // cache: 'force-cache',
 })
 probashContents.value = hprobash
 // ======== Probash Content =============== //

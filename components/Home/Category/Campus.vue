@@ -41,8 +41,7 @@ const nuxtApp = useNuxtApp()
 const campuses = useState(() => [])
 const { data: dcampus } = await useFetch("/api/prismaapi/home/campus", {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 campuses.value = dcampus

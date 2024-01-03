@@ -39,7 +39,7 @@ const nuxtApp = useNuxtApp()
 const opinionContents = useState(() => [])
 const { data: hmOpinion } = await useFetch("/api/prismaapi/home/opinion", {
     method: 'GET',
-    cache: 'force-cache',
+    // cache: 'force-cache',
  
 })
 opinionContents.value = hmOpinion

@@ -39,8 +39,7 @@ const nuxtApp = useNuxtApp()
 const religioncontents = useState(() => [])
 const { data: hreligion } = await useFetch("/api/prismaapi/home/religion", {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 })
 religioncontents.value = hreligion

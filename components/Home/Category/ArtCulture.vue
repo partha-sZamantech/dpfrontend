@@ -41,8 +41,7 @@ const nuxtApp = useNuxtApp()
 const artscontents = useState(() => [])
 const { data: harts } = await useFetch("/api/prismaapi/home/art", {
     method: 'GET',
-
-    cache: 'force-cache',
+    // cache: 'force-cache',
 
 
 })
