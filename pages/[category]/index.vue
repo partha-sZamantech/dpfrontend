@@ -242,7 +242,7 @@
                 </div>
             </div>
             <!-- Category Bottom Ads -->
-            <div v-if="categoryBottomAds.status === 1"
+            <div v-if="categoryBottomAds?.status === 1"
                 class="py-4 mt-16 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                 <AdsDesktopCategoryBottom :categoryBottomAds="categoryBottomAds" />
             </div>
