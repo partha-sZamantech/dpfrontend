@@ -288,83 +288,53 @@ const categoryContent = useState(() => [])
 const categoryContentExcept = useState(() => [])
 const take = ref(15)
 
-
-// const { data: catcont } = await useFetch('/api/category/categorycontent', {
-//     method: "POST",
-//     body: {
-//         cat_slug: cat_slug,
-//         take: take.value
-//     }
-// })
-
+// Leading Post 
 const { data: catcont } = await useFetch('/api/prismaapi/category/categorycontent', {
     method: "POST",
     body: {
         cat_slug: cat_slug,
-        take: take.value
-    },
-
-    transform(input) {
-        return {
-            ...input,
-            fetchedAt: new Date()
-        }
-    },
-    key: `sdfadasd-${cat_slug}`,
-    cache: 'force-cache',
-    getCachedData(keys) {
-        const data = nuxtApp.payload.data[keys] || nuxtApp.static.data[keys]
-        // If data is not fetched yet
-        if (!data) {
-            // Fetch the first time
-            return
-        }
-
-        // Is the data too old?
-        const expirationDate = new Date(data.fetchedAt)
-
-        // expirationDate.getTime() + [second amount] * 1000
-        expirationDate.setTime(expirationDate.getTime() + 30 * 1000)
-        const isExpired = expirationDate.getTime() < Date.now()
-        if (isExpired) {
-            // Refetch the data
-            return
-        }
-
-        return data
-    },
+        take: take.value,
+        skip: 0
+    }
 })
-
 // Category Content Assign
 categoryContent.value = catcont?.value?.contents
-categoryContentExcept.value = catcont?.value?.contents?.slice(5, take.value)
+// Leading Post 
+
 // Category Assign
 category.value = catcont?.value?.category
 subcategory.value = catcont?.value?.subcat
+// Category Assign
+
+
+// Except Content more 
+const { data: excptcatcont } = await useFetch('/api/prismaapi/category/categorycontent', {
+    method: "POST",
+    body: {
+        cat_slug: cat_slug,
+        take: 10,
+        skip: 5
+    }
+})
+
+categoryContentExcept.value = excptcatcont?.value?.contents
+// Except Content more 
+
 // console.log(catcont?.value?.category)
 //================== Category Content fetching =============== //
-
-
 
 //================ Load More Category Content Button =================//
 const loadMoreButtonHandler = async () => {
     take.value += 10
-    // const { data: loadCtP } = await useFetch('/api/category/categorycontent', {
-    //     method: "POST",
-    //     body: {
-    //         cat_slug: cat_slug,
-    //         take: take.value
-    //     }
-    // })
     const { data: loadCtP } = await useFetch('/api/prismaapi/category/categorycontent', {
         method: "POST",
         body: {
             cat_slug: cat_slug,
-            take: take.value
+            take: take.value,
+            skip: 5
         }
     })
-    categoryContentExcept.value = loadCtP?.value?.contents?.slice(5, take.value)
-
+    categoryContentExcept.value = loadCtP?.value?.contents
 }
 
 //================ Load More Category Content Button =================//
