@@ -8,6 +8,9 @@ export default defineEventHandler(async (event) => {
             cat_id: 28, // Assign Category ID
         },
         take: 5,
+        orderBy: {
+            content_id: 'desc'
+        }
     })
 
     const data = []

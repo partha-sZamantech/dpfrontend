@@ -43,7 +43,7 @@
                     :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
                     :data-keywords="detailsContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
-                    :data-src="firstOGImage">
+                    :data-src="`${siteurl?.site_url}/media/content/images/${detailsContent?.img_bg_path}`">
                     <!-- <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
                     :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
                     :data-keywords="detailsContent?.meta_keywords"
@@ -268,7 +268,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
                     :data-keywords="moreDetailContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
-                    :data-src="`${relatedPostOgImage[mcinx]?.ogimage}`">
+                    :data-src="`${siteurl?.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`">
 
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
@@ -425,8 +425,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
             </div>
             <!--:::::::: Detail Page After Ads :::::::::::-->
-            <!-- Read more first content -->
-            <div class="col-span-12" v-if="relatedDetailContent?.length > 0 && mcinx !== 2">
+            <!-- Three More Content Releted -->
+            <div class="col-span-12" v-if="moreDetailContent?.morereletedcontentbelow?.length > 0 && mcinx !== 2">
+            
                 <div class="read-more">
                     <div class="category-header border-b-4 border-b-[#3375af] my-3">
                         <div class="flex gap-3 items-center">
@@ -435,10 +436,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <!-- {{ moreDetailCatWisePost[mcinx] }} -->
-                        <!-- Loop Item -->
+                 
                         <NuxtLink :to="`/category/${relDetailContent?.category?.cat_slug}/${relDetailContent?.content_id}`"
-                            class="flex flex-col gap-2 group" v-for="relDetailContent in relatedDetailContent[mcinx]"
+                            class="flex flex-col gap-2 group" v-for="relDetailContent in moreDetailContent?.morereletedcontentbelow[mcinx]"
                             :key="relDetailContent.content_id">
                             <div class="feature_image_readmore overflow-hidden">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${relDetailContent?.img_bg_path}`"
@@ -447,13 +447,11 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             </div>
                             <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ relDetailContent?.content_heading }}</h5>
                         </NuxtLink>
-                        <!-- Loop Item -->
-
-
+                
                     </div>
                 </div>
             </div>
-            <!-- Read more first content -->
+      <!-- Three More Content Releted -->
 
             <!-- Latest 20 Posts content -->
             <div class="col-span-12" v-else>
@@ -552,14 +550,14 @@ fRelatedContents.value = pdailts?.value?.firstRelatedContents
 // detailsContent?.value?.img_bg_path
 
 // ============= detailsContent OG Image Generate ========== //
-const firstOGImage = ref('')
-const { data: dcogimage } = await useFetch("/api/prismaapi/ogimage/ogimage", {
-    method: 'POST',
-    body: {
-        img_bg_path: pdailts?.value?.detailsContent?.img_bg_path
-    }
-})
-firstOGImage.value = dcogimage?.value
+// const firstOGImage = ref('')
+// const { data: dcogimage } = await useFetch("/api/prismaapi/ogimage/ogimage", {
+//     method: 'POST',
+//     body: {
+//         img_bg_path: pdailts?.value?.detailsContent?.img_bg_path
+//     }
+// })
+// firstOGImage.value = dcogimage?.value
 // ============= detailsContent OG Image Generate ========== //
 
 // ================  OG - Open Graph ====================// 
@@ -574,7 +572,7 @@ const metaKeywords = ref(null);
 metaKeywords.value = detailsContent?.value?.meta_keywords
 ogDescription.value = detailsContent?.value?.content_brief
 const ogImage = ref(null);
-ogImage.value = firstOGImage.value
+ogImage.value = `${siteurl?.value?.site_url}/media/content/images/${detailsContent?.value?.img_bg_path}`
 // ogImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
 const twitterTitle = ref(null);
 twitterTitle.value = detailsContent?.value?.content_heading
@@ -582,7 +580,7 @@ const twitterDescription = ref(null);
 twitterDescription.value = detailsContent?.value?.content_brief
 const twitterImage = ref(null);
 // twitterImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
-twitterImage.value = firstOGImage?.value
+twitterImage.value = `${siteurl?.value?.site_url}/media/content/images/${detailsContent?.value?.img_bg_path}`
 // ================//  OG - Open Graph ====================// 
 
 // ============ Latest 20 Posts ===============//
@@ -641,48 +639,28 @@ firstInsideMoreNews.value = dinsidemorenews?.value
 
 // ====================== RelatedContent for More <3> Three content ======================= //
 
-const relatedDetailContent = useState(() => [])
-const relatedPostOgImage = useState(() => [])
-const readPostsState = useState(() => [detailsContent?.value?.content_id])
+// const relatedDetailContent = useState(() => [])
+// const readPostsState = useState(() => [detailsContent?.value?.content_id])
 
-for (let s = 0; s < moreDetailsContents?.value?.length; s++) {
-    // readPostsState.value.push(moreDetailsContents.value[s].content_id)
+// for (let s = 0; s < moreDetailsContents?.value?.length; s++) {
 
-    readPostsState.value.push(moreDetailsContents.value[s].content_id)
 
-    // const { data: rlcd } = await useFetch("/api/detailpage/relatedcontent", {
-    //     method: "POST",
-    //     body: {
-    //         readedIds: readPostsState?.value,
-    //         detailId: detailsContent?.value?.content_id
-    //     }
-    // })
+//     readPostsState.value.push(moreDetailsContents.value[s].content_id)
 
-    const { data: rlcd } = await useFetch("/api/prismaapi/detail/mreletedcontents", {
-        method: "POST",
-        body: {
-            readedids: readPostsState.value
-        }
-    })
+//     const { data: rlcd } = await useFetch("/api/prismaapi/detail/mreletedcontents", {
+//         method: "POST",
+//         body: {
+//             readedids: readPostsState.value
+//         }
+//     })
 
-    // let reldata = rlcd?.value?.slice(1, 5)
-    relatedDetailContent?.value?.push(rlcd.value)
+//     relatedDetailContent?.value?.push(rlcd.value)
     
-    // Og Image generate
-    const { data: moreogimgpost } = await useFetch("/api/prismaapi/ogimage/ogimage", {
-        method: 'POST',
-        body: {
-            img_bg_path: moreDetailsContents.value[s].img_bg_path
-        }
-    })
 
-    relatedPostOgImage.value.push({
-        ogimage: moreogimgpost.value
-    })
+// }
 
-}
 // relatedDetailContent.value = [...new Map(relatedDetailContent.value.map(itemC => [itemC, itemC])).values()]
-relatedPostOgImage.value = [...new Map(relatedPostOgImage.value.map(item => [item['ogimage'], item])).values()]
+// relatedPostOgImage.value = [...new Map(relatedPostOgImage.value.map(item => [item['ogimage'], item])).values()]
 
 
 // console.log(relatedDetailContent.value)

@@ -7,7 +7,10 @@ export default defineEventHandler(async (event) => {
         where: {
             cat_id: 30, // Assign Category ID
         },
-        take: 5,
+        take: 4,
+        orderBy: {
+            content_id: 'desc'
+        }
     })
 
     const data = []

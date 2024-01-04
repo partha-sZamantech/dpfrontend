@@ -61,7 +61,7 @@ export default defineEventHandler(async (event) => {
     //   mode: jimp.BLEND_SOURCE_OVER,
     //   opacityDest: 1,
     //   opacitySource: 1,
-    
+
     // })
     // const genretedOG = await image.getBase64Async(jimp.AUTO)
     // =============== ADS OG Image Generate ============= //
@@ -127,8 +127,13 @@ export default defineEventHandler(async (event) => {
 
     const moreDetailContent = []
 
- 
+    const mrelatedPosts = []
+    const mreletedReadIds = [detailsContent?.content_id]
+
     for (let i = 0; i < moreContents?.length; i++) {
+
+
+
 
 
         const getmoreContentCategory = await prisma.bn_categories.findFirst({
@@ -158,13 +163,13 @@ export default defineEventHandler(async (event) => {
                     }
                 }
             },
-            orderBy:{
+            orderBy: {
                 content_id: 'desc'
             },
             take: 5
         })
         const catwisePost = []
-        for(let catwise = 0; catwise < catwisePosts?.length; catwise++ ){
+        for (let catwise = 0; catwise < catwisePosts?.length; catwise++) {
 
             const catwisecategory = await prisma.bn_categories.findFirst({
                 where: {
@@ -199,9 +204,68 @@ export default defineEventHandler(async (event) => {
         //   mode: jimp.BLEND_SOURCE_OVER,
         //   opacityDest: 1,
         //   opacitySource: 1,
-        
+
         // })
         // const genretedOG = await image.getBase64Async(jimp.AUTO)
+
+
+
+        // ========= More Releted Content ecept 4 post  ===================//
+        mreletedReadIds.push(moreContents[i]?.content_id)
+
+        const readpost = await prisma.bn_contents.findMany({
+            where: {
+                status: 1,
+                deletable: 1,
+                NOT: {
+                    content_id: {
+                        in: mreletedReadIds
+                    }
+                }
+
+            },
+            orderBy: {
+                content_id: 'desc'
+            },
+            take: 4,
+            skip: 1
+        })
+
+        const mrelPostArray = []
+        for (let pb = 0; pb < readpost?.length; pb++) {
+
+            const mrCategory = await prisma.bn_categories.findFirst({
+                where: {
+                    cat_id: readpost[pb]?.cat_id
+                }
+            })
+
+            const mrsubCategory = await prisma.bn_subcategories.findFirst({
+                where: {
+                    subcat_id: readpost[pb]?.cat_id
+                }
+            })
+
+            mrelPostArray.push({
+                content_id: readpost[pb]?.content_id,
+                content_heading: readpost[pb]?.content_heading,
+                img_bg_path: readpost[pb]?.img_bg_path,
+                category: {
+                    cat_name_bn: mrCategory?.cat_name_bn,
+                    cat_slug: mrCategory?.cat_slug
+                },
+                subcategory: {
+                    cat_name_bn: mrsubCategory?.subcat_name_bn,
+                    subcat_slug: mrsubCategory?.subcat_slug
+                }
+            })
+        }
+
+        mrelatedPosts.push(mrelPostArray)
+        // ========= More Releted Content ecept 4 post  ===================//
+
+
+
         moreDetailContent.push({
             // ogImage: genretedOG,
             content_id: moreContents[i]?.content_id,
@@ -242,70 +306,73 @@ export default defineEventHandler(async (event) => {
                 author_name_bn: getmoreContentAuthor?.author_name_bn,
                 author_slug: getmoreContentAuthor?.author_slug,
             },
-            morecatwisePost: catwisePost // cate wise post will be added
+            morecatwisePost: catwisePost, // cate wise post will be added,
+            morereletedcontentbelow: mrelatedPosts
         })
 
-        
+
 
 
     }
+
+    // return mrelatedPosts
     // =========== More 3 Three Content =========================
 
     // ================== First Releted Bottom 4 grid Post =============== // 
-        const firstRelatedContents = []
-        const frelated = await prisma.bn_contents.findMany({
+    const firstRelatedContents = []
+    const frelated = await prisma.bn_contents.findMany({
+        where: {
+            NOT: {
+                content_id: {
+                    equals: detailsContent?.content_id
+                }
+            }
+        },
+        orderBy: {
+            content_id: "desc"
+        },
+        take: 4,
+        skip: 1
+    })
+    for (let ft = 0; ft < frelated?.length; ft++) {
+
+
+        const rfcategory = await prisma.bn_categories.findFirst({
             where: {
-                NOT: {
-                    content_id: {
-                        equals: detailsContent?.content_id
-                    }
-                }
-            },
-            orderBy: {
-                content_id: "desc"
-            },
-            take: 4,
-            skip:1
-        })
-        for(let ft = 0; ft < frelated?.length; ft++){
-
-             
-            const rfcategory = await prisma.bn_categories.findFirst({
-               where: {
                 cat_id: frelated[ft]?.cat_id
-               }
-            })
+            }
+        })
 
-            const rfsubcategory = await prisma.bn_subcategories.findFirst({
-                where: {
-                 cat_id: frelated[ft]?.cat_id
-                }
-             })
+        const rfsubcategory = await prisma.bn_subcategories.findFirst({
+            where: {
+                cat_id: frelated[ft]?.cat_id
+            }
+        })
 
-             firstRelatedContents.push({
-                content_id: frelated[ft]?.content_id,
-                content_type: frelated[ft]?.content_type,
-                cat_id: frelated[ft]?.cat_id,
-                content_heading: frelated[ft]?.content_heading,
-                content_sub_heading: frelated[ft]?.content_sub_heading,
-                img_bg_path: frelated[ft]?.img_bg_path,
-                category: {
-                    cat_id: rfcategory?.cat_id,
-                    cat_slug: rfcategory?.cat_slug
-                },
-                subcategory: {
-                    subcat_id: rfsubcategory?.subcat_id,
-                    subcat_slug: rfsubcategory?.subcat_slug
-                }
-            })
-        }
+        firstRelatedContents.push({
+            content_id: frelated[ft]?.content_id,
+            content_type: frelated[ft]?.content_type,
+            cat_id: frelated[ft]?.cat_id,
+            content_heading: frelated[ft]?.content_heading,
+            content_sub_heading: frelated[ft]?.content_sub_heading,
+            img_bg_path: frelated[ft]?.img_bg_path,
+            category: {
+                cat_id: rfcategory?.cat_id,
+                cat_slug: rfcategory?.cat_slug
+            },
+            subcategory: {
+                subcat_id: rfsubcategory?.subcat_id,
+                subcat_slug: rfsubcategory?.subcat_slug
+            }
+        })
+    }
     // ================== First Releted Bottom 4 grid Post =============== // 
 
     return {
         detailsContent: detailsContent,
         moreDetailContent: moreDetailContent,
         firstRelatedContents: firstRelatedContents
-      
+
     }
 
 

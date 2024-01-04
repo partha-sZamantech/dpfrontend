@@ -361,8 +361,7 @@ const loadMoreButtonHandler = async () => {
         body: {
             cat_slug: cat_slug,
             take: take.value
-        },
-        cache: 'force-cache'
+        }
     })
     categoryContentExcept.value = loadCtP?.value?.contents?.slice(5, take.value)
 

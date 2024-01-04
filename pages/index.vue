@@ -244,7 +244,7 @@
                 </div>
                 <div class=" col-span-12 md:col-span-3">
                     <!-- Opinion Component -->
-                    <!-- <HomeCategoryOpinion /> -->
+                    <HomeCategoryOpinion />
                     <!-- Opinion Component -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">

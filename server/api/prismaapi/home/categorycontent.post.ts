@@ -8,6 +8,9 @@ export default defineEventHandler(async (event) => {
             cat_id: parseInt(getBody?.cat_id),
         },
         take: parseInt(getBody?.take),
+        orderBy: {
+            content_id: 'desc'
+        }
     })
 
     const data = []

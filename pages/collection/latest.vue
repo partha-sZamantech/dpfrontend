@@ -236,22 +236,26 @@ const stickyScroll = computed(() =>
 const latestPosts = useState(() => [])
 const latestPostContentExcept = useState(() => [])
 const take = ref(15)
-// const { data: lcpt } = await useFetch('/api/collection/latestpost', {
-//     method: "POST",
-//     body: {
-//         take: take.value
-//     }
-// })
+
 const { data: lcpt } = await useFetch('/api/prismaapi/collection/latestpost', {
     method: "POST",
     body: {
-        take: take.value
+        take: take.value,
+        skip: 0
     }
 })
 // console.log(lcpt.value)
 // Latest Post Content Assign
 latestPosts.value = lcpt
-latestPostContentExcept.value = lcpt.value.slice(5, take.value)
+
+const { data: exceptlPost } = await useFetch('/api/prismaapi/collection/latestpost', {
+    method: "POST",
+    body: {
+        take: 10,
+        skip: 5
+    }
+})
+latestPostContentExcept.value = exceptlPost.value
 // Latest Post Assign
 //================== Latest Post Content fetching  =============== //
 
@@ -259,19 +263,15 @@ latestPostContentExcept.value = lcpt.value.slice(5, take.value)
 //================ Load More Latest Post Content Button =================//
 const loadMoreButtonHandler = async () => {
     take.value += 10
-    // const { data: loadLPC } = await useFetch('/api/collection/latestpost', {
-    //     method: "POST",
-    //     body: {
-    //         take: take.value
-    //     }
-    // })
+
     const { data: loadLPC } = await useFetch('/api/prismaapi/collection/latestpost', {
         method: "POST",
         body: {
-            take: take.value
+            take: take.value,
+            skip: 5
         }
     })
-    latestPostContentExcept.value = loadLPC.value.slice(5, take.value)
+    latestPostContentExcept.value = loadLPC.value
 
 }
 //================ Load More Latest Post Content Button =================//
