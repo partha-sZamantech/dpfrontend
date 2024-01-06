@@ -196,16 +196,15 @@
                                     class=" grid grid-cols-12 gap-3 group">
 
                                     <div class=" col-span-7 flex flex-col gap-3">
-                                        <h3
-                                            class="cat-title text-[20px] font-semibold leading-[24px] group-hover:text-[#ff0000]">
+                                        <h3 class="cat-title text-[18px] md:text-[20px] font-semibold leading-[24px] group-hover:text-[#ff0000]">
                                             {{
                                                 catPost?.content_heading }}</h3>
                                         <ClientOnly>
-                                            <div class="cat-desc text-base font-[300]"
+                                            <div class="cat-desc text-base font-[300] hidden md:block"
                                                 v-html="catPost?.content_details.substring(0, 160)"></div>
                                         </ClientOnly>
 
-                                        <span class="post-date flex flex-col gap-1">
+                                        <span class="post-date md:flex flex-col gap-1 hidden">
                                             <small class="text-sm">আপডেট: {{
                                                 postCreatedDate(catPost?.updated_at) }}</small>
                                             <small class="text-sm">প্রকাশ: {{
@@ -235,7 +234,7 @@
                     <h2 class="text-2xl text-center py-8">আপনি যে বিষয়টি অনুসন্ধান করছেন তা খুজে পাওয়া যায়নি</h2>
                 </div>
                 <div class=" col-span-12 md:col-span-3">
-                    <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" />
+                    <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} hidden md:block`" />
                 </div>
             </div>
 
