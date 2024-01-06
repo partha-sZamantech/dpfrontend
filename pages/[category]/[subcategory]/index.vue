@@ -57,7 +57,7 @@
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     <div class="lead-overly absolute h-full w-full block top-0">
                                         <h5
-                                            class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[18px] md:text-[24px] font-semibold absolute bottom-4 left-6">
+                                            class="img-title leading-[24px] text-white group-hover:text-[#ff0000] text-[18px] md:text-[24px] font-semibold absolute bottom-4 left-6">
                                             {{ subcategoryContents[0]?.content_heading }}</h5>
                                     </div>
                                 </NuxtLink>
@@ -80,7 +80,7 @@
                                         {{ subcategoryContents[1]?.content_heading }}
                                     </h3>
                                     <ClientOnly>
-                                        <div class="cat-postdesc text-[15px] font-[300]"
+                                        <div class="cat-postdesc text-base font-[300]"
                                             v-html="`${subcategoryContents[1]?.content_details.substring(0, 155)}...`">
                                         </div>
                                     </ClientOnly>
@@ -112,7 +112,7 @@
                                     {{ subcategoryContents[2]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-[15px] font-[300]"
+                                    <div class="cat-postdesc text-base font-[300]"
                                         v-html="`${subcategoryContents[2]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
@@ -138,7 +138,7 @@
                                     {{ subcategoryContents[3]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-[15px] font-[300]"
+                                    <div class="cat-postdesc text-base font-[300]"
                                         v-html="`${subcategoryContents[3]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
@@ -163,7 +163,7 @@
                                     {{ subcategoryContents[4]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-[15px] font-[300]"
+                                    <div class="cat-postdesc text-base font-[300]"
                                         v-html="`${subcategoryContents[4]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
@@ -196,7 +196,7 @@
                                     class=" grid grid-cols-12 gap-3 group">
                                     
                                     <div class=" col-span-7 flex flex-col gap-3">
-                                        <h3 class="cat-title text-[20px] font-semibold group-hover:text-[#ff0000]">{{
+                                        <h3 class="cat-title text-[20px] font-semibold leading-[24px] group-hover:text-[#ff0000]">{{
                                         catPost?.content_heading }}</h3>
                                         <ClientOnly>
                                             <div class="cat-desc text-base font-[300]"
