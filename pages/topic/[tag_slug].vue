@@ -15,9 +15,9 @@
       <!-- Space For Ads -->
       <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-2 relative">
          <!-- Breadcrump Section -->
-         <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
+         <div class="breadcrump border-b border-b-[#dee2e6] pb-2 md:mb-5 flex flex-col gap-2 md:gap-4">
 
-            <div class="tag-title md:py-6 flex gap-3 items-center">
+            <div class="tag-title py-4 md:py-6 flex gap-3 items-center">
                <Icon name="bi:tags-fill" class="text-[#3375af] text-3xl" />
                <h1 class="text-xl md:text-3xl text-[#3375af] font-semibold">{{ tag_slug.replaceAll('-', ' ') }}</h1>
             </div>
@@ -38,18 +38,19 @@
 
                         <NuxtLink :to="`/category/${tagContent?.category?.cat_slug}/${tagContent?.content_id}`"
                            class=" grid grid-cols-12 gap-3 group">
-                           <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
-                              tagContent?.content_heading }}</h3>
+                         
                            <div class=" col-span-7 flex flex-col gap-3">
+                              <h3 class="cat-title col-span-12 font-semibold text-[18px] md:text-[20px] group-hover:text-[#ff0000]">{{
+                              tagContent?.content_heading }}</h3>
                               <ClientOnly>
-                                 <div class="cat-desc text-[#555555] text-[15px] font-[300]"
+                                 <div class="cat-desc text-base font-[300] hidden md:block"
                                     v-html="`${tagContent?.content_details.substring(0, 160)}...`"></div>
                               </ClientOnly>
 
-                              <span class="post-date flex flex-col gap-1">
-                                 <small class="text-[#555555]">আপডেট: {{
+                              <span class="post-date md:flex flex-col gap-1 hidden">
+                                 <small class="text-sm">আপডেট: {{
                                     postCreatedDate(tagContent?.updated_at) }}</small>
-                                 <small class="text-[#555555]">প্রকাশ: {{
+                                 <small class="text-sm">প্রকাশ: {{
                                     postCreatedDate(tagContent?.created_at) }}</small>
                               </span>
                            </div>
@@ -77,7 +78,7 @@
                <!-- Loop Category Post Section -->
             </div>
             <div class=" col-span-12 md:col-span-3">
-               <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" />
+               <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} hidden md:block`" />
             </div>
          </div>
       </div>
