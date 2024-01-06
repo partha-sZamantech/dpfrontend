@@ -6,12 +6,13 @@
                     <NuxtLink :to="`/${politics[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
                         <span class="w-3 h-3 bg-[#3375af]"></span>
                         <h2 class="text-[#3375af] text-[18px] font-semibold">রাজনীতি</h2>
+
                     </NuxtLink>
                 </div>
                 <div class="home-p-c-ontent flex flex-col gap-3">
                     <!-- Politic Feature Content -->
                     <NuxtLink :to="`/category/${politics[0]?.cat_slug}/${politics[0]?.content_id}`"
-                        class="flex flex-col gap-2 group">
+                        class="flex flex-col gap-2 group border-b pb-1">
                         <div class=" overflow-hidden">
                             <nuxt-img :src="`${siteurl.site_url}/media/content/images/${politics[0]?.img_bg_path}`"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -19,6 +20,7 @@
                         </div>
                         <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ politics[0]?.content_heading }}
                         </h3>
+                        <span class="text-sm">{{ politics[0]?.created_at }}</span>
                     </NuxtLink>
                     <!--/ Politic Feature Content -->
 
@@ -46,7 +48,7 @@
                 <div class="home-econ-c-ontent flex flex-col gap-3">
                     <!-- Economy Feature Content -->
                     <NuxtLink :to="`/category/${economycontent[0]?.cat_slug}/${economycontent[0]?.content_id}`"
-                        class="flex flex-col gap-2 group">
+                        class="flex flex-col gap-2 group border-b pb-1">
                         <div class=" overflow-hidden">
                             <nuxt-img :src="`${siteurl.site_url}/media/content/images/${economycontent[0]?.img_bg_path}`"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -54,13 +56,14 @@
                         </div>
                         <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{
                             economycontent[0]?.content_heading }}</h3>
+                        <span class="text-sm">{{ economycontent[0]?.created_at }}</span>
                     </NuxtLink>
                     <!--/ Economy Feature Content -->
 
                     <div class="h-p-c-excpt flex flex-col">
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${heconmy?.cat_slug}/${heconmy?.content_id}`"
-                            class=" border-b py-3" v-for="heconmy in economycontent.slice(1, 6)" :key="heconmy.content_id">
+                        <NuxtLink :to="`/category/${heconmy?.cat_slug}/${heconmy?.content_id}`" class=" border-b py-3"
+                            v-for="heconmy in economycontent.slice(1, 6)" :key="heconmy.content_id">
                             <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ heconmy.content_heading }}</h4>
                         </NuxtLink>
                         <!--/ Loop Item -->
@@ -80,9 +83,8 @@
                 </div>
                 <div class="home-int-c-content flex flex-col gap-3">
                     <!-- International Feature Content -->
-                    <NuxtLink
-                        :to="`/category/${internationalcontent[0]?.cat_slug}/${internationalcontent[0]?.content_id}`"
-                        class="flex flex-col gap-2 group">
+                    <NuxtLink :to="`/category/${internationalcontent[0]?.cat_slug}/${internationalcontent[0]?.content_id}`"
+                        class="flex flex-col gap-2 group border-b pb-1">
                         <div class=" overflow-hidden">
                             <nuxt-img
                                 :src="`${siteurl.site_url}/media/content/images/${internationalcontent[0]?.img_bg_path}`"
@@ -91,6 +93,7 @@
                         </div>
                         <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{
                             internationalcontent[0]?.content_heading }}</h3>
+                            <span class="text-sm">{{ internationalcontent[0]?.created_at }}</span>
                     </NuxtLink>
                     <!--/ International Feature Content -->
 
@@ -120,7 +123,7 @@ const politics = useState(() => [])
 const { data: homePoliticsss } = await useFetch("/api/prismaapi/home/politics", {
     method: 'GET',
     // cache: 'force-cache'
- 
+
 })
 politics.value = homePoliticsss.value
 // ======== Politics Content =============== //
