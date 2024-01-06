@@ -15,13 +15,14 @@
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                     </div>
-                    <div class="intertainment-feature-description flex flex-col gap-1">
+                    <div class="intertainment-feature-description flex flex-col gap-2">
                         <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{
                             lawcourtContents[0]?.content_heading }}</h3>
                         <ClientOnly>
-                            <div class="text-md" v-html="`${lawcourtContents[0]?.content_details?.substring(0,
-                                270)} ...`"></div>
+                            <div class="text-base font-[300]" v-html="`${lawcourtContents[0]?.content_details?.substring(0,
+                                255)} ...`"></div>
                         </ClientOnly>
+                        <span class="text-sm">{{ lawcourtContents[0]?.created_at }}</span>
                     </div>
                 </NuxtLink>
             </div>
@@ -40,9 +41,10 @@
                         </div>
                         <div class=" col-span-7">
                             <NuxtLink
-                                :to="`/category/${lawcourtContent?.cat_slug}/${lawcourtContent?.content_id}`">
+                                :to="`/category/${lawcourtContent?.cat_slug}/${lawcourtContent?.content_id}`" class="flex flex-col gap-2">
                                 <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
                                     lawcourtContent?.content_heading }}</h4>
+                                    <span class="text-sm">{{ lawcourtContent?.created_at }}</span>
                             </NuxtLink>
                         </div>
                     </div>

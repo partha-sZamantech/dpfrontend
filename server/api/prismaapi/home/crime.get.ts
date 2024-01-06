@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
         where: {
             cat_id: 33, // Assign Category ID
         },
-        take: 5,
+        take: 4,
         orderBy: {
             content_id: 'desc'
         }

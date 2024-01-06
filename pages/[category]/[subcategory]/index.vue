@@ -194,10 +194,12 @@
                                 :key="cpInx">
                                 <NuxtLink :to="`/category/${catPost?.cat_slug}/${catPost?.content_id}`"
                                     class=" grid grid-cols-12 gap-3 group">
-                                    
+
                                     <div class=" col-span-7 flex flex-col gap-3">
-                                        <h3 class="cat-title text-[20px] font-semibold leading-[24px] group-hover:text-[#ff0000]">{{
-                                        catPost?.content_heading }}</h3>
+                                        <h3
+                                            class="cat-title text-[20px] font-semibold leading-[24px] group-hover:text-[#ff0000]">
+                                            {{
+                                                catPost?.content_heading }}</h3>
                                         <ClientOnly>
                                             <div class="cat-desc text-base font-[300]"
                                                 v-html="catPost?.content_details.substring(0, 160)"></div>

@@ -18,9 +18,11 @@
                     </NuxtLink>
                 </div>
                 <div class=" col-span-7">
-                    <NuxtLink :to="`/category/${crimecontent?.cat_slug}/${crimecontent?.content_id}`">
-                        <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
-                                        crimecontent?.content_heading }}</h4>
+                    <NuxtLink :to="`/category/${crimecontent?.cat_slug}/${crimecontent?.content_id}`" class="flex flex-col gap-2">
+                        <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">
+                            {{ crimecontent?.content_heading }}
+                        </h4>
+                        <span class="text-sm">{{ crimecontent?.created_at }}</span>
                     </NuxtLink>
                 </div>
             </div>

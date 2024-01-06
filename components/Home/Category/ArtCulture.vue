@@ -9,13 +9,16 @@
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Art Culture Feature Content -->
             <NuxtLink :to="`/category/${artscontents[0]?.cat_slug}/${artscontents[0]?.content_id}`"
-                class="flex flex-col gap-2 group">
+                class="flex flex-col gap-2 group border-b pb-1">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${artscontents[0]?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
-                <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ artscontents[0]?.content_heading }}</h3>
+                <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">
+                    {{ artscontents[0]?.content_heading }}
+                </h3>
+                <span class="text-sm">{{ artscontents[0]?.created_at }}</span>
             </NuxtLink>
             <!--/ Art Culture  Feature Content -->
 

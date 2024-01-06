@@ -9,14 +9,16 @@
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Children Feature Content -->
             <NuxtLink :to="`/category/${childrenContents[0]?.cat_slug}/${childrenContents[0]?.content_id}`"
-                class="flex flex-col gap-2 group">
+                class="flex flex-col gap-2 group border-b pb-1">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${childrenContents[0]?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
-                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
-                <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ childrenContents[0]?.content_heading }}
+                <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">
+                    {{ childrenContents[0]?.content_heading }}
                 </h3>
+                <span class="text-sm">{{ childrenContents[0]?.created_at }}</span>
             </NuxtLink>
             <!--/ Children Feature Content -->
 

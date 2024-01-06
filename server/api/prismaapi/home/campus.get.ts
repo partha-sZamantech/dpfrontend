@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
                 bn_cat_name: category?.cat_name_bn,
                 cat_slug: category?.cat_slug,
                 subcat_slug: subcategory?.subcat_slug,
-                created_at: moment(content?.created_at).startOf('hour').fromNow()
+                created_at: moment(categoryContent[i]?.created_at).startOf('hour').fromNow()
             })
         }
 

@@ -9,7 +9,7 @@
         <div class="flex flex-col gap-4">
             <div class="">
                 <NuxtLink :to="`/category/${literatureContents[0]?.cat_slug}/${literatureContents[0]?.content_id}`"
-                    class="grid grid-cols-1 md:grid-cols-2 group gap-2">
+                    class="grid grid-cols-1 md:grid-cols-2 group gap-4">
                     <div class="intertainment-feature-image overflow-hidden">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${literatureContents[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -19,8 +19,8 @@
                         <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{
                             literatureContents[0]?.content_heading }}</h3>
                         <ClientOnly>
-                            <div class="text-md" v-html="`${literatureContents[0]?.content_details?.substring(0,
-                                240)} ...`"></div>
+                            <div class="text-base font-[300]" v-html="`${literatureContents[0]?.content_details?.substring(0,
+                                150)} ...`"></div>
                         </ClientOnly>
                     </div>
                 </NuxtLink>
