@@ -57,7 +57,7 @@
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     <div class="lead-overly absolute h-full w-full block top-0">
                                         <h5
-                                            class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[18px] md:text-[24px] absolute bottom-4 left-6">
+                                            class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[18px] md:text-[24px] font-semibold absolute bottom-4 left-6">
                                             {{ subcategoryContents[0]?.content_heading }}</h5>
                                     </div>
                                 </NuxtLink>
@@ -76,16 +76,19 @@
                                 </div>
                                 <div class="flex flex-col gap-3 mt-2">
                                     <h3
-                                        class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                        class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] font-semibold text-[#121212]">
                                         {{ subcategoryContents[1]?.content_heading }}
                                     </h3>
                                     <ClientOnly>
-                                        <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                        <div class="cat-postdesc text-[15px] font-[300]"
                                             v-html="`${subcategoryContents[1]?.content_details.substring(0, 155)}...`">
                                         </div>
                                     </ClientOnly>
                                     <small class="cat-postdate">
-                                        প্রকাশ: {{ postCreatedDate(subcategoryContents[1]?.created_at) }}
+                                        <!-- প্রকাশ: {{ postCreatedDate(subcategoryContents[1]?.created_at) }} -->
+                                        <span class="text-sm">
+                                            {{ subcategoryContents[1]?.post_time }}
+                                        </span>
                                     </small>
                                 </div>
                             </NuxtLink>
@@ -105,15 +108,18 @@
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
                                 <h3
-                                    class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                    class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] font-semibold text-[#121212]">
                                     {{ subcategoryContents[2]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                    <div class="cat-postdesc text-[15px] font-[300]"
                                         v-html="`${subcategoryContents[2]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
-                                    প্রকাশ: {{ postCreatedDate(subcategoryContents[2]?.created_at) }}
+                                    <!-- প্রকাশ: {{ postCreatedDate(subcategoryContents[2]?.created_at) }} -->
+                                    <span class="text-sm">
+                                        {{ subcategoryContents[2]?.post_time }}
+                                    </span>
                                 </small>
                             </div>
                         </NuxtLink>
@@ -128,15 +134,17 @@
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
                                 <h3
-                                    class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                    class="cat-postheading text-xl group-hover:text-[#ff0000] font-semibold leading-[24px] text-[#121212]">
                                     {{ subcategoryContents[3]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                    <div class="cat-postdesc text-[15px] font-[300]"
                                         v-html="`${subcategoryContents[3]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
-                                    প্রকাশ: {{ postCreatedDate(subcategoryContents[3]?.created_at) }}
+                                    <span class="text-sm">
+                                        {{ subcategoryContents[3]?.post_time }}
+                                    </span>
                                 </small>
                             </div>
                         </NuxtLink>
@@ -151,15 +159,17 @@
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
                                 <h3
-                                    class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                    class="cat-postheading text-xl group-hover:text-[#ff0000] font-semibold leading-[24px] text-[#121212]">
                                     {{ subcategoryContents[4]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                    <div class="cat-postdesc text-[15px] font-[300]"
                                         v-html="`${subcategoryContents[4]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
-                                    প্রকাশ: {{ postCreatedDate(subcategoryContents[4]?.created_at) }}
+                                    <span class="text-sm">
+                                        {{ subcategoryContents[4]?.post_time }}
+                                    </span>
                                 </small>
                             </div>
                         </NuxtLink>
@@ -184,18 +194,19 @@
                                 :key="cpInx">
                                 <NuxtLink :to="`/category/${catPost?.cat_slug}/${catPost?.content_id}`"
                                     class=" grid grid-cols-12 gap-3 group">
-                                    <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
-                                        catPost?.content_heading }}</h3>
+                                    
                                     <div class=" col-span-7 flex flex-col gap-3">
+                                        <h3 class="cat-title text-[20px] font-semibold group-hover:text-[#ff0000]">{{
+                                        catPost?.content_heading }}</h3>
                                         <ClientOnly>
-                                            <div class="cat-desc text-[#555555] text-[15px] font-[300]"
+                                            <div class="cat-desc text-base font-[300]"
                                                 v-html="catPost?.content_details.substring(0, 160)"></div>
                                         </ClientOnly>
 
                                         <span class="post-date flex flex-col gap-1">
-                                            <small class="text-[#555555]">আপডেট: {{
+                                            <small class="text-sm">আপডেট: {{
                                                 postCreatedDate(catPost?.updated_at) }}</small>
-                                            <small class="text-[#555555]">প্রকাশ: {{
+                                            <small class="text-sm">প্রকাশ: {{
                                                 postCreatedDate(catPost?.created_at) }}</small>
                                         </span>
                                     </div>
@@ -268,7 +279,7 @@ const { data: subctcont } = await useFetch('/api/prismaapi/subcategory/subcatego
         cat_slug: cat_slug,
         subcat_slug: subcat_slug,
         take: 5,
-        skip:0
+        skip: 0
     },
 })
 subcategoryContents.value = subctcont?.value?.contents
@@ -286,7 +297,7 @@ const { data: exceptctcsubct } = await useFetch('/api/prismaapi/subcategory/subc
         cat_slug: cat_slug,
         subcat_slug: subcat_slug,
         take: 10,
-        skip:5
+        skip: 5
     },
 })
 subcategoryContentExcept.value = exceptctcsubct?.value?.contents
@@ -303,7 +314,7 @@ const loadMoreButtonHandler = async () => {
             cat_slug: cat_slug,
             subcat_slug: subcat_slug,
             take: take.value,
-            skip:5
+            skip: 5
         },
 
     })
