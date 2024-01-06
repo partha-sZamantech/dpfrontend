@@ -16,15 +16,18 @@
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
                     </div>
-                    <div class="national-feature-description flex flex-col gap-1">
+                    <div class="national-feature-description flex flex-col gap-2">
                         <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{ nationalHCon[0]?.content_heading
                         }}</h3>
                         <ClientOnly>
                             <!-- <p class="text-md">{{ nationalHCon[0]?.content_details?.substring(0,
                                 200)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
                                 <div class="text-[16px] font-[300] text-[#555555]" v-html="`${nationalHCon[0]?.content_details?.substring(0,
-                                200)} ...`"></div>
+                                220)} ...`"></div>
                         </ClientOnly>
+                        <span class="text-sm">
+                            {{ nationalHCon[0]?.bn_cat_name }} | {{ nationalHCon[0]?.created_at }}
+                        </span>
                     </div>
                 </NuxtLink>
             </div>
@@ -41,9 +44,10 @@
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="`/category/${nationalcntent?.cat_slug}/${nationalcntent?.content_id}`">
+                            <NuxtLink class="flex flex-col gap-2" :to="`/category/${nationalcntent?.cat_slug}/${nationalcntent?.content_id}`">
                                 <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
                                     nationalcntent?.content_heading }}</h4>
+                                    <span class="text-sm">{{ nationalcntent?.bn_cat_name }} | {{ nationalcntent?.created_at }}</span>
                             </NuxtLink>
                         </div>
                     </div>

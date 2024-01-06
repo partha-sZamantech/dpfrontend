@@ -18,12 +18,12 @@
                             <!-- <p class="text-[18px]">{{ specialTopContents[0]?.content_details?.substring(0,
                                 165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
                             <ClientOnly>
-                                <div class=" font-[300] text-[#555555]" v-html="`${specialTopContents[0]?.content_details?.substring(0,
+                                <div class=" font-[300]" v-html="`${specialTopContents[0]?.content_details?.substring(0,
                                         250)} ...`"></div>
                             </ClientOnly>
-                            <p>
+                            <span class="text-sm">
                                 {{ specialTopContents[0]?.bn_cat_name }} | {{ specialTopContents[0]?.created_at }}
-                            </p>
+                            </span>
                         </NuxtLink>
                         <!-- Special First Content -->
                     </div>
@@ -44,7 +44,7 @@
                                 <div class="col-span-7 flex flex-col gap-2">
                                     <h4 class="text-[20px] leading-tight group-hover:text-[#ff0000]">{{
                                         topcontent?.content_heading }}</h4>
-                                        <span>{{ topcontent?.bn_cat_name }} | {{ topcontent?.created_at }}</span>
+                                    <span class="text-sm">{{ topcontent?.bn_cat_name }} | {{ topcontent?.created_at }}</span>
                                 </div>
                             </NuxtLink>
                             <!-- ========== Loop Item =========== -->
