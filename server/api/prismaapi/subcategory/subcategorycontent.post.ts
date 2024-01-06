@@ -1,5 +1,8 @@
+import moment from "moment"
 import { Prisma, PrismaClient } from '@prisma/client'
 export default defineEventHandler(async (event) => {
+    // Localize
+    moment.locale('bn-bd')
 
     const prisma = new PrismaClient()
     const getBody = await readBody(event)
@@ -71,7 +74,8 @@ export default defineEventHandler(async (event) => {
                 updated_at: getSubCategoryContents[i]?.updated_at,
                 bn_cat_name: category?.cat_name_bn,
                 cat_slug: category?.cat_slug,
-                subcat_slug: subcategory?.subcat_slug
+                subcat_slug: subcategory?.subcat_slug,
+                post_time: moment(getSubCategoryContents[i]?.created_at).startOf('hour').fromNow()
             })
         }
 
