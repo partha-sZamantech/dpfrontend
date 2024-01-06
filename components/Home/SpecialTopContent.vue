@@ -19,9 +19,11 @@
                                 165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
                             <ClientOnly>
                                 <div class=" font-[300] text-[#555555]" v-html="`${specialTopContents[0]?.content_details?.substring(0,
-                                        165)} ...`"></div>
+                                        250)} ...`"></div>
                             </ClientOnly>
-
+                            <p>
+                                {{ specialTopContents[0]?.bn_cat_name }} | {{ specialTopContents[0]?.created_at }}
+                            </p>
                         </NuxtLink>
                         <!-- Special First Content -->
                     </div>
@@ -39,9 +41,10 @@
                                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                                     </div>
                                 </div>
-                                <div class="col-span-7">
+                                <div class="col-span-7 flex flex-col gap-2">
                                     <h4 class="text-[20px] leading-tight group-hover:text-[#ff0000]">{{
                                         topcontent?.content_heading }}</h4>
+                                        <span>{{ topcontent?.bn_cat_name }} | {{ topcontent?.created_at }}</span>
                                 </div>
                             </NuxtLink>
                             <!-- ========== Loop Item =========== -->
@@ -64,12 +67,10 @@ const siteurl = siteUrlState()
 // =============== Special Content Fetching ====================//
 
 const specialTopContents = specialTopContentState()
-// const { data: spTopCon } = await useFetch(`/api/home/specialtopcontent`, {
-//     method: 'GET'
-// })
+
 const { data: spTopCon } = await useFetch('/api/prismaapi/home/specialtopcontent', {
     method: "GET",
-    cache: 'force-cache'
+    // cache: 'force-cache'
 })
 // const { data: spTopCon } = await useFetch("/api/home/specialtopcontent", {
 //     method: 'GET'

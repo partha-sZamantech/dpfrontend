@@ -260,79 +260,54 @@ const subcategoryContentExcept = useState(() => [])
 const category = ref(null)
 const subcategory = ref(null)
 const take = ref(15)
-// const { data: subctcont } = await useFetch('/api/subcatcontent/subcatcontent', {
-//     method: "POST",
-//     body: {
-//         cat_slug: cat_slug,
-//         subcat_slug: subcat_slug,
-//         take: take.value
-//     }
-// })
+
+// Fetching Leading Post Data
 const { data: subctcont } = await useFetch('/api/prismaapi/subcategory/subcategorycontent', {
     method: "POST",
     body: {
         cat_slug: cat_slug,
         subcat_slug: subcat_slug,
-        take: take.value
-    },
-    transform(input) {
-        return {
-            ...input,
-            fetchedAt: new Date()
-        }
-    },
-    key: `subcat-${subcat_slug}`,
-    cache: 'force-cache',
-    getCachedData(subcat) {
-        const data = nuxtApp.payload.data[subcat] || nuxtApp.static.data[subcat]
-        // If data is not fetched yet
-        if (!data) {
-            // Fetch the first time
-            return
-        }
-
-        // Is the data too old?
-        const expirationDate = new Date(data.fetchedAt)
-        expirationDate.setTime(expirationDate.getTime() + 10 * 1000)
-        const isExpired = expirationDate.getTime() < Date.now()
-        if (isExpired) {
-            // Refetch the data
-            return
-        }
-
-        return data
+        take: 5,
+        skip:0
     },
 })
-
-category.value = subctcont?.value?.category
 subcategoryContents.value = subctcont?.value?.contents
+// Fetching Leading Post Data
+
+// Assign category & Subcategory
+category.value = subctcont?.value?.category
 subcategory.value = subctcont?.value?.subcat
-subcategoryContentExcept.value = subctcont?.value?.contents.slice(5, take.value)
-// console.log(subcategoryContents.value)
+// Assign category & Subcategory
+
+// Except Content More
+const { data: exceptctcsubct } = await useFetch('/api/prismaapi/subcategory/subcategorycontent', {
+    method: "POST",
+    body: {
+        cat_slug: cat_slug,
+        subcat_slug: subcat_slug,
+        take: 10,
+        skip:5
+    },
+})
+subcategoryContentExcept.value = exceptctcsubct?.value?.contents
+// Except Content More
+
 // ================== Subcategory Content ============= //
 
 //================ Load More Sub Category Content Button =================//
 const loadMoreButtonHandler = async () => {
     take.value += 10
-    // const { data: loadsubCtP } = await useFetch('/api/subcatcontent/subcatcontent', {
-    //     method: "POST",
-    //     body: {
-    //         cat_slug: cat_slug,
-    //         subcat_slug: subcat_slug,
-    //         take: take.value
-    //     }
-    // })
     const { data: loadsubCtP } = await useFetch('/api/prismaapi/subcategory/subcategorycontent', {
         method: "POST",
         body: {
             cat_slug: cat_slug,
             subcat_slug: subcat_slug,
-            take: take.value
+            take: take.value,
+            skip:5
         },
 
     })
-    subcategoryContentExcept.value = loadsubCtP.value.contents.slice(5, take.value)
-
+    subcategoryContentExcept.value = loadsubCtP.value.contents
 }
 //================ Load More Sub Category Content Button =================//
 

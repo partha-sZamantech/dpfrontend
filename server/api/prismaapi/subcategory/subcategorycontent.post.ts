@@ -39,7 +39,8 @@ export default defineEventHandler(async (event) => {
         orderBy: {
             content_id: "desc"
         },
-        take: getBody?.take // Assign how many content you want to get
+        take: getBody?.take, // Assign how many content you want to get
+        skip: getBody?.skip
     })
 
     const data = []

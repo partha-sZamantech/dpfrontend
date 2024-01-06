@@ -1,7 +1,9 @@
 import moment from 'moment'
 import { Prisma, PrismaClient } from '@prisma/client'
 export default defineEventHandler(async (event) => {
-
+    
+    // Moment JS Localize
+    moment.locale('en')
     const prisma = new PrismaClient()
     const getBody = await readBody(event)
     
