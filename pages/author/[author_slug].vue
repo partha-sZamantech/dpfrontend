@@ -5,13 +5,13 @@
       <Title>{{ author?.author_name_bn }}</Title>
     </Head>
     <!-- Space For Ads -->
-    <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
+    <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
       <div class="bg-[#f7f7f7]">
         <a target="_blank" href="/">
           <img class="mx-auto" src="/assets/img/bar-ads.gif" alt="">
         </a>
       </div>
-    </div>
+    </div> -->
     <!-- Space For Ads -->
     <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
       <!-- Breadcrump Section -->
@@ -38,18 +38,19 @@
 
                 <NuxtLink :to="`/category/${authorContent?.category?.cat_slug}/${authorContent?.content_id}`"
                   class=" grid grid-cols-12 gap-3 group">
-                  <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
-                    authorContent?.content_heading }}</h3>
+                  
                   <div class=" col-span-7 flex flex-col gap-3">
+                    <h3 class="cat-title col-span-12 font-semibold text-[18px] md:text-[20px] group-hover:text-[#ff0000]">{{
+                    authorContent?.content_heading }}</h3>
                     <ClientOnly>
-                      <div class="cat-desc text-[#555555] text-[15px] font-[300]"
+                      <div class="cat-desc text-base font-[300] hidden md:block"
                         v-html="`${authorContent?.content_details.substring(0, 160)}...`"></div>
                     </ClientOnly>
 
-                    <span class="post-date flex flex-col gap-1">
-                      <small class="text-[#555555]">আপডেট: {{
+                    <span class="post-date md:flex flex-col gap-1 text-base hidden">
+                      <small>আপডেট: {{
                         postCreatedDate(authorContent?.updated_at) }}</small>
-                      <small class="text-[#555555]">প্রকাশ: {{
+                      <small>প্রকাশ: {{
                         postCreatedDate(authorContent?.created_at) }}</small>
                     </span>
                   </div>
