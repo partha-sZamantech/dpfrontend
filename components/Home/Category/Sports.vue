@@ -21,9 +21,10 @@
                         <!-- <p class="text-md">{{ sportscontent[0]?.content_details?.substring(0,
                             165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
                         <ClientOnly>
-                            <div class="text-[16px] font-[400]" v-html="`${sportscontent[0]?.content_details?.substring(0,
-                                165)} ...`"></div>
+                            <div class="text-base font-[300]" v-html="`${sportscontent[0]?.content_details?.substring(0,
+                                170)} ...`"></div>
                         </ClientOnly>
+                        <span class="text-sm">{{ sportscontent[0]?.created_at }}</span>
                     </div>
                 </NuxtLink>
             </div>
@@ -40,9 +41,11 @@
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="`/category/${hmsport?.cat_slug}/${hmsport?.content_id}`">
+                            <NuxtLink :to="`/category/${hmsport?.cat_slug}/${hmsport?.content_id}`"
+                                class="flex flex-col gap-2">
                                 <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
                                     hmsport?.content_heading }}</h4>
+                                <span class="text-sm">{{ sportscontent[0]?.created_at }}</span>
                             </NuxtLink>
                         </div>
                     </div>
