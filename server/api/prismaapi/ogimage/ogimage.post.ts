@@ -1,8 +1,9 @@
-import { Prisma, PrismaClient } from '@prisma/client'
+// import { Prisma, PrismaClient } from '@prisma/client'
+import { prisma } from "~/lib/prisma"
 import jimp from 'jimp'
 export default defineEventHandler(async (event) => {
 
-    const prisma = new PrismaClient()
+    // const prisma = new PrismaClient()
     const getBody = await readBody(event)
     const config = useRuntimeConfig()
     
