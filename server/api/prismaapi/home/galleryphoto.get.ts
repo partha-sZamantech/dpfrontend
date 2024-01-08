@@ -1,8 +1,9 @@
-import { Prisma, PrismaClient } from '@prisma/client'
+// import { Prisma, PrismaClient } from '@prisma/client'
+import { prisma } from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
 
     // const getBody = await readBody(event)
-    const prisma = new PrismaClient()
+    // const prisma = new PrismaClient()
 
     const position = await prisma.p_album_positions.findFirst({
         where: {
