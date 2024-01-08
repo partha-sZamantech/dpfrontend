@@ -60,8 +60,7 @@
 </template>
 
 <script setup>
-const nuxtApp = useNuxtApp()
-
+// const nuxtApp = useNuxtApp()
 const img = useImage()
 const siteurl = siteUrlState()
 // =============== Special Content Fetching ====================//

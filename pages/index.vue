@@ -277,7 +277,6 @@
 const allHeadline = useState(() => [])
 const { data: allhead } = await useFetch(`/api/prismaapi/breakingnews/breaking`, {
     method: 'GET',
-    cache: 'force-cache'
 })
 allHeadline.value = allhead.value
 

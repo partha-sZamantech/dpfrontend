@@ -39,8 +39,18 @@
                             frameborder="0" allowfullscreen></iframe>
                     </div>
                     <div v-else-if="videoDetail?.type == 2" class="play-video">
-                        <div class="fb-video" :data-href="`https://www.facebook.com/watch/?v=${videoDetail?.code}`"
-                            data-width="auto" data-autoplay="true" data-show-captions="false"> </div>
+                        <!-- <div class="fb-video" :data-href="`https://www.facebook.com/watch/?v=${videoDetail?.code}`"
+                            data-width="auto" data-autoplay="true" data-show-captions="false"> </div> -->
+                        <div class="facebookvideo overflow-hidden">
+                            <a :href="`https://www.facebook.com/watch/?v=${videoDetail?.code}`" class=" relative group">
+                                <nuxt-img :alt="videoDetail?.title"
+                                    :src="`${siteurl?.site_url}/media/videoImages/${videoDetail?.img_bg_path}`"
+                                    class="mx-auto w-full"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                                <Icon name="simple-icons:youtubemusic"
+                                    class=" text-6xl group-hover:text-[#3375af] text-[#ff0000] absolute top-[44%] left-[48%]" />
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="video-title pt-2">
@@ -99,14 +109,16 @@ useHead({
     ]
 })
 
+const img = useImage()
+
 // ================ Get Bangla Date ============== //
 const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
 // const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
 const postCreatedDate = (date) => {
-  // If date value has
-  if (date) {
-    return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-  }
+    // If date value has
+    if (date) {
+        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+    }
 }
 // ================ Get Bangla Date ============== //
 
