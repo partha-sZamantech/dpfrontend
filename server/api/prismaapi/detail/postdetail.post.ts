@@ -1,8 +1,9 @@
 import jimp from 'jimp'
-import { Prisma, PrismaClient } from "@prisma/client"
+// import { Prisma, PrismaClient } from "@prisma/client"
+import { prisma } from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
 
-    const prisma = new PrismaClient()
+    // const prisma = new PrismaClient()
     const getBody = await readBody(event)
     const config = useRuntimeConfig()
     // Get Content Detail
