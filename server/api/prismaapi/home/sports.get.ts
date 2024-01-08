@@ -1,5 +1,6 @@
 import moment from "moment"
-import { Prisma, PrismaClient } from '@prisma/client'
+// import { Prisma, PrismaClient } from '@prisma/client'
+import { prisma } from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
     // Localize
     moment.locale('bn-bd')
