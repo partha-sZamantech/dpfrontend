@@ -1,7 +1,8 @@
-import { Prisma, PrismaClient } from '@prisma/client'
+// import { Prisma, PrismaClient } from '@prisma/client'
+import { prisma } from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
 
-    const prisma = new PrismaClient()
+    // const prisma = new PrismaClient()
     const getBody = await readBody(event)
     
     const video = await prisma.bn_videos.findFirst({
@@ -12,7 +13,7 @@ export default defineEventHandler(async (event) => {
 
     const currentCategory = await prisma.bn_video_categories.findFirst({
         where: {
-            id: video?.cat_id
+            id: parseInt(video?.cat_id)
         }
     })
 
