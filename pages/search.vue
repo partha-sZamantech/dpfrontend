@@ -142,7 +142,7 @@ const take = ref(10)
 //     take: take.value
 //   }
 // })
-const { data: authorcont } = await useFetch('/api/prismaapi/author/getauthorpost', {
+const { data: authorcont } = await useFetch('/api/prismaapi/search/search', {
     method: "POST",
     body: {
         author_slug: author_slug,
