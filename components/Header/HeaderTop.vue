@@ -13,14 +13,14 @@
                             <Icon @click="searchBoxHandler" class="text-2xl cursor-pointer" name="tabler:search" />
                         </div>
                         <div v-else :class="` flex items-center duration-500`">
-                            <input type="text" placeholder="যা খুঁজতে চান তা লিখুন"
+                            <input type="text" placeholder="খুঁজুন" v-model="keyword"
                                 class=" focus:outline-none border px-2 py-2">
-                            <div class=" bg-gray-200 px-2 py-2  cursor-pointer">
-                                <Icon class="text-2xl " name="tabler:search" />
+                            <div @click="searchPageRedirect" class=" bg-gray-200 px-2 py-2  cursor-pointer hover:bg-[#3375af] group">
+                                <Icon class="text-2xl group-hover:text-white" name="tabler:search" />
                             </div>
                             <div @click="searchBoxHandler"
-                                class=" bg-gray-200 px-2 py-2 border-l border-l-gray-400 cursor-pointer">
-                                <Icon name="material-symbols:close" class="text-2xl" />
+                                class=" bg-gray-200 px-2 py-2 border-l border-l-gray-400 cursor-pointer hover:bg-red-600 group">
+                                <Icon name="material-symbols:close" class="text-2xl group-hover:text-white" />
                             </div>
                         </div>
                     </div>
@@ -92,6 +92,18 @@ const todayDate = getDate.format(new Date())
 // ================ Get Bangla Date ============== //
 const img = useImage()
 
+// ===== Search Box ==== //
+    const keyword = ref('')
+    console.log(keyword.value)
+    const searchPageRedirect = () => {
+        if(keyword.value !== ''){
+            navigateTo(`/search?q=${keyword.value}`)
+        }else{
+            alert('Please type something to search!')
+        }
+    }
+
+// ===== Search Box ==== //
 // ========== Desktop Sidebar menu Action Handler ============== //
 const desktopMenuStatus = desktopMenuState()
 const desktopMenuOpenHandler = () => {
@@ -106,6 +118,7 @@ const searchStatus = ref(false)
 const searchBoxHandler = () => {
     if (searchStatus.value === true) {
         searchStatus.value = false
+        keyword.value = ''
     } else {
         searchStatus.value = true
     }
