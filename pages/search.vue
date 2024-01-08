@@ -14,6 +14,7 @@
       </div> -->
         <!-- Space For Ads -->
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
+
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 grid grid-cols-12 items-center gap-4 md:gap-4">
 
@@ -24,11 +25,10 @@
                     </div>
                 </div>
                 <div class=" col-span-5">
-                    <div class="searchbox-page">
-                        <input type="text" placeholder="খুঁজুন" v-model="keyword"
-                            class=" focus:outline-none border border-[#cccccc] text-2xl  rounded-[4px] pl-4 pr-10 py-2 w-full">
-                        <div @click="searchPageRedirect"
-                            class=" bg-gray-200 px-2 py-2  cursor-pointer hover:bg-[#3375af] group">
+                    <div class="searchbox-page relative">
+                        <input type="text" placeholder="খুঁজুন"
+                            class=" focus:outline-none border border-[#cccccc] text-2xl rounded-[4px] pl-4 pr-10 py-2 w-full" v-model="searchKeyword">
+                        <div class="  px-2 py-2  cursor-pointer absolute top-1 right-0">
                             <Icon class="text-2xl group-hover:text-white" name="tabler:search" />
                         </div>
                     </div>
@@ -99,7 +99,15 @@
 const img = useImage()
 const siteurl = siteUrlState()
 
-const keyword = useRoute().query.q
+// Computed - (Real Time) Search Keyword
+const keyword = computed(()=> useRoute().query.q)
+const searchKeyword = useState(() => '')
+searchKeyword.value = keyword
+// const realtimeKeyword = computed(() => keyword)
+
+
+
+
 
 // Sticky Status
 const singlePageSticky = singlePageStickyState()

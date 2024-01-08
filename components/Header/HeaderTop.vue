@@ -94,10 +94,10 @@ const img = useImage()
 
 // ===== Search Box ==== //
     const keyword = ref('')
-    console.log(keyword.value)
     const searchPageRedirect = () => {
         if(keyword.value !== ''){
             navigateTo(`/search?q=${keyword.value}`)
+            keyword.value = ''
         }else{
             alert('Please type something to search!')
         }
