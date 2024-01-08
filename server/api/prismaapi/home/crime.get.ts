@@ -1,8 +1,9 @@
 import moment from "moment"
-import { Prisma, PrismaClient } from '@prisma/client'
+// import { Prisma, PrismaClient } from '@prisma/client'
+import { prisma } from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
     moment.locale('bn-bd')
-    const prisma = new PrismaClient()
+    // const prisma = new PrismaClient()
     // const getBody = await readBody(event)
     const categoryContent = await prisma.bn_contents.findMany({
         where: {
