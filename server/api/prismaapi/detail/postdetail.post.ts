@@ -65,6 +65,8 @@ export default defineEventHandler(async (event) => {
     // })
     // const genretedOG = await image.getBase64Async(jimp.AUTO)
     // =============== ADS OG Image Generate ============= //
+
+    // Detail Content
     const detailsContent = {
         // ogImage: genretedOG,
         content_id: getdetailsContent?.content_id,
@@ -106,7 +108,20 @@ export default defineEventHandler(async (event) => {
             author_slug: getAuthor?.author_slug,
         }
     }
+    // Detail Content
 
+    // First Detail Right Category Content
+
+    // const getContents = await prisma.bn_contents.findMany({
+    //     where: {
+    //         cat_id: parseInt(getBody?.cat_id)
+    //     },
+    //     orderBy: {
+    //         content_id: "desc"
+    //     },
+    //     take: 6
+    // })
+    // First Detail Right Category Content
 
 
 
