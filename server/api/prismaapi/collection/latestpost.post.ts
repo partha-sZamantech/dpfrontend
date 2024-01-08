@@ -1,7 +1,8 @@
-import { Prisma, PrismaClient } from '@prisma/client'
+// import { Prisma, PrismaClient } from '@prisma/client'
+import { prisma } from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
 
-    const prisma = new PrismaClient()
+    // const prisma = new PrismaClient()
     const getBody = await readBody(event)
     const contents = await prisma.bn_contents.findMany({
         orderBy: {

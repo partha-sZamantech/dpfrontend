@@ -1,10 +1,11 @@
 import moment from 'moment'
-import { Prisma, PrismaClient } from '@prisma/client'
+import { prisma } from "~/lib/prisma"
+// import { Prisma, PrismaClient } from '@prisma/client'
 export default defineEventHandler(async (event) => {
     
     // Moment JS Localize
     moment.locale('en')
-    const prisma = new PrismaClient()
+    // const prisma = new PrismaClient()
     const getBody = await readBody(event)
     
     const currentDate = moment().zone('+0600').format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')
