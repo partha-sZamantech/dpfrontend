@@ -8,7 +8,7 @@
         </div>
         <div class="home-career-c-content flex flex-col gap-3">
             <!-- Career Feature Content -->
-            <NuxtLink :to="`/category/${careers[0]?.cat_slug}/${careers[0]?.content_id}`" class="flex flex-col gap-2 group border-b pb-1">
+            <NuxtLink :to="getPostUrl(careers[0]?.cat_slug, careers[0]?.subcat_slug, careers[0]?.content_type, careers[0]?.content_id)" class="flex flex-col gap-2 group border-b pb-1">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${careers[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -21,7 +21,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`/category/${career?.cat_slug}/${career?.content_id}`" class=" border-b py-3" v-for="career in careers.slice(1,8)"
+                <NuxtLink :to="getPostUrl(career?.cat_slug, career?.subcat_slug, career?.content_type, career?.content_id)" class=" border-b py-3" v-for="career in careers.slice(1,8)"
                 :key="career.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ career?.content_heading }}</h4>
                 </NuxtLink>
@@ -36,7 +36,6 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-const nuxtApp = useNuxtApp()
 // ======== Career Content =============== //
 const careers = useState(() => [])
 const { data: dcareer } = await useFetch("/api/prismaapi/home/career", {
@@ -46,6 +45,13 @@ const { data: dcareer } = await useFetch("/api/prismaapi/home/career", {
 })
 careers.value = dcareer
 // ======== Career Content =============== //
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
 </script>
 
 <style lang="scss" scoped></style>
