@@ -8,7 +8,7 @@
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Children Feature Content -->
-            <NuxtLink :to="`/category/${childrenContents[0]?.cat_slug}/${childrenContents[0]?.content_id}`"
+            <NuxtLink :to="getPostUrl(childrenContents[0]?.cat_slug, childrenContents[0]?.subcat_slug, childrenContents[0]?.content_type, childrenContents[0]?.content_id)"
                 class="flex flex-col gap-2 group border-b pb-1">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${childrenContents[0]?.img_bg_path}`"
@@ -24,7 +24,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`/category/${childrenContent?.cat_slug}/${childrenContent?.content_id}`"
+                <NuxtLink :to="getPostUrl(childrenContent?.cat_slug, childrenContent?.subcat_slug, childrenContent?.content_type, childrenContent?.content_id)"
                     class=" border-b py-3" v-for="childrenContent in childrenContents.slice(1, 5)"
                     :key="childrenContent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ childrenContent?.content_heading }}</h4>
@@ -45,10 +45,15 @@ const childrenContents = useState(() => [])
 const { data: hchildrendddddddd } = await useFetch("/api/prismaapi/home/child", {
     method: 'GET',
     // cache: 'force-cache',
-
 })
 childrenContents.value = hchildrendddddddd.value
 // ======== Children Content =============== //
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
 </script>
 
 <style lang="scss" scoped></style>
