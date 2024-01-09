@@ -29,7 +29,6 @@
 <script setup>
 
 const img = useImage()
-const nuxtApp = useNuxtApp()
 const siteUrl = siteUrlState()
 const specialreports = useState(() => [])
 const { data: hsreportssssssss } = await useFetch('/api/prismaapi/home/specialreport', {
