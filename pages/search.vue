@@ -43,10 +43,10 @@
                         <div class="col-span-12 md:col-span-8">
 
 
-                            <div v-if="searchResults?.length > 0" class="cat-post-item py-4 border-b" v-for="(searchResult, seaInx) in searchResults"
-                                :key="seaInx">
+                            <div v-if="searchResults?.length > 0" class="cat-post-item py-4 border-b"
+                                v-for="(searchResult, seaInx) in searchResults" :key="seaInx">
 
-                                <NuxtLink :to="`/category/${searchResult?.category?.cat_slug}/${searchResult?.content_id}`"
+                                <NuxtLink :to="getPostUrl(searchResult?.cat_slug, searchResult?.subcat_slug, searchResult?.content_type, searchResult?.content_id)"
                                     class=" grid grid-cols-12 gap-3 group">
 
                                     <div class=" col-span-7 flex flex-col gap-3">
@@ -105,6 +105,11 @@ const img = useImage()
 const siteurl = siteUrlState()
 const headerTitle = computed(() => useRoute().query.q)
 
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
 
 // Sticky Status
 // const singlePageSticky = singlePageStickyState()
@@ -155,7 +160,7 @@ const { data: sresult } = await useFetch('/api/prismaapi/search/search', {
         take: take.value
     }
 })
-searchResults.value = computed(()=> sresult?.value)
+searchResults.value = computed(() => sresult?.value)
 //================== Get Search Content fetching =============== //
 
 
@@ -175,13 +180,10 @@ const searchButtonHandler = async () => {
         }
     })
     // Search Result Content Assign
-    searchResults.value = computed(()=> ssssresult?.value) 
+    searchResults.value = computed(() => ssssresult?.value)
 }
 
 // ====== Search Button Handler ===== //
-
-
-
 
 
 //================ Load More Search Content Button =================//
@@ -194,7 +196,7 @@ const loadMoreButtonHandler = async () => {
             take: take.value
         }
     })
-    searchResults.value = computed(()=> searchMorecont?.value) 
+    searchResults.value = computed(() => searchMorecont?.value)
 }
 
 //================ Load More Search Content Button =================//
