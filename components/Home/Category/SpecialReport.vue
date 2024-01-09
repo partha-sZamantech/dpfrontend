@@ -10,7 +10,7 @@
         <div class=" grid grid-cols-12 gap-4">
             <!-- Loop Item -->
             <div class=" col-span-12 md:col-span-3" v-for="hspecialreport in specialreports" :key="hspecialreport.content_id">
-                <NuxtLink :to="`/category/${hspecialreport?.cat_slug}/${hspecialreport?.content_id}`" class="flex flex-col gap-2 group">
+                <NuxtLink :to="getPostUrl(hspecialreport?.cat_slug, hspecialreport?.subcat_slug, hspecialreport?.content_type, hspecialreport?.content_id)" class="flex flex-col gap-2 group">
                     <div class=" overflow-hidden">
                         <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${hspecialreport?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -34,9 +34,15 @@ const specialreports = useState(() => [])
 const { data: hsreportssssssss } = await useFetch('/api/prismaapi/home/specialreport', {
     method: 'GET',
     // cache: 'force-cache',
-
 })
 specialreports.value = hsreportssssssss.value
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
 </script>
 
 <style lang="scss" scoped></style>
