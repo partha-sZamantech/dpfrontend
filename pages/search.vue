@@ -2,7 +2,7 @@
     <div class="category-page">
 
         <Head>
-            <Title>{{ headerTitle  }} - অনুসন্ধান | ঢাকা প্রকাশ</Title>
+            <Title>{{ headerTitle }} - অনুসন্ধান | ঢাকা প্রকাশ</Title>
         </Head>
 
         <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
@@ -18,9 +18,9 @@
                 </div>
                 <div class=" col-span-6">
                     <div class="searchbox-page relative">
-                        <input type="text"  placeholder="খুঁজুন"
+                        <input type="text" placeholder="খুঁজুন" v-model="inputKeyword" @change="onChangeKeyword"
                             class=" focus:outline-none border border-[#cccccc] text-2xl rounded-[4px] pl-4 pr-10 py-2 w-full">
-                        <div class="  px-2 py-2  cursor-pointer absolute top-1 right-0">
+                        <div @click="searchButtonHandler" class="  px-2 py-2  cursor-pointer absolute top-1 right-0">
                             <Icon class="text-2xl group-hover:text-white" name="tabler:search" />
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         <div class="col-span-12 md:col-span-8">
 
 
-                            <!-- <div class="cat-post-item py-4 border-b" v-for="(searchResult, seaInx) in searchResults"
+                            <div v-if="searchResults?.length > 0" class="cat-post-item py-4 border-b" v-for="(searchResult, seaInx) in searchResults"
                                 :key="seaInx">
 
                                 <NuxtLink :to="`/category/${searchResult?.category?.cat_slug}/${searchResult?.content_id}`"
@@ -71,19 +71,21 @@
 
                                     </div>
                                 </NuxtLink>
-                            </div> -->
+                            </div>
 
-
+                            <div v-else class="flex items-center justify-center py-32">
+                                <h2 class="text-center text-3xl font-semibold text-black">কিছু পাওয়া যায়নি</h2>
+                            </div>
                         </div>
                         <div class="col-span-2 hidden md:block"></div>
                     </div>
                     <!-- Loop Category Post Section -->
 
                     <!-- Read More Button -->
-                    <!-- <div class="flex justify-center items-center" v-if="searchResults?.length > 9">
+                    <div class="flex justify-center items-center" v-if="searchResults?.length > 9">
                         <button @click="loadMoreButtonHandler"
                             class="border border-[#dee2e6] text-[#3375af] px-8 py-2 rounded-sm mt-5 hover:border-[#3375af]"><b>আরও</b></button>
-                    </div> -->
+                    </div>
                     <!-- Read More Button -->
                 </div>
                 <div class=" col-span-12 md:col-span-2">
@@ -99,8 +101,7 @@
 const img = useImage()
 const siteurl = siteUrlState()
 const headerTitle = computed(() => useRoute().query.q)
-// const headerTitle = useState(() => '')
-// headerTitle.value = computed(() => {return query})
+
 
 // Sticky Status
 // const singlePageSticky = singlePageStickyState()
@@ -109,17 +110,34 @@ const headerTitle = computed(() => useRoute().query.q)
 // )
 
 const inputKeyword = useState(() => '')
-// inputKeyword.value = computed({
-//   // getter
-//   get() {
-//     return searchQueryState.value
-//   },
-//   // setter
-//   set(newValue) {
-//     // Note: we are using destructuring assignment syntax here.
-//     [searchQueryState.value] = newValue
-//   }
-// })
+
+inputKeyword.value = computed({
+    // getter
+    get() {
+        return useRoute().query.q
+    },
+    //   // setter
+    set(newValue) {
+        // Note: we are using destructuring assignment syntax here.
+        return newValue
+    }
+})
+
+// =========== Input Search Field On Change Event ============= //
+const onChangeKeyword = (event) => {
+    inputKeyword.value = computed({
+        // getter
+        get() {
+            return event.target.value
+        },
+        //   // setter
+        set(newValue) {
+            // Note: we are using destructuring assignment syntax here.
+            return newValue
+        }
+    })
+}
+// =========== Input Search Field On Change Event ============= //
 
 //================== Get Search Content fetching =============== //
 
@@ -127,41 +145,53 @@ const inputKeyword = useState(() => '')
 const searchResults = useState(() => [])
 const take = ref(10)
 
-// const { data: sresult } = await useFetch('/api/prismaapi/search/search', {
-//     method: "POST",
-//     body: {
-//         keyword: searchKeyword.value,
-//         take: take.value
-//     }
-// })
-// Search Result Content Assign
-// searchResults.value = sresult?.value
-// Search Result Content Assign
-
-// ====== Search Button Handler ===== //
-// const searchButtonHandler = (event) => {
-//     console.log(event.target.value)
-// }
-
-// ====== Search Button Handler ===== //
-
-
-
-
+const { data: sresult } = await useFetch('/api/prismaapi/search/search', {
+    method: "POST",
+    body: {
+        keyword: headerTitle,
+        take: take.value
+    }
+})
+searchResults.value = computed(()=> sresult?.value)
 //================== Get Search Content fetching =============== //
 
+
+// ====== Search Button Handler ===== //
+const searchButtonHandler = async () => {
+    take.value = 10
+    // redirect to 
+    navigateTo(`/search?q=${inputKeyword.value}`)
+    searchResults.value = computed(() => '')
+    const { data: ssssresult } = await useFetch('/api/prismaapi/search/search', {
+        method: "POST",
+        body: {
+            keyword: inputKeyword.value,
+            take: take.value
+        }
+    })
+    // Search Result Content Assign
+    searchResults.value = computed(()=> ssssresult?.value) 
+}
+
+// ====== Search Button Handler ===== //
+
+
+
+
+
 //================ Load More Search Content Button =================//
-// const loadMoreButtonHandler = async () => {
-//     take.value += 10
-//     const { data: searchMorecont } = await useFetch('/api/prismaapi/search/search', {
-//         method: "POST",
-//         body: {
-//             keyword: searchKeyword?.value,
-//             take: take.value
-//         }
-//     })
-//     searchResults.value = searchMorecont?.value
-// }
+const loadMoreButtonHandler = async () => {
+    take.value += 10
+    const { data: searchMorecont } = await useFetch('/api/prismaapi/search/search', {
+        method: "POST",
+        body: {
+            keyword: inputKeyword.value,
+            take: take.value
+        }
+    })
+    searchResults.value = computed(()=> searchMorecont?.value) 
+}
+
 //================ Load More Search Content Button =================//
 
 
