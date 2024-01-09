@@ -49,6 +49,7 @@ export default defineEventHandler(async (event) => {
             // Push Data
             data.push({
                 content_id: content?.content_id,
+                content_type: content?.content_type,
                 img_bg_path: content?.img_bg_path,
                 content_heading: content?.content_heading,
                 content_details: content?.content_details,
