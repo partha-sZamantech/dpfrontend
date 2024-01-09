@@ -11,7 +11,7 @@
                 </div>
                 <div class="home-p-c-ontent flex flex-col gap-3">
                     <!-- Politic Feature Content -->
-                    <NuxtLink :to="`/category/${politics[0]?.cat_slug}/${politics[0]?.content_id}`"
+                    <NuxtLink :to="getPostUrl(politics[0]?.cat_slug, politics[0]?.subcat_slug, politics[0]?.content_type, politics[0]?.content_id)"
                         class="flex flex-col gap-2 group border-b pb-1">
                         <div class=" overflow-hidden">
                             <nuxt-img :src="`${siteurl.site_url}/media/content/images/${politics[0]?.img_bg_path}`"
@@ -26,7 +26,7 @@
 
                     <div class="h-p-c-excpt flex flex-col">
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${hpolitic?.cat_slug}/${hpolitic?.content_id}`" class=" border-b py-3"
+                        <NuxtLink :to="getPostUrl(hpolitic?.cat_slug, hpolitic?.subcat_slug, hpolitic?.content_type, hpolitic?.content_id)" class=" border-b py-3"
                             v-for="hpolitic in politics.slice(1, 6)" :key="hpolitic.content_id">
                             <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ hpolitic.content_heading }}</h4>
                         </NuxtLink>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="home-econ-c-ontent flex flex-col gap-3">
                     <!-- Economy Feature Content -->
-                    <NuxtLink :to="`/category/${economycontent[0]?.cat_slug}/${economycontent[0]?.content_id}`"
+                    <NuxtLink :to="getPostUrl(economycontent[0]?.cat_slug, economycontent[0]?.subcat_slug, economycontent[0]?.content_type, economycontent[0]?.content_id)"
                         class="flex flex-col gap-2 group border-b pb-1">
                         <div class=" overflow-hidden">
                             <nuxt-img :src="`${siteurl.site_url}/media/content/images/${economycontent[0]?.img_bg_path}`"
@@ -62,7 +62,7 @@
 
                     <div class="h-p-c-excpt flex flex-col">
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${heconmy?.cat_slug}/${heconmy?.content_id}`" class=" border-b py-3"
+                        <NuxtLink :to="getPostUrl(heconmy?.cat_slug, heconmy?.subcat_slug, heconmy?.content_type, heconmy?.content_id)" class=" border-b py-3"
                             v-for="heconmy in economycontent.slice(1, 6)" :key="heconmy.content_id">
                             <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ heconmy.content_heading }}</h4>
                         </NuxtLink>
@@ -83,7 +83,8 @@
                 </div>
                 <div class="home-int-c-content flex flex-col gap-3">
                     <!-- International Feature Content -->
-                    <NuxtLink :to="`/category/${internationalcontent[0]?.cat_slug}/${internationalcontent[0]?.content_id}`"
+                    <NuxtLink
+                        :to="getPostUrl(internationalcontent[0]?.cat_slug, internationalcontent[0]?.subcat_slug, internationalcontent[0]?.content_type, internationalcontent[0]?.content_id)"
                         class="flex flex-col gap-2 group border-b pb-1">
                         <div class=" overflow-hidden">
                             <nuxt-img
@@ -93,13 +94,14 @@
                         </div>
                         <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{
                             internationalcontent[0]?.content_heading }}</h3>
-                            <span class="text-sm">{{ internationalcontent[0]?.created_at }}</span>
+                        <span class="text-sm">{{ internationalcontent[0]?.created_at }}</span>
                     </NuxtLink>
                     <!--/ International Feature Content -->
 
                     <div class="h-p-c-excpt flex flex-col">
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${hinternatcon?.cat_slug}/${hinternatcon?.content_id}`"
+                        <NuxtLink
+                            :to="getPostUrl(hinternatcon?.cat_slug, hinternatcon?.subcat_slug, hinternatcon?.content_type, hinternatcon?.content_id)"
                             class=" border-b py-3" v-for="hinternatcon in internationalcontent.slice(1, 6)"
                             :key="hinternatcon.content_id">
                             <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ hinternatcon.content_heading }}
@@ -117,7 +119,7 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-const nuxtApp = useNuxtApp()
+
 // ======== Politics Content =============== //
 const politics = useState(() => [])
 const { data: homePoliticsss } = await useFetch("/api/prismaapi/home/politics", {
@@ -147,6 +149,11 @@ const { data: intntnalsssss } = await useFetch("/api/prismaapi/home/internationa
 internationalcontent.value = intntnalsssss.value
 // ======== International Content =============== //
 
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
 
 
 </script>

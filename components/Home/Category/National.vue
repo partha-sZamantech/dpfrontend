@@ -62,7 +62,6 @@
 <script setup>
 const siteurl = siteUrlState()
 const img = useImage()
-const nuxtApp = useNuxtApp()
 const nationalHCon = NationalHomeContentState()
 const { data: nationalhc } = await useFetch('/api/prismaapi/home/national', {
     method: "GET",
