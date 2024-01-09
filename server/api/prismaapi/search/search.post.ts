@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     const getBody = await readBody(event)
 
     // If Keyword not Empty
-    if(getBody?.keyword !== ''){
+    if (getBody?.keyword !== '') {
 
         const getContent = await prisma.bn_contents.findMany({
             where: {
@@ -25,12 +25,12 @@ export default defineEventHandler(async (event) => {
             orderBy: {
                 content_id: 'desc'
             },
-            take:parseInt(getBody?.take),
+            take: parseInt(getBody?.take),
         })
 
         const data = []
 
-        for(let c = 0; c < getContent?.length; c++){
+        for (let c = 0; c < getContent?.length; c++) {
 
             // Get Category
             const category = await prisma.bn_categories.findFirst({
@@ -47,7 +47,7 @@ export default defineEventHandler(async (event) => {
             // Sub Category
             const subcategory = await prisma.bn_subcategories.findFirst({
                 where: {
-                    cat_id: category?.cat_id
+                    subcat_id: getContent[c]?.subcat_id
                 },
                 select: {
                     subcat_id: true,
@@ -58,38 +58,31 @@ export default defineEventHandler(async (event) => {
 
             data.push({
                 content_id: getContent[c]?.content_id,
+                content_type: getContent[c]?.content_type,
                 content_heading: getContent[c]?.content_heading,
                 content_details: getContent[c]?.content_details,
                 img_bg_path: getContent[c]?.img_bg_path,
-                category: {
-                    cat_id: category?.cat_id,
-                    cat_name_bn: category?.cat_name_bn,
-                    cat_slug: category?.cat_slug,
-                },
-                subcategory: {
-                    cat_id: subcategory?.subcat_id,
-                    subcat_id: subcategory?.subcat_id,
-                    subcat_slug: subcategory?.subcat_slug,
-                },
+                cat_slug: category?.cat_slug,
+                subcat_slug: subcategory?.subcat_slug,
                 created_at: getContent[c]?.created_at,
                 updated_at: getContent[c]?.updated_at,
             })
         }
 
         return data
-        
-    }else{
+
+    } else {
 
         const getContent = await prisma.bn_contents.findMany({
             orderBy: {
                 content_id: 'desc'
             },
-            take:parseInt(getBody?.take),
+            take: parseInt(getBody?.take),
         })
 
         const data = []
 
-        for(let c = 0; c < getContent?.length; c++){
+        for (let c = 0; c < getContent?.length; c++) {
 
             // Get Category
             const category = await prisma.bn_categories.findFirst({
@@ -140,5 +133,5 @@ export default defineEventHandler(async (event) => {
     }
 
 
-   
+
 })
