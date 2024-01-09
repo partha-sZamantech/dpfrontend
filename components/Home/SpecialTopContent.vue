@@ -5,7 +5,8 @@
                 <div class="grid grid-cols-12 gap-4">
                     <div class="col-span-12 md:col-span-7 group">
                         <!-- Special First Content -->
-                        <NuxtLink :to="`/category/${specialTopContents[0]?.cat_slug}/${specialTopContents[0]?.content_id}`"
+                        <!-- <NuxtLink :to="`/category/${specialTopContents[0]?.cat_slug}/${specialTopContents[0]?.content_id}`" -->
+                        <NuxtLink :to="getPostUrl(specialTopContents[0]?.cat_slug, specialTopContents[0]?.subcat_slug, specialTopContents[0]?.content_type, specialTopContents[0]?.content_id)"
                             class="flex flex-col gap-3">
                             <div class="overflow-hidden">
                                 <nuxt-img
@@ -30,7 +31,7 @@
                     <div class="col-span-12 md:col-span-5">
                         <div class="flex flex-col gap-2">
                             <!-- ========== Loop Item =========== -->
-                            <NuxtLink :to="`/category/${topcontent?.cat_slug}/${topcontent?.content_id}`"
+                            <NuxtLink :to="getPostUrl(topcontent?.cat_slug, topcontent?.subcat_slug, topcontent?.content_type, topcontent?.content_id)"
                                 class=" grid grid-cols-12 gap-4 group py-4 border-b specialMiddleTop"
                                 v-for="topcontent in specialTopContents?.slice(1, 5)" :key="topcontent?.content_id">
                                 <div class="col-span-5">
@@ -64,6 +65,10 @@
 const img = useImage()
 const siteurl = siteUrlState()
 // =============== Special Content Fetching ====================//
+
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article') }/${content_id}`
+}
 
 const specialTopContents = specialTopContentState()
 
