@@ -41,7 +41,7 @@
                         <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">
                             <div class="lead-post md:h-[328px] group overflow-hidden">
                                 <NuxtLink
-                                    :to="`/category/${categoryContent[0]?.cat_slug}/${categoryContent[0]?.content_id}`"
+                                    :to="getPostUrl(categoryContent[0]?.cat_slug, categoryContent[0]?.subcat_slug, categoryContent[0]?.content_type, categoryContent[0]?.content_id)"
                                     class="relative">
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${categoryContent[0]?.img_bg_path}`"
@@ -57,7 +57,8 @@
                         </div>
                         <div v-if="categoryContent[1]"
                             class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
-                            <NuxtLink :to="`/category/${categoryContent[1]?.cat_slug}/${categoryContent[1]?.content_id}`"
+                            <NuxtLink
+                                :to="getPostUrl(categoryContent[1]?.cat_slug, categoryContent[1]?.subcat_slug, categoryContent[1]?.content_type, categoryContent[1]?.content_id)"
                                 class="categorypost-2 group">
                                 <div class="cat-feature-image overflow-hidden">
                                     <nuxt-img
@@ -88,7 +89,8 @@
                     <!-- Category Bottom Lead -->
                     <div v-if="categoryContent[2]"
                         :class="`grid grid-cols-12 gap-4 md:gap-0 py-4 ${categoryBottomAds?.status === 1 ? '' : 'border-b border-b-[#dee2e6]'} `">
-                        <NuxtLink :to="`/category/${categoryContent[2]?.cat_slug}/${categoryContent[2]?.content_id}`"
+                        <NuxtLink
+                            :to="getPostUrl(categoryContent[2]?.cat_slug, categoryContent[2]?.subcat_slug, categoryContent[2]?.content_type, categoryContent[2]?.content_id)"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
@@ -97,8 +99,7 @@
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
-                                <h3
-                                    class="cat-postheading text-xl group-hover:text-[#ff0000] font-semibold text-[#121212]">
+                                <h3 class="cat-postheading text-xl group-hover:text-[#ff0000] font-semibold text-[#121212]">
                                     {{ categoryContent[2]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
@@ -113,7 +114,7 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="categoryContent[3]"
-                            :to="`/category/${categoryContent[3]?.cat_slug}/${categoryContent[3]?.content_id}`"
+                            :to="getPostUrl(categoryContent[3]?.cat_slug, categoryContent[3]?.subcat_slug, categoryContent[3]?.content_type, categoryContent[3]?.content_id)"
                             class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
@@ -122,8 +123,7 @@
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
-                                <h3
-                                    class="cat-postheading text-xl group-hover:text-[#ff0000] font-semibold text-[#121212]">
+                                <h3 class="cat-postheading text-xl group-hover:text-[#ff0000] font-semibold text-[#121212]">
                                     {{ categoryContent[3]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
@@ -138,7 +138,7 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="categoryContent[4]"
-                            :to="`/category/${categoryContent[4]?.cat_slug}/${categoryContent[4]?.content_id}`"
+                            :to="getPostUrl(categoryContent[4]?.cat_slug, categoryContent[4]?.subcat_slug, categoryContent[4]?.content_type, categoryContent[4]?.content_id)"
                             class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
@@ -147,8 +147,7 @@
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
-                                <h3
-                                    class="cat-postheading text-xl group-hover:text-[#ff0000] font-semibold text-[#121212]">
+                                <h3 class="cat-postheading text-xl group-hover:text-[#ff0000] font-semibold text-[#121212]">
                                     {{ categoryContent[4]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
@@ -185,7 +184,7 @@
 
                             <div class="cat-post-item py-4 border-b" v-for="(catPost, cpInx) in categoryContentExcept"
                                 :key="cpInx">
-                                <NuxtLink :to="`/category/${catPost?.cat_slug}/${catPost?.content_id}`"
+                                <NuxtLink :to="getPostUrl(catPost?.cat_slug, catPost?.subcat_slug, catPost?.content_type, catPost?.content_id)"
                                     class=" grid grid-cols-12 gap-3 group">
                                     <div class=" col-span-7 flex flex-col gap-3">
                                         <h3
@@ -275,6 +274,13 @@ const postCreatedDate = (date) => {
     }
 }
 // ================ Get Bangla Date ============== //
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
 
 const img = useImage()
 const siteurl = siteUrlState()
