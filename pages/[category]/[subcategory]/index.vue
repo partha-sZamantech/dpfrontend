@@ -49,7 +49,7 @@
                         <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">
                             <div class="lead-post md:h-[328px] group overflow-hidden">
                                 <NuxtLink
-                                    :to="`/category/${subcategoryContents[0]?.cat_slug}/${subcategoryContents[0]?.content_id}`"
+                                    :to="getPostUrl(subcategoryContents[0]?.cat_slug, subcategoryContents[0]?.subcat_slug, subcategoryContents[0]?.content_type, subcategoryContents[0]?.content_id)"
                                     class="relative">
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${subcategoryContents[0]?.img_bg_path}`"
@@ -66,7 +66,7 @@
                         <div v-if="subcategoryContents[1]"
                             class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
                             <NuxtLink
-                                :to="`/category/${subcategoryContents[1]?.cat_slug}/${subcategoryContents[1]?.content_id}`"
+                            :to="getPostUrl(subcategoryContents[1]?.cat_slug, subcategoryContents[1]?.subcat_slug, subcategoryContents[1]?.content_type, subcategoryContents[1]?.content_id)"
                                 class="categorypost-2 group">
                                 <div class="cat-feature-image overflow-hidden">
                                     <nuxt-img
@@ -98,7 +98,7 @@
                     <!-- Category Bottom Lead -->
                     <div class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
                         <NuxtLink v-if="subcategoryContents[2]"
-                            :to="`/category/${subcategoryContents[2]?.cat_slug}/${subcategoryContents[2]?.content_id}`"
+                        :to="getPostUrl(subcategoryContents[2]?.cat_slug, subcategoryContents[2]?.subcat_slug, subcategoryContents[2]?.content_type, subcategoryContents[2]?.content_id)"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
@@ -124,7 +124,7 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="subcategoryContents[3]"
-                            :to="`/category/${subcategoryContents[3]?.cat_slug}/${subcategoryContents[3]?.content_id}`"
+                        :to="getPostUrl(subcategoryContents[3]?.cat_slug, subcategoryContents[3]?.subcat_slug, subcategoryContents[3]?.content_type, subcategoryContents[3]?.content_id)"
                             class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
@@ -149,7 +149,7 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="subcategoryContents[4]"
-                            :to="`/category/${subcategoryContents[4]?.cat_slug}/${subcategoryContents[4]?.content_id}`"
+                        :to="getPostUrl(subcategoryContents[4]?.cat_slug, subcategoryContents[4]?.subcat_slug, subcategoryContents[4]?.content_type, subcategoryContents[4]?.content_id)"
                             class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img
@@ -190,29 +190,32 @@
                         <div class="col-span-12 md:col-span-8">
                             <!-- Loop Item -->
 
-                            <div class="cat-post-item py-4 border-b" v-for="(catPost, cpInx) in subcategoryContentExcept"
+                            <div class="cat-post-item py-4 border-b" v-for="(subcatPost, cpInx) in subcategoryContentExcept"
                                 :key="cpInx">
-                                <NuxtLink :to="`/category/${catPost?.cat_slug}/${catPost?.content_id}`"
+                                <NuxtLink
+                                    :to="getPostUrl(subcatPost?.cat_slug, subcatPost?.subcat_slug, subcatPost?.content_type, subcatPost?.content_id)"
                                     class=" grid grid-cols-12 gap-3 group">
 
                                     <div class=" col-span-7 flex flex-col gap-3">
-                                        <h3 class="cat-title text-[18px] md:text-[20px] font-semibold leading-[24px] group-hover:text-[#ff0000]">
+                                        <h3
+                                            class="cat-title text-[18px] md:text-[20px] font-semibold leading-[24px] group-hover:text-[#ff0000]">
                                             {{
-                                                catPost?.content_heading }}</h3>
+                                                subcatPost?.content_heading }}</h3>
                                         <ClientOnly>
                                             <div class="cat-desc text-base font-[300] hidden md:block"
-                                                v-html="catPost?.content_details.substring(0, 160)"></div>
+                                                v-html="subcatPost?.content_details.substring(0, 160)"></div>
                                         </ClientOnly>
 
                                         <span class="post-date md:flex flex-col gap-1 hidden text-base">
                                             <small>আপডেট: {{
-                                                postCreatedDate(catPost?.updated_at) }}</small>
+                                                postCreatedDate(subcatPost?.updated_at) }}</small>
                                             <small>প্রকাশ: {{
-                                                postCreatedDate(catPost?.created_at) }}</small>
+                                                postCreatedDate(subcatPost?.created_at) }}</small>
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
-                                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${catPost?.img_bg_path}`"
+                                        <nuxt-img
+                                            :src="`${siteurl.site_url}/media/content/images/${subcatPost?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     </div>
@@ -252,6 +255,12 @@ const singlePageSticky = singlePageStickyState()
 const stickyScroll = computed(() =>
     singlePageSticky.value
 )
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
 
 // ================ Get Bangla Date ============== //
 const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
