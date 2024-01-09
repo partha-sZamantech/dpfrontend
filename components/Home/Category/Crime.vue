@@ -11,14 +11,17 @@
             <div class="grid grid-cols-12 gap-4 group h-sports-excpt border-b py-4" v-for="crimecontent in crimecontents"
                 :key="crimecontent.content_id">
                 <div class=" col-span-5 overflow-hidden">
-                    <NuxtLink :to="`/category/${crimecontent?.cat_slug}/${crimecontent?.content_id}`">
+                    <NuxtLink
+                        :to="getPostUrl(crimecontent?.cat_slug, crimecontent?.subcat_slug, crimecontent?.content_type, crimecontent?.content_id)">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${crimecontent?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                            :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
+                            :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                     </NuxtLink>
                 </div>
                 <div class=" col-span-7">
-                    <NuxtLink :to="`/category/${crimecontent?.cat_slug}/${crimecontent?.content_id}`" class="flex flex-col gap-2">
+                    <NuxtLink
+                        :to="getPostUrl(crimecontent?.cat_slug, crimecontent?.subcat_slug, crimecontent?.content_type, crimecontent?.content_id)"
+                        class="flex flex-col gap-2">
                         <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">
                             {{ crimecontent?.content_heading }}
                         </h4>
@@ -33,22 +36,28 @@
 </template>
 
 <script setup>
-    const img = useImage()
-    const siteurl = siteUrlState()
-    const nuxtApp = useNuxtApp()
+const img = useImage()
+const siteurl = siteUrlState()
 // ======== Crime Content =============== //
 const crimecontents = useState(() => [])
 const { data: crmct } = await useFetch("/api/prismaapi/home/crime", {
     method: 'GET',
     // cache: 'force-cache',
-
 })
 crimecontents.value = crmct
 // ======== Crime Content =============== //
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
+
 </script>
 
 <style scoped>
-   .h-sports-excpt:first-child{
-        padding-top:0px
-    }
+.h-sports-excpt:first-child {
+    padding-top: 0px
+}
 </style>
