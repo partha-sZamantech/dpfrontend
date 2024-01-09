@@ -8,7 +8,7 @@
         </div>
         <div class="flex flex-col gap-4">
             <div class="">
-                <NuxtLink :to="`/category/${technologycontents[0]?.cat_slug}/${technologycontents[0]?.content_id}`"
+                <NuxtLink :to="getPostUrl(technologycontents[0]?.cat_slug, technologycontents[0]?.subcat_slug, technologycontents[0]?.content_type, technologycontents[0]?.content_id)"
                     class="grid grid-cols-1 md:grid-cols-2 group gap-4">
                     <div class="intertainment-feature-image overflow-hidden">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${technologycontents[0]?.img_bg_path}`"
@@ -32,7 +32,7 @@
                     <div class="flex flex-col gap-4 group h-sports-excpt"
                         v-for="technologycontent in technologycontents.slice(1, 5)" :key="technologycontent.content_id">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink :to="`/category/${technologycontent?.cat_slug}/${technologycontent?.content_id}`">
+                            <NuxtLink :to="getPostUrl(technologycontent?.cat_slug, technologycontent?.subcat_slug, technologycontent?.content_type, technologycontent?.content_id)">
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${technologycontent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -40,7 +40,7 @@
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="`/category/${technologycontent?.cat_slug}/${technologycontent?.content_id}`"
+                            <NuxtLink :to="getPostUrl(technologycontent?.cat_slug, technologycontent?.subcat_slug, technologycontent?.content_type, technologycontent?.content_id)"
                                 class="flex flex-col gap-2">
                                 <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">
                                     {{ technologycontent?.content_heading }}
@@ -61,7 +61,6 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-const nuxtApp = useNuxtApp()
 // ======== Technology Content =============== //
 const technologycontents = useState(() => [])
 const { data: technologyc } = await useFetch("/api/prismaapi/home/technology", {
@@ -71,6 +70,13 @@ const { data: technologyc } = await useFetch("/api/prismaapi/home/technology", {
 })
 technologycontents.value = technologyc
 // ======== Technology Content =============== //
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
 </script>
 
 <style lang="scss" scoped></style>
