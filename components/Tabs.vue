@@ -15,7 +15,7 @@
 
         <!-- Latest Post -->
         <div v-if="isActiveStatus === false" class="latest-post px-1 h-[430px] overflow-y-auto mt-2">
-            <NuxtLink :to="`/category/${latstpost?.cat_slug}/${latstpost?.content_id}`"
+            <NuxtLink :to="getPostUrl(latstpost?.cat_slug, latstpost?.subcat_slug, latstpost?.content_type, latstpost?.content_id)"
                 class="latest-post-loop py-3 flex gap-2 border-b border-b-[#e2e2e2] group" v-for="(latstpost, Linx) in latestposts"
                 :key="latstpost?.content_id">
                 <span class="number-count text-[26px] text-[#949494]"><b>{{ toBn(`${Linx+1}`) }}.</b> </span>
@@ -27,7 +27,7 @@
         <!--/ Latest Post -->
         <!-- Popular Post -->
         <div v-else class="latest-post px-1 h-[430px] overflow-y-auto mt-2">
-            <NuxtLink :to="`/category/${poplarpost?.cat_slug}/${poplarpost?.content_id}`"
+            <NuxtLink :to="getPostUrl(poplarpost?.cat_slug, poplarpost?.subcat_slug, poplarpost?.content_type, poplarpost?.content_id)"
                 class="latest-post-loop py-3 flex gap-2 border-b border-b-[#e2e2e2] group" v-for="(poplarpost, Pinx) in popularposts"
                 :key="poplarpost?.content_id">
                 <span class="number-count text-[26px] text-[#949494]"><b>{{ toBn(`${Pinx+1}`) }}.</b> </span>
@@ -89,8 +89,13 @@ popularposts.value = hplpost
 // ======== Popular Posts Content =============== //
 const toBn = n => n.replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d])
 
-// Tests
-// console.log(toBn('1')); 
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article') }/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
+
 </script>
 
 <style scoped>

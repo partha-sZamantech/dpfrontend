@@ -2,7 +2,7 @@
     <div class="grid grid-cols-2 md:grid-cols-3 gap-5 py-4">
         <ClientOnly>
             <!-- ========== Loop Item =========== -->
-            <NuxtLink :to="`/category/${tpcontent?.cat_slug}/${tpcontent?.content_id}`" class="flex flex-col gap-3 group"
+            <NuxtLink :to="getPostUrl(tpcontent?.cat_slug, tpcontent?.subcat_slug, tpcontent?.content_type, tpcontent?.content_id)" class="flex flex-col gap-3 group"
                 v-for="tpcontent in spTopContent?.slice(5, 11)" :key="tpcontent?.content_id">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl?.site_url}/media/content/images/${tpcontent?.img_bg_path}`"
@@ -31,8 +31,17 @@
 
 <script setup>
 const img = useImage()
+
+// Global Special Top Content State Composables
 const spTopContent = specialTopContentState()
 const siteurl = siteUrlState()
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article') }/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
 </script>
 
 <style lang="scss" scoped></style>

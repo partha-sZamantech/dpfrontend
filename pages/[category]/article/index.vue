@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-    navigateTo('/')
+
 </script>
 
 <style lang="scss" scoped>

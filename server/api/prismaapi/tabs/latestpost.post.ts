@@ -16,7 +16,8 @@ export default defineEventHandler(async (event) => {
             content_details: true,
             content_id: true,
             subcat_id: true,
-            img_bg_path: true
+            img_bg_path: true,
+            content_type: true
         },
         orderBy: {
             content_id: 'desc'
@@ -47,6 +48,7 @@ export default defineEventHandler(async (event) => {
              // Push Data
              data.push({
                 content_id: contents[i]?.content_id,
+                content_type: contents[i]?.content_type,
                 img_bg_path: contents[i]?.img_bg_path,
                 content_heading: contents[i]?.content_heading,
                 content_details: contents[i]?.content_details,
