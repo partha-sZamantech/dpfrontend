@@ -42,7 +42,7 @@ export default defineEventHandler(async (event) => {
             // Subcategory
             const subcategory = await prisma.bn_subcategories.findFirst({
                 where: {
-                    cat_id: parseInt(content?.cat_id)
+                    subcat_id: content?.subcat_id
                 }
             })
 
