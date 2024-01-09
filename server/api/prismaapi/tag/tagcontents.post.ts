@@ -53,14 +53,8 @@ export default defineEventHandler(async (event) => {
                 content_details     : contents[i]?.content_details,
                 created_at          : contents[i]?.created_at,
                 updated_at          : contents[i]?.updated_at,
-                category            : {
-                    bn_cat_name     : category?.cat_name_bn,
-                    cat_slug        : category?.cat_slug,
-                },
-                subcategory         : {
-                    subcat_slug     : subcategory?.subcat_slug,
-                    subcat_name_bn  : subcategory?.subcat_name_bn
-                }
+                cat_slug        : category?.cat_slug,
+                subcat_slug     : subcategory?.subcat_slug
             })
         }
 

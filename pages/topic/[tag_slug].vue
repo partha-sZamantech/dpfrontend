@@ -36,12 +36,14 @@
 
                      <div class="cat-post-item py-4 border-b" v-for="(tagContent, cpInx) in tagContents" :key="cpInx">
 
-                        <NuxtLink :to="`/category/${tagContent?.category?.cat_slug}/${tagContent?.content_id}`"
+                        <NuxtLink :to="getPostUrl(tagContent?.cat_slug, tagContent?.subcat_slug, tagContent?.content_type, tagContent?.content_id)"
                            class=" grid grid-cols-12 gap-3 group">
-                         
+
                            <div class=" col-span-7 flex flex-col gap-3">
-                              <h3 class="cat-title col-span-12 font-semibold text-[18px] md:text-[20px] group-hover:text-[#ff0000]">{{
-                              tagContent?.content_heading }}</h3>
+                              <h3
+                                 class="cat-title col-span-12 font-semibold text-[18px] md:text-[20px] group-hover:text-[#ff0000]">
+                                 {{
+                                    tagContent?.content_heading }}</h3>
                               <ClientOnly>
                                  <div class="cat-desc text-base font-[300] hidden md:block"
                                     v-html="`${tagContent?.content_details.substring(0, 160)}...`"></div>
@@ -102,25 +104,24 @@ const tag_slug = useRoute().params.tag_slug
 const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
 // const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
 const postCreatedDate = (date) => {
-    // If date value has
-    if(date){
-        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-    }
+   // If date value has
+   if (date) {
+      return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+   }
 }
 // ================ Get Bangla Date ============== //
 
-//================== Tag Content fetching =============== //
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+   return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
 
+//================== Tag Content fetching =============== //
 //Tag Content State
 const tagContents = useState(() => [])
 const take = ref(10)
-// const { data: tgcont } = await useFetch('/api/tag/tagcontent', {
-//    method: "POST",
-//    body: {
-//       tag_slug: tag_slug,
-//       take: take.value
-//    }
-// })
+
 const { data: tgcont } = await useFetch('/api/prismaapi/tag/tagcontents', {
    method: "POST",
    body: {
@@ -130,8 +131,6 @@ const { data: tgcont } = await useFetch('/api/prismaapi/tag/tagcontents', {
 })
 // Tag Content Assign
 tagContents.value = tgcont?.value?.content
-// console.log(tagContents.value)
-
 //================== Tag Content fetching =============== //
 
 //================ Load More Tag Content Button =================//
