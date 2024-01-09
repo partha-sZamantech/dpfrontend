@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
     // const prisma = new PrismaClient()
     // const getBody = await readBody(event)
     // const getDate = new Intl.DateTimeFormat('en-US')
-    const currentDate = moment().zone('+0600').format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')
+    const currentDate = moment().utcOffset('+0600').format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')
 
     const breakingNews = await prisma.bn_breaking_news.findMany({
         where: {
