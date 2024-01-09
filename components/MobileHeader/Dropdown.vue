@@ -6,8 +6,8 @@
                 {{ todayDate }}
             </div>
             <div class="flex items-center">
-                <input type="text" placeholder="যা খুঁজতে চান তা লিখুন" class=" focus:outline-none border px-2 py-2 w-full">
-                <div class=" bg-gray-200 px-2 py-2  cursor-pointer">
+                <input type="text" placeholder="খুঁজুন" v-model="mobileMekeyword" class=" focus:outline-none border px-2 py-2 w-full">
+                <div @click="mobileSearchPageRedirect" class=" bg-gray-200 px-2 py-2  cursor-pointer">
                     <Icon class="text-2xl " name="tabler:search" />
                 </div>
             </div>
@@ -69,7 +69,21 @@ const mobileMenuStatus = mobileMenuState()
 const menuClicked = () => {
     mobileMenuStatus.value = false
 }
-// console.log(mobileMenuStatus)
+
+
+// ===== Search Box ==== //
+const mobileMekeyword = useState(() => '');
+const mobileSearchPageRedirect = () => {
+    if (mobileMekeyword.value !== '') {
+        // globalKeyword.value = keyword.value
+        navigateTo(`/search?q=${mobileMekeyword.value}`)
+        mobileMekeyword.value = ''
+        mobileMenuStatus.value = false
+    } else {
+        alert('Please type something to search!')
+    }
+}
+// ===== Search Box ==== //
 
 // ================ Get Bangla Date ============== //
 const getDate = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })

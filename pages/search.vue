@@ -10,26 +10,29 @@
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 grid grid-cols-12 items-center gap-4 md:gap-4">
 
-                <div class=" col-span-3">
-                    <div class="tag-title md:py-6 flex gap-3 items-center">
+                <div class="col-span-12 md:col-span-3">
+                    <div class="tag-title md:py-6 md:flex gap-3 items-center hidden">
                         <Icon name="ph:magnifying-glass" class="text-[#3375af] text-4xl" />
                         <h1 class="text-xl md:text-3xl text-[#3375af] font-semibold">অনুসন্ধান</h1>
                     </div>
+                    <div class="tag-title py-1 md:py-6 text-center md:hidden">
+                        <h1 class="text-2xl md:text-3xl text-[#3375af] font-semibold">অনুসন্ধান</h1>
+                    </div>
                 </div>
-                <div class=" col-span-6">
+                <div class="col-span-12 md:col-span-6">
                     <div class="searchbox-page relative">
                         <input type="text" placeholder="খুঁজুন" v-model="inputKeyword" @change="onChangeKeyword"
-                            class=" focus:outline-none border border-[#cccccc] text-2xl rounded-[4px] pl-4 pr-10 py-2 w-full">
+                            class=" focus:outline-none border border-[#cccccc] text-xl md:text-2xl rounded-[4px] pl-4 pr-10 py-2 w-full">
                         <div @click="searchButtonHandler" class="  px-2 py-2  cursor-pointer absolute top-1 right-0">
                             <Icon class="text-2xl group-hover:text-white" name="tabler:search" />
                         </div>
                     </div>
                 </div>
-                <div class=" col-span-3"></div>
+                <div class=" hidden md:block md:col-span-3"></div>
             </div>
             <!--/ Breadcrump Section -->
 
-            <div class="grid grid-cols-12 gap-8 md:gap-3">
+            <div class="grid grid-cols-12 gap-0 md:gap-3">
                 <div class="col-span-12 md:col-span-2 ">
                 </div>
                 <div class="col-span-12 md:col-span-8">
@@ -161,6 +164,8 @@ const searchButtonHandler = async () => {
     take.value = 10
     // redirect to 
     navigateTo(`/search?q=${inputKeyword.value}`)
+
+    // useRoute().path(`/search?q=${inputKeyword.value}`)
     searchResults.value = computed(() => '')
     const { data: ssssresult } = await useFetch('/api/prismaapi/search/search', {
         method: "POST",

@@ -95,7 +95,6 @@ const todayDate = getDate.format(new Date())
 const img = useImage()
 
 // ===== Search Box ==== //
-// const globalKeyword = searchKeywordState()
 const keyword = useState(() => '');
 const searchPageRedirect = () => {
     if (keyword.value !== '') {
@@ -106,8 +105,8 @@ const searchPageRedirect = () => {
         alert('Please type something to search!')
     }
 }
-
 // ===== Search Box ==== //
+
 // ========== Desktop Sidebar menu Action Handler ============== //
 const desktopMenuStatus = desktopMenuState()
 const desktopMenuOpenHandler = () => {
