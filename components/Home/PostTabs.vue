@@ -15,7 +15,7 @@
 
         <!-- Latest Post -->
         <div v-if="isActiveStatus === false" class="latest-post px-3 h-[430px] overflow-y-auto">
-            <NuxtLink :to="`/category/${latstpost?.cat_slug}/${latstpost?.content_id}`"
+            <NuxtLink :to="getPostUrl(latstpost?.cat_slug, latstpost?.subcat_slug, latstpost?.content_type, latstpost?.content_id)"
                 class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop" v-for="latstpost in latestposts"
                 :key="latstpost?.content_id">
                 <div class="latest-post-tab-image col-span-4 overflow-hidden">
@@ -32,7 +32,7 @@
         <!--/ Latest Post -->
         <!-- Popular Post -->
         <div v-else class="latest-post px-3 h-[430px] overflow-y-auto">
-            <NuxtLink :to="`/category/${poplarpost?.cat_slug}/${poplarpost?.content_id}`"
+            <NuxtLink :to="getPostUrl(poplarpost?.cat_slug, poplarpost?.subcat_slug, poplarpost?.content_type, poplarpost?.content_id)"
                 class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop" v-for="poplarpost in popularposts"
                 :key="poplarpost?.content_id">
                 <div class="latest-post-tab-image col-span-4 overflow-hidden">
@@ -44,7 +44,7 @@
                     <h4 class="text-[17px] group-hover:text-[#ff0000]">{{ poplarpost?.content_heading }}</h4>
                 </div>
             </NuxtLink>
-       
+
         </div>
         <!--/ Popular Post -->
     </div>
@@ -65,13 +65,10 @@ const siteurl = siteUrlState()
 
 // ======== Latest Posts Content =============== //
 const latestposts = useState(() => [])
-// const { data: latpost } = await useFetch(`/api/home/latestposts`, {
-//     method: 'GET'
-// })
 
 const { data: latpost } = await useFetch('/api/prismaapi/tabs/latestpost', {
     method: "POST",
-    body:{
+    body: {
         take: 10 // How many post you want to fetch. just assign the number
     },
     cache: 'force-cache'
@@ -81,18 +78,21 @@ latestposts.value = latpost
 
 // ======== Popular Posts Content =============== //
 const popularposts = useState(() => [])
-// const { data: hplpost } = await useFetch(`/api/home/popularposts`, {
-//     method: 'GET'
-// })
 const { data: hplpost } = await useFetch('/api/prismaapi/tabs/popularpost', {
     method: "POST",
-    body:{
+    body: {
         take: 10 // How many post you want to fetch. just assign the number
     },
     cache: 'force-cache'
 })
 popularposts.value = hplpost
 // ======== Popular Posts Content =============== //
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article') }/${content_id}`
+}
+// ======== Post Url Generate ============ //
 
 </script>
 
@@ -117,4 +117,5 @@ popularposts.value = hplpost
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #bdb8b8;
-}</style>
+}
+</style>
