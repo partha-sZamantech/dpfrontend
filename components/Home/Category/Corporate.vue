@@ -8,7 +8,7 @@
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Corporate Feature Content -->
-            <NuxtLink :to="`/category/${corporateContents[0]?.cat_slug}/${corporateContents[0]?.content_id}`"
+            <NuxtLink :to="getPostUrl(corporateContents[0]?.cat_slug, corporateContents[0]?.subcat_slug, corporateContents[0]?.content_type, corporateContents[0]?.content_id)"
                 class="flex flex-col gap-2 group border-b pb-1">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${corporateContents[0]?.img_bg_path}`"
@@ -24,7 +24,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`/category/${corporateContent?.cat_slug}/${corporateContent?.content_id}`"
+                <NuxtLink :to="getPostUrl(corporateContent?.cat_slug, corporateContent?.subcat_slug, corporateContent?.content_type, corporateContent?.content_id)"
                     class=" border-b py-3" v-for="corporateContent in corporateContents.slice(1, 5)"
                     :key="corporateContent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ corporateContent?.content_heading }}</h4>
@@ -48,6 +48,12 @@ const { data: hcorporate } = await useFetch("/api/prismaapi/home/corporate", {
 })
 corporateContents.value = hcorporate
 // ======== Probash Content =============== //
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
 </script>
 
 <style lang="scss" scoped></style>
