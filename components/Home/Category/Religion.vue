@@ -8,7 +8,7 @@
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Religion Feature Content -->
-            <NuxtLink :to="`/category/${religioncontents[0]?.cat_slug}/${religioncontents[0]?.content_id}`"
+            <NuxtLink :to="getPostUrl(religioncontents[0]?.cat_slug, religioncontents[0]?.subcat_slug, religioncontents[0]?.content_type, religioncontents[0]?.content_id)"
                 class="flex flex-col gap-2 group border-b pb-1">
                 <div class=" overflow-hidden">
                     <nuxt-img :src="`${siteurl.site_url}/media/content/images/${religioncontents[0]?.img_bg_path}`"
@@ -24,7 +24,7 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="`/category/${religioncontent?.cat_slug}/${religioncontent?.content_id}`"
+                <NuxtLink :to="getPostUrl(religioncontent?.cat_slug, religioncontent?.subcat_slug, religioncontent?.content_type, religioncontent?.content_id)"
                     class=" border-b py-3" v-for="religioncontent in religioncontents.slice(1, 5)"
                     :key="religioncontent.content_id">
                     <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ religioncontent?.content_heading }}</h4>
@@ -49,6 +49,13 @@ const { data: hreligion } = await useFetch("/api/prismaapi/home/religion", {
 })
 religioncontents.value = hreligion
 // ======== Religion Content =============== //
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
 </script>
 
 <style lang="scss" scoped></style>
