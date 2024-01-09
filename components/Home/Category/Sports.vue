@@ -8,7 +8,7 @@
         </div>
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 md:col-span-7">
-                <NuxtLink :to="`/category/${sportscontent[0]?.cat_slug}/${sportscontent[0]?.content_id}`"
+                <NuxtLink :to="getPostUrl(sportscontent[0]?.cat_slug, sportscontent[0]?.subcat_slug, sportscontent[0]?.content_type, sportscontent[0]?.content_id)"
                     class="flex flex-col group gap-2">
                     <div class="national-feature-image overflow-hidden">
                         <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${sportscontent[0]?.img_bg_path}`"
@@ -34,14 +34,14 @@
                     <div class="grid grid-cols-12 gap-4 group h-sports-excpt border-b py-4"
                         v-for="hmsport in sportscontent.slice(1, 5)" :key="hmsport.content_id">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink :to="`/category/${hmsport?.cat_slug}/${hmsport?.content_id}`">
+                            <NuxtLink :to="getPostUrl(hmsport?.cat_slug, hmsport?.subcat_slug, hmsport?.content_type, hmsport?.content_id)">
                                 <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${hmsport?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="`/category/${hmsport?.cat_slug}/${hmsport?.content_id}`"
+                            <NuxtLink :to="getPostUrl(hmsport?.cat_slug, hmsport?.subcat_slug, hmsport?.content_type, hmsport?.content_id)"
                                 class="flex flex-col gap-2">
                                 <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
                                     hmsport?.content_heading }}</h4>
@@ -58,7 +58,6 @@
 
 <script setup>
 const img = useImage()
-const nuxtApp = useNuxtApp()
 const siteUrl = siteUrlState()
 const sportscontent = useState(() => [])
 const { data: hsport } = await useFetch('/api/prismaapi/home/sports', {
@@ -66,6 +65,13 @@ const { data: hsport } = await useFetch('/api/prismaapi/home/sports', {
     // cache: 'force-cache',
 })
 sportscontent.value = hsport
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
 </script>
 
 <style scoped>
