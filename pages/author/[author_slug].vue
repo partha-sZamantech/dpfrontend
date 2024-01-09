@@ -36,12 +36,13 @@
 
               <div class="cat-post-item py-4 border-b" v-for="(authorContent, autInx) in authorContents" :key="autInx">
 
-                <NuxtLink :to="`/category/${authorContent?.category?.cat_slug}/${authorContent?.content_id}`"
+                <NuxtLink
+                  :to="getPostUrl(authorContent?.cat_slug, authorContent?.subcat_slug, authorContent?.content_type, authorContent?.content_id)"
                   class=" grid grid-cols-12 gap-3 group">
-                  
                   <div class=" col-span-7 flex flex-col gap-3">
-                    <h3 class="cat-title col-span-12 font-semibold text-[18px] md:text-[20px] group-hover:text-[#ff0000]">{{
-                    authorContent?.content_heading }}</h3>
+                    <h3 class="cat-title col-span-12 font-semibold text-[18px] md:text-[20px] group-hover:text-[#ff0000]">
+                      {{
+                        authorContent?.content_heading }}</h3>
                     <ClientOnly>
                       <div class="cat-desc text-base font-[300] hidden md:block"
                         v-html="`${authorContent?.content_details.substring(0, 160)}...`"></div>
@@ -98,6 +99,12 @@ const stickyScroll = computed(() =>
 // Get Author Slug
 const author_slug = useRoute().params.author_slug
 
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+  return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
 // ================ Get Bangla Date ============== //
 const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
 // const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
@@ -110,19 +117,12 @@ const postCreatedDate = (date) => {
 // ================ Get Bangla Date ============== //
 
 //================== Get Author Content fetching =============== //
-
 // Author State 
 const author = ref(null)
 //Author Content State
 const authorContents = useState(() => [])
 const take = ref(10)
-// const { data: authorcont } = await useFetch('/api/author/getauthorcontent', {
-//   method: "POST",
-//   body: {
-//     author_slug: author_slug,
-//     take: take.value
-//   }
-// })
+
 const { data: authorcont } = await useFetch('/api/prismaapi/author/getauthorpost', {
   method: "POST",
   body: {
@@ -134,8 +134,6 @@ const { data: authorcont } = await useFetch('/api/prismaapi/author/getauthorpost
 authorContents.value = authorcont?.value?.content
 // Author Assign
 author.value = authorcont?.value?.author
-// console.log(authorContents.value)
-
 //================== Get Author Content fetching =============== //
 
 //================ Load More Author Content Button =================//
