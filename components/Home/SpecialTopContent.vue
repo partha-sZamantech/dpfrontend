@@ -66,6 +66,7 @@ const img = useImage()
 const siteurl = siteUrlState()
 // =============== Special Content Fetching ====================//
 
+// Linked
 const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
     return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article') }/${content_id}`
 }
