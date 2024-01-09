@@ -3,7 +3,7 @@
         <div v-if="politics?.length > 0" class=" col-span-12 md:col-span-4">
             <div class="home-politic-category ">
                 <div class="category-header border-b-4 border-b-[#3375af] my-3">
-                    <NuxtLink :to="`/${politics[0]?.category?.cat_slug}`" class="flex gap-3 items-center">
+                    <NuxtLink :to="`/${politics[0]?.cat_slug}`" class="flex gap-3 items-center">
                         <span class="w-3 h-3 bg-[#3375af]"></span>
                         <h2 class="text-[#3375af] text-[18px] font-semibold">রাজনীতি</h2>
 

@@ -11,14 +11,14 @@
             <div class="grid grid-cols-12 gap-4 group h-sports-excpt border-b py-4" v-for="saradeshcon in saradeshcontents"
                 :key="saradeshcon.content_id">
                 <div class=" col-span-5 overflow-hidden">
-                    <NuxtLink :to="`/category/${saradeshcon?.cat_slug}/${saradeshcon?.content_id}`">
+                    <NuxtLink :to="getPostUrl(saradeshcon?.cat_slug, saradeshcon?.subcat_slug, saradeshcon?.content_type, saradeshcon?.content_id)">
                         <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${saradeshcon?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
                     </NuxtLink>
                 </div>
                 <div class=" col-span-7">
-                    <NuxtLink :to="`/category/${saradeshcon?.cat_slug}/${saradeshcon?.content_id}`" class="flex flex-col gap-2">
+                    <NuxtLink :to="getPostUrl(saradeshcon?.cat_slug, saradeshcon?.subcat_slug, saradeshcon?.content_type, saradeshcon?.content_id)" class="flex flex-col gap-2">
                         <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{ saradeshcon?.content_heading
                         }}</h4>
                         <span class="text-sm">{{ saradeshcon?.created_at }}</span>
@@ -33,7 +33,6 @@
 
 <script setup>
 const img = useImage()
-const nuxtApp = useNuxtApp()
 const siteUrl = siteUrlState()
 const saradeshcontents = useState(() => [])
 const { data: hsradesh } = await useFetch('/api/prismaapi/home/saradesh', {
@@ -42,6 +41,12 @@ const { data: hsradesh } = await useFetch('/api/prismaapi/home/saradesh', {
 
 })
 saradeshcontents.value = hsradesh
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
 </script>
 
 <style scoped>
