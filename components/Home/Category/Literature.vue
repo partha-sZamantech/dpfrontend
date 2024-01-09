@@ -8,7 +8,7 @@
         </div>
         <div class="flex flex-col gap-4">
             <div class="">
-                <NuxtLink :to="`/category/${literatureContents[0]?.cat_slug}/${literatureContents[0]?.content_id}`"
+                <NuxtLink :to="getPostUrl(literatureContents[0]?.cat_slug, literatureContents[0]?.subcat_slug, literatureContents[0]?.content_type, literatureContents[0]?.content_id)"
                     class="grid grid-cols-1 md:grid-cols-2 group gap-4">
                     <div class="intertainment-feature-image overflow-hidden">
                         <nuxt-img :src="`${siteurl.site_url}/media/content/images/${literatureContents[0]?.img_bg_path}`"
@@ -31,7 +31,7 @@
                     <div class="flex flex-col gap-4 group h-sports-excpt"
                         v-for="literatureContent in literatureContents.slice(1, 5)" :key="literatureContent.content_id">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink :to="`/category/${literatureContent?.cat_slug}/${literatureContent?.content_id}`">
+                            <NuxtLink :to="getPostUrl(literatureContent?.cat_slug, literatureContent?.subcat_slug, literatureContent?.content_type, literatureContent?.content_id)">
                                 <nuxt-img
                                     :src="`${siteurl.site_url}/media/content/images/${literatureContent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -39,7 +39,7 @@
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="`/category/${literatureContent?.cat_slug}/${literatureContent?.content_id}`">
+                            <NuxtLink :to="getPostUrl(literatureContent?.cat_slug, literatureContent?.subcat_slug, literatureContent?.content_type, literatureContent?.content_id)">
                                 <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{ literatureContent?.content_heading }}</h4>
                             </NuxtLink>
                         </div>
@@ -54,7 +54,6 @@
 <script setup>
 const img = useImage()
 const siteurl = siteUrlState()
-const nuxtApp = useNuxtApp()
 // ======== Literature Content =============== //
 const literatureContents = useState(() => [])
 const { data: hmliterature } = await useFetch("/api/prismaapi/home/literature", {
@@ -64,6 +63,12 @@ const { data: hmliterature } = await useFetch("/api/prismaapi/home/literature", 
 })
 literatureContents.value = hmliterature
 // ======== Literature Content =============== //
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
 </script>
 
 <style lang="scss" scoped></style>
