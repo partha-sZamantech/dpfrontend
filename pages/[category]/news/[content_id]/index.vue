@@ -560,7 +560,7 @@ fRelatedContents.value = pdailts?.value?.firstRelatedContents
 // ================  OG - Open Graph ====================// 
 const ogUrl = ref(null);
 // const okImage = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
-ogUrl.value = `${websiteUrl?.value?.website_url}${getPostUrl(detailsContent?.value?.category?.cat_slug,detailsContent?.value?.subcategory?.subcat_slug, detailsContent?.value?.content_type,detailsContent?.value?.content_id)}`
+ogUrl.value = `${websiteUrl?.value?.website_url}${getPostUrl(detailsContent?.value?.category?.cat_slug, detailsContent?.value?.subcategory?.subcat_slug, detailsContent?.value?.content_type, detailsContent?.value?.content_id)}`
 const ogTitle = ref(null);
 ogTitle.value = detailsContent?.value?.content_heading
 const ogDescription = ref(null);
@@ -629,6 +629,7 @@ const { data: dinsidemorenews } = await useFetch("/api/prismaapi/detail/getinsid
     }
 })
 firstInsideMoreNews.value = dinsidemorenews?.value
+
 // firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
 // console.log(firstInsideMoreNews.value)
 
@@ -897,21 +898,27 @@ onMounted(() => {
         return relatedNews;
     }
 
-    let itemIncrement = 0;
-    descParam.forEach((item, i) => {
-
-        if (i > 0 && i % 3 === 0 && firstInsideMoreNews?.value[itemIncrement]) {
-            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug,firstInsideMoreNews?.value[itemIncrement].subcat_slug, firstInsideMoreNews?.value[itemIncrement].content_type, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
-            itemIncrement++;
-        }
-    })
-
-
-    function fJsNewsURLs(cat_slug,subcat_slug,content_type, content_id) {
+    function fJsNewsURLs(cat_slug, subcat_slug, content_type, content_id) {
         return `${cat_slug}/${subcat_slug ? subcat_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`;
         // return location.origin + '/category/' + cat_slug + '/' + content_id;
         // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
     }
+
+    if (firstInsideMoreNews?.value?.length > 0) {
+        let itemIncrement = 0;
+
+        descParam.forEach((item, i) => {
+
+            if (i > 0 && i % 3 === 0 && firstInsideMoreNews?.value[itemIncrement]) {
+                descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug, firstInsideMoreNews?.value[itemIncrement].subcat_slug, firstInsideMoreNews?.value[itemIncrement].content_type, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
+                itemIncrement++;
+            }
+        })
+    }
+
+
+
+
 
     // function fJsNewsImgPaths(img_path) {
     //     return location.origin + '/media/content/images/' + img_path;
@@ -1000,7 +1007,7 @@ onMounted(() => {
                 }
             })
 
-            function fJsNewsURL(cat_slug,subcat_slug,content_type, content_id) {
+            function fJsNewsURL(cat_slug, subcat_slug, content_type, content_id) {
                 return `${cat_slug}/${subcat_slug ? subcat_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`;
                 // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
             }

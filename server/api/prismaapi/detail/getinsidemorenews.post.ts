@@ -10,8 +10,13 @@ export default defineEventHandler(async (event) => {
 
     const getInsideMoreNews = await prisma.bn_contents.findMany({
         where: {
+            NOT: {
+                content_id: {
+                    equals: parseInt(getBody?.content_id)
+                }
+            },
             cat_id: parseInt(getBody?.cat_id),
-            deletable:1,
+            deletable: 1,
             status: 1
         },
         orderBy: {
@@ -22,35 +27,34 @@ export default defineEventHandler(async (event) => {
 
     const insideMoreNews = []
     for (let i = 0; i < 6; i++) {
+        // if (getInsideMoreNews[i].content_id !== parseInt(getBody?.content_id)) {
 
-        if (getInsideMoreNews[i].content_id !== parseInt(getBody?.content_id)) {
+        // Category
+        const category = await prisma.bn_categories.findFirst({
+            where: {
+                cat_id: getInsideMoreNews[i]?.cat_id, // Assign Category ID 
+            }
+        })
 
-            // Category
-            const category = await prisma.bn_categories.findFirst({
-                where: {
-                    cat_id: getInsideMoreNews[i]?.cat_id, // Assign Category ID 
-                }
-            })
+        // Subcategory
+        const subcategory = await prisma.bn_subcategories.findFirst({
+            where: {
+                cat_id: getInsideMoreNews[i]?.cat_id, // Assign Category ID 
+            }
+        })
 
-            // Subcategory
-            const subcategory = await prisma.bn_subcategories.findFirst({
-                where: {
-                    cat_id: getInsideMoreNews[i]?.cat_id, // Assign Category ID 
-                }
-            })
-
-            insideMoreNews.push({
-                content_id: getInsideMoreNews[i]?.content_id,
-                content_type: getInsideMoreNews[i]?.content_type,
-                img_bg_path: getInsideMoreNews[i]?.img_bg_path,
-                content_heading: getInsideMoreNews[i]?.content_heading,
-                cat_slug: category?.cat_slug,
-                subcat_slug: subcategory?.subcat_slug
-            })
-
-        } // End if
-
+        insideMoreNews.push({
+            content_id: getInsideMoreNews[i]?.content_id,
+            content_type: getInsideMoreNews[i]?.content_type,
+            img_bg_path: getInsideMoreNews[i]?.img_bg_path,
+            content_heading: getInsideMoreNews[i]?.content_heading,
+            cat_slug: category?.cat_slug,
+            subcat_slug: subcategory?.subcat_slug
+        })
+        // } 
     }
+
+
     //=============== First Detail Inside Content exept ==================//
 
     return insideMoreNews;
