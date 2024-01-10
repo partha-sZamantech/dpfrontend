@@ -42,7 +42,7 @@
                 <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
                     :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
                     :data-keywords="detailsContent?.meta_keywords"
-                    :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
+                    :data-href="`${websiteUrl?.website_url}${getPostUrl(detailsContent?.category?.cat_slug, detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type, detailsContent?.content_id)}`"
                     :data-src="`${siteurl?.site_url}/media/content/images/${detailsContent?.img_bg_path}`">
                     <!-- <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
                     :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
@@ -166,7 +166,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
                                 v-for="fmoreContent in firstMoreContents" :key="fmoreContent.content_id">
                                 <div class=" col-span-5 overflow-hidden">
-                                    <NuxtLink :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
+                                    <NuxtLink
+                                        :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
                                         <nuxt-img
                                             :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -174,7 +175,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     </NuxtLink>
                                 </div>
                                 <div class=" col-span-7">
-                                    <NuxtLink :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
+                                    <NuxtLink
+                                        :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
                                         <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
                                             fmoreContent?.content_heading }}</h4>
                                     </NuxtLink>
@@ -203,7 +205,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             <!--:::::::: Detail Page After Ads :::::::::::-->
 
 
-            <!-- Read more first content -->
+            <!-- Read more first Releted content -->
             <div class="col-span-12" v-if="fRelatedContents?.length > 0">
                 <div class="read-more">
                     <div class="category-header border-b-4 border-b-[#3375af] my-3">
@@ -214,7 +216,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     </div>
                     <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${fRelatedContent?.category?.cat_slug}/${fRelatedContent?.content_id}`"
+                        <NuxtLink
+                            :to="getPostUrl(fRelatedContent?.cat_slug, fRelatedContent?.subcat_slug, fRelatedContent?.content_type, fRelatedContent?.content_id)"
                             class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents"
                             :key="fRelatedContent.content_id">
                             <div class="feature_image_readmore overflow-hidden">
@@ -264,10 +267,10 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     :data-keywords="moreDetailContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
                     :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`"> -->
-                    <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
+                <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
                     :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
                     :data-keywords="moreDetailContent?.meta_keywords"
-                    :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
+                    :data-href="`${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
                     :data-src="`${siteurl?.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`">
 
                     <div class="singlePost-heading flex flex-col gap-2">
@@ -387,9 +390,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
                                 v-for="moreDetCatCon in moreDetailContent?.morecatwisePost" :key="moreDetCatCon.content_id">
                                 <div class=" col-span-5 overflow-hidden">
-
                                     <NuxtLink
-                                        :to="`/category/${moreDetCatCon?.category?.cat_slug}/${moreDetCatCon?.content_id}`">
+                                        :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)">
                                         <nuxt-img
                                             :src="`${siteurl.site_url}/media/content/images/${moreDetCatCon?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -398,7 +400,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 </div>
                                 <div class=" col-span-7">
                                     <NuxtLink
-                                        :to="`/category/${moreDetCatCon?.category?.cat_slug}/${moreDetCatCon?.content_id}`">
+                                        :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)">
                                         <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
                                             moreDetCatCon?.content_heading }}</h4>
                                     </NuxtLink>
@@ -427,7 +429,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             <!--:::::::: Detail Page After Ads :::::::::::-->
             <!-- Three More Content Releted -->
             <div class="col-span-12" v-if="moreDetailContent?.morereletedcontentbelow?.length > 0 && mcinx !== 2">
-            
+
                 <div class="read-more">
                     <div class="category-header border-b-4 border-b-[#3375af] my-3">
                         <div class="flex gap-3 items-center">
@@ -436,9 +438,11 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
-                 
-                        <NuxtLink :to="`/category/${relDetailContent?.category?.cat_slug}/${relDetailContent?.content_id}`"
-                            class="flex flex-col gap-2 group" v-for="relDetailContent in moreDetailContent?.morereletedcontentbelow[mcinx]"
+
+                        <NuxtLink
+                            :to="getPostUrl(relDetailContent?.cat_slug, relDetailContent?.subcat_slug, relDetailContent?.content_type, relDetailContent?.content_id)"
+                            class="flex flex-col gap-2 group"
+                            v-for="relDetailContent in moreDetailContent?.morereletedcontentbelow[mcinx]"
                             :key="relDetailContent.content_id">
                             <div class="feature_image_readmore overflow-hidden">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${relDetailContent?.img_bg_path}`"
@@ -447,11 +451,11 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             </div>
                             <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ relDetailContent?.content_heading }}</h5>
                         </NuxtLink>
-                
+
                     </div>
                 </div>
             </div>
-      <!-- Three More Content Releted -->
+            <!-- Three More Content Releted -->
 
             <!-- Latest 20 Posts content -->
             <div class="col-span-12" v-else>
@@ -465,7 +469,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
                         <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                         <!-- Loop Item -->
-                        <NuxtLink :to="`/category/${latestPostC?.cat_slug}/${latestPostC?.content_id}`"
+                        <NuxtLink
+                            :to="getPostUrl(latestPostC?.cat_slug, latestPostC?.subcat_slug, latestPostC?.content_type, latestPostC?.content_id)"
                             class="flex flex-col gap-2 group" v-for="latestPostC in latestPostsDpage"
                             :key="latestPostC.content_id">
                             <div class="feature_image_readmore overflow-hidden">
@@ -555,7 +560,7 @@ fRelatedContents.value = pdailts?.value?.firstRelatedContents
 // ================  OG - Open Graph ====================// 
 const ogUrl = ref(null);
 // const okImage = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
-ogUrl.value = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
+ogUrl.value = `${websiteUrl?.value?.website_url}/${getPostUrl(detailsContent?.category?.cat_slug,detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type,detailsContent?.content_id)}`
 const ogTitle = ref(null);
 ogTitle.value = detailsContent?.value?.content_heading
 const ogDescription = ref(null);
@@ -647,7 +652,7 @@ firstInsideMoreNews.value = dinsidemorenews?.value
 //     })
 
 //     relatedDetailContent?.value?.push(rlcd.value)
-    
+
 
 // }
 

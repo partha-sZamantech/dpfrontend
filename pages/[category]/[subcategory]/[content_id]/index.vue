@@ -42,7 +42,7 @@
                 <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
                     :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
                     :data-keywords="detailsContent?.meta_keywords"
-                    :data-href="`${websiteUrl?.website_url}/${getPostUrl(detailsContent?.category?.cat_slug,detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type,detailsContent?.content_id)}`"
+                    :data-href="`${websiteUrl?.website_url}${getPostUrl(detailsContent?.category?.cat_slug, detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type, detailsContent?.content_id)}`"
                     :data-src="`${siteurl?.site_url}/media/content/images/${detailsContent?.img_bg_path}`">
                     <!-- <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
                     :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
@@ -270,7 +270,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
                     :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
                     :data-keywords="moreDetailContent?.meta_keywords"
-                    :data-href="`${websiteUrl?.website_url}/${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
+                    :data-href="`${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
                     :data-src="`${siteurl?.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`">
 
                     <div class="singlePost-heading flex flex-col gap-2">
@@ -560,7 +560,7 @@ fRelatedContents.value = pdailts?.value?.firstRelatedContents
 // ================  OG - Open Graph ====================// 
 const ogUrl = ref(null);
 // const okImage = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
-ogUrl.value = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
+ogUrl.value = `${websiteUrl?.value?.website_url}/${getPostUrl(detailsContent?.category?.cat_slug,detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type,detailsContent?.content_id)}`
 const ogTitle = ref(null);
 ogTitle.value = detailsContent?.value?.content_heading
 const ogDescription = ref(null);
@@ -1103,6 +1103,8 @@ DetailRightThreeAds.value = detrtthreeAds?.value
 
 </script>
 
-<style scoped>p {
+<style scoped>
+p {
     line-height: 1.7 !important;
-}</style>
+}
+</style>
