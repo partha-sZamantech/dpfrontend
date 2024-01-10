@@ -629,6 +629,8 @@ const { data: dinsidemorenews } = await useFetch("/api/prismaapi/detail/getinsid
     }
 })
 firstInsideMoreNews.value = dinsidemorenews?.value
+console.log(firstInsideMoreNews.value)
+
 // firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
 // console.log(firstInsideMoreNews.value)
 
@@ -855,55 +857,56 @@ onMounted(() => {
     }
     // ==== Gooogle news Link === //
 
-    let insertRelatedNewses = (title, href) => {
-
-        let relatedNews = document.createElement('div');
-        relatedNews.className = 'inside-news my-4 print:hidden';
-
-        let h5 = document.createElement('h5');
-        // h5.style.fontSize = '16px';
-        h5.className = 'text-[16px] text-[#575757] font-bold'
-        // h5.style.fontWeight = 'bold';
-        h5.innerText = 'আরও পড়ুন';
-        relatedNews.append(h5);
-
-        let containerFluid = document.createElement('div');
-        containerFluid.className = 'container-fluid border border-[#e2e2e2] mt-1 group';
-        // containerFluid.style.border = '1px solid #575757';
-        relatedNews.append(containerFluid);
-
-        // let link = document.createElement('a');
-        // link.href = href;
-        // containerFluid.append(link);
-
-        let headline = document.createElement('div');
-        headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af] cursor-pointer';
-        // headline.style.cssText = 'font-size:19px;font-weight: bold; width: 65%; float: left';
-        // headline.style.cssText = 'font-size:16px;font-weight: bold;';
-        headline.innerText = title;
-        // link.append(headline);
-        containerFluid.append(headline);
-        headline.addEventListener('click', function handleClick(event) {
-            navigateTo(`/${href}`)
-        });
-        // let img = document.createElement('img');
-        // img.className = 'marginTop10 marginBottom10';
-        // img.style.cssText = 'width: 85px;float: right';
-        // img.src = src;
-        // img.title = title;
-        // img.alt = title;
-        // link.append(img);
-
-        return relatedNews;
-    }
-
-    function fJsNewsURLs(cat_slug, subcat_slug, content_type, content_id) {
-        return `${cat_slug}/${subcat_slug ? subcat_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`;
-        // return location.origin + '/category/' + cat_slug + '/' + content_id;
-        // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
-    }
-
     if (firstInsideMoreNews?.value?.length > 0) {
+        let insertRelatedNewses = (title, href) => {
+
+            let relatedNews = document.createElement('div');
+            relatedNews.className = 'inside-news my-4 print:hidden';
+
+            let h5 = document.createElement('h5');
+            // h5.style.fontSize = '16px';
+            h5.className = 'text-[16px] text-[#575757] font-bold'
+            // h5.style.fontWeight = 'bold';
+            h5.innerText = 'আরও পড়ুন';
+            relatedNews.append(h5);
+
+            let containerFluid = document.createElement('div');
+            containerFluid.className = 'container-fluid border border-[#e2e2e2] mt-1 group';
+            // containerFluid.style.border = '1px solid #575757';
+            relatedNews.append(containerFluid);
+
+            // let link = document.createElement('a');
+            // link.href = href;
+            // containerFluid.append(link);
+
+            let headline = document.createElement('div');
+            headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af] cursor-pointer';
+            // headline.style.cssText = 'font-size:19px;font-weight: bold; width: 65%; float: left';
+            // headline.style.cssText = 'font-size:16px;font-weight: bold;';
+            headline.innerText = title;
+            // link.append(headline);
+            containerFluid.append(headline);
+            headline.addEventListener('click', function handleClick(event) {
+                navigateTo(`/${href}`)
+            });
+            // let img = document.createElement('img');
+            // img.className = 'marginTop10 marginBottom10';
+            // img.style.cssText = 'width: 85px;float: right';
+            // img.src = src;
+            // img.title = title;
+            // img.alt = title;
+            // link.append(img);
+
+            return relatedNews;
+        }
+
+        function fJsNewsURLs(cat_slug, subcat_slug, content_type, content_id) {
+            return `${cat_slug}/${subcat_slug ? subcat_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`;
+            // return location.origin + '/category/' + cat_slug + '/' + content_id;
+            // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
+        }
+
+
         let itemIncrement = 0;
 
         descParam.forEach((item, i) => {
