@@ -36,7 +36,7 @@
                         <div class="col-span-12 md:col-span-8 md:pr-3 mb-1 md:mb-0">
                             <div class="lead-post md:h-[328px] group overflow-hidden">
                                 <NuxtLink
-                                    :to="`/category/${latestPosts[0]?.cat_slug}/${latestPosts[0]?.content_id}`"
+                                    :to="getPostUrl(latestPosts[0]?.cat_slug, latestPosts[0]?.subcat_slug, latestPosts[0]?.content_type, latestPosts[0]?.content_id)"
                                     class="relative">
                                     <nuxt-img
                                         :src="`${siteurl.site_url}/media/content/images/${latestPosts[0]?.img_bg_path}`"
@@ -52,7 +52,8 @@
                         </div>
                         <div v-if="latestPosts[1]"
                             class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
-                            <NuxtLink :to="`/category/${latestPosts[1]?.cat_slug}/${latestPosts[1]?.content_id}`"
+                            <NuxtLink
+                                :to="getPostUrl(latestPosts[1]?.cat_slug, latestPosts[1]?.subcat_slug, latestPosts[1]?.content_type, latestPosts[1]?.content_id)"
                                 class="categorypost-2 group">
                                 <div class="cat-feature-image overflow-hidden">
                                     <nuxt-img
@@ -79,7 +80,8 @@
                     <!--/ Category Lead Section -->
                     <!-- Category Bottom Lead -->
                     <div v-if="latestPosts[2]" class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
-                        <NuxtLink :to="`/category/${latestPosts[2]?.cat_slug}/${latestPosts[2]?.content_id}`"
+                        <NuxtLink
+                            :to="getPostUrl(latestPosts[2]?.cat_slug, latestPosts[2]?.subcat_slug, latestPosts[2]?.content_type, latestPosts[2]?.content_id)"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPosts[2]?.img_bg_path}`"
@@ -101,7 +103,7 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="latestPosts[3]"
-                            :to="`/category/${latestPosts[3]?.cat_slug}/${latestPosts[3]?.content_id}`"
+                            :to="getPostUrl(latestPosts[3]?.cat_slug, latestPosts[3]?.subcat_slug, latestPosts[3]?.content_type, latestPosts[3]?.content_id)"
                             class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPosts[3]?.img_bg_path}`"
@@ -123,7 +125,7 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="latestPosts[4]"
-                            :to="`/category/${latestPosts[4]?.cat_slug}/${latestPosts[4]?.content_id}`"
+                            :to="getPostUrl(latestPosts[4]?.cat_slug, latestPosts[4]?.subcat_slug, latestPosts[4]?.content_type, latestPosts[4]?.content_id)"
                             class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
                                 <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPosts[4]?.img_bg_path}`"
@@ -163,11 +165,14 @@
 
                             <div class="cat-post-item py-4 border-b" v-for="(latestPost, cpInx) in latestPostContentExcept"
                                 :key="cpInx">
-                                <NuxtLink :to="`/category/${latestPost?.cat_slug}/${latestPost?.content_id}`"
+                                <NuxtLink
+                                    :to="getPostUrl(latestPost?.cat_slug, latestPost?.subcat_slug, latestPost?.content_type, latestPost?.content_id)"
                                     class=" grid grid-cols-12 gap-3 group">
                                     <div class=" col-span-7 flex flex-col gap-3">
-                                        <h3 class="cat-title col-span-12 font-semibold text-[20px] group-hover:text-[#ff0000]">{{
-                                        latestPost?.content_heading }}</h3>
+                                        <h3
+                                            class="cat-title col-span-12 font-semibold text-[20px] group-hover:text-[#ff0000]">
+                                            {{
+                                                latestPost?.content_heading }}</h3>
                                         <ClientOnly>
                                             <div class="cat-desc text-[#555555] text-[15px] font-[300]"
                                                 v-html="`${latestPost?.content_details.substring(0, 155)}...`"></div>
@@ -220,6 +225,14 @@ const postCreatedDate = (date) => {
     }
 }
 // ================ Get Bangla Date ============== //
+
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
+
 
 const img = useImage()
 const siteurl = siteUrlState()
@@ -298,5 +311,4 @@ const loadMoreButtonHandler = async () => {
 
 .lead-overly {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(53, 50, 50, 0.9) 75%, rgb(0, 0, 0) 100%);
-}
-</style>
+}</style>
