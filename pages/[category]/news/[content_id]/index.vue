@@ -851,7 +851,7 @@ onMounted(() => {
         let h4 = document.createElement(`h4`);
         h4.className = 'text-[#337ab7] group-hover:text-[#ffffff] print:hidden';
         h4.style.cssText = `font-weight: bold`;
-        h4.innerText = `সর্বশেষ খবর পেতে ঢাকা প্রকাশের গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
+        h4.innerText = `সর্বশেষ খবর পেতে ঢাকাপ্রকাশ এর গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
         link.append(img);
         link.append(h4);
 
@@ -953,7 +953,7 @@ onMounted(() => {
                 let h4 = document.createElement(`h4`);
                 h4.className = 'text-[#337ab7] group-hover:text-[#ffffff] print:hidden';
                 h4.style.cssText = `font-weight: bold`;
-                h4.innerText = `সর্বশেষ খবর পেতে ঢাকা প্রকাশের গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
+                h4.innerText = `সর্বশেষ খবর পেতে ঢাকাপ্রকাশ এর গুগল নিউজ চ্যানেলটি সাবস্ক্রাইব করুন ।`;
                 link.append(img);
                 link.append(h4);
 
