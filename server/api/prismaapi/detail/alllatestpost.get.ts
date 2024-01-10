@@ -20,8 +20,8 @@ export default defineEventHandler(async (event) => {
         take: 20
     })
 
-    
-    for(let i = 0; i < 20; i++){
+
+    for (let i = 0; i < 20; i++) {
         const category = await prisma.bn_categories.findFirst({
             where: {
                 cat_id: contents[i].cat_id
@@ -30,19 +30,17 @@ export default defineEventHandler(async (event) => {
 
         const subcategory = await prisma.bn_subcategories.findFirst({
             where: {
-                cat_id: category?.cat_id
+                subcat_id: contents[i]?.subcat_id
             }
         })
 
         data.push({
             content_id: contents[i]?.content_id,
+            content_type: contents[i]?.content_type,
             content_heading: contents[i]?.content_heading,
             img_bg_path: contents[i]?.img_bg_path,
             cat_slug: category?.cat_slug,
-            cat_name_bn: category?.cat_name_bn,
             subcat_slug: subcategory?.subcat_slug,
-            subcat_name_bn: subcategory?.subcat_name_bn,
-
         })
     }
 

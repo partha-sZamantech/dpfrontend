@@ -166,7 +166,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
                                 v-for="fmoreContent in firstMoreContents" :key="fmoreContent.content_id">
                                 <div class=" col-span-5 overflow-hidden">
-                                    <NuxtLink :to="`/category/${fmoreContent?.cat_slug}/${fmoreContent?.content_id}`">
+                                    <NuxtLink :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
                                         <nuxt-img
                                             :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -174,7 +174,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     </NuxtLink>
                                 </div>
                                 <div class=" col-span-7">
-                                    <NuxtLink :to="`/category/${fmoreContent?.cat_slug}/${fmoreContent?.content_id}`">
+                                    <NuxtLink :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
                                         <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
                                             fmoreContent?.content_heading }}</h4>
                                     </NuxtLink>
@@ -507,21 +507,18 @@ const stickyScroll = computed(() =>
 // Sitesetting - logo, social media
 const sitesettings = sitesettingsState()
 
+// ======== Post Url Generate ============ //
+const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
+    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
+}
+// ======== Post Url Generate ============ //
+
+
 // Category Slug & Content id pages/category/[category_slug]/[content_id].vue
 const category_slug = useRoute().params.category_slug
 const content_id = useRoute().params.content_id
-// Category Slug & Content id pages/category/[category_slug]/[content_id].vue
-
-// const postDetails = useState(() => [])
 
 
-// const { data: pdailts } = await useFetch('/api/detailpage/detail', {
-//     method: 'POST',
-//     body: {
-//         category_slug: category_slug,
-//         content_id: content_id
-//     }
-// })
 const { data: pdailts } = await useFetch('/api/prismaapi/detail/postdetail', {
     method: 'POST',
     body: {
@@ -538,12 +535,7 @@ detailsContent.value = pdailts?.value?.detailsContent
 
 // ============== First Related Content ================//
 const fRelatedContents = useState(() => [])
-// const { data: frcontent } = await useFetch('/api/detailpage/firstrelatedcontent', {
-//     method: "POST",
-//     body: {
-//         content_id: content_id
-//     }
-// })
+
 fRelatedContents.value = pdailts?.value?.firstRelatedContents
 
 // ============== First Related Content ================//

@@ -159,7 +159,7 @@ export default defineEventHandler(async (event) => {
         })
         const getmoreContentSubCategory = await prisma.bn_subcategories.findFirst({
             where: {
-                cat_id: moreContents[i]?.cat_id
+                subcat_id: moreContents[i]?.subcat_id
             }
         })
         const getmoreContentAuthor = await prisma.authors.findFirst({
@@ -194,21 +194,16 @@ export default defineEventHandler(async (event) => {
             })
             const catwisesubcategory = await prisma.bn_subcategories.findFirst({
                 where: {
-                    cat_id: catwisePosts[catwise]?.cat_id
+                    subcat_id: catwisePosts[catwise]?.subcat_id
                 }
             })
             catwisePost.push({
                 content_id: catwisePosts[catwise]?.content_id,
+                content_type: catwisePosts[catwise]?.content_type,
                 content_heading: catwisePosts[catwise]?.content_heading,
                 img_bg_path: catwisePosts[catwise]?.img_bg_path,
-                category: {
-                    cat_slug: catwisecategory?.cat_slug,
-                    cat_name_bn: catwisecategory?.cat_name_bn
-                },
-                subcategory: {
-                    subcat_slug: catwisesubcategory?.subcat_slug,
-                    subcat_name_bn: catwisesubcategory?.subcat_name_bn
-                }
+                cat_slug: catwisecategory?.cat_slug,
+                subcat_slug: catwisesubcategory?.subcat_slug,
             })
         }
 
@@ -258,22 +253,18 @@ export default defineEventHandler(async (event) => {
 
             const mrsubCategory = await prisma.bn_subcategories.findFirst({
                 where: {
-                    subcat_id: readpost[pb]?.cat_id
+                    subcat_id: readpost[pb]?.subcat_id
                 }
             })
 
             mrelPostArray.push({
                 content_id: readpost[pb]?.content_id,
+                content_type: readpost[pb]?.content_type,
                 content_heading: readpost[pb]?.content_heading,
                 img_bg_path: readpost[pb]?.img_bg_path,
-                category: {
-                    cat_name_bn: mrCategory?.cat_name_bn,
-                    cat_slug: mrCategory?.cat_slug
-                },
-                subcategory: {
-                    cat_name_bn: mrsubCategory?.subcat_name_bn,
-                    subcat_slug: mrsubCategory?.subcat_slug
-                }
+                cat_slug: mrCategory?.cat_slug,
+                subcat_slug: mrsubCategory?.subcat_slug
+
             })
         }
 
@@ -361,25 +352,18 @@ export default defineEventHandler(async (event) => {
 
         const rfsubcategory = await prisma.bn_subcategories.findFirst({
             where: {
-                cat_id: frelated[ft]?.cat_id
+                subcat_id: frelated[ft]?.subcat_id
             }
         })
 
         firstRelatedContents.push({
             content_id: frelated[ft]?.content_id,
             content_type: frelated[ft]?.content_type,
-            cat_id: frelated[ft]?.cat_id,
             content_heading: frelated[ft]?.content_heading,
             content_sub_heading: frelated[ft]?.content_sub_heading,
             img_bg_path: frelated[ft]?.img_bg_path,
-            category: {
-                cat_id: rfcategory?.cat_id,
-                cat_slug: rfcategory?.cat_slug
-            },
-            subcategory: {
-                subcat_id: rfsubcategory?.subcat_id,
-                subcat_slug: rfsubcategory?.subcat_slug
-            }
+            cat_slug: rfcategory?.cat_slug,
+            subcat_slug: rfsubcategory?.subcat_slug
         })
     }
     // ================== First Releted Bottom 4 grid Post =============== // 
