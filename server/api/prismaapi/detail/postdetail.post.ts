@@ -56,9 +56,9 @@ export default defineEventHandler(async (event) => {
         where: {
             id: 1
         },
-       select: {
+        select: {
             post_ogimage: true
-       }
+        }
     })
 
     // let  watermarkImage = await jimp.read(`${config.public.apiUrl}/media/ogImages/${ogImageBanner?.post_ogimage}`);
@@ -173,7 +173,13 @@ export default defineEventHandler(async (event) => {
         })
         const getmoreContentAuthor = await prisma.authors.findFirst({
             where: {
-                author_slug: moreContents[i]?.author_slugs?.toString()
+                author_slug: moreContents[i]?.author_slugs?.toString(),
+            },
+            select: {
+                author_id: true,
+                author_name_bn: true,
+                author_slug: true,
+                img_path: true
             }
         })
 
@@ -290,7 +296,7 @@ export default defineEventHandler(async (event) => {
         //   mode: jimp.BLEND_SOURCE_OVER,
         //   opacityDest: 1,
         //   opacitySource: 1,
-    
+
         // })
         // const genretedOG = await image.getBase64Async(jimp.AUTO)
 
@@ -333,6 +339,7 @@ export default defineEventHandler(async (event) => {
                 author_id: getmoreContentAuthor?.author_id,
                 author_name_bn: getmoreContentAuthor?.author_name_bn,
                 author_slug: getmoreContentAuthor?.author_slug,
+                img_path: getmoreContentAuthor?.img_path
             },
             morecatwisePost: catwisePost, // cate wise post will be added,
             morereletedcontentbelow: mrelatedPosts

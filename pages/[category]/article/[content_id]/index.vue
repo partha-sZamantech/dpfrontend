@@ -21,7 +21,7 @@
         </Head>
 
         <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
-        <div class="breadcrump pb-3 md:pb-1">
+        <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-1">
             <div class="flex gap-1 justify-start items-center">
                 <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`"
                     class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
@@ -60,16 +60,18 @@
 
                     </div>
 
-                    <div class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-3">
+                    <!-- Author Section -->
+                    <div
+                        class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3">
                         <NuxtLink v-if="detailsContent?.author" :to="`/author/${detailsContent?.author?.author_slug}`"
-                            class="author-details flex gap-2 group">
+                            class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
                             <div>
                                 <nuxt-img v-if="detailsContent?.author?.img_path"
                                     :src="`${siteurl.site_url}/media/authorImages/${detailsContent?.author?.img_path}`"
-                                    class="mx-auto rounded-full" width="64" height="64"
+                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16"
                                     :placeholder="img(`${siteurl.site_url}/media/common/${sitesettings?.favicon}`)" />
                                 <img v-else :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
-                                    class="mx-auto rounded-full" width="64" height="64" />
+                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
                             </div>
                             <div class="flex flex-col justify-center">
                                 <p class="group-hover:text-[#3375af] font-[600]">{{ detailsContent?.author?.author_name_bn
@@ -82,7 +84,8 @@
                         </NuxtLink>
                         <div v-else class="author-details flex gap-2 group">
                             <div>
-                                <img :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`" class="mx-auto rounded-full" width="64" height="64" />
+                                <img :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
+                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
                             </div>
                             <div class="flex flex-col justify-center">
                                 <!-- <p v-if="detailsContent?.author"> -->
@@ -93,6 +96,8 @@
                                 </p>
                             </div>
                         </div>
+                        <!-- Author Section /-->
+                        
                         <!-- Social Share -->
                         <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
                             <a :href="`https://www.facebook.com/sharer.php?u=${ogUrl}`" target="_blank">
@@ -273,7 +278,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
             <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
                 <!----- Breadcump ----->
-                <div class="breadcrump pb-3 md:pb-1">
+                <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-1">
                     <div class="flex gap-1 justify-start items-center">
                         <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`"
                             class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
@@ -303,9 +308,47 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
                     </div>
 
-                    <div class="flex justify-between items-end border-b pb-3">
-                        <div class="author-details flex flex-col gap-1" v-if="moreDetailContent?.author">
+            
+                    <!-- Author Section -->
+                    <div
+                        class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3">
+                        <NuxtLink v-if="moreDetailContent?.author" :to="`/author/${moreDetailContent?.author?.author_slug}`"
+                            class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
+                            <div>
+                                <nuxt-img v-if="moreDetailContent?.author?.img_path"
+                                    :src="`${siteurl.site_url}/media/authorImages/${moreDetailContent?.author?.img_path}`"
+                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16"
+                                    :placeholder="img(`${siteurl.site_url}/media/common/${sitesettings?.favicon}`)" />
+                                <img v-else :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
+                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <p class="group-hover:text-[#3375af] font-[600]">{{ moreDetailContent?.author?.author_name_bn
+                                }}</p>
+
+                                <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent?.created_at) }}</span>
+                                    </ClientOnly>
+                                </p>
+                            </div>
+                        </NuxtLink>
+                        <div v-else class="author-details flex gap-2 group">
+                            <div>
+                                <img :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
+                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <!-- <p v-if="detailsContent?.author"> -->
+                                <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
+
+                                <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent?.created_at) }}</span>
+                                    </ClientOnly>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Author Section /-->
+                        <!-- <div class="author-details flex flex-col gap-1" v-if="moreDetailContent?.author">
                             <p v-if="moreDetailContent?.author">
+                            
                                 <NuxtLink class="hover:text-[#3375af] font-[600]"
                                     :to="`/author/${moreDetailContent?.author?.author_slug}`">{{
                                         moreDetailContent?.author?.author_name_bn }}</NuxtLink>
@@ -317,9 +360,9 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span>
                                 </ClientOnly>
                             </p>
-                        </div>
+                        </div> -->
                         <!-- Social Share -->
-                        <div class="social-item flex gap-2 items-start justify-center print:hidden">
+                        <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
                             <a :href="`https://www.facebook.com/sharer.php?u=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
                                 target="_blank">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg" height="28"
@@ -1126,8 +1169,6 @@ DetailRightThreeAds.value = detrtthreeAds?.value
 
 </script>
 
-<style scoped>
-p {
+<style scoped>p {
     line-height: 1.7 !important;
-}
-</style>
+}</style>
