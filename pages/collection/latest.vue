@@ -44,7 +44,7 @@
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     <div class="lead-overly absolute h-full w-full block top-0">
                                         <h5
-                                            class="img-title leading-8 text-white group-hover:text-[#ff0000] text-[18px] md:text-[24px] absolute bottom-4 left-6">
+                                            class="img-title font-semibold text-white group-hover:text-[#ff0000] text-[18px] md:text-[24px] absolute bottom-4 left-6">
                                             {{ latestPosts[0]?.content_heading }}</h5>
                                     </div>
                                 </NuxtLink>
@@ -62,11 +62,11 @@
                                 </div>
                                 <div class="flex flex-col gap-3 mt-2">
                                     <h3
-                                        class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                        class="cat-postheading font-semibold text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                         {{ latestPosts[1]?.content_heading }}
                                     </h3>
                                     <ClientOnly>
-                                        <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                        <div class="cat-postdesc text-base font-[300] text-[#555555]"
                                             v-html="`${latestPosts[1]?.content_details.substring(0, 155)}...`"></div>
                                     </ClientOnly>
                                     <small class="cat-postdate">
@@ -88,11 +88,11 @@
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
                                 <h3
-                                    class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                    class="cat-postheading font-semibold text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                     {{ latestPosts[2]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                    <div class="cat-postdesc text-base font-[300] text-[#555555]"
                                         v-html="`${latestPosts[2]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
@@ -110,11 +110,11 @@
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
                                 <h3
-                                    class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                    class="cat-postheading text-xl font-semibold group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                     {{ latestPosts[3]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                    <div class="cat-postdesc text-base font-[300] text-[#555555]"
                                         v-html="`${latestPosts[3]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
@@ -132,11 +132,11 @@
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
                                 <h3
-                                    class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                    class="cat-postheading text-xl font-semibold group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
                                     {{ latestPosts[4]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-[15px] font-[300] text-[#555555]"
+                                    <div class="cat-postdesc text-base font-[300] text-[#555555]"
                                         v-html="`${latestPosts[4]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
@@ -165,18 +165,18 @@
                                 :key="cpInx">
                                 <NuxtLink :to="`/category/${latestPost?.cat_slug}/${latestPost?.content_id}`"
                                     class=" grid grid-cols-12 gap-3 group">
-                                    <h3 class="cat-title col-span-12 text-[20px] group-hover:text-[#ff0000]">{{
-                                        latestPost?.content_heading }}</h3>
                                     <div class=" col-span-7 flex flex-col gap-3">
+                                        <h3 class="cat-title col-span-12 font-semibold text-[20px] group-hover:text-[#ff0000]">{{
+                                        latestPost?.content_heading }}</h3>
                                         <ClientOnly>
                                             <div class="cat-desc text-[#555555] text-[15px] font-[300]"
-                                                v-html="`${latestPost?.content_details.substring(0, 160)}...`"></div>
+                                                v-html="`${latestPost?.content_details.substring(0, 155)}...`"></div>
                                         </ClientOnly>
 
-                                        <span class="post-date flex flex-col gap-1">
-                                            <small class="text-[#555555]">আপডেট: {{
+                                        <span class="post-date flex flex-col gap-1 text-base">
+                                            <small>আপডেট: {{
                                                 postCreatedDate(latestPost?.updated_at) }}</small>
-                                            <small class="text-[#555555]">প্রকাশ: {{
+                                            <small>প্রকাশ: {{
                                                 postCreatedDate(latestPost?.created_at) }}</small>
                                         </span>
                                     </div>

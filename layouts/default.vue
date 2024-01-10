@@ -7,7 +7,7 @@
             <Meta name="keywords" :content="sitesettings?.meta_keywords" />
             <Meta name="distribution" content="Global" />
             <Meta property="og:type" content="website" />
-            <Meta property="og:site_name" content="ঢাকা প্রকাশ" />
+            <Meta property="og:site_name" content="ঢাকাপ্রকাশ" />
             <Meta property="og:title" :content="sitesettings?.title" />
             <Meta property="og:description" :content="sitesettings?.meta_description" />
             <Meta name="twitter:title" :content="sitesettings?.title" />
@@ -15,7 +15,7 @@
             <Meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:domain" content="https://www.dhakaprokash24.com">
             <Meta name="twitter:site" content="@dhakaprokash24" />
-            <Meta name="twitter:creator" content="ঢাকা প্রকাশ | বাংলা নিউজ পেপার" />
+            <Meta name="twitter:creator" content="ঢাকাপ্রকাশ | বাংলা নিউজ পেপার" />
             <Meta property="fb:app_id" content="270848064771492" />
             <!-- <Meta property="fb:pages" content="100063660752112" /> -->
             <Meta name="googlebot" content="index, follow" />
