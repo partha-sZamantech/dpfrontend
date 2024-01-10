@@ -61,19 +61,37 @@
                     </div>
 
                     <div class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-3">
-                        <div class="author-details flex flex-col gap-1">
-                            <p v-if="detailsContent?.author">
-                                <NuxtLink class="hover:text-[#3375af] font-[600]"
-                                    :to="`/author/${detailsContent?.author?.author_slug}`">{{
-                                        detailsContent?.author?.author_name_bn }}</NuxtLink>
-                            </p>
-                            <p v-else>
-                                <NuxtLink class="hover:text-[#3375af] font-[600]" to="/author/dhaka-prokash-desk">ঢাকাপ্রকাশ
-                                    ডেস্ক</NuxtLink>
-                            </p>
-                            <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
-                                </ClientOnly>
-                            </p>
+                        <NuxtLink v-if="detailsContent?.author" :to="`/author/${detailsContent?.author?.author_slug}`"
+                            class="author-details flex gap-2 group">
+                            <div>
+                                <nuxt-img v-if="detailsContent?.author?.img_path"
+                                    :src="`${siteurl.site_url}/media/authorImages/${detailsContent?.author?.img_path}`"
+                                    class="mx-auto rounded-full" width="64" height="64"
+                                    :placeholder="img(`${siteurl.site_url}/media/common/${sitesettings?.favicon}`)" />
+                                <img v-else :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
+                                    class="mx-auto rounded-full" width="64" height="64" />
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <p class="group-hover:text-[#3375af] font-[600]">{{ detailsContent?.author?.author_name_bn
+                                }}</p>
+
+                                <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
+                                    </ClientOnly>
+                                </p>
+                            </div>
+                        </NuxtLink>
+                        <div v-else class="author-details flex gap-2 group">
+                            <div>
+                                <img :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`" class="mx-auto rounded-full" width="64" height="64" />
+                            </div>
+                            <div class="flex flex-col justify-center">
+                                <!-- <p v-if="detailsContent?.author"> -->
+                                <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
+
+                                <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
+                                    </ClientOnly>
+                                </p>
+                            </div>
                         </div>
                         <!-- Social Share -->
                         <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
@@ -161,10 +179,11 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 নিয়ে
                                 আরও পড়ুন</h3>
                         </div>
-                     
-                        <div class="detail-page-category-content-exept flex flex-col" v-if="firstMoreContents?.contents?.length > 0">
+
+                        <div class="detail-page-category-content-exept flex flex-col"
+                            v-if="firstMoreContents?.contents?.length > 0">
                             <!-- Loop Item -->
-                          
+
                             <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
                                 v-for="fmoreContent in firstMoreContents?.contents" :key="fmoreContent.content_id">
                                 <div class=" col-span-5 overflow-hidden">
@@ -179,7 +198,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 <div class=" col-span-7">
                                     <NuxtLink
                                         :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
-                                        <h4 class="text-[16px] leading-tight  group-hover:text-[#ff0000]">{{
+                                        <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
                                             fmoreContent?.content_heading }}</h4>
                                     </NuxtLink>
                                 </div>
@@ -919,6 +938,10 @@ onMounted(() => {
             }
         })
     }
+
+
+
+
 
     // function fJsNewsImgPaths(img_path) {
     //     return location.origin + '/media/content/images/' + img_path;

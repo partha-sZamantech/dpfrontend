@@ -42,6 +42,12 @@ export default defineEventHandler(async (event) => {
     const getAuthor = await prisma.authors.findFirst({
         where: {
             author_slug: getdetailsContent?.author_slugs?.toString()
+        },
+        select: {
+            author_id: true,
+            author_name_bn: true,
+            author_slug: true,
+            img_path: true
         }
     })
 
@@ -107,6 +113,7 @@ export default defineEventHandler(async (event) => {
             author_id: getAuthor?.author_id,
             author_name_bn: getAuthor?.author_name_bn,
             author_slug: getAuthor?.author_slug,
+            img_path: getAuthor?.img_path
         }
     }
     // Detail Content
