@@ -299,7 +299,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                         <!-- Social Share -->
                         <div class="social-item flex gap-2 items-start justify-center print:hidden">
-                            <a :href="`https://www.facebook.com/sharer.php?u=${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
+                            <a :href="`https://www.facebook.com/sharer.php?u=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
                                 target="_blank">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg" height="28"
                                     width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
@@ -311,7 +311,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     </path>
                                 </svg>
                             </a>
-                            <a :href="`https://twitter.com/intent/tweet?url=${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
+                            <a :href="`https://twitter.com/intent/tweet?url=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
                                 target="_blank">
                                 <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" height="28"
@@ -560,7 +560,7 @@ fRelatedContents.value = pdailts?.value?.firstRelatedContents
 // ================  OG - Open Graph ====================// 
 const ogUrl = ref(null);
 // const okImage = `${websiteUrl?.value?.website_url}/category/${detailsContent?.value?.category?.cat_slug}/${detailsContent?.value?.content_id}`
-ogUrl.value = `${websiteUrl?.value?.website_url}/${getPostUrl(detailsContent?.category?.cat_slug,detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type,detailsContent?.content_id)}`
+ogUrl.value = `${websiteUrl?.value?.website_url}${getPostUrl(detailsContent?.value?.category?.cat_slug,detailsContent?.value?.subcategory?.subcat_slug, detailsContent?.value?.content_type,detailsContent?.value?.content_id)}`
 const ogTitle = ref(null);
 ogTitle.value = detailsContent?.value?.content_heading
 const ogDescription = ref(null);
