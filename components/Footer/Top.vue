@@ -24,7 +24,7 @@
             <div class="social_media flex flex-col gap-2">
                 <h6 class="text-[#00427A] text-[24px]">অনুসরণ করুন</h6>
             
-                <div class="flex gap-4 justify-start">
+                <div class="flex gap-4 justify-center md:justify-start">
 
                     <NuxtLink target="_blank" :to="sitesettings?.facebook">
                         <svg xmlns="http://www.w3.org/2000/svg" height="28" width="28" viewBox="0 0 32 32"
