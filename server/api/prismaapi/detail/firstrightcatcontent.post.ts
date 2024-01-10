@@ -20,17 +20,28 @@ export default defineEventHandler(async (event) => {
         take: 6
     })
 
+    const category = await prisma.bn_categories.findFirst({
+        where: {
+            cat_id: parseInt(getBody?.cat_id) 
+        },
+        select: {
+            cat_id: true,
+            cat_name_bn: true,
+            cat_slug: true
+        }
+    })
+
     const data = []
     for (let i = 0; i < 6; i++) {
 
         if (getContents[i].content_id !== parseInt(getBody?.content_id)) {
 
             // Category
-            const category = await prisma.bn_categories.findFirst({
-                where: {
-                    cat_id: getContents[i]?.cat_id, // Assign Category ID 
-                }
-            })
+            // const category = await prisma.bn_categories.findFirst({
+            //     where: {
+            //         cat_id: getContents[i]?.cat_id, // Assign Category ID 
+            //     }
+            // })
 
             // Subcategory
             const subcategory = await prisma.bn_subcategories.findFirst({
@@ -55,7 +66,11 @@ export default defineEventHandler(async (event) => {
     }
     //=============== First Detail Inside Content exept ==================//
 
-    return data;
+    return {
+        cat_name_bn: category?.cat_name_bn,
+        cat_slug: category?.cat_slug,
+        contents: data
+    };
 
 
 })

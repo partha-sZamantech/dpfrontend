@@ -155,16 +155,18 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                 </div>
                 <!--:::::::: Detail Page Right One Ads :::::::::-->
                 <div :class="`sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`">
-                    <div :class="`flex flex-col gap-2`" v-if="firstMoreContents?.length > 0">
+                    <div :class="`flex flex-col gap-2`">
                         <div class=" border-b-[3px] border-[#3375af] pb-1">
                             <h3 class="text-[#3375af] text-[18px] font-[600]">{{ detailsContent?.category?.cat_name_bn }}
                                 নিয়ে
                                 আরও পড়ুন</h3>
                         </div>
-                        <div class="detail-page-category-content-exept flex flex-col">
+                     
+                        <div class="detail-page-category-content-exept flex flex-col" v-if="firstMoreContents?.contents?.length > 0">
                             <!-- Loop Item -->
+                          
                             <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
-                                v-for="fmoreContent in firstMoreContents" :key="fmoreContent.content_id">
+                                v-for="fmoreContent in firstMoreContents?.contents" :key="fmoreContent.content_id">
                                 <div class=" col-span-5 overflow-hidden">
                                     <NuxtLink
                                         :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
@@ -629,7 +631,7 @@ const { data: dinsidemorenews } = await useFetch("/api/prismaapi/detail/getinsid
     }
 })
 firstInsideMoreNews.value = dinsidemorenews?.value
-console.log(firstInsideMoreNews.value)
+
 
 // firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
 // console.log(firstInsideMoreNews.value)
