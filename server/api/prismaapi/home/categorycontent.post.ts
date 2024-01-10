@@ -9,6 +9,8 @@ export default defineEventHandler(async (event) => {
     const categoryContent = await prisma.bn_contents.findMany({
         where: {
             cat_id: parseInt(getBody?.cat_id),
+            status: 1,
+            deletable: 1
         },
         take: parseInt(getBody?.take),
         orderBy: {
