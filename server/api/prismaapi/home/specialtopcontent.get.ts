@@ -28,7 +28,9 @@ export default defineEventHandler(async (event) => {
         for (let i = 0; i < getContents?.length; i++) {
             const content = await prisma.bn_contents.findFirst({
                 where: {
-                    content_id: parseInt(getContents[i])
+                    content_id: parseInt(getContents[i]),
+                    status: 1,
+                    deletable: 1
                 }
             })
 
