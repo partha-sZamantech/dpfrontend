@@ -60,16 +60,16 @@
 
                     </div>
 
-                    <div class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-3">
+                    <div class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3">
                         <NuxtLink v-if="detailsContent?.author" :to="`/author/${detailsContent?.author?.author_slug}`"
-                            class="author-details flex gap-2 group">
+                            class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
                             <div>
                                 <nuxt-img v-if="detailsContent?.author?.img_path"
                                     :src="`${siteurl.site_url}/media/authorImages/${detailsContent?.author?.img_path}`"
-                                    class="mx-auto rounded-full" width="64" height="64"
+                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16"
                                     :placeholder="img(`${siteurl.site_url}/media/common/${sitesettings?.favicon}`)" />
                                 <img v-else :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
-                                    class="mx-auto rounded-full" width="64" height="64" />
+                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
                             </div>
                             <div class="flex flex-col justify-center">
                                 <p class="group-hover:text-[#3375af] font-[600]">{{ detailsContent?.author?.author_name_bn
@@ -82,7 +82,7 @@
                         </NuxtLink>
                         <div v-else class="author-details flex gap-2 group">
                             <div>
-                                <img :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`" class="mx-auto rounded-full" width="64" height="64" />
+                                <img :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`" class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
                             </div>
                             <div class="flex flex-col justify-center">
                                 <!-- <p v-if="detailsContent?.author"> -->
