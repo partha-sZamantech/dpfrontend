@@ -71,7 +71,7 @@ export default defineEventHandler(async (event) => {
     const detailsContent = {
         // ogImage: genretedOG,
         content_id: getdetailsContent?.content_id,
-        content_type: getdetailsContent?.content_type
+        content_type: getdetailsContent?.content_type,
         cat_id: getdetailsContent?.cat_id,
         subcat_id: getdetailsContent?.subcat_id,
         special_cat_id: getdetailsContent?.special_cat_id,
