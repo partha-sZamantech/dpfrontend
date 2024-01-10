@@ -133,7 +133,9 @@ export default defineEventHandler(async (event) => {
                 content_id: {
                     equals: parseInt(getBody?.content_id)
                 }
-            }
+            },
+            status: 1,
+            deletable: 1
         },
         orderBy: {
             content_id: 'desc'
@@ -177,7 +179,9 @@ export default defineEventHandler(async (event) => {
                     content_id: {
                         equals: moreContents[i]?.content_id
                     }
-                }
+                },
+                status: 1,
+                deletable: 1
             },
             orderBy: {
                 content_id: 'desc'
@@ -333,7 +337,9 @@ export default defineEventHandler(async (event) => {
                 content_id: {
                     equals: detailsContent?.content_id
                 }
-            }
+            },
+            deletable: 1,
+            status: 1
         },
         orderBy: {
             content_id: "desc"

@@ -10,7 +10,9 @@ export default defineEventHandler(async (event) => {
 
     const getContents = await prisma.bn_contents.findMany({
         where: {
-            cat_id: parseInt(getBody?.cat_id)
+            cat_id: parseInt(getBody?.cat_id),
+            status: 1,
+            deletable: 1
         },
         orderBy: {
             content_id: "desc"
