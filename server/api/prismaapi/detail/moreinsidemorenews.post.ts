@@ -43,18 +43,10 @@ export default defineEventHandler( async (event) => {
         data.push({
             content_id: insidemorenews[i]?.content_id,
             content_type: insidemorenews[i]?.content_type,
-            cat_id: insidemorenews[i]?.cat_id,
             content_heading: insidemorenews[i]?.content_heading,
             img_bg_path: insidemorenews[i]?.img_bg_path,
-            category: {
-                cat_name_bn: category?.cat_name_bn,
-                cat_slug: category?.cat_slug
-            },
-            subcategory: {
-                subcat_name_bn: subcategory?.subcat_name_bn,
-                subcat_slug: subcategory?.subcat_slug
-            }
-
+            cat_slug: category?.cat_slug,
+            subcat_slug: subcategory?.subcat_slug
         })
 
     }

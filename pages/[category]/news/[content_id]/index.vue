@@ -724,14 +724,7 @@ const printPageArea = (areaID) => {
 const insideMoreExceptPost = useState(() => [])
 
 for (let m = 0; m < moreDetailsContents?.value?.length; m++) {
-    // const { data: insidempect } = await useFetch("/api/detailpage/insidemoredetailexcept", {
-    //     method: 'POST',
-    //     body: {
-    //         currentPostDetailId: detailsContent?.value?.content_id,
-    //         morePostId: moreDetailsContents?.value[m]?.content_id,
-    //         cat_id: moreDetailsContents?.value[m]?.cat_id
-    //     }
-    // })
+
     const { data: insidempect } = await useFetch("/api/prismaapi/detail/moreinsidemorenews", {
         method: 'POST',
         body: {
@@ -1002,13 +995,13 @@ onMounted(() => {
             descParas?.forEach((item, i) => {
 
                 if (i > 0 && i % 3 === 0 && insideMoreNews[itemIncrement]) {
-                    descParas[0].parentNode.insertBefore(insertRelatedNews(insideMoreNews[itemIncrement]?.content_heading, fJsNewsURL(insideMoreNews[itemIncrement].category.cat_slug, insideMoreNews[itemIncrement].content_id)), descParas[i - 1].nextSibling);
+                    descParas[0].parentNode.insertBefore(insertRelatedNews(insideMoreNews[itemIncrement]?.content_heading, fJsNewsURL(insideMoreNews[itemIncrement].cat_slug, insideMoreNews[itemIncrement].subcat_slug, insideMoreNews[itemIncrement].content_type, insideMoreNews[itemIncrement].content_id)), descParas[i - 1].nextSibling);
                     itemIncrement++;
                 }
             })
 
-            function fJsNewsURL(cat_slug, content_id) {
-                return 'category/' + cat_slug + '/' + content_id;
+            function fJsNewsURL(cat_slug,subcat_slug,content_type, content_id) {
+                return `${cat_slug}/${subcat_slug ? subcat_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`;
                 // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
             }
 
