@@ -908,14 +908,14 @@ onMounted(() => {
     descParam.forEach((item, i) => {
 
         if (i > 0 && i % 3 === 0 && firstInsideMoreNews?.value[itemIncrement]) {
-            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
+            descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug,firstInsideMoreNews?.value[itemIncrement].subcat_slug, firstInsideMoreNews?.value[itemIncrement].content_type, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
             itemIncrement++;
         }
     })
 
 
-    function fJsNewsURLs(cat_slug, content_id) {
-        return 'category/' + cat_slug + '/' + content_id;
+    function fJsNewsURLs(cat_slug,subcat_slug,content_type, content_id) {
+        return `${cat_slug}/${subcat_slug ? subcat_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`;
         // return location.origin + '/category/' + cat_slug + '/' + content_id;
         // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
     }

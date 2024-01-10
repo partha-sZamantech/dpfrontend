@@ -41,12 +41,11 @@ export default defineEventHandler(async (event) => {
 
             insideMoreNews.push({
                 content_id: getInsideMoreNews[i]?.content_id,
+                content_type: getInsideMoreNews[i]?.content_type,
                 img_bg_path: getInsideMoreNews[i]?.img_bg_path,
                 content_heading: getInsideMoreNews[i]?.content_heading,
                 cat_slug: category?.cat_slug,
-                cat_id: category?.cat_id,
-                subcat_slug: subcategory?.subcat_slug,
-                subcat_id: subcategory?.subcat_id
+                subcat_slug: subcategory?.subcat_slug
             })
 
         } // End if
