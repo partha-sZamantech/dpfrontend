@@ -9,7 +9,9 @@ export default defineEventHandler(async (event) => {
     // const getBody = await readBody(event)
     const categoryContent = await prisma.bn_contents.findMany({
         where: {
-            cat_id: 26, // Assign Category ID
+            cat_id: 26, // Assign Category ID,
+            status: 1,
+            deletable: 1
         },
         take: 5,
         orderBy: {

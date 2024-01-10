@@ -5,6 +5,10 @@ export default defineEventHandler(async (event) => {
     // const prisma = new PrismaClient()
     const getBody = await readBody(event)
     const contents = await prisma.bn_contents.findMany({
+        where: {
+            deletable: 1,
+            status: 1
+        },
         orderBy: {
             content_id: 'desc'
         },
