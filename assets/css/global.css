@@ -2,27 +2,47 @@
 @import url('https://fonts.maateen.me/siyam-rupali/font.css');
 @import url('https://fonts.maateen.me/kalpurush/font.css');
 @import url('https://fonts.maateen.me/adorsho-lipi/font.css');
-body {
-    font-family: 'SolaimanLipi', Arial, sans-serif;
-    color:#333
+
+@font-face {
+    font-family: DhakaRegular;
+    src: url('/public/assets/fonts/Dhakaprokash-Regular-v1.woff2');
 }
+
+@font-face {
+    font-family: NewsReader;
+    src: url('/public/assets/fonts/newsreader-Regular.ttf');
+}
+
+body {
+    font-family: 'DhakaRegular', Arial, sans-serif;
+    color: #333
+}
+
 figure.image {
     margin: 18px 0px !important;
 }
+
 figure.image figcaption {
     border-bottom: 1px solid #ddd !important;
     padding: 5px 0px !important;
     text-align: center !important;
     font-size: 16px !important;
 }
+
 .singlePost-details .postdetails p a {
     /*display: block;*/
-    white-space: pre-wrap !important; /* css-3 */
-    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
-    white-space: -pre-wrap !important; /* Opera 4-6 */
-    white-space: -o-pre-wrap !important; /* Opera 7 */
-    word-wrap: break-word !important; /* Internet Explorer 5.5+ */
+    white-space: pre-wrap !important;
+    /* css-3 */
+    white-space: -moz-pre-wrap !important;
+    /* Mozilla, since 1999 */
+    white-space: -pre-wrap !important;
+    /* Opera 4-6 */
+    white-space: -o-pre-wrap !important;
+    /* Opera 7 */
+    word-wrap: break-word !important;
+    /* Internet Explorer 5.5+ */
 }
+
 .st-cmp-settings {
     display: none !important;
 }
@@ -30,6 +50,7 @@ figure.image figcaption {
 .postdetails p img {
     margin: 18px 0px !important;
 }
+
 /* ::-webkit-scrollbar {
     width: 10px;
 } */
@@ -41,8 +62,8 @@ figure.image figcaption {
 
 /* Handle */
 /* ::-webkit-scrollbar-thumb { */
-    /* background: #c9c3c3; */
-    /* background: #6facf1;
+/* background: #c9c3c3; */
+/* background: #6facf1;
     border-radius: 4px; */
 /* } */
 

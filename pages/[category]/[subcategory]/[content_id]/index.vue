@@ -21,7 +21,7 @@
         </Head>
 
         <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
-        <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-1">
+        <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-3">
             <div class="flex gap-1 justify-start items-center">
                 <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`"
                     class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
@@ -39,7 +39,7 @@
         <!--========== First Details Content ============ -->
         <div class=" grid grid-cols-12 gap-5 relative d-print">
             <div class="col-span-12 md:col-span-9" id="singlepost">
-                <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
+                <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="detailsContent?.content_heading"
                     :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
                     :data-keywords="detailsContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}${getPostUrl(detailsContent?.category?.cat_slug, detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type, detailsContent?.content_id)}`"
@@ -52,7 +52,7 @@
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             detailsContent?.content_sub_heading }}</h4>
-                        <h2 class="text-3xl md:text-[32px] md:leading-[50px] print:text-[32px]">{{
+                        <h2 class="text-3xl md:text-[40px] font-semibold md:leading-[50px] print:text-[40px]">{{
                             detailsContent?.content_heading }}
                             {{ balvalue }}
                         </h2>
@@ -146,7 +146,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         <div class=" hidden md:block md:col-span-2"></div>
                         <div class="col-span-12 md:col-span-8">
 
-                            <div class="postdetails text-[18px] text-gray-700 pb-4"
+                            <div class="postdetails text-[18px] text-[#121212] pb-4"
                                 v-html="detailsContent?.content_details">
                             </div>
 
@@ -278,7 +278,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
             <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
                 <!----- Breadcump ----->
-                <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-1">
+                <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-3">
                     <div class="flex gap-1 justify-start items-center">
                         <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`"
                             class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
@@ -293,7 +293,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     :data-keywords="moreDetailContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
                     :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`"> -->
-                <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
+                <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="moreDetailContent?.content_heading"
                     :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
                     :data-keywords="moreDetailContent?.meta_keywords"
                     :data-href="`${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
@@ -302,7 +302,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="singlePost-heading flex flex-col gap-2">
                         <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                             moreDetailContent?.content_sub_heading }}</h4>
-                        <h2 class="text-3xl md:text-[32px] md:leading-[50px] print:text-[32px]">{{
+                        <h2 class="text-3xl md:text-[40px] font-semibold md:leading-[50px] print:text-[32px]">{{
                             moreDetailContent.content_heading
                         }} {{ balvalue }}</h2>
                         <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
@@ -409,7 +409,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                     <div class="singlePost-detail grid grid-cols-12">
                         <div class=" hidden md:block md:col-span-2"></div>
                         <div class="col-span-12 md:col-span-8">
-                            <div :class="`postdetails postdetailinside${mcinx} text-[18px] text-gray-700 pb-4`"
+                            <div :class="`postdetails postdetailinside${mcinx} text-[18px] text-[#121212] pb-4`"
                                 v-html="moreDetailContent?.content_details">
                             </div>
                             <!-- Tag Area -->
