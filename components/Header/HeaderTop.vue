@@ -25,7 +25,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="today_date text-sm">
+                    <div class="today_date text-base text-black">
 
                         {{ todayDate }}
 

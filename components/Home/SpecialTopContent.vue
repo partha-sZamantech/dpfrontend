@@ -14,15 +14,15 @@
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <h2 class="text-[#ff0000] text-[32px] leading-tight">{{ specialTopContents[0]?.content_heading
+                            <h2 class="text-[#ff0000] text-[32px] font-semibold leading-tight">{{ specialTopContents[0]?.content_heading
                             }}</h2>
                             <!-- <p class="text-[18px]">{{ specialTopContents[0]?.content_details?.substring(0,
                                 165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
                             <ClientOnly>
-                                <div class=" font-[300] text-base" v-html="`${specialTopContents[0]?.content_details?.substring(0,
+                                <div class=" font-[300] text-base text-[#000]" v-html="`${specialTopContents[0]?.content_details?.substring(0,
                                         250)} ...`"></div>
                             </ClientOnly>
-                            <span class="text-sm">
+                            <span class="text-sm text-black">
                                 {{ specialTopContents[0]?.bn_cat_name }} | {{ specialTopContents[0]?.created_at }}
                             </span>
                         </NuxtLink>
@@ -43,9 +43,9 @@
                                     </div>
                                 </div>
                                 <div class="col-span-7 flex flex-col gap-2">
-                                    <h4 class="text-[20px] leading-tight group-hover:text-[#ff0000]">{{
+                                    <h4 class="text-[18px] leading-tight font-semibold group-hover:text-[#ff0000]">{{
                                         topcontent?.content_heading }}</h4>
-                                    <span class="text-sm">{{ topcontent?.bn_cat_name }} | {{ topcontent?.created_at }}</span>
+                                    <span class="text-sm text-black">{{ topcontent?.bn_cat_name }} | {{ topcontent?.created_at }}</span>
                                 </div>
                             </NuxtLink>
                             <!-- ========== Loop Item =========== -->
