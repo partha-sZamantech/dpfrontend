@@ -63,14 +63,14 @@
                                 </div>
                                 <div class="flex flex-col gap-3 mt-2">
                                     <h3
-                                        class="cat-postheading font-semibold text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                        class="cat-postheading font-semibold text-xl group-hover:text-[#ff0000] text-[#333]">
                                         {{ latestPosts[1]?.content_heading }}
                                     </h3>
                                     <ClientOnly>
-                                        <div class="cat-postdesc text-base font-[300] text-[#555555]"
+                                        <div class="cat-postdesc text-base font-[300] text-black"
                                             v-html="`${latestPosts[1]?.content_details.substring(0, 155)}...`"></div>
                                     </ClientOnly>
-                                    <small class="cat-postdate">
+                                    <small class="cat-postdate text-black">
                                         প্রকাশ: {{ postCreatedDate(latestPosts[1]?.created_at) }}
                                     </small>
                                 </div>
@@ -90,14 +90,14 @@
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
                                 <h3
-                                    class="cat-postheading font-semibold text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                    class="cat-postheading font-semibold text-xl group-hover:text-[#ff0000] text-[#333]">
                                     {{ latestPosts[2]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-base font-[300] text-[#555555]"
+                                    <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${latestPosts[2]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
-                                <small class="cat-postdate">
+                                <small class="cat-postdate text-black">
                                     প্রকাশ: {{ postCreatedDate(latestPosts[2]?.created_at) }}
                                 </small>
                             </div>
@@ -112,14 +112,14 @@
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
                                 <h3
-                                    class="cat-postheading text-xl font-semibold group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                    class="cat-postheading text-xl font-semibold group-hover:text-[#ff0000] text-[#333]">
                                     {{ latestPosts[3]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-base font-[300] text-[#555555]"
+                                    <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${latestPosts[3]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
-                                <small class="cat-postdate">
+                                <small class="cat-postdate text-black">
                                     প্রকাশ: {{ postCreatedDate(latestPosts[3]?.created_at) }}
                                 </small>
                             </div>
@@ -134,14 +134,14 @@
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
                                 <h3
-                                    class="cat-postheading text-xl font-semibold group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                    class="cat-postheading text-xl font-semibold group-hover:text-[#ff0000] text-[#333]">
                                     {{ latestPosts[4]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-base font-[300] text-[#555555]"
+                                    <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${latestPosts[4]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
-                                <small class="cat-postdate">
+                                <small class="cat-postdate text-black">
                                     প্রকাশ: {{ postCreatedDate(latestPosts[4]?.created_at) }}
                                 </small>
                             </div>
@@ -170,15 +170,15 @@
                                     class=" grid grid-cols-12 gap-3 group">
                                     <div class=" col-span-7 flex flex-col gap-3">
                                         <h3
-                                            class="cat-title col-span-12 font-semibold text-[20px] group-hover:text-[#ff0000]">
+                                            class="cat-title col-span-12 font-semibold text-[20px] text-[#333] group-hover:text-[#ff0000]">
                                             {{
                                                 latestPost?.content_heading }}</h3>
                                         <ClientOnly>
-                                            <div class="cat-desc text-[#555555] text-[15px] font-[300]"
+                                            <div class="cat-desc text-black text-[15px] font-[300]"
                                                 v-html="`${latestPost?.content_details.substring(0, 155)}...`"></div>
                                         </ClientOnly>
 
-                                        <span class="post-date flex flex-col gap-1 text-base">
+                                        <span class="post-date flex flex-col gap-1 text-base text-black">
                                             <small>আপডেট: {{
                                                 postCreatedDate(latestPost?.updated_at) }}</small>
                                             <small>প্রকাশ: {{
