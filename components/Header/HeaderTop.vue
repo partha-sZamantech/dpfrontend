@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white py-4">
         <div class="max-w-[1280px] mx-auto px-4 bg-white">
-            <div :class="` hidden md:grid grid-cols-3  bg-white px-2 justify-between items-center `">
+            <div :class="` hidden md:grid grid-cols-3  bg-white justify-between items-center `">
                 <div class="flex gap-3 flex-col">
                     <div class="flex gap-3 items-center h-8">
                         <div>
