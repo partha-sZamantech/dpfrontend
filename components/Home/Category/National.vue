@@ -17,15 +17,15 @@
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
                     </div>
                     <div class="national-feature-description flex flex-col gap-2">
-                        <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{ nationalHCon[0]?.content_heading
+                        <h3 class="text-[25px] leading-tight font-semibold group-hover:text-[#ff0000]">{{ nationalHCon[0]?.content_heading
                         }}</h3>
                         <ClientOnly>
                             <!-- <p class="text-md">{{ nationalHCon[0]?.content_details?.substring(0,
                                 200)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
-                                <div class="text-[16px] font-[300] text-[#555555]" v-html="`${nationalHCon[0]?.content_details?.substring(0,
+                                <div class="text-[16px] font-[300] text-black" v-html="`${nationalHCon[0]?.content_details?.substring(0,
                                 220)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm">
+                        <span class="text-sm text-black">
                             {{ nationalHCon[0]?.bn_cat_name }} | {{ nationalHCon[0]?.created_at }}
                         </span>
                     </div>
@@ -45,9 +45,9 @@
                         </div>
                         <div class=" col-span-7">
                             <NuxtLink class="flex flex-col gap-2" :to="getPostUrl(nationalcntent?.cat_slug, nationalcntent?.subcat_slug, nationalcntent?.content_type, nationalcntent?.content_id)">
-                                <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
+                                <h4 class="text-[18px] font-semibold leading-tight group-hover:text-[#ff0000]">{{
                                     nationalcntent?.content_heading }}</h4>
-                                    <span class="text-sm">{{ nationalcntent?.bn_cat_name }} | {{ nationalcntent?.created_at }}</span>
+                                    <span class="text-sm text-black">{{ nationalcntent?.bn_cat_name }} | {{ nationalcntent?.created_at }}</span>
                             </NuxtLink>
                         </div>
                     </div>
