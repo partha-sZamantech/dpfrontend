@@ -15,10 +15,10 @@
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
-                <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">
+                <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ educationcontents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm">{{ educationcontents[0]?.created_at }}</span>
+                <span class="text-sm text-black">{{ educationcontents[0]?.created_at }}</span>
             </NuxtLink>
             <!--/ International Feature Content -->
 
@@ -27,7 +27,7 @@
                 <NuxtLink :to="getPostUrl(educationcontent?.cat_slug, educationcontent?.subcat_slug, educationcontent?.content_type, educationcontent?.content_id)"
                     class=" border-b py-3" v-for="educationcontent in educationcontents.slice(1, 5)"
                     :key="educationcontent.content_id">
-                    <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ educationcontent?.content_heading }}</h4>
+                    <h4 class="text-base text-black font-semibold hover:text-[#ff0000] leading-tight">{{ educationcontent?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->
 
