@@ -174,11 +174,11 @@
                                             {{
                                                 latestPost?.content_heading }}</h3>
                                         <ClientOnly>
-                                            <div class="cat-desc text-black text-[15px] font-[300]"
+                                            <div class="cat-desc text-black text-[15px] font-[300] hidden md:block"
                                                 v-html="`${latestPost?.content_details.substring(0, 155)}...`"></div>
                                         </ClientOnly>
 
-                                        <span class="post-date flex flex-col gap-1 text-base text-black">
+                                        <span class="post-date md:flex flex-col gap-1 text-base text-black hidden">
                                             <small>আপডেট: {{
                                                 postCreatedDate(latestPost?.updated_at) }}</small>
                                             <small>প্রকাশ: {{
