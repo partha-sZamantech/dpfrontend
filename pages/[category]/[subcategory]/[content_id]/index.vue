@@ -158,7 +158,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 <ul class="flex flex-wrap gap-3 items-center" v-if="firstContentTags?.length > 0">
 
                                     <li v-for="ftag in firstContentTags"
-                                        class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1]">
+                                        class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1] font-semibold">
                                         <NuxtLink class="px-4 py-2 block" :to="`/topic/${ftag}`">{{ ftag }}</NuxtLink>
                                     </li>
                                 </ul>
@@ -203,7 +203,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 <div class=" col-span-7">
                                     <NuxtLink
                                         :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
-                                        <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
+                                        <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
                                             fmoreContent?.content_heading }}</h4>
                                     </NuxtLink>
                                 </div>
@@ -251,7 +251,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ fRelatedContent?.content_heading }}</h5>
+                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{ fRelatedContent?.content_heading }}</h5>
                         </NuxtLink>
                         <!-- Loop Item -->
 
@@ -422,7 +422,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 <ul class="flex flex-wrap gap-3 items-center">
 
                                     <li v-for="mtag in moreDetailContent?.tags.split(',')"
-                                        class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1]">
+                                        class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1] font-semibold">
                                         <NuxtLink class="px-4 py-2 block" :to="`/topic/${mtag}`">{{ mtag }}</NuxtLink>
                                     </li>
                                 </ul>
@@ -465,7 +465,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 <div class=" col-span-7">
                                     <NuxtLink
                                         :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)">
-                                        <h4 class="text-[16px] leading-tight group-hover:text-[#ff0000]">{{
+                                        <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
                                             moreDetCatCon?.content_heading }}</h4>
                                     </NuxtLink>
                                 </div>
@@ -513,7 +513,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ relDetailContent?.content_heading }}</h5>
+                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{ relDetailContent?.content_heading }}</h5>
                         </NuxtLink>
 
                     </div>
@@ -542,7 +542,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <h5 class="text-[18px] group-hover:text-[#ff0000]">{{ latestPostC?.content_heading }}</h5>
+                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{ latestPostC?.content_heading }}</h5>
                         </NuxtLink>
                         <!-- Loop Item -->
 
@@ -929,7 +929,7 @@ onMounted(() => {
 
             let h5 = document.createElement('h5');
             // h5.style.fontSize = '16px';
-            h5.className = 'text-[16px] text-[#575757] font-bold'
+            h5.className = 'text-[16px] text-black font-bold'
             // h5.style.fontWeight = 'bold';
             h5.innerText = 'আরও পড়ুন';
             relatedNews.append(h5);
@@ -1037,7 +1037,7 @@ onMounted(() => {
 
                 let h5 = document.createElement('h5');
 
-                h5.className = 'text-[16px] text-[#575757] font-bold'
+                h5.className = 'text-[16px] text-black font-bold'
 
                 h5.innerText = 'আরও পড়ুন';
                 relatedNews.append(h5);
