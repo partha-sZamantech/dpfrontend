@@ -12,14 +12,14 @@
                 <div class="flex flex-col gap-4 md:gap-2">
 
                     <div class="h-16">
-                        <h4 class="leading-tight text-[20px] mb-1 group-hover:text-[#ff0000]">{{ tpcontent?.content_heading
+                        <h4 class="leading-tight text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{ tpcontent?.content_heading
                         }}</h4>
                     </div>
 
                     <!-- <p class="text-[16px]">{{ tpcontent?.content_details?.substring(0,100)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
-                    <div class="text-base font-[300]" v-html="`${tpcontent?.content_details?.substring(0, 100)} ...`"></div>
+                    <div class="text-base font-[300] text-black" v-html="`${tpcontent?.content_details?.substring(0, 100)} ...`"></div>
 
-                    <span class="text-sm">{{ tpcontent?.bn_cat_name }} | {{ tpcontent?.created_at }}</span>
+                    <span class="text-sm text-black">{{ tpcontent?.bn_cat_name }} | {{ tpcontent?.created_at }}</span>
 
                 </div>
             </NuxtLink>
