@@ -18,9 +18,9 @@
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
                                 :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                         </div>
-                        <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ politics[0]?.content_heading }}
+                        <h3 class="text-[19px] font-semibold leading-tight group-hover:text-[#ff0000]">{{ politics[0]?.content_heading }}
                         </h3>
-                        <span class="text-sm">{{ politics[0]?.created_at }}</span>
+                        <span class="text-sm text-black">{{ politics[0]?.created_at }}</span>
                     </NuxtLink>
                     <!--/ Politic Feature Content -->
 
@@ -28,7 +28,7 @@
                         <!-- Loop Item -->
                         <NuxtLink :to="getPostUrl(hpolitic?.cat_slug, hpolitic?.subcat_slug, hpolitic?.content_type, hpolitic?.content_id)" class=" border-b py-3"
                             v-for="hpolitic in politics.slice(1, 6)" :key="hpolitic.content_id">
-                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ hpolitic.content_heading }}</h4>
+                            <h4 class="text-[17px] font-semibold hover:text-[#ff0000] leading-tight">{{ hpolitic.content_heading }}</h4>
                         </NuxtLink>
                         <!--/ Loop Item -->
 
@@ -54,7 +54,7 @@
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
                                 :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                         </div>
-                        <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{
+                        <h3 class="text-[19px] font-semibold leading-tight group-hover:text-[#ff0000]">{{
                             economycontent[0]?.content_heading }}</h3>
                         <span class="text-sm">{{ economycontent[0]?.created_at }}</span>
                     </NuxtLink>
@@ -64,7 +64,7 @@
                         <!-- Loop Item -->
                         <NuxtLink :to="getPostUrl(heconmy?.cat_slug, heconmy?.subcat_slug, heconmy?.content_type, heconmy?.content_id)" class=" border-b py-3"
                             v-for="heconmy in economycontent.slice(1, 6)" :key="heconmy.content_id">
-                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ heconmy.content_heading }}</h4>
+                            <h4 class="text-[17px] font-semibold hover:text-[#ff0000] leading-tight">{{ heconmy.content_heading }}</h4>
                         </NuxtLink>
                         <!--/ Loop Item -->
 
@@ -92,9 +92,9 @@
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
                                 :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                         </div>
-                        <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{
+                        <h3 class="text-[19px] leading-tight font-semibold group-hover:text-[#ff0000]">{{
                             internationalcontent[0]?.content_heading }}</h3>
-                        <span class="text-sm">{{ internationalcontent[0]?.created_at }}</span>
+                        <span class="text-sm text-black">{{ internationalcontent[0]?.created_at }}</span>
                     </NuxtLink>
                     <!--/ International Feature Content -->
 
@@ -104,7 +104,7 @@
                             :to="getPostUrl(hinternatcon?.cat_slug, hinternatcon?.subcat_slug, hinternatcon?.content_type, hinternatcon?.content_id)"
                             class=" border-b py-3" v-for="hinternatcon in internationalcontent.slice(1, 6)"
                             :key="hinternatcon.content_id">
-                            <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ hinternatcon.content_heading }}
+                            <h4 class="text-[17px] font-semibold hover:text-[#ff0000] leading-tight">{{ hinternatcon.content_heading }}
                             </h4>
                         </NuxtLink>
                         <!--/ Loop Item -->
