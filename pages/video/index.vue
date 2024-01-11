@@ -15,7 +15,7 @@
         <!-- Space For Ads -->
         <div class=" category-content px-4 md:px-0 py-4 relative">
             <!-- Breadcrump Section -->
-            <div class="max-w-[1280px] mx-auto">
+            <div class="max-w-[1280px] px-4 mx-auto">
                 <div class="breadcrump  pb-2 flex flex-col gap-2 md:gap-2">
 
 
@@ -38,7 +38,7 @@
 
             <!--=============== Special Top Video ===============-->
             <div class="bg-[#00427A] mt-2">
-                <div class="max-w-[1280px] mx-auto px-4 md:px-2 py-6 md:py-10">
+                <div class="max-w-[1280px] mx-auto px-4 md:px-4 py-6 md:py-10">
 
                     <div class=" grid grid-cols-12 gap-6">
                         <div class=" col-span-12 md:col-span-3">
@@ -177,7 +177,7 @@
             </div>
             <!--=============== Special Top Video ===============-->
 
-            <div class="max-w-[1280px] mx-auto mt-6" v-if="categoryVideos?.length > 0">
+            <div class="max-w-[1280px] mx-auto px-4 mt-6" v-if="categoryVideos?.length > 0">
                 <div class="category-wise-videos mb-3" v-for="(catVideo, cvindxs) in categoryVideos" :key="cvindxs">
                     <div class="category-header border-b-4 border-b-[#3375af] my-3">
                         <NuxtLink :to="`/video/${catVideo?.category?.slug}`" class="flex gap-3 items-center">

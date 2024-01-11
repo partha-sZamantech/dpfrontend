@@ -5,7 +5,7 @@
             <AdsDesktopHomeMiddleTop :homeMiddleAds="homeMiddleAds" />
         </div>
         <!-- Home Middle Top Ads -->
-        <div class="py-2 md:px-2 max-w-[1280px] mx-auto px-4">
+        <div class="py-2 md:px-4 max-w-[1280px] mx-auto px-4">
             <!-- Headline Component -->
             <Headline v-if="allHeadline?.length > 0" :breakingNews="allHeadline" />
             <!--/ Headline Component -->
@@ -151,7 +151,7 @@
             <AdsDesktopHomeMiddleSeven :homeMiddleSevenAds="homeMiddleSevenAds" />
         </div>
         <!-- Home Middle Seven Ads -->
-        <div class="py-2 md:px-2 max-w-[1280px] mx-auto px-4">
+        <div class="py-2 md:px-4 max-w-[1280px] mx-auto px-4">
 
             <div class=" grid grid-cols-12 gap-6">
                 <div class=" col-span-12 md:col-span-9">

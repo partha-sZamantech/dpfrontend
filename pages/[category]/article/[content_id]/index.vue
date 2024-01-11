@@ -1,5 +1,5 @@
 <template>
-    <div class=" max-w-[1280px] mx-auto detail-page px-4 md:px-2 py-4">
+    <div class=" max-w-[1280px] mx-auto detail-page px-4 md:px-4 py-4">
 
         <Head>
             <Title>{{ detailsContent?.content_heading }}</Title>

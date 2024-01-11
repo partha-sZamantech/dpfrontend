@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-[1280px] mx-auto px-4 md:px-2 py-6 md:py-10">
+    <div class="max-w-[1280px] mx-auto px-4 md:px-4 py-6 md:py-10">
         <div class="category-header border-b-4 border-b-[#3375af]">
             <NuxtLink to="/" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>

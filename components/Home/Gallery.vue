@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-[1280px] mx-auto py-6 px-4 md:px-2">
+    <div class="max-w-[1280px] mx-auto py-6 px-4 md:px-4">
         <div class="home-photo-gallery mb-4">
             <div class="category-header border-b-4 border-b-white">
                 <NuxtLink to="/photo" class="flex gap-3 items-center">

@@ -5,7 +5,7 @@
             <Title>{{ headerTitle }} - অনুসন্ধান | ঢাকা প্রকাশ</Title>
         </Head>
 
-        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
+        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
 
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 grid grid-cols-12 items-center gap-4 md:gap-4">

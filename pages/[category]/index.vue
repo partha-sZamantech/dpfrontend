@@ -10,7 +10,7 @@
         </div>
         <!-- Category Top Ads -->
 
-        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-2 py-4 relative">
+        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
 
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 py-2 flex flex-col gap-0 md:gap-2">
@@ -49,7 +49,7 @@
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     <div class="lead-overly absolute h-full w-full block top-0">
                                         <h5
-                                            class="img-title text-white  font-semibold group-hover:text-[#ff0000] text-[18px] md:text-[24px] absolute bottom-4 left-6">
+                                            class="img-title text-white  font-semibold group-hover:text-[#ff0000] pr-5 text-[18px] md:text-[24px] absolute bottom-4 left-6">
                                             {{ categoryContent[0]?.content_heading }}</h5>
                                     </div>
                                 </NuxtLink>
