@@ -15,10 +15,10 @@
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
                 </div>
-                <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">
+                <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ probashContents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm">{{ probashContents[0]?.created_at }}</span>
+                <span class="text-sm text-black">{{ probashContents[0]?.created_at }}</span>
             </NuxtLink>
             <!--/ Probash Feature Content -->
 
@@ -27,7 +27,7 @@
                 <NuxtLink :to="getPostUrl(probashContent?.cat_slug, probashContent?.subcat_slug, probashContent?.content_type, probashContent?.content_id)"
                     class=" border-b py-3" v-for="probashContent in probashContents.slice(1, 5)"
                     :key="probashContent.content_id">
-                    <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ probashContent?.content_heading }}</h4>
+                    <h4 class="text-base hover:text-[#ff0000] text-black font-semibold">{{ probashContent?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->
             </div>
