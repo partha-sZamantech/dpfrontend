@@ -16,10 +16,10 @@
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                     </div>
                     <div class="intertainment-feature-description flex flex-col gap-1">
-                        <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{
+                        <h3 class="text-[25px] text-black font-semibold group-hover:text-[#ff0000]">{{
                             literatureContents[0]?.content_heading }}</h3>
                         <ClientOnly>
-                            <div class="text-base font-[300]" v-html="`${literatureContents[0]?.content_details?.substring(0,
+                            <div class="text-base font-[300] text-black" v-html="`${literatureContents[0]?.content_details?.substring(0,
                                 150)} ...`"></div>
                         </ClientOnly>
                     </div>
@@ -40,7 +40,7 @@
                         </div>
                         <div class=" col-span-7">
                             <NuxtLink :to="getPostUrl(literatureContent?.cat_slug, literatureContent?.subcat_slug, literatureContent?.content_type, literatureContent?.content_id)">
-                                <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{ literatureContent?.content_heading }}</h4>
+                                <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{ literatureContent?.content_heading }}</h4>
                             </NuxtLink>
                         </div>
                     </div>

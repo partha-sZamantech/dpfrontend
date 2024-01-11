@@ -14,14 +14,14 @@
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
-                <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ specialArticleContents[0]?.content_heading }}</h3>
+                <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{ specialArticleContents[0]?.content_heading }}</h3>
             </NuxtLink>
             <!--/ Special Article Feature Content -->
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
                 <NuxtLink :to="getPostUrl(specialArticleContent?.cat_slug, specialArticleContent?.subcat_slug, specialArticleContent?.content_type, specialArticleContent?.content_id)" class=" border-b py-3" v-for="specialArticleContent in specialArticleContents.slice(1, 7)" :key="specialArticleContent.content_id">
-                    <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ specialArticleContent?.content_heading }}</h4>
+                    <h4 class="text-base hover:text-[#ff0000] text-black font-semibold">{{ specialArticleContent?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->
             </div>

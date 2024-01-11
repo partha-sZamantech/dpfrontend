@@ -6,23 +6,23 @@
                 <nuxt-img class="mx-auto md:mx-0" :src="`${siteConfig.public.apiUrl}/media/common/${sitesettings?.logo}`"
                     width="220" alt="Dhaka Prokash" />
             </NuxtLink>
-            <p class="text-[16px] text-[#2a2a2a]">৯৩, কাজী নজরুল ইসলাম এভিনিউ, (ষষ্ঠ তলা)<br>কারওয়ান বাজার, ঢাকা-১২১৫।</p>
+            <p class="text-[16px] text-black">৯৩, কাজী নজরুল ইসলাম এভিনিউ, (ষষ্ঠ তলা)<br>কারওয়ান বাজার, ঢাকা-১২১৫।</p>
         </div>
         <div class="flex flex-col gap-4 text-center md:text-left">
             <div class="flex flex-col gap-0">
-                <h6 class="text-[#00427A] text-[24px]">নিউজরুম</h6>
-                <NuxtLink to="tel:+8809613331010" class="hover:text-[#ff0000] text-[#2a2a2a]">+৮৮০ ৯৬১ ৩৩৩ ১০১০</NuxtLink>
-                <NuxtLink to="mailto:newsroom@dhakaprokash24.com" class="hover:text-[#ff0000] text-[#2a2a2a]">
+                <h6 class="text-[#00427A] text-[24px] font-semibold">নিউজরুম</h6>
+                <NuxtLink to="tel:+8809613331010" class="hover:text-[#ff0000] text-black">+৮৮০ ৯৬১ ৩৩৩ ১০১০</NuxtLink>
+                <NuxtLink to="mailto:newsroom@dhakaprokash24.com" class="hover:text-[#ff0000] text-black">
                     newsroom@dhakaprokash24.com</NuxtLink>
             </div>
             <div class="flex flex-col gap-0">
-                <h6 class="text-[#00427A] text-[24px]">মার্কেটিং</h6>
-                <NuxtLink to="tel:+8809613332020" class="hover:text-[#ff0000] text-[#2a2a2a]">+৮৮০ ৯৬১ ৩৩৩ ২০২০</NuxtLink>
-                <NuxtLink to="mailto:marketking@dhakaprokash24.com" class="hover:text-[#ff0000] text-[#2a2a2a]">
+                <h6 class="text-[#00427A] text-[24px] font-semibold">মার্কেটিং</h6>
+                <NuxtLink to="tel:+8809613332020" class="hover:text-[#ff0000] text-black">+৮৮০ ৯৬১ ৩৩৩ ২০২০</NuxtLink>
+                <NuxtLink to="mailto:marketking@dhakaprokash24.com" class="hover:text-[#ff0000] text-black">
                     marketking@dhakaprokash24.com</NuxtLink>
             </div>
             <div class="social_media flex flex-col gap-2">
-                <h6 class="text-[#00427A] text-[24px]">অনুসরণ করুন</h6>
+                <h6 class="text-[#00427A] text-[24px] font-semibold">অনুসরণ করুন</h6>
             
                 <div class="flex gap-4 justify-center md:justify-start">
 
@@ -59,12 +59,12 @@
         </div>
         <div class="flex flex-col gap-4 text-center md:text-left">
             <div class="flex flex-col gap-3">
-                <NuxtLink to="#" class="hover:text-[#ff0000] text-[#2a2a2a]">গোপনীয়তার নীতি</NuxtLink>
-                <NuxtLink to="#" class="hover:text-[#ff0000] text-[#2a2a2a]">ব্যবহারের শর্তাবলি</NuxtLink>
-                <NuxtLink to="#" class="hover:text-[#ff0000] text-[#2a2a2a]">আমাদের সম্পর্কে</NuxtLink>
-                <NuxtLink to="#" class="hover:text-[#ff0000] text-[#2a2a2a]">যোগাযোগ</NuxtLink>
-                <NuxtLink to="#" class="hover:text-[#ff0000] text-[#2a2a2a]">আর্কাইভ</NuxtLink>
-                <NuxtLink to="#" class="hover:text-[#ff0000] text-[#2a2a2a]">কনভার্টার</NuxtLink>
+                <NuxtLink to="#" class="hover:text-[#ff0000] text-black ">গোপনীয়তার নীতি</NuxtLink>
+                <NuxtLink to="#" class="hover:text-[#ff0000] text-black">ব্যবহারের শর্তাবলি</NuxtLink>
+                <NuxtLink to="#" class="hover:text-[#ff0000] text-black">আমাদের সম্পর্কে</NuxtLink>
+                <NuxtLink to="#" class="hover:text-[#ff0000] text-black">যোগাযোগ</NuxtLink>
+                <NuxtLink to="#" class="hover:text-[#ff0000] text-black">আর্কাইভ</NuxtLink>
+                <NuxtLink to="#" class="hover:text-[#ff0000] text-black">কনভার্টার</NuxtLink>
             </div>
         </div>
         <div>
