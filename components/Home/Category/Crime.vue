@@ -22,7 +22,7 @@
                     <NuxtLink
                         :to="getPostUrl(crimecontent?.cat_slug, crimecontent?.subcat_slug, crimecontent?.content_type, crimecontent?.content_id)"
                         class="flex flex-col gap-2">
-                        <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">
+                        <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">
                             {{ crimecontent?.content_heading }}
                         </h4>
                         <span class="text-sm">{{ crimecontent?.created_at }}</span>

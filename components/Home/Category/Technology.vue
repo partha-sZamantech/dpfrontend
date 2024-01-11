@@ -16,13 +16,13 @@
                             :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                     </div>
                     <div class="intertainment-feature-description flex flex-col gap-1">
-                        <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{
+                        <h3 class="text-[25px] text-black font-semibold group-hover:text-[#ff0000]">{{
                             technologycontents[0]?.content_heading }}</h3>
                         <ClientOnly>
-                            <div class="text-base font-[300]" v-html="`${technologycontents[0]?.content_details?.substring(0,
+                            <div class="text-base font-[300] text-black" v-html="`${technologycontents[0]?.content_details?.substring(0,
                                 165)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm">{{ technologycontents[0]?.created_at }}</span>
+                        <span class="text-sm text-black">{{ technologycontents[0]?.created_at }}</span>
                     </div>
                 </NuxtLink>
             </div>
@@ -42,10 +42,10 @@
                         <div class=" col-span-7">
                             <NuxtLink :to="getPostUrl(technologycontent?.cat_slug, technologycontent?.subcat_slug, technologycontent?.content_type, technologycontent?.content_id)"
                                 class="flex flex-col gap-2">
-                                <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">
+                                <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">
                                     {{ technologycontent?.content_heading }}
                                 </h4>
-                                <span class="text-sm">{{ technologycontent?.created_at }}</span>
+                                <span class="text-sm text-black">{{ technologycontent?.created_at }}</span>
                             </NuxtLink>
                         </div>
                     </div>

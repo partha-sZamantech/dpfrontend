@@ -16,15 +16,15 @@
                             :placeholder="img(`${siteUrl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                     </div>
                     <div class="national-feature-description flex flex-col gap-1">
-                        <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{
+                        <h3 class="text-[25px] text-black font-semibold group-hover:text-[#ff0000]">{{
                             sportscontent[0]?.content_heading }}</h3>
                         <!-- <p class="text-md">{{ sportscontent[0]?.content_details?.substring(0,
                             165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
                         <ClientOnly>
-                            <div class="text-base font-[300]" v-html="`${sportscontent[0]?.content_details?.substring(0,
+                            <div class="text-base font-[300] text-black" v-html="`${sportscontent[0]?.content_details?.substring(0,
                                 170)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm">{{ sportscontent[0]?.created_at }}</span>
+                        <span class="text-sm text-black">{{ sportscontent[0]?.created_at }}</span>
                     </div>
                 </NuxtLink>
             </div>
@@ -43,9 +43,9 @@
                         <div class=" col-span-7">
                             <NuxtLink :to="getPostUrl(hmsport?.cat_slug, hmsport?.subcat_slug, hmsport?.content_type, hmsport?.content_id)"
                                 class="flex flex-col gap-2">
-                                <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
+                                <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
                                     hmsport?.content_heading }}</h4>
-                                <span class="text-sm">{{ sportscontent[0]?.created_at }}</span>
+                                <span class="text-sm text-black">{{ sportscontent[0]?.created_at }}</span>
                             </NuxtLink>
                         </div>
                     </div>

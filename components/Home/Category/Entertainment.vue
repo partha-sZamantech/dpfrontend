@@ -16,13 +16,13 @@
                             :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                     </div>
                     <div class="intertainment-feature-description flex flex-col gap-2">
-                        <h3 class="text-[25px] leading-tight group-hover:text-[#ff0000]">{{
+                        <h3 class="text-[25px] text-black font-semibold group-hover:text-[#ff0000]">{{
                             entertainments[0]?.content_heading }}</h3>
                         <ClientOnly>
-                            <div class="text-base font-[300]" v-html="`${entertainments[0]?.content_details?.substring(0,
+                            <div class="text-base font-[300] text-black" v-html="`${entertainments[0]?.content_details?.substring(0,
                                 270)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm">{{ entertainments[0]?.created_at }}</span>
+                        <span class="text-sm text-black">{{ entertainments[0]?.created_at }}</span>
                     </div>
                 </NuxtLink>
             </div>
@@ -40,9 +40,9 @@
                         </div>
                         <div class=" col-span-7">
                             <NuxtLink :to="getPostUrl(entertainment?.cat_slug, entertainment?.subcat_slug, entertainment?.content_type, entertainment?.content_id)" class="flex flex-col gap-2">
-                                <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{
+                                <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
                                     entertainment?.content_heading }}</h4>
-                                <span class="text-sm">{{ entertainment?.created_at }}</span>
+                                <span class="text-sm text-black">{{ entertainment?.created_at }}</span>
                             </NuxtLink>
                         </div>
                     </div>

@@ -14,7 +14,7 @@
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
                 </div>
-                <h3 class="text-[19px] leading-tight group-hover:text-[#ff0000]">{{ careers[0]?.content_heading }}</h3>
+                <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{ careers[0]?.content_heading }}</h3>
                 <span class="text-sm">{{ careers[0]?.created_at }}</span>
             </NuxtLink>
             <!--/ Career Feature Content -->
@@ -23,7 +23,7 @@
                 <!-- Loop Item -->
                 <NuxtLink :to="getPostUrl(career?.cat_slug, career?.subcat_slug, career?.content_type, career?.content_id)" class=" border-b py-3" v-for="career in careers.slice(1,8)"
                 :key="career.content_id">
-                    <h4 class="text-[17px] hover:text-[#ff0000] leading-tight">{{ career?.content_heading }}</h4>
+                    <h4 class="text-base hover:text-[#ff0000] text-black font-semibold">{{ career?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->
   

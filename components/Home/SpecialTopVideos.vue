@@ -63,7 +63,7 @@
                         target="_blank" class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
                         <Icon name="simple-icons:youtubemusic"
                             class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
-                        <h4 class="text-[18px] col-span-10 font-semibold md:col-span-10 group-hover:text-[#3375af]">{{ specialVideo?.title
+                        <h4 class="text-base col-span-10 font-semibold md:col-span-10 group-hover:text-[#3375af]">{{ specialVideo?.title
                         }}
                         </h4>
                     </NuxtLink>
@@ -71,7 +71,7 @@
                         target="_blank" class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
                         <Icon name="simple-icons:youtubemusic"
                             class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
-                        <h4 class="text-[18px] font-semibold col-span-10 md:col-span-10 group-hover:text-[#3375af]">{{ specialVideo?.title
+                        <h4 class="text-base font-semibold col-span-10 md:col-span-10 group-hover:text-[#3375af]">{{ specialVideo?.title
                         }}
                         </h4>
                     </NuxtLink>
@@ -82,7 +82,7 @@
                         class="grid grid-cols-12 gap-4 items-center group border-b py-4 group">
                         <Icon name="simple-icons:youtubemusic"
                             class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
-                        <h4 class="text-[18px] font-semibold col-span-10 md:col-span-10 group-hover:text-[#3375af]">{{ specialVideo?.title
+                        <h4 class="text-base font-semibold col-span-10 md:col-span-10 group-hover:text-[#3375af]">{{ specialVideo?.title
                         }}
                         </h4>
                     </NuxtLink>

@@ -19,9 +19,9 @@
                 </div>
                 <div class=" col-span-7">
                     <NuxtLink :to="getPostUrl(saradeshcon?.cat_slug, saradeshcon?.subcat_slug, saradeshcon?.content_type, saradeshcon?.content_id)" class="flex flex-col gap-2">
-                        <h4 class="text-[18px] leading-tight group-hover:text-[#ff0000]">{{ saradeshcon?.content_heading
+                        <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{ saradeshcon?.content_heading
                         }}</h4>
-                        <span class="text-sm">{{ saradeshcon?.created_at }}</span>
+                        <span class="text-sm text-black">{{ saradeshcon?.created_at }}</span>
                     </NuxtLink>
                 </div>
             </div>

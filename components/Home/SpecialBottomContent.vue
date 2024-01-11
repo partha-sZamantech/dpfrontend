@@ -12,7 +12,7 @@
                 <div class="flex flex-col gap-4 md:gap-2">
 
                     <div class="h-16">
-                        <h4 class="leading-tight text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{ tpcontent?.content_heading
+                        <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{ tpcontent?.content_heading
                         }}</h4>
                     </div>
 

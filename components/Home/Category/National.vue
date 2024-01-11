@@ -45,7 +45,7 @@
                         </div>
                         <div class=" col-span-7">
                             <NuxtLink class="flex flex-col gap-2" :to="getPostUrl(nationalcntent?.cat_slug, nationalcntent?.subcat_slug, nationalcntent?.content_type, nationalcntent?.content_id)">
-                                <h4 class="text-[18px] font-semibold leading-tight group-hover:text-[#ff0000]">{{
+                                <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
                                     nationalcntent?.content_heading }}</h4>
                                     <span class="text-sm text-black">{{ nationalcntent?.bn_cat_name }} | {{ nationalcntent?.created_at }}</span>
                             </NuxtLink>
