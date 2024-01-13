@@ -8,10 +8,12 @@
         </div>
         <div class="flex flex-col gap-4">
             <div class="">
-                <NuxtLink :to="getPostUrl(technologycontents[0]?.cat_slug, technologycontents[0]?.subcat_slug, technologycontents[0]?.content_type, technologycontents[0]?.content_id)"
+                <NuxtLink
+                    :to="getPostUrl(technologycontents[0]?.cat_slug, technologycontents[0]?.subcat_slug, technologycontents[0]?.content_type, technologycontents[0]?.content_id)"
                     class="grid grid-cols-1 md:grid-cols-2 group gap-4">
                     <div class="intertainment-feature-image overflow-hidden">
-                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${technologycontents[0]?.img_bg_path}`"
+                        <nuxt-img loading="lazy"
+                            :src="`${siteurl.site_url}/media/content/images/${technologycontents[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                     </div>
@@ -32,15 +34,17 @@
                     <div class="flex flex-col gap-4 group h-sports-excpt"
                         v-for="technologycontent in technologycontents.slice(1, 5)" :key="technologycontent.content_id">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink :to="getPostUrl(technologycontent?.cat_slug, technologycontent?.subcat_slug, technologycontent?.content_type, technologycontent?.content_id)">
-                                <nuxt-img
+                            <NuxtLink
+                                :to="getPostUrl(technologycontent?.cat_slug, technologycontent?.subcat_slug, technologycontent?.content_type, technologycontent?.content_id)">
+                                <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${technologycontent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="getPostUrl(technologycontent?.cat_slug, technologycontent?.subcat_slug, technologycontent?.content_type, technologycontent?.content_id)"
+                            <NuxtLink
+                                :to="getPostUrl(technologycontent?.cat_slug, technologycontent?.subcat_slug, technologycontent?.content_type, technologycontent?.content_id)"
                                 class="flex flex-col gap-2">
                                 <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">
                                     {{ technologycontent?.content_heading }}
