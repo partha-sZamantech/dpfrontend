@@ -8,10 +8,12 @@
         </div>
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 md:col-span-6">
-                <NuxtLink :to="getPostUrl(entertainments[0]?.cat_slug, entertainments[0]?.subcat_slug, entertainments[0]?.content_type, entertainments[0]?.content_id)"
+                <NuxtLink
+                    :to="getPostUrl(entertainments[0]?.cat_slug, entertainments[0]?.subcat_slug, entertainments[0]?.content_type, entertainments[0]?.content_id)"
                     class="flex flex-col group gap-2">
                     <div class="intertainment-feature-image overflow-hidden">
-                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${entertainments[0]?.img_bg_path}`"
+                        <nuxt-img loading="lazy"
+                            :src="`${siteurl.site_url}/media/content/images/${entertainments[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                     </div>
@@ -32,14 +34,18 @@
                     <div class="flex flex-col gap-4 group h-sports-excpt"
                         v-for="entertainment in entertainments.slice(1, 5)" :key="entertainment.content_id">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink :to="getPostUrl(entertainment?.cat_slug, entertainment?.subcat_slug, entertainment?.content_type, entertainment?.content_id)">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${entertainment?.img_bg_path}`"
+                            <NuxtLink
+                                :to="getPostUrl(entertainment?.cat_slug, entertainment?.subcat_slug, entertainment?.content_type, entertainment?.content_id)">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl.site_url}/media/content/images/${entertainment?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="getPostUrl(entertainment?.cat_slug, entertainment?.subcat_slug, entertainment?.content_type, entertainment?.content_id)" class="flex flex-col gap-2">
+                            <NuxtLink
+                                :to="getPostUrl(entertainment?.cat_slug, entertainment?.subcat_slug, entertainment?.content_type, entertainment?.content_id)"
+                                class="flex flex-col gap-2">
                                 <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
                                     entertainment?.content_heading }}</h4>
                                 <span class="text-sm text-black">{{ entertainment?.created_at }}</span>
@@ -78,7 +84,6 @@ const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) =
 
 </script>
 
-<style scoped>
-.h-sports-excpt:first-child {
+<style scoped>.h-sports-excpt:first-child {
     padding-top: 0px
 }</style>
