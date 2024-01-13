@@ -8,10 +8,12 @@
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Motivation Feature Content -->
-            <NuxtLink :to="getPostUrl(motivationContents[0]?.cat_slug, motivationContents[0]?.subcat_slug, motivationContents[0]?.content_type, motivationContents[0]?.content_id)"
+            <NuxtLink
+                :to="getPostUrl(motivationContents[0]?.cat_slug, motivationContents[0]?.subcat_slug, motivationContents[0]?.content_type, motivationContents[0]?.content_id)"
                 class="flex flex-col gap-2 group border-b pb-1">
                 <div class=" overflow-hidden">
-                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${motivationContents[0]?.img_bg_path}`"
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl.site_url}/media/content/images/${motivationContents[0]?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
@@ -24,10 +26,12 @@
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="getPostUrl(motivationContent?.cat_slug, motivationContent?.subcat_slug, motivationContent?.content_type, motivationContent?.content_id)"
+                <NuxtLink
+                    :to="getPostUrl(motivationContent?.cat_slug, motivationContent?.subcat_slug, motivationContent?.content_type, motivationContent?.content_id)"
                     class=" border-b py-3" v-for="motivationContent in motivationContents.slice(1, 5)"
                     :key="motivationContent.content_id">
-                    <h4 class="text-base hover:text-[#ff0000] text-black font-semibold">{{ motivationContent?.content_heading }}</h4>
+                    <h4 class="text-base hover:text-[#ff0000] text-black font-semibold">{{
+                        motivationContent?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->
             </div>
