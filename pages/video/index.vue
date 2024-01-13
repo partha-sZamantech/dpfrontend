@@ -13,23 +13,27 @@
             </div>
         </div> -->
         <!-- Space For Ads -->
-        <div class=" category-content px-4 md:px-0 py-4 relative">
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white h-screen ">
+            <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div>
+        <!-- Page Loader -->
+
+        <div v-else class=" category-content px-4 md:px-0 py-4 relative">
             <!-- Breadcrump Section -->
             <div class="max-w-[1280px] px-4 mx-auto">
                 <div class="breadcrump  pb-2 flex flex-col gap-2 md:gap-2">
-
-
                     <div class="flex flex-col gap-4">
-
                         <div class="subcategory flex flex-wrap gap-3" v-if="allCategory?.length > 1">
-
                             <div class="subcategoryLink" v-for="(getcat, vcatidx) in allCategory" :key="vcatidx">
                                 <NuxtLink :to="`/video/${getcat?.slug}`"
                                     :class="`${cat_slug === getcat?.slug && 'text-[#3375af]'} text-[#121212] font-[600] text-sm md:text-[17px] hover:text-[#3375af]`">
                                     {{ getcat.name_bn }}
                                 </NuxtLink>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -249,33 +253,33 @@ const specialTopVideos = useState(() => [])
 const allCategory = useState(() => [])
 const categoryVideos = useState(() => [])
 
-const { data: dallvideo } = await useFetch('/api/prismaapi/video/allvideo', {
+const { data: dallvideo, pending } = await useFetch('/api/prismaapi/video/allvideo', {
     method: "GET",
-    transform(input) {
-        return {
-            ...input,
-            fetchedAt: new Date()
-        }
-    },
-    cache: 'force-cache',
-    getCachedData(allv) {
-        const data = nuxtApp.payload.data[allv] || nuxtApp.static.data[allv]
-        // If data is not fetched yet
-        if (!data) {
-            // Fetch the first time
-            return
-        }
-        // Is the data too old?
-        const expirationDate = new Date(data.fetchedAt)
-        expirationDate.setTime(expirationDate.getTime() + 30 * 1000)
-        const isExpired = expirationDate.getTime() < Date.now()
-        if (isExpired) {
-            // Refetch the data
-            return
-        }
+    // transform(input) {
+    //     return {
+    //         ...input,
+    //         fetchedAt: new Date()
+    //     }
+    // },
+    // cache: 'force-cache',
+    // getCachedData(allv) {
+    //     const data = nuxtApp.payload.data[allv] || nuxtApp.static.data[allv]
+    //     // If data is not fetched yet
+    //     if (!data) {
+    //         // Fetch the first time
+    //         return
+    //     }
+    //     // Is the data too old?
+    //     const expirationDate = new Date(data.fetchedAt)
+    //     expirationDate.setTime(expirationDate.getTime() + 30 * 1000)
+    //     const isExpired = expirationDate.getTime() < Date.now()
+    //     if (isExpired) {
+    //         // Refetch the data
+    //         return
+    //     }
 
-        return data
-    },
+    //     return data
+    // },
 })
 
 specialTopVideos.value = dallvideo?.value?.specialTopVideos

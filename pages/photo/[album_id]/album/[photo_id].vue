@@ -5,8 +5,15 @@
             <Title>{{ albumPhotoDetail?.album_name }} </Title>
         </Head>
 
-
-        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white h-screen ">
+            <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div>
+        <!-- Page Loader -->
+        <div v-else class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
 
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-1">
@@ -51,7 +58,8 @@
                             class="col-span-12 md:col-span-12 mb-6 bg-[#efefef]">
                             <div class="lead-post group overflow-hidden">
                                 <div class="relative">
-                                    <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/photoAlbum/${photo_gallery?.photo}`"
+                                    <nuxt-img loading="lazy"
+                                        :src="`${siteurl.site_url}/media/photoAlbum/${photo_gallery?.photo}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 </div>
@@ -102,40 +110,40 @@ const stickyScroll = computed(() =>
 
 const albumPhotoDetail = useState(() => [])
 
-const { data: phald } = await useFetch(`/api/prismaapi/gallery/albumdetail`, {
+const { data: phald, pending } = await useFetch(`/api/prismaapi/gallery/albumdetail`, {
     method: "POST",
     body: {
         photo_id: photo_id
     },
-    transform(input) {
-        return {
-            ...input,
-            fetchedAt: new Date()
-        }
-    },
-    key: `glplop-${photo_id}`,
-    cache: 'force-cache',
-    getCachedData(keys) {
-        const data = nuxtApp.payload.data[keys] || nuxtApp.static.data[keys]
-        // If data is not fetched yet
-        if (!data) {
-            // Fetch the first time
-            return
-        }
+    // transform(input) {
+    //     return {
+    //         ...input,
+    //         fetchedAt: new Date()
+    //     }
+    // },
+    // key: `glplop-${photo_id}`,
+    // cache: 'force-cache',
+    // getCachedData(keys) {
+    //     const data = nuxtApp.payload.data[keys] || nuxtApp.static.data[keys]
+    //     // If data is not fetched yet
+    //     if (!data) {
+    //         // Fetch the first time
+    //         return
+    //     }
 
-        // Is the data too old?
-        const expirationDate = new Date(data.fetchedAt)
+    //     // Is the data too old?
+    //     const expirationDate = new Date(data.fetchedAt)
 
-        // expirationDate.getTime() + [second amount] * 1000
-        expirationDate.setTime(expirationDate.getTime() + 50 * 1000)
-        const isExpired = expirationDate.getTime() < Date.now()
-        if (isExpired) {
-            // Refetch the data
-            return
-        }
+    //     // expirationDate.getTime() + [second amount] * 1000
+    //     expirationDate.setTime(expirationDate.getTime() + 50 * 1000)
+    //     const isExpired = expirationDate.getTime() < Date.now()
+    //     if (isExpired) {
+    //         // Refetch the data
+    //         return
+    //     }
 
-        return data
-    },
+    //     return data
+    // },
 })
 
 albumPhotoDetail.value = phald.value
@@ -156,4 +164,5 @@ albumPhotoDetail.value = phald.value
 
 .cat-box:last-child {
     border-right: 0px !important;
-}</style>
+}
+</style>
