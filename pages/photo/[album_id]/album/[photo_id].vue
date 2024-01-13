@@ -2,7 +2,7 @@
     <div class="category-page">
 
         <Head>
-            <Title>{{ albumPhotoDetail?.album_name }} </Title>
+            <Title>{{ albumPhotoDetail?.album_name }} | ঢাকাপ্রকাশ</Title>
         </Head>
 
         <!-- Page Loader -->

@@ -2,7 +2,7 @@
     <div class="category-page">
 
         <Head>
-            <Title>{{ category.name_bn }} | ঢাকা প্রকাশ</Title>
+            <Title>{{ category.name_bn }} | ঢাকাপ্রকাশ</Title>
         </Head>
         <!-- Space For Ads -->
         <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
@@ -13,7 +13,17 @@
             </div>
         </div> -->
         <!-- Space For Ads -->
-        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
+
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white h-screen ">
+            <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div>
+        <!-- Page Loader -->
+
+        <div v-else class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-2">
                 <div class="flex gap-1 justify-start items-center">
@@ -120,39 +130,39 @@ const allCategory = useState(() => [])
 
 const take = ref(12)
 
-const { data: vcatcont } = await useFetch('/api/prismaapi/video/categoryvideos', {
+const { data: vcatcont, pending } = await useFetch('/api/prismaapi/video/categoryvideos', {
     method: "POST",
     body: {
         cat_slug: vcat_slug,
         take: take.value
     },
-    transform(input) {
-        return {
-            ...input,
-            fetchedAt: new Date()
-        }
-    },
-    key: `videocatslug-${vcat_slug}`,
-    cache: 'force-cache',
-    getCachedData(subcat) {
-        const data = nuxtApp.payload.data[subcat] || nuxtApp.static.data[subcat]
-        // If data is not fetched yet
-        if (!data) {
-            // Fetch the first time
-            return
-        }
+    // transform(input) {
+    //     return {
+    //         ...input,
+    //         fetchedAt: new Date()
+    //     }
+    // },
+    // key: `videocatslug-${vcat_slug}`,
+    // cache: 'force-cache',
+    // getCachedData(subcat) {
+    //     const data = nuxtApp.payload.data[subcat] || nuxtApp.static.data[subcat]
+    //     // If data is not fetched yet
+    //     if (!data) {
+    //         // Fetch the first time
+    //         return
+    //     }
 
-        // Is the data too old?
-        const expirationDate = new Date(data.fetchedAt)
-        expirationDate.setTime(expirationDate.getTime() + 30 * 1000)
-        const isExpired = expirationDate.getTime() < Date.now()
-        if (isExpired) {
-            // Refetch the data
-            return
-        }
+    //     // Is the data too old?
+    //     const expirationDate = new Date(data.fetchedAt)
+    //     expirationDate.setTime(expirationDate.getTime() + 30 * 1000)
+    //     const isExpired = expirationDate.getTime() < Date.now()
+    //     if (isExpired) {
+    //         // Refetch the data
+    //         return
+    //     }
 
-        return data
-    },
+    //     return data
+    // },
 })
 
 category.value = vcatcont?.value?.category

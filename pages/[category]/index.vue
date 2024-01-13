@@ -2,7 +2,7 @@
     <div class="category-page">
 
         <Head>
-            <Title>{{ category?.cat_name_bn }} </Title>
+            <Title>{{ category?.cat_name_bn }} | ঢাকাপ্রকাশ</Title>
         </Head>
         <!-- Category Top Ads -->
         <div v-if="categoryTopAds?.status === 1" class="py-4 mt-2 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">

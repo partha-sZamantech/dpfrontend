@@ -2,7 +2,7 @@
    <div class="category-page">
 
       <Head>
-         <Title>{{ tag_slug.replaceAll('-', ' ') }}</Title>
+         <Title>{{ tag_slug.replaceAll('-', ' ') }} | ঢাকাপ্রকাশ</Title>
       </Head>
       <!-- Space For Ads -->
       <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
