@@ -11,7 +11,7 @@
                 <div class="flex flex-col gap-3">
                     <NuxtLink to="/" class="flex flex-col gap-2 group">
                         <div class=" overflow-hidden">
-                            <nuxt-img
+                            <nuxt-img loading="lazy"
                                 src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
                                 :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
@@ -21,7 +21,7 @@
                     </NuxtLink>
                     <NuxtLink to="/" class="flex flex-col gap-2 group">
                         <div class=" overflow-hidden">
-                            <nuxt-img
+                            <nuxt-img loading="lazy"
                                 src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
                                 :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
@@ -35,8 +35,7 @@
             <div class="col-span-12 md:col-span-6">
                 <NuxtLink to="/" class="flex flex-col gap-5 group">
                     <div class=" overflow-hidden">
-
-                        <nuxt-img
+                        <nuxt-img loading="lazy"
                             src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
@@ -57,7 +56,7 @@
                 <div class="flex flex-col gap-3">
                     <NuxtLink to="/" class="flex flex-col gap-2 group">
                         <div class=" overflow-hidden">
-                            <nuxt-img
+                            <nuxt-img loading="lazy"
                                 src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
                                 :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
@@ -67,7 +66,7 @@
                     </NuxtLink>
                     <NuxtLink to="/" class="flex flex-col gap-2 group">
                         <div class=" overflow-hidden">
-                            <nuxt-img
+                            <nuxt-img loading="lazy"
                                 src="https://www.dhakaprokash24.com/media/content/images/2023October/SM/gaja-2-20231008122635.jpg"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
                                 :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
