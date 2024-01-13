@@ -8,10 +8,12 @@
         </div>
         <div class="flex flex-col gap-4">
             <div class="">
-                <NuxtLink :to="getPostUrl(literatureContents[0]?.cat_slug, literatureContents[0]?.subcat_slug, literatureContents[0]?.content_type, literatureContents[0]?.content_id)"
+                <NuxtLink
+                    :to="getPostUrl(literatureContents[0]?.cat_slug, literatureContents[0]?.subcat_slug, literatureContents[0]?.content_type, literatureContents[0]?.content_id)"
                     class="grid grid-cols-1 md:grid-cols-2 group gap-4">
                     <div class="intertainment-feature-image overflow-hidden">
-                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${literatureContents[0]?.img_bg_path}`"
+                        <nuxt-img loading="lazy"
+                            :src="`${siteurl.site_url}/media/content/images/${literatureContents[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                     </div>
@@ -31,16 +33,19 @@
                     <div class="flex flex-col gap-4 group h-sports-excpt"
                         v-for="literatureContent in literatureContents.slice(1, 5)" :key="literatureContent.content_id">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink :to="getPostUrl(literatureContent?.cat_slug, literatureContent?.subcat_slug, literatureContent?.content_type, literatureContent?.content_id)">
-                                <nuxt-img
+                            <NuxtLink
+                                :to="getPostUrl(literatureContent?.cat_slug, literatureContent?.subcat_slug, literatureContent?.content_type, literatureContent?.content_id)">
+                                <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${literatureContent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="getPostUrl(literatureContent?.cat_slug, literatureContent?.subcat_slug, literatureContent?.content_type, literatureContent?.content_id)">
-                                <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{ literatureContent?.content_heading }}</h4>
+                            <NuxtLink
+                                :to="getPostUrl(literatureContent?.cat_slug, literatureContent?.subcat_slug, literatureContent?.content_type, literatureContent?.content_id)">
+                                <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
+                                    literatureContent?.content_heading }}</h4>
                             </NuxtLink>
                         </div>
                     </div>
