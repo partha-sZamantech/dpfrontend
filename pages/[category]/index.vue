@@ -43,7 +43,7 @@
                                 <NuxtLink
                                     :to="getPostUrl(categoryContent[0]?.cat_slug, categoryContent[0]?.subcat_slug, categoryContent[0]?.content_type, categoryContent[0]?.content_id)"
                                     class="relative">
-                                    <nuxt-img
+                                    <nuxt-img loading="lazy"
                                         :src="`${siteurl.site_url}/media/content/images/${categoryContent[0]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 md:h-full"
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -61,7 +61,7 @@
                                 :to="getPostUrl(categoryContent[1]?.cat_slug, categoryContent[1]?.subcat_slug, categoryContent[1]?.content_type, categoryContent[1]?.content_id)"
                                 class="categorypost-2 group">
                                 <div class="cat-feature-image overflow-hidden">
-                                    <nuxt-img
+                                    <nuxt-img loading="lazy"
                                         :src="`${siteurl.site_url}/media/content/images/${categoryContent[1]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -93,7 +93,7 @@
                             :to="getPostUrl(categoryContent[2]?.cat_slug, categoryContent[2]?.subcat_slug, categoryContent[2]?.content_type, categoryContent[2]?.content_id)"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img
+                                <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${categoryContent[2]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -117,7 +117,7 @@
                             :to="getPostUrl(categoryContent[3]?.cat_slug, categoryContent[3]?.subcat_slug, categoryContent[3]?.content_type, categoryContent[3]?.content_id)"
                             class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img
+                                <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${categoryContent[3]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -141,7 +141,7 @@
                             :to="getPostUrl(categoryContent[4]?.cat_slug, categoryContent[4]?.subcat_slug, categoryContent[4]?.content_type, categoryContent[4]?.content_id)"
                             class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img
+                                <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${categoryContent[4]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -184,7 +184,8 @@
 
                             <div class="cat-post-item py-4 border-b" v-for="(catPost, cpInx) in categoryContentExcept"
                                 :key="cpInx">
-                                <NuxtLink :to="getPostUrl(catPost?.cat_slug, catPost?.subcat_slug, catPost?.content_type, catPost?.content_id)"
+                                <NuxtLink
+                                    :to="getPostUrl(catPost?.cat_slug, catPost?.subcat_slug, catPost?.content_type, catPost?.content_id)"
                                     class=" grid grid-cols-12 gap-3 group">
                                     <div class=" col-span-7 flex flex-col gap-3">
                                         <h3
@@ -204,7 +205,8 @@
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
-                                        <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${catPost?.img_bg_path}`"
+                                        <nuxt-img loading="lazy"
+                                            :src="`${siteurl.site_url}/media/content/images/${catPost?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     </div>
