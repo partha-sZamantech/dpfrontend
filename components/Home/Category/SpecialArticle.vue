@@ -8,20 +8,28 @@
         </div>
         <div class="home-int-c-content flex flex-col gap-3">
             <!-- Special Article Feature Content -->
-            <NuxtLink :to="getPostUrl(specialArticleContents[0]?.cat_slug, specialArticleContents[0]?.subcat_slug, specialArticleContents[0]?.content_type, specialArticleContents[0]?.content_id)" class="flex flex-col gap-2 group">
+            <NuxtLink
+                :to="getPostUrl(specialArticleContents[0]?.cat_slug, specialArticleContents[0]?.subcat_slug, specialArticleContents[0]?.content_type, specialArticleContents[0]?.content_id)"
+                class="flex flex-col gap-2 group">
                 <div class=" overflow-hidden">
-                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${specialArticleContents[0]?.img_bg_path}`"
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl.site_url}/media/content/images/${specialArticleContents[0]?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
-                <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{ specialArticleContents[0]?.content_heading }}</h3>
+                <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{
+                    specialArticleContents[0]?.content_heading }}</h3>
             </NuxtLink>
             <!--/ Special Article Feature Content -->
 
             <div class="h-p-c-excpt flex flex-col">
                 <!-- Loop Item -->
-                <NuxtLink :to="getPostUrl(specialArticleContent?.cat_slug, specialArticleContent?.subcat_slug, specialArticleContent?.content_type, specialArticleContent?.content_id)" class=" border-b py-3" v-for="specialArticleContent in specialArticleContents.slice(1, 7)" :key="specialArticleContent.content_id">
-                    <h4 class="text-base hover:text-[#ff0000] text-black font-semibold">{{ specialArticleContent?.content_heading }}</h4>
+                <NuxtLink
+                    :to="getPostUrl(specialArticleContent?.cat_slug, specialArticleContent?.subcat_slug, specialArticleContent?.content_type, specialArticleContent?.content_id)"
+                    class=" border-b py-3" v-for="specialArticleContent in specialArticleContents.slice(1, 7)"
+                    :key="specialArticleContent.content_id">
+                    <h4 class="text-base hover:text-[#ff0000] text-black font-semibold">{{
+                        specialArticleContent?.content_heading }}</h4>
                 </NuxtLink>
                 <!--/ Loop Item -->
             </div>
@@ -38,7 +46,7 @@ const specialArticleContents = useState(() => [])
 const { data: hmspecialrticle } = await useFetch("/api/prismaapi/home/specialarticle", {
     method: 'GET',
     // cache: 'force-cache',
-   
+
 })
 specialArticleContents.value = hmspecialrticle
 // ======== Special Article Content =============== //
