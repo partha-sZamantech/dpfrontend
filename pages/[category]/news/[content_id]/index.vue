@@ -1,8 +1,14 @@
 <template>
     <div class="post-detail-page">
         <!-- Page Loader -->
-        <div v-if="pending" class="bg-white h-screen ">
+        <div v-if="pending" class="bg-white min-h-screen hidden md:block ">
             <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div>
+        <div v-if="pending" class=" fixed bg-white h-screen  inset-0  flex items-center justify-center md:hidden">
+            <div class="flex items-center gap-1">
                 <img width="60" src="/assets/img/loader.gif" alt="">
                 <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
             </div>
@@ -595,6 +601,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 <script setup>
 // import moment from 'moment';
 
+
 const siteurl = siteUrlState()
 const websiteUrl = websiteUrlState()
 const img = useImage()
@@ -841,8 +848,9 @@ const pvScrollPosi = ref(0)
 const currScrollPosi = ref(0)
 const balvalue = ref(null)
 
-onMounted(() => {
 
+onMounted(() => {
+ 
     pvScrollPosi.value = window.scrollY
     // ============= Scolling ===============
     window.addEventListener("scroll", function () {

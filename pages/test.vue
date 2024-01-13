@@ -6,6 +6,12 @@
                 <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
             </div>
         </div>
+        <!-- <div class="bg-white h-screen ">
+            <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div> -->
     </div>
 </template>
 
