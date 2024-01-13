@@ -51,7 +51,7 @@
                                 <NuxtLink
                                     :to="getPostUrl(subcategoryContents[0]?.cat_slug, subcategoryContents[0]?.subcat_slug, subcategoryContents[0]?.content_type, subcategoryContents[0]?.content_id)"
                                     class="relative">
-                                    <nuxt-img
+                                    <nuxt-img loading="lazy"
                                         :src="`${siteurl.site_url}/media/content/images/${subcategoryContents[0]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 md:h-full"
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -66,10 +66,10 @@
                         <div v-if="subcategoryContents[1]"
                             class="col-span-12 md:col-span-4  border-t mt-2 md:mt-0 pt-3 md:pt-0 md:border-t-0 md:pl-3 md:border-l border-l-[#dee2e6]">
                             <NuxtLink
-                            :to="getPostUrl(subcategoryContents[1]?.cat_slug, subcategoryContents[1]?.subcat_slug, subcategoryContents[1]?.content_type, subcategoryContents[1]?.content_id)"
+                                :to="getPostUrl(subcategoryContents[1]?.cat_slug, subcategoryContents[1]?.subcat_slug, subcategoryContents[1]?.content_type, subcategoryContents[1]?.content_id)"
                                 class="categorypost-2 group">
                                 <div class="cat-feature-image overflow-hidden">
-                                    <nuxt-img
+                                    <nuxt-img loading="lazy"
                                         :src="`${siteurl.site_url}/media/content/images/${subcategoryContents[1]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -98,10 +98,10 @@
                     <!-- Category Bottom Lead -->
                     <div class="grid grid-cols-12 gap-4 md:gap-0 py-4 border-b border-b-[#dee2e6]">
                         <NuxtLink v-if="subcategoryContents[2]"
-                        :to="getPostUrl(subcategoryContents[2]?.cat_slug, subcategoryContents[2]?.subcat_slug, subcategoryContents[2]?.content_type, subcategoryContents[2]?.content_id)"
+                            :to="getPostUrl(subcategoryContents[2]?.cat_slug, subcategoryContents[2]?.subcat_slug, subcategoryContents[2]?.content_type, subcategoryContents[2]?.content_id)"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img
+                                <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${subcategoryContents[2]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -124,10 +124,10 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="subcategoryContents[3]"
-                        :to="getPostUrl(subcategoryContents[3]?.cat_slug, subcategoryContents[3]?.subcat_slug, subcategoryContents[3]?.content_type, subcategoryContents[3]?.content_id)"
+                            :to="getPostUrl(subcategoryContents[3]?.cat_slug, subcategoryContents[3]?.subcat_slug, subcategoryContents[3]?.content_type, subcategoryContents[3]?.content_id)"
                             class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img
+                                <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${subcategoryContents[3]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -149,10 +149,10 @@
                             </div>
                         </NuxtLink>
                         <NuxtLink v-if="subcategoryContents[4]"
-                        :to="getPostUrl(subcategoryContents[4]?.cat_slug, subcategoryContents[4]?.subcat_slug, subcategoryContents[4]?.content_type, subcategoryContents[4]?.content_id)"
+                            :to="getPostUrl(subcategoryContents[4]?.cat_slug, subcategoryContents[4]?.subcat_slug, subcategoryContents[4]?.content_type, subcategoryContents[4]?.content_id)"
                             class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img
+                                <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${subcategoryContents[4]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -214,7 +214,7 @@
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
-                                        <nuxt-img
+                                        <nuxt-img loading="lazy"
                                             :src="`${siteurl.site_url}/media/content/images/${subcatPost?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
