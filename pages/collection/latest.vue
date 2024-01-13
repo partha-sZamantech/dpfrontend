@@ -2,7 +2,7 @@
     <div class="category-page">
 
         <Head>
-            <Title>আজকের খবর, আপডেট নিউজ</Title>
+            <Title>আজকের খবর, আপডেট নিউজ | ঢাকাপ্রকাশ</Title>
         </Head>
         <!-- Space For Ads -->
         <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
@@ -38,7 +38,7 @@
                                 <NuxtLink
                                     :to="getPostUrl(latestPosts[0]?.cat_slug, latestPosts[0]?.subcat_slug, latestPosts[0]?.content_type, latestPosts[0]?.content_id)"
                                     class="relative">
-                                    <nuxt-img
+                                    <nuxt-img loading="lazy"
                                         :src="`${siteurl.site_url}/media/content/images/${latestPosts[0]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 md:h-full"
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -56,7 +56,7 @@
                                 :to="getPostUrl(latestPosts[1]?.cat_slug, latestPosts[1]?.subcat_slug, latestPosts[1]?.content_type, latestPosts[1]?.content_id)"
                                 class="categorypost-2 group">
                                 <div class="cat-feature-image overflow-hidden">
-                                    <nuxt-img
+                                    <nuxt-img loading="lazy"
                                         :src="`${siteurl.site_url}/media/content/images/${latestPosts[1]?.img_bg_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -84,13 +84,13 @@
                             :to="getPostUrl(latestPosts[2]?.cat_slug, latestPosts[2]?.subcat_slug, latestPosts[2]?.content_type, latestPosts[2]?.content_id)"
                             class="cat-box group md:pr-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPosts[2]?.img_bg_path}`"
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl.site_url}/media/content/images/${latestPosts[2]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
-                                <h3
-                                    class="cat-postheading font-semibold text-xl group-hover:text-[#ff0000] text-[#333]">
+                                <h3 class="cat-postheading font-semibold text-xl group-hover:text-[#ff0000] text-[#333]">
                                     {{ latestPosts[2]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
@@ -106,13 +106,13 @@
                             :to="getPostUrl(latestPosts[3]?.cat_slug, latestPosts[3]?.subcat_slug, latestPosts[3]?.content_type, latestPosts[3]?.content_id)"
                             class="cat-box group md:px-3 md:border-r border-r-[#dee2e6] col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPosts[3]?.img_bg_path}`"
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl.site_url}/media/content/images/${latestPosts[3]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
-                                <h3
-                                    class="cat-postheading text-xl font-semibold group-hover:text-[#ff0000] text-[#333]">
+                                <h3 class="cat-postheading text-xl font-semibold group-hover:text-[#ff0000] text-[#333]">
                                     {{ latestPosts[3]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
@@ -128,13 +128,13 @@
                             :to="getPostUrl(latestPosts[4]?.cat_slug, latestPosts[4]?.subcat_slug, latestPosts[4]?.content_type, latestPosts[4]?.content_id)"
                             class="cat-box group md:pl-3 col-span-12 md:col-span-4">
                             <div class="cat-box-image overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPosts[4]?.img_bg_path}`"
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl.site_url}/media/content/images/${latestPosts[4]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300 h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <div class="flex flex-col gap-3 mt-2">
-                                <h3
-                                    class="cat-postheading text-xl font-semibold group-hover:text-[#ff0000] text-[#333]">
+                                <h3 class="cat-postheading text-xl font-semibold group-hover:text-[#ff0000] text-[#333]">
                                     {{ latestPosts[4]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
@@ -186,7 +186,7 @@
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
-                                        <nuxt-img
+                                        <nuxt-img loading="lazy"
                                             :src="`${siteurl.site_url}/media/content/images/${latestPost?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -311,4 +311,5 @@ const loadMoreButtonHandler = async () => {
 
 .lead-overly {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(53, 50, 50, 0.9) 75%, rgb(0, 0, 0) 100%);
-}</style>
+}
+</style>
