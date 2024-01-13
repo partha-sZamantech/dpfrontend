@@ -66,7 +66,7 @@
                         <NuxtLink v-if="detailsContent?.author" :to="`/author/${detailsContent?.author?.author_slug}`"
                             class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
                             <div>
-                                <nuxt-img v-if="detailsContent?.author?.img_path"
+                                <nuxt-img loading="lazy" v-if="detailsContent?.author?.img_path"
                                     :src="`${siteurl.site_url}/media/authorImages/${detailsContent?.author?.img_path}`"
                                     class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16"
                                     :placeholder="img(`${siteurl.site_url}/media/common/${sitesettings?.favicon}`)" />
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                         <!-- Author Section /-->
-                        
+
                         <!-- Social Share -->
                         <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
                             <a :href="`https://www.facebook.com/sharer.php?u=${ogUrl}`" target="_blank">
@@ -137,7 +137,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <div class="feature-image border-b">
-                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
+                        <nuxt-img loading="lazy"
+                            :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
                             class="mx-auto w-full" :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                         <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
                             detailsContent?.img_bg_caption }}</p>
@@ -194,7 +195,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 <div class=" col-span-5 overflow-hidden">
                                     <NuxtLink
                                         :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
-                                        <nuxt-img
+                                        <nuxt-img loading="lazy"
                                             :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -247,11 +248,13 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents"
                             :key="fRelatedContent.content_id">
                             <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{ fRelatedContent?.content_heading }}</h5>
+                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{
+                                fRelatedContent?.content_heading }}</h5>
                         </NuxtLink>
                         <!-- Loop Item -->
 
@@ -308,14 +311,14 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
                     </div>
 
-            
+
                     <!-- Author Section -->
                     <div
                         class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3">
                         <NuxtLink v-if="moreDetailContent?.author" :to="`/author/${moreDetailContent?.author?.author_slug}`"
                             class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
                             <div>
-                                <nuxt-img v-if="moreDetailContent?.author?.img_path"
+                                <nuxt-img loading="lazy" v-if="moreDetailContent?.author?.img_path"
                                     :src="`${siteurl.site_url}/media/authorImages/${moreDetailContent?.author?.img_path}`"
                                     class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16"
                                     :placeholder="img(`${siteurl.site_url}/media/common/${sitesettings?.favicon}`)" />
@@ -323,7 +326,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
                             </div>
                             <div class="flex flex-col justify-center">
-                                <p class="group-hover:text-[#3375af] font-[600]">{{ moreDetailContent?.author?.author_name_bn
+                                <p class="group-hover:text-[#3375af] font-[600]">{{
+                                    moreDetailContent?.author?.author_name_bn
                                 }}</p>
 
                                 <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent?.created_at) }}</span>
@@ -401,7 +405,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <div class="feature-image border-b">
-                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`"
+                        <nuxt-img loading="lazy"
+                            :src="`${siteurl.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`"
                             class="mx-auto w-full" :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                         <p v-if="moreDetailContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
                             moreDetailContent?.img_bg_caption }}</p>
@@ -456,7 +461,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 <div class=" col-span-5 overflow-hidden">
                                     <NuxtLink
                                         :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)">
-                                        <nuxt-img
+                                        <nuxt-img loading="lazy"
                                             :src="`${siteurl.site_url}/media/content/images/${moreDetCatCon?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
@@ -509,11 +514,13 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             v-for="relDetailContent in moreDetailContent?.morereletedcontentbelow[mcinx]"
                             :key="relDetailContent.content_id">
                             <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${relDetailContent?.img_bg_path}`"
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl.site_url}/media/content/images/${relDetailContent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{ relDetailContent?.content_heading }}</h5>
+                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{
+                                relDetailContent?.content_heading }}</h5>
                         </NuxtLink>
 
                     </div>
@@ -538,11 +545,13 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                             class="flex flex-col gap-2 group" v-for="latestPostC in latestPostsDpage"
                             :key="latestPostC.content_id">
                             <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latestPostC?.img_bg_path}`"
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl.site_url}/media/content/images/${latestPostC?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{ latestPostC?.content_heading }}</h5>
+                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{ latestPostC?.content_heading
+                            }}</h5>
                         </NuxtLink>
                         <!-- Loop Item -->
 
