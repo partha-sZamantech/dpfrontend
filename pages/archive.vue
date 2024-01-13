@@ -5,15 +5,25 @@
             <Title>আর্কাইভ</Title>
         </Head>
         <!-- Space For Ads -->
-        <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
+        <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
             <div class="bg-[#f7f7f7]">
                 <a target="_blank" href="/">
                     <img class="mx-auto" src="/assets/img/bar-ads.gif" alt="">
                 </a>
             </div>
-        </div>
+        </div> -->
         <!-- Space For Ads -->
-        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
+
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white h-screen ">
+            <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div>
+        <!-- Page Loader -->
+
+        <div v-else class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
 
@@ -34,8 +44,8 @@
                         <div class="col-span-12 md:col-span-8">
                             <!-- Loop Item -->
 
-                            <div v-if="archiveContents?.length > 0" class="cat-post-item py-4 border-b" v-for="(archiveContent, cpInx) in archiveContents"
-                                :key="cpInx">
+                            <div v-if="archiveContents?.length > 0" class="cat-post-item py-4 border-b"
+                                v-for="(archiveContent, cpInx) in archiveContents" :key="cpInx">
 
                                 <NuxtLink
                                     :to="`/category/${archiveContent?.category?.cat_slug}/${archiveContent?.content_id}`"
@@ -85,7 +95,7 @@
                         </client-only>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -103,7 +113,7 @@ const attrs = ref([
             color: '#284f81',
             fillMode: 'solid'
         },
-        
+
     }
 ])
 // Sticky Status
@@ -128,7 +138,7 @@ const firstLoad = ref(true)
 const isArchiveClickedDate = ref(false)
 const archiveContents = useState(() => [])
 const take = ref(10)
-const { data: arcvCon } = await useFetch('/api/archive/getarchive', {
+const { data: arcvCon, pending } = await useFetch('/api/archive/getarchive', {
     method: "POST",
     body: {
         date: '',

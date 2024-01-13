@@ -5,7 +5,16 @@
             <AdsDesktopHomeMiddleTop :homeMiddleAds="homeMiddleAds" />
         </div>
         <!-- Home Middle Top Ads -->
-        <div class="py-2 md:px-4 max-w-[1280px] mx-auto px-4">
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white h-screen ">
+            <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div>
+        <!-- Page Loader -->
+
+        <div v-else class="py-2 md:px-4 max-w-[1280px] mx-auto px-4">
             <!-- Headline Component -->
             <Headline v-if="allHeadline?.length > 0" :breakingNews="allHeadline" />
             <!--/ Headline Component -->
@@ -117,7 +126,8 @@
                 </div>
             </div>
             <!-- Home Middle Five Ads -->
-            <div v-if="homeMiddleFiveAds?.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+            <div v-if="homeMiddleFiveAds?.status === 1"
+                class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                 <AdsDesktopHomeMiddleFive :homeMiddleFiveAds="homeMiddleFiveAds" />
             </div>
             <!-- Home Middle Five Ads -->
@@ -274,11 +284,27 @@
 
 <script setup>
 
+// ======== Breaking News =========//
 const allHeadline = useState(() => [])
 const { data: allhead } = await useFetch(`/api/prismaapi/breakingnews/breaking`, {
     method: 'GET',
 })
 allHeadline.value = allhead.value
+// ======== Breaking News =========//
+
+// =============== Special Content Fetching ====================//
+const specialTopContents = specialTopContentState()
+
+const { data: spTopCon, pending } = await useFetch('/api/prismaapi/home/specialtopcontent', {
+    method: "GET",
+    // cache: 'force-cache'
+})
+// const { data: spTopCon } = await useFetch("/api/home/specialtopcontent", {
+//     method: 'GET'
+// })
+specialTopContents.value = spTopCon.value
+// =============== Special Content Fetching ====================//
+
 
 //========== Home Page Middle Top Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page

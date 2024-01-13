@@ -207,9 +207,16 @@
                         <div class="col-span-2 hidden md:block"></div>
                     </div>
                     <div class="flex justify-center items-center" v-if="latestPosts?.length > 10">
-                        <button @click="loadMoreButtonHandler"
+                        <button @click="loadMoreButtonHandler" v-if="pending"
+                            class="border border-[#dee2e6] text-[#3375af] pl-2 pr-6 py-1 flex gap-0 justify-center items-center rounded-sm mt-5 hover:border-[#3375af]">
+                            <img width="33" src="/assets/img/loader.gif" alt="">
+                            <b>আরও</b>
+                        </button>
+                        <button v-else @click="loadMoreButtonHandler"
                             class="border border-[#dee2e6] text-[#3375af] px-8 py-2 rounded-sm mt-5 hover:border-[#3375af]"><b>আরও</b></button>
                     </div>
+
+
                     <!-- Loop Category Post Section -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">
@@ -284,7 +291,7 @@ latestPostContentExcept.value = exceptlPost.value
 const loadMoreButtonHandler = async () => {
     take.value += 10
 
-    const { data: loadLPC } = await useFetch('/api/prismaapi/collection/latestpost', {
+    const { data: loadLPC, pending } = await useFetch('/api/prismaapi/collection/latestpost', {
         method: "POST",
         body: {
             take: take.value,

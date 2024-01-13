@@ -10,7 +10,7 @@
                             class="flex flex-col gap-3">
                             <div class="overflow-hidden">
                                 <nuxt-img loading="lazy"
-                                    :src="`${siteurl.site_url}/media/content/images/${specialTopContents[0].img_bg_path}`"
+                                    :src="`${siteurl.site_url}/media/content/images/${specialTopContents[0]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
@@ -75,14 +75,14 @@ const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) =
 // =============== Special Content Fetching ====================//
 const specialTopContents = specialTopContentState()
 
-const { data: spTopCon } = await useFetch('/api/prismaapi/home/specialtopcontent', {
-    method: "GET",
-    // cache: 'force-cache'
-})
-// const { data: spTopCon } = await useFetch("/api/home/specialtopcontent", {
-//     method: 'GET'
+// const { data: spTopCon } = await useFetch('/api/prismaapi/home/specialtopcontent', {
+//     method: "GET",
+//     // cache: 'force-cache'
 // })
-specialTopContents.value = spTopCon.value
+// // const { data: spTopCon } = await useFetch("/api/home/specialtopcontent", {
+// //     method: 'GET'
+// // })
+// specialTopContents.value = spTopCon.value
 // =============== Special Content Fetching ====================//
 
 

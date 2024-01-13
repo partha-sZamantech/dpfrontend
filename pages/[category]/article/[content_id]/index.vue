@@ -1,573 +1,594 @@
 <template>
-    <div class=" max-w-[1280px] mx-auto detail-page px-4 md:px-4 py-4">
-
-        <Head>
-            <Title>{{ detailsContent?.content_heading }}</Title>
-            <!-- Refresh Reload -->
-            <Meta content="500" http-equiv="refresh" />
-            <!-- Refresh Reload -->
-            <Meta name="description" :content="ogDescription" />
-            <Meta name="keywords" :content="metaKeywords" />
-            <Meta property="og:url" :content="ogUrl" />
-            <Meta property="og:title" :content="ogTitle" />
-            <Meta property="og:description" :content="ogDescription" />
-            <Meta property="og:image" :content="ogImage" />
-
-            <Meta name="twitter:title" :content="ogTitle" />
-            <Meta name="twitter:description" :content="ogDescription" />
-            <Meta name="twitter:image" :content="ogImage" />
-            <Meta name="twitter:url" :content="ogUrl" />
-            <Link rel="canonical" :href="ogUrl" />
-        </Head>
-
-        <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
-        <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-3">
-            <div class="flex gap-1 justify-start items-center">
-                <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`"
-                    class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
-                    <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                    <h1 class="text-base md:text-xl">{{ detailsContent?.category?.cat_name_bn }}</h1>
-                </NuxtLink>
-
+    <div class="post-detail-page">
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white h-screen ">
+            <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
             </div>
         </div>
-        <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
-        <div v-if="DetailTopAds?.status === 1" class="pb-4 mb-4 border-b border-b-[#e2e2e2]">
-            <AdsDesktopDetailTop :DetailTopAds="DetailTopAds" />
-        </div>
-        <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
-        <!--========== First Details Content ============ -->
-        <div class=" grid grid-cols-12 gap-5 relative d-print">
-            <div class="col-span-12 md:col-span-9" id="singlepost">
-                <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="detailsContent?.content_heading"
-                    :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
-                    :data-keywords="detailsContent?.meta_keywords"
-                    :data-href="`${websiteUrl?.website_url}${getPostUrl(detailsContent?.category?.cat_slug, detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type, detailsContent?.content_id)}`"
-                    :data-src="`${siteurl?.site_url}/media/content/images/${detailsContent?.img_bg_path}`">
-                    <!-- <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
-                    :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
-                    :data-keywords="detailsContent?.meta_keywords"
-                    :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
-                    :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`"> -->
-                    <div class="singlePost-heading flex flex-col gap-2">
-                        <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
-                            detailsContent?.content_sub_heading }}</h4>
-                        <h2 class="text-3xl md:text-[40px] font-semibold md:leading-[50px] print:text-[40px]">{{
-                            detailsContent?.content_heading }}
-                            {{ balvalue }}
-                        </h2>
-                        <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
+        <!-- Page Loader -->
 
-                    </div>
+        <div v-else class=" max-w-[1280px] mx-auto detail-page px-4 md:px-4 py-4">
 
-                    <!-- Author Section -->
-                    <div
-                        class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3">
-                        <NuxtLink v-if="detailsContent?.author" :to="`/author/${detailsContent?.author?.author_slug}`"
-                            class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
-                            <div>
-                                <nuxt-img loading="lazy" v-if="detailsContent?.author?.img_path"
-                                    :src="`${siteurl.site_url}/media/authorImages/${detailsContent?.author?.img_path}`"
-                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16"
-                                    :placeholder="img(`${siteurl.site_url}/media/common/${sitesettings?.favicon}`)" />
-                                <img v-else :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
-                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <p class="group-hover:text-[#3375af] font-[600]">{{ detailsContent?.author?.author_name_bn
-                                }}</p>
+            <Head>
+                <Title>{{ detailsContent?.content_heading }}</Title>
+                <!-- Refresh Reload -->
+                <Meta content="500" http-equiv="refresh" />
+                <!-- Refresh Reload -->
+                <Meta name="description" :content="ogDescription" />
+                <Meta name="keywords" :content="metaKeywords" />
+                <Meta property="og:url" :content="ogUrl" />
+                <Meta property="og:title" :content="ogTitle" />
+                <Meta property="og:description" :content="ogDescription" />
+                <Meta property="og:image" :content="ogImage" />
 
-                                <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
-                                    </ClientOnly>
-                                </p>
-                            </div>
-                        </NuxtLink>
-                        <div v-else class="author-details flex gap-2 group">
-                            <div>
-                                <img :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
-                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <!-- <p v-if="detailsContent?.author"> -->
-                                <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
+                <Meta name="twitter:title" :content="ogTitle" />
+                <Meta name="twitter:description" :content="ogDescription" />
+                <Meta name="twitter:image" :content="ogImage" />
+                <Meta name="twitter:url" :content="ogUrl" />
+                <Link rel="canonical" :href="ogUrl" />
+            </Head>
 
-                                <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
-                                    </ClientOnly>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Author Section /-->
+            <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
+            <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-3">
+                <div class="flex gap-1 justify-start items-center">
+                    <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`"
+                        class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
+                        <!-- {{ detailsContent?.category?.cat_name_bn }} -->
+                        <h1 class="text-base md:text-xl">{{ detailsContent?.category?.cat_name_bn }}</h1>
+                    </NuxtLink>
 
-                        <!-- Social Share -->
-                        <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
-                            <a :href="`https://www.facebook.com/sharer.php?u=${ogUrl}`" target="_blank">
-                                <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg" height="28"
-                                    width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
-                                    <path fill="#1877F2"
-                                        d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
-                                    </path>
-                                    <path fill="#FFFFFF"
-                                        d="M18,17.5h2.5l1-4H18v-2c0-1.03,0-2,2-2h1.5V6.14C21.174,6.097,19.943,6,18.643,6C15.928,6,14,7.657,14,10.7 v2.8h-3v4h3V26h4V17.5z">
-                                    </path>
-                                </svg>
-                            </a>
-                            <a :href="`https://twitter.com/intent/tweet?url=${ogUrl}`" target="_blank">
-                                <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" height="28"
-                                    width="28">
-                                    <circle fill="#0F1419" cx="12" cy="12" r="12"></circle>
-                                    <path fill="#FFFFFF" d="M15.531,7h1.662l-3.63,4.236L17.833,17h-3.343l-2.62-3.495L8.876,17H7.212l3.882-4.531L7,7h3.427
-l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
-                                </svg>
-                            </a>
-                            <!-- Social Share -->
-                            <div class="cursor-pointer" @click="printPageArea('singlepost')">
-                                <svg class=" hover:scale-125 duration-200" height="28" width="28"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
-                                    xml:space="preserve">
-                                    <path fill="#595959"
-                                        d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
-                                    </path>
-                                    <path fill="#FFFFFF"
-                                        d="M12,20h8v4h-8V20z M21.6,22.4v-4H10.4v4H8.8c-0.212,0-0.416-0.084-0.566-0.234C8.084,22.016,8,21.812,8,21.6 v-8c0-0.212,0.084-0.416,0.234-0.566C8.384,12.884,8.588,12.8,8.8,12.8h14.4c0.212,0,0.416,0.084,0.566,0.234 C23.916,13.184,24,13.388,24,13.6v8c0,0.212-0.084,0.416-0.234,0.566c-0.15,0.15-0.353,0.234-0.566,0.234H21.6z M10.4,14.4V16h2.4 v-1.6H10.4z M12,8h8c0.212,0,0.416,0.084,0.566,0.234C20.716,8.384,20.8,8.588,20.8,8.8v2.4h-9.6V8.8 c0-0.212,0.084-0.416,0.234-0.566C11.584,8.084,11.788,8,12,8z">
-                                    </path>
-                                </svg>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="feature-image border-b">
-                        <nuxt-img loading="lazy"
-                            :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
-                            class="mx-auto w-full" :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                        <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
-                            detailsContent?.img_bg_caption }}</p>
-                    </div>
-                    <div class="singlePost-detail grid grid-cols-12">
-                        <div class=" hidden md:block md:col-span-2"></div>
-                        <div class="col-span-12 md:col-span-8">
-
-                            <div class="postdetails text-[18px] text-[#121212] pb-4"
-                                v-html="detailsContent?.content_details">
-                            </div>
-
-                            <!-- Tag Area -->
-                            <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3 print:hidden">
-                                <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
-                                        class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
-                                            detailsContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
-                                <ul class="flex flex-wrap gap-3 items-center" v-if="firstContentTags?.length > 0">
-
-                                    <li v-for="ftag in firstContentTags"
-                                        class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1] font-semibold">
-                                        <NuxtLink class="px-4 py-2 block" :to="`/topic/${ftag}`">{{ ftag }}</NuxtLink>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Tag Area -->
-                        </div>
-                        <div class=" hidden md:block md:col-span-2"></div>
-                    </div> <!-- singlePost-details -->
-                </div> <!-- /single-post -->
-
-            </div>
-
-            <div class=" col-span-12 md:col-span-3">
-                <!--:::::::: Detail Page Right One Ads :::::::::-->
-                <div v-if="DetailRightOneAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
-                    <AdsDesktopDetailRightOne :DetailRightOneAds="DetailRightOneAds" />
                 </div>
-                <!--:::::::: Detail Page Right One Ads :::::::::-->
-                <div :class="`sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`">
-                    <div :class="`flex flex-col gap-2`">
-                        <div class=" border-b-[3px] border-[#3375af] pb-1">
-                            <h3 class="text-[#3375af] text-[18px] font-[600]">{{ detailsContent?.category?.cat_name_bn }}
-                                নিয়ে
-                                আরও পড়ুন</h3>
+            </div>
+            <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
+            <div v-if="DetailTopAds?.status === 1" class="pb-4 mb-4 border-b border-b-[#e2e2e2]">
+                <AdsDesktopDetailTop :DetailTopAds="DetailTopAds" />
+            </div>
+            <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
+            <!--========== First Details Content ============ -->
+            <div class=" grid grid-cols-12 gap-5 relative d-print">
+                <div class="col-span-12 md:col-span-9" id="singlepost">
+                    <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="detailsContent?.content_heading"
+                        :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
+                        :data-keywords="detailsContent?.meta_keywords"
+                        :data-href="`${websiteUrl?.website_url}${getPostUrl(detailsContent?.category?.cat_slug, detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type, detailsContent?.content_id)}`"
+                        :data-src="`${siteurl?.site_url}/media/content/images/${detailsContent?.img_bg_path}`">
+                        <!-- <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
+            :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
+            :data-keywords="detailsContent?.meta_keywords"
+            :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
+            :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`"> -->
+                        <div class="singlePost-heading flex flex-col gap-2">
+                            <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
+                                detailsContent?.content_sub_heading }}</h4>
+                            <h2 class="text-3xl md:text-[40px] font-semibold md:leading-[50px] print:text-[40px]">{{
+                                detailsContent?.content_heading }}
+                                {{ balvalue }}
+                            </h2>
+                            <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
+
                         </div>
 
-                        <div class="detail-page-category-content-exept flex flex-col"
-                            v-if="firstMoreContents?.contents?.length > 0">
+                        <!-- Author Section -->
+                        <div
+                            class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3">
+                            <NuxtLink v-if="detailsContent?.author" :to="`/author/${detailsContent?.author?.author_slug}`"
+                                class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
+                                <div>
+                                    <nuxt-img loading="lazy" v-if="detailsContent?.author?.img_path"
+                                        :src="`${siteurl.site_url}/media/authorImages/${detailsContent?.author?.img_path}`"
+                                        class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16"
+                                        :placeholder="img(`${siteurl.site_url}/media/common/${sitesettings?.favicon}`)" />
+                                    <img v-else :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
+                                        class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
+                                </div>
+                                <div class="flex flex-col justify-center">
+                                    <p class="group-hover:text-[#3375af] font-[600]">{{
+                                        detailsContent?.author?.author_name_bn
+                                    }}</p>
+
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
+                                        </ClientOnly>
+                                    </p>
+                                </div>
+                            </NuxtLink>
+                            <div v-else class="author-details flex gap-2 group">
+                                <div>
+                                    <img :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
+                                        class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
+                                </div>
+                                <div class="flex flex-col justify-center">
+                                    <!-- <p v-if="detailsContent?.author"> -->
+                                    <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
+
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
+                                        </ClientOnly>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Author Section /-->
+
+                            <!-- Social Share -->
+                            <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
+                                <a :href="`https://www.facebook.com/sharer.php?u=${ogUrl}`" target="_blank">
+                                    <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
+                                        height="28" width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
+                                        xml:space="preserve">
+                                        <path fill="#1877F2"
+                                            d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
+                                        </path>
+                                        <path fill="#FFFFFF"
+                                            d="M18,17.5h2.5l1-4H18v-2c0-1.03,0-2,2-2h1.5V6.14C21.174,6.097,19.943,6,18.643,6C15.928,6,14,7.657,14,10.7 v2.8h-3v4h3V26h4V17.5z">
+                                        </path>
+                                    </svg>
+                                </a>
+                                <a :href="`https://twitter.com/intent/tweet?url=${ogUrl}`" target="_blank">
+                                    <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"
+                                        height="28" width="28">
+                                        <circle fill="#0F1419" cx="12" cy="12" r="12"></circle>
+                                        <path fill="#FFFFFF" d="M15.531,7h1.662l-3.63,4.236L17.833,17h-3.343l-2.62-3.495L8.876,17H7.212l3.882-4.531L7,7h3.427
+l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
+                                    </svg>
+                                </a>
+                                <!-- Social Share -->
+                                <div class="cursor-pointer" @click="printPageArea('singlepost')">
+                                    <svg class=" hover:scale-125 duration-200" height="28" width="28"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                                        enable-background="new 0 0 32 32" xml:space="preserve">
+                                        <path fill="#595959"
+                                            d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
+                                        </path>
+                                        <path fill="#FFFFFF"
+                                            d="M12,20h8v4h-8V20z M21.6,22.4v-4H10.4v4H8.8c-0.212,0-0.416-0.084-0.566-0.234C8.084,22.016,8,21.812,8,21.6 v-8c0-0.212,0.084-0.416,0.234-0.566C8.384,12.884,8.588,12.8,8.8,12.8h14.4c0.212,0,0.416,0.084,0.566,0.234 C23.916,13.184,24,13.388,24,13.6v8c0,0.212-0.084,0.416-0.234,0.566c-0.15,0.15-0.353,0.234-0.566,0.234H21.6z M10.4,14.4V16h2.4 v-1.6H10.4z M12,8h8c0.212,0,0.416,0.084,0.566,0.234C20.716,8.384,20.8,8.588,20.8,8.8v2.4h-9.6V8.8 c0-0.212,0.084-0.416,0.234-0.566C11.584,8.084,11.788,8,12,8z">
+                                        </path>
+                                    </svg>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="feature-image border-b">
+                            <nuxt-img loading="lazy"
+                                :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
+                                class="mx-auto w-full" :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                            <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
+                                detailsContent?.img_bg_caption }}</p>
+                        </div>
+                        <div class="singlePost-detail grid grid-cols-12">
+                            <div class=" hidden md:block md:col-span-2"></div>
+                            <div class="col-span-12 md:col-span-8">
+
+                                <div class="postdetails text-[18px] text-[#121212] pb-4"
+                                    v-html="detailsContent?.content_details">
+                                </div>
+
+                                <!-- Tag Area -->
+                                <div
+                                    class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3 print:hidden">
+                                    <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
+                                            class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
+                                                detailsContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
+                                    <ul class="flex flex-wrap gap-3 items-center" v-if="firstContentTags?.length > 0">
+
+                                        <li v-for="ftag in firstContentTags"
+                                            class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1] font-semibold">
+                                            <NuxtLink class="px-4 py-2 block" :to="`/topic/${ftag}`">{{ ftag }}</NuxtLink>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Tag Area -->
+                            </div>
+                            <div class=" hidden md:block md:col-span-2"></div>
+                        </div> <!-- singlePost-details -->
+                    </div> <!-- /single-post -->
+
+                </div>
+
+                <div class=" col-span-12 md:col-span-3">
+                    <!--:::::::: Detail Page Right One Ads :::::::::-->
+                    <div v-if="DetailRightOneAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                        <AdsDesktopDetailRightOne :DetailRightOneAds="DetailRightOneAds" />
+                    </div>
+                    <!--:::::::: Detail Page Right One Ads :::::::::-->
+                    <div :class="`sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`">
+                        <div :class="`flex flex-col gap-2`">
+                            <div class=" border-b-[3px] border-[#3375af] pb-1">
+                                <h3 class="text-[#3375af] text-[18px] font-[600]">{{ detailsContent?.category?.cat_name_bn
+                                }}
+                                    নিয়ে
+                                    আরও পড়ুন</h3>
+                            </div>
+
+                            <div class="detail-page-category-content-exept flex flex-col"
+                                v-if="firstMoreContents?.contents?.length > 0">
+                                <!-- Loop Item -->
+
+                                <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
+                                    v-for="fmoreContent in firstMoreContents?.contents" :key="fmoreContent.content_id">
+                                    <div class=" col-span-5 overflow-hidden">
+                                        <NuxtLink
+                                            :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
+                                            <nuxt-img loading="lazy"
+                                                :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
+                                                class="mx-auto w-full group-hover:scale-110 duration-300"
+                                                :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                                        </NuxtLink>
+                                    </div>
+                                    <div class=" col-span-7">
+                                        <NuxtLink
+                                            :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
+                                            <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
+                                                fmoreContent?.content_heading }}</h4>
+                                        </NuxtLink>
+                                    </div>
+                                </div>
+                                <!--/ Loop Item -->
+                            </div>
+                        </div>
+                        <!--:::::::: Detail Page Right Two Ads :::::::::-->
+                        <div v-if="DetailRightTwoAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                            <AdsDesktopDetailRightTwo :DetailRightTwoAds="DetailRightTwoAds" />
+                        </div>
+                        <!--:::::::: Detail Page Right Two Ads :::::::::-->
+                        <!--:::::::: Detail Page Right Three Ads :::::::::-->
+                        <div v-if="DetailRightThreeAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                            <AdsDesktopDetailRightThree :DetailRightThreeAds="DetailRightThreeAds" />
+                        </div>
+                        <!--:::::::: Detail Page Right Three Ads :::::::::-->
+                    </div>
+                </div>
+                <!--:::::::: Detail Page After Ads :::::::::::-->
+                <div v-if="DetailAfterAds?.status === 1"
+                    class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                    <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
+                </div>
+                <!--:::::::: Detail Page After Ads :::::::::::-->
+
+
+                <!-- Read more first Releted content -->
+                <div class="col-span-12" v-if="fRelatedContents?.length > 0">
+                    <div class="read-more">
+                        <div class="category-header border-b-4 border-b-[#3375af] my-3">
+                            <div class="flex gap-3 items-center">
+                                <span class="w-3 h-3 bg-[#3375af]"></span>
+                                <h2 class="text-[#3375af] text-[18px] font-semibold">আরও পড়ুন</h2>
+                            </div>
+                        </div>
+                        <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <!-- Loop Item -->
+                            <NuxtLink
+                                :to="getPostUrl(fRelatedContent?.cat_slug, fRelatedContent?.subcat_slug, fRelatedContent?.content_type, fRelatedContent?.content_id)"
+                                class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents"
+                                :key="fRelatedContent.content_id">
+                                <div class="feature_image_readmore overflow-hidden">
+                                    <nuxt-img loading="lazy"
+                                        :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
+                                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                                        :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                                </div>
+                                <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{
+                                    fRelatedContent?.content_heading }}</h5>
+                            </NuxtLink>
                             <!-- Loop Item -->
 
-                            <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
-                                v-for="fmoreContent in firstMoreContents?.contents" :key="fmoreContent.content_id">
-                                <div class=" col-span-5 overflow-hidden">
-                                    <NuxtLink
-                                        :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
-                                        <nuxt-img loading="lazy"
-                                            :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
-                                            class="mx-auto w-full group-hover:scale-110 duration-300"
-                                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                                    </NuxtLink>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Read more first content -->
+
+
+
+                <!--:::::::: Detail Page Bottom Ads :::::::::::-->
+                <div v-if="DetailBottomAds?.status === 1"
+                    class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                    <AdsDesktopDetailBottom :DetailBottomAds="DetailBottomAds" />
+                </div>
+                <!--:::::::: Detail Page Bottom Ads :::::::::::-->
+            </div>
+            <!--========== // First Details Content ============ -->
+
+            <!--========== <3> More Details Content ============ -->
+            <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
+                :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
+
+                <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
+                    <!----- Breadcump ----->
+                    <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-3">
+                        <div class="flex gap-1 justify-start items-center">
+                            <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`"
+                                class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
+                                <!-- {{ detailsContent?.category?.cat_name_bn }} -->
+                                <h1 class="text-base md:text-xl">{{ moreDetailContent?.category?.cat_name_bn }}</h1>
+                            </NuxtLink>
+                        </div>
+                    </div>
+                    <!----- Breadcump relatedPostOgImage ----->
+                    <!-- <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
+            :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
+            :data-keywords="moreDetailContent?.meta_keywords"
+            :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
+            :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`"> -->
+                    <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="moreDetailContent?.content_heading"
+                        :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
+                        :data-keywords="moreDetailContent?.meta_keywords"
+                        :data-href="`${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
+                        :data-src="`${siteurl?.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`">
+
+                        <div class="singlePost-heading flex flex-col gap-2">
+                            <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
+                                moreDetailContent?.content_sub_heading }}</h4>
+                            <h2 class="text-3xl md:text-[40px] font-semibold md:leading-[50px] print:text-[32px]">{{
+                                moreDetailContent.content_heading
+                            }} {{ balvalue }}</h2>
+                            <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
+                        </div>
+
+
+                        <!-- Author Section -->
+                        <div
+                            class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3">
+                            <NuxtLink v-if="moreDetailContent?.author"
+                                :to="`/author/${moreDetailContent?.author?.author_slug}`"
+                                class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
+                                <div>
+                                    <nuxt-img loading="lazy" v-if="moreDetailContent?.author?.img_path"
+                                        :src="`${siteurl.site_url}/media/authorImages/${moreDetailContent?.author?.img_path}`"
+                                        class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16"
+                                        :placeholder="img(`${siteurl.site_url}/media/common/${sitesettings?.favicon}`)" />
+                                    <img v-else :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
+                                        class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
                                 </div>
-                                <div class=" col-span-7">
-                                    <NuxtLink
-                                        :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
-                                        <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
-                                            fmoreContent?.content_heading }}</h4>
-                                    </NuxtLink>
+                                <div class="flex flex-col justify-center">
+                                    <p class="group-hover:text-[#3375af] font-[600]">{{
+                                        moreDetailContent?.author?.author_name_bn
+                                    }}</p>
+
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent?.created_at) }}</span>
+                                        </ClientOnly>
+                                    </p>
+                                </div>
+                            </NuxtLink>
+                            <div v-else class="author-details flex gap-2 group">
+                                <div>
+                                    <img :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
+                                        class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
+                                </div>
+                                <div class="flex flex-col justify-center">
+                                    <!-- <p v-if="detailsContent?.author"> -->
+                                    <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
+
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent?.created_at) }}</span>
+                                        </ClientOnly>
+                                    </p>
                                 </div>
                             </div>
-                            <!--/ Loop Item -->
-                        </div>
-                    </div>
-                    <!--:::::::: Detail Page Right Two Ads :::::::::-->
-                    <div v-if="DetailRightTwoAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
-                        <AdsDesktopDetailRightTwo :DetailRightTwoAds="DetailRightTwoAds" />
-                    </div>
-                    <!--:::::::: Detail Page Right Two Ads :::::::::-->
-                    <!--:::::::: Detail Page Right Three Ads :::::::::-->
-                    <div v-if="DetailRightThreeAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
-                        <AdsDesktopDetailRightThree :DetailRightThreeAds="DetailRightThreeAds" />
-                    </div>
-                    <!--:::::::: Detail Page Right Three Ads :::::::::-->
-                </div>
-            </div>
-            <!--:::::::: Detail Page After Ads :::::::::::-->
-            <div v-if="DetailAfterAds?.status === 1"
-                class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
-                <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
-            </div>
-            <!--:::::::: Detail Page After Ads :::::::::::-->
-
-
-            <!-- Read more first Releted content -->
-            <div class="col-span-12" v-if="fRelatedContents?.length > 0">
-                <div class="read-more">
-                    <div class="category-header border-b-4 border-b-[#3375af] my-3">
-                        <div class="flex gap-3 items-center">
-                            <span class="w-3 h-3 bg-[#3375af]"></span>
-                            <h2 class="text-[#3375af] text-[18px] font-semibold">আরও পড়ুন</h2>
-                        </div>
-                    </div>
-                    <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <!-- Loop Item -->
-                        <NuxtLink
-                            :to="getPostUrl(fRelatedContent?.cat_slug, fRelatedContent?.subcat_slug, fRelatedContent?.content_type, fRelatedContent?.content_id)"
-                            class="flex flex-col gap-2 group" v-for="fRelatedContent in fRelatedContents"
-                            :key="fRelatedContent.content_id">
-                            <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img loading="lazy"
-                                    :src="`${siteurl.site_url}/media/content/images/${fRelatedContent?.img_bg_path}`"
-                                    class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                            </div>
-                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{
-                                fRelatedContent?.content_heading }}</h5>
-                        </NuxtLink>
-                        <!-- Loop Item -->
-
-
-                    </div>
-                </div>
-            </div>
-            <!-- Read more first content -->
-
-
-
-            <!--:::::::: Detail Page Bottom Ads :::::::::::-->
-            <div v-if="DetailBottomAds?.status === 1"
-                class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
-                <AdsDesktopDetailBottom :DetailBottomAds="DetailBottomAds" />
-            </div>
-            <!--:::::::: Detail Page Bottom Ads :::::::::::-->
-        </div>
-        <!--========== // First Details Content ============ -->
-
-        <!--========== <3> More Details Content ============ -->
-        <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
-            :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
-
-            <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
-                <!----- Breadcump ----->
-                <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-3">
-                    <div class="flex gap-1 justify-start items-center">
-                        <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`"
-                            class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
-                            <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                            <h1 class="text-base md:text-xl">{{ moreDetailContent?.category?.cat_name_bn }}</h1>
-                        </NuxtLink>
-                    </div>
-                </div>
-                <!----- Breadcump relatedPostOgImage ----->
-                <!-- <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
-                    :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
-                    :data-keywords="moreDetailContent?.meta_keywords"
-                    :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
-                    :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`"> -->
-                <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="moreDetailContent?.content_heading"
-                    :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
-                    :data-keywords="moreDetailContent?.meta_keywords"
-                    :data-href="`${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
-                    :data-src="`${siteurl?.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`">
-
-                    <div class="singlePost-heading flex flex-col gap-2">
-                        <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
-                            moreDetailContent?.content_sub_heading }}</h4>
-                        <h2 class="text-3xl md:text-[40px] font-semibold md:leading-[50px] print:text-[32px]">{{
-                            moreDetailContent.content_heading
-                        }} {{ balvalue }}</h2>
-                        <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
-                    </div>
-
-
-                    <!-- Author Section -->
-                    <div
-                        class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3">
-                        <NuxtLink v-if="moreDetailContent?.author" :to="`/author/${moreDetailContent?.author?.author_slug}`"
-                            class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
-                            <div>
-                                <nuxt-img loading="lazy" v-if="moreDetailContent?.author?.img_path"
-                                    :src="`${siteurl.site_url}/media/authorImages/${moreDetailContent?.author?.img_path}`"
-                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16"
-                                    :placeholder="img(`${siteurl.site_url}/media/common/${sitesettings?.favicon}`)" />
-                                <img v-else :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
-                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <p class="group-hover:text-[#3375af] font-[600]">{{
-                                    moreDetailContent?.author?.author_name_bn
-                                }}</p>
-
-                                <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent?.created_at) }}</span>
-                                    </ClientOnly>
-                                </p>
-                            </div>
-                        </NuxtLink>
-                        <div v-else class="author-details flex gap-2 group">
-                            <div>
-                                <img :src="`${siteurl.site_url}/media/common/${sitesettings?.favicon}`"
-                                    class="mx-auto rounded-full w-11 h-11 md:w-16 md:h-16" />
-                            </div>
-                            <div class="flex flex-col justify-center">
-                                <!-- <p v-if="detailsContent?.author"> -->
-                                <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
-
-                                <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent?.created_at) }}</span>
-                                    </ClientOnly>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Author Section /-->
-                        <!-- <div class="author-details flex flex-col gap-1" v-if="moreDetailContent?.author">
-                            <p v-if="moreDetailContent?.author">
-                            
-                                <NuxtLink class="hover:text-[#3375af] font-[600]"
-                                    :to="`/author/${moreDetailContent?.author?.author_slug}`">{{
-                                        moreDetailContent?.author?.author_name_bn }}</NuxtLink>
-                            </p>
-                            <p v-else>
-                                <NuxtLink class="hover:text-[#3375af] font-[600]" to="/author/dhaka-prokash-desk">ঢাকাপ্রকাশ
-                                    ডেস্ক</NuxtLink>
-                            </p>
-                            <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span>
-                                </ClientOnly>
-                            </p>
-                        </div> -->
-                        <!-- Social Share -->
-                        <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
-                            <a :href="`https://www.facebook.com/sharer.php?u=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
-                                target="_blank">
-                                <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg" height="28"
-                                    width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
-                                    <path fill="#1877F2"
-                                        d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
-                                    </path>
-                                    <path fill="#FFFFFF"
-                                        d="M18,17.5h2.5l1-4H18v-2c0-1.03,0-2,2-2h1.5V6.14C21.174,6.097,19.943,6,18.643,6C15.928,6,14,7.657,14,10.7 v2.8h-3v4h3V26h4V17.5z">
-                                    </path>
-                                </svg>
-                            </a>
-                            <a :href="`https://twitter.com/intent/tweet?url=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
-                                target="_blank">
-                                <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" height="28"
-                                    width="28">
-                                    <circle fill="#0F1419" cx="12" cy="12" r="12"></circle>
-                                    <path fill="#FFFFFF" d="M15.531,7h1.662l-3.63,4.236L17.833,17h-3.343l-2.62-3.495L8.876,17H7.212l3.882-4.531L7,7h3.427
-l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
-                                </svg>
-                            </a>
-                            <div class=" cursor-pointer" @click="printPageArea(`singlepost${mcinx}`)">
-                                <svg class=" hover:scale-125 duration-200" height="28" width="28"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
-                                    xml:space="preserve">
-                                    <path fill="#595959"
-                                        d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
-                                    </path>
-                                    <path fill="#FFFFFF"
-                                        d="M12,20h8v4h-8V20z M21.6,22.4v-4H10.4v4H8.8c-0.212,0-0.416-0.084-0.566-0.234C8.084,22.016,8,21.812,8,21.6 v-8c0-0.212,0.084-0.416,0.234-0.566C8.384,12.884,8.588,12.8,8.8,12.8h14.4c0.212,0,0.416,0.084,0.566,0.234 C23.916,13.184,24,13.388,24,13.6v8c0,0.212-0.084,0.416-0.234,0.566c-0.15,0.15-0.353,0.234-0.566,0.234H21.6z M10.4,14.4V16h2.4 v-1.6H10.4z M12,8h8c0.212,0,0.416,0.084,0.566,0.234C20.716,8.384,20.8,8.588,20.8,8.8v2.4h-9.6V8.8 c0-0.212,0.084-0.416,0.234-0.566C11.584,8.084,11.788,8,12,8z">
-                                    </path>
-                                </svg>
-                            </div>
+                            <!-- Author Section /-->
+                            <!-- <div class="author-details flex flex-col gap-1" v-if="moreDetailContent?.author">
+                    <p v-if="moreDetailContent?.author">
+                    
+                        <NuxtLink class="hover:text-[#3375af] font-[600]"
+                            :to="`/author/${moreDetailContent?.author?.author_slug}`">{{
+                                moreDetailContent?.author?.author_name_bn }}</NuxtLink>
+                    </p>
+                    <p v-else>
+                        <NuxtLink class="hover:text-[#3375af] font-[600]" to="/author/dhaka-prokash-desk">ঢাকাপ্রকাশ
+                            ডেস্ক</NuxtLink>
+                    </p>
+                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span>
+                        </ClientOnly>
+                    </p>
+                </div> -->
                             <!-- Social Share -->
-                        </div>
-                    </div>
-                    <div class="feature-image border-b">
-                        <nuxt-img loading="lazy"
-                            :src="`${siteurl.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`"
-                            class="mx-auto w-full" :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                        <p v-if="moreDetailContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
-                            moreDetailContent?.img_bg_caption }}</p>
-                    </div>
-                    <div class="singlePost-detail grid grid-cols-12">
-                        <div class=" hidden md:block md:col-span-2"></div>
-                        <div class="col-span-12 md:col-span-8">
-                            <div :class="`postdetails postdetailinside${mcinx} text-[18px] text-[#121212] pb-4`"
-                                v-html="moreDetailContent?.content_details">
+                            <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
+                                <a :href="`https://www.facebook.com/sharer.php?u=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
+                                    target="_blank">
+                                    <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
+                                        height="28" width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
+                                        xml:space="preserve">
+                                        <path fill="#1877F2"
+                                            d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
+                                        </path>
+                                        <path fill="#FFFFFF"
+                                            d="M18,17.5h2.5l1-4H18v-2c0-1.03,0-2,2-2h1.5V6.14C21.174,6.097,19.943,6,18.643,6C15.928,6,14,7.657,14,10.7 v2.8h-3v4h3V26h4V17.5z">
+                                        </path>
+                                    </svg>
+                                </a>
+                                <a :href="`https://twitter.com/intent/tweet?url=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
+                                    target="_blank">
+                                    <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"
+                                        height="28" width="28">
+                                        <circle fill="#0F1419" cx="12" cy="12" r="12"></circle>
+                                        <path fill="#FFFFFF" d="M15.531,7h1.662l-3.63,4.236L17.833,17h-3.343l-2.62-3.495L8.876,17H7.212l3.882-4.531L7,7h3.427
+l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
+                                    </svg>
+                                </a>
+                                <div class=" cursor-pointer" @click="printPageArea(`singlepost${mcinx}`)">
+                                    <svg class=" hover:scale-125 duration-200" height="28" width="28"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                                        enable-background="new 0 0 32 32" xml:space="preserve">
+                                        <path fill="#595959"
+                                            d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
+                                        </path>
+                                        <path fill="#FFFFFF"
+                                            d="M12,20h8v4h-8V20z M21.6,22.4v-4H10.4v4H8.8c-0.212,0-0.416-0.084-0.566-0.234C8.084,22.016,8,21.812,8,21.6 v-8c0-0.212,0.084-0.416,0.234-0.566C8.384,12.884,8.588,12.8,8.8,12.8h14.4c0.212,0,0.416,0.084,0.566,0.234 C23.916,13.184,24,13.388,24,13.6v8c0,0.212-0.084,0.416-0.234,0.566c-0.15,0.15-0.353,0.234-0.566,0.234H21.6z M10.4,14.4V16h2.4 v-1.6H10.4z M12,8h8c0.212,0,0.416,0.084,0.566,0.234C20.716,8.384,20.8,8.588,20.8,8.8v2.4h-9.6V8.8 c0-0.212,0.084-0.416,0.234-0.566C11.584,8.084,11.788,8,12,8z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <!-- Social Share -->
                             </div>
-                            <!-- Tag Area -->
-                            <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3 print:hidden"
-                                v-if="moreDetailContent?.tags">
-                                <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
-                                        class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
-                                            moreDetailContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
-
-                                <ul class="flex flex-wrap gap-3 items-center">
-
-                                    <li v-for="mtag in moreDetailContent?.tags.split(',')"
-                                        class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1] font-semibold">
-                                        <NuxtLink class="px-4 py-2 block" :to="`/topic/${mtag}`">{{ mtag }}</NuxtLink>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!-- Tag Area -->
                         </div>
-                        <div class="hidden md:block md:col-span-2"></div>
-                    </div> <!-- singlePost-details -->
-                </div> <!-- /single-post -->
+                        <div class="feature-image border-b">
+                            <nuxt-img loading="lazy"
+                                :src="`${siteurl.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`"
+                                class="mx-auto w-full" :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                            <p v-if="moreDetailContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
+                                moreDetailContent?.img_bg_caption }}</p>
+                        </div>
+                        <div class="singlePost-detail grid grid-cols-12">
+                            <div class=" hidden md:block md:col-span-2"></div>
+                            <div class="col-span-12 md:col-span-8">
+                                <div :class="`postdetails postdetailinside${mcinx} text-[18px] text-[#121212] pb-4`"
+                                    v-html="moreDetailContent?.content_details">
+                                </div>
+                                <!-- Tag Area -->
+                                <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3 print:hidden"
+                                    v-if="moreDetailContent?.tags">
+                                    <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`" class="text-[18px] py-1">
+                                        <span class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
+                                            moreDetailContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন
+                                    </NuxtLink>
 
-            </div>
-            <div class="col-span-12 md:col-span-3">
-                <!--:::::::: Detail Page Right One Ads :::::::::-->
-                <div v-if="DetailRightOneAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
-                    <AdsDesktopDetailRightOne :DetailRightOneAds="DetailRightOneAds" />
+                                    <ul class="flex flex-wrap gap-3 items-center">
+
+                                        <li v-for="mtag in moreDetailContent?.tags.split(',')"
+                                            class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1] font-semibold">
+                                            <NuxtLink class="px-4 py-2 block" :to="`/topic/${mtag}`">{{ mtag }}</NuxtLink>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Tag Area -->
+                            </div>
+                            <div class="hidden md:block md:col-span-2"></div>
+                        </div> <!-- singlePost-details -->
+                    </div> <!-- /single-post -->
+
                 </div>
-                <!--:::::::: Detail Page Right One Ads :::::::::-->
-                <div :class="`sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`">
+                <div class="col-span-12 md:col-span-3">
+                    <!--:::::::: Detail Page Right One Ads :::::::::-->
+                    <div v-if="DetailRightOneAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                        <AdsDesktopDetailRightOne :DetailRightOneAds="DetailRightOneAds" />
+                    </div>
+                    <!--:::::::: Detail Page Right One Ads :::::::::-->
+                    <div :class="`sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`">
 
-                    <div :class="`flex flex-col gap-2`" v-if="moreDetailsContents?.length > 0">
-                        <div class=" border-b-[3px] border-[#3375af] pb-1">
-                            <h3 class="text-[#3375af] text-[18px] font-[600]">{{ moreDetailContent?.category?.cat_name_bn }}
-                                নিয়ে
-                                আরও পড়ুন</h3>
+                        <div :class="`flex flex-col gap-2`" v-if="moreDetailsContents?.length > 0">
+                            <div class=" border-b-[3px] border-[#3375af] pb-1">
+                                <h3 class="text-[#3375af] text-[18px] font-[600]">{{
+                                    moreDetailContent?.category?.cat_name_bn }}
+                                    নিয়ে
+                                    আরও পড়ুন</h3>
+                            </div>
+                            <div class="detail-page-category-content-exept flex flex-col">
+                                <!-- {{ moreDetailCatWisePost[mcinx] }} -->
+                                <!-- Loop Item -->
+                                <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
+                                    v-for="moreDetCatCon in moreDetailContent?.morecatwisePost"
+                                    :key="moreDetCatCon.content_id">
+                                    <div class=" col-span-5 overflow-hidden">
+                                        <NuxtLink
+                                            :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)">
+                                            <nuxt-img loading="lazy"
+                                                :src="`${siteurl.site_url}/media/content/images/${moreDetCatCon?.img_bg_path}`"
+                                                class="mx-auto w-full group-hover:scale-110 duration-300"
+                                                :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                                        </NuxtLink>
+                                    </div>
+                                    <div class=" col-span-7">
+                                        <NuxtLink
+                                            :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)">
+                                            <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
+                                                moreDetCatCon?.content_heading }}</h4>
+                                        </NuxtLink>
+                                    </div>
+                                </div>
+                                <!--/ Loop Item -->
+                            </div>
                         </div>
-                        <div class="detail-page-category-content-exept flex flex-col">
+                        <!--:::::::: Detail Page Right Two Ads :::::::::-->
+                        <div v-if="DetailRightTwoAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                            <AdsDesktopDetailRightTwo :DetailRightTwoAds="DetailRightTwoAds" />
+                        </div>
+                        <!--:::::::: Detail Page Right Two Ads :::::::::-->
+                        <!--:::::::: Detail Page Right Three Ads :::::::::-->
+                        <div v-if="DetailRightThreeAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
+                            <AdsDesktopDetailRightThree :DetailRightThreeAds="DetailRightThreeAds" />
+                        </div>
+                        <!--:::::::: Detail Page Right Three Ads :::::::::-->
+                    </div>
+                </div>
+                <!--:::::::: Detail Page After Ads :::::::::::-->
+                <div v-if="DetailAfterAds?.status === 1"
+                    class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                    <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
+                </div>
+                <!--:::::::: Detail Page After Ads :::::::::::-->
+                <!-- Three More Content Releted -->
+                <div class="col-span-12" v-if="moreDetailContent?.morereletedcontentbelow?.length > 0 && mcinx !== 2">
+
+                    <div class="read-more">
+                        <div class="category-header border-b-4 border-b-[#3375af] my-3">
+                            <div class="flex gap-3 items-center">
+                                <span class="w-3 h-3 bg-[#3375af]"></span>
+                                <h2 class="text-[#3375af] text-[18px] font-semibold">আরও পড়ুন</h2>
+                            </div>
+                        </div>
+                        <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
+
+                            <NuxtLink
+                                :to="getPostUrl(relDetailContent?.cat_slug, relDetailContent?.subcat_slug, relDetailContent?.content_type, relDetailContent?.content_id)"
+                                class="flex flex-col gap-2 group"
+                                v-for="relDetailContent in moreDetailContent?.morereletedcontentbelow[mcinx]"
+                                :key="relDetailContent.content_id">
+                                <div class="feature_image_readmore overflow-hidden">
+                                    <nuxt-img loading="lazy"
+                                        :src="`${siteurl.site_url}/media/content/images/${relDetailContent?.img_bg_path}`"
+                                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                                        :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                                </div>
+                                <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{
+                                    relDetailContent?.content_heading }}</h5>
+                            </NuxtLink>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Three More Content Releted -->
+
+                <!-- Latest 20 Posts content -->
+                <div class="col-span-12" v-else>
+                    <div class="read-more">
+                        <div class="category-header border-b-4 border-b-[#3375af] my-3">
+                            <div class="flex gap-3 items-center">
+                                <span class="w-3 h-3 bg-[#3375af]"></span>
+                                <h2 class="text-[#3375af] text-[18px] font-semibold">সর্বশেষ সংবাদ</h2>
+                            </div>
+                        </div>
+                        <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
                             <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                             <!-- Loop Item -->
-                            <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
-                                v-for="moreDetCatCon in moreDetailContent?.morecatwisePost" :key="moreDetCatCon.content_id">
-                                <div class=" col-span-5 overflow-hidden">
-                                    <NuxtLink
-                                        :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)">
-                                        <nuxt-img loading="lazy"
-                                            :src="`${siteurl.site_url}/media/content/images/${moreDetCatCon?.img_bg_path}`"
-                                            class="mx-auto w-full group-hover:scale-110 duration-300"
-                                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                                    </NuxtLink>
+                            <NuxtLink
+                                :to="getPostUrl(latestPostC?.cat_slug, latestPostC?.subcat_slug, latestPostC?.content_type, latestPostC?.content_id)"
+                                class="flex flex-col gap-2 group" v-for="latestPostC in latestPostsDpage"
+                                :key="latestPostC.content_id">
+                                <div class="feature_image_readmore overflow-hidden">
+                                    <nuxt-img loading="lazy"
+                                        :src="`${siteurl.site_url}/media/content/images/${latestPostC?.img_bg_path}`"
+                                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                                        :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 </div>
-                                <div class=" col-span-7">
-                                    <NuxtLink
-                                        :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)">
-                                        <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
-                                            moreDetCatCon?.content_heading }}</h4>
-                                    </NuxtLink>
-                                </div>
-                            </div>
-                            <!--/ Loop Item -->
+                                <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{
+                                    latestPostC?.content_heading
+                                }}</h5>
+                            </NuxtLink>
+                            <!-- Loop Item -->
+
+
                         </div>
                     </div>
-                    <!--:::::::: Detail Page Right Two Ads :::::::::-->
-                    <div v-if="DetailRightTwoAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
-                        <AdsDesktopDetailRightTwo :DetailRightTwoAds="DetailRightTwoAds" />
-                    </div>
-                    <!--:::::::: Detail Page Right Two Ads :::::::::-->
-                    <!--:::::::: Detail Page Right Three Ads :::::::::-->
-                    <div v-if="DetailRightThreeAds?.status === 1" class="pb-4 mb-3 border-b border-b-[#e2e2e2]">
-                        <AdsDesktopDetailRightThree :DetailRightThreeAds="DetailRightThreeAds" />
-                    </div>
-                    <!--:::::::: Detail Page Right Three Ads :::::::::-->
                 </div>
-            </div>
-            <!--:::::::: Detail Page After Ads :::::::::::-->
-            <div v-if="DetailAfterAds?.status === 1"
-                class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
-                <AdsDesktopDetailAfter :DetailAfterAds="DetailAfterAds" />
-            </div>
-            <!--:::::::: Detail Page After Ads :::::::::::-->
-            <!-- Three More Content Releted -->
-            <div class="col-span-12" v-if="moreDetailContent?.morereletedcontentbelow?.length > 0 && mcinx !== 2">
-
-                <div class="read-more">
-                    <div class="category-header border-b-4 border-b-[#3375af] my-3">
-                        <div class="flex gap-3 items-center">
-                            <span class="w-3 h-3 bg-[#3375af]"></span>
-                            <h2 class="text-[#3375af] text-[18px] font-semibold">আরও পড়ুন</h2>
-                        </div>
-                    </div>
-                    <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
-
-                        <NuxtLink
-                            :to="getPostUrl(relDetailContent?.cat_slug, relDetailContent?.subcat_slug, relDetailContent?.content_type, relDetailContent?.content_id)"
-                            class="flex flex-col gap-2 group"
-                            v-for="relDetailContent in moreDetailContent?.morereletedcontentbelow[mcinx]"
-                            :key="relDetailContent.content_id">
-                            <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img loading="lazy"
-                                    :src="`${siteurl.site_url}/media/content/images/${relDetailContent?.img_bg_path}`"
-                                    class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                            </div>
-                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{
-                                relDetailContent?.content_heading }}</h5>
-                        </NuxtLink>
-
-                    </div>
+                <!-- Latest 20 Posts content -->
+                <!--:::::::: Detail Page Bottom Ads :::::::::::-->
+                <div v-if="DetailBottomAds?.status === 1"
+                    class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                    <AdsDesktopDetailBottom :DetailBottomAds="DetailBottomAds" />
                 </div>
+                <!--:::::::: Detail Page Bottom Ads :::::::::::-->
             </div>
-            <!-- Three More Content Releted -->
-
-            <!-- Latest 20 Posts content -->
-            <div class="col-span-12" v-else>
-                <div class="read-more">
-                    <div class="category-header border-b-4 border-b-[#3375af] my-3">
-                        <div class="flex gap-3 items-center">
-                            <span class="w-3 h-3 bg-[#3375af]"></span>
-                            <h2 class="text-[#3375af] text-[18px] font-semibold">সর্বশেষ সংবাদ</h2>
-                        </div>
-                    </div>
-                    <div class=" grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <!-- {{ moreDetailCatWisePost[mcinx] }} -->
-                        <!-- Loop Item -->
-                        <NuxtLink
-                            :to="getPostUrl(latestPostC?.cat_slug, latestPostC?.subcat_slug, latestPostC?.content_type, latestPostC?.content_id)"
-                            class="flex flex-col gap-2 group" v-for="latestPostC in latestPostsDpage"
-                            :key="latestPostC.content_id">
-                            <div class="feature_image_readmore overflow-hidden">
-                                <nuxt-img loading="lazy"
-                                    :src="`${siteurl.site_url}/media/content/images/${latestPostC?.img_bg_path}`"
-                                    class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                            </div>
-                            <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{ latestPostC?.content_heading
-                            }}</h5>
-                        </NuxtLink>
-                        <!-- Loop Item -->
-
-
-                    </div>
-                </div>
-            </div>
-            <!-- Latest 20 Posts content -->
-            <!--:::::::: Detail Page Bottom Ads :::::::::::-->
-            <div v-if="DetailBottomAds?.status === 1"
-                class="col-span-12 py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
-                <AdsDesktopDetailBottom :DetailBottomAds="DetailBottomAds" />
-            </div>
-            <!--:::::::: Detail Page Bottom Ads :::::::::::-->
+            <!--========== // <3> More Details Content ============ -->
         </div>
-        <!--========== // <3> More Details Content ============ -->
     </div>
 </template>
 
@@ -597,7 +618,7 @@ const category_slug = useRoute().params.category_slug
 const content_id = useRoute().params.content_id
 
 
-const { data: pdailts } = await useFetch('/api/prismaapi/detail/postdetail', {
+const { data: pdailts, pending } = await useFetch('/api/prismaapi/detail/postdetail', {
     method: 'POST',
     body: {
         // category_slug: category_slug,
@@ -1178,6 +1199,8 @@ DetailRightThreeAds.value = detrtthreeAds?.value
 
 </script>
 
-<style scoped>p {
+<style scoped>
+p {
     line-height: 1.7 !important;
-}</style>
+}
+</style>
