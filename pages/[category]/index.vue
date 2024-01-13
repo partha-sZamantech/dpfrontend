@@ -9,8 +9,15 @@
             <AdsDesktopCategoryTop :categoryTopAds="categoryTopAds" />
         </div>
         <!-- Category Top Ads -->
-
-        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white h-screen ">
+            <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div>
+        <!-- Page Loader -->
+        <div v-else class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
 
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 py-2 flex flex-col gap-0 md:gap-2">
@@ -306,7 +313,7 @@ const categoryContentExcept = useState(() => [])
 const take = ref(15)
 
 // Leading Post 
-const { data: catcont } = await useFetch('/api/prismaapi/category/categorycontent', {
+const { data: catcont, pending } = await useFetch('/api/prismaapi/category/categorycontent', {
     method: "POST",
     body: {
         cat_slug: cat_slug,

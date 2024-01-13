@@ -12,9 +12,16 @@
                 </a>
             </div>
         </div> -->
-
         <!-- Space For Ads -->
-        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white h-screen ">
+            <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div>
+        <!-- Page Loader -->
+        <div v-else class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
 
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] py-2 mb-5 flex flex-col gap-2 md:gap-4">
@@ -250,7 +257,7 @@ const latestPosts = useState(() => [])
 const latestPostContentExcept = useState(() => [])
 const take = ref(15)
 
-const { data: lcpt } = await useFetch('/api/prismaapi/collection/latestpost', {
+const { data: lcpt, pending } = await useFetch('/api/prismaapi/collection/latestpost', {
     method: "POST",
     body: {
         take: take.value,
