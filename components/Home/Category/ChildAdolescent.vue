@@ -11,7 +11,7 @@
             <NuxtLink :to="getPostUrl(childrenContents[0]?.cat_slug, childrenContents[0]?.subcat_slug, childrenContents[0]?.content_type, childrenContents[0]?.content_id)"
                 class="flex flex-col gap-2 group border-b pb-1">
                 <div class=" overflow-hidden">
-                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${childrenContents[0]?.img_bg_path}`"
+                    <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${childrenContents[0]?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
