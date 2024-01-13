@@ -11,7 +11,7 @@
             <NuxtLink :to="getPostUrl(religioncontents[0]?.cat_slug, religioncontents[0]?.subcat_slug, religioncontents[0]?.content_type, religioncontents[0]?.content_id)"
                 class="flex flex-col gap-2 group border-b pb-1">
                 <div class=" overflow-hidden">
-                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${religioncontents[0]?.img_bg_path}`"
+                    <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${religioncontents[0]?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
