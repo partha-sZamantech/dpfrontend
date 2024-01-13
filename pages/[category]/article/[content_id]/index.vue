@@ -850,7 +850,7 @@ const balvalue = ref(null)
 
 
 onMounted(() => {
- 
+
     pvScrollPosi.value = window.scrollY
     // ============= Scolling ===============
     window.addEventListener("scroll", function () {
