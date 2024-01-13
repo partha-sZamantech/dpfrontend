@@ -43,7 +43,7 @@
                             data-width="auto" data-autoplay="true" data-show-captions="false"> </div> -->
                         <div class="facebookvideo overflow-hidden">
                             <a :href="`https://www.facebook.com/watch/?v=${videoDetail?.code}`" class=" relative group">
-                                <nuxt-img :alt="videoDetail?.title"
+                                <nuxt-img loading="lazy" :alt="videoDetail?.title"
                                     :src="`${siteurl?.site_url}/media/videoImages/${videoDetail?.img_bg_path}`"
                                     class="mx-auto w-full"
                                     :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />

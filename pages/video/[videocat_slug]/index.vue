@@ -56,7 +56,8 @@
                             :to="`/video/${category?.slug}/${videocont?.id}`"
                             class="cat-box group shadow-md shadow-[#ddd] col-span-12 md:col-span-4 rounded-md bg-[#f5f5f5]">
                             <div class="cat-box-image overflow-hidden relative">
-                                <nuxt-img :src="`${siteurl.site_url}/media/videoImages/${videocont?.img_bg_path}`"
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl.site_url}/media/videoImages/${videocont?.img_bg_path}`"
                                     class="mx-auto w-full h-full"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 <div class="play-icon absolute left-[45%] top-[40%]">

@@ -51,7 +51,7 @@
                             class="col-span-12 md:col-span-12 mb-6 bg-[#efefef]">
                             <div class="lead-post group overflow-hidden">
                                 <div class="relative">
-                                    <nuxt-img :src="`${siteurl.site_url}/media/photoAlbum/${photo_gallery?.photo}`"
+                                    <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/photoAlbum/${photo_gallery?.photo}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 </div>

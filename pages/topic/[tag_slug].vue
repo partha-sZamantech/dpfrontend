@@ -60,7 +60,7 @@
                               <!-- <nuxt-img :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
                                  class="mx-auto w-full group-hover:scale-110 duration-300"
                                  :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" /> -->
-                              <nuxt-img :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
+                              <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
                                  class="mx-auto w-full group-hover:scale-110 duration-300"
                                  :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
 

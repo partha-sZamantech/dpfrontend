@@ -46,7 +46,8 @@
                             <div v-if="searchResults?.length > 0" class="cat-post-item py-4 border-b"
                                 v-for="(searchResult, seaInx) in searchResults" :key="seaInx">
 
-                                <NuxtLink :to="getPostUrl(searchResult?.cat_slug, searchResult?.subcat_slug, searchResult?.content_type, searchResult?.content_id)"
+                                <NuxtLink
+                                    :to="getPostUrl(searchResult?.cat_slug, searchResult?.subcat_slug, searchResult?.content_type, searchResult?.content_id)"
                                     class=" grid grid-cols-12 gap-3 group">
 
                                     <div class=" col-span-7 flex flex-col gap-3">
@@ -67,7 +68,7 @@
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
 
-                                        <nuxt-img
+                                        <nuxt-img loading="lazy"
                                             :src="`${siteurl.site_url}/media/content/images/${searchResult?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />

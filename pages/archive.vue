@@ -56,7 +56,7 @@
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
-                                        <nuxt-img
+                                        <nuxt-img loading="lazy"
                                             :src="`${siteurl.site_url}/media/content/images/${archiveContent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />

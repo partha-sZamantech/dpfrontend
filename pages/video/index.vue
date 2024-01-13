@@ -46,7 +46,7 @@
                                 <NuxtLink :to="`/video/${specialTopVideos[1]?.cat_slug}/${specialTopVideos[1]?.id}`"
                                     class="flex flex-col gap-2 group">
                                     <div class=" overflow-hidden relative">
-                                        <nuxt-img
+                                        <nuxt-img loading="lazy"
                                             :src="`${siteurl?.site_url}/media/videoImages/${specialTopVideos[1]?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
@@ -59,7 +59,7 @@
                                 <NuxtLink :to="`/video/${specialTopVideos[2]?.cat_slug}/${specialTopVideos[2]?.id}`"
                                     class="flex flex-col gap-2 group">
                                     <div class=" overflow-hidden relative">
-                                        <nuxt-img
+                                        <nuxt-img loading="lazy"
                                             :src="`${siteurl?.site_url}/media/videoImages/${specialTopVideos[2]?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
@@ -146,7 +146,7 @@
                                 <NuxtLink :to="`/video/${specialTopVideos[3]?.cat_slug}/${specialTopVideos[3]?.id}`"
                                     class="flex flex-col gap-2 group">
                                     <div class=" overflow-hidden relative">
-                                        <nuxt-img
+                                        <nuxt-img loading="lazy"
                                             :src="`${siteurl?.site_url}/media/videoImages/${specialTopVideos[3]?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
@@ -159,7 +159,7 @@
                                 <NuxtLink :to="`/video/${specialTopVideos[4]?.cat_slug}/${specialTopVideos[4]?.id}`"
                                     class="flex flex-col gap-2 group">
                                     <div class=" overflow-hidden relative">
-                                        <nuxt-img
+                                        <nuxt-img loading="lazy"
                                             :src="`${siteurl?.site_url}/media/videoImages/${specialTopVideos[4]?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
@@ -189,32 +189,33 @@
                         <div class="col-span-12 md:col-span-12">
                             <div class="grid grid-cols-12 gap-5 pb-4">
                                 <NuxtLink v-for="(videocont, vcbc) in catVideo?.videos" :key="vcbc"
-                                :to="`/video/${catVideo?.category?.slug}/${videocont?.id}`"
-                                class="cat-box group shadow-md shadow-[#ddd] col-span-12 md:col-span-3 rounded-md bg-[#f5f5f5]">
-                                <div class="cat-box-image overflow-hidden relative">
-                                    <nuxt-img :src="`${siteurl.site_url}/media/videoImages/${videocont?.img_bg_path}`"
-                                        class="mx-auto w-full h-full"
-                                        :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                                    <div class="play-icon absolute left-[45%] top-[40%]">
-                                        <Icon name="simple-icons:youtubemusic"
-                                            class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
+                                    :to="`/video/${catVideo?.category?.slug}/${videocont?.id}`"
+                                    class="cat-box group shadow-md shadow-[#ddd] col-span-12 md:col-span-3 rounded-md bg-[#f5f5f5]">
+                                    <div class="cat-box-image overflow-hidden relative">
+                                        <nuxt-img loading="lazy"
+                                            :src="`${siteurl.site_url}/media/videoImages/${videocont?.img_bg_path}`"
+                                            class="mx-auto w-full h-full"
+                                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                                        <div class="play-icon absolute left-[45%] top-[40%]">
+                                            <Icon name="simple-icons:youtubemusic"
+                                                class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="px-4 py-4">
-                                    <h3
-                                        class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
-                                        {{ videocont?.title }}
-                                    </h3>
+                                    <div class="px-4 py-4">
+                                        <h3
+                                            class="cat-postheading text-xl group-hover:text-[#ff0000] leading-[24px] text-[#121212]">
+                                            {{ videocont?.title }}
+                                        </h3>
 
-                                </div>
-                            </NuxtLink>
+                                    </div>
+                                </NuxtLink>
                             </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            
+
         </div>
     </div>
 </template>
