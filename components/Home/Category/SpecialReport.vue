@@ -9,15 +9,20 @@
 
         <div class=" grid grid-cols-12 gap-4">
             <!-- Loop Item -->
-            <div class=" col-span-12 md:col-span-3" v-for="hspecialreport in specialreports" :key="hspecialreport.content_id">
-                <NuxtLink :to="getPostUrl(hspecialreport?.cat_slug, hspecialreport?.subcat_slug, hspecialreport?.content_type, hspecialreport?.content_id)" class="flex flex-col gap-2 group">
+            <div class=" col-span-12 md:col-span-3" v-for="hspecialreport in specialreports"
+                :key="hspecialreport.content_id">
+                <NuxtLink
+                    :to="getPostUrl(hspecialreport?.cat_slug, hspecialreport?.subcat_slug, hspecialreport?.content_type, hspecialreport?.content_id)"
+                    class="flex flex-col gap-2 group">
                     <div class=" overflow-hidden">
-                        <nuxt-img :src="`${siteUrl.site_url}/media/content/images/${hspecialreport?.img_bg_path}`"
+                        <nuxt-img loading="lazy"
+                            :src="`${siteUrl.site_url}/media/content/images/${hspecialreport?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
                     </div>
-                    <h3 class="text-[19px] font-semibold leading-tight group-hover:text-[#ff0000]">{{ hspecialreport?.content_heading
-                        }}</h3>
+                    <h3 class="text-[19px] font-semibold leading-tight group-hover:text-[#ff0000]">{{
+                        hspecialreport?.content_heading
+                    }}</h3>
                 </NuxtLink>
             </div>
             <!-- Loop Item -->

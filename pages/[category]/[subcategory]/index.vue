@@ -80,13 +80,13 @@
                                         {{ subcategoryContents[1]?.content_heading }}
                                     </h3>
                                     <ClientOnly>
-                                        <div class="cat-postdesc text-base font-[300]"
+                                        <div class="cat-postdesc text-base font-[300] text-black"
                                             v-html="`${subcategoryContents[1]?.content_details.substring(0, 155)}...`">
                                         </div>
                                     </ClientOnly>
                                     <small class="cat-postdate">
                                         <!-- প্রকাশ: {{ postCreatedDate(subcategoryContents[1]?.created_at) }} -->
-                                        <span class="text-sm">
+                                        <span class="text-sm text-black">
                                             {{ subcategoryContents[1]?.post_time }}
                                         </span>
                                     </small>
@@ -112,10 +112,10 @@
                                     {{ subcategoryContents[2]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-base font-[300]"
+                                    <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${subcategoryContents[2]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
-                                <small class="cat-postdate">
+                                <small class="cat-postdate text-black">
                                     <!-- প্রকাশ: {{ postCreatedDate(subcategoryContents[2]?.created_at) }} -->
                                     <span class="text-sm">
                                         {{ subcategoryContents[2]?.post_time }}
@@ -138,11 +138,11 @@
                                     {{ subcategoryContents[3]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-base font-[300]"
+                                    <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${subcategoryContents[3]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
-                                    <span class="text-sm">
+                                    <span class="text-sm text-black">
                                         {{ subcategoryContents[3]?.post_time }}
                                     </span>
                                 </small>
@@ -163,11 +163,11 @@
                                     {{ subcategoryContents[4]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-base font-[300]"
+                                    <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${subcategoryContents[4]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
-                                    <span class="text-sm">
+                                    <span class="text-sm text-black">
                                         {{ subcategoryContents[4]?.post_time }}
                                     </span>
                                 </small>
@@ -202,11 +202,11 @@
                                             {{
                                                 subcatPost?.content_heading }}</h3>
                                         <ClientOnly>
-                                            <div class="cat-desc text-base font-[300] hidden md:block"
+                                            <div class="cat-desc text-base font-[300] text-black hidden md:block"
                                                 v-html="subcatPost?.content_details.substring(0, 160)"></div>
                                         </ClientOnly>
 
-                                        <span class="post-date md:flex flex-col gap-1 hidden text-base">
+                                        <span class="post-date md:flex flex-col gap-1 hidden text-base text-black">
                                             <small>আপডেট: {{
                                                 postCreatedDate(subcatPost?.updated_at) }}</small>
                                             <small>প্রকাশ: {{

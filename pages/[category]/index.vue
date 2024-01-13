@@ -72,12 +72,12 @@
                                         {{ categoryContent[1]?.content_heading }}
                                     </h3>
                                     <ClientOnly>
-                                        <div class="cat-postdesc text-base font-[300]"
+                                        <div class="cat-postdesc text-base text-black font-[300]"
                                             v-html="`${categoryContent[1]?.content_details.substring(0, 155)}...`"></div>
                                     </ClientOnly>
                                     <small class="cat-postdate">
                                         <!-- প্রকাশ: {{ postCreatedDate(categoryContent[1]?.created_at) }} -->
-                                        <span class="text-sm">
+                                        <span class="text-sm text-black">
                                             {{ categoryContent[1]?.post_time }}
                                         </span>
                                     </small>
@@ -103,11 +103,11 @@
                                     {{ categoryContent[2]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-base font-[300]"
+                                    <div class="cat-postdesc text-base text-black font-[300]"
                                         v-html="`${categoryContent[2]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
-                                    <span class="text-sm">
+                                    <span class="text-sm text-black">
                                         {{ categoryContent[2]?.post_time }}
                                     </span>
                                 </small>
@@ -127,11 +127,11 @@
                                     {{ categoryContent[3]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-base font-[300]"
+                                    <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${categoryContent[3]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate">
-                                    <span class="text-sm">
+                                    <span class="text-sm text-black">
                                         {{ categoryContent[3]?.post_time }}
                                     </span>
                                 </small>
@@ -151,10 +151,10 @@
                                     {{ categoryContent[4]?.content_heading }}
                                 </h3>
                                 <ClientOnly>
-                                    <div class="cat-postdesc text-base font-[300]"
+                                    <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${categoryContent[4]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
-                                <small class="cat-postdate">
+                                <small class="cat-postdate text-black">
                                     {{ categoryContent[4]?.post_time }}
                                 </small>
                             </div>
@@ -192,11 +192,11 @@
                                             {{
                                                 catPost?.content_heading }}</h3>
                                         <ClientOnly>
-                                            <div class="cat-desc text-[#555555] text-base font-[300] hidden md:block"
+                                            <div class="cat-desc text-black text-base font-[300] hidden md:block"
                                                 v-html="`${catPost?.content_details.substring(0, 155)}...`"></div>
                                         </ClientOnly>
 
-                                        <span class="post-date md:flex flex-col gap-1 hidden text-base">
+                                        <span class="post-date md:flex flex-col gap-1 hidden text-base text-black">
                                             <small>আপডেট: {{
                                                 postCreatedDate(catPost?.updated_at) }}</small>
                                             <small>প্রকাশ: {{
@@ -204,7 +204,7 @@
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
-                                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${catPost?.img_bg_path}`"
+                                        <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${catPost?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     </div>

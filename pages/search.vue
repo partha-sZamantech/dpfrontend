@@ -54,11 +54,11 @@
                                             class="cat-title col-span-12 font-semibold text-[18px] md:text-[20px] group-hover:text-[#ff0000]">
                                             {{ searchResult?.content_heading }}</h3>
                                         <ClientOnly>
-                                            <div class="cat-desc text-base font-[300] hidden md:block"
+                                            <div class="cat-desc text-black text-base font-[300] hidden md:block"
                                                 v-html="`${searchResult?.content_details.substring(0, 160)}...`"></div>
                                         </ClientOnly>
 
-                                        <span class="post-date md:flex flex-col gap-1 text-base hidden">
+                                        <span class="post-date text-black md:flex flex-col gap-1 text-base hidden">
                                             <small>আপডেট: {{
                                                 postCreatedDate(searchResult?.updated_at) }}</small>
                                             <small>প্রকাশ: {{

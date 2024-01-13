@@ -45,11 +45,11 @@
                                  {{
                                     tagContent?.content_heading }}</h3>
                               <ClientOnly>
-                                 <div class="cat-desc text-base font-[300] hidden md:block"
+                                 <div class="cat-desc text-base font-[300] text-black hidden md:block"
                                     v-html="`${tagContent?.content_details.substring(0, 160)}...`"></div>
                               </ClientOnly>
 
-                              <span class="post-date md:flex flex-col gap-1 hidden">
+                              <span class="post-date md:flex flex-col gap-1 hidden text-black">
                                  <small class="text-sm">আপডেট: {{
                                     postCreatedDate(tagContent?.updated_at) }}</small>
                                  <small class="text-sm">প্রকাশ: {{

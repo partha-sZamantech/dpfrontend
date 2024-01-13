@@ -12,7 +12,7 @@
                 <NuxtLink :to="getPostUrl(nationalHCon[0]?.cat_slug, nationalHCon[0]?.subcat_slug, nationalHCon[0]?.content_type, nationalHCon[0]?.content_id)"
                     class="flex flex-col group gap-2">
                     <div class="national-feature-image overflow-hidden">
-                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${nationalHCon[0]?.img_bg_path}`"
+                        <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${nationalHCon[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)"  />
                     </div>
@@ -38,7 +38,7 @@
                         class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4">
                         <div class=" col-span-5 overflow-hidden">
                             <NuxtLink :to="getPostUrl(nationalcntent?.cat_slug, nationalcntent?.subcat_slug, nationalcntent?.content_type, nationalcntent?.content_id)">
-                                <nuxt-img :src="`${siteurl.site_url}/media/content/images/${nationalcntent?.img_bg_path}`"
+                                <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${nationalcntent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                             </NuxtLink>

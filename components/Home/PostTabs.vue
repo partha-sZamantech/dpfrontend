@@ -19,7 +19,7 @@
                 class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop" v-for="latstpost in latestposts"
                 :key="latstpost?.content_id">
                 <div class="latest-post-tab-image col-span-4 overflow-hidden">
-                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${latstpost?.img_bg_path}`"
+                    <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${latstpost?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
@@ -36,7 +36,7 @@
                 class="grid grid-cols-12 gap-3 group border-b py-3 latest-post-loop" v-for="poplarpost in popularposts"
                 :key="poplarpost?.content_id">
                 <div class="latest-post-tab-image col-span-4 overflow-hidden">
-                    <nuxt-img :src="`${siteurl.site_url}/media/content/images/${poplarpost?.img_bg_path}`"
+                    <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${poplarpost?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>

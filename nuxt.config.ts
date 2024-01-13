@@ -23,4 +23,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@samk-dev/nuxt-vcalendar'
   ],
+  image: {
+    quality: 80,
+  }
 })

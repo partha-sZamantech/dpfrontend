@@ -44,11 +44,11 @@
                       {{
                         authorContent?.content_heading }}</h3>
                     <ClientOnly>
-                      <div class="cat-desc text-base font-[300] hidden md:block"
+                      <div class="cat-desc text-base font-[300] text-black hidden md:block"
                         v-html="`${authorContent?.content_details.substring(0, 160)}...`"></div>
                     </ClientOnly>
 
-                    <span class="post-date md:flex flex-col gap-1 text-base hidden">
+                    <span class="post-date md:flex flex-col gap-1 text-base hidden text-black">
                       <small>আপডেট: {{
                         postCreatedDate(authorContent?.updated_at) }}</small>
                       <small>প্রকাশ: {{

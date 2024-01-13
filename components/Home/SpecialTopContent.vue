@@ -9,12 +9,12 @@
                         <NuxtLink :to="getPostUrl(specialTopContents[0]?.cat_slug, specialTopContents[0]?.subcat_slug, specialTopContents[0]?.content_type, specialTopContents[0]?.content_id)"
                             class="flex flex-col gap-3">
                             <div class="overflow-hidden">
-                                <nuxt-img
+                                <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${specialTopContents[0].img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
-                            <h2 class="text-[#ff0000] text-[32px] font-semibold">{{ specialTopContents[0]?.content_heading
+                            <h2 class="text-[#ff0000] text-[32px] font-semibold leading-snug">{{ specialTopContents[0]?.content_heading
                             }}</h2>
                             <!-- <p class="text-[18px]">{{ specialTopContents[0]?.content_details?.substring(0,
                                 165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
@@ -36,7 +36,7 @@
                                 v-for="topcontent in specialTopContents?.slice(1, 5)" :key="topcontent?.content_id">
                                 <div class="col-span-5">
                                     <div class="overflow-hidden">
-                                        <nuxt-img :alt="topcontent?.content_heading"
+                                        <nuxt-img loading="lazy" :alt="topcontent?.content_heading"
                                             :src="`${siteurl?.site_url}/media/content/images/${topcontent?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
                                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
