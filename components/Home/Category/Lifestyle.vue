@@ -11,15 +11,20 @@
             <div class="grid grid-cols-12 gap-4 group h-sports-excpt border-b py-4" v-for="lifestyle in lifestyles"
                 :key="lifestyle.content_id">
                 <div class=" col-span-5 overflow-hidden">
-                    <NuxtLink :to="getPostUrl(lifestyle?.cat_slug, lifestyle?.subcat_slug, lifestyle?.content_type, lifestyle?.content_id)">
-                        <nuxt-img :src="`${siteurl?.site_url}/media/content/images/${lifestyle?.img_bg_path}`"
+                    <NuxtLink
+                        :to="getPostUrl(lifestyle?.cat_slug, lifestyle?.subcat_slug, lifestyle?.content_type, lifestyle?.content_id)">
+                        <nuxt-img loading="lazy"
+                            :src="`${siteurl?.site_url}/media/content/images/${lifestyle?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                     </NuxtLink>
                 </div>
                 <div class=" col-span-7">
-                    <NuxtLink :to="getPostUrl(lifestyle?.cat_slug, lifestyle?.subcat_slug, lifestyle?.content_type, lifestyle?.content_id)" class="flex flex-col gap-2">
-                        <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{ lifestyle?.content_heading }}
+                    <NuxtLink
+                        :to="getPostUrl(lifestyle?.cat_slug, lifestyle?.subcat_slug, lifestyle?.content_type, lifestyle?.content_id)"
+                        class="flex flex-col gap-2">
+                        <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
+                            lifestyle?.content_heading }}
                         </h4>
                         <span class="text-sm text-black">{{ lifestyle?.created_at }}</span>
                     </NuxtLink>
@@ -51,8 +56,6 @@ const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) =
 
 </script>
 
-<style scoped>
-.h-sports-excpt:first-child {
+<style scoped>.h-sports-excpt:first-child {
     padding-top: 0px
-}
-</style>
+}</style>
