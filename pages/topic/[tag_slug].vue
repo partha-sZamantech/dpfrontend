@@ -13,7 +13,15 @@
          </div>
       </div> -->
       <!-- Space For Ads -->
-      <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-2 relative">
+      <!-- Page Loader -->
+      <div v-if="pending" class="bg-white h-screen ">
+         <div class="flex justify-center items-center pt-32">
+            <img width="60" src="/assets/img/loader.gif" alt="">
+            <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+         </div>
+      </div>
+      <!-- Page Loader -->
+      <div v-else class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-2 relative">
          <!-- Breadcrump Section -->
          <div class="breadcrump border-b border-b-[#dee2e6] pb-2 md:mb-5 flex flex-col gap-2 md:gap-4">
 
@@ -36,7 +44,8 @@
 
                      <div class="cat-post-item py-4 border-b" v-for="(tagContent, cpInx) in tagContents" :key="cpInx">
 
-                        <NuxtLink :to="getPostUrl(tagContent?.cat_slug, tagContent?.subcat_slug, tagContent?.content_type, tagContent?.content_id)"
+                        <NuxtLink
+                           :to="getPostUrl(tagContent?.cat_slug, tagContent?.subcat_slug, tagContent?.content_type, tagContent?.content_id)"
                            class=" grid grid-cols-12 gap-3 group">
 
                            <div class=" col-span-7 flex flex-col gap-3">
@@ -60,7 +69,8 @@
                               <!-- <nuxt-img :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
                                  class="mx-auto w-full group-hover:scale-110 duration-300"
                                  :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" /> -->
-                              <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
+                              <nuxt-img loading="lazy"
+                                 :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
                                  class="mx-auto w-full group-hover:scale-110 duration-300"
                                  :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
 
@@ -122,7 +132,7 @@ const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) =
 const tagContents = useState(() => [])
 const take = ref(10)
 
-const { data: tgcont } = await useFetch('/api/prismaapi/tag/tagcontents', {
+const { data: tgcont, pending } = await useFetch('/api/prismaapi/tag/tagcontents', {
    method: "POST",
    body: {
       tag_slug: tag_slug,

@@ -13,7 +13,17 @@
       </div>
     </div> -->
     <!-- Space For Ads -->
-    <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
+
+    <!-- Page Loader -->
+    <div v-if="pending" class="bg-white h-screen ">
+      <div class="flex justify-center items-center pt-32">
+        <img width="60" src="/assets/img/loader.gif" alt="">
+        <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+      </div>
+    </div>
+    <!-- Page Loader -->
+
+    <div v-else class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
       <!-- Breadcrump Section -->
       <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-4">
 
@@ -59,7 +69,8 @@
                     <!-- <nuxt-img :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
                                 class="mx-auto w-full group-hover:scale-110 duration-300"
                                 :placeholder="img('https://www.dhakaprokash24.com/media/common/logo1672518180.png', { height: 300 })" /> -->
-                    <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${authorContent?.img_bg_path}`"
+                    <nuxt-img loading="lazy"
+                      :src="`${siteurl.site_url}/media/content/images/${authorContent?.img_bg_path}`"
                       class="mx-auto w-full group-hover:scale-110 duration-300"
                       :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
 
@@ -123,7 +134,7 @@ const author = ref(null)
 const authorContents = useState(() => [])
 const take = ref(10)
 
-const { data: authorcont } = await useFetch('/api/prismaapi/author/getauthorpost', {
+const { data: authorcont, pending } = await useFetch('/api/prismaapi/author/getauthorpost', {
   method: "POST",
   body: {
     author_slug: author_slug,

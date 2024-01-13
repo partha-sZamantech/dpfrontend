@@ -5,9 +5,16 @@
             <Title>{{ albumCatData?.cat_name_bn }} </Title>
         </Head>
 
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white h-screen ">
+            <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div>
+        <!-- Page Loader -->
 
-        <div class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
-
+        <div v-else class=" max-w-[1280px] mx-auto category-content px-4 md:px-4 py-4 relative">
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-1">
 
@@ -16,19 +23,14 @@
                         <h1 class="text-xl md:text-2xl">{{ albumCatData?.cat_name_bn }}</h1>
                     </NuxtLink>
                 </div>
-        
+
             </div>
             <!--/ Breadcrump Section -->
-
             <div class="grid grid-cols-12 md:gap-6">
 
                 <div class="col-span-12">
-                 
-    
-                
                     <!-- Category Lead Section -->
-                    <div v-if="albumCatData?.catalbums?.length > 0"
-                        class="grid grid-cols-12 gap-4 pb-4">
+                    <div v-if="albumCatData?.catalbums?.length > 0" class="grid grid-cols-12 gap-4 pb-4">
 
                         <!-- Loop photo gallery -->
                         <NuxtLink v-for="(albcat, acdkey) in albumCatData?.catalbums" :key="acdkey"
@@ -36,7 +38,8 @@
                             class="col-span-12 md:col-span-3 mb-6 bg-[#efefef]">
                             <div class="lead-post group overflow-hidden">
                                 <div class="relative">
-                                    <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/photoAlbum/${albcat?.photo_path}`"
+                                    <nuxt-img loading="lazy"
+                                        :src="`${siteurl.site_url}/media/photoAlbum/${albcat?.photo_path}`"
                                         class="mx-auto w-full group-hover:scale-110 duration-300"
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 </div>
@@ -50,7 +53,7 @@
 
                 </div>
 
-               
+
             </div>
 
         </div>
@@ -84,40 +87,40 @@ const stickyScroll = computed(() =>
 
 const albumCatData = useState(() => [])
 
-const { data: albumcatd } = await useFetch(`/api/prismaapi/gallery/albumcategoryphotos`, {
+const { data: albumcatd, pending } = await useFetch(`/api/prismaapi/gallery/albumcategoryphotos`, {
     method: "POST",
     body: {
         album_id: album_id
     },
-    transform(input) {
-        return {
-            ...input,
-            fetchedAt: new Date()
-        }
-    },
-    key: `gpalphotkey-${album_id}`,
-    cache: 'force-cache',
-    getCachedData(keys) {
-        const data = nuxtApp.payload.data[keys] || nuxtApp.static.data[keys]
-        // If data is not fetched yet
-        if (!data) {
-            // Fetch the first time
-            return
-        }
+    // transform(input) {
+    //     return {
+    //         ...input,
+    //         fetchedAt: new Date()
+    //     }
+    // },
+    // key: `gpalphotkey-${album_id}`,
+    // cache: 'force-cache',
+    // getCachedData(keys) {
+    //     const data = nuxtApp.payload.data[keys] || nuxtApp.static.data[keys]
+    //     // If data is not fetched yet
+    //     if (!data) {
+    //         // Fetch the first time
+    //         return
+    //     }
 
-        // Is the data too old?
-        const expirationDate = new Date(data.fetchedAt)
+    //     // Is the data too old?
+    //     const expirationDate = new Date(data.fetchedAt)
 
-        // expirationDate.getTime() + [second amount] * 1000
-        expirationDate.setTime(expirationDate.getTime() + 50 * 1000)
-        const isExpired = expirationDate.getTime() < Date.now()
-        if (isExpired) {
-            // Refetch the data
-            return
-        }
+    //     // expirationDate.getTime() + [second amount] * 1000
+    //     expirationDate.setTime(expirationDate.getTime() + 50 * 1000)
+    //     const isExpired = expirationDate.getTime() < Date.now()
+    //     if (isExpired) {
+    //         // Refetch the data
+    //         return
+    //     }
 
-        return data
-    },
+    //     return data
+    // },
 })
 
 albumCatData.value = albumcatd.value
