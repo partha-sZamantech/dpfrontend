@@ -5,9 +5,15 @@
             <Title>{{ albumCatData?.cat_name_bn }} | ঢাকাপ্রকাশ</Title>
         </Head>
 
-        <!-- Page Loader -->
-        <div v-if="pending" class="bg-white h-screen ">
+       <!-- Page Loader -->
+       <div v-if="pending" class="bg-white min-h-screen hidden md:block ">
             <div class="flex justify-center items-center pt-32">
+                <img width="60" src="/assets/img/loader.gif" alt="">
+                <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
+            </div>
+        </div>
+        <div v-if="pending" class=" fixed bg-white h-screen  inset-0  flex items-center justify-center md:hidden">
+            <div class="flex items-center gap-1">
                 <img width="60" src="/assets/img/loader.gif" alt="">
                 <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
             </div>
