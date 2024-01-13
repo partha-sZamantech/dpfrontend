@@ -5,12 +5,12 @@
 
 @font-face {
     font-family: DhakaRegular;
-    src: url('/public/assets/fonts/Dhakaprokash-Regular-v1.woff2');
+    src: url('/assets/fonts/Dhakaprokash-Regular-v1.woff2');
 }
 
 @font-face {
     font-family: NewsReader;
-    src: url('/public/assets/fonts/newsreader-Regular.ttf');
+    src: url('/assets/fonts/newsreader-Regular.ttf');
 }
 
 body {

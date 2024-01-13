@@ -13,7 +13,7 @@
                 <div class=" col-span-5 overflow-hidden">
                     <NuxtLink
                         :to="getPostUrl(crimecontent?.cat_slug, crimecontent?.subcat_slug, crimecontent?.content_type, crimecontent?.content_id)">
-                        <nuxt-img :src="`${siteurl.site_url}/media/content/images/${crimecontent?.img_bg_path}`"
+                        <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${crimecontent?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                     </NuxtLink>
