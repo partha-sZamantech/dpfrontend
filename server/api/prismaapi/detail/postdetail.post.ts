@@ -95,6 +95,7 @@ export default defineEventHandler(async (event) => {
         img_sm_caption: getdetailsContent?.img_sm_caption,
         img_bg_path: getdetailsContent?.img_bg_path,
         img_bg_caption: getdetailsContent?.img_bg_caption,
+        og_image: getdetailsContent?.og_image,
         tags: getdetailsContent?.tags,
         meta_keywords: getdetailsContent?.meta_keywords,
         created_at: getdetailsContent?.created_at,

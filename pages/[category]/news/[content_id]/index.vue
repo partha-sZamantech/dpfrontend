@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                             <!-- Author Section /-->
-
+                   
                             <!-- Social Share -->
                             <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
                                 <a :href="`https://www.facebook.com/sharer.php?u=${ogUrl}`" target="_blank">
