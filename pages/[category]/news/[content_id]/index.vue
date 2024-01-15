@@ -51,15 +51,17 @@
             <div v-if="DetailTopAds?.status === 1" class="pb-4 mb-4 border-b border-b-[#e2e2e2]">
                 <AdsDesktopDetailTop :DetailTopAds="DetailTopAds" />
             </div>
+          
             <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
             <!--========== First Details Content ============ -->
+    
             <div class=" grid grid-cols-12 gap-5 relative d-print">
                 <div class="col-span-12 md:col-span-9" id="singlepost">
                     <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="detailsContent?.content_heading"
                         :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
                         :data-keywords="detailsContent?.meta_keywords"
                         :data-href="`${websiteUrl?.website_url}${getPostUrl(detailsContent?.category?.cat_slug, detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type, detailsContent?.content_id)}`"
-                        :data-src="`${siteurl?.site_url}/media/content/images/${detailsContent?.img_bg_path}`">
+                        :data-src="detailsContent?.og_image">
                         <!-- <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
             :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
             :data-keywords="detailsContent?.meta_keywords"
@@ -311,16 +313,12 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <!----- Breadcump relatedPostOgImage ----->
-                    <!-- <div class="single-post flex flex-col gap-3" :data-title="moreDetailContent?.content_heading"
-            :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
-            :data-keywords="moreDetailContent?.meta_keywords"
-            :data-href="`${websiteUrl?.website_url}/category/${moreDetailContent?.category?.cat_slug}/${moreDetailContent?.content_id}`"
-            :data-src="`${siteurl?.site_url}/api/ogimage/get/${moreDetailContent?.category?.cat_slug}?imgPath=${moreDetailContent?.img_bg_path}`"> -->
+                
                     <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="moreDetailContent?.content_heading"
                         :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
                         :data-keywords="moreDetailContent?.meta_keywords"
                         :data-href="`${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
-                        :data-src="`${siteurl?.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`">
+                        :data-src="moreDetailContent?.og_image">
 
                         <div class="singlePost-heading flex flex-col gap-2">
                             <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
@@ -670,15 +668,17 @@ const metaKeywords = ref(null);
 metaKeywords.value = detailsContent?.value?.meta_keywords
 ogDescription.value = detailsContent?.value?.content_brief
 const ogImage = ref(null);
-ogImage.value = `${siteurl?.value?.site_url}/media/content/images/${detailsContent?.value?.img_bg_path}`
+ogImage.value = detailsContent?.value?.og_image
+// ogImage.value = `${siteurl?.value?.site_url}/media/content/images/${detailsContent?.value?.img_bg_path}`
 // ogImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
 const twitterTitle = ref(null);
 twitterTitle.value = detailsContent?.value?.content_heading
 const twitterDescription = ref(null);
 twitterDescription.value = detailsContent?.value?.content_brief
-const twitterImage = ref(null);
+// const twitterImage = ref(null);
 // twitterImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
-twitterImage.value = `${siteurl?.value?.site_url}/media/content/images/${detailsContent?.value?.img_bg_path}`
+// twitterImage.value = `${siteurl?.value?.site_url}/media/content/images/${detailsContent?.value?.img_bg_path}`
+// twitterImage.value = `${detailsContent?.value?.og_image}`
 // ================//  OG - Open Graph ====================// 
 
 // ============ Latest 20 Posts ===============//

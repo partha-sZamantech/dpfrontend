@@ -73,6 +73,7 @@
 
                     </div>
                     <div class="today_date place-self-end flex gap-2">
+             
                         <div class="px-3 py-1 border cursor-pointer">ইপেপার</div>
                         <div class="px-3 py-1 border cursor-pointer">English</div>
                     </div>
@@ -85,6 +86,7 @@
 </template>
 
 <script setup>
+
 
 const { scrollDown, counter } = defineProps(['scrollDown', 'LogoHeaderScollUp'])
 

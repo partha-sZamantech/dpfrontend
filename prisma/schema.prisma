@@ -111,7 +111,7 @@ model bn_contents {
   img_sm_path         String?   @db.VarChar(255)
   img_sm_caption      String?   @db.Text
   img_bg_path         String?   @db.VarChar(255)
-  og_image            String?   @db.Text
+  og_image            String?   @db.LongText
   img_bg_caption      String?   @db.Text
   related_ids         String?   @db.Text
   photo_ids           String?   @db.VarChar(255)
@@ -290,8 +290,6 @@ model elections {
   party_four_name   String?   @db.VarChar(255)
   party_one_logo    String?   @db.VarChar(255)
   party_two_logo    String?   @db.VarChar(255)
-  party_three_logo  String?   @db.VarChar(255)
-  party_four_logo   String?   @db.VarChar(255)
   party_one_votes   Int?      @db.UnsignedInt
   party_two_votes   Int?      @db.UnsignedInt
   party_three_votes Int?      @db.UnsignedInt
@@ -457,6 +455,16 @@ model p_categories {
   updated_at           DateTime? @db.Timestamp(0)
 }
 
+model p_galleries {
+  id            Int       @id @default(autoincrement())
+  album_id      Int
+  photo         String    @db.Text
+  photo_capture String?   @db.Text
+  feature_image String?   @db.Text
+  created_at    DateTime? @db.Timestamp(0)
+  updated_at    DateTime? @db.Timestamp(0)
+}
+
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model p_subcategories {
   subcat_id               Int       @id @default(autoincrement()) @db.UnsignedInt
@@ -565,14 +573,4 @@ model users {
   remember_token            String?   @db.VarChar(100)
   created_at                DateTime? @db.Timestamp(0)
   updated_at                DateTime? @db.Timestamp(0)
-}
-
-model p_galleries {
-  id            Int       @id @default(autoincrement())
-  album_id      Int
-  photo         String    @db.Text
-  photo_capture String?   @db.Text
-  feature_image String?   @db.Text
-  created_at    DateTime? @db.Timestamp(0)
-  updated_at    DateTime? @db.Timestamp(0)
 }

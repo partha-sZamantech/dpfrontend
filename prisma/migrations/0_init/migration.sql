@@ -115,7 +115,7 @@ CREATE TABLE `bn_contents` (
     `img_sm_path` VARCHAR(255) NULL,
     `img_sm_caption` TEXT NULL,
     `img_bg_path` VARCHAR(255) NULL,
-    `og_image` TEXT NULL,
+    `og_image` LONGTEXT NULL,
     `img_bg_caption` TEXT NULL,
     `related_ids` TEXT NULL,
     `photo_ids` VARCHAR(255) NULL,
@@ -318,8 +318,6 @@ CREATE TABLE `elections` (
     `party_four_name` VARCHAR(255) NULL,
     `party_one_logo` VARCHAR(255) NULL,
     `party_two_logo` VARCHAR(255) NULL,
-    `party_three_logo` VARCHAR(255) NULL,
-    `party_four_logo` VARCHAR(255) NULL,
     `party_one_votes` INTEGER UNSIGNED NULL,
     `party_two_votes` INTEGER UNSIGNED NULL,
     `party_three_votes` INTEGER UNSIGNED NULL,
@@ -510,6 +508,19 @@ CREATE TABLE `p_categories` (
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
+CREATE TABLE `p_galleries` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `album_id` INTEGER NOT NULL,
+    `photo` TEXT NOT NULL,
+    `photo_capture` TEXT NULL,
+    `feature_image` TEXT NULL,
+    `created_at` TIMESTAMP(0) NULL,
+    `updated_at` TIMESTAMP(0) NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
 CREATE TABLE `p_subcategories` (
     `subcat_id` INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
     `cat_id` INTEGER NOT NULL,
@@ -626,19 +637,6 @@ CREATE TABLE `users` (
     `updated_at` TIMESTAMP(0) NULL,
 
     UNIQUE INDEX `admins_email_unique`(`email`),
-    PRIMARY KEY (`id`)
-) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
--- CreateTable
-CREATE TABLE `p_galleries` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
-    `album_id` INTEGER NOT NULL,
-    `photo` TEXT NOT NULL,
-    `photo_capture` TEXT NULL,
-    `feature_image` TEXT NULL,
-    `created_at` TIMESTAMP(0) NULL,
-    `updated_at` TIMESTAMP(0) NULL,
-
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
