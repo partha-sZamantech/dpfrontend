@@ -91,7 +91,7 @@
                                     <small class="cat-postdate">
                                         <!-- প্রকাশ: {{ postCreatedDate(categoryContent[1]?.created_at) }} -->
                                         <span class="text-sm text-black">
-                                            {{ categoryContent[1]?.post_time }}
+                                            {{ postCreatedDateWithTime(categoryContent[1]?.created_at) }}
                                         </span>
                                     </small>
                                 </div>
@@ -121,7 +121,7 @@
                                 </ClientOnly>
                                 <small class="cat-postdate">
                                     <span class="text-sm text-black">
-                                        {{ categoryContent[2]?.post_time }}
+                                        {{ postCreatedDateWithTime(categoryContent[2]?.created_at) }}
                                     </span>
                                 </small>
                             </div>
@@ -145,7 +145,7 @@
                                 </ClientOnly>
                                 <small class="cat-postdate">
                                     <span class="text-sm text-black">
-                                        {{ categoryContent[3]?.post_time }}
+                                        {{ postCreatedDateWithTime(categoryContent[3]?.created_at) }}
                                     </span>
                                 </small>
                             </div>
@@ -168,7 +168,7 @@
                                         v-html="`${categoryContent[4]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate text-black">
-                                    {{ categoryContent[4]?.post_time }}
+                                    {{ postCreatedDateWithTime(categoryContent[4]?.created_at) }}
                                 </small>
                             </div>
                         </NuxtLink>
@@ -212,9 +212,9 @@
 
                                         <span class="post-date md:flex flex-col gap-1 hidden text-base text-black">
                                             <small>আপডেট: {{
-                                                postCreatedDate(catPost?.updated_at) }}</small>
+                                                postCreatedDateWithTime(catPost?.updated_at) }}</small>
                                             <small>প্রকাশ: {{
-                                                postCreatedDate(catPost?.created_at) }}</small>
+                                                postCreatedDateWithTime(catPost?.created_at) }}</small>
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
@@ -275,29 +275,10 @@
 </template>
 
 <script setup>
-const nuxtApp = useNuxtApp()
-
-// ================ Get Bangla Date ============== //
-const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
-// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-const postCreatedDate = (date) => {
-    // If date value has
-    if (date) {
-        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-    }
-}
-// ================ Get Bangla Date ============== //
-
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
-
+import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
 
 const img = useImage()
 const siteurl = siteUrlState()
-
 
 // Sticky Status
 const singlePageSticky = singlePageStickyState()
@@ -334,7 +315,6 @@ category.value = catcont?.value?.category
 subcategory.value = catcont?.value?.subcat
 // Category Assign
 
-
 // Except Content more 
 const { data: excptcatcont } = await useFetch('/api/prismaapi/category/categorycontent', {
     method: "POST",
@@ -364,10 +344,7 @@ const loadMoreButtonHandler = async () => {
     })
     categoryContentExcept.value = loadCtP?.value?.contents
 }
-
 //================ Load More Category Content Button =================//
-
-// let date = new Date(categoryContent.value[0].created_at).toLocaleDateString("bn")
 
 //========== Category Page Top Ads ==========//
 // Page 1 = Common, 2 = Home Page, 3 = Category Page, 4 = Details Page

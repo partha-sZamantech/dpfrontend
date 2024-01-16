@@ -83,7 +83,7 @@
                                         <div class="cat-postdesc text-base font-[300] text-black"
                                             v-html="`${latestPosts[1]?.content_details.substring(0, 155)}...`"></div>
                                     </ClientOnly>
-                                    <small class="cat-postdate text-black">
+                                    <small class="cat-postdate text-sm text-black">
                                         প্রকাশ: {{ postCreatedDateWithTime(latestPosts[1]?.created_at) }}
                                     </small>
                                 </div>
@@ -110,7 +110,7 @@
                                     <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${latestPosts[2]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
-                                <small class="cat-postdate text-black">
+                                <small class="cat-postdate text-sm text-black">
                                     প্রকাশ: {{ postCreatedDateWithTime(latestPosts[2]?.created_at) }}
                                 </small>
                             </div>
@@ -132,7 +132,7 @@
                                     <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${latestPosts[3]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
-                                <small class="cat-postdate text-black">
+                                <small class="cat-postdate text-sm text-black">
                                     প্রকাশ: {{ postCreatedDateWithTime(latestPosts[3]?.created_at) }}
                                 </small>
                             </div>
@@ -154,7 +154,7 @@
                                     <div class="cat-postdesc text-base font-[300] text-black"
                                         v-html="`${latestPosts[4]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
-                                <small class="cat-postdate text-black">
+                                <small class="cat-postdate text-sm text-black">
                                     প্রকাশ: {{ postCreatedDateWithTime(latestPosts[4]?.created_at) }}
                                 </small>
                             </div>
