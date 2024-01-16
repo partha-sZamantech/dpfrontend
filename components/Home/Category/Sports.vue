@@ -26,7 +26,7 @@
                             <div class="text-base font-[300] text-black" v-html="`${sportscontent[0]?.content_details?.substring(0,
                                 170)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm text-black">{{ sportscontent[0]?.created_at }}</span>
+                        <span class="text-sm text-black">{{ postCreatedDate(sportscontent[0]?.created_at) }}</span>
                     </div>
                 </NuxtLink>
             </div>
@@ -50,7 +50,7 @@
                                 class="flex flex-col gap-2">
                                 <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
                                     hmsport?.content_heading }}</h4>
-                                <span class="text-sm text-black">{{ sportscontent[0]?.created_at }}</span>
+                                <span class="text-sm text-black">{{ postCreatedDate(sportscontent[0]?.created_at) }}</span>
                             </NuxtLink>
                         </div>
                     </div>
@@ -62,6 +62,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate } from '~/lib/dateformat';
 const img = useImage()
 const siteUrl = siteUrlState()
 const sportscontent = useState(() => [])
