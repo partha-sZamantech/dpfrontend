@@ -22,7 +22,7 @@
                             <div class="text-base font-[300] text-black" v-html="`${lawcourtContents[0]?.content_details?.substring(0,
                                 255)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm text-black">{{ lawcourtContents[0]?.created_at }}</span>
+                        <span class="text-sm text-black">{{ postCreatedDate(lawcourtContents[0]?.created_at) }}</span>
                     </div>
                 </NuxtLink>
             </div>
@@ -43,7 +43,7 @@
                                 class="flex flex-col gap-2">
                                 <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
                                     lawcourtContent?.content_heading }}</h4>
-                                <span class="text-sm text-black">{{ lawcourtContent?.created_at }}</span>
+                                <span class="text-sm text-black">{{ postCreatedDate(lawcourtContent?.created_at) }}</span>
                             </NuxtLink>
                         </div>
                     </div>
@@ -57,6 +57,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate } from '~/lib/dateformat';
 const img = useImage()
 const siteurl = siteUrlState()
 

@@ -25,7 +25,7 @@
                         <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">
                             {{ crimecontent?.content_heading }}
                         </h4>
-                        <span class="text-sm">{{ crimecontent?.created_at }}</span>
+                        <span class="text-sm">{{ postCreatedDate(crimecontent?.created_at) }}</span>
                     </NuxtLink>
                 </div>
             </div>
@@ -36,6 +36,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate } from '~/lib/dateformat';
 const img = useImage()
 const siteurl = siteUrlState()
 // ======== Crime Content =============== //
