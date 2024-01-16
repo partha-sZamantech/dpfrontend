@@ -116,7 +116,6 @@ const stickyScroll = computed(() =>
 // Get Author Slug
 const author_slug = useRoute().params.author_slug
 
-
 //================== Get Author Content fetching =============== //
 // Author State 
 const author = ref(null)
