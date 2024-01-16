@@ -66,9 +66,9 @@
 
                     <span class="post-date md:flex flex-col gap-1 text-base hidden text-black">
                       <small>আপডেট: {{
-                        postCreatedDate(authorContent?.updated_at) }}</small>
+                        postCreatedDateWithTime(authorContent?.updated_at) }}</small>
                       <small>প্রকাশ: {{
-                        postCreatedDate(authorContent?.created_at) }}</small>
+                        postCreatedDateWithTime(authorContent?.created_at) }}</small>
                     </span>
                   </div>
                   <div class=" col-span-5 category-post-image overflow-hidden">
@@ -104,7 +104,7 @@
 </template>
 
 <script setup>
-
+import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 
@@ -116,22 +116,6 @@ const stickyScroll = computed(() =>
 // Get Author Slug
 const author_slug = useRoute().params.author_slug
 
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-  return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
-
-// ================ Get Bangla Date ============== //
-const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
-// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-const postCreatedDate = (date) => {
-  // If date value has
-  if (date) {
-    return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-  }
-}
-// ================ Get Bangla Date ============== //
 
 //================== Get Author Content fetching =============== //
 // Author State 
@@ -167,7 +151,6 @@ const loadMoreButtonHandler = async () => {
   author.value = authorMorecont?.value?.author
 }
 //================ Load More Author Content Button =================//
-
 
 </script>
 
