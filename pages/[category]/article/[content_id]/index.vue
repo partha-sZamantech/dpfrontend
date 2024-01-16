@@ -96,7 +96,7 @@
                                         detailsContent?.author?.author_name_bn
                                     }}</p>
 
-                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(detailsContent?.created_at) }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
@@ -110,7 +110,7 @@
                                     <!-- <p v-if="detailsContent?.author"> -->
                                     <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
 
-                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(detailsContent?.created_at) }}</span>
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(detailsContent?.created_at) }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
@@ -349,7 +349,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                         moreDetailContent?.author?.author_name_bn
                                     }}</p>
 
-                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent?.created_at) }}</span>
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(moreDetailContent?.created_at) }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
@@ -363,27 +363,13 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     <!-- <p v-if="detailsContent?.author"> -->
                                     <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
 
-                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent?.created_at) }}</span>
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(moreDetailContent?.created_at) }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
                             </div>
                             <!-- Author Section /-->
-                            <!-- <div class="author-details flex flex-col gap-1" v-if="moreDetailContent?.author">
-                    <p v-if="moreDetailContent?.author">
-                    
-                        <NuxtLink class="hover:text-[#3375af] font-[600]"
-                            :to="`/author/${moreDetailContent?.author?.author_slug}`">{{
-                                moreDetailContent?.author?.author_name_bn }}</NuxtLink>
-                    </p>
-                    <p v-else>
-                        <NuxtLink class="hover:text-[#3375af] font-[600]" to="/author/dhaka-prokash-desk">ঢাকাপ্রকাশ
-                            ডেস্ক</NuxtLink>
-                    </p>
-                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDate(moreDetailContent.created_at) }}</span>
-                        </ClientOnly>
-                    </p>
-                </div> -->
+                  
                             <!-- Social Share -->
                             <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
                                 <a :href="`https://www.facebook.com/sharer.php?u=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
@@ -597,8 +583,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 </template>
 
 <script setup>
-// import moment from 'moment';
-
+import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
 
 const siteurl = siteUrlState()
 const websiteUrl = websiteUrlState()
@@ -611,14 +596,6 @@ const stickyScroll = computed(() =>
 // Sitesetting - logo, social media
 const sitesettings = sitesettingsState()
 
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
-
-
-// Category Slug & Content id pages/category/[category_slug]/[content_id].vue
 const category_slug = useRoute().params.category_slug
 const content_id = useRoute().params.content_id
 
@@ -636,25 +613,11 @@ detailsContent.value = pdailts?.value?.detailsContent
 
 // ========== First Details Content ======= // 
 
-
 // ============== First Related Content ================//
 const fRelatedContents = useState(() => [])
 
 fRelatedContents.value = pdailts?.value?.firstRelatedContents
-
 // ============== First Related Content ================//
-// detailsContent?.value?.img_bg_path
-
-// ============= detailsContent OG Image Generate ========== //
-// const firstOGImage = ref('')
-// const { data: dcogimage } = await useFetch("/api/prismaapi/ogimage/ogimage", {
-//     method: 'POST',
-//     body: {
-//         img_bg_path: pdailts?.value?.detailsContent?.img_bg_path
-//     }
-// })
-// firstOGImage.value = dcogimage?.value
-// ============= detailsContent OG Image Generate ========== //
 
 // ================  OG - Open Graph ====================// 
 const ogUrl = ref(null);
@@ -669,16 +632,11 @@ metaKeywords.value = detailsContent?.value?.meta_keywords
 ogDescription.value = detailsContent?.value?.content_brief
 const ogImage = ref(null);
 ogImage.value = detailsContent?.value?.og_image
-// ogImage.value = `${siteurl?.value?.site_url}/media/content/images/${detailsContent?.value?.img_bg_path}`
-// ogImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
+
 const twitterTitle = ref(null);
 twitterTitle.value = detailsContent?.value?.content_heading
 const twitterDescription = ref(null);
 twitterDescription.value = detailsContent?.value?.content_brief
-// const twitterImage = ref(null);
-// twitterImage.value = `${siteurl?.value?.site_url}/api/ogimage/get/${detailsContent?.value?.category?.cat_slug}?imgPath=${detailsContent?.value?.img_bg_path}`
-// twitterImage.value = `${siteurl?.value?.site_url}/media/content/images/${detailsContent?.value?.img_bg_path}`
-// twitterImage.value = `${detailsContent?.value?.og_image}`
 // ================//  OG - Open Graph ====================// 
 
 // ============ Latest 20 Posts ===============//
@@ -700,23 +658,10 @@ const { data: ftrightctcontent } = await useFetch('/api/prismaapi/detail/firstri
     }
 })
 firstMoreContents.value = ftrightctcontent.value
-// firstMoreContents.value = pdailts?.value?.moreContents
-// ========== First Detail Right Side Category Content ======= //
-// ========== First Details Content Author ======= //
-// const authors = useState(() => [])
-// authors.value = pdailts?.value?.authors
-// ========== First Details Content Author ======= //
-
 
 // ========== More Details Contents ======= //
 const moreDetailsContents = useState(() => [])
-
-// console.log(dfsdsdfs.value)
-
 moreDetailsContents.value = pdailts?.value?.moreDetailContent
-
-// moreDetailsContents.value = pdailts?.value?.moreDetailContent
-// console.log(moreDetailsContents.value)
 // ========== More Details Contents ======= //
 
 
@@ -766,18 +711,6 @@ firstInsideMoreNews.value = dinsidemorenews?.value
 // console.log(relatedDetailContent.value)
 // ==================== RelatedContent for More <3> Three content  ======================= //
 
-
-
-// moment.locale('bn-bd')
-// const date = moment(detailsContent.value.created_at).format('Y', 'bn-bd')
-// ================ Get Bangla Date ============== //
-const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
-// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-const postCreatedDate = (date) => {
-    return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-}
-// ================ Get Bangla Date ============== //
-// console.log(postDate.replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম'))
 
 // ==================== First Details Tags ======================= //
 const firstContentTags = useState(() => [])
