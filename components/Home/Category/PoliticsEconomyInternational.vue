@@ -23,7 +23,7 @@
                         <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{
                             politics[0]?.content_heading }}
                         </h3>
-                        <span class="text-sm text-black">{{ politics[0]?.created_at }}</span>
+                        <span class="text-sm text-black">{{ postCreatedDate(politics[0]?.created_at) }}</span>
                     </NuxtLink>
                     <!--/ Politic Feature Content -->
 
@@ -63,7 +63,7 @@
                         </div>
                         <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{
                             economycontent[0]?.content_heading }}</h3>
-                        <span class="text-sm">{{ economycontent[0]?.created_at }}</span>
+                        <span class="text-sm">{{ postCreatedDate(economycontent[0]?.created_at) }}</span>
                     </NuxtLink>
                     <!--/ Economy Feature Content -->
 
@@ -103,7 +103,7 @@
                         </div>
                         <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{
                             internationalcontent[0]?.content_heading }}</h3>
-                        <span class="text-sm text-black">{{ internationalcontent[0]?.created_at }}</span>
+                        <span class="text-sm text-black">{{ postCreatedDate(internationalcontent[0]?.created_at) }}</span>
                     </NuxtLink>
                     <!--/ International Feature Content -->
 
@@ -127,6 +127,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate } from '~/lib/dateformat';
 const img = useImage()
 const siteurl = siteUrlState()
 

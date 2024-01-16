@@ -1,9 +1,8 @@
-import moment from "moment"
+// import moment from "moment"
 // import { Prisma, PrismaClient } from '@prisma/client'
 import { prisma } from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
-    moment.locale('bn-bd')
-
+    // moment.locale('bn-bd')
     // const getBody = await readBody(event)
     // const prisma = new PrismaClient()
 
@@ -39,7 +38,7 @@ export default defineEventHandler(async (event) => {
             // Category GET
             const category = await prisma.bn_categories.findFirst({
                 where: {
-                    cat_id: parseInt(content?.cat_id),
+                    cat_id: content?.cat_id,
                     cat_type: 1
                 }
             })
@@ -59,7 +58,8 @@ export default defineEventHandler(async (event) => {
                 bn_cat_name: category?.cat_name_bn,
                 cat_slug: category?.cat_slug,
                 subcat_slug: subcategory?.subcat_slug,
-                created_at: moment(content?.created_at).startOf('hour').fromNow()
+                created_at: content?.created_at
+                // created_at: moment(content?.created_at).startOf('hour').fromNow()
             })
         }
 
