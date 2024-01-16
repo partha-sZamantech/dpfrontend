@@ -20,7 +20,7 @@
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ motivationContents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm text-black">{{ motivationContents[0]?.created_at }}</span>
+                <span class="text-sm text-black">{{ postCreatedDate(motivationContents[0]?.created_at) }}</span>
             </NuxtLink>
             <!--/ Motivation Feature Content -->
 
@@ -41,6 +41,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 // ======== Motivation Content =============== //
@@ -48,17 +49,10 @@ const motivationContents = useState(() => [])
 const { data: hmotivation } = await useFetch("/api/prismaapi/home/motivation", {
     method: 'GET',
     // cache: 'force-cache',
-
 })
 motivationContents.value = hmotivation
 // ======== Motivation Content =============== //
 
-
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
 </script>
 
 <style lang="scss" scoped></style>

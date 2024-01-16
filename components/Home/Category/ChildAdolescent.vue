@@ -18,7 +18,7 @@
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ childrenContents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm text-black">{{ childrenContents[0]?.created_at }}</span>
+                <span class="text-sm text-black">{{ postCreatedDate(childrenContents[0]?.created_at) }}</span>
             </NuxtLink>
             <!--/ Children Feature Content -->
 
@@ -37,9 +37,9 @@
 </template>
 
 <script setup>
+import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
-const nuxtApp = useNuxtApp()
 // ======== Children Content =============== //
 const childrenContents = useState(() => [])
 const { data: hchildrendddddddd } = await useFetch("/api/prismaapi/home/child", {
@@ -49,11 +49,6 @@ const { data: hchildrendddddddd } = await useFetch("/api/prismaapi/home/child", 
 childrenContents.value = hchildrendddddddd.value
 // ======== Children Content =============== //
 
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
 </script>
 
 <style lang="scss" scoped></style>

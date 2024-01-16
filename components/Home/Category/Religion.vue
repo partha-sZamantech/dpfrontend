@@ -18,7 +18,7 @@
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ religioncontents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm text-black">{{ religioncontents[0]?.created_at }}</span>
+                <span class="text-sm text-black">{{ postCreatedDate(religioncontents[0]?.created_at) }}</span>
             </NuxtLink>
             <!--/ Religion Feature Content -->
 
@@ -37,6 +37,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 const nuxtApp = useNuxtApp()
@@ -45,16 +46,9 @@ const religioncontents = useState(() => [])
 const { data: hreligion } = await useFetch("/api/prismaapi/home/religion", {
     method: 'GET',
     // cache: 'force-cache',
-
 })
 religioncontents.value = hreligion
 // ======== Religion Content =============== //
-
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
 
 </script>
 

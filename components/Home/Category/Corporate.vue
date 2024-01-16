@@ -20,7 +20,7 @@
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ corporateContents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm text-black">{{ corporateContents[0]?.created_at }}</span>
+                <span class="text-sm text-black">{{ postCreatedDate(corporateContents[0]?.created_at) }}</span>
             </NuxtLink>
             <!--/ Corporate Feature Content -->
 
@@ -41,6 +41,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 
@@ -53,11 +54,6 @@ const { data: hcorporate } = await useFetch("/api/prismaapi/home/corporate", {
 corporateContents.value = hcorporate
 // ======== Probash Content =============== //
 
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
 </script>
 
 <style lang="scss" scoped></style>

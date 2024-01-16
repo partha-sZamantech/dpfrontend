@@ -17,7 +17,7 @@
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ healthcontents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm text-black">{{ healthcontents[0]?.created_at }}</span>
+                <span class="text-sm text-black">{{ postCreatedDate(healthcontents[0]?.created_at) }}</span>
             </NuxtLink>
             <!--/ Health Feature Content -->
 
@@ -35,6 +35,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 // ======== Health Content =============== //
@@ -45,12 +46,6 @@ const { data: chealth } = await useFetch("/api/prismaapi/home/health", {
 })
 healthcontents.value = chealth
 // ======== Health Content =============== //
-
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
 
 </script>
 

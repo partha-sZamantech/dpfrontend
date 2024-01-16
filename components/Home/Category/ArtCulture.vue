@@ -20,7 +20,7 @@
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ artscontents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm text-black">{{ artscontents[0]?.created_at }}</span>
+                <span class="text-sm text-black">{{ postCreatedDate(artscontents[0]?.created_at) }}</span>
             </NuxtLink>
             <!--/ Art Culture  Feature Content -->
 
@@ -41,6 +41,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 // ======== Arts Content =============== //
@@ -52,11 +53,6 @@ const { data: harts } = await useFetch("/api/prismaapi/home/art", {
 artscontents.value = harts
 // ======== Arts Content =============== //
 
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
 
 </script>
 

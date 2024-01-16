@@ -20,7 +20,7 @@
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ educationcontents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm text-black">{{ educationcontents[0]?.created_at }}</span>
+                <span class="text-sm text-black">{{ postCreatedDate(educationcontents[0]?.created_at) }}</span>
             </NuxtLink>
             <!--/ International Feature Content -->
 
@@ -43,6 +43,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 // ======== Arts Content =============== //
@@ -50,16 +51,10 @@ const educationcontents = useState(() => [])
 const { data: heducation } = await useFetch("/api/prismaapi/home/education", {
     method: 'GET',
     // cache: 'force-cache',
-
 })
 educationcontents.value = heducation
 // ======== Arts Content =============== //
 
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
 
 </script>
 
