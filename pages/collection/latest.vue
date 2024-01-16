@@ -84,7 +84,7 @@
                                             v-html="`${latestPosts[1]?.content_details.substring(0, 155)}...`"></div>
                                     </ClientOnly>
                                     <small class="cat-postdate text-black">
-                                        প্রকাশ: {{ postCreatedDate(latestPosts[1]?.created_at) }}
+                                        প্রকাশ: {{ postCreatedDateWithTime(latestPosts[1]?.created_at) }}
                                     </small>
                                 </div>
                             </NuxtLink>
@@ -111,7 +111,7 @@
                                         v-html="`${latestPosts[2]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate text-black">
-                                    প্রকাশ: {{ postCreatedDate(latestPosts[2]?.created_at) }}
+                                    প্রকাশ: {{ postCreatedDateWithTime(latestPosts[2]?.created_at) }}
                                 </small>
                             </div>
                         </NuxtLink>
@@ -133,7 +133,7 @@
                                         v-html="`${latestPosts[3]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate text-black">
-                                    প্রকাশ: {{ postCreatedDate(latestPosts[3]?.created_at) }}
+                                    প্রকাশ: {{ postCreatedDateWithTime(latestPosts[3]?.created_at) }}
                                 </small>
                             </div>
                         </NuxtLink>
@@ -155,7 +155,7 @@
                                         v-html="`${latestPosts[4]?.content_details.substring(0, 155)}...`"></div>
                                 </ClientOnly>
                                 <small class="cat-postdate text-black">
-                                    প্রকাশ: {{ postCreatedDate(latestPosts[4]?.created_at) }}
+                                    প্রকাশ: {{ postCreatedDateWithTime(latestPosts[4]?.created_at) }}
                                 </small>
                             </div>
                         </NuxtLink>
@@ -193,9 +193,9 @@
 
                                         <span class="post-date md:flex flex-col gap-1 text-base text-black hidden">
                                             <small>আপডেট: {{
-                                                postCreatedDate(latestPost?.updated_at) }}</small>
+                                                postCreatedDateWithTime(latestPost?.updated_at) }}</small>
                                             <small>প্রকাশ: {{
-                                                postCreatedDate(latestPost?.created_at) }}</small>
+                                                postCreatedDateWithTime(latestPost?.created_at) }}</small>
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
@@ -233,30 +233,10 @@
     </div>
 </template>
 <script setup>
-// import moment from 'moment'
-// moment.locale('bn');
-// ================ Get Bangla Date ============== //
-const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
-// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-const postCreatedDate = (date) => {
-    // If date value has
-    if (date) {
-        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-    }
-}
-// ================ Get Bangla Date ============== //
-
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
-
-
+import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
 
 const img = useImage()
 const siteurl = siteUrlState()
-
 
 // Sticky Status
 const singlePageSticky = singlePageStickyState()
@@ -277,7 +257,6 @@ const { data: lcpt, pending } = await useFetch('/api/prismaapi/collection/latest
         skip: 0
     }
 })
-// console.log(lcpt.value)
 // Latest Post Content Assign
 latestPosts.value = lcpt
 
@@ -296,7 +275,6 @@ latestPostContentExcept.value = exceptlPost.value
 //================ Load More Latest Post Content Button =================//
 const loadMoreButtonHandler = async () => {
     take.value += 10
-
     const { data: loadLPC, pending } = await useFetch('/api/prismaapi/collection/latestpost', {
         method: "POST",
         body: {
@@ -305,11 +283,8 @@ const loadMoreButtonHandler = async () => {
         }
     })
     latestPostContentExcept.value = loadLPC.value
-
 }
 //================ Load More Latest Post Content Button =================//
-
-// let date = new Date(categoryContent.value[0].created_at).toLocaleDateString("bn")
 
 </script>
 
