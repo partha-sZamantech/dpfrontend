@@ -24,7 +24,7 @@
                             <div class="text-base font-[300] text-black" v-html="`${technologycontents[0]?.content_details?.substring(0,
                                 165)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm text-black">{{ technologycontents[0]?.created_at }}</span>
+                        <span class="text-sm text-black">{{ postCreatedDate(technologycontents[0]?.created_at) }}</span>
                     </div>
                 </NuxtLink>
             </div>
@@ -49,7 +49,7 @@
                                 <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">
                                     {{ technologycontent?.content_heading }}
                                 </h4>
-                                <span class="text-sm text-black">{{ technologycontent?.created_at }}</span>
+                                <span class="text-sm text-black">{{ postCreatedDate(technologycontent?.created_at) }}</span>
                             </NuxtLink>
                         </div>
                     </div>
@@ -63,6 +63,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 // ======== Technology Content =============== //
@@ -75,11 +76,6 @@ const { data: technologyc } = await useFetch("/api/prismaapi/home/technology", {
 technologycontents.value = technologyc
 // ======== Technology Content =============== //
 
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
 
 </script>
 

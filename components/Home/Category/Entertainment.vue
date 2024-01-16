@@ -62,7 +62,7 @@
 </template>
 
 <script setup>
-import { postCreatedDate } from '~/lib/dateformat';
+import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 // ======== Entertainment Content =============== //
@@ -74,13 +74,6 @@ const { data: entertainc } = await useFetch('/api/prismaapi/home/entertainment',
 })
 entertainments.value = entertainc
 // ======== Entertainment Content =============== //
-
-
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
 
 
 </script>

@@ -61,40 +61,14 @@
 </template>
 
 <script setup>
+import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 // const nuxtApp = useNuxtApp()
 const img = useImage()
 const siteurl = siteUrlState()
 
-// ================ Get Bangla Date ============== //
-const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric"  })
-// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-const postCreatedDate = (date) => {
-    // If date value has
-    if (date) {
-        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-    }
-}
-// ================ Get Bangla Date ============== //
-
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article') }/${content_id}`
-}
-// ======== Post Url Generate ============ //
-
 // =============== Special Content Fetching ====================//
 const specialTopContents = specialTopContentState()
-
-// const { data: spTopCon } = await useFetch('/api/prismaapi/home/specialtopcontent', {
-//     method: "GET",
-//     // cache: 'force-cache'
-// })
-// // const { data: spTopCon } = await useFetch("/api/home/specialtopcontent", {
-// //     method: 'GET'
-// // })
-// specialTopContents.value = spTopCon.value
 // =============== Special Content Fetching ====================//
-
 
 </script>
 
