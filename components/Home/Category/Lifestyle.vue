@@ -26,7 +26,7 @@
                         <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
                             lifestyle?.content_heading }}
                         </h4>
-                        <span class="text-sm text-black">{{ lifestyle?.created_at }}</span>
+                        <span class="text-sm text-black">{{ postCreatedDate(lifestyle?.created_at) }}</span>
                     </NuxtLink>
                 </div>
             </div>
@@ -37,6 +37,7 @@
 </template>
 
 <script setup>
+import { postCreatedDate } from '~/lib/dateformat';
 const img = useImage()
 const siteurl = siteUrlState()
 // ======== Life Style Content =============== //
