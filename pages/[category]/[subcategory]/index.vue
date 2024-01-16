@@ -1,6 +1,5 @@
 <template>
     <div class="category-page">
-
         <Head>
             <Title>{{ category.subcat_name_bn }}</Title>
         </Head>
@@ -101,7 +100,7 @@
                                     <small class="cat-postdate">
                                         <!-- প্রকাশ: {{ postCreatedDate(subcategoryContents[1]?.created_at) }} -->
                                         <span class="text-sm text-black">
-                                            {{ subcategoryContents[1]?.post_time }}
+                                            {{ postCreatedDateWithTime(subcategoryContents[1]?.created_at) }}
                                         </span>
                                     </small>
                                 </div>
@@ -132,7 +131,7 @@
                                 <small class="cat-postdate text-black">
                                     <!-- প্রকাশ: {{ postCreatedDate(subcategoryContents[2]?.created_at) }} -->
                                     <span class="text-sm">
-                                        {{ subcategoryContents[2]?.post_time }}
+                                        {{ postCreatedDateWithTime(subcategoryContents[2]?.created_at) }}
                                     </span>
                                 </small>
                             </div>
@@ -157,7 +156,7 @@
                                 </ClientOnly>
                                 <small class="cat-postdate">
                                     <span class="text-sm text-black">
-                                        {{ subcategoryContents[3]?.post_time }}
+                                        {{ postCreatedDateWithTime(subcategoryContents[3]?.created_at) }}
                                     </span>
                                 </small>
                             </div>
@@ -182,7 +181,7 @@
                                 </ClientOnly>
                                 <small class="cat-postdate">
                                     <span class="text-sm text-black">
-                                        {{ subcategoryContents[4]?.post_time }}
+                                        {{ postCreatedDateWithTime(subcategoryContents[4]?.created_at) }}
                                     </span>
                                 </small>
                             </div>
@@ -222,9 +221,9 @@
 
                                         <span class="post-date md:flex flex-col gap-1 hidden text-base text-black">
                                             <small>আপডেট: {{
-                                                postCreatedDate(subcatPost?.updated_at) }}</small>
+                                                postCreatedDateWithTime(subcatPost?.updated_at) }}</small>
                                             <small>প্রকাশ: {{
-                                                postCreatedDate(subcatPost?.created_at) }}</small>
+                                                postCreatedDateWithTime(subcatPost?.created_at) }}</small>
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
@@ -260,7 +259,7 @@
 </template>
 
 <script setup>
-const nuxtApp = useNuxtApp()
+import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
 
 const img = useImage()
 const siteurl = siteUrlState()
@@ -269,23 +268,6 @@ const singlePageSticky = singlePageStickyState()
 const stickyScroll = computed(() =>
     singlePageSticky.value
 )
-
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
-
-// ================ Get Bangla Date ============== //
-const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
-// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-const postCreatedDate = (date) => {
-    // If date value has
-    if (date) {
-        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-    }
-}
-// ================ Get Bangla Date ============== //
 
 const subcat_slug = useRoute().params.subcategory
 const cat_slug = useRoute().params.category

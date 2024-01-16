@@ -187,7 +187,7 @@
                                             {{
                                                 latestPost?.content_heading }}</h3>
                                         <ClientOnly>
-                                            <div class="cat-desc text-black text-[15px] font-[300] hidden md:block"
+                                            <div class="cat-desc text-black text-base font-[300] hidden md:block"
                                                 v-html="`${latestPost?.content_details.substring(0, 155)}...`"></div>
                                         </ClientOnly>
 
@@ -225,7 +225,7 @@
 
                     <!-- Loop Category Post Section -->
                 </div>
-                <div class=" col-span-12 md:col-span-3">
+                <div class=" col-span-12 md:col-span-3 hidden md:block">
                     <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" />
                 </div>
             </div>
