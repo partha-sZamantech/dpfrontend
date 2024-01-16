@@ -19,7 +19,7 @@
                     <!-- <p class="text-[16px]">{{ tpcontent?.content_details?.substring(0,100)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
                     <div class="text-base font-[300] text-black" v-html="`${tpcontent?.content_details?.substring(0, 100)} ...`"></div>
 
-                    <span class="text-sm text-black">{{ tpcontent?.bn_cat_name }} | {{ tpcontent?.created_at }}</span>
+                    <span class="text-sm text-black">{{ tpcontent?.bn_cat_name }} | {{ postCreatedDate(tpcontent?.created_at) }}</span>
 
                 </div>
             </NuxtLink>
@@ -35,6 +35,17 @@ const img = useImage()
 // Global Special Top Content State Composables
 const spTopContent = specialTopContentState()
 const siteurl = siteUrlState()
+
+// ================ Get Bangla Date ============== //
+const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric"  })
+// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+const postCreatedDate = (date) => {
+    // If date value has
+    if (date) {
+        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+    }
+}
+// ================ Get Bangla Date ============== //
 
 // ======== Post Url Generate ============ //
 const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {

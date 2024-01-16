@@ -26,7 +26,7 @@
                                 220)} ...`"></div>
                         </ClientOnly>
                         <span class="text-sm text-black">
-                            {{ nationalHCon[0]?.bn_cat_name }} | {{ nationalHCon[0]?.created_at }}
+                            {{ nationalHCon[0]?.bn_cat_name }} | {{ postCreatedDate(nationalHCon[0]?.created_at) }}
                         </span>
                     </div>
                 </NuxtLink>
@@ -47,7 +47,7 @@
                             <NuxtLink class="flex flex-col gap-2" :to="getPostUrl(nationalcntent?.cat_slug, nationalcntent?.subcat_slug, nationalcntent?.content_type, nationalcntent?.content_id)">
                                 <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
                                     nationalcntent?.content_heading }}</h4>
-                                    <span class="text-sm text-black">{{ nationalcntent?.bn_cat_name }} | {{ nationalcntent?.created_at }}</span>
+                                    <span class="text-sm text-black">{{ nationalcntent?.bn_cat_name }} | {{ postCreatedDate(nationalcntent?.created_at) }}</span>
                             </NuxtLink>
                         </div>
                     </div>
@@ -74,6 +74,17 @@ const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) =
     return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
 }
 // ======== Post Url Generate ============ //
+
+// ================ Get Bangla Date ============== //
+const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric"  })
+// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+const postCreatedDate = (date) => {
+    // If date value has
+    if (date) {
+        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+    }
+}
+// ================ Get Bangla Date ============== //
 
 </script>
 
