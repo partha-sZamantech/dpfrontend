@@ -1,8 +1,8 @@
-import moment from "moment"
+// import moment from "moment"
 import { prisma } from "~/lib/prisma"
 // import { Prisma, PrismaClient } from '@prisma/client'
 export default defineEventHandler(async (event) => {
-    moment.locale('bn-bd')
+    // moment.locale('bn-bd')
     // const getBody = await readBody(event)
     // const prisma = new PrismaClient()
     // const getBody = await readBody(event)

@@ -474,8 +474,6 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 </template>
 
 <script setup>
-// import moment from 'moment';
-
 
 const siteurl = siteUrlState()
 const websiteUrl = websiteUrlState()
@@ -593,8 +591,7 @@ for (let i = 0; i < moreDetailsContents?.value?.length; i++) {
 moreDetailCatWisePost.value = [...new Set(moreDetailCatWisePost.value)]
 // =================== More Details Related RightSide Category Post ==========================
 
-// moment.locale('bn-bd')
-// const date = moment(detailsContent.value.created_at).format('Y', 'bn-bd')
+
 // ================ Get Bangla Date ============== //
 const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
 // const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')

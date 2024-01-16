@@ -1,15 +1,15 @@
-import moment from 'moment'
+import adsmoment from 'moment'
 import { prisma } from "~/lib/prisma"
 // import { Prisma, PrismaClient } from '@prisma/client'
 export default defineEventHandler(async (event) => {
     
     // Moment JS Localize
-    moment.locale('en')
+    adsmoment.locale('en')
     // const prisma = new PrismaClient()
     const getBody = await readBody(event)
     
     // const currentDate = moment().zone('+0600').format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')
-    const currentDate = moment().utcOffset('+0600').format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')
+    const currentDate = adsmoment().utcOffset('+0600').format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')
 
     const ads = await prisma.bn_ads.findFirst({
         where: {

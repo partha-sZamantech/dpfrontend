@@ -1,14 +1,18 @@
 // import { Prisma, PrismaClient } from '@prisma/client'
+import popularMoment from 'moment'
 import { prisma } from "~/lib/prisma"
 export default defineEventHandler(async (event) => {
-
+    popularMoment().locale('en')
     // const prisma = new PrismaClient()
     const getBody = await readBody(event)
 
     const contents = await prisma.bn_contents.findMany({
         where: {
             status: 1,
-            deletable: 1
+            deletable: 1,
+            created_at: {
+                gt: popularMoment().subtract(3, 'days').format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')
+            }
         },
         select: {
             cat_id: true,
@@ -17,10 +21,12 @@ export default defineEventHandler(async (event) => {
             content_id: true,
             content_type: true,
             subcat_id: true,
-            img_bg_path: true
+            img_bg_path: true,
+            created_at: true,
+            total_hit: true
         },
         orderBy: {
-            total_hit: 'desc'
+            total_hit: "desc"
         },
         take: parseInt(getBody?.take)
 
@@ -34,14 +40,14 @@ export default defineEventHandler(async (event) => {
             // Category
             const category = await prisma.bn_categories.findFirst({
                 where: {
-                    cat_id: parseInt(contents[i]?.cat_id),
+                    cat_id: contents[i]?.cat_id,
                     cat_type: 1
                 }
             })
             // Subcategory
             const subcategory = await prisma.bn_subcategories.findFirst({
                 where: {
-                    cat_id: parseInt(contents[i]?.cat_id)
+                    subcat_id: contents[i]?.subcat_id
                 }
             })
 
@@ -54,7 +60,9 @@ export default defineEventHandler(async (event) => {
                 content_details: contents[i]?.content_details,
                 bn_cat_name: category?.cat_name_bn,
                 cat_slug: category?.cat_slug,
-                subcat_slug: subcategory?.subcat_slug
+                subcat_slug: subcategory?.subcat_slug,
+                created_at: contents[i]?.created_at,
+                total_hit: contents[i]?.total_hit,
             })
 
         }

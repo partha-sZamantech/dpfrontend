@@ -75,9 +75,9 @@
 
                                         <span class="post-date text-black md:flex flex-col gap-1 text-base hidden">
                                             <small>আপডেট: {{
-                                                postCreatedDate(searchResult?.updated_at) }}</small>
+                                                postCreatedDateWithTime(searchResult?.updated_at) }}</small>
                                             <small>প্রকাশ: {{
-                                                postCreatedDate(searchResult?.created_at) }}</small>
+                                                postCreatedDateWithTime(searchResult?.created_at) }}</small>
                                         </span>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
@@ -115,22 +115,10 @@
 </template>
   
 <script setup>
-
+import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 const headerTitle = computed(() => useRoute().query.q)
-
-// ======== Post Url Generate ============ //
-const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {
-    return `/${category_slug}/${subcategory_slug ? subcategory_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`
-}
-// ======== Post Url Generate ============ //
-
-// Sticky Status
-// const singlePageSticky = singlePageStickyState()
-// const stickyScroll = computed(() =>
-//     singlePageSticky.value
-// )
 
 const inputKeyword = useState(() => '')
 
@@ -163,7 +151,6 @@ const onChangeKeyword = (event) => {
 // =========== Input Search Field On Change Event ============= //
 
 //================== Get Search Content fetching =============== //
-
 //Search Content State
 const searchResults = useState(() => [])
 const take = ref(10)
@@ -177,7 +164,6 @@ const { data: sresult, pending } = await useFetch('/api/prismaapi/search/search'
 })
 searchResults.value = computed(() => sresult?.value)
 //================== Get Search Content fetching =============== //
-
 
 // ====== Search Button Handler ===== //
 const searchButtonHandler = async () => {
@@ -197,9 +183,7 @@ const searchButtonHandler = async () => {
     // Search Result Content Assign
     searchResults.value = computed(() => ssssresult?.value)
 }
-
 // ====== Search Button Handler ===== //
-
 
 //================ Load More Search Content Button =================//
 const loadMoreButtonHandler = async () => {
@@ -213,19 +197,8 @@ const loadMoreButtonHandler = async () => {
     })
     searchResults.value = computed(() => searchMorecont?.value)
 }
-
 //================ Load More Search Content Button =================//
 
-
-// ================ Get Bangla Date ============== //
-const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
-// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-const postCreatedDate = (date) => {
-    // If date value has
-    if (date) {
-        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
-    }
-}
 
 </script>
   

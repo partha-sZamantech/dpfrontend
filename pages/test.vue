@@ -1,22 +1,24 @@
 <template>
     <div>
-        <div class=" fixed bg-white h-screen inset-0  flex items-center justify-center">
+        <!-- <div class=" fixed bg-white h-screen inset-0  flex items-center justify-center">
             <div class="flex items-center gap-1">
                 <img width="60" src="/assets/img/loader.gif" alt="">
                 <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
             </div>
-        </div>
+        </div> -->
         <!-- <div class="bg-white h-screen ">
             <div class="flex justify-center items-center pt-32">
                 <img width="60" src="/assets/img/loader.gif" alt="">
                 <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
             </div>
         </div> -->
+        {{ currentDate }}
     </div>
 </template>
 
 <script setup>
-
+import momesdsffdsfnt from 'moment'
+const currentDate = momesdsffdsfnt().subtract(3, 'days').format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')
 </script>
 
 <style lang="scss" scoped>
