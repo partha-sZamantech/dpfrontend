@@ -23,7 +23,7 @@
                                         250)} ...`"></div>
                             </ClientOnly>
                             <span class="text-sm text-black">
-                                {{ specialTopContents[0]?.bn_cat_name }} | {{ specialTopContents[0]?.created_at }}
+                                {{ specialTopContents[0]?.bn_cat_name }} | {{ postCreatedDate(specialTopContents[0]?.created_at) }}
                             </span>
                         </NuxtLink>
                         <!-- Special First Content -->
@@ -45,7 +45,7 @@
                                 <div class="col-span-7 flex flex-col gap-2">
                                     <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
                                         topcontent?.content_heading }}</h4>
-                                    <span class="text-sm text-black">{{ topcontent?.bn_cat_name }} | {{ topcontent?.created_at }}</span>
+                                    <span class="text-sm text-black">{{ topcontent?.bn_cat_name }} | {{ postCreatedDate(topcontent?.created_at) }}</span>
                                 </div>
                             </NuxtLink>
                             <!-- ========== Loop Item =========== -->
@@ -65,6 +65,16 @@
 const img = useImage()
 const siteurl = siteUrlState()
 
+// ================ Get Bangla Date ============== //
+const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric"  })
+// const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+const postCreatedDate = (date) => {
+    // If date value has
+    if (date) {
+        return getDate.format(new Date(date)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
+    }
+}
+// ================ Get Bangla Date ============== //
 
 // ======== Post Url Generate ============ //
 const getPostUrl = (category_slug, subcategory_slug, content_type, content_id) => {

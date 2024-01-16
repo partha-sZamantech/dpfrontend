@@ -277,8 +277,6 @@
 <script setup>
 const nuxtApp = useNuxtApp()
 
-// import moment from 'moment'
-// moment.locale('bn');
 // ================ Get Bangla Date ============== //
 const getDate = new Intl.DateTimeFormat('bn-bd', { year: 'numeric', month: 'long', day: "numeric", hour: "numeric", minute: 'numeric' })
 // const postDate = getDate.format(new Date(detailsContent.value.created_at)).replace('এ', '|').replace('PM', 'পিএম').replace('AM', 'এএম')
