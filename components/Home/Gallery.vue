@@ -86,7 +86,7 @@ const gallerContents = useState(() => [])
 // })
 const { data: hmgallery } = await useFetch('/api/prismaapi/home/galleryphoto', {
     method: "GET",
-    cache: 'force-cache',
+    // cache: 'force-cache',
 })
 // const { data: okss } = await useFetch("/api/prismaapi/home/gallery", {
 //     method: 'GET'
