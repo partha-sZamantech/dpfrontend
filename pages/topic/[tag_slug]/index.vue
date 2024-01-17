@@ -1,5 +1,5 @@
 <template>
-   <div class="category-page">
+   <div v-if="tagContents" class="category-page">
 
       <Head>
          <Title>{{ tag_slug.replaceAll('-', ' ') }} | ঢাকাপ্রকাশ</Title>
@@ -53,8 +53,7 @@
                            class=" grid grid-cols-12 gap-3 group">
 
                            <div class=" col-span-7 flex flex-col gap-3">
-                              <h3
-                                 class="cat-title col-span-12 font-semibold text-[20px] group-hover:text-[#ff0000]">
+                              <h3 class="cat-title col-span-12 font-semibold text-[20px] group-hover:text-[#ff0000]">
                                  {{
                                     tagContent?.content_heading }}</h3>
                               <ClientOnly>
@@ -96,6 +95,13 @@
             </div>
          </div>
       </div>
+   </div>
+   <div v-else class="errorNotfound">
+
+      <Head>
+         <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
+      </Head>
+      <Errorpage />
    </div>
 </template>
 
