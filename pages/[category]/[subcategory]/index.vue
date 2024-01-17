@@ -1,7 +1,7 @@
 <template>
-    <div class="category-page">
+    <div v-if="subcategoryContents" class="category-page">
         <Head>
-            <Title>{{ category.subcat_name_bn }}</Title>
+            <Title>{{ category?.subcat_name_bn ? category?.subcat_name_bn : '404 Not Found'  }} | ঢাকাপ্রকাশ</Title>
         </Head>
         <!-- Space For Ads -->
         <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
@@ -41,7 +41,7 @@
                 <div class="flex flex-col gap-1">
                     <NuxtLink :to="`/${category?.cat_slug}/${subcat_slug}`" class="text-[#3375af] font-semibold">
                         <!-- {{ detailsContent?.category?.cat_name_bn }} -->
-                        <h1 class="text-xl md:text-3xl">{{ category.subcat_name_bn }}</h1>
+                        <h1 class="text-xl md:text-3xl">{{ category?.subcat_name_bn }}</h1>
                     </NuxtLink>
                     <div class="subcategory flex flex-wrap gap-3" v-if="subcategory?.length > 0">
                         <!-- <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" /> -->
@@ -256,6 +256,12 @@
 
         </div>
     </div>
+    <div v-else class="errorNotfound">
+        <Head>
+            <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
+        </Head>
+         <Errorpage />
+    </div>
 </template>
 
 <script setup>
@@ -288,9 +294,10 @@ const { data: subctcont, pending } = await useFetch('/api/prismaapi/subcategory/
         skip: 0
     },
 })
+
 subcategoryContents.value = subctcont?.value?.contents
 // Fetching Leading Post Data
-
+console.log(subcategoryContents.value)
 // Assign category & Subcategory
 category.value = subctcont?.value?.category
 subcategory.value = subctcont?.value?.subcat

@@ -2,7 +2,7 @@
     <div class="category-page" v-if="categoryContent">
 
         <Head>
-            <Title>{{ category?.cat_name_bn }} | ঢাকাপ্রকাশ</Title>
+            <Title>{{ categoryContent ? category?.cat_name_bn : '404 Not Found' }} | ঢাকাপ্রকাশ</Title>
         </Head>
         <!-- Category Top Ads -->
         <div v-if="categoryTopAds?.status === 1" class="py-4 mt-2 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
@@ -273,6 +273,9 @@
         </div>
     </div>
     <div v-else class="errorNotfound">
+        <Head>
+            <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
+        </Head>
          <Errorpage />
     </div>
 </template>
