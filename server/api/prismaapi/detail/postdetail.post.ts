@@ -30,7 +30,6 @@ export default defineEventHandler(async (event) => {
             }
         })
 
-
         // Get Category
         const getCategory = await prisma.bn_categories.findFirst({
             where: {
@@ -54,15 +53,61 @@ export default defineEventHandler(async (event) => {
             }
         })
 
+
+        // First Detail Right Category Cont
+        // const firstDetailRightCatConents = await prisma.bn_contents.findMany({
+        //     where: {
+        //        NOT: {
+        //         content_id: {
+        //             equals: parseInt(getBody?.content_id)
+        //         }
+        //        }
+        //     },
+        //     select: {
+        //         content_id: true,
+        //         content_type: true,
+        //         content_heading: true,
+        //         subcat_id: true,
+        //         cat_id: true,
+        //         img_bg_path: true
+        //     }
+        // }) 
+
+        // const firstrightcatcontent = []
+
+        // if(firstDetailRightCatConents){
+        //     for(let frct = 0; frct < firstDetailRightCatConents.length; frct++){
+        //         const frcsubcategory = await prisma.bn_subcategories.findFirst({
+        //             where: {
+        //                 subcat_id: firstDetailRightCatConents[frct]?.subcat_id
+        //             },
+        //             select: {
+        //                 subcat_id: true,
+        //                 subcat_name_bn:true,
+        //                 subcat_slug: true
+        //             }
+        //         })
+
+        //         firstrightcatcontent.push({
+        //             content_heading: firstDetailRightCatConents[frct].content_heading,
+        //             content_type: firstDetailRightCatConents[frct].content_type,
+        //             img_bg_path: firstDetailRightCatConents[frct].img_bg_path,
+        //             cat_slug: getCategory?.cat_slug,
+        //             subcat_slug: frcsubcategory?.subcat_slug
+        //         })
+        //     }
+        // }
+ 
+
         // =============== ADS OG Image Generate ============= //
-        const ogImageBanner = await prisma.site_settings.findFirst({
-            where: {
-                id: 1
-            },
-            select: {
-                post_ogimage: true
-            }
-        })
+        // const ogImageBanner = await prisma.site_settings.findFirst({
+        //     where: {
+        //         id: 1
+        //     },
+        //     select: {
+        //         post_ogimage: true
+        //     }
+        // })
 
         // let  watermarkImage = await jimp.read(`${config.public.apiUrl}/media/ogImages/${ogImageBanner?.post_ogimage}`);
         // const image = await jimp.read(`${config.public.apiUrl}/media/content/images/${getdetailsContent?.img_bg_path}`);
@@ -119,22 +164,9 @@ export default defineEventHandler(async (event) => {
                 author_slug: getAuthor?.author_slug,
                 img_path: getAuthor?.img_path
             }
+            // firstrightcatcontent: firstrightcatcontent
         }
         // Detail Content
-
-        // First Detail Right Category Content
-
-        // const getContents = await prisma.bn_contents.findMany({
-        //     where: {
-        //         cat_id: parseInt(getBody?.cat_id)
-        //     },
-        //     orderBy: {
-        //         content_id: "desc"
-        //     },
-        //     take: 6
-        // })
-        // First Detail Right Category Content
-
 
 
         // =========== More 3 Three Content =========================
@@ -160,10 +192,6 @@ export default defineEventHandler(async (event) => {
         const mreletedReadIds = [detailsContent?.content_id]
 
         for (let i = 0; i < moreContents?.length; i++) {
-
-
-
-
 
             const getmoreContentCategory = await prisma.bn_categories.findFirst({
                 where: {
@@ -350,9 +378,6 @@ export default defineEventHandler(async (event) => {
                 morereletedcontentbelow: mrelatedPosts
             })
 
-
-
-
         }
 
         // return mrelatedPosts
@@ -405,6 +430,7 @@ export default defineEventHandler(async (event) => {
 
         return {
             detailsContent: detailsContent,
+            // firstrightcatcontent: firstrightcatcontent,
             moreDetailContent: moreDetailContent,
             firstRelatedContents: firstRelatedContents
 

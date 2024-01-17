@@ -225,7 +225,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     </div>
                                     <div class=" col-span-7">
                                         <NuxtLink
-                                            :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
+                                            :to="getPostUrl(detailsContent?.category?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
                                             <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
                                                 fmoreContent?.content_heading }}</h4>
                                         </NuxtLink>
