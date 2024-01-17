@@ -10,9 +10,7 @@
 </template>
 
 <script setup>
-setTimeout(() => {
-    navigateTo('/')
-}, 5000)
+
 </script>
 
 <style lang="scss" scoped></style>

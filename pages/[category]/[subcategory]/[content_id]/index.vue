@@ -1,5 +1,5 @@
 <template>
-    <div class="post-detail-page">
+    <div v-if="detailsContent" class="post-detail-page">
         <!-- Page Loader -->
         <div v-if="pending" class="bg-white min-h-screen hidden md:block ">
             <div class="flex justify-center items-center pt-32">
@@ -579,6 +579,12 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
             </div>
             <!--========== // <3> More Details Content ============ -->
         </div>
+    </div>
+    <div v-else class="errorNotfound">
+        <Head>
+            <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
+        </Head>
+         <Errorpage />
     </div>
 </template>
 
