@@ -585,6 +585,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 <script setup>
 import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
 
+// const router = useRouter()
+
 const siteurl = siteUrlState()
 const websiteUrl = websiteUrlState()
 const img = useImage()
@@ -754,7 +756,6 @@ const printPageArea = (areaID) => {
 }
 
 // =============== Print Script ===================== //
-// const router = useRouter()
 
 //================= Inside More Detail Post Except Read More ===================//
 const insideMoreExceptPost = useState(() => [])
@@ -814,15 +815,17 @@ onMounted(() => {
                     document.querySelector('meta[name="twitter:description"]').setAttribute("content", contentSections[i].getAttribute('data-description'));
                     document.querySelector('meta[name="twitter:image"]').setAttribute("content", contentSections[i].getAttribute('data-src'));
                     document.querySelector('meta[name="twitter:url"]').setAttribute("content", contentSections[i].getAttribute('data-href'));
-                    history.replaceState(contentSections[i].getAttribute('data-nid'), contentSections[i].getAttribute('data-title'), contentSections[i].getAttribute('data-href'));
-                    // history.pushState('', contentSections[i].getAttribute('data-title'), contentSections[i].getAttribute('data-href'));
-
+                    // history.replaceState(contentSections[i].getAttribute('data-nid'), contentSections[i].getAttribute('data-title'), contentSections[i].getAttribute('data-href'));
+                    history.pushState({}, null, contentSections[i].getAttribute('data-href'));
+                    // router.replace({ hash: `${contentSections[i].getAttribute('data-href')}` })
                     // document.querySelector('meta[property="og:title"]').setAttribute("content", contentSections[i].title)
                 }
 
             }
 
         } else {
+
+                  // Scroll down
 
             for (let p = 0; p < contentSections?.length; p++) {
                 const rect = contentSections[p]?.getBoundingClientRect();
@@ -844,9 +847,10 @@ onMounted(() => {
                     document.querySelector('meta[name="twitter:description"]').setAttribute("content", contentSections[p].getAttribute('data-description'));
                     document.querySelector('meta[name="twitter:image"]').setAttribute("content", contentSections[p].getAttribute('data-src'));
                     document.querySelector('meta[name="twitter:url"]').setAttribute("content", contentSections[p].getAttribute('data-href'));
-                    history.replaceState(contentSections[p].getAttribute('data-nid'), contentSections[p].getAttribute('data-title'), contentSections[p].getAttribute('data-href'));
-                    // history.pushState('', contentSections[p].getAttribute('data-title'), contentSections[p].getAttribute('data-href'));
+                    // history.replaceState(contentSections[p].getAttribute('data-nid'), contentSections[p].getAttribute('data-title'), contentSections[p].getAttribute('data-href'));
+                    history.pushState({}, null, contentSections[p].getAttribute('data-href'));
                     // document.querySelector('title').value("content", ok)
+                    // router.addRoute({ path: `/sdfsdf` })
                 }
             }
 

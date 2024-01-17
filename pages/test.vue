@@ -12,13 +12,12 @@
                 <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
             </div>
         </div> -->
-        {{ currentDate }}
+        <Errorpage />
     </div>
 </template>
 
 <script setup>
-import momesdsffdsfnt from 'moment'
-const currentDate = momesdsffdsfnt().subtract(3, 'days').format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]')
+
 </script>
 
 <style lang="scss" scoped>

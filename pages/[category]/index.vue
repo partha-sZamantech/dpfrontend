@@ -309,7 +309,7 @@ const { data: catcont, pending } = await useFetch('/api/prismaapi/category/categ
 // Category Content Assign
 categoryContent.value = catcont?.value?.contents
 // Leading Post 
-
+console.log(categoryContent.value)
 // Category Assign
 category.value = catcont?.value?.category
 subcategory.value = catcont?.value?.subcat
