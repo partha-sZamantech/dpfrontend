@@ -1,5 +1,5 @@
 <template>
-  <div class="category-page">
+  <div v-if="authorContents" class="category-page">
 
     <Head>
       <Title>{{ author?.author_name_bn }}</Title>
@@ -101,6 +101,12 @@
       </div>
     </div>
   </div>
+  <div v-else class="errorNotfound">
+        <Head>
+            <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
+        </Head>
+         <Errorpage />
+    </div>
 </template>
 
 <script setup>
