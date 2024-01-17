@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#EEEEEE]" onload="startTime">
+    <div class="bg-[#EEEEEE] hidden md:block">
         <div class="max-w-[1280px] mx-auto px-4">
             <div class=" justify-between flex items-center">
                 <div class="flex gap-2 text-black text-sm">
