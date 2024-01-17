@@ -1,8 +1,8 @@
 <template>
-    <div class="category-page">
+    <div v-if="videoContents" class="category-page">
 
         <Head>
-            <Title>{{ category.name_bn }} | ঢাকাপ্রকাশ</Title>
+            <Title>{{ category?.name_bn }} | ঢাকাপ্রকাশ</Title>
         </Head>
         <!-- Space For Ads -->
         <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
@@ -33,16 +33,15 @@
             <!-- Breadcrump Section -->
             <div class="breadcrump border-b border-b-[#dee2e6] pb-2 mb-5 flex flex-col gap-2 md:gap-2">
                 <div class="flex gap-1 justify-start items-center">
-                    <NuxtLink :to="`/video/${category.slug}`" class=" font-semibold ">
+                    <NuxtLink :to="`/video/${category?.slug}`" class=" font-semibold ">
                         <!-- {{ detailsContent?.category?.cat_name_bn }} -->
                         <h1
                             class="text-xl md:text-xl border-b text-[#3375af] hover:text-[#3375af] hover:border-b-[#3375af]">
-                            {{ category.name_bn }}</h1>
+                            {{ category?.name_bn }}</h1>
                     </NuxtLink>
                 </div>
 
                 <div class="flex flex-col gap-4">
-
                     <div class="subcategory flex flex-wrap gap-3" v-if="allCategory?.length > 1">
                         <!-- <Icon v-if="detailsContent?.subcategory" name="ic:outline-keyboard-arrow-right" /> -->
                         <!-- <div class="subcategoryLink" v-for="subcat in subcategory">
@@ -54,17 +53,15 @@
                         <div class="subcategoryLink" v-for="(getcat, vcatidx) in allCategory" :key="vcatidx">
                             <NuxtLink :to="`/video/${getcat?.slug}`"
                                 :class="`${vcat_slug === getcat?.slug && 'text-[#3375af]'} text-[#121212] font-[600] text-sm md:text-[17px] hover:text-[#3375af]`">
-                                {{ getcat.name_bn }}
+                                {{ getcat?.name_bn }}
                             </NuxtLink>
                         </div>
-
                     </div>
                 </div>
             </div>
             <!--/ Breadcrump Section -->
             <div class="grid grid-cols-12 gap-8 md:gap-3">
                 <div class="col-span-12 md:col-span-12" v-if="videoContents?.length > 10">
-
                     <!--/ Category Lead Section -->
                     <!-- Category Bottom Lead -->
                     <div class="grid grid-cols-12 gap-5 py-4">
@@ -73,9 +70,9 @@
                             class="cat-box group shadow-md shadow-[#ddd] col-span-12 md:col-span-4 rounded-md bg-[#f5f5f5]">
                             <div class="cat-box-image overflow-hidden relative">
                                 <nuxt-img loading="lazy"
-                                    :src="`${siteurl.site_url}/media/videoImages/${videocont?.img_bg_path}`"
+                                    :src="`${siteurl?.site_url}/media/videoImages/${videocont?.img_bg_path}`"
                                     class="mx-auto w-full h-full"
-                                    :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                                 <div class="play-icon absolute left-[45%] top-[40%]">
                                     <Icon name="simple-icons:youtubemusic"
                                         class=" col-span-2 md:col-span-2 text-4xl group-hover:text-[#3375af] text-[#ff0000]" />
@@ -97,17 +94,20 @@
                     </div>
 
                 </div>
-
             </div>
-
         </div>
     </div>
+    <div v-else class="errorNotfound">
+      <Head>
+         <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
+      </Head>
+      <Errorpage />
+   </div>
 </template>
 
 <script setup>
 const vcat_slug = useRoute().params.videocat_slug
 
-const nuxtApp = useNuxtApp()
 const img = useImage()
 const siteurl = siteUrlState()
 // Sticky Status
@@ -126,7 +126,6 @@ const postCreatedDate = (date) => {
     }
 }
 // ================ Get Bangla Date ============== //
-
 
 // ================== Subcategory Content ============= //
 
@@ -174,8 +173,6 @@ const { data: vcatcont, pending } = await useFetch('/api/prismaapi/video/categor
 category.value = vcatcont?.value?.category
 videoContents.value = vcatcont?.value?.videos
 allCategory.value = vcatcont?.value?.allCategory
-
-
 
 //================ Load More Category Video Content Button =================//
 const loadMoreButtonHandler = async () => {

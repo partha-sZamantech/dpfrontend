@@ -1,13 +1,13 @@
 <template>
-    <div class=" single-video-page">
+    <div v-if="moreVideos" class="single-video-page">
 
         <Head>
             <Title>{{ videoDetail?.title }}</Title>
             <!-- Refresh Reload -->
             <!-- <Meta content="500" http-equiv="refresh" /> -->
             <!-- Refresh Reload -->
-            <!-- <Meta name="description" :content="ogDescription" />
-    <Meta name="keywords" :content="metaKeywords" /> -->
+            <!-- <Meta name="description" :content="ogDescription" /> -->
+            <!-- <Meta name="keywords" :content="metaKeywords" /> -->
             <Meta property="og:url" :content="`${websiteUrl.website_url}/video/${videocat_slug}/${video_id}`" />
             <Meta property="og:title" :content="videoDetail?.title" />
             <!-- <Meta property="og:description" :content="ogDescription" /> -->
@@ -113,9 +113,14 @@
 
             </div>
             <!--========== // First Details Content ============ -->
-
         </div>
     </div>
+    <div v-else class="errorNotfound">
+      <Head>
+         <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
+      </Head>
+      <Errorpage />
+   </div>
 </template>
 
 <script setup>
@@ -155,14 +160,6 @@ const videocat_slug = useRoute().params.videocat_slug
 
 const videoDetail = useState(() => "")
 const moreVideos = useState(() => [])
-// const { data: vdtail } = await useFetch('/api/videos/videodetails', {
-//     method: 'POST',
-//     body: {
-//         video_id: video_id,
-//         videocat_slug: videocat_slug
-//     }
-// })
-
 const { data: vdtail, pending } = await useFetch(`/api/prismaapi/video/singlevideo`, {
     method: "POST",
     body: {

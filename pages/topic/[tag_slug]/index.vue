@@ -97,7 +97,6 @@
       </div>
    </div>
    <div v-else class="errorNotfound">
-
       <Head>
          <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
       </Head>
