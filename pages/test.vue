@@ -12,11 +12,15 @@
                 <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
             </div>
         </div> -->
+    {{ ok }}
         <Errorpage />
     </div>
 </template>
 
 <script setup>
+// import { getDate } from 'bangla-calendar';
+// const date1 = new Date();
+// const ok = getDate(date1, { format: 'D MMMM, YYYY', calculationMethod: 'BD' })
 
 </script>
 

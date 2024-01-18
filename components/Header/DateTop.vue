@@ -9,7 +9,7 @@
                     </div>
                     <div class="flex gap-1 items-center justify-center">
                         <Icon name="ic:baseline-calendar-month" />
-                        <span>{{ todayDate }}</span>
+                        <span>{{ todayDate }} | {{ BanglaDateShow }}</span>
                     </div>
                 </div>
                 <div class="flex gap-4 justify-center items-center">
@@ -60,12 +60,17 @@
 
 <script setup>
 
+// ======== Bangla Date ============ //
+import { getDate } from 'bangla-calendar';
+const banglaDate = new Date();
+const BanglaDateShow = getDate(banglaDate, { format: 'D MMMM, YYYY', calculationMethod: 'BD' })
+// ======== Bangla Date ============ //
 
 const { scrollDown, counter } = defineProps(['scrollDown', 'LogoHeaderScollUp'])
 
 // ================ Get Bangla Date ============== //
-const getDate = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numeric', month: 'long', day: "numeric" })
-const todayDate = getDate.format(new Date())
+const getDateToday = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numeric', month: 'long', day: "numeric" })
+const todayDate = getDateToday.format(new Date())
 // ================ Get Bangla Date ============== //
 
 
