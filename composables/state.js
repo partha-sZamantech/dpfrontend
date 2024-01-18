@@ -2,16 +2,20 @@
 //     return useState(() => '')
 // }
 
+export const dMenuToggleStatus = () => {
+    return useState(() => false)
+}
+
 export const sitesettingsState = () => {
-    return useState(()=> [])
+    return useState(() => [])
 }
 
 export const desktopMenuState = () => {
-    return useState(()=> false)
+    return useState(() => false)
 }
 
 export const mobileMenuState = () => {
-    return useState(()=> false)
+    return useState(() => false)
 }
 
 export const globalPopupState = () => {

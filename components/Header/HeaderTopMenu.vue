@@ -30,13 +30,14 @@
                 <Icon name="dashicons:editor-justify" />
                 <span>সব</span>
             </div>
+        
             <a href="#" class="text-[#124d80] text-base bg-white px-2 py-[2px] rounded-sm">English</a>
             <a href="#" class="text-[#124d80] text-base bg-white px-2 py-[2px] rounded-sm">ই-পেপার</a>
         </div>
-        <div :class="`relative ${dkdropdownStatus === true ? 'block' : 'hidden'}`">
+        <div v-if="dkdropdownStatus === true" :class="`relative`" ref="dropmenuRef">
             <div :class="`max-w-[1280px] px-4 py-4 mx-auto`">
                 <div class="dropmenu grid grid-cols-6 gap-1 items-center justify-center text-white text-[18px]">
-                    <NuxtLink class="hover:pl-2 duration-300 py-2" v-for="dropmenuitem in headCategory?.slice(11, 41)"
+                    <NuxtLink @click="dkdropdownToggle" class="hover:pl-2 duration-300 py-2" v-for="dropmenuitem in headCategory?.slice(11, 41)"
                         :key="dropmenuitem.cat_id" :to="`/${dropmenuitem.cat_slug}`">
                         {{ dropmenuitem.cat_name_bn }}
                     </NuxtLink>
@@ -51,6 +52,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { onClickOutside } from '@vueuse/core'
 const { scrollDown } = defineProps(['scrollDown'])
 
 // const headCatconfig = useRuntimeConfig()
@@ -71,6 +74,15 @@ const dkdropdownToggle = () => {
         dkdropdownStatus.value = false
     }
 }
+
+const dropmenuRef = ref(null)
+onClickOutside(
+    dropmenuRef,
+    (event) => {
+        console.log(event)
+        dkdropdownStatus.value = false
+    },
+)
 
 </script>
 
