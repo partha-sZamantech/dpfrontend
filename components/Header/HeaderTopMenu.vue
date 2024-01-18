@@ -25,7 +25,7 @@
                         ভিজ্যুয়াল মিডিয়া</NuxtLink>
                 </li>
             </ul>
-            <div @click="dkdropdownToggle" class="flex gap-1 items-center justify-center text-white hover:bg-[#124d80] px-3 py-1 rounded-sm cursor-pointer" >
+            <div @click="dkdropdownToggle" :class="`${dkdropdownStatus === true && 'bg-[#124d80]'} flex gap-1 items-center justify-center text-white hover:bg-[#124d80] px-3 py-1 rounded-sm cursor-pointer`" >
                 <Icon name="dashicons:editor-justify" />
                 <span>সব</span>
             </div>
