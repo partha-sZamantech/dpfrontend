@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white">
         <HeaderDateTop />
-        <div class="max-w-[1280px] mx-auto px-4 py-4 bg-white">
+        <div class="max-w-[1280px] mx-auto px-4 py-6 bg-white">
             <div :class="` hidden md:block `">
                 <div class="header_logo">
                     <!-- <nuxt-img class="mx-auto" src="/assets/img/logo.png" height="56" alt="Dhaka Prokash"

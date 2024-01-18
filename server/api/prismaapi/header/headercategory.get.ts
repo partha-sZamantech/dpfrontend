@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
             status: 1,
             deletable: 1
         },
-        take: 13,
+        take: 11,
         orderBy: {
             cat_position: "asc"
         }
