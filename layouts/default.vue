@@ -135,7 +135,7 @@ onMounted(() => {
                 const classes = document.getElementsByClassName("logoHeader")[0]
                 classes.classList.add('fixed', '-top-[117px]', 'left-0', 'right-0')
 
-                document.getElementsByClassName("main-container")[0].style.marginTop  = "200px";
+                document.getElementsByClassName("main-container")[0].style.marginTop  = "204px";
 
                 // Blog Detail page
                 detailPageSticky.value = false

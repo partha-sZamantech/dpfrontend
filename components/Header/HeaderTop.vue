@@ -1,15 +1,15 @@
 <template>
     <div class="bg-white">
         <HeaderDateTop />
-        <div class="max-w-[1280px] mx-auto px-4 py-7 bg-white">
+        <div class="max-w-[1280px] mx-auto px-4 py-6 bg-white">
             <div :class="` hidden md:block `">
                 <div class="header_logo">
                     <!-- <nuxt-img class="mx-auto" src="/assets/img/logo.png" height="56" alt="Dhaka Prokash"
                 :placeholder="img('/assets/img/logo.png', { h: 56, blur: 2, q: 50 })" /> -->
-                    <h1 class="w-[320px] mx-auto">
+                    <h1 class="w-[400px] mx-auto">
                         <NuxtLink to="/">
-                            <nuxt-img class="mx-auto " :src="`${siteurl.site_url}/media/common/${headerSiteSettings?.logo}`"
-                                width="300" alt="Dhaka Prokash" />
+                            <nuxt-img class="mx-auto" width="350" :src="`${siteurl.site_url}/media/common/${headerSiteSettings?.logo}`"
+                                 alt="Dhaka Prokash" />
                         </NuxtLink>
                     </h1>
                 </div>
