@@ -28,9 +28,13 @@
                             <div class="text-[16px] font-[300] text-black" v-html="`${nationalHCon[0]?.content_details?.substring(0,
                                         220)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm text-black">
-                            {{ postCreatedDate(nationalHCon[0]?.created_at) }}
-                        </span>
+                        <p class="text-sm text-black flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(nationalHCon[0]?.created_at) }}
+                            </span>
+                        </p>
+
                     </div>
                 </NuxtLink>
             </div>
@@ -53,7 +57,12 @@
                                 :to="getPostUrl(nationalcntent?.cat_slug, nationalcntent?.subcat_slug, nationalcntent?.content_type, nationalcntent?.content_id)">
                                 <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
                                     nationalcntent?.content_heading }}</h4>
-                                <span class="text-sm text-black">{{ postCreatedDate(nationalcntent?.created_at) }}</span>
+                                <p class="text-sm text-black flex gap-1 items-center">
+                                    <Icon name="ph:alarm-bold" />
+                                    <span>
+                                        {{ postCreatedDate(nationalcntent?.created_at) }}
+                                    </span>
+                                </p>
                             </NuxtLink>
                         </div>
                     </div>
@@ -79,6 +88,8 @@ nationalHCon.value = nationalhc
 
 </script>
 
-<style scoped>.h-national-excpt:first-child {
+<style scoped>
+.h-national-excpt:first-child {
     padding-top: 0px
-}</style>
+}
+</style>

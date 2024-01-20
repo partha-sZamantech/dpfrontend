@@ -77,7 +77,7 @@
                     <div class="flex flex-col">
                         <h3 class="text-[25px] group-hover:text-[#ff0000] font-semibold">Level playing field will ensure in
                             KCC polls: CEC</h3>
-                        <p class="text-base font-[300] text-black">Power supply situation is again getting worse with the decrease in generation and rising mercury level in hot summer. According to official</p>
+                        <p class="text-base font-[300] text-black">Power supply situation is again getting worse with the decrease in generation and rising mercury level </p>
                         <!-- <p class="text-sm text-black mt-1 flex gap-1 items-center">
                             <Icon name="ph:alarm-bold" />
                             <span>

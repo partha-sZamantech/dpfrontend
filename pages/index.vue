@@ -119,8 +119,9 @@
             <HomeCategorySpecialReport />
             <!--/ Special Top Content Component -->
 
-           
-            <HomeCategorySportsBackup />
+            <!-- Sports -->
+            <HomeCategorySports />
+            <!-- Sports -->
             <!-- Home Middle Five Ads -->
             <div v-if="homeMiddleFiveAds?.status === 1"
                 class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
@@ -132,14 +133,14 @@
             <!-- Entertainment Category Component -->
             <div class="grid grid-cols-12 gap-4">
                 <div class="col-span-12 md:col-span-9">
-                    <!-- Sports Category Component -->
+                    <!-- Saradesh Category Component -->
                     <HomeCategorySaradesh />
-                    <!--/ Sports Category Component -->
+                    <!--/ Saradesh Category Component -->
                 </div>
                 <div class="col-span-12 md:col-span-3">
-                    <!-- Saradesh Category Component -->
+                    <!-- Lifestyle Category Component -->
                     <HomeCategoryLifestyle />
-                    <!--/ Saradesh Category Component -->
+                    <!--/ Lifestyle Category Component -->
                 </div>
             </div>
         </div>
