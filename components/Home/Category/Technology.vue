@@ -24,7 +24,7 @@
                             <div class="text-base font-[300] text-black" v-html="`${technologycontents[0]?.content_details?.substring(0,
                                 165)} ...`"></div>
                         </ClientOnly>
-                        <p class="text-sm text-black mt-1 flex gap-1 items-center">
+                        <p class="text-sm text-black flex gap-1 items-center">
                             <Icon name="ph:alarm-bold" />
                             <span>
                                 {{ postCreatedDate(technologycontents[0]?.created_at) }}

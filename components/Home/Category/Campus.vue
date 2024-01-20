@@ -18,7 +18,12 @@
                 </div>
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{ campuses[0]?.content_heading
                 }}</h3>
-                <span class="text-sm">{{ postCreatedDate(campuses[0]?.created_at) }}</span>
+                <p class="text-sm text-black flex gap-1 items-center">
+                    <Icon name="ph:alarm-bold" />
+                    <span>
+                        {{ postCreatedDate(campuses[0]?.created_at) }}
+                    </span>
+                </p>
             </NuxtLink>
             <!--/ Campus Feature Content -->
 

@@ -26,7 +26,7 @@
                         <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">
                             {{ crimecontent?.content_heading }}
                         </h4>
-                        <p class="text-sm text-black mt-1 flex gap-1 items-center">
+                        <p class="text-sm text-black flex gap-1 items-center">
                             <Icon name="ph:alarm-bold" />
                             <span>
                                 {{ postCreatedDate(crimecontent?.created_at) }}

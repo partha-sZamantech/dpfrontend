@@ -20,7 +20,12 @@
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ artscontents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm text-black">{{ postCreatedDate(artscontents[0]?.created_at) }}</span>
+                <p class="text-sm text-black flex gap-1 items-center">
+                    <Icon name="ph:alarm-bold" />
+                    <span>
+                        {{ postCreatedDate(artscontents[0]?.created_at) }}
+                    </span>
+                </p>
             </NuxtLink>
             <!--/ Art Culture  Feature Content -->
 

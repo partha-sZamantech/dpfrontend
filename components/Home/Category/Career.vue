@@ -18,7 +18,7 @@
                 </div>
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{ careers[0]?.content_heading
                 }}</h3>
-                <p class="text-sm text-black mt-1 flex gap-1 items-center">
+                <p class="text-sm text-black flex gap-1 items-center">
                     <Icon name="ph:alarm-bold" />
                     <span>
                         {{ postCreatedDate(careers[0]?.created_at) }}
