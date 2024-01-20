@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
     const data = []
     if (position && position?.content_ids?.length > 0) {
         const positionArray = position?.content_ids?.split(',')
-        const getContents = positionArray?.splice(0, 5)
+        const getContents = positionArray?.splice(0, 7)
         for (let i = 0; i < getContents?.length; i++) {
             const content = await prisma.bn_contents.findFirst({
                 where: {

@@ -131,6 +131,8 @@
                     <!--/ Saradesh Category Component -->
                 </div>
             </div>
+
+            <HomeCategorySportsBackup /> 
             <!-- Home Middle Five Ads -->
             <div v-if="homeMiddleFiveAds?.status === 1"
                 class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
