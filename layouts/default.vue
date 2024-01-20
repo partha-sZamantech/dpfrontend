@@ -27,7 +27,7 @@
         </Head>
         <!-- Header Top Ads Page=1, Position=1 -->
         <AdsDesktopCommonHeaderBannerTop v-if="topBannerAd?.status === 1" :topBannerAd="topBannerAd" />
-        <div :class="`logoHeader duration-300 z-50`">
+        <div :class="`logoHeader duration-300 z-[9999999]`">
         <!-- <div :class="`${LogoHeaderScollUp ? 'fixed  top-0 left-0 right-0' : '' } logoHeader duration-300`"> -->
             <!-- <div class="header-container max-w-[1280px] mx-auto "> -->
                 <!-- Top Header -->

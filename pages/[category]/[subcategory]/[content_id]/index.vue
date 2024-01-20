@@ -51,10 +51,10 @@
             <div v-if="DetailTopAds?.status === 1" class="pb-4 mb-4 border-b border-b-[#e2e2e2]">
                 <AdsDesktopDetailTop :DetailTopAds="DetailTopAds" />
             </div>
-          
+
             <!-- :::::::::::::: Detail Page Top Ads :::::::::::::: -->
             <!--========== First Details Content ============ -->
-    
+
             <div class=" grid grid-cols-12 gap-5 relative d-print">
                 <div class="col-span-12 md:col-span-9" id="singlepost">
                     <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="detailsContent?.content_heading"
@@ -79,8 +79,9 @@
                         </div>
 
                         <!-- Author Section -->
-                        <div
-                            class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3">
+                        <!-- <div
+                            class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3"> -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 content-between gap-2  border-b pb-2 md:pb-3">
                             <NuxtLink v-if="detailsContent?.author" :to="`/author/${detailsContent?.author?.author_slug}`"
                                 class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
                                 <div>
@@ -96,7 +97,8 @@
                                         detailsContent?.author?.author_name_bn
                                     }}</p>
 
-                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(detailsContent?.created_at) }}</span>
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(detailsContent?.created_at)
+                                    }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
@@ -110,16 +112,23 @@
                                     <!-- <p v-if="detailsContent?.author"> -->
                                     <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
 
-                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(detailsContent?.created_at) }}</span>
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(detailsContent?.created_at)
+                                    }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
                             </div>
                             <!-- Author Section /-->
-                   
+
                             <!-- Social Share -->
-                            <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
-                                <a :href="`https://www.facebook.com/sharer.php?u=${ogUrl}`" target="_blank">
+                            <div class="social-item flex gap-0 items-center justify-center print:hidden relative">
+                                <!-- ShareThis BEGIN -->
+                                <div class=" flex-1">
+                                    <div :id="`sharethis-${detailsContent?.content_id}`"
+                                    class=" sharethis-inline-share-buttons"></div>
+                                </div>
+                                <!-- ShareThis END -->
+                                <!-- <a :href="`https://www.facebook.com/sharer.php?u=${ogUrl}`" target="_blank">
                                     <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
                                         height="28" width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
                                         xml:space="preserve">
@@ -139,10 +148,11 @@
                                         <path fill="#FFFFFF" d="M15.531,7h1.662l-3.63,4.236L17.833,17h-3.343l-2.62-3.495L8.876,17H7.212l3.882-4.531L7,7h3.427
 l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
                                     </svg>
-                                </a>
+                                </a> -->
                                 <!-- Social Share -->
-                                <div class="cursor-pointer" @click="printPageArea('singlepost')">
-                                    <svg class=" hover:scale-125 duration-200" height="28" width="28"
+                                <div class="cursor-pointer printbutton absolute right-2 z-10" @click="printPageArea('singlepost')">
+                                   <img src="https://platform-cdn.sharethis.com/img/print.svg" width="16" height="16" />
+                                   <!-- <svg height="30" width="30"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
                                         enable-background="new 0 0 32 32" xml:space="preserve">
                                         <path fill="#595959"
@@ -151,7 +161,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                         <path fill="#FFFFFF"
                                             d="M12,20h8v4h-8V20z M21.6,22.4v-4H10.4v4H8.8c-0.212,0-0.416-0.084-0.566-0.234C8.084,22.016,8,21.812,8,21.6 v-8c0-0.212,0.084-0.416,0.234-0.566C8.384,12.884,8.588,12.8,8.8,12.8h14.4c0.212,0,0.416,0.084,0.566,0.234 C23.916,13.184,24,13.388,24,13.6v8c0,0.212-0.084,0.416-0.234,0.566c-0.15,0.15-0.353,0.234-0.566,0.234H21.6z M10.4,14.4V16h2.4 v-1.6H10.4z M12,8h8c0.212,0,0.416,0.084,0.566,0.234C20.716,8.384,20.8,8.588,20.8,8.8v2.4h-9.6V8.8 c0-0.212,0.084-0.416,0.234-0.566C11.584,8.084,11.788,8,12,8z">
                                         </path>
-                                    </svg>
+                                    </svg> -->
                                 </div>
 
                             </div>
@@ -313,7 +323,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                         </div>
                     </div>
                     <!----- Breadcump relatedPostOgImage ----->
-                
+
                     <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="moreDetailContent?.content_heading"
                         :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
                         :data-keywords="moreDetailContent?.meta_keywords"
@@ -349,7 +359,8 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                         moreDetailContent?.author?.author_name_bn
                                     }}</p>
 
-                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(moreDetailContent?.created_at) }}</span>
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(moreDetailContent?.created_at)
+                                    }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
@@ -363,13 +374,14 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                     <!-- <p v-if="detailsContent?.author"> -->
                                     <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
 
-                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(moreDetailContent?.created_at) }}</span>
+                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(moreDetailContent?.created_at)
+                                    }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
                             </div>
                             <!-- Author Section /-->
-                  
+                            <div :id="`sharethis-sdfd`" class="sharethis-inline-share-buttons"></div>
                             <!-- Social Share -->
                             <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
                                 <a :href="`https://www.facebook.com/sharer.php?u=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
@@ -581,16 +593,25 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
         </div>
     </div>
     <div v-else class="errorNotfound">
+
         <Head>
             <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
         </Head>
-         <Errorpage />
+        <Errorpage />
     </div>
 </template>
 
 <script setup>
 import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
-
+useHead({
+    script: [
+        {
+            src: 'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons',
+            tagPosition: 'bodyClose',
+            async: "true"
+        }
+    ]
+})
 // const router = useRouter()
 
 const siteurl = siteUrlState()
@@ -790,7 +811,36 @@ const balvalue = ref(null)
 
 
 onMounted(() => {
+    // const st = window.__sharethis__
+    // if (!st) {
+    //     const script = document.createElement('script')
+    //     script.src =
+    //         'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons'
+    //     document.body.appendChild(script)
+    // } else if (typeof st.initialize === 'function') {
+    //     st.href = window.location.href
+    //     st.initialize()
+    // }
 
+    window.__sharethis__.load('inline-share-buttons', {
+        alignment: 'right',
+        id: `sharethis-${detailsContent?.value?.content_id}`,
+        enabled: true,
+        font_size: 11,
+        padding: 8,
+        radius: 45,
+        min_count: 0,
+        networks: ['facebook', 'messenger', 'whatsapp', 'twitter', 'linkedin', 'print'],
+        size: 30,
+        show_mobile_buttons: true,
+        spacing: 10, // custom url
+        // title: "My Custom Title",
+        language: "en",
+        show_total: true,
+        // image: "https://18955-presscdn-pagely.netdna-ssl.com/wp-content/uploads/2016/12/ShareThisLogo2x.png", // useful for pinterest sharing buttons
+        // description: "My Custom Description",
+        // username: "ShareThis" // custom @username for twitter sharing
+    });
     pvScrollPosi.value = window.scrollY
     // ============= Scolling ===============
     window.addEventListener("scroll", function () {
@@ -831,7 +881,7 @@ onMounted(() => {
 
         } else {
 
-                  // Scroll down
+            // Scroll down
 
             for (let p = 0; p < contentSections?.length; p++) {
                 const rect = contentSections[p]?.getBoundingClientRect();

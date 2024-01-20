@@ -20,7 +20,7 @@
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ corporateContents[0]?.content_heading }}
                 </h3>
-                <span class="text-sm text-black">{{ postCreatedDate(corporateContents[0]?.created_at) }}</span>
+                <!-- <span class="text-sm text-black">{{ postCreatedDate(corporateContents[0]?.created_at) }}</span> -->
             </NuxtLink>
             <!--/ Corporate Feature Content -->
 

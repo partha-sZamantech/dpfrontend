@@ -20,12 +20,12 @@
                 <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">
                     {{ childrenContents[0]?.content_heading }}
                 </h3>
-                <p class="text-sm text-black flex gap-1 items-center">
+                <!-- <p class="text-sm text-black flex gap-1 items-center">
                     <Icon name="ph:alarm-bold" />
                     <span>
                         {{ postCreatedDate(childrenContents[0]?.created_at) }}
                     </span>
-                </p>
+                </p> -->
             </NuxtLink>
             <!--/ Children Feature Content -->
 
