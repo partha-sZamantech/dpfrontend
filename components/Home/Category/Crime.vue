@@ -13,7 +13,8 @@
                 <div class=" col-span-5 overflow-hidden">
                     <NuxtLink
                         :to="getPostUrl(crimecontent?.cat_slug, crimecontent?.subcat_slug, crimecontent?.content_type, crimecontent?.content_id)">
-                        <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${crimecontent?.img_bg_path}`"
+                        <nuxt-img loading="lazy"
+                            :src="`${siteurl.site_url}/media/content/images/${crimecontent?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                     </NuxtLink>
@@ -25,7 +26,12 @@
                         <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">
                             {{ crimecontent?.content_heading }}
                         </h4>
-                        <span class="text-sm">{{ postCreatedDate(crimecontent?.created_at) }}</span>
+                        <p class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(crimecontent?.created_at) }}
+                            </span>
+                        </p>
                     </NuxtLink>
                 </div>
             </div>

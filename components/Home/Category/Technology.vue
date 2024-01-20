@@ -24,7 +24,12 @@
                             <div class="text-base font-[300] text-black" v-html="`${technologycontents[0]?.content_details?.substring(0,
                                 165)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm text-black">{{ postCreatedDate(technologycontents[0]?.created_at) }}</span>
+                        <p class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(technologycontents[0]?.created_at) }}
+                            </span>
+                        </p>
                     </div>
                 </NuxtLink>
             </div>
@@ -49,7 +54,12 @@
                                 <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">
                                     {{ technologycontent?.content_heading }}
                                 </h4>
-                                <span class="text-sm text-black">{{ postCreatedDate(technologycontent?.created_at) }}</span>
+                                <p class="text-sm text-black mt-1 flex gap-1 items-center">
+                                    <Icon name="ph:alarm-bold" />
+                                    <span>
+                                        {{ postCreatedDate(technologycontent?.created_at) }}
+                                    </span>
+                                </p>
                             </NuxtLink>
                         </div>
                     </div>
