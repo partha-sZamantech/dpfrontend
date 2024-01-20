@@ -8,10 +8,12 @@
         </div>
         <div class="grid grid-cols-12 gap-4">
             <div class="col-span-12 md:col-span-6">
-                <NuxtLink :to="getPostUrl(lawcourtContents[0]?.cat_slug, lawcourtContents[0]?.subcat_slug, lawcourtContents[0]?.content_type, lawcourtContents[0]?.content_id)"
+                <NuxtLink
+                    :to="getPostUrl(lawcourtContents[0]?.cat_slug, lawcourtContents[0]?.subcat_slug, lawcourtContents[0]?.content_type, lawcourtContents[0]?.content_id)"
                     class="flex flex-col group gap-2">
                     <div class="intertainment-feature-image overflow-hidden">
-                        <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${lawcourtContents[0]?.img_bg_path}`"
+                        <nuxt-img loading="lazy"
+                            :src="`${siteurl.site_url}/media/content/images/${lawcourtContents[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
                             :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                     </div>
@@ -22,7 +24,12 @@
                             <div class="text-base font-[300] text-black" v-html="`${lawcourtContents[0]?.content_details?.substring(0,
                                 255)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm text-black">{{ postCreatedDate(lawcourtContents[0]?.created_at) }}</span>
+                        <p class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(lawcourtContents[0]?.created_at) }}
+                            </span>
+                        </p>
                     </div>
                 </NuxtLink>
             </div>
@@ -32,18 +39,26 @@
                     <div class="flex flex-col gap-4 group h-sports-excpt"
                         v-for="lawcourtContent in lawcourtContents.slice(1, 5)" :key="lawcourtContent.content_id">
                         <div class=" col-span-5 overflow-hidden">
-                            <NuxtLink :to="getPostUrl(lawcourtContent?.cat_slug, lawcourtContent?.subcat_slug, lawcourtContent?.content_type, lawcourtContent?.content_id)">
-                                <nuxt-img loading="lazy" :src="`${siteurl.site_url}/media/content/images/${lawcourtContent?.img_bg_path}`"
+                            <NuxtLink
+                                :to="getPostUrl(lawcourtContent?.cat_slug, lawcourtContent?.subcat_slug, lawcourtContent?.content_type, lawcourtContent?.content_id)">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl.site_url}/media/content/images/${lawcourtContent?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
                                     :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
                             </NuxtLink>
                         </div>
                         <div class=" col-span-7">
-                            <NuxtLink :to="getPostUrl(lawcourtContent?.cat_slug, lawcourtContent?.subcat_slug, lawcourtContent?.content_type, lawcourtContent?.content_id)"
+                            <NuxtLink
+                                :to="getPostUrl(lawcourtContent?.cat_slug, lawcourtContent?.subcat_slug, lawcourtContent?.content_type, lawcourtContent?.content_id)"
                                 class="flex flex-col gap-2">
                                 <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
                                     lawcourtContent?.content_heading }}</h4>
-                                <span class="text-sm text-black">{{ postCreatedDate(lawcourtContent?.created_at) }}</span>
+                                <p class="text-sm text-black mt-1 flex gap-1 items-center">
+                                    <Icon name="ph:alarm-bold" />
+                                    <span>
+                                        {{ postCreatedDate(lawcourtContent?.created_at) }}
+                                    </span>
+                                </p>
                             </NuxtLink>
                         </div>
                     </div>
