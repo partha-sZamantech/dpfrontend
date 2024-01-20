@@ -23,7 +23,12 @@
                         <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{
                             politics[0]?.content_heading }}
                         </h3>
-                        <span class="text-sm text-black">{{ postCreatedDate(politics[0]?.created_at) }}</span>
+                        <p class="text-sm text-black flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(politics[0]?.created_at) }}
+                            </span>
+                        </p>
                     </NuxtLink>
                     <!--/ Politic Feature Content -->
 
@@ -63,7 +68,12 @@
                         </div>
                         <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{
                             economycontent[0]?.content_heading }}</h3>
-                        <span class="text-sm">{{ postCreatedDate(economycontent[0]?.created_at) }}</span>
+                         <p class="text-sm text-black flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(economycontent[0]?.created_at) }}
+                            </span>
+                        </p>
                     </NuxtLink>
                     <!--/ Economy Feature Content -->
 
@@ -103,7 +113,14 @@
                         </div>
                         <h3 class="text-[19px] text-black font-semibold group-hover:text-[#ff0000]">{{
                             internationalcontent[0]?.content_heading }}</h3>
-                        <span class="text-sm text-black">{{ postCreatedDate(internationalcontent[0]?.created_at) }}</span>
+                        <!-- <span class="text-sm text-black">{{ postCreatedDate(internationalcontent[0]?.created_at) }}</span> -->
+                        <p class="text-sm text-black flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(internationalcontent[0]?.created_at) }}
+                            </span>
+                        </p>
+
                     </NuxtLink>
                     <!--/ International Feature Content -->
 
