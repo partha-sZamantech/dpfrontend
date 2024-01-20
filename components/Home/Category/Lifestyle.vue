@@ -26,7 +26,12 @@
                         <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
                             lifestyle?.content_heading }}
                         </h4>
-                        <span class="text-sm text-black">{{ postCreatedDate(lifestyle?.created_at) }}</span>
+                        <p class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(lifestyle?.created_at) }}
+                            </span>
+                        </p>
                     </NuxtLink>
                 </div>
             </div>
@@ -52,6 +57,8 @@ lifestyles.value = lifesc.value
 
 </script>
 
-<style scoped>.h-sports-excpt:first-child {
+<style scoped>
+.h-sports-excpt:first-child {
     padding-top: 0px
-}</style>
+}
+</style>

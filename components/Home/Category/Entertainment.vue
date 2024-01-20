@@ -24,7 +24,13 @@
                             <div class="text-base font-[300] text-black" v-html="`${entertainments[0]?.content_details?.substring(0,
                                 270)} ...`"></div>
                         </ClientOnly>
-                        <span class="text-sm text-black">{{ postCreatedDate(entertainments[0]?.created_at) }}</span>
+                        <p class="text-sm text-black flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(entertainments[0]?.created_at) }}
+                            </span>
+                        </p>
+
                     </div>
                 </NuxtLink>
             </div>
@@ -48,7 +54,12 @@
                                 class="flex flex-col gap-2">
                                 <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
                                     entertainment?.content_heading }}</h4>
-                                <span class="text-sm text-black">{{ postCreatedDate(entertainment?.created_at) }}</span>
+                                <p class="text-sm text-black flex gap-1 items-center">
+                                    <Icon name="ph:alarm-bold" />
+                                    <span>
+                                        {{ postCreatedDate(entertainment?.created_at) }}
+                                    </span>
+                                </p>
                             </NuxtLink>
                         </div>
                     </div>
@@ -78,6 +89,8 @@ entertainments.value = entertainc
 
 </script>
 
-<style scoped>.h-sports-excpt:first-child {
+<style scoped>
+.h-sports-excpt:first-child {
     padding-top: 0px
-}</style>
+}
+</style>
