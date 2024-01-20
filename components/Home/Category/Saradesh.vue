@@ -6,32 +6,62 @@
                 <h2 class="text-[#3375af] text-[18px] font-semibold">সারাদেশ</h2>
             </NuxtLink>
         </div>
-        <div class="home-saradesh-category-except-post flex flex-col">
-            <!-- Loop Item -->
-            <div class="grid grid-cols-12 gap-4 group h-sports-excpt border-b py-4" v-for="saradeshcon in saradeshcontents"
-                :key="saradeshcon.content_id">
-                <div class=" col-span-5 overflow-hidden">
-                    <NuxtLink
-                        :to="getPostUrl(saradeshcon?.cat_slug, saradeshcon?.subcat_slug, saradeshcon?.content_type, saradeshcon?.content_id)">
+        <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-12 md:col-span-6">
+                <NuxtLink
+                    :to="getPostUrl(saradeshcontents[0]?.cat_slug, saradeshcontents[0]?.subcat_slug, saradeshcontents[0]?.content_type, saradeshcontents[0]?.content_id)"
+                    class="flex flex-col group gap-2">
+                    <div class="intertainment-feature-image overflow-hidden">
                         <nuxt-img loading="lazy"
-                            :src="`${siteUrl.site_url}/media/content/images/${saradeshcon?.img_bg_path}`"
+                            :src="`${siteurl.site_url}/media/content/images/${saradeshcontents[0]?.img_bg_path}`"
                             class="mx-auto w-full group-hover:scale-110 duration-300"
-                            :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
-                    </NuxtLink>
-                </div>
-                <div class=" col-span-7">
-                    <NuxtLink
-                        :to="getPostUrl(saradeshcon?.cat_slug, saradeshcon?.subcat_slug, saradeshcon?.content_type, saradeshcon?.content_id)"
-                        class="flex flex-col gap-2">
-                        <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
-                            saradeshcon?.content_heading
-                        }}</h4>
-                        <span class="text-sm text-black">{{ postCreatedDate(saradeshcon?.created_at) }}</span>
-                    </NuxtLink>
+                            :placeholder="img(`${siteurl.site_url}/media/common/logo1672518180.png`, { height: 300 })" />
+                    </div>
+                    <div class="intertainment-feature-description flex flex-col gap-2">
+                        <h3 class="text-[25px] text-black font-semibold group-hover:text-[#ff0000]">{{
+                            saradeshcontents[0]?.content_heading }}</h3>
+                        <ClientOnly>
+                            <div class="text-base font-[300] text-black" v-html="`${saradeshcontents[0]?.content_details?.substring(0,
+                                155)} ...`"></div>
+                        </ClientOnly>
+                        <p class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[0]?.created_at) }}
+                            </span>
+                        </p>
+                    </div>
+                </NuxtLink>
+            </div>
+            <div class="col-span-12 md:col-span-6">
+                <div class="home-intertainment-category-except-post grid grid-cols-2 gap-4">
+                    <!-- Loop Item -->
+                    <div class="flex flex-col gap-4 group h-sports-excpt"
+                        v-for="saradeshcontent in saradeshcontents.slice(1, 5)" :key="saradeshcontent.content_id">
+                        <div class=" col-span-5 overflow-hidden">
+                            <NuxtLink
+                                :to="getPostUrl(saradeshcontent?.cat_slug, saradeshcontent?.subcat_slug, saradeshcontent?.content_type, saradeshcontent?.content_id)">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl.site_url}/media/content/images/${saradeshcontent?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </NuxtLink>
+                        </div>
+                        <div class=" col-span-7">
+                            <NuxtLink
+                                :to="getPostUrl(saradeshcontent?.cat_slug, saradeshcontent?.subcat_slug, saradeshcontent?.content_type, saradeshcontent?.content_id)"
+                                class="flex flex-col gap-2">
+                                <h4 class="text-base text-black font-semibold group-hover:text-[#ff0000]">{{
+                                    saradeshcontent?.content_heading }}</h4>
+                                <span class="text-sm text-black">{{ postCreatedDate(saradeshcontent?.created_at) }}</span>
+                            </NuxtLink>
+                        </div>
+                    </div>
+                    <!--/ Loop Item -->
+
+
                 </div>
             </div>
-            <!--/ Loop Item -->
-
         </div>
     </div>
 </template>
@@ -39,7 +69,7 @@
 <script setup>
 import { postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
-const siteUrl = siteUrlState()
+const siteurl = siteUrlState()
 const saradeshcontents = useState(() => [])
 const { data: hsradesh } = await useFetch('/api/prismaapi/home/saradesh', {
     method: 'GET',
@@ -50,6 +80,8 @@ saradeshcontents.value = hsradesh
 
 </script>
 
-<style scoped>.h-sports-excpt:first-child {
+<style scoped>
+.h-sports-excpt:first-child {
     padding-top: 0px
-}</style>
+}
+</style>

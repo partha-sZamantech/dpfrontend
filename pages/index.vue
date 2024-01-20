@@ -119,30 +119,21 @@
             <HomeCategorySpecialReport />
             <!--/ Special Top Content Component -->
 
-            <div class="grid grid-cols-12 gap-4 mb-6">
-                <div class="col-span-12 md:col-span-9">
-                    <!-- Sports Category Component -->
-                    <HomeCategorySports />
-                    <!--/ Sports Category Component -->
-                </div>
-                <div class="col-span-12 md:col-span-3">
-                    <!-- Saradesh Category Component -->
-                    <HomeCategorySaradesh />
-                    <!--/ Saradesh Category Component -->
-                </div>
-            </div>
-
-            <HomeCategorySportsBackup /> 
+           
+            <HomeCategorySportsBackup />
             <!-- Home Middle Five Ads -->
             <div v-if="homeMiddleFiveAds?.status === 1"
                 class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
                 <AdsDesktopHomeMiddleFive :homeMiddleFiveAds="homeMiddleFiveAds" />
             </div>
             <!-- Home Middle Five Ads -->
+            <!-- Entertainment Category Component -->
+            <HomeCategoryEntertainment />
+            <!-- Entertainment Category Component -->
             <div class="grid grid-cols-12 gap-4">
                 <div class="col-span-12 md:col-span-9">
                     <!-- Sports Category Component -->
-                    <HomeCategoryEntertainment />
+                    <HomeCategorySaradesh />
                     <!--/ Sports Category Component -->
                 </div>
                 <div class="col-span-12 md:col-span-3">
