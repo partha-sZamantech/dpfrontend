@@ -34,7 +34,7 @@
             <a href="#" class="text-[#124d80] text-base bg-white px-2 py-[2px] rounded-sm">English</a>
             <a href="#" class="text-[#124d80] text-base bg-white px-2 py-[2px] rounded-sm">ই-পেপার</a>
         </div>
-        <div v-if="dkdropdownStatus === true" :class="`relative`" ref="dropmenuRef">
+        <div v-if="dkdropdownStatus === true" :class="`relative border-t`" ref="dropmenuRef">
             <div :class="`max-w-[1280px] px-4 py-4 mx-auto`">
                 <div class="dropmenu grid grid-cols-6 gap-1 items-center justify-center text-white text-[18px]">
                     <NuxtLink @click="dkdropdownToggle" class="hover:pl-2 duration-300 py-2" v-for="dropmenuitem in headCategory?.slice(11, 41)"
