@@ -1,7 +1,7 @@
 <template>
     <div
         :class="`${scrollDown ? 'fixed top-0 right-0 left-0 shadow-lg' : 'fixed right-0 left-0 '} z-[1] hidden md:block shadow-lg shadow-gray-300 duration-300 bg-[#3375af]`">
-        <div class="w-[1280px] mx-auto flex gap-3 items-center justify-center px-4">
+        <div class="w-[1280px] mx-auto flex gap-2 items-center justify-between px-4">
             <ul class="flex gap-0 justify-center text-[18px] text-white mainmenu">
                 <li>
                     <NuxtLink to="/"
@@ -21,12 +21,12 @@
                 </li>
                 <li>
                     <NuxtLink :to="`/video`"
-                        class="py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
+                        class="py-2 pl-[10px] pr-[10px] block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
                         ভিজ্যুয়াল মিডিয়া</NuxtLink>
                 </li>
             </ul>
             <div @click="dkdropdownToggle"
-                :class="`${dkdropdownStatus === true && 'bg-[#124d80]'} flex gap-1 items-center justify-center text-white hover:bg-[#124d80] px-3 py-1 rounded-sm cursor-pointer`">
+                :class="`${dkdropdownStatus === true && 'bg-[#124d80]'} flex gap-1 items-center justify-center text-white hover:bg-[#124d80] px-2 py-1 rounded-sm cursor-pointer`">
                 <Icon name="dashicons:editor-justify" />
                 <span>সব</span>
             </div>
