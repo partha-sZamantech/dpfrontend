@@ -81,7 +81,7 @@
                         <!-- Author Section -->
                         <!-- <div
                             class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3"> -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 content-between gap-2  border-b pb-2 md:pb-3">
+                        <div class="grid grid-cols-1 md:grid-cols-2 content-between gap-2  border-b border-t py-2">
                             <NuxtLink v-if="detailsContent?.author" :to="`/author/${detailsContent?.author?.author_slug}`"
                                 class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
                                 <div>
