@@ -7,7 +7,7 @@
             </NuxtLink>
         </div>
         <div class="grid grid-cols-12 gap-4">
-            <div class="col-span-12 md:col-span-6">
+            <div class="col-span-12 md:col-span-4">
                 <NuxtLink
                     :to="getPostUrl(saradeshcontents[0]?.cat_slug, saradeshcontents[0]?.subcat_slug, saradeshcontents[0]?.content_type, saradeshcontents[0]?.content_id)"
                     class="flex flex-col group gap-2">
@@ -22,7 +22,7 @@
                             saradeshcontents[0]?.content_heading }}</h3>
                         <ClientOnly>
                             <div class="text-base font-[300] text-black" v-html="`${saradeshcontents[0]?.content_details?.substring(0,
-                                155)} ...`"></div>
+                                250)} ...`"></div>
                         </ClientOnly>
                         <p class="text-sm text-black mt-1 flex gap-1 items-center">
                             <Icon name="ph:alarm-bold" />
@@ -33,11 +33,11 @@
                     </div>
                 </NuxtLink>
             </div>
-            <div class="col-span-12 md:col-span-6">
-                <div class="home-intertainment-category-except-post grid grid-cols-2 gap-4">
+            <div class="col-span-12 md:col-span-8">
+                <div class="home-intertainment-category-except-post grid grid-cols-3 gap-4">
                     <!-- Loop Item -->
                     <div class="flex flex-col gap-4 group h-sports-excpt"
-                        v-for="saradeshcontent in saradeshcontents.slice(1, 5)" :key="saradeshcontent.content_id">
+                        v-for="saradeshcontent in saradeshcontents.slice(1, 7)" :key="saradeshcontent.content_id">
                         <div class=" col-span-5 overflow-hidden">
                             <NuxtLink
                                 :to="getPostUrl(saradeshcontent?.cat_slug, saradeshcontent?.subcat_slug, saradeshcontent?.content_type, saradeshcontent?.content_id)">

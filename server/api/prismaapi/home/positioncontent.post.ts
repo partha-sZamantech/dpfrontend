@@ -37,6 +37,7 @@ export default defineEventHandler(async (event) => {
                 }
             })
 
+            
             // Category GET
             const category = await prisma.bn_categories.findFirst({
                 where: {

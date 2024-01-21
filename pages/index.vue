@@ -131,18 +131,8 @@
             <!-- Entertainment Category Component -->
             <HomeCategoryEntertainment />
             <!-- Entertainment Category Component -->
-            <div class="grid grid-cols-12 gap-4">
-                <div class="col-span-12 md:col-span-9">
-                    <!-- Saradesh Category Component -->
-                    <HomeCategorySaradesh />
-                    <!--/ Saradesh Category Component -->
-                </div>
-                <div class="col-span-12 md:col-span-3">
-                    <!-- Lifestyle Category Component -->
-                    <HomeCategoryLifestyle />
-                    <!--/ Lifestyle Category Component -->
-                </div>
-            </div>
+            <HomeCategorySaradesh />
+
         </div>
         <!-- Home Middle Six Ads -->
         <div v-if="homeMiddleSixAds?.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
@@ -163,7 +153,7 @@
         <!-- Home Middle Seven Ads -->
         <div class="py-2 md:px-4 max-w-[1280px] mx-auto px-4">
 
-            <div class=" grid grid-cols-12 gap-6">
+            <div class=" grid grid-cols-12 gap-6 mb-4">
                 <div class=" col-span-12 md:col-span-9">
                     <!-- Law Court Component -->
                     <HomeCategoryLawCourt />
@@ -176,6 +166,18 @@
                 </div>
             </div>
 
+            <div class="grid grid-cols-12 gap-4 py-4">
+                <div class="col-span-12 md:col-span-9">
+                    <!-- Saradesh Category Component -->
+                    <HomeCategoryLifestyle />
+                    <!--/ Saradesh Category Component -->
+                </div>
+                <div class="col-span-12 md:col-span-3">
+                    <!-- Lifestyle Category Component -->
+                    <HomeCategoryReligion />
+                    <!--/ Lifestyle Category Component -->
+                </div>
+            </div>
             <div class=" grid grid-cols-12 gap-6 py-4">
                 <div class=" col-span-12 md:col-span-6">
                     <!-- Technology Component -->
@@ -201,12 +203,7 @@
             </div>
             <!-- Home Middle Eight Ads -->
             <div class=" grid grid-cols-12 gap-6 py-4">
-                <div class=" col-span-12 md:col-span-3">
-                    <!-- Art Culture Component -->
-                    <HomeCategoryArtCulture />
-                    <!-- Art Culture Component -->
-                </div>
-                <div class=" col-span-12 md:col-span-3">
+                <div class=" col-span-12 md:col-span-6">
                     <!-- Health Component -->
                     <HomeCategoryHealth />
                     <!-- Health Component -->
@@ -217,10 +214,11 @@
                     <!-- Education Component -->
                 </div>
                 <div class=" col-span-12 md:col-span-3">
-                    <!-- Religion Component -->
-                    <HomeCategoryReligion />
-                    <!-- Religion Component -->
+                    <!-- Art Culture Component -->
+                    <HomeCategoryArtCulture />
+                    <!-- Art Culture Component -->
                 </div>
+
             </div>
 
             <div class=" grid grid-cols-12 gap-6 py-4">

@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
             status: 1,
             deletable: 1
         },
-        take: 4,
+        take: 5,
         orderBy: {
             content_id: 'desc'
         }
