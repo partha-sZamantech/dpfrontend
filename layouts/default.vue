@@ -1,7 +1,8 @@
 <template>
     <div>
+
         <Head>
-            <Title>{{sitesettings?.title}}</Title>
+            <Title>{{ sitesettings?.title }}</Title>
             <Meta name="description" :content="sitesettings?.meta_description" />
             <Meta name="Developed By" content="Dhaka Prokash Developer" />
             <Meta name="keywords" :content="sitesettings?.meta_keywords" />
@@ -28,24 +29,24 @@
         <!-- Header Top Ads Page=1, Position=1 -->
         <AdsDesktopCommonHeaderBannerTop v-if="topBannerAd?.status === 1" :topBannerAd="topBannerAd" />
         <div :class="`logoHeader duration-300 z-[9999999]`">
-        <!-- <div :class="`${LogoHeaderScollUp ? 'fixed  top-0 left-0 right-0' : '' } logoHeader duration-300`"> -->
+            <!-- <div :class="`${LogoHeaderScollUp ? 'fixed  top-0 left-0 right-0' : '' } logoHeader duration-300`"> -->
             <!-- <div class="header-container max-w-[1280px] mx-auto "> -->
-                <!-- Top Header -->
-                <HeaderTop :scrollDown="scrollDown" :LogoHeaderScollUp="LogoHeaderScollUp" />
-                <!-- Mobile Header -->
-                <!-- Top Header -->
-                <HeaderTopMenu :scrollDown="scrollDown"  />
+            <!-- Top Header -->
+            <HeaderTop :scrollDown="scrollDown" :LogoHeaderScollUp="LogoHeaderScollUp" />
+            <!-- Mobile Header -->
+            <!-- Top Header -->
+            <HeaderTopMenu :scrollDown="scrollDown" />
             <!-- </div> -->
         </div>
         <MobileHeaderTop />
         <div class="main-container duration-900 mt-4 md:mt-12">
 
             <slot />
-      
+
         </div>
         <FooterContent />
         <!-- Footer Ads Sticky -->
-    <AdsDesktopCommonFooterStickyAds v-if="footerAds?.status === 1" :footerAds="footerAds" />
+        <AdsDesktopCommonFooterStickyAds v-if="footerAds?.status === 1" :footerAds="footerAds" />
         <!-- Footer Ads Sticky -->
     </div>
     <!-- Ads Site Block Popup -->
@@ -62,8 +63,8 @@ const DsiteConfig = useRuntimeConfig()
 // Sitesetting - logo, social media
 const sitesettings = sitesettingsState()
 
-const {data:ssetting} = await useFetch("/api/prismaapi/sitesetting/sitesetting", {
-    method:"get",
+const { data: ssetting } = await useFetch("/api/prismaapi/sitesetting/sitesetting", {
+    method: "get",
     cache: 'force-cache'
 })
 
@@ -78,7 +79,14 @@ useHead({
         {
             rel: 'icon',
             type: 'image/png',
-            href: DsiteConfig.public.apiUrl+`/media/common/${sitesettings?.value?.favicon}`
+            href: DsiteConfig.public.apiUrl + `/media/common/${sitesettings?.value?.favicon}`
+        }
+    ],
+    script: [
+        {
+            src: 'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons',
+            tagPosition: 'bodyClose',
+            async: "true"
         }
     ]
 })
@@ -89,13 +97,13 @@ const LogoHeaderScollUp = ref(false)
 const scrollDown = ref(false)
 const scrollPostion = ref(120)
 
- const detailPageSticky = singlePageStickyState()
+const detailPageSticky = singlePageStickyState()
 
 
 onMounted(() => {
     // counter.value = document.getElementsByTagName('body')[0].scrollHeight 
 
-    if(isDesktop){
+    if (isDesktop) {
 
         // ============== Desktop ===================
         prevScrollPosition.value = window.scrollY
@@ -122,28 +130,28 @@ onMounted(() => {
                 const classes = document.getElementsByClassName("logoHeader")[0]
                 classes.classList.remove('fixed', '-top-[117px]', 'left-0', 'right-0')
                 classes.classList.add('fixed', '-top-0', 'left-0', 'right-0')
-                
+
 
                 // Blog Detail page
                 detailPageSticky.value = true
 
             } else {
-                
+
                 // Scroll down
                 LogoHeaderScollUp.value = false
                 // const classes = document.getElementsByClassName("logoHeader")[0].style.display = "none";
                 const classes = document.getElementsByClassName("logoHeader")[0]
                 classes.classList.add('fixed', '-top-[117px]', 'left-0', 'right-0')
 
-                document.getElementsByClassName("main-container")[0].style.marginTop  = "204px";
+                document.getElementsByClassName("main-container")[0].style.marginTop = "204px";
 
                 // Blog Detail page
                 detailPageSticky.value = false
-                
+
             }
             prevScrollPosition.value = currentScrollPosition.value
-           
-        
+
+
         })
         // ============= Scolling =============== //
         // ============== Desktop ===================
@@ -158,7 +166,7 @@ const allCategory = allCategoryState()
 // const {data:cats} = await useFetch(`${catConfig.public.apiUrl}/api/allcat`,{
 //     method: 'GET'
 // })
-const {data:cats} = await useFetch(`/api/prismaapi/header/allcategory`,{
+const { data: cats } = await useFetch(`/api/prismaapi/header/allcategory`, {
     method: 'GET'
 })
 allCategory.value = cats
@@ -202,6 +210,4 @@ siteblockAds.value = sbAds.value
 
 </script>
 
-<style>
-
-</style>
+<style></style>

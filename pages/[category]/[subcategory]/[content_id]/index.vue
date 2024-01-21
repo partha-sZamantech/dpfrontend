@@ -124,47 +124,22 @@
                             <div class="social-item flex gap-0 items-center justify-center print:hidden relative">
                                 <!-- ShareThis BEGIN -->
                                 <div class=" flex-1">
-                                    <div :id="`sharethis-${detailsContent?.content_id}`"
-                                    class=" sharethis-inline-share-buttons"></div>
+                                    <div :data-title="`${detailsContent?.content_heading}`"
+                                        :data-url="`${websiteUrl?.website_url}${getPostUrl(detailsContent?.category?.cat_slug, detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type, detailsContent?.content_id)}`"
+                                        :data-image="`${detailsContent?.og_image}`"
+                                        :data-description="detailsContent?.content_brief"
+                                        :id="`sharethis-${detailsContent?.content_id}`"
+                                        class=" sharethis-inline-share-buttons"></div>
                                 </div>
                                 <!-- ShareThis END -->
-                                <!-- <a :href="`https://www.facebook.com/sharer.php?u=${ogUrl}`" target="_blank">
-                                    <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
-                                        height="28" width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
-                                        xml:space="preserve">
-                                        <path fill="#1877F2"
-                                            d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
-                                        </path>
-                                        <path fill="#FFFFFF"
-                                            d="M18,17.5h2.5l1-4H18v-2c0-1.03,0-2,2-2h1.5V6.14C21.174,6.097,19.943,6,18.643,6C15.928,6,14,7.657,14,10.7 v2.8h-3v4h3V26h4V17.5z">
-                                        </path>
-                                    </svg>
-                                </a>
-                                <a :href="`https://twitter.com/intent/tweet?url=${ogUrl}`" target="_blank">
-                                    <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"
-                                        height="28" width="28">
-                                        <circle fill="#0F1419" cx="12" cy="12" r="12"></circle>
-                                        <path fill="#FFFFFF" d="M15.531,7h1.662l-3.63,4.236L17.833,17h-3.343l-2.62-3.495L8.876,17H7.212l3.882-4.531L7,7h3.427
-l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
-                                    </svg>
-                                </a> -->
-                                <!-- Social Share -->
-                                <div class="cursor-pointer printbutton absolute right-2 z-10" @click="printPageArea('singlepost')">
-                                   <img src="https://platform-cdn.sharethis.com/img/print.svg" width="16" height="16" />
-                                   <!-- <svg height="30" width="30"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
-                                        enable-background="new 0 0 32 32" xml:space="preserve">
-                                        <path fill="#595959"
-                                            d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
-                                        </path>
-                                        <path fill="#FFFFFF"
-                                            d="M12,20h8v4h-8V20z M21.6,22.4v-4H10.4v4H8.8c-0.212,0-0.416-0.084-0.566-0.234C8.084,22.016,8,21.812,8,21.6 v-8c0-0.212,0.084-0.416,0.234-0.566C8.384,12.884,8.588,12.8,8.8,12.8h14.4c0.212,0,0.416,0.084,0.566,0.234 C23.916,13.184,24,13.388,24,13.6v8c0,0.212-0.084,0.416-0.234,0.566c-0.15,0.15-0.353,0.234-0.566,0.234H21.6z M10.4,14.4V16h2.4 v-1.6H10.4z M12,8h8c0.212,0,0.416,0.084,0.566,0.234C20.716,8.384,20.8,8.588,20.8,8.8v2.4h-9.6V8.8 c0-0.212,0.084-0.416,0.234-0.566C11.584,8.084,11.788,8,12,8z">
-                                        </path>
-                                    </svg> -->
+                                <!-- Print Button -->
+                                <div class="cursor-pointer printbutton absolute right-0 z-10 text-white w-[30px] h-[30px] rounded-full  bg-black"
+                                    @click="printPageArea('singlepost')">
+                                    <Icon name="ic:baseline-local-printshop" class="ml-[6px] mt-[1px]" />
                                 </div>
-
+                                <!-- Print Button -->
                             </div>
+                            <!-- Social Share -->
                         </div>
                         <div class="feature-image border-b">
                             <nuxt-img loading="lazy"
@@ -341,8 +316,7 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
 
                         <!-- Author Section -->
-                        <div
-                            class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3">
+                        <div class="grid grid-cols-1 md:grid-cols-2 content-between gap-2  border-b pb-2 md:pb-3">
                             <NuxtLink v-if="moreDetailContent?.author"
                                 :to="`/author/${moreDetailContent?.author?.author_slug}`"
                                 class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
@@ -381,46 +355,30 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
                                 </div>
                             </div>
                             <!-- Author Section /-->
-                            <div :id="`sharethis-sdfd`" class="sharethis-inline-share-buttons"></div>
+
                             <!-- Social Share -->
-                            <div class="social-item flex gap-2 items-start md:justify-center print:hidden">
-                                <a :href="`https://www.facebook.com/sharer.php?u=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
-                                    target="_blank">
-                                    <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
-                                        height="28" width="28" viewBox="0 0 32 32" enable-background="new 0 0 32 32"
-                                        xml:space="preserve">
-                                        <path fill="#1877F2"
-                                            d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
-                                        </path>
-                                        <path fill="#FFFFFF"
-                                            d="M18,17.5h2.5l1-4H18v-2c0-1.03,0-2,2-2h1.5V6.14C21.174,6.097,19.943,6,18.643,6C15.928,6,14,7.657,14,10.7 v2.8h-3v4h3V26h4V17.5z">
-                                        </path>
-                                    </svg>
-                                </a>
-                                <a :href="`https://twitter.com/intent/tweet?url=${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
-                                    target="_blank">
-                                    <svg class=" hover:scale-125 duration-200" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve"
-                                        height="28" width="28">
-                                        <circle fill="#0F1419" cx="12" cy="12" r="12"></circle>
-                                        <path fill="#FFFFFF" d="M15.531,7h1.662l-3.63,4.236L17.833,17h-3.343l-2.62-3.495L8.876,17H7.212l3.882-4.531L7,7h3.427
-l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></path>
-                                    </svg>
-                                </a>
-                                <div class=" cursor-pointer" @click="printPageArea(`singlepost${mcinx}`)">
-                                    <svg class=" hover:scale-125 duration-200" height="28" width="28"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
-                                        enable-background="new 0 0 32 32" xml:space="preserve">
-                                        <path fill="#595959"
-                                            d="M16,0L16,0c8.837,0,16,7.163,16,16l0,0c0,8.837-7.163,16-16,16l0,0C7.163,32,0,24.837,0,16l0,0 C0,7.163,7.163,0,16,0z">
-                                        </path>
-                                        <path fill="#FFFFFF"
-                                            d="M12,20h8v4h-8V20z M21.6,22.4v-4H10.4v4H8.8c-0.212,0-0.416-0.084-0.566-0.234C8.084,22.016,8,21.812,8,21.6 v-8c0-0.212,0.084-0.416,0.234-0.566C8.384,12.884,8.588,12.8,8.8,12.8h14.4c0.212,0,0.416,0.084,0.566,0.234 C23.916,13.184,24,13.388,24,13.6v8c0,0.212-0.084,0.416-0.234,0.566c-0.15,0.15-0.353,0.234-0.566,0.234H21.6z M10.4,14.4V16h2.4 v-1.6H10.4z M12,8h8c0.212,0,0.416,0.084,0.566,0.234C20.716,8.384,20.8,8.588,20.8,8.8v2.4h-9.6V8.8 c0-0.212,0.084-0.416,0.234-0.566C11.584,8.084,11.788,8,12,8z">
-                                        </path>
-                                    </svg>
+                            <div class="social-item flex gap-0 items-center justify-center print:hidden relative">
+                                <!-- ShareThis BEGIN -->
+                           
+                                <div class=" flex-1">
+                                    <div :data-title="`${moreDetailContent?.content_heading}`"
+                                        :data-url="`${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
+                                        :data-image="`${moreDetailContent?.og_image}`"
+                                        :data-description="moreDetailContent?.content_brief"
+                                        :id="`sharethis-${moreDetailContent?.content_id}`"
+                                        class="sharethis-inline-share-buttons"></div>
                                 </div>
-                                <!-- Social Share -->
+                                <!-- ShareThis END -->
+                                <!-- Print Button -->
+                                <div class="cursor-pointer printbutton absolute right-0 z-10 text-white w-[30px] h-[30px] rounded-full  bg-black"
+                                    @click="printPageArea(`singlepost${mcinx}`)">
+                                    <Icon name="ic:baseline-local-printshop" class="ml-[6px] mt-[1px]" />
+                                </div>
+
+                                <!-- Print Button -->
                             </div>
+                            <!-- Social Share -->
+
                         </div>
                         <div class="feature-image border-b">
                             <nuxt-img loading="lazy"
@@ -603,15 +561,15 @@ l2.366,3.195L15.531,7z M14.947,15.986h0.92L9.926,7.962H8.937L14.947,15.986z"></p
 
 <script setup>
 import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
-useHead({
-    script: [
-        {
-            src: 'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons',
-            tagPosition: 'bodyClose',
-            async: "true"
-        }
-    ]
-})
+// useHead({
+//     script: [
+//         {
+//             src: 'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons',
+//             tagPosition: 'bodyClose',
+//             async: "true"
+//         }
+//     ]
+// })
 // const router = useRouter()
 
 const siteurl = siteUrlState()
@@ -811,6 +769,8 @@ const balvalue = ref(null)
 
 
 onMounted(() => {
+
+    // ======== Share This Button Refetch global code ====== //
     // const st = window.__sharethis__
     // if (!st) {
     //     const script = document.createElement('script')
@@ -821,7 +781,10 @@ onMounted(() => {
     //     st.href = window.location.href
     //     st.initialize()
     // }
+    // ======== Share This Button Refetch global code ====== //
 
+
+    // ================ Share This Social Icon Refetch for First Detail Content =================== //
     window.__sharethis__.load('inline-share-buttons', {
         alignment: 'right',
         id: `sharethis-${detailsContent?.value?.content_id}`,
@@ -834,13 +797,41 @@ onMounted(() => {
         size: 30,
         show_mobile_buttons: true,
         spacing: 10, // custom url
-        // title: "My Custom Title",
+        title: detailsContent?.value?.content_heading,
         language: "en",
         show_total: true,
-        // image: "https://18955-presscdn-pagely.netdna-ssl.com/wp-content/uploads/2016/12/ShareThisLogo2x.png", // useful for pinterest sharing buttons
-        // description: "My Custom Description",
+        url: `${websiteUrl?.value?.website_url}${getPostUrl(detailsContent?.value?.category?.cat_slug, detailsContent?.value?.subcategory?.subcat_slug, detailsContent?.value?.content_type, detailsContent?.value?.content_id)}`,
+        image: detailsContent?.value?.og_image, // useful for pinterest sharing buttons
+        description: detailsContent?.value?.content_brief
         // username: "ShareThis" // custom @username for twitter sharing
     });
+    // ================ Share This Social Icon Refetch for First Detail Content =================== //
+    // ================ Share This Social Icon Refetch for 3 More Detail Content =================== //
+    for (let stbtn = 0; stbtn < moreDetailsContents?.value?.length; stbtn++) {
+        window.__sharethis__.load('inline-share-buttons', {
+            alignment: 'right',
+            id: `sharethis-${moreDetailsContents?.value[stbtn]?.content_id}`,
+            enabled: true,
+            font_size: 11,
+            padding: 8,
+            radius: 45,
+            min_count: 0,
+            networks: ['facebook', 'messenger', 'whatsapp', 'twitter', 'linkedin', 'print'],
+            size: 30,
+            show_mobile_buttons: true,
+            spacing: 10, // custom url
+            title: moreDetailsContents[stbtn]?.value?.content_heading,
+            language: "en",
+            show_total: true,
+            url: `${websiteUrl?.value?.website_url}${getPostUrl(moreDetailsContents?.value[stbtn]?.category?.cat_slug, moreDetailsContents?.value[stbtn]?.subcategory?.subcat_slug, moreDetailsContents?.value[stbtn]?.content_type, moreDetailsContents?.value[stbtn]?.content_id)}`,
+            image: moreDetailsContents?.value[stbtn]?.og_image, // useful for pinterest sharing buttons
+            description: moreDetailsContents?.value[stbtn]?.content_brief
+            // username: "ShareThis" // custom @username for twitter sharing
+        });
+    }
+    // ================ Share This Social Icon Refetch for 3 More Detail Content =================== //
+
+
     pvScrollPosi.value = window.scrollY
     // ============= Scolling ===============
     window.addEventListener("scroll", function () {

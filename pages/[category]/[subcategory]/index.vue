@@ -297,7 +297,7 @@ const { data: subctcont, pending } = await useFetch('/api/prismaapi/subcategory/
 
 subcategoryContents.value = subctcont?.value?.contents
 // Fetching Leading Post Data
-console.log(subcategoryContents.value)
+// console.log(subcategoryContents.value)
 // Assign category & Subcategory
 category.value = subctcont?.value?.category
 subcategory.value = subctcont?.value?.subcat
