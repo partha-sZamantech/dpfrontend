@@ -2,7 +2,7 @@
     <div class="grid grid-cols-12 gap-4 py-4">
         <div v-if="politics?.length > 0" class=" col-span-12 md:col-span-4">
             <div class="home-politic-category ">
-                <div class="category-header border-b-4 border-b-[#3375af] my-3">
+                <div class="category-header border-b-[3px] border-b-[#3375af] my-3">
                     <NuxtLink :to="`/${politics[0]?.cat_slug}`" class="flex gap-3 items-center">
                         <span class="w-3 h-3 bg-[#3375af]"></span>
                         <h2 class="text-[#3375af] text-[18px] font-semibold">রাজনীতি</h2>
@@ -49,7 +49,7 @@
         </div>
         <div class=" col-span-12 md:col-span-4">
             <div class="home-economy-category" v-if="economycontent?.length > 0">
-                <div class="category-header border-b-4 border-b-[#3375af] my-3">
+                <div class="category-header border-b-[3px] border-b-[#3375af] my-3">
                     <NuxtLink :to="`/${economycontent[0]?.cat_slug}`" class="flex gap-3 items-center">
                         <span class="w-3 h-3 bg-[#3375af]"></span>
                         <h2 class="text-[#3375af] text-[18px] font-semibold">অর্থনীতি</h2>
@@ -94,7 +94,7 @@
         </div>
         <div class=" col-span-12 md:col-span-4">
             <div class="home-international-category " v-if="internationalcontent?.length > 0">
-                <div class="category-header border-b-4 border-b-[#3375af] my-3">
+                <div class="category-header border-b-[3px] border-b-[#3375af] my-3">
                     <NuxtLink :to="`/${internationalcontent[0]?.cat_slug}`" class="flex gap-3 items-center">
                         <span class="w-3 h-3 bg-[#3375af]"></span>
                         <h2 class="text-[#3375af] text-[18px] font-semibold">সারাবিশ্ব</h2>

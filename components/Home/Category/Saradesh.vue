@@ -1,6 +1,6 @@
 <template>
     <div v-if="saradeshcontents?.length > 0" class="home-saradesh-category">
-        <div class="category-header border-b-4 border-b-[#3375af] my-3">
+        <div class="category-header border-b-[3px] border-b-[#3375af] my-3">
             <NuxtLink :to="`/${saradeshcontents[0]?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
                 <h2 class="text-[#3375af] text-[18px] font-semibold">সারাদেশ</h2>
