@@ -1,8 +1,10 @@
 <template>
     <div>
         <div
-            class="flex justify-between items-center md:hidden shadow-md fixed bg-white top-0 left-0 right-0 px-2 z-[999999]">
-            <div class="flex gap-6 px-2 py-2 items-center justify-center">
+            class=" md:hidden shadow-md fixed bg-white top-0 left-0 right-0 z-[999999]">
+            <div class="bg-[#3375af] px-4 text-white">sdfds</div>
+            <div class="flex justify-between items-center px-2">
+                <div class="flex gap-6 px-2 py-2 items-center justify-center">
                 <Icon v-if="!mobileMenuStatus" @click="mobileMenuToggle" class="text-3xl cursor-pointer hover:bg-[#f7f7f7]"
                     name="ic:outline-menu" />
                 <Icon v-else name="material-symbols:close" @click="mobileMenuToggle"
@@ -17,6 +19,8 @@
                 <NuxtLink class="border px-2 font-semibold text-blue-700" to="/">EN</NuxtLink>
                 <NuxtLink to="/" class="border px-2 font-semibold text-blue-700">E-P</NuxtLink>
             </div>
+            </div>
+           
         </div>
         <MobileHeaderDropdown :mobileMenuStatus="mobileMenuStatus" />
         <!-- <MobileHeaderDropdown :mobileMenuStatus="mobileMenuStatus" /> -->

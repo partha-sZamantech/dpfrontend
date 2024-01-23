@@ -18,6 +18,11 @@ body {
     color: #333
 }
 
+.postdetails iframe {
+    width: 100%;
+    margin-top: 30px;
+    display: block;
+}
 
 figure.image {
     margin: 18px 0px !important;
