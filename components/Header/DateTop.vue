@@ -9,7 +9,7 @@
                     </div>
                     <div class="flex gap-1 items-center justify-center">
                         <Icon name="ic:baseline-calendar-month" />
-                        <span>{{ todayDate }} | {{ BanglaDate() }}</span>
+                        <span>{{ EnglishDate() }} | {{ BanglaDate() }}</span>
                     </div>
                 </div>
                 <div class="flex gap-4 justify-center items-center">
@@ -59,15 +59,9 @@
 </template>
 
 <script setup>
-import { BanglaDate } from '~/lib/helpers';
+import { BanglaDate, EnglishDate } from '~/lib/helpers';
 
 const { scrollDown, counter } = defineProps(['scrollDown', 'LogoHeaderScollUp'])
-
-// ================ Get Bangla Date ============== //
-const getDateToday = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numeric', month: 'long', day: "numeric" })
-const todayDate = getDateToday.format(new Date())
-// ================ Get Bangla Date ============== //
-
 
 // ==================== Global Site Setting State ====================
 const siteurl = siteUrlState()
