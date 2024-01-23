@@ -19,9 +19,10 @@ body {
 }
 
 .postdetails iframe {
-    width: 100%;
-    margin-top: 30px;
+    width: 100% !important;
+    margin-top: 20px;
     display: block;
+    margin-bottom: 20px;
 }
 
 figure.image {
