@@ -37,7 +37,7 @@
             </Head>
 
             <!-- <img src="http://127.0.0.1:8000/api/ogimage/get/politics?imgPath=2023November/dhaka-prokash-news-15-20231111182548.jpg" alt=""> -->
-            <div class="breadcrump pb-3 pt-2 md:pt-0 md:pb-3">
+            <div class="breadcrump pb-3 md:pb-3">
                 <div class="flex gap-1 justify-start items-center">
                     <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`"
                         class="text-[#3375af] font-semibold border-b-2 border-b-[#3375af]">
