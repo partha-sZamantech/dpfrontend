@@ -7,6 +7,10 @@
     font-family: DhakaRegular;
     src: url('/assets/fonts/Dhakaprokash-Regular-v1.woff2');
 }
+@font-face {
+    font-family: SiyamLipi;
+    src: url('/assets/fonts/DP-Font.woff');
+}
 
 @font-face {
     font-family: NewsReader;
@@ -17,7 +21,9 @@ body {
     font-family: 'DhakaRegular', Arial, sans-serif;
     color: #333
 }
-
+.siyamLipiFont {
+    font-family: SiyamLipi;
+}
 .postdetails iframe {
     width: 100% !important;
     margin-top: 20px;
@@ -89,4 +95,3 @@ figure.image figcaption {
 /* ::-webkit-scrollbar-thumb:hover {
     background: #bdb8b8;
 } */
-

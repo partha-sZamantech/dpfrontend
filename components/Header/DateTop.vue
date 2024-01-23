@@ -2,7 +2,7 @@
     <div class="bg-[#EEEEEE] hidden md:block py-1">
         <div class="max-w-[1280px] mx-auto px-4">
             <div class=" justify-between flex items-center">
-                <div class="flex gap-2 text-black text-sm">
+                <div class="flex gap-2 siyamLipiFont text-black text-sm">
                     <div class="flex gap-1 items-center justify-center">
                         <Icon name="ic:baseline-location-on" />
                         <span>ঢাকা</span>

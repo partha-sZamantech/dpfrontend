@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class=" md:hidden shadow-md fixed bg-white top-0 left-0 right-0 z-[999999]">
-            <div class="bg-[#3375af] px-4 text-white flex justify-between items-center py-1">
+            <div class="bg-[#3375af] px-4 text-white siyamLipiFont flex justify-between items-center py-1">
                 <div class="text-sm">
                     <span>{{ EnglishDate() }} | {{ BanglaDate() }}</span>
                 </div>
