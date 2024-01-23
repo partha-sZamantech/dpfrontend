@@ -1,5 +1,5 @@
 <template>
-    <div class="specialContent py-3">
+    <div class="specialContent py-1 md:py-3">
         <div class=" grid grid-cols-12 gap-5">
             <div class="col-span-12 md:col-span-7">
                 <div class="grid grid-cols-12 gap-4">

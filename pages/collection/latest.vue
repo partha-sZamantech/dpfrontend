@@ -226,7 +226,7 @@
                     <!-- Loop Category Post Section -->
                 </div>
                 <div class=" col-span-12 md:col-span-3 hidden md:block">
-                    <!-- <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" /> -->
+                <!-- <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" /> -->
                     <HomePostTabs :class="`sticky ${stickyScroll ? ' top-56' : 'top-16'} duration-200`" />
                 </div>
             </div>
