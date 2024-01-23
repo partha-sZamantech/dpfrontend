@@ -1,10 +1,7 @@
 <template>
     <div
         :class="`${mobileMenuStatus ? 'left-0 fixed' : 'fixed -left-[815px]'} duration-200 bg-white max-w-full md:hidden right-0 top-12 z-[99999]`">
-        <div class="px-8 py-8 flex flex-col gap-4  overflow-y-scroll h-screen">
-            <div class="todayDate text-sm">
-                {{ todayDate }}
-            </div>
+        <div class="px-8 pb-8 pt-16 flex flex-col gap-4  overflow-y-scroll h-screen">
             <div class="flex items-center">
                 <input type="text" placeholder="খুঁজুন" v-model="mobileMekeyword" class=" focus:outline-none border px-2 py-2 w-full">
                 <div @click="mobileSearchPageRedirect" class=" bg-gray-200 px-2 py-2  cursor-pointer">

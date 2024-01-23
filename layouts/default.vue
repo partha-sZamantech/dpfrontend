@@ -39,7 +39,7 @@
             <!-- </div> -->
         </div>
         <MobileHeaderTop />
-        <div class="main-container duration-900 mt-4 md:mt-12">
+        <div class="main-container duration-900 mt-10 md:mt-12">
 
             <slot />
 

@@ -564,7 +564,7 @@
     <div id="postimagePopup"
         :class="` hidden cursor-zoom-out fixed inset-0 bg-black overflow-y-hidden overflow--hidden h-screen z-[999999999] items-center justify-center`">
         <div class="flex nuxtPartha relative h-screen w-full justify-center items-center duration-1000">
-            <img id="nuxtpopupImage" :class="`w-full absolute top-[200px] duration-700`"
+            <img id="nuxtpopupImage" :class="`w-full duration-700`"
                 src="https://www.dhakaprokash24.com/media/content/images/2024January/dhaka-prokah-news1-20240122153828.jpg"
                 alt="">
         </div>
@@ -750,7 +750,7 @@ onMounted(() => {
             // ok.value = true
             const img = document.querySelector('.nuxtPartha #nuxtpopupImage')
             img.src = sevent.target.src
-            img.classList.replace('top-[200px]', 'top-0')
+        
         })
     })
     // ======== Open Popup =============== //
