@@ -146,8 +146,9 @@
                                 :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
                                 class="mx-auto w-full lead-img cursor-zoom-in"
                                 :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                            <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center text-sm font-semibold text-slate-900 pt-2 pb-1">{{
-                                detailsContent?.img_bg_caption }}</p>
+                            <p v-if="detailsContent?.img_bg_caption"
+                                class="feature-image-capture text-center text-sm font-semibold text-slate-900 pt-2 pb-1">{{
+                                    detailsContent?.img_bg_caption }}</p>
                         </div>
                         <div class="singlePost-detail grid grid-cols-12">
                             <div class=" hidden md:block md:col-span-2"></div>
@@ -386,8 +387,9 @@
                                 :src="`${siteurl.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`"
                                 class="mx-auto lead-img cursor-zoom-in w-full"
                                 :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                            <p v-if="moreDetailContent?.img_bg_caption" class="feature-image-capture text-center text-sm font-semibold text-slate-900 pt-2 pb-1">{{
-                                moreDetailContent?.img_bg_caption }}</p>
+                            <p v-if="moreDetailContent?.img_bg_caption"
+                                class="feature-image-capture text-center text-sm font-semibold text-slate-900 pt-2 pb-1">{{
+                                    moreDetailContent?.img_bg_caption }}</p>
                         </div>
                         <div class="singlePost-detail grid grid-cols-12">
                             <div class=" hidden md:block md:col-span-2"></div>
@@ -739,21 +741,24 @@ onMounted(() => {
 
     // =========== Popup Image ============== //
     const postimagePopup = document.querySelector('#postimagePopup')
-    const leadImage = document.querySelectorAll('.detail-page .feature-image .lead-img')
-    
-    // Open Popup Image
-    leadImage.forEach((leadImg) => {
-        leadImg.addEventListener('click', (e) => {
+
+    // ======== Open Popup =============== //
+    const singleImage = document.querySelectorAll('.detail-page .single-post img')
+    singleImage.forEach(siglImg => {
+        siglImg.addEventListener('click', (sevent) => {
             postimagePopup.classList.remove('hidden')
             // ok.value = true
             const img = document.querySelector('.nuxtPartha #nuxtpopupImage')
-            img.src = e.target.src
+            img.src = sevent.target.src
         })
     })
+    // ======== Open Popup =============== //
+
     // Close Popup Image
     postimagePopup.addEventListener('click', () => {
         postimagePopup.classList.add('hidden')
     })
+    // Close Popup Image
     // =========== Popup Image ============== //
 
 
@@ -985,7 +990,7 @@ onMounted(() => {
         descParam.forEach((item, i) => {
 
             if (i > 0 && i % 3 === 0 && firstInsideMoreNews?.value[itemIncrement]) {
-                descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug, firstInsideMoreNews?.value[itemIncrement].subcat_slug, firstInsideMoreNews?.value[itemIncrement].content_type, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
+                descParam[i].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug, firstInsideMoreNews?.value[itemIncrement].subcat_slug, firstInsideMoreNews?.value[itemIncrement].content_type, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
                 itemIncrement++;
             }
         })

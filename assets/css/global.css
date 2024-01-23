@@ -22,7 +22,12 @@ body {
 figure.image {
     margin: 18px 0px !important;
 }
-
+figure.image img {
+    cursor: zoom-in;
+}
+.single-post img {
+    cursor: zoom-in;
+}
 figure.image figcaption {
     border-bottom: 1px solid #ddd !important;
     padding-top: 5px !important;
