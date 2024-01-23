@@ -1,7 +1,8 @@
 <template>
     <div v-if="subcategoryContents" class="category-page">
+
         <Head>
-            <Title>{{ category?.subcat_name_bn ? category?.subcat_name_bn : '404 Not Found'  }} | ঢাকাপ্রকাশ</Title>
+            <Title>{{ category?.subcat_name_bn ? category?.subcat_name_bn : '404 Not Found' }} | ঢাকাপ্রকাশ</Title>
         </Head>
         <!-- Space For Ads -->
         <!-- <div class="category-ads-section border-b border-b-[#dee2e6] py-4 ">
@@ -12,8 +13,8 @@
             </div>
         </div> -->
         <!-- Space For Ads -->
-       <!-- Page Loader -->
-       <div v-if="pending" class="bg-white min-h-screen hidden md:block ">
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white min-h-screen hidden md:block ">
             <div class="flex justify-center items-center pt-32">
                 <img width="60" src="/assets/img/loader.gif" alt="">
                 <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
@@ -250,17 +251,20 @@
                     <h2 class="text-2xl text-center py-8">আপনি যে বিষয়টি অনুসন্ধান করছেন তা খুজে পাওয়া যায়নি</h2>
                 </div>
                 <div class=" col-span-12 md:col-span-3">
-                    <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} hidden md:block`" />
+                    <!-- <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} hidden md:block`" /> -->
+
+                    <HomePostTabs :class="`sticky ${stickyScroll ? ' top-56' : 'top-16'} duration-200 hidden md:block`" />
                 </div>
             </div>
 
         </div>
     </div>
     <div v-else class="errorNotfound">
+
         <Head>
             <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
         </Head>
-         <Errorpage />
+        <Errorpage />
     </div>
 </template>
 
