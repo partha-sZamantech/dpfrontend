@@ -5,7 +5,7 @@
                 <div class="text-sm">
                     <span>{{ EnglishDate() }} | {{ BanglaDate() }}</span>
                 </div>
-                <div>২য় সংস্করণ</div>
+                <span class="text-sm">বেটা ভার্সন</span>
             </div>
             <div class="flex justify-between items-center px-2">
                 <div class="flex gap-6 px-2 py-2 items-center justify-center">

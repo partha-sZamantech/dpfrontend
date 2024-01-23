@@ -2,11 +2,11 @@
     <div class="max-w-[1280px] mx-auto py-6 px-4 md:px-4">
         <div class="home-photo-gallery mb-4">
             <div class="category-header border-b-4 border-b-white">
-                <NuxtLink to="/photo" class="flex gap-3 items-center">
+                <div class="flex gap-3 items-center">
                     <span class="w-4 h-4 bg-white"></span>
                     <h2 class="text-white text-[26px] font-semibold">ফটো গ্যালারি</h2>
                    
-                </NuxtLink>
+                </div>
             </div>
         </div>
         <div class=" grid grid-cols-12 md:grid-rows-2 gap-4 md:gap-2 mb-6">

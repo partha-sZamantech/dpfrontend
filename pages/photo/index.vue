@@ -1,13 +1,14 @@
 <template>
-    <div>
-        Photo 
+    <div class="errorNotfound">
+
+        <Head>
+            <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
+        </Head>
+        <Errorpage />
     </div>
 </template>
 
 <script setup>
-    navigateTo('/')
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

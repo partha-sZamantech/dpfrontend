@@ -1,9 +1,9 @@
 <template>
     <div class="home-sports-category py-4" v-if="sportscontent?.length > 0">
-        <div class="category-header border-b-[3px] border-b-[#3375af] my-3">
+        <div class="category-header border-b-[3px] group border-b-[#3375af] my-3">
             <NuxtLink :to="`/${sportscontent[0]?.cat_slug}`" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
-                <h2 class="text-[#3375af] text-[18px] font-semibold">খেলা</h2>
+                <h2 class="text-[#3375af] text-[18px] group-hover:text-[#65a1d6] font-semibold">খেলা</h2>
             </NuxtLink>
         </div>
         <div class=" grid grid-cols-12 gap-6 mt-4">

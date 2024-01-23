@@ -1,9 +1,9 @@
 <template>
     <div class="max-w-[1280px] mx-auto px-4 md:px-4 py-6 md:py-10">
-        <div class="category-header border-b-[3px] border-b-[#3375af]">
+        <div class="category-header border-b-[3px] group border-b-[#3375af]">
             <NuxtLink to="/" class="flex gap-3 items-center">
                 <span class="w-3 h-3 bg-[#3375af]"></span>
-                <h2 class="text-[#3375af] text-[18px] font-semibold">ENGLISH</h2>
+                <h2 class="text-[#3375af] text-[18px] group-hover:text-[#65a1d6] font-semibold">ENGLISH</h2>
             </NuxtLink>
         </div>
  
