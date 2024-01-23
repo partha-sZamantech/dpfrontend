@@ -9,8 +9,8 @@
             <AdsDesktopCategoryTop :categoryTopAds="categoryTopAds" />
         </div>
         <!-- Category Top Ads -->
-       <!-- Page Loader -->
-       <div v-if="pending" class="bg-white min-h-screen hidden md:block ">
+        <!-- Page Loader -->
+        <div v-if="pending" class="bg-white min-h-screen hidden md:block ">
             <div class="flex justify-center items-center pt-32">
                 <img width="60" src="/assets/img/loader.gif" alt="">
                 <h3 class="text-2xl text-black">লোড হচ্ছে...</h3>
@@ -209,13 +209,18 @@
                                             <div class="cat-desc text-black text-base font-[300] hidden md:block"
                                                 v-html="`${catPost?.content_details.substring(0, 155)}...`"></div>
                                         </ClientOnly>
-
                                         <span class="post-date md:flex flex-col gap-1 hidden text-base text-black">
                                             <small>আপডেট: {{
                                                 postCreatedDateWithTime(catPost?.updated_at) }}</small>
                                             <small>প্রকাশ: {{
                                                 postCreatedDateWithTime(catPost?.created_at) }}</small>
                                         </span>
+                                        <p class="text-sm text-black flex gap-1 items-center md:hidden">
+                                            <Icon name="ph:alarm-bold" />
+                                            <span>
+                                                {{ postCreatedDate(catPost?.created_at) }}
+                                            </span>
+                                        </p>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
                                         <nuxt-img loading="lazy"
@@ -274,15 +279,16 @@
         </div>
     </div>
     <div v-else class="errorNotfound">
+
         <Head>
             <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
         </Head>
-         <Errorpage />
+        <Errorpage />
     </div>
 </template>
 
 <script setup>
-import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
+import { postCreatedDateWithTime, postCreatedDate, getPostUrl } from '~/lib/helpers';
 
 const img = useImage()
 const siteurl = siteUrlState()
