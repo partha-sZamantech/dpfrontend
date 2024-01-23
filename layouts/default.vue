@@ -87,6 +87,12 @@ useHead({
             src: 'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons',
             tagPosition: 'bodyClose',
             async: "true"
+        },
+        {
+            src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7072011042484597',
+            tagPosition: 'head',
+            async: "true",
+            crossorigin: "anonymous"
         }
     ]
 })
@@ -102,7 +108,7 @@ const detailPageSticky = singlePageStickyState()
 
 onMounted(() => {
     // counter.value = document.getElementsByTagName('body')[0].scrollHeight 
-
+  
     if (isDesktop) {
 
         // ============== Desktop ===================

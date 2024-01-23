@@ -25,9 +25,11 @@ figure.image {
 
 figure.image figcaption {
     border-bottom: 1px solid #ddd !important;
-    padding: 5px 0px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
     text-align: center !important;
-    font-size: 16px !important;
+    font-size: 14px !important;
+    font-weight: bold;
 }
 
 .singlePost-details .postdetails p a {
@@ -52,6 +54,10 @@ figure.image figcaption {
     margin: 18px 0px !important;
 }
 
+.mainmenu {
+    font-size: 18px;
+}
+
 /* ::-webkit-scrollbar {
     width: 10px;
 } */
@@ -72,3 +78,4 @@ figure.image figcaption {
 /* ::-webkit-scrollbar-thumb:hover {
     background: #bdb8b8;
 } */
+

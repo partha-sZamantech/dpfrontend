@@ -34,7 +34,7 @@
                 </NuxtLink>
             </div>
             <div class="col-span-12 md:col-span-8">
-                <div class="home-intertainment-category-except-post grid grid-cols-3 gap-4">
+                <div class="home-intertainment-category-except-post grid grid-cols-2 md:grid-cols-3 gap-4">
                     <!-- Loop Item -->
                     <div class="flex flex-col gap-4 group h-sports-excpt"
                         v-for="saradeshcontent in saradeshcontents.slice(1, 7)" :key="saradeshcontent.content_id">

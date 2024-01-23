@@ -178,30 +178,7 @@
                     <!--/ Lifestyle Category Component -->
                 </div>
             </div>
-            <div class=" grid grid-cols-12 gap-6 py-4">
-                <div class=" col-span-12 md:col-span-6">
-                    <!-- Technology Component -->
-                    <HomeCategoryTechnology />
-                    <!-- Technology Component -->
-                </div>
-                <div class=" col-span-12 md:col-span-3">
-                    <!-- Career Component -->
-                    <HomeCategoryCareer />
-                    <!-- Career Component -->
-                </div>
-                <div class=" col-span-12 md:col-span-3">
-                    <!-- Campus Component -->
-                    <HomeCategoryCampus />
-                    <!-- Campus Component -->
-                </div>
-            </div>
 
-            <!-- Home Middle Eight Ads -->
-            <div v-if="homeMiddleEightAds?.status === 1"
-                class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
-                <AdsDesktopHomeMiddleEight :homeMiddleEightAds="homeMiddleEightAds" />
-            </div>
-            <!-- Home Middle Eight Ads -->
             <div class=" grid grid-cols-12 gap-6 py-4">
                 <div class=" col-span-12 md:col-span-6">
                     <!-- Health Component -->
@@ -220,7 +197,30 @@
                 </div>
 
             </div>
+            <!-- Home Middle Eight Ads -->
+            <div v-if="homeMiddleEightAds?.status === 1"
+                class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">
+                <AdsDesktopHomeMiddleEight :homeMiddleEightAds="homeMiddleEightAds" />
+            </div>
+            <!-- Home Middle Eight Ads -->
 
+            <div class=" grid grid-cols-12 gap-6 py-4">
+                <div class=" col-span-12 md:col-span-6">
+                    <!-- Technology Component -->
+                    <HomeCategoryTechnology />
+                    <!-- Technology Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Career Component -->
+                    <HomeCategoryCareer />
+                    <!-- Career Component -->
+                </div>
+                <div class=" col-span-12 md:col-span-3">
+                    <!-- Campus Component -->
+                    <HomeCategoryCampus />
+                    <!-- Campus Component -->
+                </div>
+            </div>
             <div class=" grid grid-cols-12 gap-6 py-4">
                 <div class=" col-span-12 md:col-span-3">
                     <!-- Child Adolescent Component -->

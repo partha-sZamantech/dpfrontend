@@ -21,9 +21,15 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@nuxtjs/device',
     '@vueuse/nuxt',
-    '@samk-dev/nuxt-vcalendar'
+    '@samk-dev/nuxt-vcalendar',
+    'nuxt-gtag'
   ],
+  gtag: {
+    id: 'G-75HYGMGRDV',
+    loadingStrategy: "async"
+  },
   image: {
     quality: 80,
-  }
+  },
+  
 })

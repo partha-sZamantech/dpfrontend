@@ -84,7 +84,7 @@
                   </div>
                   <div class="col-span-2 hidden md:block"></div>
                </div>
-               <div class="flex justify-center items-center" v-if="tagContents?.length > 9">
+               <div class="flex justify-center items-center py-6" v-if="tagContents?.length > 9">
                   <button @click="loadMoreButtonHandler"
                      class="border border-[#dee2e6] text-[#3375af] px-8 py-2 rounded-sm mt-5 hover:border-[#3375af]"><b>আরও</b></button>
                </div>
