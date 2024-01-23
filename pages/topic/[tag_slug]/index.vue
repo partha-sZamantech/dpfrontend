@@ -67,6 +67,12 @@
                                  <small>প্রকাশ: {{
                                     postCreatedDateWithTime(tagContent?.created_at) }}</small>
                               </p>
+                              <p class="text-sm text-black flex gap-1 items-center md:hidden">
+                                 <Icon name="ph:alarm-bold" />
+                                 <span>
+                                    {{ postCreatedDate(tagContent?.created_at) }}
+                                 </span>
+                              </p>
                            </div>
                            <div class=" col-span-5 category-post-image overflow-hidden">
                               <!-- <nuxt-img :src="`${siteurl.site_url}/media/content/images/${tagContent?.img_bg_path}`"
@@ -92,12 +98,13 @@
             </div>
             <div class=" col-span-12 md:col-span-3">
                <!-- <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} hidden md:block`" /> -->
-               <HomePostTabs :class="`sticky ${stickyScroll ? ' top-56' : 'top-16'} duration-200`" />
+               <HomePostTabs :class="`sticky ${stickyScroll ? ' top-56' : 'top-16'} duration-200 hidden md:block`" />
             </div>
          </div>
       </div>
    </div>
    <div v-else class="errorNotfound">
+
       <Head>
          <Title>404 Not Found | ঢাকাপ্রকাশ</Title>
       </Head>
@@ -106,7 +113,7 @@
 </template>
 
 <script setup>
-import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
+import { postCreatedDateWithTime, postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 // Sticky Status

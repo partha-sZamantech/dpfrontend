@@ -62,11 +62,6 @@
                         :data-keywords="detailsContent?.meta_keywords"
                         :data-href="`${websiteUrl?.website_url}${getPostUrl(detailsContent?.category?.cat_slug, detailsContent?.subcategory?.subcat_slug, detailsContent?.content_type, detailsContent?.content_id)}`"
                         :data-src="detailsContent?.og_image">
-                        <!-- <div class="single-post flex flex-col gap-3" :data-title="detailsContent?.content_heading"
-            :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
-            :data-keywords="detailsContent?.meta_keywords"
-            :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
-            :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`"> -->
                         <div class="singlePost-heading flex flex-col gap-2">
                             <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                                 detailsContent?.content_sub_heading }}</h4>
