@@ -36,6 +36,8 @@ export default defineEventHandler(async (event) => {
                     deletable: 1
                 }
             })
+
+            // If Content found 
             if (content) {
                 // Category GET
                 const category = await prisma.bn_categories.findFirst({

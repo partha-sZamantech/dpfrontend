@@ -144,9 +144,11 @@
                         <div class="feature-image border-b">
                             <nuxt-img loading="lazy"
                                 :src="`${siteurl.site_url}/media/content/images/${detailsContent?.img_bg_path}`"
-                                class="mx-auto w-full" :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                            <p v-if="detailsContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
-                                detailsContent?.img_bg_caption }}</p>
+                                class="mx-auto w-full lead-img cursor-zoom-in"
+                                :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                            <p v-if="detailsContent?.img_bg_caption"
+                                class="feature-image-capture text-center text-sm font-semibold text-slate-900 pt-2 pb-1">{{
+                                    detailsContent?.img_bg_caption }}</p>
                         </div>
                         <div class="singlePost-detail grid grid-cols-12">
                             <div class=" hidden md:block md:col-span-2"></div>
@@ -359,7 +361,7 @@
                             <!-- Social Share -->
                             <div class="social-item flex gap-0 items-center justify-center print:hidden relative">
                                 <!-- ShareThis BEGIN -->
-                           
+
                                 <div class=" flex-1">
                                     <div :data-title="`${moreDetailContent?.content_heading}`"
                                         :data-url="`${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
@@ -383,9 +385,11 @@
                         <div class="feature-image border-b">
                             <nuxt-img loading="lazy"
                                 :src="`${siteurl.site_url}/media/content/images/${moreDetailContent?.img_bg_path}`"
-                                class="mx-auto w-full" :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                            <p v-if="moreDetailContent?.img_bg_caption" class="feature-image-capture text-center py-2">{{
-                                moreDetailContent?.img_bg_caption }}</p>
+                                class="mx-auto lead-img cursor-zoom-in w-full"
+                                :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
+                            <p v-if="moreDetailContent?.img_bg_caption"
+                                class="feature-image-capture text-center text-sm font-semibold text-slate-900 pt-2 pb-1">{{
+                                    moreDetailContent?.img_bg_caption }}</p>
                         </div>
                         <div class="singlePost-detail grid grid-cols-12">
                             <div class=" hidden md:block md:col-span-2"></div>
@@ -557,20 +561,19 @@
         </Head>
         <Errorpage />
     </div>
+    <div id="postimagePopup"
+        :class="` hidden cursor-zoom-out fixed inset-0 bg-black overflow-y-hidden overflow--hidden h-screen z-[999999999] items-center justify-center`">
+        <div class="flex nuxtPartha relative h-screen w-full justify-center items-center duration-1000">
+            <img id="nuxtpopupImage" :class="`w-full duration-700`"
+                src="https://www.dhakaprokash24.com/media/content/images/2024January/dhaka-prokah-news1-20240122153828.jpg"
+                alt="">
+        </div>
+    </div>
 </template>
 
 <script setup>
 import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
-// useHead({
-//     script: [
-//         {
-//             src: 'https://platform-api.sharethis.com/js/sharethis.js#property=651137566b9a9300123b73f3&product=inline-share-buttons',
-//             tagPosition: 'bodyClose',
-//             async: "true"
-//         }
-//     ]
-// })
-// const router = useRouter()
+
 
 const siteurl = siteUrlState()
 const websiteUrl = websiteUrlState()
@@ -664,40 +667,6 @@ const { data: dinsidemorenews } = await useFetch("/api/prismaapi/detail/getinsid
 firstInsideMoreNews.value = dinsidemorenews?.value
 
 
-// firstInsideMoreNews.value = pdailts?.value?.insideMoreNews
-// console.log(firstInsideMoreNews.value)
-
-//===== First Detail Inside More News =====//
-
-// ====================== RelatedContent for More <3> Three content ======================= //
-
-// const relatedDetailContent = useState(() => [])
-// const readPostsState = useState(() => [detailsContent?.value?.content_id])
-
-// for (let s = 0; s < moreDetailsContents?.value?.length; s++) {
-
-
-//     readPostsState.value.push(moreDetailsContents.value[s].content_id)
-
-//     const { data: rlcd } = await useFetch("/api/prismaapi/detail/mreletedcontents", {
-//         method: "POST",
-//         body: {
-//             readedids: readPostsState.value
-//         }
-//     })
-
-//     relatedDetailContent?.value?.push(rlcd.value)
-
-
-// }
-
-// relatedDetailContent.value = [...new Map(relatedDetailContent.value.map(itemC => [itemC, itemC])).values()]
-// relatedPostOgImage.value = [...new Map(relatedPostOgImage.value.map(item => [item['ogimage'], item])).values()]
-
-
-// console.log(relatedDetailContent.value)
-// ==================== RelatedContent for More <3> Three content  ======================= //
-
 
 // ==================== First Details Tags ======================= //
 const firstContentTags = useState(() => [])
@@ -769,6 +738,30 @@ const balvalue = ref(null)
 
 
 onMounted(() => {
+
+    // =========== Popup Image ============== //
+    const postimagePopup = document.querySelector('#postimagePopup')
+
+    // ======== Open Popup =============== //
+    const singleImage = document.querySelectorAll('.detail-page .single-post img')
+    singleImage.forEach(siglImg => {
+        siglImg.addEventListener('click', (sevent) => {
+            postimagePopup.classList.remove('hidden')
+            // ok.value = true
+            const img = document.querySelector('.nuxtPartha #nuxtpopupImage')
+            img.src = sevent.target.src
+        
+        })
+    })
+    // ======== Open Popup =============== //
+
+    // Close Popup Image
+    postimagePopup.addEventListener('click', () => {
+        postimagePopup.classList.add('hidden')
+    })
+    // Close Popup Image
+    // =========== Popup Image ============== //
+
 
     // ======== Share This Button Refetch global code ====== //
     // const st = window.__sharethis__
@@ -863,7 +856,7 @@ onMounted(() => {
                     document.querySelector('meta[name="twitter:image"]').setAttribute("content", contentSections[i].getAttribute('data-src'));
                     document.querySelector('meta[name="twitter:url"]').setAttribute("content", contentSections[i].getAttribute('data-href'));
                     // history.replaceState(contentSections[i].getAttribute('data-nid'), contentSections[i].getAttribute('data-title'), contentSections[i].getAttribute('data-href'));
-                    history.pushState({}, null, contentSections[i].getAttribute('data-href'));
+                    // history.pushState({}, null, contentSections[i].getAttribute('data-href'));
                     // router.replace({ hash: `${contentSections[i].getAttribute('data-href')}` })
                     // document.querySelector('meta[property="og:title"]').setAttribute("content", contentSections[i].title)
                 }
@@ -895,7 +888,7 @@ onMounted(() => {
                     document.querySelector('meta[name="twitter:image"]').setAttribute("content", contentSections[p].getAttribute('data-src'));
                     document.querySelector('meta[name="twitter:url"]').setAttribute("content", contentSections[p].getAttribute('data-href'));
                     // history.replaceState(contentSections[p].getAttribute('data-nid'), contentSections[p].getAttribute('data-title'), contentSections[p].getAttribute('data-href'));
-                    history.pushState({}, null, contentSections[p].getAttribute('data-href'));
+                    // history.pushState({}, null, contentSections[p].getAttribute('data-href'));
                     // document.querySelector('title').value("content", ok)
                     // router.addRoute({ path: `/sdfsdf` })
                 }
@@ -998,24 +991,15 @@ onMounted(() => {
         descParam.forEach((item, i) => {
 
             if (i > 0 && i % 3 === 0 && firstInsideMoreNews?.value[itemIncrement]) {
-                descParam[0].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug, firstInsideMoreNews?.value[itemIncrement].subcat_slug, firstInsideMoreNews?.value[itemIncrement].content_type, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
+                descParam[i].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug, firstInsideMoreNews?.value[itemIncrement].subcat_slug, firstInsideMoreNews?.value[itemIncrement].content_type, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
                 itemIncrement++;
             }
         })
     }
 
-
-
-
-
-    // function fJsNewsImgPaths(img_path) {
-    //     return location.origin + '/media/content/images/' + img_path;
-    // }
-
     // ================== End First Post Detail Content Inside Element Added =============== //
 
     // ================== More Post Details Inside Element Added ==========================// 
-
 
     // Start For loop
     try {
@@ -1105,7 +1089,6 @@ onMounted(() => {
     } catch (e) {
         console.log(e)
     }
-
 
     // ================= END More Post Details Inside Element Added =======================// 
 })

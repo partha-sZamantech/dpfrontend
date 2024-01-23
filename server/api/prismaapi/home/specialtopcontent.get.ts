@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
     })
 
     const data = []
-    if(position && position?.content_ids?.length > 0){
+    if (position && position?.content_ids?.length > 0) {
         const positionArray = position?.content_ids?.split(',')
         const getContents = positionArray?.splice(0, 11)
         for (let i = 0; i < getContents?.length; i++) {
@@ -34,33 +34,37 @@ export default defineEventHandler(async (event) => {
                 }
             })
 
-            // Category
-            const category = await prisma.bn_categories.findFirst({
-                where: {
-                    cat_id: content?.cat_id,
-                    cat_type: 1
-                }
-            })
-            // Subcategory
-            const subcategory = await prisma.bn_subcategories.findFirst({
-                where: {
-                    subcat_id: content?.subcat_id
-                }
-            })
+            // If Content Found
+            if (content) {
+                // Category
+                const category = await prisma.bn_categories.findFirst({
+                    where: {
+                        cat_id: content?.cat_id,
+                        cat_type: 1
+                    }
+                })
+                // Subcategory
+                const subcategory = await prisma.bn_subcategories.findFirst({
+                    where: {
+                        subcat_id: content?.subcat_id
+                    }
+                })
 
-            // Push Data
-            data.push({
-                content_id: content?.content_id,
-                content_type: content?.content_type,
-                img_bg_path: content?.img_bg_path,
-                content_heading: content?.content_heading,
-                content_details: content?.content_details,
-                bn_cat_name: category?.cat_name_bn,
-                cat_slug: category?.cat_slug,
-                subcat_slug: subcategory?.subcat_slug,
-                created_at: content?.created_at,
-                // post_date: moment(content?.created_at).startOf('hour').fromNow()
-            })
+                // Push Data
+                data.push({
+                    content_id: content?.content_id,
+                    content_type: content?.content_type,
+                    img_bg_path: content?.img_bg_path,
+                    content_heading: content?.content_heading,
+                    content_details: content?.content_details,
+                    bn_cat_name: category?.cat_name_bn,
+                    cat_slug: category?.cat_slug,
+                    subcat_slug: subcategory?.subcat_slug,
+                    created_at: content?.created_at,
+                    // post_date: moment(content?.created_at).startOf('hour').fromNow()
+                })
+            }
+
         }
 
         return data
