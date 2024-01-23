@@ -219,13 +219,18 @@
                                             <div class="cat-desc text-base font-[300] text-black hidden md:block"
                                                 v-html="subcatPost?.content_details.substring(0, 160)"></div>
                                         </ClientOnly>
-
                                         <span class="post-date md:flex flex-col gap-1 hidden text-base text-black">
                                             <small>আপডেট: {{
                                                 postCreatedDateWithTime(subcatPost?.updated_at) }}</small>
                                             <small>প্রকাশ: {{
                                                 postCreatedDateWithTime(subcatPost?.created_at) }}</small>
                                         </span>
+                                        <p class="text-sm text-black flex gap-1 items-center md:hidden">
+                                            <Icon name="ph:alarm-bold" />
+                                            <span>
+                                                {{ postCreatedDate(subcatPost?.created_at) }}
+                                            </span>
+                                        </p>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
                                         <nuxt-img loading="lazy"
@@ -269,7 +274,7 @@
 </template>
 
 <script setup>
-import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
+import { postCreatedDateWithTime, postCreatedDate, getPostUrl } from '~/lib/helpers';
 
 const img = useImage()
 const siteurl = siteUrlState()

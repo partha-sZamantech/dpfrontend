@@ -64,7 +64,7 @@
                                     :to="getPostUrl(searchResult?.cat_slug, searchResult?.subcat_slug, searchResult?.content_type, searchResult?.content_id)"
                                     class=" grid grid-cols-12 gap-3 group">
 
-                                    <div class=" col-span-7 flex flex-col gap-3">
+                                    <div class=" col-span-7 flex flex-col gap-2 md:gap-3">
                                         <h3
                                             class="cat-title col-span-12 font-semibold text-[18px] md:text-[20px] group-hover:text-[#ff0000]">
                                             {{ searchResult?.content_heading }}</h3>
@@ -79,9 +79,14 @@
                                             <small>প্রকাশ: {{
                                                 postCreatedDateWithTime(searchResult?.created_at) }}</small>
                                         </span>
+                                        <p class="text-sm text-black flex gap-1 items-center md:hidden">
+                                            <Icon name="ph:alarm-bold" />
+                                            <span>
+                                                {{ postCreatedDate(searchResult?.created_at) }}
+                                            </span>
+                                        </p>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
-
                                         <nuxt-img loading="lazy"
                                             :src="`${siteurl.site_url}/media/content/images/${searchResult?.img_bg_path}`"
                                             class="mx-auto w-full group-hover:scale-110 duration-300"
@@ -115,7 +120,7 @@
 </template>
   
 <script setup>
-import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
+import { postCreatedDateWithTime, postCreatedDate, getPostUrl } from '~/lib/helpers';
 const img = useImage()
 const siteurl = siteUrlState()
 const headerTitle = computed(() => useRoute().query.q)

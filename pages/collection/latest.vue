@@ -197,6 +197,12 @@
                                             <small>প্রকাশ: {{
                                                 postCreatedDateWithTime(latestPost?.created_at) }}</small>
                                         </span>
+                                        <p class="text-sm text-black flex gap-1 items-center md:hidden">
+                                            <Icon name="ph:alarm-bold" />
+                                            <span>
+                                                {{ postCreatedDate(latestPost?.created_at) }}
+                                            </span>
+                                        </p>
                                     </div>
                                     <div class=" col-span-5 category-post-image overflow-hidden">
                                         <nuxt-img loading="lazy"
@@ -226,7 +232,7 @@
                     <!-- Loop Category Post Section -->
                 </div>
                 <div class=" col-span-12 md:col-span-3 hidden md:block">
-                <!-- <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" /> -->
+                    <!-- <Tabs :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'}`" /> -->
                     <HomePostTabs :class="`sticky ${stickyScroll ? ' top-56' : 'top-16'} duration-200`" />
                 </div>
             </div>
@@ -234,7 +240,7 @@
     </div>
 </template>
 <script setup>
-import { postCreatedDateWithTime, getPostUrl } from '~/lib/helpers';
+import { postCreatedDateWithTime, postCreatedDate, getPostUrl } from '~/lib/helpers';
 
 const img = useImage()
 const siteurl = siteUrlState()
