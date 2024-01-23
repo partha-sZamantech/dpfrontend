@@ -79,7 +79,7 @@
                     </div>
                     <!-- Home Right Two Ads -->
                     <!-- Home Right Sidebar -->
-                    <HomePostTabs />
+                    <HomePostTabs class="my-4" />
                     <!-- <Tabs /> -->
                     <!--/ Home Right Sidebar -->
                     <!-- Home Right Three Ads -->

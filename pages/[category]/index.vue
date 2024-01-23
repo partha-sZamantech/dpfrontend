@@ -247,7 +247,8 @@
                     </div>
                     <!-- Category Right One Ads -->
                     <div :class="`sticky ${stickyScroll ? ' top-44' : 'top-16'} duration-200`">
-                        <Tabs class="hidden md:block" />
+                        <!-- <Tabs class="hidden md:block" /> -->
+                        <HomePostTabs class="hidden md:block" />
                         <!-- Category Right Two Ads -->
                         <div v-if="categoryRightTwoAds?.status === 1"
                             class="py-4 border-b border-b-[#e2e2e2] border-t border-t-[#e2e2e2] mt-4">
