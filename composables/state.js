@@ -39,7 +39,7 @@ export const singlePageStickyState = () => {
 
 export const siteUrlState = () => {
     return useState(() => ({
-        site_url: 'https://www.dhakaprokash24.com'
+        site_url: 'http://127.0.0.1:8000'
     }))
 }
 export const websiteUrlState = () => {

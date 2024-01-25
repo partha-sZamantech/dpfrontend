@@ -56,7 +56,7 @@
             <!--========== First Details Content ============ -->
 
             <div class=" grid grid-cols-12 gap-5 relative d-print">
-                <div class="col-span-12 md:col-span-9" id="singlepost">
+                <div class="col-span-12 md:col-span-9 solaimanlipi" id="singlepost">
                     <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="detailsContent?.content_heading"
                         :data-nid="detailsContent?.content_id" :data-description="detailsContent?.content_brief"
                         :data-keywords="detailsContent?.meta_keywords"
@@ -67,7 +67,7 @@
             :data-keywords="detailsContent?.meta_keywords"
             :data-href="`${websiteUrl?.website_url}/category/${detailsContent?.category?.cat_slug}/${detailsContent?.content_id}`"
             :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`"> -->
-                        <div class="singlePost-heading flex flex-col gap-2 siyamLipiFont">
+                        <div class="singlePost-heading flex flex-col gap-2 solaimanlipi">
                             <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                                 detailsContent?.content_sub_heading }}</h4>
                             <h2 class="text-3xl md:text-[40px] md:leading-[50px] print:text-[40px]">{{
@@ -81,7 +81,7 @@
                         <!-- Author Section -->
                         <!-- <div
                             class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3"> -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 content-between gap-2  border-b border-t py-2">
+                        <div class="grid grid-cols-1 md:grid-cols-2 content-between gap-2 border-b border-t py-2">
                             <NuxtLink v-if="detailsContent?.author" :to="`/author/${detailsContent?.author?.author_slug}`"
                                 class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
                                 <div>
@@ -147,14 +147,14 @@
                                 class="mx-auto w-full lead-img cursor-zoom-in"
                                 :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             <p v-if="detailsContent?.img_bg_caption"
-                                class="feature-image-capture text-center text-sm font-semibold text-slate-900 pt-2 pb-1">{{
+                                class="feature-image-capture text-center text-sm text-slate-900 pt-2 pb-1">{{
                                     detailsContent?.img_bg_caption }}</p>
                         </div>
                         <div class="singlePost-detail grid grid-cols-12">
                             <div class=" hidden md:block md:col-span-2"></div>
                             <div class="col-span-12 md:col-span-8">
 
-                                <div class="postdetails text-[18px] text-[#121212] pb-4"
+                                <div class="postdetails text-[19px] solaimanlipi text-[#121212] pb-4"
                                     v-html="detailsContent?.content_details">
                                 </div>
 
@@ -301,13 +301,13 @@
                     </div>
                     <!----- Breadcump relatedPostOgImage ----->
 
-                    <div class="single-post flex flex-col gap-3 md:gap-4" :data-title="moreDetailContent?.content_heading"
+                    <div class="single-post flex flex-col solaimanlipi gap-3 md:gap-4" :data-title="moreDetailContent?.content_heading"
                         :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
                         :data-keywords="moreDetailContent?.meta_keywords"
                         :data-href="`${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
                         :data-src="moreDetailContent?.og_image">
 
-                        <div class="singlePost-heading flex flex-col gap-2 siyamLipiFont">
+                        <div class="singlePost-heading flex flex-col gap-2 solaimanlipi">
                             <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
                                 moreDetailContent?.content_sub_heading }}</h4>
                             <h2 class="text-3xl md:text-[40px] md:leading-[50px] print:text-[32px]">{{
@@ -388,13 +388,13 @@
                                 class="mx-auto lead-img cursor-zoom-in w-full"
                                 :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             <p v-if="moreDetailContent?.img_bg_caption"
-                                class="feature-image-capture text-center text-sm font-semibold text-slate-900 pt-2 pb-1">{{
+                                class="feature-image-capture text-center text-sm text-slate-900 pt-2 pb-1">{{
                                     moreDetailContent?.img_bg_caption }}</p>
                         </div>
                         <div class="singlePost-detail grid grid-cols-12">
                             <div class=" hidden md:block md:col-span-2"></div>
                             <div class="col-span-12 md:col-span-8">
-                                <div :class="`postdetails postdetailinside${mcinx} text-[18px] text-[#121212] pb-4`"
+                                <div :class="`postdetails postdetailinside${mcinx} text-[19px] solaimanlipi text-[#121212] pb-4`"
                                     v-html="moreDetailContent?.content_details">
                                 </div>
                                 <!-- Tag Area -->

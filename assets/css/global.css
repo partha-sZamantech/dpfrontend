@@ -3,6 +3,28 @@
 @import url('https://fonts.maateen.me/kalpurush/font.css');
 @import url('https://fonts.maateen.me/adorsho-lipi/font.css');
 
+/* Siyam Rupali */
+@font-face {
+    font-family: solaimanlipi;
+    src: url('/assets/fonts/SolaimanLipi.woff') format("embedded-opentype"),url('/assets/fonts/SolaimanLipi.woff') format("woff")
+}
+
+@font-face {
+    font-family: solaimanlipi;
+    src: url('/assets/fonts/SolaimanLipi.woff2') format("woff")
+}
+
+@font-face {
+    font-family: solaimanlipi;
+    src: url('/assets/fonts/SolaimanLipi.ttf') format("truetype")
+}
+
+@font-face {
+    font-family: solaimanlipi;
+    src: url('/assets/fonts/SolaimanLipi.svg') format("svg")
+}
+
+
 @font-face {
     font-family: DhakaRegular;
     src: url('/assets/fonts/Dhakaprokash-Regular-v1.woff2');
@@ -16,6 +38,11 @@
     font-family: NewsReader;
     src: url('/assets/fonts/newsreader-Regular.ttf');
 }
+
+.solaimanlipi {
+    font-family: solaimanlipi !important
+}
+
 
 body {
     font-family: 'DhakaRegular', Arial, sans-serif;
