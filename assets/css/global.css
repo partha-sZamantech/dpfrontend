@@ -25,11 +25,12 @@ body {
     font-family: SiyamLipi;
 }
 .postdetails iframe {
-    width: 100% !important;
+    /* width: 100% !important; */
     margin-top: 20px;
     display: block;
     margin-bottom: 20px;
 }
+
 
 figure.image {
     margin: 18px 0px !important;
@@ -37,7 +38,7 @@ figure.image {
 figure.image img {
     cursor: zoom-in;
 }
-.single-post img {
+.lead-img {
     cursor: zoom-in;
 }
 figure.image figcaption {
@@ -73,6 +74,11 @@ figure.image figcaption {
 
 .mainmenu {
     font-size: 18px;
+}
+@media all and (max-width: 600px){
+    .postdetails iframe {
+        width: 100% !important;
+    }
 }
 
 /* ::-webkit-scrollbar {

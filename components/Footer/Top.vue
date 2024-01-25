@@ -64,7 +64,7 @@
                 <NuxtLink to="#" class="hover:text-[#ff0000] text-black">আমাদের সম্পর্কে</NuxtLink>
                 <NuxtLink to="#" class="hover:text-[#ff0000] text-black">যোগাযোগ</NuxtLink>
                 <NuxtLink to="#" class="hover:text-[#ff0000] text-black">আর্কাইভ</NuxtLink>
-                <NuxtLink to="#" class="hover:text-[#ff0000] text-black">কনভার্টার</NuxtLink>
+                <a href="https://admin.dhakaprokash24.com/converter" target="_blank" class="hover:text-[#ff0000] text-black">কনভার্টার</a>
             </div>
         </div>
         <div>

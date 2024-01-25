@@ -7,10 +7,10 @@
                     <!-- <nuxt-img class="mx-auto" src="/assets/img/logo.png" height="56" alt="Dhaka Prokash"
                 :placeholder="img('/assets/img/logo.png', { h: 56, blur: 2, q: 50 })" /> -->
                     <h1 class="w-[400px] mx-auto">
-                        <NuxtLink to="/">
+                        <a :href="website_url?.website_url">
                             <nuxt-img class="mx-auto" width="350" :src="`${siteurl.site_url}/media/common/${headerSiteSettings?.logo}`"
                                  alt="Dhaka Prokash" />
-                        </NuxtLink>
+                        </a>
                     </h1>
                 </div>
                 <HeaderDesktopSideMenu :desktopMenuStatus="desktopMenuStatus" />
@@ -30,7 +30,7 @@ const getDate = new Intl.DateTimeFormat('bn-bd', { weekday: 'long', year: 'numer
 const todayDate = getDate.format(new Date())
 // ================ Get Bangla Date ============== //
 const img = useImage()
-
+const website_url = websiteUrlState()
 // ===== Search Box ==== //
 const keyword = useState(() => '');
 const searchPageRedirect = () => {

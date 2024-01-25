@@ -140,11 +140,11 @@
         </div>
         <!-- Home Middle Six Ads -->
         <!-- English Content Area -->
-        <div class="english-content-except bg-[#fff4e6] my-6">
+        <!-- <div class="english-content-except bg-[#fff4e6] my-6"> -->
             <!-- English Component -->
-            <HomeEnglishContent />
+            <!-- <HomeEnglishContent /> -->
             <!-- English Component -->
-        </div>
+        <!-- </div> -->
         <!-- English Content Area -->
         <!-- Home Middle Seven Ads -->
         <div v-if="homeMiddleSevenAds?.status === 1" class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">

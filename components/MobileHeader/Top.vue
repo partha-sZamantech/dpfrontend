@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class=" md:hidden shadow-md fixed bg-white top-0 left-0 right-0 z-[999999]">
-            <div class="bg-[#3375af] px-4 text-white siyamLipiFont flex justify-between items-center py-1">
+            <div class="bg-[#3375af] px-4 text-white flex justify-between items-center py-1">
                 <div class="text-sm">
                     <span>{{ EnglishDate() }} | {{ BanglaDate() }}</span>
                 </div>
@@ -13,15 +13,15 @@
                         class="text-3xl cursor-pointer hover:bg-[#f7f7f7]" name="ic:outline-menu" />
                     <Icon v-else name="material-symbols:close" @click="mobileMenuToggle"
                         class="text-3xl cursor-pointer hover:bg-[#f7f7f7]" />
-                    <NuxtLink to="/">
+                    <a :href="website_url?.website_url">
                         <nuxt-img class="mx-auto" :src="`${siteurl.site_url}/media/common/${headerSiteSettings?.logo}`"
                             alt="Dhaka Prokash" />
-                    </NuxtLink>
+                    </a>
                 </div>
 
                 <div class="flex gap-3 px-2">
-                    <NuxtLink class="border px-2 font-semibold text-blue-700" to="/">EN</NuxtLink>
-                    <NuxtLink to="/" class="border px-2 font-semibold text-blue-700">E-P</NuxtLink>
+                    <NuxtLink class="border px-2 bg-[#124d80] text-white siyamLipiFont" to="/">EN</NuxtLink>
+                    <NuxtLink to="/" class="border bg-[#124d80] px-2 text-white siyamLipiFont">e-P</NuxtLink>
                 </div>
             </div>
 
@@ -33,7 +33,7 @@
 
 <script setup>
 import { BanglaDate, EnglishDate } from '~/lib/helpers';
-
+const website_url = websiteUrlState()
 const mobileMenuStatus = mobileMenuState()
 const mobileMenuToggle = () => {
     if (mobileMenuStatus.value === true) {
