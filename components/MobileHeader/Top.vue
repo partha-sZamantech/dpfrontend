@@ -19,9 +19,9 @@
                     </a>
                 </div>
 
-                <div class="flex gap-3 px-2">
-                    <NuxtLink class="border px-2 bg-[#124d80] text-white siyamLipiFont" to="/">EN</NuxtLink>
-                    <NuxtLink to="/" class="border bg-[#124d80] px-2 text-white siyamLipiFont">e-P</NuxtLink>
+                <div class="flex gap-3 px-2 text-[12px]">
+                    <NuxtLink class="border py-1 px-2 bg-[#124d80] text-white siyamLipiFont" to="/">EN</NuxtLink>
+                    <NuxtLink to="/" class="border py-1 bg-[#124d80] px-2 text-white siyamLipiFont">e-P</NuxtLink>
                 </div>
             </div>
 
