@@ -656,16 +656,16 @@ moreDetailsContents.value = pdailts?.value?.moreDetailContent
 
 
 //===== First Detail Inside More News =====//
-const firstInsideMoreNews = useState(() => [])
-const { data: dinsidemorenews } = await useFetch("/api/prismaapi/detail/getinsidemorenews", {
-    method: "POST",
-    body: {
-        cat_id: detailsContent?.value?.cat_id,
-        content_id: detailsContent?.value?.content_id
-    }
-})
-firstInsideMoreNews.value = dinsidemorenews?.value
-
+// const firstInsideMoreNews = useState(() => [])
+// const { data: dinsidemorenews } = await useFetch("/api/prismaapi/detail/getinsidemorenews", {
+//     method: "POST",
+//     body: {
+//         cat_id: detailsContent?.value?.cat_id,
+//         content_id: detailsContent?.value?.content_id
+//     }
+// })
+// firstInsideMoreNews.value = dinsidemorenews?.value
+//===== First Detail Inside More News =====//
 
 
 // ==================== First Details Tags ======================= //
@@ -677,7 +677,6 @@ if (firstsplittag) {
     })
     firstContentTags.value = [...new Map(firstContentTags.value.map(fvl => [fvl, fvl])).values()]
 }
-
 // ==================== First Details Tags ======================= //
 
 
@@ -712,30 +711,27 @@ const printPageArea = (areaID) => {
 // =============== Print Script ===================== //
 
 //================= Inside More Detail Post Except Read More ===================//
-const insideMoreExceptPost = useState(() => [])
+// const insideMoreExceptPost = useState(() => [])
+// for (let m = 0; m < moreDetailsContents?.value?.length; m++) {
 
-for (let m = 0; m < moreDetailsContents?.value?.length; m++) {
-
-    const { data: insidempect } = await useFetch("/api/prismaapi/detail/moreinsidemorenews", {
-        method: 'POST',
-        body: {
-            currentPostDetailId: detailsContent?.value?.content_id,
-            morePostId: moreDetailsContents?.value[m]?.content_id,
-            cat_id: moreDetailsContents?.value[m]?.cat_id
-        }
-    })
-
-    let insidePost = insidempect.value
-
-    insideMoreExceptPost.value.push(insidePost)
-}
-insideMoreExceptPost.value = [...new Set(insideMoreExceptPost.value)]
+//     const { data: insidempect } = await useFetch("/api/prismaapi/detail/moreinsidemorenews", {
+//         method: 'POST',
+//         body: {
+//             currentPostDetailId: detailsContent?.value?.content_id,
+//             morePostId: moreDetailsContents?.value[m]?.content_id,
+//             cat_id: moreDetailsContents?.value[m]?.cat_id
+//         }
+//     })
+//     let insidePost = insidempect.value
+//     insideMoreExceptPost.value.push(insidePost)
+// }
+// insideMoreExceptPost.value = [...new Set(insideMoreExceptPost.value)]
 // console.log(insideMoreExceptPost.value)
 //================= Inside More Detail Post Except Read More ===================//
+
 const pvScrollPosi = ref(0)
 const currScrollPosi = ref(0)
 const balvalue = ref(null)
-
 
 onMounted(() => {
 
@@ -936,66 +932,66 @@ onMounted(() => {
     }
     // ==== Gooogle news Link === //
 
-    if (firstInsideMoreNews?.value?.length > 0) {
-        let insertRelatedNewses = (title, href) => {
+    // if (firstInsideMoreNews?.value?.length > 0) {
+    //     let insertRelatedNewses = (title, href) => {
 
-            let relatedNews = document.createElement('div');
-            relatedNews.className = 'inside-news my-4 print:hidden';
+    //         let relatedNews = document.createElement('div');
+    //         relatedNews.className = 'inside-news my-4 print:hidden';
 
-            let h5 = document.createElement('h5');
-            // h5.style.fontSize = '16px';
-            h5.className = 'text-[16px] text-black font-bold'
-            // h5.style.fontWeight = 'bold';
-            h5.innerText = 'আরও পড়ুন';
-            relatedNews.append(h5);
+    //         let h5 = document.createElement('h5');
+    //         // h5.style.fontSize = '16px';
+    //         h5.className = 'text-[16px] text-black font-bold'
+    //         // h5.style.fontWeight = 'bold';
+    //         h5.innerText = 'আরও পড়ুন';
+    //         relatedNews.append(h5);
 
-            let containerFluid = document.createElement('div');
-            containerFluid.className = 'container-fluid border border-[#e2e2e2] mt-1 group';
-            // containerFluid.style.border = '1px solid #575757';
-            relatedNews.append(containerFluid);
+    //         let containerFluid = document.createElement('div');
+    //         containerFluid.className = 'container-fluid border border-[#e2e2e2] mt-1 group';
+    //         // containerFluid.style.border = '1px solid #575757';
+    //         relatedNews.append(containerFluid);
 
-            // let link = document.createElement('a');
-            // link.href = href;
-            // containerFluid.append(link);
+    //         // let link = document.createElement('a');
+    //         // link.href = href;
+    //         // containerFluid.append(link);
 
-            let headline = document.createElement('div');
-            headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af] cursor-pointer';
-            // headline.style.cssText = 'font-size:19px;font-weight: bold; width: 65%; float: left';
-            // headline.style.cssText = 'font-size:16px;font-weight: bold;';
-            headline.innerText = title;
-            // link.append(headline);
-            containerFluid.append(headline);
-            headline.addEventListener('click', function handleClick(event) {
-                navigateTo(`/${href}`)
-            });
-            // let img = document.createElement('img');
-            // img.className = 'marginTop10 marginBottom10';
-            // img.style.cssText = 'width: 85px;float: right';
-            // img.src = src;
-            // img.title = title;
-            // img.alt = title;
-            // link.append(img);
+    //         let headline = document.createElement('div');
+    //         headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af] cursor-pointer';
+    //         // headline.style.cssText = 'font-size:19px;font-weight: bold; width: 65%; float: left';
+    //         // headline.style.cssText = 'font-size:16px;font-weight: bold;';
+    //         headline.innerText = title;
+    //         // link.append(headline);
+    //         containerFluid.append(headline);
+    //         headline.addEventListener('click', function handleClick(event) {
+    //             navigateTo(`/${href}`)
+    //         });
+    //         // let img = document.createElement('img');
+    //         // img.className = 'marginTop10 marginBottom10';
+    //         // img.style.cssText = 'width: 85px;float: right';
+    //         // img.src = src;
+    //         // img.title = title;
+    //         // img.alt = title;
+    //         // link.append(img);
 
-            return relatedNews;
-        }
+    //         return relatedNews;
+    //     }
 
-        function fJsNewsURLs(cat_slug, subcat_slug, content_type, content_id) {
-            return `${cat_slug}/${subcat_slug ? subcat_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`;
-            // return location.origin + '/category/' + cat_slug + '/' + content_id;
-            // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
-        }
+    //     function fJsNewsURLs(cat_slug, subcat_slug, content_type, content_id) {
+    //         return `${cat_slug}/${subcat_slug ? subcat_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`;
+    //         // return location.origin + '/category/' + cat_slug + '/' + content_id;
+    //         // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
+    //     }
 
 
-        let itemIncrement = 0;
+    //     let itemIncrement = 0;
 
-        descParam.forEach((item, i) => {
+    //     descParam.forEach((item, i) => {
 
-            if (i > 0 && i % 3 === 0 && firstInsideMoreNews?.value[itemIncrement]) {
-                descParam[i].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug, firstInsideMoreNews?.value[itemIncrement].subcat_slug, firstInsideMoreNews?.value[itemIncrement].content_type, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
-                itemIncrement++;
-            }
-        })
-    }
+    //         if (i > 0 && i % 3 === 0 && firstInsideMoreNews?.value[itemIncrement]) {
+    //             descParam[i].parentNode.insertBefore(insertRelatedNewses(firstInsideMoreNews?.value[itemIncrement]?.content_heading, fJsNewsURLs(firstInsideMoreNews?.value[itemIncrement].cat_slug, firstInsideMoreNews?.value[itemIncrement].subcat_slug, firstInsideMoreNews?.value[itemIncrement].content_type, firstInsideMoreNews?.value[itemIncrement].content_id)), descParam[i - 1].nextSibling);
+    //             itemIncrement++;
+    //         }
+    //     })
+    // }
 
     // ================== End First Post Detail Content Inside Element Added =============== //
 
@@ -1004,9 +1000,10 @@ onMounted(() => {
     // Start For loop
     try {
 
-        for (let i = 0; i < insideMoreExceptPost?.value?.length; i++) {
+        // for (let i = 0; i < insideMoreExceptPost?.value?.length; i++) {
+        for (let i = 0; i < 3; i++) {
 
-            let insideMoreNews = insideMoreExceptPost?.value[i];
+            // let insideMoreNews = insideMoreExceptPost?.value[i];
             let desc = document.getElementsByClassName('postdetailinside' + i)
             let descParas = desc[0]?.querySelectorAll("p")
             // ==== Gooogle news Link === //
@@ -1036,53 +1033,53 @@ onMounted(() => {
             }
             // ==== Gooogle news Link === //
 
-            let insertRelatedNews = (title, href) => {
+            // let insertRelatedNews = (title, href) => {
 
-                let relatedNews = document.createElement('div');
-                relatedNews.className = 'inside-news my-4 print:hidden';
+            //     let relatedNews = document.createElement('div');
+            //     relatedNews.className = 'inside-news my-4 print:hidden';
 
-                let h5 = document.createElement('h5');
+            //     let h5 = document.createElement('h5');
 
-                h5.className = 'text-[16px] text-black font-bold'
+            //     h5.className = 'text-[16px] text-black font-bold'
 
-                h5.innerText = 'আরও পড়ুন';
-                relatedNews.append(h5);
+            //     h5.innerText = 'আরও পড়ুন';
+            //     relatedNews.append(h5);
 
-                let containerFluid = document.createElement('div');
-                containerFluid.className = 'container-fluid border border-[#e2e2e2] mt-1 group';
+            //     let containerFluid = document.createElement('div');
+            //     containerFluid.className = 'container-fluid border border-[#e2e2e2] mt-1 group';
 
-                relatedNews.append(containerFluid);
-                // let link = document.createElement('a');
-                // link.href = href;
-                // containerFluid.append(link);
+            //     relatedNews.append(containerFluid);
+            //     // let link = document.createElement('a');
+            //     // link.href = href;
+            //     // containerFluid.append(link);
 
-                let headline = document.createElement('div');
-                headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af] cursor-pointer';
-                // headline.style.cssText = 'font-size:19px;font-weight: bold; width: 65%; float: left';
-                // headline.style.cssText = 'font-size:16px;font-weight: bold;';
-                headline.innerText = title;
-                // link.append(headline);
-                containerFluid.append(headline);
-                headline.addEventListener('click', function handleClick(event) {
-                    navigateTo(`/${href}`)
-                });
+            //     let headline = document.createElement('div');
+            //     headline.className = 'headline py-2 px-4 my-1 text-[#121212] text-[16px] font-bold group-hover:text-[#3375af] cursor-pointer';
+            //     // headline.style.cssText = 'font-size:19px;font-weight: bold; width: 65%; float: left';
+            //     // headline.style.cssText = 'font-size:16px;font-weight: bold;';
+            //     headline.innerText = title;
+            //     // link.append(headline);
+            //     containerFluid.append(headline);
+            //     headline.addEventListener('click', function handleClick(event) {
+            //         navigateTo(`/${href}`)
+            //     });
 
-                return relatedNews;
-            }
+            //     return relatedNews;
+            // }
 
-            let itemIncrement = 0;
-            descParas?.forEach((item, i) => {
+            // let itemIncrement = 0;
+            // descParas?.forEach((item, i) => {
 
-                if (i > 0 && i % 3 === 0 && insideMoreNews[itemIncrement]) {
-                    descParas[0].parentNode.insertBefore(insertRelatedNews(insideMoreNews[itemIncrement]?.content_heading, fJsNewsURL(insideMoreNews[itemIncrement].cat_slug, insideMoreNews[itemIncrement].subcat_slug, insideMoreNews[itemIncrement].content_type, insideMoreNews[itemIncrement].content_id)), descParas[i - 1].nextSibling);
-                    itemIncrement++;
-                }
-            })
+            //     if (i > 0 && i % 3 === 0 && insideMoreNews[itemIncrement]) {
+            //         descParas[0].parentNode.insertBefore(insertRelatedNews(insideMoreNews[itemIncrement]?.content_heading, fJsNewsURL(insideMoreNews[itemIncrement].cat_slug, insideMoreNews[itemIncrement].subcat_slug, insideMoreNews[itemIncrement].content_type, insideMoreNews[itemIncrement].content_id)), descParas[i - 1].nextSibling);
+            //         itemIncrement++;
+            //     }
+            // })
 
-            function fJsNewsURL(cat_slug, subcat_slug, content_type, content_id) {
-                return `${cat_slug}/${subcat_slug ? subcat_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`;
-                // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
-            }
+            // function fJsNewsURL(cat_slug, subcat_slug, content_type, content_id) {
+            //     return `${cat_slug}/${subcat_slug ? subcat_slug : (content_type === 1 ? 'news' : 'article')}/${content_id}`;
+            //     // return location.origin+'/'+cat_slug+(subcat_slug ? subcat_slug : '')+'/news/'+content_id;
+            // }
 
         }
         // End For loop

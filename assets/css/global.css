@@ -70,6 +70,7 @@ figure.image figcaption {
 
 .postdetails p img {
     margin: 18px 0px !important;
+    cursor: zoom-in;
 }
 
 .mainmenu {
