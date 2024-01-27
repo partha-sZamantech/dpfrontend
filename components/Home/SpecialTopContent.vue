@@ -8,6 +8,7 @@
                         <!-- <NuxtLink :to="`/category/${specialTopContents[0]?.cat_slug}/${specialTopContents[0]?.content_id}`" -->
                         <NuxtLink :to="getPostUrl(specialTopContents[0]?.cat_slug, specialTopContents[0]?.subcat_slug, specialTopContents[0]?.content_type, specialTopContents[0]?.content_id)"
                             class="flex flex-col gap-3">
+                            {{specialTopContents[0]?.content_heading?.length  }}
                             <div class="overflow-hidden">
                                 <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${specialTopContents[0]?.img_bg_path}`"
@@ -15,12 +16,14 @@
                                     :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             </div>
                             <h2 class="text-[#ff0000] text-[32px] siyamLipiFont">{{ specialTopContents[0]?.content_heading
-                            }}</h2>
+                            }}</h2> 
                             <!-- <p class="text-[18px]">{{ specialTopContents[0]?.content_details?.substring(0,
                                 165)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
                             <ClientOnly>
-                                <div class=" font-[300] text-base text-[#000]" v-html="`${specialTopContents[0]?.content_details?.substring(0,
-                                        250)} ...`"></div>
+                                <div v-if="specialTopContents[0]?.content_heading?.length > 60" class=" font-[300] text-base text-[#000]" v-html="`${specialTopContents[0]?.content_details?.substring(0,
+                                        165)} ...`"></div>
+                                         <div v-else class=" font-[300] text-base text-[#000]" v-html="`${specialTopContents[0]?.content_details?.substring(0,
+                                        225)} ...`"></div>
                             </ClientOnly>
                             <span class="text-sm text-black">
                                 {{ specialTopContents[0]?.bn_cat_name }} | {{ postCreatedDate(specialTopContents[0]?.created_at) }}
