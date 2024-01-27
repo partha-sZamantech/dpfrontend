@@ -74,7 +74,6 @@ figure.image figcaption {
     padding-bottom: 5px !important;
     text-align: center !important;
     font-size: 14px !important;
-    font-weight: bold;
 }
 
 .singlePost-details .postdetails p a {
@@ -99,7 +98,9 @@ figure.image figcaption {
     margin: 18px 0px !important;
     cursor: zoom-in;
 }
-
+.postdetails p {
+    margin-bottom: 12px;
+}
 .mainmenu {
     font-size: 18px;
 }
