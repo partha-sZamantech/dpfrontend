@@ -8,7 +8,6 @@
                         <!-- <NuxtLink :to="`/category/${specialTopContents[0]?.cat_slug}/${specialTopContents[0]?.content_id}`" -->
                         <NuxtLink :to="getPostUrl(specialTopContents[0]?.cat_slug, specialTopContents[0]?.subcat_slug, specialTopContents[0]?.content_type, specialTopContents[0]?.content_id)"
                             class="flex flex-col gap-3">
-                            {{specialTopContents[0]?.content_heading?.length  }}
                             <div class="overflow-hidden">
                                 <nuxt-img loading="lazy"
                                     :src="`${siteurl.site_url}/media/content/images/${specialTopContents[0]?.img_bg_path}`"

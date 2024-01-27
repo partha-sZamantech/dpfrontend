@@ -1,30 +1,290 @@
 <template>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-5 py-4">
-        <ClientOnly>
-            <!-- ========== Loop Item =========== -->
-            <NuxtLink :to="getPostUrl(tpcontent?.cat_slug, tpcontent?.subcat_slug, tpcontent?.content_type, tpcontent?.content_id)" class="flex flex-col gap-3 group"
-                v-for="tpcontent in spTopContent?.slice(5, 11)" :key="tpcontent?.content_id">
+
+    <div class="hidden md:block desktopSpecialContent special-bottom-content mt-4 mb-8">
+        <div class="grid grid-cols-3 gap-4 mb-2">
+            <NuxtLink to="#" class="">
                 <div class=" overflow-hidden">
-                    <nuxt-img loading="lazy" :src="`${siteurl?.site_url}/media/content/images/${tpcontent?.img_bg_path}`"
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[5]?.img_bg_path}`"
                         class="mx-auto w-full group-hover:scale-110 duration-300"
                         :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
-                <div class="flex flex-col gap-4 md:gap-2">
-
-                    <div>
-                        <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{ tpcontent?.content_heading
-                        }}</h4>
-                    </div>
-
-                    <!-- <p class="text-[16px]">{{ tpcontent?.content_details?.substring(0,100)?.toString().replace(/(<([^>]+)>)/ig, '') }}...</p> -->
-                    <div class="text-base font-[300] text-black" v-html="`${tpcontent?.content_details?.substring(0, 100)} ...`"></div>
-
-                    <span class="text-sm text-black">{{ tpcontent?.bn_cat_name }} | {{ postCreatedDate(tpcontent?.created_at) }}</span>
-
+            </NuxtLink>
+            <NuxtLink to="#">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[6]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                 </div>
             </NuxtLink>
-            <!-- ========== Loop Item =========== -->
-        </ClientOnly>
+            <NuxtLink to="#">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[7]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                </div>
+            </NuxtLink>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{
+                    spTopContent[5]?.content_heading
+                }}</h4>
+            </div>
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000] ">{{
+                    spTopContent[6]?.content_heading
+                }}</h4>
+            </div>
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{
+                    spTopContent[7]?.content_heading
+                }}</h4>
+            </div>
+
+        </div>
+        <div class="grid grid-cols-3 gap-4 mb-2">
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[5]?.content_details?.substring(0, 143)} ...`"></div>
+            </ClientOnly>
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[6]?.content_details?.substring(0, 143)} ...`"></div>
+            </ClientOnly>
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[7]?.content_details?.substring(0, 143)} ...`"></div>
+            </ClientOnly>
+
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+            <span class="text-sm text-black">{{ spTopContent[5]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[5]?.created_at) }}</span>
+            <span class="text-sm text-black">{{ spTopContent[6]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[5]?.created_at) }}</span>
+            <span class="text-sm text-black">{{ spTopContent[7]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[5]?.created_at) }}</span>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mb-2 mt-4">
+            <NuxtLink to="#" class="">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[8]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                </div>
+            </NuxtLink>
+            <NuxtLink to="#">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[9]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                </div>
+            </NuxtLink>
+            <NuxtLink to="#">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[10]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                </div>
+            </NuxtLink>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{
+                    spTopContent[8]?.content_heading
+                }}</h4>
+            </div>
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000] ">{{
+                    spTopContent[9]?.content_heading
+                }}</h4>
+            </div>
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{
+                    spTopContent[10]?.content_heading
+                }}</h4>
+            </div>
+
+        </div>
+        <div class="grid grid-cols-3 gap-4 mb-2">
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[8]?.content_details?.substring(0, 143)} ...`"></div>
+            </ClientOnly>
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[9]?.content_details?.substring(0, 143)} ...`"></div>
+            </ClientOnly>
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[10]?.content_details?.substring(0, 143)} ...`"></div>
+            </ClientOnly>
+
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+            <span class="text-sm text-black">{{ spTopContent[5]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[8]?.created_at) }}</span>
+            <span class="text-sm text-black">{{ spTopContent[6]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[9]?.created_at) }}</span>
+            <span class="text-sm text-black">{{ spTopContent[7]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[10]?.created_at) }}</span>
+        </div>
+
+
+
+
+
+    </div>
+    <div class="mobileSpecialContent block md:hidden special-bottom-content">
+        <div class="grid grid-cols-2 gap-4 mb-2">
+            <NuxtLink to="#" class="">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[5]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                </div>
+            </NuxtLink>
+            <NuxtLink to="#">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[6]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                </div>
+            </NuxtLink>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{
+                    spTopContent[5]?.content_heading
+                }}</h4>
+            </div>
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000] ">{{
+                    spTopContent[6]?.content_heading
+                }}</h4>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-2">
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[5]?.content_details?.substring(0, 90)} ...`"></div>
+            </ClientOnly>
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[6]?.content_details?.substring(0, 90)} ...`"></div>
+            </ClientOnly>
+
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <span class="text-sm text-black">{{ spTopContent[5]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[5]?.created_at) }}</span>
+            <span class="text-sm text-black">{{ spTopContent[6]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[5]?.created_at) }}</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-2 mt-4">
+            <NuxtLink to="#" class="">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[7]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                </div>
+            </NuxtLink>
+            <NuxtLink to="#">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[8]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                </div>
+            </NuxtLink>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{
+                    spTopContent[7]?.content_heading
+                }}</h4>
+            </div>
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000] ">{{
+                    spTopContent[8]?.content_heading
+                }}</h4>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-2">
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[7]?.content_details?.substring(0, 90)} ...`"></div>
+            </ClientOnly>
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[8]?.content_details?.substring(0, 90)} ...`"></div>
+            </ClientOnly>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <span class="text-sm text-black">{{ spTopContent[5]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[7]?.created_at) }}</span>
+            <span class="text-sm text-black">{{ spTopContent[6]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[8]?.created_at) }}</span>
+        </div>
+
+
+        <div class="grid grid-cols-2 gap-4 mb-2 mt-4">
+            <NuxtLink to="#" class="">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[9]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                </div>
+            </NuxtLink>
+            <NuxtLink to="#">
+                <div class=" overflow-hidden">
+                    <nuxt-img loading="lazy"
+                        :src="`${siteurl?.site_url}/media/content/images/${spTopContent[10]?.img_bg_path}`"
+                        class="mx-auto w-full group-hover:scale-110 duration-300"
+                        :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                </div>
+            </NuxtLink>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000]">{{
+                    spTopContent[9]?.content_heading
+                }}</h4>
+            </div>
+            <div>
+                <h4 class=" text-[20px] font-semibold mb-1 group-hover:text-[#ff0000] ">{{
+                    spTopContent[10]?.content_heading
+                }}</h4>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-2">
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[9]?.content_details?.substring(0, 90)} ...`"></div>
+            </ClientOnly>
+            <ClientOnly>
+                <div class="text-base font-[300] text-black"
+                    v-html="`${spTopContent[10]?.content_details?.substring(0, 90)} ...`"></div>
+            </ClientOnly>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <span class="text-sm text-black">{{ spTopContent[5]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[9]?.created_at) }}</span>
+            <span class="text-sm text-black">{{ spTopContent[6]?.bn_cat_name }} | {{
+                postCreatedDate(spTopContent[10]?.created_at) }}</span>
+        </div>
 
     </div>
 </template>

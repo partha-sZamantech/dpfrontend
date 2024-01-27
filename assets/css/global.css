@@ -45,12 +45,18 @@
 
 
 body {
-    font-family: solaimanlipi !important;
+    font-family: 'solaimanlipi' !important;
     color: #333
 }
 .siyamLipiFont {
     font-family: SiyamLipi;
 }
+
+.dp-font{
+    font-family: DhakaRegular !important;
+}
+
+
 .postdetails iframe {
     /* width: 100% !important; */
     margin-top: 20px;
