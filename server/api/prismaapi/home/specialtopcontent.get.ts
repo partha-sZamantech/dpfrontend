@@ -56,6 +56,7 @@ export default defineEventHandler(async (event) => {
                     content_type: content?.content_type,
                     img_bg_path: content?.img_bg_path,
                     content_heading: content?.content_heading,
+                    content_sub_heading: content?.content_sub_heading,
                     content_details: content?.content_details,
                     bn_cat_name: category?.cat_name_bn,
                     cat_slug: category?.cat_slug,

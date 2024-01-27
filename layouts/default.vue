@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div ref="el">
 
         <Head>
             <Title>{{ sitesettings?.title }}</Title>
@@ -36,10 +36,11 @@
             <!-- Mobile Header -->
             <!-- Top Header -->
             <HeaderTopMenu :scrollDown="scrollDown" />
+
             <!-- </div> -->
         </div>
         <MobileHeaderTop />
-        <div class="main-container duration-900 mt-10 md:mt-12">
+        <div @scroll="scrollHandler" class="main-container duration-900 mt-10 md:mt-12">
 
             <slot />
 
@@ -48,6 +49,9 @@
         <!-- Footer Ads Sticky -->
         <AdsDesktopCommonFooterStickyAds v-if="footerAds?.status === 1" :footerAds="footerAds" />
         <!-- Footer Ads Sticky -->
+
+        <Icon @click="scrollTop" id="scrollTOP" name="material-symbols:arrow-upward-alt"
+            class="text-4xl invisible duration-300 cursor-pointer rounded-full bg-[#3375af] text-white fixed bottom-12 right-8" />
     </div>
     <!-- Ads Site Block Popup -->
     <AdsDesktopCommonSiteBlock v-if="siteblockAds?.status === 1" :siteblockAds="siteblockAds" />
@@ -55,6 +59,11 @@
 </template>
 
 <script setup>
+
+const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
+}
 
 // ==================== Title & Favicon ====================
 
@@ -108,7 +117,8 @@ const detailPageSticky = singlePageStickyState()
 
 onMounted(() => {
     // counter.value = document.getElementsByTagName('body')[0].scrollHeight 
-  
+
+
     if (isDesktop) {
 
         // ============== Desktop ===================
@@ -117,6 +127,16 @@ onMounted(() => {
         window.addEventListener("scroll", function () {
             // counter.value = document.documentElement.clientHeight - document.documentElement.scrollTop
             // counter.value = counter.value - document.documentElement.scrollTop
+
+
+            // ====== Scroll Top button =========
+            const scrollerElement = document.querySelector("#scrollTOP")
+            if (window.scrollY > 300) {
+                scrollerElement.classList.remove('invisible')
+            } else {
+                scrollerElement.classList.add('invisible')
+            }
+            // ====== Scroll Top button =========
 
             currentScrollPosition.value = window.scrollY
 
@@ -161,6 +181,19 @@ onMounted(() => {
         })
         // ============= Scolling =============== //
         // ============== Desktop ===================
+
+    } else {
+        
+        window.addEventListener("scroll", function () {
+            // ====== Scroll Top button =========
+            const scrollerElement = document.querySelector("#scrollTOP")
+            if (window.scrollY > 300) {
+                scrollerElement.classList.remove('invisible')
+            } else {
+                scrollerElement.classList.add('invisible')
+            }
+            // ====== Scroll Top button =========
+        })
 
     }
 
