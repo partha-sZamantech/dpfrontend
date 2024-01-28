@@ -33,7 +33,7 @@
                 <!-- Loop Item -->
                 <NuxtLink
                     :to="getPostUrl(educationcontent?.cat_slug, educationcontent?.subcat_slug, educationcontent?.content_type, educationcontent?.content_id)"
-                    class=" border-b py-3" v-for="educationcontent in educationcontents.slice(1, 5)"
+                    class=" border-b py-3" v-for="educationcontent in educationcontents.slice(1, 8)"
                     :key="educationcontent.content_id">
                     <h4 class="text-base text-black font-semibold hover:text-[#ff0000] leading-tight">{{
                         educationcontent?.content_heading }}</h4>

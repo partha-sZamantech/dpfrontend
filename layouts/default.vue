@@ -51,7 +51,7 @@
         <!-- Footer Ads Sticky -->
 
         <Icon @click="scrollTop" id="scrollTOP" name="material-symbols:arrow-upward-alt"
-            class="text-4xl invisible duration-300 cursor-pointer rounded-full bg-[#3375af] text-white fixed bottom-12 right-8" />
+            class="text-4xl invisible duration-300 cursor-pointer rounded-full bg-[#3375af] text-white fixed bottom-12 right-8 shadow-md shadow-slate-950" />
     </div>
     <!-- Ads Site Block Popup -->
     <AdsDesktopCommonSiteBlock v-if="siteblockAds?.status === 1" :siteblockAds="siteblockAds" />

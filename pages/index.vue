@@ -80,6 +80,7 @@
                     <!-- Home Right Two Ads -->
                     <!-- Home Right Sidebar -->
                     <HomePostTabs class="my-4" />
+                    <FacebookPage />
                     <!-- <Tabs /> -->
                     <!--/ Home Right Sidebar -->
                     <!-- Home Right Three Ads -->
@@ -131,6 +132,7 @@
             <!-- Entertainment Category Component -->
             <HomeCategoryEntertainment />
             <!-- Entertainment Category Component -->
+            <FacebookPage />
             <HomeCategorySaradesh />
 
         </div>
