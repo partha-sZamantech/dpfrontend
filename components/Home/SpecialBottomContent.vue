@@ -61,21 +61,21 @@
                 <NuxtLink
                     :to="getPostUrl(spTopContent[5]?.cat_slug, spTopContent[5]?.subcat_slug, spTopContent[5]?.content_type, spTopContent[5]?.content_id)">
                     <div class="text-base font-[300] text-black"
-                        v-html="`${spTopContent[5]?.content_details?.substring(0, 143)} ...`"></div>
+                        v-html="`${spTopContent[5]?.content_details?.substring(0, 150)} ...`"></div>
                 </NuxtLink>
             </ClientOnly>
             <ClientOnly>
                 <NuxtLink
                     :to="getPostUrl(spTopContent[6]?.cat_slug, spTopContent[6]?.subcat_slug, spTopContent[6]?.content_type, spTopContent[6]?.content_id)">
                     <div class="text-base font-[300] text-black"
-                        v-html="`${spTopContent[6]?.content_details?.substring(0, 143)} ...`"></div>
+                        v-html="`${spTopContent[6]?.content_details?.substring(0, 150)} ...`"></div>
                 </NuxtLink>
             </ClientOnly>
             <ClientOnly>
                 <NuxtLink
                     :to="getPostUrl(spTopContent[7]?.cat_slug, spTopContent[7]?.subcat_slug, spTopContent[7]?.content_type, spTopContent[7]?.content_id)">
                     <div class="text-base font-[300] text-black"
-                        v-html="`${spTopContent[7]?.content_details?.substring(0, 143)} ...`"></div>
+                        v-html="`${spTopContent[7]?.content_details?.substring(0, 150)} ...`"></div>
                 </NuxtLink>
             </ClientOnly>
 
@@ -156,21 +156,21 @@
                 <NuxtLink
                     :to="getPostUrl(spTopContent[8]?.cat_slug, spTopContent[8]?.subcat_slug, spTopContent[8]?.content_type, spTopContent[8]?.content_id)">
                     <div class="text-base font-[300] text-black"
-                        v-html="`${spTopContent[8]?.content_details?.substring(0, 143)} ...`"></div>
+                        v-html="`${spTopContent[8]?.content_details?.substring(0, 150)} ...`"></div>
                 </NuxtLink>
             </ClientOnly>
             <ClientOnly>
                 <NuxtLink
                     :to="getPostUrl(spTopContent[9]?.cat_slug, spTopContent[9]?.subcat_slug, spTopContent[9]?.content_type, spTopContent[9]?.content_id)">
                     <div class="text-base font-[300] text-black"
-                        v-html="`${spTopContent[9]?.content_details?.substring(0, 143)} ...`"></div>
+                        v-html="`${spTopContent[9]?.content_details?.substring(0, 150)} ...`"></div>
                 </NuxtLink>
             </ClientOnly>
             <ClientOnly>
                 <NuxtLink
                     :to="getPostUrl(spTopContent[10]?.cat_slug, spTopContent[10]?.subcat_slug, spTopContent[10]?.content_type, spTopContent[10]?.content_id)">
                     <div class="text-base font-[300] text-black"
-                        v-html="`${spTopContent[10]?.content_details?.substring(0, 143)} ...`"></div>
+                        v-html="`${spTopContent[10]?.content_details?.substring(0, 150)} ...`"></div>
                 </NuxtLink>
             </ClientOnly>
 

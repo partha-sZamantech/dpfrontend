@@ -32,10 +32,11 @@
                         </p>
                     </div>
                 </NuxtLink>
-          
+
             </div>
             <div class="col-span-12 md:col-span-6">
-                <div class=" grid grid-cols-2 gap-3">
+                <!-- Desktop Version -->
+                <div class=" md:grid grid-cols-2 gap-3 hidden">
                     <NuxtLink v-for="(leftsport, lidx) in sportscontent?.slice(1, 5)" :key="lidx"
                         :to="getPostUrl(leftsport?.cat_slug, leftsport?.subcat_slug, leftsport?.content_type, leftsport?.content_id)"
                         class=" flex flex-col gap-2 group">
@@ -57,8 +58,11 @@
                         </div>
                     </NuxtLink>
                 </div>
+                <!-- Desktop Version -->
+                <!-- Mobile Version -->
+                <!-- Mobile Version -->'
             </div>
-          
+
         </div>
     </div>
 </template>
