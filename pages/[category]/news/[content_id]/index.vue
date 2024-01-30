@@ -190,34 +190,27 @@
                         <div :class="`flex flex-col gap-2`">
                             <div class=" border-b-[3px] border-[#3375af] pb-1">
                                 <h3 class="text-[#3375af] text-[18px] font-[600]">{{ detailsContent?.category?.cat_name_bn
-                                }}
-                                    নিয়ে
-                                    আরও পড়ুন</h3>
+                                }} নিয়ে আরও পড়ুন</h3>
                             </div>
 
                             <div class="detail-page-category-content-exept flex flex-col"
                                 v-if="firstMoreContents?.contents?.length > 0">
                                 <!-- Loop Item -->
-
-                                <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
+                                <NuxtLink
+                                    :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)"
+                                    class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
                                     v-for="fmoreContent in firstMoreContents?.contents" :key="fmoreContent.content_id">
                                     <div class=" col-span-5 overflow-hidden">
-                                        <NuxtLink
-                                            :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
-                                            <nuxt-img loading="lazy"
-                                                :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
-                                                class="mx-auto w-full group-hover:scale-110 duration-300"
-                                                :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                                        </NuxtLink>
+                                        <nuxt-img loading="lazy"
+                                            :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
+                                            class="mx-auto w-full group-hover:scale-110 duration-300"
+                                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     </div>
                                     <div class=" col-span-7">
-                                        <NuxtLink
-                                            :to="getPostUrl(detailsContent?.category?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)">
-                                            <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
-                                                fmoreContent?.content_heading }}</h4>
-                                        </NuxtLink>
+                                        <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
+                                            fmoreContent?.content_heading }}</h4>
                                     </div>
-                                </div>
+                                </NuxtLink>
                                 <!--/ Loop Item -->
                             </div>
                         </div>
@@ -301,8 +294,9 @@
                     </div>
                     <!----- Breadcump relatedPostOgImage ----->
 
-                    <div class="single-post flex flex-col solaimanlipi gap-3 md:gap-4" :data-title="moreDetailContent?.content_heading"
-                        :data-nid="moreDetailContent?.content_id" :data-description="moreDetailContent?.content_brief"
+                    <div class="single-post flex flex-col solaimanlipi gap-3 md:gap-4"
+                        :data-title="moreDetailContent?.content_heading" :data-nid="moreDetailContent?.content_id"
+                        :data-description="moreDetailContent?.content_brief"
                         :data-keywords="moreDetailContent?.meta_keywords"
                         :data-href="`${websiteUrl?.website_url}${getPostUrl(moreDetailContent?.category?.cat_slug, moreDetailContent?.subcategory?.subcat_slug, moreDetailContent?.content_type, moreDetailContent?.content_id)}`"
                         :data-src="moreDetailContent?.og_image">
@@ -432,32 +426,27 @@
                             <div class=" border-b-[3px] border-[#3375af] pb-1">
                                 <h3 class="text-[#3375af] text-[18px] font-[600]">{{
                                     moreDetailContent?.category?.cat_name_bn }}
-                                    নিয়ে
-                                    আরও পড়ুন</h3>
+                                    নিয়ে আরও পড়ুন</h3>
                             </div>
                             <div class="detail-page-category-content-exept flex flex-col">
                                 <!-- {{ moreDetailCatWisePost[mcinx] }} -->
                                 <!-- Loop Item -->
-                                <div class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
+                                <NuxtLink
+                                    :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)"
+                                    class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
                                     v-for="moreDetCatCon in moreDetailContent?.morecatwisePost"
                                     :key="moreDetCatCon.content_id">
                                     <div class=" col-span-5 overflow-hidden">
-                                        <NuxtLink
-                                            :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)">
-                                            <nuxt-img loading="lazy"
-                                                :src="`${siteurl.site_url}/media/content/images/${moreDetCatCon?.img_bg_path}`"
-                                                class="mx-auto w-full group-hover:scale-110 duration-300"
-                                                :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
-                                        </NuxtLink>
+                                        <nuxt-img loading="lazy"
+                                            :src="`${siteurl.site_url}/media/content/images/${moreDetCatCon?.img_bg_path}`"
+                                            class="mx-auto w-full group-hover:scale-110 duration-300"
+                                            :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                     </div>
                                     <div class=" col-span-7">
-                                        <NuxtLink
-                                            :to="getPostUrl(moreDetCatCon?.cat_slug, moreDetCatCon?.subcat_slug, moreDetCatCon?.content_type, moreDetCatCon?.content_id)">
-                                            <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
-                                                moreDetCatCon?.content_heading }}</h4>
-                                        </NuxtLink>
+                                        <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
+                                            moreDetCatCon?.content_heading }}</h4>
                                     </div>
-                                </div>
+                                </NuxtLink>
                                 <!--/ Loop Item -->
                             </div>
                         </div>
@@ -746,7 +735,7 @@ onMounted(() => {
             // ok.value = true
             const img = document.querySelector('.nuxtPartha #nuxtpopupImage')
             img.src = sevent.target.src
-        
+
         })
     })
     // ======== Open Popup =============== //
