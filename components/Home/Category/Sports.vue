@@ -6,7 +6,7 @@
                 <h2 class="text-[#3375af] text-[18px] group-hover:text-[#65a1d6] font-semibold">খেলা</h2>
             </NuxtLink>
         </div>
-        <div class=" grid grid-cols-12 gap-6 mt-4">
+        <div class=" grid grid-cols-12 gap-4 mt-4">
             <div class=" col-span-12 md:col-span-6">
                 <NuxtLink
                     :to="getPostUrl(sportscontent[0]?.cat_slug, sportscontent[0]?.subcat_slug, sportscontent[0]?.content_type, sportscontent[0]?.content_id)"
@@ -61,7 +61,7 @@
                 <!-- Desktop Version -->
 
                 <!-- Mobile Version -->
-                <div class="grid grid-cols-2 gap-4 mb-2 mt-4">
+                <div class="grid grid-cols-2 gap-4 mb-2">
                     <NuxtLink
                         :to="getPostUrl(sportscontent[1]?.cat_slug, sportscontent[1]?.subcat_slug, sportscontent[1]?.content_type, sportscontent[1]?.content_id)"
                         class="group">
@@ -174,8 +174,8 @@
 
                 </div>
                 <!-- Mobile Version -->
-            </div>
 
+            </div>
         </div>
     </div>
 </template>
