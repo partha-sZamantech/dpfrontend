@@ -28,6 +28,15 @@ export default defineEventHandler(async (event) => {
 
     for (let i = 0; i < getContents?.length; i++) {
 
+        const category = await prisma.bn_categories.findFirst({
+            where: {
+                cat_id: getContents[i]?.cat_id
+            },
+            select: {
+                cat_name_bn: true,
+                cat_slug: true
+            }
+        })
         // Subcategory
         const subcategory = await prisma.bn_subcategories.findFirst({
             where: {
@@ -40,6 +49,7 @@ export default defineEventHandler(async (event) => {
             content_type: getContents[i]?.content_type,
             img_bg_path: getContents[i]?.img_bg_path,
             content_heading: getContents[i]?.content_heading,
+            cat_slug: category?.cat_slug,
             subcat_slug: subcategory?.subcat_slug
         })
 

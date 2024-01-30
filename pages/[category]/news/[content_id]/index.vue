@@ -196,10 +196,12 @@
                             <div class="detail-page-category-content-exept flex flex-col"
                                 v-if="firstMoreContents?.contents?.length > 0">
                                 <!-- Loop Item -->
+                               
                                 <NuxtLink
                                     :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)"
                                     class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
                                     v-for="fmoreContent in firstMoreContents?.contents" :key="fmoreContent.content_id">
+                            
                                     <div class=" col-span-5 overflow-hidden">
                                         <nuxt-img loading="lazy"
                                             :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
