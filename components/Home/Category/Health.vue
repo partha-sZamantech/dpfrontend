@@ -34,8 +34,123 @@
                 </NuxtLink>
             </div>
             <div class="col-span-12 md:col-span-6">
-                <div class="home-intertainment-category-except-post grid grid-cols-2 gap-4">
-                    <!-- Loop Item -->
+
+
+                <!-- Mobile Version -->
+                <div class="grid grid-cols-2 gap-4 mb-2">
+                    <NuxtLink
+                        :to="getPostUrl(healthcontents[1]?.cat_slug, healthcontents[1]?.subcat_slug, healthcontents[1]?.content_type, healthcontents[1]?.content_id)"
+                        class="group">
+                        <div class=" overflow-hidden">
+                            <nuxt-img loading="lazy"
+                                :src="`${siteurl?.site_url}/media/content/images/${healthcontents[1]?.img_bg_path}`"
+                                class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                        </div>
+                    </NuxtLink>
+                    <NuxtLink class="group"
+                        :to="getPostUrl(healthcontents[2]?.cat_slug, healthcontents[2]?.subcat_slug, healthcontents[2]?.content_type, healthcontents[2]?.content_id)">
+                        <div class=" overflow-hidden">
+                            <nuxt-img loading="lazy"
+                                :src="`${siteurl?.site_url}/media/content/images/${healthcontents[2]?.img_bg_path}`"
+                                class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                        </div>
+                    </NuxtLink>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <NuxtLink class="group"
+                        :to="getPostUrl(healthcontents[1]?.cat_slug, healthcontents[1]?.subcat_slug, healthcontents[1]?.content_type, healthcontents[1]?.content_id)">
+                        <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold">{{
+                            healthcontents[1]?.content_heading
+                        }}</h4>
+                    </NuxtLink>
+                    <NuxtLink class="group"
+                        :to="getPostUrl(healthcontents[2]?.cat_slug, healthcontents[2]?.subcat_slug, healthcontents[2]?.content_type, healthcontents[2]?.content_id)">
+                        <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold ">{{
+                            healthcontents[2]?.content_heading
+                        }}</h4>
+                    </NuxtLink>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <NuxtLink
+                        :to="getPostUrl(healthcontents[1]?.cat_slug, healthcontents[1]?.subcat_slug, healthcontents[1]?.content_type, healthcontents[1]?.content_id)"
+                        class="text-sm text-black mt-1 flex gap-1 items-center">
+                        <Icon name="ph:alarm-bold" />
+                        <span>
+                            {{ postCreatedDate(healthcontents[1]?.created_at) }}
+                        </span>
+                    </NuxtLink>
+                    <NuxtLink
+                        :to="getPostUrl(healthcontents[2]?.cat_slug, healthcontents[2]?.subcat_slug, healthcontents[2]?.content_type, healthcontents[2]?.content_id)"
+                        class="text-sm text-black mt-1 flex gap-1 items-center">
+                        <Icon name="ph:alarm-bold" />
+                        <span>
+                            {{ postCreatedDate(healthcontents[2]?.created_at) }}
+                        </span>
+                    </NuxtLink>
+
+                </div>
+
+
+                <div class="grid grid-cols-2 gap-4 mb-2 mt-4">
+                    <NuxtLink
+                        :to="getPostUrl(healthcontents[3]?.cat_slug, healthcontents[3]?.subcat_slug, healthcontents[3]?.content_type, healthcontents[3]?.content_id)"
+                        class="group">
+                        <div class=" overflow-hidden">
+                            <nuxt-img loading="lazy"
+                                :src="`${siteurl?.site_url}/media/content/images/${healthcontents[3]?.img_bg_path}`"
+                                class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                        </div>
+                    </NuxtLink>
+                    <NuxtLink class="group"
+                        :to="getPostUrl(healthcontents[4]?.cat_slug, healthcontents[4]?.subcat_slug, healthcontents[4]?.content_type, healthcontents[4]?.content_id)">
+                        <div class=" overflow-hidden">
+                            <nuxt-img loading="lazy"
+                                :src="`${siteurl?.site_url}/media/content/images/${healthcontents[4]?.img_bg_path}`"
+                                class="mx-auto w-full group-hover:scale-110 duration-300"
+                                :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                        </div>
+                    </NuxtLink>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <NuxtLink class="group"
+                        :to="getPostUrl(healthcontents[3]?.cat_slug, healthcontents[3]?.subcat_slug, healthcontents[3]?.content_type, healthcontents[3]?.content_id)">
+                        <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold">{{
+                            healthcontents[3]?.content_heading
+                        }}</h4>
+                    </NuxtLink>
+                    <NuxtLink class="group"
+                        :to="getPostUrl(healthcontents[4]?.cat_slug, healthcontents[4]?.subcat_slug, healthcontents[4]?.content_type, healthcontents[4]?.content_id)">
+                        <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold ">{{
+                            healthcontents[4]?.content_heading
+                        }}</h4>
+                    </NuxtLink>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <NuxtLink
+                        :to="getPostUrl(healthcontents[3]?.cat_slug, healthcontents[3]?.subcat_slug, healthcontents[3]?.content_type, healthcontents[3]?.content_id)"
+                        class="text-sm text-black mt-1 flex gap-1 items-center">
+                        <Icon name="ph:alarm-bold" />
+                        <span>
+                            {{ postCreatedDate(healthcontents[3]?.created_at) }}
+                        </span>
+                    </NuxtLink>
+                    <NuxtLink
+                        :to="getPostUrl(healthcontents[4]?.cat_slug, healthcontents[4]?.subcat_slug, healthcontents[4]?.content_type, healthcontents[4]?.content_id)"
+                        class="text-sm text-black mt-1 flex gap-1 items-center">
+                        <Icon name="ph:alarm-bold" />
+                        <span>
+                            {{ postCreatedDate(healthcontents[4]?.created_at) }}
+                        </span>
+                    </NuxtLink>
+
+                </div>
+                <!-- Mobile Version -->
+                <!-- <div class="home-intertainment-category-except-post grid grid-cols-2 gap-4">
                     <div class="flex flex-col gap-4 group h-sports-excpt"
                         v-for="healthcontent in healthcontents.slice(1, 5)" :key="healthcontent.content_id">
                         <div class=" col-span-5 overflow-hidden">
@@ -63,10 +178,7 @@
                             </NuxtLink>
                         </div>
                     </div>
-                    <!--/ Loop Item -->
-
-
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

@@ -125,16 +125,16 @@
                                 <nuxt-img loading="lazy"
                                     :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[4]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                             </div>
                         </NuxtLink>
                         <NuxtLink class="group"
                             :to="getPostUrl(saradeshcontents[5]?.cat_slug, saradeshcontents[5]?.subcat_slug, saradeshcontents[5]?.content_type, saradeshcontents[5]?.content_id)">
                             <div class=" overflow-hidden">
                                 <nuxt-img loading="lazy"
-                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[4]?.img_bg_path}`"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[5]?.img_bg_path}`"
                                     class="mx-auto w-full group-hover:scale-110 duration-300"
-                                    :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
                             </div>
                         </NuxtLink>
                         <NuxtLink class="group"
