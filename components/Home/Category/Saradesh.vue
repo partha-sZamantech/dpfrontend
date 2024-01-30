@@ -34,8 +34,351 @@
                 </NuxtLink>
             </div>
             <div class="col-span-12 md:col-span-8">
-                <div class="home-intertainment-category-except-post grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <!-- Loop Item -->
+
+                <div class="desktop-version hidden md:block">
+                    <!-- Desktop Version -->
+                    <div class="md:grid grid-cols-3 gap-4 mb-2">
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[1]?.cat_slug, saradeshcontents[1]?.subcat_slug, saradeshcontents[1]?.content_type, saradeshcontents[1]?.content_id)"
+                            class="group">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[1]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[2]?.cat_slug, saradeshcontents[2]?.subcat_slug, saradeshcontents[2]?.content_type, saradeshcontents[2]?.content_id)">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[2]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[3]?.cat_slug, saradeshcontents[3]?.subcat_slug, saradeshcontents[3]?.content_type, saradeshcontents[3]?.content_id)">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[3]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[1]?.cat_slug, saradeshcontents[1]?.subcat_slug, saradeshcontents[1]?.content_type, saradeshcontents[1]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold">{{
+                                saradeshcontents[1]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[2]?.cat_slug, saradeshcontents[2]?.subcat_slug, saradeshcontents[2]?.content_type, saradeshcontents[2]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold ">{{
+                                saradeshcontents[2]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[3]?.cat_slug, saradeshcontents[3]?.subcat_slug, saradeshcontents[3]?.content_type, saradeshcontents[3]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold ">{{
+                                saradeshcontents[3]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4">
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[1]?.cat_slug, saradeshcontents[1]?.subcat_slug, saradeshcontents[1]?.content_type, saradeshcontents[1]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[1]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[2]?.cat_slug, saradeshcontents[2]?.subcat_slug, saradeshcontents[2]?.content_type, saradeshcontents[2]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[2]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[3]?.cat_slug, saradeshcontents[3]?.subcat_slug, saradeshcontents[3]?.content_type, saradeshcontents[3]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[3]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+
+                    </div>
+
+
+                    <div class="grid grid-cols-3 gap-4 mb-2 mt-4">
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[4]?.cat_slug, saradeshcontents[4]?.subcat_slug, saradeshcontents[4]?.content_type, saradeshcontents[4]?.content_id)"
+                            class="group">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[4]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[5]?.cat_slug, saradeshcontents[5]?.subcat_slug, saradeshcontents[5]?.content_type, saradeshcontents[5]?.content_id)">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[4]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteUrl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[6]?.cat_slug, saradeshcontents[6]?.subcat_slug, saradeshcontents[6]?.content_type, saradeshcontents[6]?.content_id)">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[6]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4">
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[4]?.cat_slug, saradeshcontents[4]?.subcat_slug, saradeshcontents[4]?.content_type, saradeshcontents[4]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold">{{
+                                saradeshcontents[4]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[5]?.cat_slug, saradeshcontents[5]?.subcat_slug, saradeshcontents[5]?.content_type, saradeshcontents[5]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold ">{{
+                                saradeshcontents[5]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[6]?.cat_slug, saradeshcontents[6]?.subcat_slug, saradeshcontents[6]?.content_type, saradeshcontents[6]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold ">{{
+                                saradeshcontents[6]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4">
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[4]?.cat_slug, saradeshcontents[4]?.subcat_slug, saradeshcontents[4]?.content_type, saradeshcontents[4]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[4]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[5]?.cat_slug, saradeshcontents[5]?.subcat_slug, saradeshcontents[5]?.content_type, saradeshcontents[5]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[5]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[6]?.cat_slug, saradeshcontents[6]?.subcat_slug, saradeshcontents[6]?.content_type, saradeshcontents[6]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[6]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+                    </div>
+                    <!-- Desktop Version -->
+                </div>
+
+
+                <div class="mobile-version md:hidden block">
+
+                    <!-- Mobile Version -->
+                    <div class="grid grid-cols-2 gap-4 mb-2">
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[1]?.cat_slug, saradeshcontents[1]?.subcat_slug, saradeshcontents[1]?.content_type, saradeshcontents[1]?.content_id)"
+                            class="group">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[1]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[2]?.cat_slug, saradeshcontents[2]?.subcat_slug, saradeshcontents[2]?.content_type, saradeshcontents[2]?.content_id)">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[2]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[1]?.cat_slug, saradeshcontents[1]?.subcat_slug, saradeshcontents[1]?.content_type, saradeshcontents[1]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold">{{
+                                saradeshcontents[1]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[2]?.cat_slug, saradeshcontents[2]?.subcat_slug, saradeshcontents[2]?.content_type, saradeshcontents[2]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold ">{{
+                                saradeshcontents[2]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[1]?.cat_slug, saradeshcontents[1]?.subcat_slug, saradeshcontents[1]?.content_type, saradeshcontents[1]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[1]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[2]?.cat_slug, saradeshcontents[2]?.subcat_slug, saradeshcontents[2]?.content_type, saradeshcontents[2]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[2]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+
+
+                    </div>
+
+
+                    <div class="grid grid-cols-2 gap-4 mb-2 mt-4">
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[3]?.cat_slug, saradeshcontents[3]?.subcat_slug, saradeshcontents[3]?.content_type, saradeshcontents[3]?.content_id)">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[3]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[4]?.cat_slug, saradeshcontents[4]?.subcat_slug, saradeshcontents[4]?.content_type, saradeshcontents[4]?.content_id)"
+                            class="group">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[4]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[3]?.cat_slug, saradeshcontents[3]?.subcat_slug, saradeshcontents[3]?.content_type, saradeshcontents[3]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold ">{{
+                                saradeshcontents[3]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[4]?.cat_slug, saradeshcontents[4]?.subcat_slug, saradeshcontents[4]?.content_type, saradeshcontents[4]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold">{{
+                                saradeshcontents[4]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[3]?.cat_slug, saradeshcontents[3]?.subcat_slug, saradeshcontents[3]?.content_type, saradeshcontents[3]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[3]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[4]?.cat_slug, saradeshcontents[4]?.subcat_slug, saradeshcontents[4]?.content_type, saradeshcontents[4]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[4]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+
+                    </div>
+
+
+                    <div class="grid grid-cols-2 gap-4 mb-2 mt-4">
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[5]?.cat_slug, saradeshcontents[5]?.subcat_slug, saradeshcontents[5]?.content_type, saradeshcontents[5]?.content_id)">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[5]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[6]?.cat_slug, saradeshcontents[6]?.subcat_slug, saradeshcontents[6]?.content_type, saradeshcontents[6]?.content_id)"
+                            class="group">
+                            <div class=" overflow-hidden">
+                                <nuxt-img loading="lazy"
+                                    :src="`${siteurl?.site_url}/media/content/images/${saradeshcontents[6]?.img_bg_path}`"
+                                    class="mx-auto w-full group-hover:scale-110 duration-300"
+                                    :placeholder="img(`${siteurl?.site_url}/logo/placeholder.jpg`)" />
+                            </div>
+                        </NuxtLink>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[5]?.cat_slug, saradeshcontents[5]?.subcat_slug, saradeshcontents[5]?.content_type, saradeshcontents[5]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold ">{{
+                                saradeshcontents[5]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+                        <NuxtLink class="group"
+                            :to="getPostUrl(saradeshcontents[6]?.cat_slug, saradeshcontents[6]?.subcat_slug, saradeshcontents[6]?.content_type, saradeshcontents[6]?.content_id)">
+                            <h4 class=" text-base text-black group-hover:text-[#ff0000] font-semibold">{{
+                                saradeshcontents[6]?.content_heading
+                            }}</h4>
+                        </NuxtLink>
+
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[5]?.cat_slug, saradeshcontents[5]?.subcat_slug, saradeshcontents[5]?.content_type, saradeshcontents[5]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[6]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+                        <NuxtLink
+                            :to="getPostUrl(saradeshcontents[6]?.cat_slug, saradeshcontents[6]?.subcat_slug, saradeshcontents[6]?.content_type, saradeshcontents[6]?.content_id)"
+                            class="text-sm text-black mt-1 flex gap-1 items-center">
+                            <Icon name="ph:alarm-bold" />
+                            <span>
+                                {{ postCreatedDate(saradeshcontents[6]?.created_at) }}
+                            </span>
+                        </NuxtLink>
+
+                    </div>
+                </div>
+                <!-- Desktop Version -->
+
+                <!-- <div class="home-intertainment-category-except-post grid grid-cols-2 md:grid-cols-3 gap-4">
                     <div class="flex flex-col gap-4 group h-sports-excpt"
                         v-for="saradeshcontent in saradeshcontents.slice(1, 7)" :key="saradeshcontent.content_id">
                         <div class=" col-span-5 overflow-hidden">
@@ -62,10 +405,7 @@
                             </NuxtLink>
                         </div>
                     </div>
-                    <!--/ Loop Item -->
-
-
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
