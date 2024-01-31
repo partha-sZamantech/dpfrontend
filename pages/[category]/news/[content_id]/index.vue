@@ -556,7 +556,7 @@
         :class="` hidden cursor-zoom-out fixed inset-0 bg-black overflow-y-hidden overflow--hidden h-screen z-[999999999] items-center justify-center`">
         <div class="flex nuxtPartha relative h-screen w-full justify-center items-center duration-1000">
             <img id="nuxtpopupImage" :class="`max-h-full md:h-full max-w-full duration-700`"
-                src="https://www.dhakaprokash24.com/media/content/images/2024January/dhaka-prokah-news1-20240122153828.jpg"
+                src=""
                 alt="">
         </div>
     </div>
