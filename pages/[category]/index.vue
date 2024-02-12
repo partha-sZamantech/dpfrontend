@@ -210,9 +210,9 @@
                                                 v-html="`${catPost?.content_details.substring(0, 155)}...`"></div>
                                         </ClientOnly>
                                         <span class="post-date md:flex flex-col gap-1 hidden text-base text-black">
-                                            <small>আপডেট: {{
-                                                postCreatedDateWithTime(catPost?.updated_at) }}</small>
-                                            <small>প্রকাশ: {{
+                                            <!-- <small>আপডেট: {{
+                                                postCreatedDateWithTime(catPost?.updated_at) }}</small> -->
+                                            <small>{{
                                                 postCreatedDateWithTime(catPost?.created_at) }}</small>
                                         </span>
                                         <p class="text-sm text-black flex gap-1 items-center md:hidden">

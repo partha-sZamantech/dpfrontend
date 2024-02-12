@@ -192,15 +192,16 @@
                                         </ClientOnly>
 
                                         <span class="post-date md:flex flex-col gap-1 text-base text-black hidden">
-                                            <small>আপডেট: {{
-                                                postCreatedDateWithTime(latestPost?.updated_at) }}</small>
-                                            <small>প্রকাশ: {{
+                                            <!-- <small>আপডেট: {{
+                                                postCreatedDateWithTime(latestPost?.updated_at) }}</small> -->
+                                            <small>  {{ latestPost?.bn_cat_name}} | {{
                                                 postCreatedDateWithTime(latestPost?.created_at) }}</small>
                                         </span>
                                         <p class="text-sm text-black flex gap-1 items-center md:hidden">
+                                      
                                             <Icon name="ph:alarm-bold" />
                                             <span>
-                                                {{ postCreatedDate(latestPost?.created_at) }}
+                                            {{ postCreatedDate(latestPost?.created_at) }}
                                             </span>
                                         </p>
                                     </div>

@@ -220,9 +220,9 @@
                                                 v-html="subcatPost?.content_details.substring(0, 160)"></div>
                                         </ClientOnly>
                                         <span class="post-date md:flex flex-col gap-1 hidden text-base text-black">
-                                            <small>আপডেট: {{
-                                                postCreatedDateWithTime(subcatPost?.updated_at) }}</small>
-                                            <small>প্রকাশ: {{
+                                            <!-- <small>আপডেট: {{
+                                                postCreatedDateWithTime(subcatPost?.updated_at) }}</small> -->
+                                            <small> {{
                                                 postCreatedDateWithTime(subcatPost?.created_at) }}</small>
                                         </span>
                                         <p class="text-sm text-black flex gap-1 items-center md:hidden">
