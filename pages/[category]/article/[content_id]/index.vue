@@ -555,6 +555,9 @@
     <div id="postimagePopup"
         :class="` hidden cursor-zoom-out fixed inset-0 bg-black overflow-y-hidden overflow--hidden h-screen z-[999999999] items-center justify-center`">
         <div class="flex nuxtPartha relative h-screen w-full justify-center items-center duration-1000">
+            <span :class="`absolute right-0 top-0 cursor-pointer bg-red-600 pl-4 pr-2 pt-1 pb-2 rounded-bl-[50px]`">
+                <Icon name="material-symbols:close" class="text-xl cursor-pointer text-white" />
+            </span>
             <img id="nuxtpopupImage" :class="`max-h-full md:h-full max-w-full duration-700`"
                 src=""
                 alt="">
