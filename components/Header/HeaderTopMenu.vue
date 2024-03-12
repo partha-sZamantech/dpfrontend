@@ -14,7 +14,7 @@
                         class="py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
                         সর্বশেষ</NuxtLink>
                 </li>
-                <li v-for="category in headCategory?.slice(0, 11)" :key="category.cat_id">
+                <li v-for="category in headCategory?.slice(0, 12)" :key="category.cat_id">
                     <NuxtLink :to="`/${category.cat_slug}`"
                         class="py-2 px-3 block hover:bg-[#284f81] hover:border-b-2 hover:border-b-white border-b-2 border-b-transparent duration-500">
                         {{ category.cat_name_bn }}</NuxtLink>
@@ -31,13 +31,13 @@
                 <span>সব</span>
             </div>
         
-            <a href="#" class="text-[#124d80] text-base bg-white px-2 py-[2px] rounded-sm">English</a>
-            <a href="#" class="text-[#124d80] text-base bg-white px-2 py-[2px] rounded-sm">ই-পেপার</a>
+            <!-- <a href="#" class="text-[#124d80] text-base bg-white px-2 py-[2px] rounded-sm">English</a>
+            <a href="#" class="text-[#124d80] text-base bg-white px-2 py-[2px] rounded-sm">ই-পেপার</a> -->
         </div>
         <div v-if="dkdropdownStatus === true" :class="`relative border-t`" ref="dropmenuRef">
             <div :class="`max-w-[1280px] px-4 py-4 mx-auto`">
                 <div class="dropmenu grid grid-cols-6 gap-1 items-center justify-center text-white text-[18px]">
-                    <NuxtLink @click="dkdropdownToggle" class="hover:pl-2 duration-300 py-2" v-for="dropmenuitem in headCategory?.slice(11, 41)"
+                    <NuxtLink @click="dkdropdownToggle" class="hover:pl-2 duration-300 py-2" v-for="dropmenuitem in headCategory?.slice(12, 41)"
                         :key="dropmenuitem.cat_id" :to="`/${dropmenuitem.cat_slug}`">
                         {{ dropmenuitem.cat_name_bn }}
                     </NuxtLink>

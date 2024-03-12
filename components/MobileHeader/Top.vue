@@ -5,10 +5,10 @@
                 <div class="text-sm">
                     <span>{{ EnglishDate() }} | {{ BanglaDate() }}</span>
                 </div>
-                <span class="text-sm">বেটা ভার্সন</span>
+                <span id="realtime" class="text-sm"></span>
             </div>
             <div class="flex justify-between items-center px-2">
-                <div class="flex gap-6 px-2 py-2 items-center justify-center">
+                <div class="flex gap-16 px-2 py-2 items-center justify-center">
                     <Icon v-if="!mobileMenuStatus" @click="mobileMenuToggle"
                         class="text-3xl cursor-pointer hover:bg-[#f7f7f7]" name="ic:outline-menu" />
                     <Icon v-else name="material-symbols:close" @click="mobileMenuToggle"
@@ -19,10 +19,10 @@
                     </a>
                 </div>
 
-                <div class="flex gap-2 px-1 text-[12px]">
+                <!-- <div class="flex gap-2 px-1 text-[12px]">
                     <NuxtLink class="border py-1 px-2 bg-[#124d80] text-white siyamLipiFont" to="/">EN</NuxtLink>
                     <NuxtLink to="/" class="border py-1 bg-[#124d80] px-2 text-white siyamLipiFont">e-P</NuxtLink>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -43,6 +43,14 @@ const mobileMenuToggle = () => {
     }
 }
 
+//========== Real time Status =========== //
+const realTimeStatus = () => {
+    let data = new buetDateConverter().convert("A g:i:s");
+
+    document.getElementById("realtime").innerHTML = data;
+}
+setInterval(realTimeStatus, 1000)
+//========== Real time Status =========== //
 
 // ==================== Global Site Setting State ====================
 const siteurl = siteUrlState()

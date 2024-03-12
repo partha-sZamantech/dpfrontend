@@ -14,9 +14,9 @@
                 </div>
                 <div class="flex gap-4 justify-center items-center">
                     <div class="top-search-box relative flex items-center">
-                        <input type="text" placeholder="অনুসন্ধানের জন্য লিখুন..." v-model="keyword"
+                        <input type="text" placeholder="অনুসন্ধানের জন্য লিখুন..."  @keyup.enter="searchPageRedirect" v-model="keyword"
                             class="bg-[#e0e0e0] text-black focus:outline-none px-3 w-72 placeholder-black">
-                        <span @click="searchPageRedirect" class="text-base cursor-pointer absolute hover:bg-[#d0e6f1] right-0 top-0 px-2">
+                        <span @click="searchPageRedirect" class="text-base cursor-pointer absolute right-0 top-0 px-2">
                             <Icon name="tabler:search" />
                         </span>
                     </div>

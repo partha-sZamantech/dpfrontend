@@ -1,5 +1,6 @@
 <template>
     <div class="bg-white">
+ 
         <HeaderDateTop />
         <div class="max-w-[1280px] mx-auto px-4 py-6 bg-white">
             <div :class="` hidden md:block `">
@@ -8,8 +9,9 @@
                 :placeholder="img('/assets/img/logo.png', { h: 56, blur: 2, q: 50 })" /> -->
                     <h1 class="w-[400px] mx-auto">
                         <a :href="website_url?.website_url">
-                            <nuxt-img class="mx-auto" width="350" :src="`${siteurl.site_url}/media/common/${headerSiteSettings?.logo}`"
-                                 alt="Dhaka Prokash" />
+                            <nuxt-img class="mx-auto" width="350"
+                                :src="`${siteurl.site_url}/media/common/${headerSiteSettings?.logo}`"
+                                alt="Dhaka Prokash" />
                         </a>
                     </h1>
                 </div>

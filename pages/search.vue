@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-span-12 md:col-span-6">
                     <div class="searchbox-page relative">
-                        <input type="text" placeholder="খুঁজুন" v-model="inputKeyword" @change="onChangeKeyword"
+                        <input type="text" placeholder="খুঁজুন" @keyup.enter="searchButtonHandler" v-model="inputKeyword" @change="onChangeKeyword"
                             class=" focus:outline-none border border-[#cccccc] text-xl md:text-2xl rounded-[4px] pl-4 pr-10 py-2 w-full">
                         <div @click="searchButtonHandler" class="  px-2 py-2  cursor-pointer absolute top-1 right-0">
                             <Icon class="text-2xl group-hover:text-white" name="tabler:search" />
