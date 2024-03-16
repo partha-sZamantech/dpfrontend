@@ -75,14 +75,14 @@ const dkdropdownToggle = () => {
     }
 }
 
-const dropmenuRef = ref(null)
-onClickOutside(
-    dropmenuRef,
-    (event) => {
-        console.log(event)
-        dkdropdownStatus.value = false
-    },
-)
+// const dropmenuRef = ref(null)
+// onClickOutside(
+//     dropmenuRef,
+//     (event) => {
+//         // console.log(event)
+//         dkdropdownStatus.value = false
+//     },
+// )
 
 </script>
 

@@ -66,6 +66,7 @@
                 </div>
 
                 <div class="col-span-12 md:col-span-3">
+                    <Counter />
                     <!-- Home Right One Ads -->
                     <div v-if="homeRightOneAds?.status === 1"
                         class="py-4 border-b border-t border-b-[#e2e2e2] border-t-[#e2e2e2]">

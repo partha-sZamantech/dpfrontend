@@ -69,9 +69,10 @@
             :data-src="`${siteurl?.site_url}/api/ogimage/get/${detailsContent?.category?.cat_slug}?imgPath=${detailsContent?.img_bg_path}`"> -->
                         <div class="singlePost-heading flex flex-col gap-2 solaimanlipi">
                             <h4 v-if="detailsContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
-                                detailsContent?.content_sub_heading }}</h4>
-                            <h2 class="text-3xl md:text-[40px] md:leading-[50px] print:leading-tight print:text-[32px]">{{
-                                detailsContent?.content_heading }}
+        detailsContent?.content_sub_heading }}</h4>
+                            <h2 class="text-3xl md:text-[40px] md:leading-[50px] print:leading-tight print:text-[32px]">
+                                {{
+        detailsContent?.content_heading }}
                                 {{ balvalue }}
                             </h2>
                             <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
@@ -82,7 +83,8 @@
                         <!-- <div
                             class="flex flex-col gap-2 md:gap-0 md:flex-row justify-between md:items-end border-b pb-2 md:pb-3"> -->
                         <div class="grid grid-cols-1 md:grid-cols-2 content-between gap-2 border-b border-t py-2">
-                            <NuxtLink v-if="detailsContent?.author" :to="`/author/${detailsContent?.author?.author_slug}`"
+                            <NuxtLink v-if="detailsContent?.author"
+                                :to="`/author/${detailsContent?.author?.author_slug}`"
                                 class="author-details flex gap-2 group items-center border-b pb-1 md:border-b-0">
                                 <div>
                                     <nuxt-img loading="lazy" v-if="detailsContent?.author?.img_path"
@@ -94,11 +96,11 @@
                                 </div>
                                 <div class="flex flex-col justify-center">
                                     <p class="group-hover:text-[#3375af] font-[600]">{{
-                                        detailsContent?.author?.author_name_bn
-                                    }}</p>
+        detailsContent?.author?.author_name_bn
+    }}</p>
 
                                     <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(detailsContent?.created_at)
-                                    }}</span>
+                                                }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
@@ -113,7 +115,7 @@
                                     <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
 
                                     <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(detailsContent?.created_at)
-                                    }}</span>
+                                                }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
@@ -133,7 +135,7 @@
                                 </div>
                                 <!-- ShareThis END -->
                                 <!-- Print Button -->
-                                <div class="cursor-pointer printbutton absolute right-0 z-10 text-white w-[30px] h-[30px] rounded-full  bg-black"
+                                <div class="cursor-pointer printbutton absolute right-0 text-white w-[30px] h-[30px] rounded-full  bg-black"
                                     @click="printPageArea('singlepost')">
                                     <Icon name="ic:baseline-local-printshop" class="ml-[6px] mt-[1px]" />
                                 </div>
@@ -148,7 +150,7 @@
                                 :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             <p v-if="detailsContent?.img_bg_caption"
                                 class="feature-image-capture text-center text-sm text-slate-900 pt-2 pb-1">{{
-                                    detailsContent?.img_bg_caption }}</p>
+        detailsContent?.img_bg_caption }}</p>
                         </div>
                         <div class="singlePost-detail grid grid-cols-12">
                             <div class=" hidden md:block md:col-span-2"></div>
@@ -161,18 +163,31 @@
                                 <!-- Tag Area -->
                                 <div
                                     class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3 print:hidden">
-                                    <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1"> <span
-                                            class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
-                                                detailsContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন</NuxtLink>
+                                    <NuxtLink :to="`/${detailsContent?.category?.cat_slug}`" class="text-[18px] py-1">
+                                        <span class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
+        detailsContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন
+                                    </NuxtLink>
                                     <ul class="flex flex-wrap gap-3 items-center" v-if="firstContentTags?.length > 0">
 
                                         <li v-for="ftag in firstContentTags"
                                             class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1] font-semibold">
-                                            <NuxtLink class="px-4 py-2 block" :to="`/topic/${ftag}`">{{ ftag }}</NuxtLink>
+                                            <NuxtLink class="px-4 py-2 block" :to="`/topic/${ftag}`">{{ ftag }}
+                                            </NuxtLink>
                                         </li>
                                     </ul>
                                 </div>
                                 <!-- Tag Area -->
+
+                                <!--:::::::::::::: Counter Ramadan ::::::::::::::-->
+                                <div class="counter flex flex-col gap-4 my-4">
+                                    <div class="w-[400px] mx-auto max-w-[100%]">
+                                        <Counter />
+                                    </div>
+                        
+                                    <img class="hover:cursor-zoom-in"
+                                        src="https://admin.dhakaprokash24.com/media/content/images/2024March/ramadan-calendar-2024-dhakaprokash-20240310181541.jpg" />
+                                </div>
+                                <!--:::::::::::::: Counter Ramadan ::::::::::::::-->
                             </div>
                             <div class=" hidden md:block md:col-span-2"></div>
                         </div> <!-- singlePost-details -->
@@ -189,19 +204,20 @@
                     <div :class="`sticky ${stickyScroll ? ' top-[164px]' : 'top-14'} duration-200`">
                         <div :class="`flex flex-col gap-2`">
                             <div class=" border-b-[3px] border-[#3375af] pb-1">
-                                <h3 class="text-[#3375af] text-[18px] font-[600]">{{ detailsContent?.category?.cat_name_bn
-                                }} নিয়ে আরও পড়ুন</h3>
+                                <h3 class="text-[#3375af] text-[18px] font-[600]">{{
+        detailsContent?.category?.cat_name_bn
+    }} নিয়ে আরও পড়ুন</h3>
                             </div>
 
                             <div class="detail-page-category-content-exept flex flex-col"
                                 v-if="firstMoreContents?.contents?.length > 0">
                                 <!-- Loop Item -->
-                               
+
                                 <NuxtLink
                                     :to="getPostUrl(fmoreContent?.cat_slug, fmoreContent?.subcat_slug, fmoreContent?.content_type, fmoreContent?.content_id)"
                                     class="grid grid-cols-12 gap-4 group h-national-excpt border-b py-4"
                                     v-for="fmoreContent in firstMoreContents?.contents" :key="fmoreContent.content_id">
-                            
+
                                     <div class=" col-span-5 overflow-hidden">
                                         <nuxt-img loading="lazy"
                                             :src="`${siteurl.site_url}/media/content/images/${fmoreContent?.img_bg_path}`"
@@ -210,7 +226,7 @@
                                     </div>
                                     <div class=" col-span-7">
                                         <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
-                                            fmoreContent?.content_heading }}</h4>
+        fmoreContent?.content_heading }}</h4>
                                     </div>
                                 </NuxtLink>
                                 <!--/ Loop Item -->
@@ -258,7 +274,7 @@
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 </div>
                                 <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{
-                                    fRelatedContent?.content_heading }}</h5>
+        fRelatedContent?.content_heading }}</h5>
                             </NuxtLink>
                             <!-- Loop Item -->
 
@@ -281,7 +297,8 @@
 
             <!--========== <3> More Details Content ============ -->
             <div v-if="moreDetailsContents?.length > 0" v-for="(moreDetailContent, mcinx) in moreDetailsContents"
-                :key="moreDetailContent.content_id" class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
+                :key="moreDetailContent.content_id"
+                class="border-t pt-8  mt-10 grid grid-cols-12 gap-5 relative d-print">
 
                 <div class="col-span-12 md:col-span-9" :id="`singlepost${mcinx}`">
                     <!----- Breadcump ----->
@@ -305,10 +322,11 @@
 
                         <div class="singlePost-heading flex flex-col gap-2 solaimanlipi">
                             <h4 v-if="moreDetailContent?.content_sub_heading" class="text-[20px] text-[#ff0000]">{{
-                                moreDetailContent?.content_sub_heading }}</h4>
-                            <h2 class="text-3xl md:text-[40px] md:leading-[50px] print:leading-tight print:text-[32px]">{{
-                                moreDetailContent.content_heading
-                            }} {{ balvalue }}</h2>
+        moreDetailContent?.content_sub_heading }}</h4>
+                            <h2 class="text-3xl md:text-[40px] md:leading-[50px] print:leading-tight print:text-[32px]">
+                                {{
+        moreDetailContent.content_heading
+    }} {{ balvalue }}</h2>
                             <div class="h-2 w-12 rounded-md bg-[#3375af] print:hidden"></div>
                         </div>
 
@@ -328,11 +346,12 @@
                                 </div>
                                 <div class="flex flex-col justify-center">
                                     <p class="group-hover:text-[#3375af] font-[600]">{{
-                                        moreDetailContent?.author?.author_name_bn
-                                    }}</p>
+        moreDetailContent?.author?.author_name_bn
+    }}</p>
 
-                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(moreDetailContent?.created_at)
-                                    }}</span>
+                                    <p>প্রকাশ: <ClientOnly><span>{{
+            postCreatedDateWithTime(moreDetailContent?.created_at)
+        }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
@@ -346,8 +365,9 @@
                                     <!-- <p v-if="detailsContent?.author"> -->
                                     <p class="group-hover:text-[#3375af] font-[600]">ঢাকাপ্রকাশ ডেস্ক</p>
 
-                                    <p>প্রকাশ: <ClientOnly><span>{{ postCreatedDateWithTime(moreDetailContent?.created_at)
-                                    }}</span>
+                                    <p>প্রকাশ: <ClientOnly><span>{{
+        postCreatedDateWithTime(moreDetailContent?.created_at)
+    }}</span>
                                         </ClientOnly>
                                     </p>
                                 </div>
@@ -385,7 +405,7 @@
                                 :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                             <p v-if="moreDetailContent?.img_bg_caption"
                                 class="feature-image-capture text-center text-sm text-slate-900 pt-2 pb-1">{{
-                                    moreDetailContent?.img_bg_caption }}</p>
+        moreDetailContent?.img_bg_caption }}</p>
                         </div>
                         <div class="singlePost-detail grid grid-cols-12">
                             <div class=" hidden md:block md:col-span-2"></div>
@@ -396,16 +416,18 @@
                                 <!-- Tag Area -->
                                 <div class="category-tags-area flex flex-col gap-4 border-b border-t pb-4 pt-3 print:hidden"
                                     v-if="moreDetailContent?.tags">
-                                    <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`" class="text-[18px] py-1">
+                                    <NuxtLink :to="`/${moreDetailContent?.category?.cat_slug}`"
+                                        class="text-[18px] py-1">
                                         <span class=" py-1 font-semibold border-b-2 border-[#3375af] text-[#3375af]">{{
-                                            moreDetailContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন
+        moreDetailContent?.category?.cat_name_bn }}</span> থেকে আরও পড়ুন
                                     </NuxtLink>
 
                                     <ul class="flex flex-wrap gap-3 items-center">
 
                                         <li v-for="mtag in moreDetailContent?.tags.split(',')"
                                             class="text-[#337ab7] bg-[#d9edf7] rounded-sm hover:bg-[#d0e6f1] font-semibold">
-                                            <NuxtLink class="px-4 py-2 block" :to="`/topic/${mtag}`">{{ mtag }}</NuxtLink>
+                                            <NuxtLink class="px-4 py-2 block" :to="`/topic/${mtag}`">{{ mtag }}
+                                            </NuxtLink>
                                         </li>
                                     </ul>
                                 </div>
@@ -427,7 +449,7 @@
                         <div :class="`flex flex-col gap-2`" v-if="moreDetailsContents?.length > 0">
                             <div class=" border-b-[3px] border-[#3375af] pb-1">
                                 <h3 class="text-[#3375af] text-[18px] font-[600]">{{
-                                    moreDetailContent?.category?.cat_name_bn }}
+        moreDetailContent?.category?.cat_name_bn }}
                                     নিয়ে আরও পড়ুন</h3>
                             </div>
                             <div class="detail-page-category-content-exept flex flex-col">
@@ -446,7 +468,7 @@
                                     </div>
                                     <div class=" col-span-7">
                                         <h4 class="text-base font-semibold group-hover:text-[#ff0000]">{{
-                                            moreDetCatCon?.content_heading }}</h4>
+        moreDetCatCon?.content_heading }}</h4>
                                     </div>
                                 </NuxtLink>
                                 <!--/ Loop Item -->
@@ -494,7 +516,7 @@
                                         :placeholder="img(`${siteurl.site_url}/logo/placeholder.jpg`)" />
                                 </div>
                                 <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{
-                                    relDetailContent?.content_heading }}</h5>
+        relDetailContent?.content_heading }}</h5>
                             </NuxtLink>
 
                         </div>
@@ -526,7 +548,7 @@
                                 </div>
                                 <h5 class="text-[18px] font-semibold group-hover:text-[#ff0000]">{{
                                     latestPostC?.content_heading
-                                }}</h5>
+                                    }}</h5>
                             </NuxtLink>
                             <!-- Loop Item -->
 
@@ -558,9 +580,7 @@
             <span :class="`absolute right-0 top-0 cursor-pointer bg-red-600 pl-4 pr-2 pt-1 pb-2 rounded-bl-[50px]`">
                 <Icon name="material-symbols:close" class="text-xl cursor-pointer text-white" />
             </span>
-            <img id="nuxtpopupImage" :class="`max-h-full md:h-full max-w-full duration-700`"
-                src=""
-                alt="">
+            <img id="nuxtpopupImage" :class="`max-h-full md:h-full max-w-full duration-700`" src="" alt="">
         </div>
     </div>
 </template>

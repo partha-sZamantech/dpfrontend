@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://dhaka56_dev_bn:];aMJxqgHpxc@103.125.252.150:3306/dhaka56_dev_bn"
+  url      = env("DATABASE_URL")
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
@@ -290,6 +290,8 @@ model elections {
   party_four_name   String?   @db.VarChar(255)
   party_one_logo    String?   @db.VarChar(255)
   party_two_logo    String?   @db.VarChar(255)
+  party_three_logo  String?   @db.VarChar(255)
+  party_four_logo   String?   @db.VarChar(255)
   party_one_votes   Int?      @db.UnsignedInt
   party_two_votes   Int?      @db.UnsignedInt
   party_three_votes Int?      @db.UnsignedInt
@@ -573,4 +575,19 @@ model users {
   remember_token            String?   @db.VarChar(100)
   created_at                DateTime? @db.Timestamp(0)
   updated_at                DateTime? @db.Timestamp(0)
+}
+
+model counter {
+  id           Int       @id @default(autoincrement())
+  counter_name String    @db.VarChar(255)
+  counter_time String    @db.VarChar(255)
+  status       Int?
+  created_at   DateTime? @db.Timestamp(0)
+  updated_at   DateTime? @db.Timestamp(0)
+}
+
+model migrations {
+  id        Int    @id @default(autoincrement()) @db.UnsignedInt
+  migration String @db.VarChar(255)
+  batch     Int
 }

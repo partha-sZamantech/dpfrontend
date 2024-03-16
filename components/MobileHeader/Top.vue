@@ -5,7 +5,7 @@
                 <div class="text-sm">
                     <span>{{ EnglishDate() }} | {{ BanglaDate() }}</span>
                 </div>
-                <span id="realtime" class="text-sm"></span>
+                <span id="realtime" class="text-sm">{{ banglaTime}}</span>
             </div>
             <div class="flex justify-between items-center px-2">
                 <div class="flex gap-16 px-2 py-2 items-center justify-center">
@@ -44,12 +44,25 @@ const mobileMenuToggle = () => {
 }
 
 //========== Real time Status =========== //
-const realTimeStatus = () => {
-    let data = new buetDateConverter().convert("A g:i:s");
+// const realTimeStatus = () => {
+//     let data = new buetDateConverter().convert("A g:i:s");
 
-    document.getElementById("realtime").innerHTML = data;
+//     document.getElementById("realtime").innerHTML = data;
+// }
+// setInterval(realTimeStatus, 1000)
+
+const banglaTime = useState(() => '');
+const {data:btime, refresh} = await useFetch("/api/prismaapi/header/banglatime", {
+    method: 'GET'
+})
+
+const realTimeStatus = () => {
+    refresh()
+    banglaTime.value = btime.value
 }
 setInterval(realTimeStatus, 1000)
+
+
 //========== Real time Status =========== //
 
 // ==================== Global Site Setting State ====================
